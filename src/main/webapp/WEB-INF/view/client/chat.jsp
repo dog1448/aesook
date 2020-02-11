@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<%@ include file="../home/head.jsp" %>
+	<%@ include file="head.jspf" %>
 	<!-- Google Map -->
 		<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
@@ -16,7 +16,7 @@
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
-		<%@ include file="../home/main_header.jsp" %>
+		<%@ include file="main_header.jspf" %>
 		<div>&nbsp;</div>
 		<div>&nbsp;</div>
 		<div>&nbsp;</div>
@@ -166,7 +166,7 @@
 				  
 				</div></div>
 
-			<%@ include file="../home/footer.jsp" %>
+			<%@ include file="footer.jspf" %>
 		</div>
 
 		<div class="gototop js-top">

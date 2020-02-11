@@ -3,14 +3,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<%@ include file="head.jsp"%>
+<%@ include file="head.jspf"%>
 </head>
 <body>
 
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
-		<%@ include file="main_header.jsp"%>
+		<%@ include file="main_header.jspf"%>
 		<!--index 화면 사진 부분-->
 		<aside id="colorlib-hero">
 			<div class="flexslider">
@@ -69,14 +69,14 @@
 			<div class="container">
 				<div class="row no-gutters">
 					<div class="col-md-4 animate-box text-center">
-						<div class="services">							
+						<div class="services">
 							<span class="icon"> <a href="selectRegion.jsp"><img
 									src="images/hotel.png" /></a></span>
 							<h3>호텔</h3>
 						</div>
 					</div>
 					<div class="col-md-4 animate-box text-center">
-						<div class="services">							
+						<div class="services">
 							<span class="icon"> <a href="selectRegion.jsp"><img
 									src="images/motel.png" /></a>
 							</span>
@@ -84,7 +84,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 animate-box text-center">
-						<div class="services">							
+						<div class="services">
 							<span class="icon"> <a href="selectRegion.jsp"><img
 									src="images/pension.png" /></a>
 							</span>
@@ -92,7 +92,7 @@
 						</div>
 					</div>
 					<div class="col-md-6 animate-box text-center">
-						<div class="services">							
+						<div class="services">
 							<span class="icon"> <a href="selectRegion.jsp"><img
 									src="images/guestHouse.png" /></a>
 							</span>
@@ -100,7 +100,7 @@
 						</div>
 					</div>
 					<div class="col-md-6 animate-box text-center">
-						<div class="services">							
+						<div class="services">
 							<span class="icon"> <a href="selectRegion.jsp"><img
 									src="images/resort.png" /></a>
 							</span>
@@ -128,7 +128,7 @@
 							<!-- 각 item이 하나의 숙소 링크 부분 -->
 							<div class="item">
 								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->									
+									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
 									<a href="hotels.jsp" class="hotel-img"
 										style="background-image: url(images/hotel-1.jpg);">
 										<p class="price">
@@ -256,8 +256,7 @@
 						<h2>Athens, Greece</h2> <span class="city">Athens, Greece</span> <span
 						class="price">$450</span>
 				</span>
-				</a> 
-				<a href="#" class="tour-entry animate-box">
+				</a> <a href="#" class="tour-entry animate-box">
 					<div class="tour-img"
 						style="background-image: url(images/tour-2.jpg);"></div> <span
 					class="desc">
@@ -270,8 +269,7 @@
 						<h2>Family Tour in Thailand</h2> <span class="city">Athens,
 							Greece</span> <span class="price">$450</span>
 				</span>
-				</a> 
-				<a href="#" class="tour-entry animate-box">
+				</a> <a href="#" class="tour-entry animate-box">
 					<div class="tour-img"
 						style="background-image: url(images/tour-3.jpg);"></div> <span
 					class="desc">
@@ -284,8 +282,7 @@
 						<h2>Family Tour in Philippines</h2> <span class="city">Lipa,
 							Philippines</span> <span class="price">$450</span>
 				</span>
-				</a> 
-				<a href="#" class="tour-entry animate-box">
+				</a> <a href="#" class="tour-entry animate-box">
 					<div class="tour-img"
 						style="background-image: url(images/tour-4.jpg);"></div> <span
 					class="desc">
@@ -302,8 +299,12 @@
 
 			</div>
 		</div>
-		<%@ include file="footer.jsp"%>
-	</div>	
+		<%@ include file="footer.jspf"%>
+	</div>
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+	</div>
+
 </body>
 </html>
 

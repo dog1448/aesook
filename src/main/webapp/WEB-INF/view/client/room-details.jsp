@@ -32,7 +32,7 @@
 
 <body>
     <div id="page">
-        <%@ include file="../home/main_header.jsp" %>
+        <%@ include file="main_header.jspf" %>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -149,7 +149,7 @@
                                         <option value="">2</option>
                                     </select>
                                 </div>
-                                <button type="submit"><a href="payment.html">예약하기</a></button>
+                                <button type="submit"><a href="payment.jsp">예약하기</a></button>
                             </form>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
         </section>
         <!-- Room Details Section End -->
 
-        <%@ include file="../home/footer.jsp" %>
+        <%@ include file="footer.jspf" %>
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
