@@ -16,6 +16,10 @@
 	<mvc:resources mapping="/resources/**" location="resources/" />
 	
 	
+	<mvc:resources mapping="/resources/**" location="resources/" />
+	
+	<!-- ViewResolvor  -->
+dev
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/client"></property>
 		<property name="suffix" value=".jsp"></property>

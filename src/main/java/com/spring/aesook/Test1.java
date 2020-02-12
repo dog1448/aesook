@@ -6,6 +6,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Test1 {
+		
+	@RequestMapping("/index.admin")
+	public String c() {
+		return "/index";
+	}
+dev
+
+@Controller
+public class Test1 {
 	
 	@RequestMapping("/home.do")
 	public String home() {
