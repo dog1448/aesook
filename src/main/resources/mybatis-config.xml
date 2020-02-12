@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spring.aesook.user.vo.UserVO" alias="user"></typeAlias>
+		
 	</typeAliases>
 	<mappers>
-		<mapper resource="mappings/clientmappings/user-mapping.xml" />
+		
 	</mappers>
 </configuration>
