@@ -23,12 +23,12 @@
 								<div class="col-md-12 about">
 									<h2>myPage</h2>
 									<ul>
-										<li><a href="booking.jsp">예약조회</a></li>
-                                        <li><a href="myReview.jsp">나의 후기</a></li>
-                                        <li><a href="modify_info.jsp">개인정보관리</a></li>
-                                        <li><a href="brn.jsp">사업자등록</a></li>
-                                        <li><a href="inserthotel.jsp">숙소 관리</a></li>
-                                        <li><a href="withdrawal.jsp">회원탈퇴</a></li>
+										<li><a href="booking.do">예약조회</a></li>
+                                        <li><a href="myReview.do">나의 후기</a></li>
+                                        <li><a href="modify_info.do">개인정보관리</a></li>
+                                        <li><a href="brn.do">사업자등록</a></li>
+                                        <li><a href="inserthotel.do">숙소 관리</a></li>
+                                        <li><a href="withdrawal.do">회원탈퇴</a></li>
 									</ul>
 								</div>
 							</div>
@@ -38,13 +38,13 @@
 							<div>&nbsp;</div>				
 							<div class="row">								
 								<div class="col-md-12">	
-									<a href="room-details.jsp">								
+									<a href="room-details.do">								
 									<div class="room-wrap">
 										<div class="row">
 											
 											<div class="col-md-6 col-sm-6">
 												<div class="room-img"
-													style="background-image: url(images/room-1.jpg);"></div>
+													style="background-image: url(resources/client/images/room-1.jpg);"></div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
@@ -60,11 +60,11 @@
 										</a>
 										<div>&nbsp;</div>
 										
-										<a href="room-details.jsp">
+										<a href="room-details.do">
 										<div class="row">
 											<div class="col-md-6 col-sm-6">
 												<div class="room-img"
-													style="background-image: url(images/room-1.jpg);"></div>
+													style="background-image: url(resources/client/images/room-1.jpg);"></div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">

@@ -24,11 +24,11 @@
 								<div class="col-md-12 about">
 									<h2>myPage</h2>
 									<ul>
-										<li><a href="inserthotel.jsp">숙소 등록 및 수정</a></li>
-										<li><a href="insertedRoom.jsp">등록 숙소</a></li>
-										<li><a href="statistics.jsp">통계</a></li>
-										<li><a href="chat.jsp">1대 1문의</a></li>
-										<li><a href="index.jsp">메인 홈</a></li>
+										<li><a href="inserthotel.do">숙소 등록 및 수정</a></li>
+										<li><a href="insertedRoom.do">등록 숙소</a></li>
+										<li><a href="statistics.do">통계</a></li>
+										<li><a href="chat.do">1대 1문의</a></li>
+										<li><a href="home.do">메인 홈</a></li>
 									</ul>
 								</div>
 							</div>
@@ -38,13 +38,13 @@
 							<div>&nbsp;</div>				
 							<div class="row">								
 								<div class="col-md-12">	
-									<a href="inserthotel.jsp">								
+									<a href="inserthotel.do">								
 									<div class="room-wrap">
 										<div class="row">
 											
 											<div class="col-md-6 col-sm-6">
 												<div class="room-img"
-													style="background-image: url(images/room-1.jpg);"></div>
+													style="background-image: url(resources/client/images/room-1.jpg);"></div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">

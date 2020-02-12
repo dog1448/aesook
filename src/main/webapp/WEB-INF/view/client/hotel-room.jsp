@@ -29,13 +29,13 @@
 										<h2>¼÷¼Ò¸í</h2>																
 									</div>
 									<div class="row">
-										<a href="room-details.jsp">
+										<a href="room-details.do">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">
 														<div class="col-md-6 col-sm-6">
 															<div class="room-img"
-																style="background-image: url(images/room-1.jpg);"></div>
+																style="background-image: url(resources/client/images/room-1.jpg);"></div>
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
@@ -49,13 +49,13 @@
 												</div>
 											</div>
 										</a>
-										<a href="room-details.jsp">
+										<a href="room-details.do">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">
 														<div class="col-md-6 col-sm-6">
 															<div class="room-img"
-																style="background-image: url(images/room-2.jpg);"></div>
+																style="background-image: url(resources/client/images/room-2.jpg);"></div>
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
@@ -69,13 +69,13 @@
 												</div>
 											</div>
 										</a>
-										<a href="room-details.jsp">
+										<a href="room-details.do">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">
 														<div class="col-md-6 col-sm-6">
 															<div class="room-img"
-																style="background-image: url(images/room-1.jpg);"></div>
+																style="background-image: url(resources/client/images/room-1.jpg);"></div>
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
@@ -89,13 +89,13 @@
 												</div>
 											</div>
 										</a>
-										<a href="room-details.jsp">
+										<a href="room-details.do">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">
 														<div class="col-md-6 col-sm-6">
 															<div class="room-img"
-																style="background-image: url(images/room-1.jpg);"></div>
+																style="background-image: url(resources/client/images/room-1.jpg);"></div>
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
@@ -109,13 +109,13 @@
 												</div>
 											</div>
 										</a>
-										<a href="room-details.jsp">
+										<a href="room-details.do">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">
 														<div class="col-md-6 col-sm-6">
 															<div class="room-img"
-																style="background-image: url(images/room-1.jpg);"></div>
+																style="background-image: url(resources/client/images/room-1.jpg);"></div>
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
@@ -129,13 +129,13 @@
 												</div>
 											</div>
 										</a>
-										<a href="room-details.jsp">
+										<a href="room-details.do">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">
 														<div class="col-md-6 col-sm-6">
 															<div class="room-img"
-																style="background-image: url(images/room-1.jpg);"></div>
+																style="background-image: url(resources/client/images/room-1.jpg);"></div>
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">

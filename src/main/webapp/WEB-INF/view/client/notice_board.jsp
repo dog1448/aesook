@@ -7,8 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- 뷰포트 -->
     <meta name="viewport" content="width=device-width" initial-scale="1">
-    <!-- 스타일시트 참조  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+
     <title>jsp 게시판 웹사이트</title>
     <style type="text/css">
         a,
@@ -35,32 +34,32 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="resources/client/css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="resources/client/css/icomoon.css">
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="resources/client/css/bootstrap.css">
 
     <!-- Magnific Popup -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="resources/client/css/magnific-popup.css">
 
     <!-- Flexslider  -->
-    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="resources/client/css/flexslider.css">
 
     <!-- Owl Carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="resources/client/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="resources/client/css/owl.theme.default.min.css">
 
     <!-- Date Picker -->
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="resources/client/css/bootstrap-datepicker.css">
     <!-- Flaticons  -->
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="resources/client/fonts/flaticon/font/flaticon.css">
 
     <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="resources/client/css/style.css">
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="resources/client/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -92,7 +91,7 @@
 
                         <tr>
                             <td>1</td>
-                            <td><a href="chat.jsp">EXAMPLE</a></td>
+                            <td><a href="chat.do">EXAMPLE</a></td>
                             <td>관리자</td>
                             <td>2020-02-07</td>
                         </tr>
@@ -118,28 +117,28 @@
     <!-- 애니매이션 담당 JQUERY -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- 부트스트랩 JS  -->
-    <script src="js/bootstrap.js"></script>
+    <script src="resources/client/js/bootstrap.js"></script>
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
+    <script src="resources/client/js/jquery.min.js"></script>
     <!-- jQuery Easing -->
-    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="resources/client/js/jquery.easing.1.3.js"></script>
 
     <!-- Waypoints -->
-    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="resources/client/js/jquery.waypoints.min.js"></script>
     <!-- Flexslider -->
-    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="resources/client/js/jquery.flexslider-min.js"></script>
     <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="resources/client/js/owl.carousel.min.js"></script>
     <!-- Magnific Popup -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
+    <script src="resources/client/js/jquery.magnific-popup.min.js"></script>
+    <script src="resources/client/js/magnific-popup-options.js"></script>
     <!-- Date Picker -->
-    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="resources/client/js/bootstrap-datepicker.js"></script>
     <!-- Stellar Parallax -->
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="resources/client/js/jquery.stellar.min.js"></script>
 
     <!-- Main -->
-    <script src="js/main.js"></script>
+    <script src="resources/client/js/main.js"></script>
 </body>
 
 </html>
