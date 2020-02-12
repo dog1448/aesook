@@ -9,7 +9,7 @@
 
 <body>
 
-    <div class="colorlib-loader" ></div>
+    <div class="colorlib-loader"></div>
 
     <div id="page">
         
