@@ -11,5 +11,6 @@
 <%@ include file="nav.jspf" %>
 
 </div>
+<%@ include file="javascript.jspf" %>
 </body>
 </html>
