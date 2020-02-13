@@ -16,18 +16,18 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap2.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel2.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup2.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style2.css" type="text/css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="resources/client/css/bootstrap2.min.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/owl.carousel2.min.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/magnific-popup2.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/style2.css" type="text/css">
+    <link rel="stylesheet" href="resources/client/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/client/css/style.css">
 </head>
 
 <body>
@@ -46,10 +46,10 @@
                     <div class="col-lg-8 offset-lg-2">
                         <div class="testimonial-slider owl-carousel">
                             <div class="ts-item">
-                                <img src="images/room-details.jpg" alt="">
+                                <img src="resources/client/images/room-details.jpg" alt="">
                             </div>
                             <div class="ts-item">
-                                <img src="images/room-details.jpg" alt="">
+                                <img src="resources/client/images/room-details.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -161,29 +161,29 @@
         <%@ include file="footer.jspf" %>
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap2.min.js"></script>
-    <script src="js/jquery.magnific-popup2.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel2.min.js"></script>
-    <script src="js/main2.js"></script>
+    <script src="resources/client/js/jquery-3.3.1.min.js"></script>
+    <script src="resources/client/js/bootstrap2.min.js"></script>
+    <script src="resources/client/js/jquery.magnific-popup2.min.js"></script>
+    <script src="resources/client/js/jquery.nice-select.min.js"></script>
+    <script src="resources/client/js/jquery-ui.min.js"></script>
+    <script src="resources/client/js/jquery.slicknav.js"></script>
+    <script src="resources/client/js/owl.carousel2.min.js"></script>
+    <script src="resources/client/js/main2.js"></script>
 
     <!-- Flexslider -->
-    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="resources/client/js/jquery.flexslider-min.js"></script>
     <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="resources/client/js/owl.carousel.min.js"></script>
     <!-- Magnific Popup -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
+    <script src="resources/client/js/jquery.magnific-popup.min.js"></script>
+    <script src="resources/client/js/magnific-popup-options.js"></script>
     <!-- Date Picker -->
-    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="resources/client/js/bootstrap-datepicker.js"></script>
     <!-- Stellar Parallax -->
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="resources/client/js/jquery.stellar.min.js"></script>
 
     <!-- Main -->
-    <script src="js/main.js"></script>
+    <script src="resources/client/js/main.js"></script>
 </body>
 
 </html>

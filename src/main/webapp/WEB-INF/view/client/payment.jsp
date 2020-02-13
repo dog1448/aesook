@@ -5,6 +5,7 @@
 	<head>
 	<%@include file="head.jspf" %>
 	</head>
+	
 	<body>
 		
 	<div class="colorlib-loader"></div>

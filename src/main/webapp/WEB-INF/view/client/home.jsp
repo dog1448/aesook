@@ -15,7 +15,7 @@
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-					<li style="background-image: url(images/img_bg_5.jpg);">
+					<li style="background-image: url(resources/client/images/img_bg_5.jpg);">
 						<div class="overlay"></div>
 						<div class="container-fluids">
 							<div class="row">
@@ -70,39 +70,39 @@
 				<div class="row no-gutters">
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.jsp"><img
-									src="images/hotel.png" /></a></span>
+							<span class="icon"> <a href="selectRegion.do"><img
+									src="resources/client/images/hotel.png" /></a></span>
 							<h3>호텔</h3>
 						</div>
 					</div>
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.jsp"><img
-									src="images/motel.png" /></a>
+							<span class="icon"> <a href="selectRegion.do"><img
+									src="resources/client/images/motel.png" /></a>
 							</span>
 							<h3>모텔</h3>
 						</div>
 					</div>
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.jsp"><img
-									src="images/pension.png" /></a>
+							<span class="icon"> <a href="selectRegion.do"><img
+									src="resources/client/images/pension.png" /></a>
 							</span>
 							<h3>펜션</h3>
 						</div>
 					</div>
 					<div class="col-md-6 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.jsp"><img
-									src="images/guestHouse.png" /></a>
+							<span class="icon"> <a href="selectRegion.do"><img
+									src="resources/client/images/guestHouse.png" /></a>
 							</span>
 							<h3>게스트 하우스</h3>
 						</div>
 					</div>
 					<div class="col-md-6 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.jsp"><img
-									src="images/resort.png" /></a>
+							<span class="icon"> <a href="selectRegion.do"><img
+									src="resources/client/images/resort.png" /></a>
 							</span>
 							<h3>리조트/콘도</h3>
 						</div>
@@ -129,8 +129,8 @@
 							<div class="item">
 								<div class="hotel-entry">
 									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-1.jpg);">
+									<a href="hotels.do" class="hotel-img"
+										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
 											<span>기본 숙박비</span><small> /1박</small>
 										</p>
@@ -143,7 +143,7 @@
 											545 Reviews
 										</p>
 										<h3>
-											<a href="room-detail.jsp">숙소명</a>
+											<a href="room-detail.do">숙소명</a>
 										</h3>
 										<span class="place">기본주소</span>
 										<p>숙소소개</p>
@@ -154,8 +154,8 @@
 							<div class="item">
 								<div class="hotel-entry">
 									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-1.jpg);">
+									<a href="hotels.do" class="hotel-img"
+										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
 											<span>기본 숙박비</span><small> /1박</small>
 										</p>
@@ -168,7 +168,7 @@
 											545 Reviews
 										</p>
 										<h3>
-											<a href="room-detail.jsp">숙소명</a>
+											<a href="room-detail.do">숙소명</a>
 										</h3>
 										<span class="place">기본주소</span>
 										<p>숙소소개</p>
@@ -179,8 +179,8 @@
 							<div class="item">
 								<div class="hotel-entry">
 									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-1.jpg);">
+									<a href="hotels.do" class="hotel-img"
+										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
 											<span>기본 숙박비</span><small> /1박</small>
 										</p>
@@ -193,7 +193,7 @@
 											545 Reviews
 										</p>
 										<h3>
-											<a href="room-detail.jsp">숙소명</a>
+											<a href="room-detail.do">숙소명</a>
 										</h3>
 										<span class="place">기본주소</span>
 										<p>숙소소개</p>
@@ -205,7 +205,7 @@
 								<div class="hotel-entry">
 									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
 									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-1.jpg);">
+										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
 											<span>기본 숙박비</span><small> /1박</small>
 										</p>
@@ -245,7 +245,7 @@
 			<div class="tour-wrap">
 				<a href="#" class="tour-entry animate-box">
 					<div class="tour-img"
-						style="background-image: url(images/tour-1.jpg);"></div> <span
+						style="background-image: url(resources/client/images/tour-1.jpg);"></div> <span
 					class="desc">
 						<p class="star">
 							<span><i class="icon-star-full"></i><i
@@ -258,7 +258,7 @@
 				</span>
 				</a> <a href="#" class="tour-entry animate-box">
 					<div class="tour-img"
-						style="background-image: url(images/tour-2.jpg);"></div> <span
+						style="background-image: url(resources/client/images/tour-2.jpg);"></div> <span
 					class="desc">
 						<p class="star">
 							<span><i class="icon-star-full"></i><i
@@ -271,7 +271,7 @@
 				</span>
 				</a> <a href="#" class="tour-entry animate-box">
 					<div class="tour-img"
-						style="background-image: url(images/tour-3.jpg);"></div> <span
+						style="background-image: url(resources/client/images/tour-3.jpg);"></div> <span
 					class="desc">
 						<p class="star">
 							<span><i class="icon-star-full"></i><i
@@ -284,7 +284,7 @@
 				</span>
 				</a> <a href="#" class="tour-entry animate-box">
 					<div class="tour-img"
-						style="background-image: url(images/tour-4.jpg);"></div> <span
+						style="background-image: url(resources/client/images/tour-4.jpg);"></div> <span
 					class="desc">
 						<p class="star">
 							<span><i class="icon-star-full"></i><i

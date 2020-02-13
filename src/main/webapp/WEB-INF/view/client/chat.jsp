@@ -8,12 +8,12 @@
 	<!-- Google Map -->
 		<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-		<script src="js/google_map.js"></script>
+		<script src="resources/client/js/google_map.js"></script>
 </head>
 
 <body>
 
-	<div class="colorlib-loader"></div>
+	<div class="colorlib-loader"> </div>
 
 	<div id="page">
 		<%@ include file="main_header.jspf" %>

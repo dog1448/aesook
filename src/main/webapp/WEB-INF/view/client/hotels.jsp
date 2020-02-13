@@ -22,7 +22,7 @@
 							<div class="wrap-division">
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-1.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-1.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
@@ -36,7 +36,7 @@
 
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-2.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-2.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
@@ -50,7 +50,7 @@
 
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-3.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-3.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
@@ -64,7 +64,7 @@
 
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-4.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-4.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
@@ -78,7 +78,7 @@
 
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-5.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-5.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
@@ -92,7 +92,7 @@
 
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-6.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-6.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
@@ -106,7 +106,7 @@
 
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-7.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-7.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
@@ -120,7 +120,7 @@
 
 								<div class="col-md-6 col-sm-6 animate-box">
 									<div class="hotel-entry">
-										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(images/hotel-8.jpg);">
+										<a href="hotel-room.jsp" class="hotel-img" style="background-image: url(resources/client/images/hotel-8.jpg);">
 											<p class="price"><span>$120</span><small> /night</small></p>
 										</a>
 										<div class="desc">
