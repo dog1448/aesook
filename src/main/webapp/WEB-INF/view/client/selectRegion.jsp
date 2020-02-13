@@ -837,7 +837,7 @@
 							<div class="item">
 								<div class="hotel-entry">
 									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-1.jpg);">
+										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
 											<span>$120</span><small> /night</small>
 										</p>
@@ -861,7 +861,7 @@
 							<div class="item">
 								<div class="hotel-entry">
 									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-2.jpg);">
+										style="background-image: url(resources/client/images/hotel-2.jpg);">
 										<p class="price">
 											<span>$120</span><small> /night</small>
 										</p>
@@ -885,7 +885,7 @@
 							<div class="item">
 								<div class="hotel-entry">
 									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-3.jpg);">
+										style="background-image: url(resources/client/images/hotel-3.jpg);">
 										<p class="price">
 											<span>$120</span><small> /night</small>
 										</p>
@@ -909,7 +909,7 @@
 							<div class="item">
 								<div class="hotel-entry">
 									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(images/hotel-4.jpg);">
+										style="background-image: url(resources/client/images/hotel-4.jpg);">
 										<p class="price">
 											<span>$120</span><small> /night</small>
 										</p>
