@@ -18,19 +18,20 @@
                             <h3 class="panel-title">Register</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form role="form" method="post" action="insertRegister.admin">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="UserId" name="userid" type="text" autofocus>
-                                        <input class="form-control-admin" placeholder="Email" name="email" type="email" autofocus>
-                                        <input class="form-control-admin" placeholder="Name" name="name" type="text" autofocus>
+                                        <input class="form-control-admin" placeholder="UserId" name="admin_Id" type="text" autofocus>
+                                        <input class="form-control-admin" placeholder="Email" name="admin_Email" type="email" autofocus>
+                                        <input class="form-control-admin" placeholder="Name" name="admin_Name" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="Password" name="password" type="password" value="">
-                                        <input class="form-control-admin" placeholder="Password Confirm" name="password" type="password" value="">
+                                        <input class="form-control-admin" placeholder="Password" name="admin_Pass" type="password">
+                                        <input class="form-control-admin" placeholder="Password Confirm" name="admin_Pass2" type="password">
+                                        <input type="hidden" value="S" name="admin_Grade">
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
-                                    <a href="index.admin" class="btn btn-lg btn-success btn-block">Register</a>
+                                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Register">
                                 </fieldset>
                             </form>
                         </div>
