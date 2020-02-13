@@ -21,6 +21,7 @@
                             <form role="form" method="post" action="insertRegister.admin">
                                 <fieldset>
                                     <div class="form-group">
+admin/modify
                                         <div class="input-group">
                                                 <input class =  "form-control-admin" placeholder="Id" name="adminId" type="text" autofocus>
                                                 <span class="input-group-btn">
@@ -29,11 +30,15 @@
                                         </div>
                                         <input class="form-control-admin" placeholder="Email" name="admin_Email" type="email" autofocus>
                                         <input class="form-control-admin" placeholder="Name" name="admin_Name" type="text" autofocus>
+
+                                        <input class="form-control-admin" placeholder="UserId" name="adminId" type="text" autofocus>
+                                        <input class="form-control-admin" placeholder="Email" name="adminEmail" type="email" autofocus>
+                                        <input class="form-control-admin" placeholder="Name" name="adminName" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="Password" name="admin_Pass" type="password">
-                                        <input class="form-control-admin" placeholder="Password Confirm" name="admin_Pass2" type="password">
-                                        <input type="hidden" value="S" name="admin_Grade">
+                                        <input class="form-control-admin" placeholder="Password" name="adminPass" type="password">
+                                        <input class="form-control-admin" placeholder="Password Confirm" name="adminPass2" type="password">
+                                        <input type="hidden" value="S" name="adminGrade">
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
                                     <input type="submit" class="btn btn-lg btn-success btn-block" value="Register">
