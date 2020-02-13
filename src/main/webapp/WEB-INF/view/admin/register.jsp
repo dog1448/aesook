@@ -21,7 +21,12 @@
                             <form role="form" method="post" action="insertRegister.admin">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="UserId" name="admin_Id" type="text" autofocus>
+                                        <div class="input-group">
+                                                <input class =  "form-control-admin" placeholder="Id" name="adminId" type="text" autofocus>
+                                                <span class="input-group-btn">
+                                                     <button class="btn btn-primary" type="button">중복</button>
+                                                </span>
+                                        </div>
                                         <input class="form-control-admin" placeholder="Email" name="admin_Email" type="email" autofocus>
                                         <input class="form-control-admin" placeholder="Name" name="admin_Name" type="text" autofocus>
                                     </div>
