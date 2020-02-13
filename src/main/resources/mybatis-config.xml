@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		
+		<typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
 	</typeAliases>
 	<mappers>
-		
+		<mapper resource="mappings/adminmappings/manager-Mapper.xml" />
 	</mappers>
 </configuration>
