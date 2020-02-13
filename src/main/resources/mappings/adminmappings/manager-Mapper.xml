@@ -6,7 +6,7 @@
 
 	<insert id="insertManager" parameterType="manager">
 		INSERT INTO admin (admin_id, admin_pass, admin_name, admin_email, admin_grade)
-		VALUES(#{admin_Id}, #{admin_Pass}, #{admin_Name}, #{admin_Email}, 'S')
+		VALUES(#{adminId}, #{adminPass}, #{adminName}, #{adminEmail}, 'S')
 	</insert>
 
 
