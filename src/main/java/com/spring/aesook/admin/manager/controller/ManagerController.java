@@ -2,6 +2,7 @@ package com.spring.aesook.admin.manager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,9 +29,30 @@ public class ManagerController {
 		return "/index";
 	}
 	
-	@RequestMapping("/login.admin")
+	@RequestMapping(value = "/login.admin", method = RequestMethod.GET)
 	public String moveLogin(ManagerVO vo) {
 		return "/login";
+	}
+	
+	@RequestMapping(value="/login.admin", method = RequestMethod.POST)
+	public String checkLogin(ManagerVO vo, Model model) {
+		ManagerVO user = managerLoginService.checkLogin(vo);
+		
+		
+		System.out.println(user == null);
+		if(user == null) {
+			model.addAttribute("check", "noId");
+			return "/login";
+		} else {
+			if (user.getAdminPass().equals(vo.getAdminPass())) {
+				model.addAttribute("user",user);
+			} else {
+				model.addAttribute("check", "noPass");
+				return "/login";
+			}
+		}
+		
+		return "/index";
 	}
 	
 	

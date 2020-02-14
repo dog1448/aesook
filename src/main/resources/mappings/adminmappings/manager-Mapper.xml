@@ -8,6 +8,9 @@
 		INSERT INTO admin (admin_id, admin_pass, admin_name, admin_email, admin_grade)
 		VALUES(#{adminId}, #{adminPass}, #{adminName}, #{adminEmail}, 'S')
 	</insert>
-
+	
+	<select id="getManager" resultType="manager" parameterType="manager" >
+		select * from admin where admin_id = #{adminId}
+	</select>
 
 </mapper>
