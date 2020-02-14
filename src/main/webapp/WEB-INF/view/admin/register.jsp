@@ -27,7 +27,6 @@
                                                      <button class="btn btn-primary" type="button">중복</button>
                                                 </span>
                                         </div>
-                                        <input class="form-control-admin" placeholder="UserId" name="adminId" type="text" autofocus>
                                         <input class="form-control-admin" placeholder="Email" name="adminEmail" type="email" autofocus>
                                         <input class="form-control-admin" placeholder="Name" name="adminName" type="text" autofocus>
                                     </div>

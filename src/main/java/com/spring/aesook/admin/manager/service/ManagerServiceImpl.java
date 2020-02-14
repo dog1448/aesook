@@ -17,5 +17,7 @@ public class ManagerServiceImpl implements ManagerService {
 		managerDAO.insertManager(vo);
 	}
 
-	
+	public ManagerVO getManager(ManagerVO vo) {
+		return managerDAO.getManager(vo);
+	}
 }

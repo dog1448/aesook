@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.aesook.admin.manager.service.ManagerLoginService;
 import com.spring.aesook.admin.manager.service.ManagerService;
@@ -18,6 +19,8 @@ public class ManagerController {
 	@Autowired
 	private ManagerLoginService managerLoginService;
 
+	
+	//  --------------------------- 회원가입 ------------------------------------
 	@RequestMapping(value = "/register.admin", method = RequestMethod.GET)
 	public String moveRegister() {
 		return "/register";
@@ -29,6 +32,7 @@ public class ManagerController {
 		return "/index";
 	}
 	
+	//  --------------------------- 로그인 ------------------------------------
 	@RequestMapping(value = "/login.admin", method = RequestMethod.GET)
 	public String moveLogin(ManagerVO vo) {
 		return "/login";
@@ -36,10 +40,9 @@ public class ManagerController {
 	
 	@RequestMapping(value="/login.admin", method = RequestMethod.POST)
 	public String checkLogin(ManagerVO vo, Model model) {
-		ManagerVO user = managerLoginService.checkLogin(vo);
+		ManagerVO user = managerService.getManager(vo);
 		
 		
-		System.out.println(user == null);
 		if(user == null) {
 			model.addAttribute("check", "noId");
 			return "/login";
@@ -54,6 +57,41 @@ public class ManagerController {
 		
 		return "/index";
 	}
+	
+	
+	//  --------------------------- 비밀번호 찾기 ------------------------------------
+	@RequestMapping(value="/findPassword.admin", method=RequestMethod.GET)
+	public String moveFindPassword(Model model) {
+		model.addAttribute("findEmail", false);
+		return "/findPassword";
+	}
+	
+	@RequestMapping(value="/findPassword.admin",  method=RequestMethod.POST)
+	public String findPassword(ManagerVO vo, Model model) {
+		ManagerVO user = managerService.getManager(vo);
+		if(user == null) {
+			model.addAttribute("check", "noId");
+			model.addAttribute("findEmail", false);
+			return "/findPassword";
+		}
+		model.addAttribute("findEmail", true);
+		model.addAttribute("user", user);
+		return "/findPassword";
+	}
+	
+	@RequestMapping(value="/sendEmail.admin" ,  method=RequestMethod.POST)
+	public String sendEmail(@RequestParam("myEmail") String myEmail, ManagerVO vo, Model model) {
+		if(vo.getAdminEmail().equals(myEmail)) {
+			managerLoginService.sendEmailPass(vo);
+			model.addAttribute("check", "sendEmail");
+			return "/login";
+		}
+		model.addAttribute("check", "noEmail");
+		model.addAttribute("findEmail", false);
+		return "/findPassword";
+	}
+	
+
 	
 	
 }
