@@ -14,13 +14,17 @@ public class MemberServiceImpl implements MemberService{
 
 
     @Override
-    public void insertMember(MemberVO memberVO) {
-        memberDAO.insertMember(memberVO);
+    public void insertMember(MemberVO vo) {
+        memberDAO.insertMember(vo);
     }
-
+    
+    public MemberVO getMember(MemberVO vo) {
+    	return memberDAO.getMember(vo);
+    }
+    
 	@Override
-	public int checkLoginId(MemberVO memberVO) {	
-		int result = memberDAO.getId(memberVO);
+	public int checkLoginId(MemberVO vo) {	
+		int result = memberDAO.getId(vo);
 		return result;
 	}
 }

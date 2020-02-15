@@ -57,7 +57,7 @@
 			<div class="login100-more" style="background-image: url('resources/client/images/bg-02.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form" action="">
+				<form class="login100-form validate-form" action="login.do" method="post">
 					&nbsp;&nbsp;&nbsp;<a href="home.jsp"><img src="resources/client/images/home.png"></a>
 					<span class="login100-form-title p-b-59">
 						로그인
@@ -91,6 +91,7 @@
 					<div>
 						<a href="register.do">아이디 찾기</a> / <a href="register.do">비밀번호 찾기</a>			
 					</div>
+				</form>
 					<div class="input100"></div>
 					
 					<div class="input100">
@@ -99,7 +100,6 @@
 						</a>
 					</div>
 					<div class="input100">네이버아이디로 로그인</div>
-				</form>
 			</div>
 		</div>
 	</div>

@@ -8,19 +8,21 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
-
+	
+	private final static String namespace = "client.member.vo.MemberVO";
+	
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
 
-    @Override
-    public void insertMember(MemberVO memberVO){
-        System.out.println("insertUser()..");
-        sqlSessionTemplate.insert("MemberDAO.insertMember",memberVO);
+    public void insertMember(MemberVO vo){
+        sqlSessionTemplate.insert(namespace + ".insertMember",vo);
     }
     
-    @Override
-    public int getId(MemberVO memberVO){
-        System.out.println("getId()..");
-        return sqlSessionTemplate.selectOne("MemberDAO.getId", memberVO);
+    public MemberVO getMember(MemberVO vo) {
+    	return sqlSessionTemplate.selectOne(namespace +".getMember" , vo);
+    }
+    
+    public int getId(MemberVO vo){
+        return sqlSessionTemplate.selectOne(namespace + ".getId", vo);
     }
 }
