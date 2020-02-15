@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- ºäÆ÷Æ® -->
+<!-- ë·°í¬íŠ¸ -->
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
-<title>jsp °Ô½ÃÆÇ À¥»çÀÌÆ®</title>
+<title>jsp ê²Œì‹œíŒ ì›¹ì‚¬ì´íŠ¸</title>
 <style type="text/css">
 a, a:hover {
 	color: #000000;
@@ -66,7 +66,7 @@ a, a:hover {
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 <body>
-	<!-- ³×ºñ°ÔÀÌ¼Ç  -->
+	<!-- ë„¤ë¹„ê²Œì´ì…˜  -->
 	<div id="page" >
 		<%@ include file="main_header.jspf"%>
 		<div>&nbsp;</div>
@@ -78,7 +78,7 @@ a, a:hover {
 		<div>&nbsp;</div>
 		<div>&nbsp;</div>
 
-		<!-- °Ô½ÃÆÇ -->
+		<!-- ê²Œì‹œíŒ -->
 		<div class="container">
 
 			<div class="row">
@@ -86,10 +86,10 @@ a, a:hover {
 					style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
-							<th style="background-color: #eeeeee; text-align: center;">¹øÈ£</th>
-							<th style="background-color: #eeeeee; text-align: center;">Á¦¸ñ</th>
-							<th style="background-color: #eeeeee; text-align: center;">ÀÛ¼ºÀÚ</th>
-							<th style="background-color: #eeeeee; text-align: center;">ÀÛ¼ºÀÏ</th>
+							<th style="background-color: #eeeeee; text-align: center;">ë²ˆí˜¸</th>
+							<th style="background-color: #eeeeee; text-align: center;">ì œëª©</th>
+							<th style="background-color: #eeeeee; text-align: center;">ìž‘ì„±ìž</th>
+							<th style="background-color: #eeeeee; text-align: center;">ìž‘ì„±ì¼</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -97,14 +97,14 @@ a, a:hover {
 						<tr>
 							<td>1</td>
 							<td><a href="chat.jsp">EXAMPLE</a></td>
-							<td>°ü¸®ÀÚ</td>
+							<td>ê´€ë¦¬ìž</td>
 							<td>2020-02-07</td>
 						</tr>
 
 					</tbody>
 				</table>
-				<a href="#" class="btn btn-success btn-arrow-left">ÀÌÀü</a> <a
-					href="#" class="btn btn-success btn-arrow-left">´ÙÀ½</a>
+				<a href="#" class="btn btn-success btn-arrow-left">ì´ì „</a> <a
+					href="#" class="btn btn-success btn-arrow-left">ë‹¤ìŒ</a>
 			</div>
 		</div>
 		<div>&nbsp;</div>
@@ -120,9 +120,9 @@ a, a:hover {
 
 
 
-	<!-- ¾Ö´Ï¸ÅÀÌ¼Ç ´ã´ç JQUERY -->
+	<!-- ì• ë‹ˆë§¤ì´ì…˜ ë‹´ë‹¹ JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<!-- ºÎÆ®½ºÆ®·¦ JS  -->
+	<!-- ë¶€íŠ¸ìŠ¤íŠ¸ëž© JS  -->
 	<script src="resources/client/js/bootstrap.js"></script>
 	<!-- jQuery -->
 	<script src="resources/client/js/jquery.min.js"></script>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 
@@ -27,25 +27,25 @@
                                 <div class="col-md-12 about">
                                     <h2>MYPAGE</h2>
                                     <ul>
-                                        <li><a href="booking.jsp">øπæ‡¡∂»∏</a></li>
-                                        <li><a href="myReview.jsp">≥™¿« »ƒ±‚</a></li>
-                                        <li><a href="modify_info.jsp">∞≥¿Œ¡§∫∏∞¸∏Æ</a></li>
-                                        <li><a href="brn.jsp">ªÁæ˜¿⁄µÓ∑œ</a></li>
-                                        <li><a href="inserthotel.jsp">º˜º“ ∞¸∏Æ</a></li>
-                                        <li><a href="withdrawal.jsp">»∏ø¯≈ª≈</a></li>
+                                        <li><a href="booking.jsp">ÏòàÏïΩÏ°∞Ìöå</a></li>
+                                        <li><a href="myReview.jsp">ÎÇòÏùò ÌõÑÍ∏∞</a></li>
+                                        <li><a href="modify_info.jsp">Í∞úÏù∏Ï†ïÎ≥¥Í¥ÄÎ¶¨</a></li>
+                                        <li><a href="brn.jsp">ÏÇ¨ÏóÖÏûêÎì±Î°ù</a></li>
+                                        <li><a href="inserthotel.jsp">ÏàôÏÜå Í¥ÄÎ¶¨</a></li>
+                                        <li><a href="withdrawal.jsp">ÌöåÏõêÌÉàÌá¥</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-three-forth animate-box">
-                            <h2>∞≥¿Œ¡§∫∏∞¸∏Æ</h2>
+                            <h2>Í∞úÏù∏Ï†ïÎ≥¥Í¥ÄÎ¶¨</h2>
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">					
 										
                                     <div class="row form-group">
                                         <div class="col-md-12">
-                                            <label for="subject">∫Òπ–π¯»£ : </label>
+                                            <label for="subject">ÎπÑÎ∞ÄÎ≤àÌò∏ : </label>
                                             <input type="password" id="password" class="form-control"
                                                 placeholder="">
                                         </div>
@@ -53,7 +53,7 @@
 
                                     <div class="row form-group">
                                         <div class="col-md-12">
-                                            <label for="subject">∫Òπ–π¯»£ »Æ¿Œ : </label>
+                                            <label for="subject">ÎπÑÎ∞ÄÎ≤àÌò∏ ÌôïÏù∏ : </label>
                                             <input type="password" id="repassword" class="form-control"
                                                 placeholder="">
                                         </div>
@@ -61,7 +61,7 @@
 
                                     <div class="row form-group">
                                         <div class="col-md-12">
-                                            <label for="subject">»ﬁ¥Î∆˘ : </label>
+                                            <label for="subject">Ìú¥ÎåÄÌè∞ : </label>
                                             <input type="text" id="telphone" class="form-control"
                                                 placeholder="">
                                         </div>
@@ -69,13 +69,13 @@
 
                                     <div class="row form-group">
                                         <div class="col-md-12">
-                                            <label for="subject">¿Ã∏ﬁ¿œ : </label>
+                                            <label for="subject">Ïù¥Î©îÏùº : </label>
                                             <input type="text" id="email" class="form-control"
                                                 placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <input type="submit" value="∫Ø∞Ê" class="btn btn-success">
+                                        <input type="submit" value="Î≥ÄÍ≤Ω" class="btn btn-success">
                                     </div>                                    
                                 </div>
                             </div>
