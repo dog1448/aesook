@@ -110,7 +110,7 @@ function checkId() {
 	var id = document.getElementById("memberId");
 	var re = /^[a-zA-Z0-9]{6,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
 	$.ajax({
-		url : "idChk.do",
+		url : "registerIdChk.do",
 		type : "post",
 		dataType : "json",
 		data : {
