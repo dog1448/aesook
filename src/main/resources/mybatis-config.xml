@@ -8,7 +8,7 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
-		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/adminmappings/manager-Mapper.xml" />

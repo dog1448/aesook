@@ -46,9 +46,16 @@ public class MemberController {
     	return result;
     } 
     
+    // --------------------------- ·Î±×ÀÎ -------------------------------------
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
+    }
+    
+    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+    public String checkLogin(MemberVO vo) {
+    	MemberVO user = memberService.getMember(vo);
+    	return "/home";
     }
   
 
