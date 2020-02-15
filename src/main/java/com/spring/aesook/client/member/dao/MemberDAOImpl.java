@@ -22,6 +22,10 @@ public class MemberDAOImpl implements MemberDAO {
     	return sqlSessionTemplate.selectOne(namespace +".getMember" , vo);
     }
     
+    public MemberVO getFindIdMember(MemberVO vo) {
+    	return sqlSessionTemplate.selectOne(namespace +".getFindIdMember", vo);
+    }
+    
     public int getId(MemberVO vo){
         return sqlSessionTemplate.selectOne(namespace + ".getId", vo);
     }

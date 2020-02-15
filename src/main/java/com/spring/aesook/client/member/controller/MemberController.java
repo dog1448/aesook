@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 @Controller
 public class MemberController {
+	
     @Autowired
-    MemberService memberService;    
+    MemberService memberService;   
+    @Autowired
+    MemberFindIdService memberFindIdService;
+    
     
     //  --------------------------- 회원가입 ------------------------------------
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
@@ -46,6 +51,7 @@ public class MemberController {
     	return result;
     } 
     
+    
     // --------------------------- 로그인 -------------------------------------
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
@@ -53,10 +59,58 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-    public String checkLogin(MemberVO vo) {
+    public String checkLogin(MemberVO vo, Model model) {
     	MemberVO user = memberService.getMember(vo);
+    	
+    	if(user == null) {
+			model.addAttribute("check", "noId");
+			return "/login";
+		} else {
+			if (user.getMemberPass().equals(vo.getMemberPass())) {
+				model.addAttribute("login",user);
+			} else {
+				model.addAttribute("check", "noPass");
+				return "/login";
+			}
+		}
+	
+    	return "/home"; // 지울 예정 ( login.do는 인터셉터가 처리 )
+    }
+    
+    
+    // --------------------------- HOME -------------------------------------
+    @RequestMapping("/home.do")
+    public String moveHome() {
     	return "/home";
     }
-  
-
+    
+    
+    // --------------------------- 아이디 찾기 -------------------------------------
+    @RequestMapping(value="/findId", method = RequestMethod.GET)
+    public String moveFindId() {
+    	return "/findId";
+    }
+    
+    @RequestMapping(value="/findId", method = RequestMethod.POST)
+    public String findId(MemberVO vo, Model model) {
+    	MemberVO user = memberFindIdService.findId(vo);
+    	if(user == null) {
+    		model.addAttribute("check","noId");
+    	} else {
+    		model.addAttribute("check","FindId");
+    	}
+    	
+    	return "/login";
+    }
+    
+    // --------------------------- 비밀번호 찾기 -------------------------------------
+    @RequestMapping(value="/findPass", method = RequestMethod.GET)
+    public String moveFindPass() {
+    	return "/findPass";
+    }
+    
+    @RequestMapping(value="/findPass", method = RequestMethod.POST)
+    public String findPass() {
+    	return "";
+    }
 }
