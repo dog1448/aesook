@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 
@@ -29,31 +29,31 @@
                                 <div class="col-md-12 about">
                                     <h2>MYPAGE</h2>
                                     <ul>
-                                        <li><a href="booking.jsp">¿¹¾àÁ¶È¸</a></li>
-                                        <li><a href="myReview.jsp">³ªÀÇ ÈÄ±â</a></li>
-                                        <li><a href="modify_info.jsp">°³ÀÎÁ¤º¸°ü¸®</a></li>
-                                        <li><a href="brn.jsp">»ç¾÷ÀÚµî·Ï</a></li>
-                                        <li><a href="inserthotel.jsp">¼÷¼Ò °ü¸®</a></li>
-                                        <li><a href="withdrawal.jsp">È¸¿øÅ»Åð</a></li>
+                                        <li><a href="booking.jsp">ì˜ˆì•½ì¡°íšŒ</a></li>
+                                        <li><a href="myReview.jsp">ë‚˜ì˜ í›„ê¸°</a></li>
+                                        <li><a href="modify_info.jsp">ê°œì¸ì •ë³´ê´€ë¦¬</a></li>
+                                        <li><a href="brn.jsp">ì‚¬ì—…ìžë“±ë¡</a></li>
+                                        <li><a href="inserthotel.jsp">ìˆ™ì†Œ ê´€ë¦¬</a></li>
+                                        <li><a href="withdrawal.jsp">íšŒì›íƒˆí‡´</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-three-forth animate-box">
-                            <h2>»ç¾÷ÀÚµî·Ï</h2>
+                            <h2>ì‚¬ì—…ìžë“±ë¡</h2>
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">										
                                    
                                     <div class="row form-group">
                                         <div class="col-md-12">
-                                            <label for="subject">»ç¾÷ÀÚ¹øÈ£ : </label>
+                                            <label for="subject">ì‚¬ì—…ìžë²ˆí˜¸ : </label>
                                             <input type="text" id="brn" class="form-control"
                                                 placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <input type="submit" value="µî·Ï" class="btn btn-success">
+                                        <input type="submit" value="ë“±ë¡" class="btn btn-success">
                                     </div>
                                 </div>
                             </div>

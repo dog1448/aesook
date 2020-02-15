@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 <!--head-->
@@ -23,8 +23,8 @@
 			<div class="row">
 				<div class="col">
 					<div>
-						<h1 align="center">È£ÅÚ/¸ðÅÚ µî(°ª ³Ñ°Ü ¹ÞÀ» °Í)</h1>
-						<h3>Áö¿ª¼±ÅÃ</h3>
+						<h1 align="center">í˜¸í…”/ëª¨í…” ë“±(ê°’ ë„˜ê²¨ ë°›ì„ ê²ƒ)</h1>
+						<h3>ì§€ì—­ì„ íƒ</h3>
 					</div>
 					<hr style="border: 0; height: 1px; background: black;">
 				</div>
@@ -37,104 +37,104 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								¼­¿ï <span class="caret"></span>
+								ì„œìš¸ <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">°­³²/¿ª»ï/»ï¼º/³íÇö</a></li>
+											<li><a href="hotels.jsp">ê°•ë‚¨/ì—­ì‚¼/ì‚¼ì„±/ë…¼í˜„</a></li>
 
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¼­ÃÊ/½Å»ç/¹æ¹è</a></li>
+											<li><a href="hotels.jsp">ì„œì´ˆ/ì‹ ì‚¬/ë°©ë°°</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Àá½Ç/½ÅÃµ</a></li>
+											<li><a href="hotels.jsp">ìž ì‹¤/ì‹ ì²œ</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¿µµîÆ÷/¿©ÀÇµµ</a></li>
+											<li><a href="hotels.jsp">ì˜ë“±í¬/ì—¬ì˜ë„</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">½Å¸²/¼­¿ï´ë/»ç´ç/µ¿ÀÛ</a></li>
+											<li><a href="hotels.jsp">ì‹ ë¦¼/ì„œìš¸ëŒ€/ì‚¬ë‹¹/ë™ìž‘</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">ÃµÈ£/±æµ¿/µÐÃá</a></li>
+											<li><a href="hotels.jsp">ì²œí˜¸/ê¸¸ë™/ë‘”ì¶˜</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">È­°î/±îÄ¡»ê/¾çÃµ/¸ñµ¿</a></li>
+											<li><a href="hotels.jsp">í™”ê³¡/ê¹Œì¹˜ì‚°/ì–‘ì²œ/ëª©ë™</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">±¸·Î/±ÝÃµ/¿À·ù/½Åµµ¸²</a></li>
+											<li><a href="hotels.jsp">êµ¬ë¡œ/ê¸ˆì²œ/ì˜¤ë¥˜/ì‹ ë„ë¦¼</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÅÂ¸ª/³ë¿ø/µµºÀ/Ã¢µ¿</a></li>
+											<li><a href="hotels.jsp">íƒœë¦‰/ë…¸ì›/ë„ë´‰/ì°½ë™</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">½ÅÃÌ/È«´ë/ÇÕÁ¤</a></li>
+											<li><a href="hotels.jsp">ì‹ ì´Œ/í™ëŒ€/í•©ì •</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¿¬½Å³»/ºÒ±¤/ÀÀ¾Ï</a></li>
+											<li><a href="hotels.jsp">ì—°ì‹ ë‚´/ë¶ˆê´‘/ì‘ì•”</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">Á¾·Î/´ëÇÐ·Î</a></li>
+											<li><a href="hotels.jsp">ì¢…ë¡œ/ëŒ€í•™ë¡œ</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">µ¿´ë¹®/µ¿¹¦/½Å´ç/Ãæ¹«·Î/¾à¼ö</a></li>
+											<li><a href="hotels.jsp">ë™ëŒ€ë¬¸/ë™ë¬˜/ì‹ ë‹¹/ì¶©ë¬´ë¡œ/ì•½ìˆ˜</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">È¸±â/°í·Á´ë/Ã»·®¸®/½Å¼³µ¿</a></li>
+											<li><a href="hotels.jsp">íšŒê¸°/ê³ ë ¤ëŒ€/ì²­ëŸ‰ë¦¬/ì‹ ì„¤ë™</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¼º½Å¿©´ë/¼ººÏ/¿ù°î</a></li>
+											<li><a href="hotels.jsp">ì„±ì‹ ì—¬ëŒ€/ì„±ë¶/ì›”ê³¡</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">ÀÌÅÂ¿ø/¿ë»ê/¼­¿ï¿ª/¸íµ¿/È¸Çö</a></li>
+											<li><a href="hotels.jsp">ì´íƒœì›/ìš©ì‚°/ì„œìš¸ì—­/ëª…ë™/íšŒí˜„</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Àå¾Èµ¿/´ä½Ê¸®</a></li>
+											<li><a href="hotels.jsp">ìž¥ì•ˆë™/ë‹µì‹­ë¦¬</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">°Ç´ë/±ºÀÚ/±¸ÀÇ</a></li>
+											<li><a href="hotels.jsp">ê±´ëŒ€/êµ°ìž/êµ¬ì˜</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¿Õ½Ê¸®/¼º¼ö/±ÝÈ£</a></li>
+											<li><a href="hotels.jsp">ì™•ì‹­ë¦¬/ì„±ìˆ˜/ê¸ˆí˜¸</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¼öÀ¯/¹Ì¾Æ</a></li>
+											<li><a href="hotels.jsp">ìˆ˜ìœ /ë¯¸ì•„</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">»óºÀ/Áß¶û/¸é¸ñ</a></li>
+											<li><a href="hotels.jsp">ìƒë´‰/ì¤‘ëž‘/ë©´ëª©</a></li>
 										</td>
 									</tr>
 								</table>
@@ -144,75 +144,75 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								°æ±â <span class="caret"></span>
+								ê²½ê¸° <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¼ö¿ø ÀÎ°è/±Ç¼±/¿µÅë</a></li>
+											<li><a href="hotels.jsp">ìˆ˜ì› ì¸ê³„/ê¶Œì„ /ì˜í†µ</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¼ö¿ø¿ª/±¸¿î/Àå¾È/¼¼·ù</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">¾È¾ç/ÆòÃÌ/ÀÎ´ö¿ø/°úÃµ</a></li>
-										</td>
-
-										<td>
-											<li><a href="hotels.jsp">¼º³²/ºÐ´ç/À§·Ê</a></li>
+											<li><a href="hotels.jsp">ìˆ˜ì›ì—­/êµ¬ìš´/ìž¥ì•ˆ/ì„¸ë¥˜</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¿ëÀÎ/µ¿Åº/¿À»ê/º´Á¡</a></li>
+											<li><a href="hotels.jsp">ì•ˆì–‘/í‰ì´Œ/ì¸ë•ì›/ê³¼ì²œ</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">ÇÏ³²/±¤ÁÖ/¿©ÁÖ/ÀÌÃµ</a></li>
+											<li><a href="hotels.jsp">ì„±ë‚¨/ë¶„ë‹¹/ìœ„ë¡€</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">±ºÆ÷/ÀÇ¿Õ/±ÝÁ¤/»êº»</a></li>
+											<li><a href="hotels.jsp">ìš©ì¸/ë™íƒ„/ì˜¤ì‚°/ë³‘ì </a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¾È»ê/½ÃÈï/±¤¸í</a></li>
+											<li><a href="hotels.jsp">í•˜ë‚¨/ê´‘ì£¼/ì—¬ì£¼/ì´ì²œ</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÆòÅÃ/¼ÛÅº/È­¼º/¾È¼º/ºÎÃµ</a></li>
+											<li><a href="hotels.jsp">êµ°í¬/ì˜ì™•/ê¸ˆì •/ì‚°ë³¸</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">ÀÏ»ê/°í¾ç</a></li>
+											<li><a href="hotels.jsp">ì•ˆì‚°/ì‹œí¥/ê´‘ëª…</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÆÄÁÖ/±èÆ÷</a></li>
+											<li><a href="hotels.jsp">í‰íƒ/ì†¡íƒ„/í™”ì„±/ì•ˆì„±/ë¶€ì²œ</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">ÀÇÁ¤ºÎ/±¸¸®/³²¾çÁÖ</a></li>
+											<li><a href="hotels.jsp">ì¼ì‚°/ê³ ì–‘</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Æ÷Ãµ/¾çÁÖ/µ¿µÎÃµ/¿¬Ãµ</a></li>
+											<li><a href="hotels.jsp">íŒŒì£¼/ê¹€í¬</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¾çÆò/°¡Æò/Ã»Æò</a></li>
+											<li><a href="hotels.jsp">ì˜ì •ë¶€/êµ¬ë¦¬/ë‚¨ì–‘ì£¼</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">í¬ì²œ/ì–‘ì£¼/ë™ë‘ì²œ/ì—°ì²œ</a></li>
+										</td>
+
+										<td>
+											<li><a href="hotels.jsp">ì–‘í‰/ê°€í‰/ì²­í‰</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">Á¦ºÎµµ/´ëºÎµµ</a></li>
+											<li><a href="hotels.jsp">ì œë¶€ë„/ëŒ€ë¶€ë„</a></li>
 										</td>
 									</tr>
 								</table>
@@ -222,62 +222,62 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								ÀÎÃµ <span class="caret"></span>
+								ì¸ì²œ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ºÎÆò</a></li>
+											<li><a href="hotels.jsp">ë¶€í‰</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">±¸¿ù</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">¼­±¸</a></li>
-										</td>
-
-										<td>
-											<li><a href="hotels.jsp">°è¾ç</a></li>
+											<li><a href="hotels.jsp">êµ¬ì›”</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÁÖ¾È</a></li>
+											<li><a href="hotels.jsp">ì„œêµ¬</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¼Ûµµ/¿¬¼ö</a></li>
+											<li><a href="hotels.jsp">ê³„ì–‘</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÀÎÃµ°øÇ×/À»¿Õ¸®</a></li>
+											<li><a href="hotels.jsp">ì£¼ì•ˆ</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">Áß±¸</a></li>
+											<li><a href="hotels.jsp">ì†¡ë„/ì—°ìˆ˜</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">°­È­/¿õÁø</a></li>
+											<li><a href="hotels.jsp">ì¸ì²œê³µí•­/ì„ì™•ë¦¬</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">µ¿¾Ï/°£¼®</a></li>
+											<li><a href="hotels.jsp">ì¤‘êµ¬</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">³²µ¿±¸</a></li>
+											<li><a href="hotels.jsp">ê°•í™”/ì›…ì§„</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¿ëÇö/¼þÀÇ/µµÈ­/µ¿±¸</a></li>
+											<li><a href="hotels.jsp">ë™ì•”/ê°„ì„</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ë‚¨ë™êµ¬</a></li>
+										</td>
+
+										<td>
+											<li><a href="hotels.jsp">ìš©í˜„/ìˆ­ì˜/ë„í™”/ë™êµ¬</a></li>
 										</td>
 									</tr>
 								</table>
@@ -291,53 +291,53 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								°­¿ø <span class="caret"></span>
+								ê°•ì› <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÃáÃµ/°­ÃÌ</a></li>
+											<li><a href="hotels.jsp">ì¶˜ì²œ/ê°•ì´Œ</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¿øÁÖ</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">°æÆ÷´ë/»çÃµ/ÁÖ¹®Áø</a></li>
-										</td>
-
-										<td>
-											<li><a href="hotels.jsp">°­¸ª¿ª/±³µ¿/¿Á°è/Á¤µ¿Áø</a></li>
+											<li><a href="hotels.jsp">ì›ì£¼</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¿µ¿ù/Á¤¼±</a></li>
+											<li><a href="hotels.jsp">ê²½í¬ëŒ€/ì‚¬ì²œ/ì£¼ë¬¸ì§„</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">¼ÓÃÊ/¾ç¾ç/°í¼º</a></li>
+											<li><a href="hotels.jsp">ê°•ë¦‰ì—­/êµë™/ì˜¥ê³„/ì •ë™ì§„</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">µ¿ÇØ/»ïÃ´/ÅÂ¹é</a></li>
+											<li><a href="hotels.jsp">ì˜ì›”/ì •ì„ </a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">ÆòÃ¢</a></li>
+											<li><a href="hotels.jsp">ì†ì´ˆ/ì–‘ì–‘/ê³ ì„±</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">È«Ãµ/È¾¼º</a></li>
+											<li><a href="hotels.jsp">ë™í•´/ì‚¼ì²™/íƒœë°±</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">È­Ãµ/Ã¶¿ø/ÀÎÁ¦/¾ç±¸</a></li>
+											<li><a href="hotels.jsp">í‰ì°½</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">í™ì²œ/íš¡ì„±</a></li>
+										</td>
+
+										<td>
+											<li><a href="hotels.jsp">í™”ì²œ/ì² ì›/ì¸ì œ/ì–‘êµ¬</a></li>
 										</td>
 									</tr>
 								</table>
@@ -347,22 +347,22 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								Á¦ÁÖ <span class="caret"></span>
+								ì œì£¼ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Á¦ÁÖ½Ã</a></li>
+											<li><a href="hotels.jsp">ì œì£¼ì‹œ</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¼­±ÍÆ÷½Ã</a></li>
+											<li><a href="hotels.jsp">ì„œê·€í¬ì‹œ</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">ÇÏ±Í/¾Ö¿ù/ÇÑ¸²/ÇùÀç</a></li>
+											<li><a href="hotels.jsp">í•˜ê·€/ì• ì›”/í•œë¦¼/í˜‘ìž¬</a></li>
 										</td>
 									</tr>
 								</table>
@@ -372,30 +372,30 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								´ëÀü <span class="caret"></span>
+								ëŒ€ì „ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">À¯¼º±¸</a></li>
+											<li><a href="hotels.jsp">ìœ ì„±êµ¬</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">Áß±¸(ÀºÇà/´ëÈï/¼±È­)</a></li>
+											<li><a href="hotels.jsp">ì¤‘êµ¬(ì€í–‰/ëŒ€í¥/ì„ í™”)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">µ¿±¸(¿ëÀü/º¹ÇÕÅÍ¹Ì³Î)</a></li>
+											<li><a href="hotels.jsp">ë™êµ¬(ìš©ì „/ë³µí•©í„°ë¯¸ë„)</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¼­±¸(µÐ»ê/¿ë¹®/¿ùÆò)</a></li>
+											<li><a href="hotels.jsp">ì„œêµ¬(ë‘”ì‚°/ìš©ë¬¸/ì›”í‰)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">´ë´ö±¸(Áß¸®/½ÅÅºÁø)</a></li>
+											<li><a href="hotels.jsp">ëŒ€ë•êµ¬(ì¤‘ë¦¬/ì‹ íƒ„ì§„)</a></li>
 										</td>
 									</tr>
 								</table>
@@ -409,30 +409,30 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								ÃæºÏ <span class="caret"></span>
+								ì¶©ë¶ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Ã»ÁÖ Èï´ö±¸/¼­¿ø±¸(Ã»ÁÖ ÅÍ¹Ì³Î)</a></li>
+											<li><a href="hotels.jsp">ì²­ì£¼ í¥ë•êµ¬/ì„œì›êµ¬(ì²­ì£¼ í„°ë¯¸ë„)</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">Ã»ÁÖ »ó´ç±¸/Ã»¿ø±¸(Ã»ÁÖ±¹Á¦°øÇ×)</a></li>
+											<li><a href="hotels.jsp">ì²­ì£¼ ìƒë‹¹êµ¬/ì²­ì›êµ¬(ì²­ì£¼êµ­ì œê³µí•­)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÃæÁÖ/¼ö¾Èº¸</a></li>
+											<li><a href="hotels.jsp">ì¶©ì£¼/ìˆ˜ì•ˆë³´</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">Á¦Ãµ/ÁøÃµ/À½¼º/´Ü¾ç</a></li>
+											<li><a href="hotels.jsp">ì œì²œ/ì§„ì²œ/ìŒì„±/ë‹¨ì–‘</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">º¸Àº/¿ÁÃµ/±«»ê/ÁõÆò/¿µµ¿</a></li>
+											<li><a href="hotels.jsp">ë³´ì€/ì˜¥ì²œ/ê´´ì‚°/ì¦í‰/ì˜ë™</a></li>
 										</td>
 									</tr>
 								</table>
@@ -442,49 +442,49 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								Ãæ³²/¼¼Á¾ <span class="caret"></span>
+								ì¶©ë‚¨/ì„¸ì¢… <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Ãµ¾È ¼­ºÏ±¸</a></li>
+											<li><a href="hotels.jsp">ì²œì•ˆ ì„œë¶êµ¬</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">Ãµ¾È µ¿³²±¸</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">¾Æ»ê</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">°øÁÖ/µ¿ÇÐ»ç/¼¼Á¾</a></li>
+											<li><a href="hotels.jsp">ì²œì•ˆ ë™ë‚¨êµ¬</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">°è·æ/±Ý»ê/³í»ê/Ã»¾ç</a></li>
+											<li><a href="hotels.jsp">ì•„ì‚°</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¿¹»ê/È«¼º</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">ÅÂ¾È/¾È¸éµµ/¼­»ê</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">´çÁø</a></li>
+											<li><a href="hotels.jsp">ê³µì£¼/ë™í•™ì‚¬/ì„¸ì¢…</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">º¸·É/´ëÀü</a></li>
+											<li><a href="hotels.jsp">ê³„ë£¡/ê¸ˆì‚°/ë…¼ì‚°/ì²­ì–‘</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¼­Ãµ/ºÎ¿©</a></li>
+											<li><a href="hotels.jsp">ì˜ˆì‚°/í™ì„±</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">íƒœì•ˆ/ì•ˆë©´ë„/ì„œì‚°</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ë‹¹ì§„</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ë³´ë ¹/ëŒ€ì „</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ì„œì²œ/ë¶€ì—¬</a></li>
 										</td>
 									</tr>
 								</table>
@@ -494,54 +494,54 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								ºÎ»ê <span class="caret"></span>
+								ë¶€ì‚° <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÇØ¿î´ë/¼¾ÅÒ½ÃÆ¼/Àç¼Û</a></li>
+											<li><a href="hotels.jsp">í•´ìš´ëŒ€/ì„¼í…€ì‹œí‹°/ìž¬ì†¡</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¼ÛÁ¤/±âÀå/Á¤°ü</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">¼­¸é/¾çÁ¤/ÃÊÀ¾/ºÎ»ê½Ã¹Î°ø¿ø</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">³²Æ÷µ¿/Áß¾Óµ¿/ÅÂÁ¾´ë/¼Ûµµ/¿µµµ</a></li>
+											<li><a href="hotels.jsp">ì†¡ì •/ê¸°ìž¥/ì •ê´€</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ºÎ»ê¿ª/¹üÀÏµ¿/ºÎ»êÁø¿ª</a></li>
+											<li><a href="hotels.jsp">ì„œë©´/ì–‘ì •/ì´ˆì/ë¶€ì‚°ì‹œë¯¼ê³µì›</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">±¤¾È¸®/¼ö¿µ</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">°æ¼º´ë/´ë¿¬/¿ëÈ£µ¿/¹®Çö</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">µ¿·¡/»çÁ÷/¿ÂÃµÀå/ºÎ»ê´ë/±¸¼­</a></li>
+											<li><a href="hotels.jsp">ë‚¨í¬ë™/ì¤‘ì•™ë™/íƒœì¢…ëŒ€/ì†¡ë„/ì˜ë„</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">»ç»ó(°æÀüÃ¶)/¾ö±Ã/ÇÐÀå</a></li>
+											<li><a href="hotels.jsp">ë¶€ì‚°ì—­/ë²”ì¼ë™/ë¶€ì‚°ì§„ì—­</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">´öÃµ/È­¸í/¸¸´ö/±¸Æ÷/±¸Æ÷(±¸Æ÷¿ª/KTX¿ª)</a></li>
+											<li><a href="hotels.jsp">ê´‘ì•ˆë¦¬/ìˆ˜ì˜</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ê²½ì„±ëŒ€/ëŒ€ì—°/ìš©í˜¸ë™/ë¬¸í˜„</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ë™ëž˜/ì‚¬ì§/ì˜¨ì²œìž¥/ë¶€ì‚°ëŒ€/êµ¬ì„œ</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ì‚¬ìƒ(ê²½ì „ì² )/ì—„ê¶/í•™ìž¥</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ë•ì²œ/í™”ëª…/ë§Œë•/êµ¬í¬/êµ¬í¬(êµ¬í¬ì—­/KTXì—­)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">ÇÏ´Ü/¸íÁö/±«Á¤/´Ù´ëÆ÷/½ÅÈ£/Áö»ç/±èÇØ°øÇ×</a></li>
+											<li><a href="hotels.jsp">í•˜ë‹¨/ëª…ì§€/ê´´ì •/ë‹¤ëŒ€í¬/ì‹ í˜¸/ì§€ì‚¬/ê¹€í•´ê³µí•­</a></li>
 										</td>
 									</tr>
 								</table>
@@ -555,12 +555,12 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								¿ï»ê <span class="caret"></span>
+								ìš¸ì‚° <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="hotels.jsp">³²±¸/Áß±¸(»ï»ê/¼º³²/¹«°Å/½ÅÁ¤)</a></li>
+								<li><a href="hotels.jsp">ë‚¨êµ¬/ì¤‘êµ¬(ì‚¼ì‚°/ì„±ë‚¨/ë¬´ê±°/ì‹ ì •)</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="hotels.jsp">µ¿±¸/ºÏ±¸/¿ïÁÖ±º(ÀÏ»ê/ÁøÀå/ÁøÇÏ/KTX¿ª/¿µ³²¾ËÇÁ½º</a></li>
+								<li><a href="hotels.jsp">ë™êµ¬/ë¶êµ¬/ìš¸ì£¼êµ°(ì¼ì‚°/ì§„ìž¥/ì§„í•˜/KTXì—­/ì˜ë‚¨ì•Œí”„ìŠ¤</a></li>
 							</ul>
 						</div>
 
@@ -568,50 +568,50 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								°æ³² <span class="caret"></span>
+								ê²½ë‚¨ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Ã¢¿ø »ó³²µ¿/¿ëÈ£µ¿/Áß¾Óµ¿/Ã¢¿ø½ÃÃ»</a></li>
+											<li><a href="hotels.jsp">ì°½ì› ìƒë‚¨ë™/ìš©í˜¸ë™/ì¤‘ì•™ë™/ì°½ì›ì‹œì²­</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">Ã¢¿ø
-													¸í¼­µ¿/ºÀ°îµ¿/ÆÈ¿ëµ¿/ºÏ¸é¿ÂÃµ/Ã¢¿øÁ¾ÇÕ¹ö½ºÅÍ¹Ì³Î</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">¸¶»ê/ÁøÇØ</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">±èÇØ/ÀåÀ¯</a></li>
+											<li><a href="hotels.jsp">ì°½ì›
+													ëª…ì„œë™/ë´‰ê³¡ë™/íŒ”ìš©ë™/ë¶ë©´ì˜¨ì²œ/ì°½ì›ì¢…í•©ë²„ìŠ¤í„°ë¯¸ë„</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¾ç»ê/¹Ð¾ç</a></li>
+											<li><a href="hotels.jsp">ë§ˆì‚°/ì§„í•´</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">ÁøÁÖ</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">°ÅÁ¦/Åë¿µ/°í¼º</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">»çÃµ/³²ÇØ</a></li>
+											<li><a href="hotels.jsp">ê¹€í•´/ìž¥ìœ </a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÇÏµ¿/»êÃ»/ÇÔ¾ç</a></li>
+											<li><a href="hotels.jsp">ì–‘ì‚°/ë°€ì–‘</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">°ÅÃ¢/ÇÔ¾È/Ã¢³ç/ÇÕÃµ/ÀÇ·É</a></li>
+											<li><a href="hotels.jsp">ì§„ì£¼</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ê±°ì œ/í†µì˜/ê³ ì„±</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ì‚¬ì²œ/ë‚¨í•´</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">í•˜ë™/ì‚°ì²­/í•¨ì–‘</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ê±°ì°½/í•¨ì•ˆ/ì°½ë…•/í•©ì²œ/ì˜ë ¹</a></li>
 										</td>
 									</tr>
 								</table>
@@ -622,47 +622,47 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								´ë±¸ <span class="caret"></span>
+								ëŒ€êµ¬ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">µ¿¼º·Î/¼­¹®½ÃÀå/´ë±¸½ÃÃ»/»ï´öµ¿/±³µ¿/Á¾·Î</a></li>
+											<li><a href="hotels.jsp">ë™ì„±ë¡œ/ì„œë¬¸ì‹œìž¥/ëŒ€êµ¬ì‹œì²­/ì‚¼ë•ë™/êµë™/ì¢…ë¡œ</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">´ë±¸¿ª/Ä¥¼º½ÃÀå/°æºÏ´ë/¿¢½ºÄÚ/Ä¥°îÁö±¸/ÅÂÀüµ¿/±ÝÈ£Áö±¸</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">µ¿´ë±¸¿ª/°í¼Ó¹ö½ºÅÍ¹Ì³Î/½ÅÃµµ¿/½Å¾Ïµ¿</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">´ë±¸°øÇ×/Çõ½Åµµ½Ã/µ¿ÃÌÀ¯¿øÁö/ÆÈ°ø»ê</a></li>
+											<li><a href="hotels.jsp">ëŒ€êµ¬ì—­/ì¹ ì„±ì‹œìž¥/ê²½ë¶ëŒ€/ì—‘ìŠ¤ì½”/ì¹ ê³¡ì§€êµ¬/íƒœì „ë™/ê¸ˆí˜¸ì§€êµ¬</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¼ö¼º¸ø/È²±Ýµ¿/µé¾È±æ/µÎ»êµ¿/¹ü¾î</a></li>
+											<li><a href="hotels.jsp">ë™ëŒ€êµ¬ì—­/ê³ ì†ë²„ìŠ¤í„°ë¯¸ë„/ì‹ ì²œë™/ì‹ ì•”ë™</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">ºÏºÎÁ¤·ùÀå/ÀÌÇö°ø´Ü/Æò¸®µ¿/³»´çµ¿/ºñ»êµ¿/¿ø´ëµ¿</a></li>
+											<li><a href="hotels.jsp">ëŒ€êµ¬ê³µí•­/í˜ì‹ ë„ì‹œ/ë™ì´Œìœ ì›ì§€/íŒ”ê³µì‚°</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">ÀÌ¿ùµå/µÎ·ù°ø¿ø/±¤ÀåÄÚ¾Æ/¼º´çµ¿/µÎ·ùµ¿/¾Õ»ê°ø¿ø/ÀÌÃµµ¿/´ë¸íµ¿/ºÀ´öµ¿/¾ÈÁö¶û</a>
+											<li><a href="hotels.jsp">ìˆ˜ì„±ëª»/í™©ê¸ˆë™/ë“¤ì•ˆê¸¸/ë‘ì‚°ë™/ë²”ì–´</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ë¶ë¶€ì •ë¥˜ìž¥/ì´í˜„ê³µë‹¨/í‰ë¦¬ë™/ë‚´ë‹¹ë™/ë¹„ì‚°ë™/ì›ëŒ€ë™</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ì´ì›”ë“œ/ë‘ë¥˜ê³µì›/ê´‘ìž¥ì½”ì•„/ì„±ë‹¹ë™/ë‘ë¥˜ë™/ì•žì‚°ê³µì›/ì´ì²œë™/ëŒ€ëª…ë™/ë´‰ë•ë™/ì•ˆì§€ëž‘</a>
 										</li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¼­ºÎÁ¤·ùÀå/º»¸®µ¿/Á×Àüµ¿/Àå±âµ¿</a></li>
+											<li><a href="hotels.jsp">ì„œë¶€ì •ë¥˜ìž¥/ë³¸ë¦¬ë™/ì£½ì „ë™/ìž¥ê¸°ë™</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">¼º¼­/°è¸í´ë/¼º¼­°ø´Ü/»óÀÎµ¿/´Þ¼º±º/°¡Ã¢/ÇöÇ³/³í°ø</a></li>
+											<li><a href="hotels.jsp">ì„±ì„œ/ê³„ëª…ëŒ€/ì„±ì„œê³µë‹¨/ìƒì¸ë™/ë‹¬ì„±êµ°/ê°€ì°½/í˜„í’/ë…¼ê³µ</a></li>
 										</td>
 									</tr>
 								</table>
@@ -676,54 +676,54 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								°æºÏ <span class="caret"></span>
+								ê²½ë¶ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">Æ÷Ç×/³²±¸(½ÃÃ»/½Ã¿Ü¹ö½ºÅÍ¹Ì³Î/±¸·æÆ÷/½Ö»ç/¹®´ö/¿ÀÃµ)</a></li>
+											<li><a href="hotels.jsp">í¬í•­/ë‚¨êµ¬(ì‹œì²­/ì‹œì™¸ë²„ìŠ¤í„°ë¯¸ë„/êµ¬ë£¡í¬/ìŒì‚¬/ë¬¸ë•/ì˜¤ì²œ)</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">Æ÷Ç×/ºÏ±¸(¿µÀÏ´ë/Á×µµ½ÃÀå/¿©°´ÅÍ¹Ì³Î/¼Ûµµ)</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">°æÁÖ</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">±¸¹Ì</a></li>
+											<li><a href="hotels.jsp">í¬í•­/ë¶êµ¬(ì˜ì¼ëŒ€/ì£½ë„ì‹œìž¥/ì—¬ê°í„°ë¯¸ë„/ì†¡ë„)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">°æ»ê</a></li>
+											<li><a href="hotels.jsp">ê²½ì£¼</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¾Èµ¿</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">¿µÃµ/Ã»µµ</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">±èÃµ/Ä¥°î/¼ºÁÖ</a></li>
+											<li><a href="hotels.jsp">êµ¬ë¯¸</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¹®°æ/»óÁÖ/¿µÁÖ/¿¹Ãµ/±ºÀ§/ÀÇ¼º/ºÀÈ­</a></li>
+											<li><a href="hotels.jsp">ê²½ì‚°</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¿ïÁø/¿µ´ö/Ã»¼Û</a></li>
+											<li><a href="hotels.jsp">ì•ˆë™</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ì˜ì²œ/ì²­ë„</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ê¹€ì²œ/ì¹ ê³¡/ì„±ì£¼</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ë¬¸ê²½/ìƒì£¼/ì˜ì£¼/ì˜ˆì²œ/êµ°ìœ„/ì˜ì„±/ë´‰í™”</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ìš¸ì§„/ì˜ë•/ì²­ì†¡</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">¿ï¸ªµµ</a></li>
+											<li><a href="hotels.jsp">ìš¸ë¦‰ë„</a></li>
 										</td>
 									</tr>
 								</table>
@@ -735,16 +735,16 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								±¤ÁÖ <span class="caret"></span>
+								ê´‘ì£¼ <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="hotels.jsp">»ó¹«Áö±¸/±ÝÈ£Áö±¸/À¯½ºÄù¾î/¼­±¸</a></li>
+								<li><a href="hotels.jsp">ìƒë¬´ì§€êµ¬/ê¸ˆí˜¸ì§€êµ¬/ìœ ìŠ¤í€˜ì–´/ì„œêµ¬</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="hotels.jsp">Ã·´ÜÁö±¸/ÇÏ´ÜÁö±¸/¼ÛÁ¤¿ª/±¤»ê±¸</a></li>
+								<li><a href="hotels.jsp">ì²¨ë‹¨ì§€êµ¬/í•˜ë‹¨ì§€êµ¬/ì†¡ì •ì—­/ê´‘ì‚°êµ¬</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="hotels.jsp">ÃæÀå·Î/´ëÀÎ½ÃÀå/±¹¸³¾Æ½Ã¾Æ¹®È­Àü´ç/µ¿±¸/³²±¸</a></li>
+								<li><a href="hotels.jsp">ì¶©ìž¥ë¡œ/ëŒ€ì¸ì‹œìž¥/êµ­ë¦½ì•„ì‹œì•„ë¬¸í™”ì „ë‹¹/ë™êµ¬/ë‚¨êµ¬</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="hotels.jsp">±¤ÁÖ¿ª/±â¾ÆÃ¨ÇÇ¾ð½ºÇÊµå/Àü´ë»ç°Å¸®/ºÏ±¸</a></li>
+								<li><a href="hotels.jsp">ê´‘ì£¼ì—­/ê¸°ì•„ì±”í”¼ì–¸ìŠ¤í•„ë“œ/ì „ëŒ€ì‚¬ê±°ë¦¬/ë¶êµ¬</a></li>
 							</ul>
 						</div>
 
@@ -752,57 +752,57 @@
 							<button type="button" class="btn btn-default dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								ÀüÁÖ/Àü³²/ÀüºÏ <span class="caret"></span>
+								ì „ì£¼/ì „ë‚¨/ì „ë¶ <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu">
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">¿©¼ö</a></li>
+											<li><a href="hotels.jsp">ì—¬ìˆ˜</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">¼øÃµ</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">±¤¾ç</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">¸ñÆ÷/¹«¾È/¿µ¾Ï/½Å¾È</a></li>
+											<li><a href="hotels.jsp">ìˆœì²œ</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">³ªÁÖ/ÇÔÆò/¿µ±¤/Àå¼º</a></li>
+											<li><a href="hotels.jsp">ê´‘ì–‘</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">´ã¾ç/°î¼º/È­¼ø/±¸·Ê</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">ÇØ³²/¿Ïµµ/Áøµµ/°­Áø/ÀåÈï/º¸¼º/°íÈï</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">ÀüÁÖ/¿ÏÁÖ</a></li>
+											<li><a href="hotels.jsp">ëª©í¬/ë¬´ì•ˆ/ì˜ì•”/ì‹ ì•ˆ</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">±º»ê</a></li>
+											<li><a href="hotels.jsp">ë‚˜ì£¼/í•¨í‰/ì˜ê´‘/ìž¥ì„±</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">ÀÍ»ê</a></li>
+											<li><a href="hotels.jsp">ë‹´ì–‘/ê³¡ì„±/í™”ìˆœ/êµ¬ë¡€</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">³²¿ø/ÀÓ½Ç/¼øÃ¢/¹«ÁÖ/Áø¾È/Àå¼ö</a></li>
+											<li><a href="hotels.jsp">í•´ë‚¨/ì™„ë„/ì§„ë„/ê°•ì§„/ìž¥í¥/ë³´ì„±/ê³ í¥</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">Á¤À¾/ºÎ¾È/±èÁ¦/°íÃ¢</a></li>
+											<li><a href="hotels.jsp">ì „ì£¼/ì™„ì£¼</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">êµ°ì‚°</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ìµì‚°</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotels.jsp">ë‚¨ì›/ìž„ì‹¤/ìˆœì°½/ë¬´ì£¼/ì§„ì•ˆ/ìž¥ìˆ˜</a></li>
+										</td>
+										<td>
+											<li><a href="hotels.jsp">ì •ì/ë¶€ì•ˆ/ê¹€ì œ/ê³ ì°½</a></li>
 										</td>
 									</tr>
 								</table>
@@ -828,7 +828,7 @@
 				<div class="row">
 					<div
 						class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>ÀÎ±â ¸ðÅÚ/È£ÅÚ µî (°ª ³Ñ°Ü ¹Þ´Â °÷)</h2>
+						<h2>ì¸ê¸° ëª¨í…”/í˜¸í…” ë“± (ê°’ ë„˜ê²¨ ë°›ëŠ” ê³³)</h2>
 					</div>
 				</div>
 				<div class="row">

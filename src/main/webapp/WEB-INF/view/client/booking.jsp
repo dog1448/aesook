@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -23,18 +23,18 @@
 								<div class="col-md-12 about">
 									<h2>myPage</h2>
 									<ul>
-										<li><a href="booking.jsp">������ȸ</a></li>
-                                        <li><a href="myReview.jsp">���� �ı�</a></li>
-                                        <li><a href="modify_info.jsp">������������</a></li>
-                                        <li><a href="brn.jsp">����ڵ��</a></li>
-                                        <li><a href="inserthotel.jsp">���� ����</a></li>
-                                        <li><a href="withdrawal.jsp">ȸ��Ż��</a></li>
+										<li><a href="booking.jsp">예약조회</a></li>
+                                        <li><a href="myReview.jsp">나의 후기</a></li>
+                                        <li><a href="modify_info.jsp">개인정보관리</a></li>
+                                        <li><a href="brn.jsp">사업자등록</a></li>
+                                        <li><a href="inserthotel.jsp">숙소 관리</a></li>
+                                        <li><a href="withdrawal.jsp">회원탈퇴</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-three-forth animate-box">	
-							<h2>���� ��ȸ</h2>	
+							<h2>예약 조회</h2>	
 							<div>&nbsp;</div>				
 							<div class="row">								
 								<div class="col-md-12">	
@@ -48,12 +48,12 @@
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
-													<h2>���Ҹ�</h2>
+													<h2>숙소명</h2>
 													<p class="price"><span>$45</span> <small>/ night</small>
 													</p>
-													<p>üũ�� : </p>
-													<p>üũ�ƿ� : </p>
-													<p>�ð� : </p>													
+													<p>체크인 : </p>
+													<p>체크아웃 : </p>
+													<p>시간 : </p>													
 												</div>
 											</div>											
 										</div>
@@ -68,12 +68,12 @@
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
-													<h2>���Ҹ�</h2>
+													<h2>숙소명</h2>
 													<p class="price"><span>$45</span> <small>/ night</small>
 													</p>
-													<p>üũ�� : </p>
-													<p>üũ�ƿ� : </p>
-													<p>�ð� : </p>													
+													<p>체크인 : </p>
+													<p>체크아웃 : </p>
+													<p>시간 : </p>													
 												</div>
 											</div>											
 										</div>

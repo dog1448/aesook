@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDAO">
+    <insert id="insertMember" parameterType="MemberVO">
+        insert into member (
+        member_id
+        ,member_pass
+        ,member_name
+        ,member_email
+        ,member_phone
+        ,member_status) values(
+        #{memberId}
+        ,#{memberPass}
+        ,#{memberName}
+        ,#{memberEmail}
+        ,#{memberPhone}
+        ,#{memberStatus})
+    </insert>
+    
+    <select id="getId" resultType="int" parameterType="MemberVO">
+        select count(*) from member where member_id = #{memberId}
+    </select>
+</mapper>
+

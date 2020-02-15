@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Login V13</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="resources/client/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -29,7 +30,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="resources/client/css/util.css">
 	<link rel="stylesheet" type="text/css" href="resources/client/css/main.css">
-<!--===============================================================================================-->
+
 </head>
 <body style="background-color: #999999;">
 	
@@ -41,17 +42,17 @@
 				<form class="login100-form validate-form" action="">
 					&nbsp;&nbsp;&nbsp;<a href="home.jsp"><img src="resources/client/images/home.png"></a>
 					<span class="login100-form-title p-b-59">
-						�α���
+						로그인
 					</span>
 
 					<div class="wrap-input100 validate-input">
-						<span class="label-input100">���̵�</span>
+						<span class="label-input100">아이디</span>
 						<input class="input100" type="text" name="name" placeholder="Username...">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<span class="label-input100">��й�ȣ</span>
+						<span class="label-input100">비밀번호</span>
 						<input class="input100" type="Password" name="pass" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>				
@@ -59,24 +60,27 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" type="submit">�α���</button>														
+							<button class="login100-form-btn" type="submit">로그인</button>														
 						</div>
 
 						<a href="register.jsp" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-							ȸ������
+							회원가입
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>
 					</div>
-					<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
+					<div class="input100"></div>
+					<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 					<div>
-						<a href="register.do">
-							���̵� ã��
-						</a>
-						/
-						<a href="register.do">
-							��й�ȣ ã��
-						</a>					
+						<a href="register.do">아이디 찾기</a> / <a href="register.do">비밀번호 찾기</a>			
 					</div>
+					<div class="input100"></div>
+					
+					<div class="input100">
+						<div id="kakao_id_login" style="text-align: center"> 
+							<a href="${#kakao_url}"> <img width="223" src="resources/client/images/kakao.png" /></a> 
+						</div>
+					</div>
+					<div class="input100">네이버아이디로 로그인</div>
 				</form>
 			</div>
 		</div>
@@ -84,20 +88,6 @@
 	
 <!--===============================================================================================-->
 	<script src="resources/client/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/bootstrap/js/popper.js"></script>
-	<script src="resources/client/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/daterangepicker/moment.min.js"></script>
-	<script src="resources/client/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/js/main_Login.js"></script>
 
 </body>
 </html>

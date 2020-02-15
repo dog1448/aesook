@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 
@@ -26,17 +26,17 @@
 								<div class="col-md-12 about">
 									<h2>myPage</h2>
 									<ul>
-										<li><a href="inserthotel.jsp">¼÷¼Ò µî·Ï ¹× ¼öÁ¤</a></li>
-										<li><a href="insertedRoom.jsp">µî·Ï ¼÷¼Ò</a></li>
-										<li><a href="statistics.jsp">Åë°è</a></li>
-										<li><a href="chat.jsp">1´ë 1¹®ÀÇ</a></li>
-										<li><a href="index.jsp">¸ÞÀÎ È¨</a></li>
+										<li><a href="inserthotel.jsp">ìˆ™ì†Œ ë“±ë¡ ë° ìˆ˜ì •</a></li>
+										<li><a href="insertedRoom.jsp">ë“±ë¡ ìˆ™ì†Œ</a></li>
+										<li><a href="statistics.jsp">í†µê³„</a></li>
+										<li><a href="chat.jsp">1ëŒ€ 1ë¬¸ì˜</a></li>
+										<li><a href="index.jsp">ë©”ì¸ í™ˆ</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-three-forth animate-box">	
-							<h2>Åë°è</h2>	
+							<h2>í†µê³„</h2>	
 							<div>&nbsp;</div>				
 							<div class="row">								
 								<div class="col-md-12">	

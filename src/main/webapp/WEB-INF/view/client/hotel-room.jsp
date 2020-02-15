@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -26,7 +27,7 @@
 							<div class="col-md-12">
 								<div class="wrap-division">
 									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-										<h2>º˜º“∏Ì</h2>																
+										<h2>ÏàôÏÜåÎ™Ö</h2>																
 									</div>
 									<div class="row">
 										<a href="room-details.jsp">
@@ -39,10 +40,10 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>πÊ ¿Ã∏ß</h2>
+																<h2>Î∞© Ïù¥Î¶Ñ</h2>
 																<p class="price"><span>$45</span> <small>/ night</small>
 																</p>
-																<p>πÊ º≥∏Ì</p>
+																<p>Î∞© ÏÑ§Î™Ö</p>
 															</div>
 														</div>
 													</div>
@@ -59,10 +60,10 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>πÊ ¿Ã∏ß</h2>
+																<h2>Î∞© Ïù¥Î¶Ñ</h2>
 																<p class="price"><span>$75</span> <small>/ night</small>
 																</p>
-																<p>πÊ º≥∏Ì</p>
+																<p>Î∞© ÏÑ§Î™Ö</p>
 															</div>
 														</div>
 													</div>
@@ -79,10 +80,10 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>πÊ ¿Ã∏ß</h2>
+																<h2>Î∞© Ïù¥Î¶Ñ</h2>
 																<p class="price"><span>$45</span> <small>/ night</small>
 																</p>
-																<p>πÊ º≥∏Ì</p>
+																<p>Î∞© ÏÑ§Î™Ö</p>
 															</div>
 														</div>
 													</div>
@@ -99,10 +100,10 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>πÊ ¿Ã∏ß</h2>
+																<h2>Î∞© Ïù¥Î¶Ñ</h2>
 																<p class="price"><span>$45</span> <small>/ night</small>
 																</p>
-																<p>πÊ º≥∏Ì</p>
+																<p>Î∞© ÏÑ§Î™Ö</p>
 															</div>
 														</div>
 													</div>
@@ -119,10 +120,10 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>πÊ ¿Ã∏ß</h2>
+																<h2>Î∞© Ïù¥Î¶Ñ</h2>
 																<p class="price"><span>$45</span> <small>/ night</small>
 																</p>
-																<p>πÊ º≥∏Ì</p>
+																<p>Î∞© ÏÑ§Î™Ö</p>
 															</div>
 														</div>
 													</div>
@@ -139,37 +140,37 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>πÊ ¿Ã∏ß</h2>
+																<h2>Î∞© Ïù¥Î¶Ñ</h2>
 																<p class="price"><span>$45</span> <small>/ night</small>
 																</p>
-																<p>πÊ º≥∏Ì</p>
+																<p>Î∞© ÏÑ§Î™Ö</p>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
 										</a>
-										<!--∏Æ∫‰ ¿€º∫-->
+										<!--Î¶¨Î∑∞ ÏûëÏÑ±-->
 										<div id="colorlib-contact">
 											<div class="container">
 												<div class="row">
 													<div class="col-md-10 col-md-offset-1 animate-box">	
 														<div class="row form-group">
 															<div class="col-md-12">
-																<label for="subject">∫∞¡°</label>
+																<label for="subject">Î≥ÑÏ†ê</label>
 																<div class="starRev">
-																	<span class="starR on">∫∞1</span>
-																	<span class="starR on">∫∞2</span>
-																	<span class="starR on">∫∞3</span>
-																	<span class="starR on">∫∞4</span>
-																	<span class="starR on">∫∞5</span>
+																	<span class="starR on">Î≥Ñ1</span>
+																	<span class="starR on">Î≥Ñ2</span>
+																	<span class="starR on">Î≥Ñ3</span>
+																	<span class="starR on">Î≥Ñ4</span>
+																	<span class="starR on">Î≥Ñ5</span>
 																</div>
 															</div>
 														</div>
 
 														<div class="row form-group">
 															<div class="col-md-12">
-																<label for="subject">¡¶∏Ò</label>
+																<label for="subject">Ï†úÎ™©</label>
 																<input type="text" id="subject" class="form-control"
 																	placeholder="">
 															</div>
@@ -177,21 +178,21 @@
 
 														<div class="row form-group">
 															<div class="col-md-12">
-																<label for="message">≥ªøÎ</label>
+																<label for="message">ÎÇ¥Ïö©</label>
 																<textarea name="message" id="message" cols="30"
 																	rows="10" class="form-control"
 																	placeholder=""></textarea>
 															</div>
 														</div>
 														<div class="form-group text-center">
-															<input type="submit" value="¿€º∫" class="btn btn-info">
+															<input type="submit" value="ÏûëÏÑ±" class="btn btn-info">
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-										<!-- ∏Æ∫‰ ≥°-->
-										<!-- ∞‘Ω√∆« -->
+										<!-- Î¶¨Î∑∞ ÎÅù-->
+										<!-- Í≤åÏãúÌåê -->
 										<div class="container">
 
 											<div class="row">
@@ -200,15 +201,15 @@
 													<thead>
 														<tr>
 															<th style="background-color: #eeeeee; text-align: center;">
-																π¯»£</th>
+																Î≤àÌò∏</th>
 															<th style="background-color: #eeeeee; text-align: center;">
-																¡¶∏Ò</th>
+																Ï†úÎ™©</th>
 															<th style="background-color: #eeeeee; text-align: center;">
-																¿€º∫¿⁄</th>
+																ÏûëÏÑ±Ïûê</th>
 															<th style="background-color: #eeeeee; text-align: center;">
-																∫∞¡°</th>
+																Î≥ÑÏ†ê</th>
 															<th style="background-color: #eeeeee; text-align: center;">
-																¿€º∫¿œ</th>
+																ÏûëÏÑ±Ïùº</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -216,14 +217,14 @@
 														<tr>
 															<td>1</td>
 															<td><a>EXAMPLE</a></td>
-															<td>ø‰««</td>
+															<td>ÏöîÌîº</td>
 															<td>																
 																<div class="starRev">
-																	<span class="starR on">∫∞1</span>
-																	<span class="starR on">∫∞2</span>
-																	<span class="starR on">∫∞3</span>
-																	<span class="starR on">∫∞4</span>
-																	<span class="starR on">∫∞5</span>
+																	<span class="starR on">Î≥Ñ1</span>
+																	<span class="starR on">Î≥Ñ2</span>
+																	<span class="starR on">Î≥Ñ3</span>
+																	<span class="starR on">Î≥Ñ4</span>
+																	<span class="starR on">Î≥Ñ5</span>
 																</div>
 															</td>
 															<td>2020-02-07</td>
@@ -231,8 +232,8 @@
 
 													</tbody>
 												</table>
-												<a href="#" class="btn btn-success btn-arrow-left">¿Ã¿¸</a>
-												<a href="#" class="btn btn-success btn-arrow-left">¥Ÿ¿Ω</a>												
+												<a href="#" class="btn btn-success btn-arrow-left">Ïù¥Ï†Ñ</a>
+												<a href="#" class="btn btn-success btn-arrow-left">Îã§Ïùå</a>												
 											</div>
 										</div>
 									</div>
@@ -245,12 +246,12 @@
 					<div class="col-md-3">
 						<div class="sidebar-wrap">
 							<div class="side search-wrap animate-box">
-								<h3 class="sidebar-heading">πÊ ∞Àªˆ</h3>
+								<h3 class="sidebar-heading">Î∞© Í≤ÄÏÉâ</h3>
 								<form method="post" class="colorlib-form">
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-												<label for="date">√º≈©¿Œ:</label>
+												<label for="date">Ï≤¥ÌÅ¨Ïù∏:</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i>
 													<input type="text" id="date" class="form-control date"
@@ -260,7 +261,7 @@
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<label for="date">√º≈©æ∆øÙ:</label>
+												<label for="date">Ï≤¥ÌÅ¨ÏïÑÏõÉ:</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i>
 													<input type="text" id="date" class="form-control date"
@@ -270,7 +271,7 @@
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<label for="guests">¿Œø¯</label>
+												<label for="guests">Ïù∏Ïõê</label>
 												<div class="form-field">
 													<i class="icon icon-arrow-down3"></i>
 													<select name="people" id="people" class="form-control">
@@ -284,7 +285,7 @@
 											</div>
 										</div>
 										<div class="col-md-12">
-											<input type="submit" name="submit" id="submit" value="∞Àªˆ"
+											<input type="submit" name="submit" id="submit" value="Í≤ÄÏÉâ"
 												class="btn btn-primary btn-block">
 										</div>
 									</div>
@@ -298,7 +299,7 @@
 
 
 		<div>&nbsp;</div>
-		<!-- ±∏±€ ∏  ??-->
+		<!-- Íµ¨Í∏Ä Îßµ ??-->
 		<div id="map" class="colorlib-map"></div>
 
 		<%@include file="footer.jspf" %>
