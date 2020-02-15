@@ -18,6 +18,10 @@ public class MemberDAOImpl implements MemberDAO {
         sqlSessionTemplate.insert(namespace + ".insertMember",vo);
     }
     
+    public void updatePassMember(MemberVO vo) {
+    	sqlSessionTemplate.update(namespace + ".updatePassMember", vo);
+    }
+    
     public MemberVO getMember(MemberVO vo) {
     	return sqlSessionTemplate.selectOne(namespace +".getMember" , vo);
     }

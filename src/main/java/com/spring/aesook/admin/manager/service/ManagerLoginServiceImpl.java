@@ -26,7 +26,7 @@ public class ManagerLoginServiceImpl implements ManagerLoginService {
 		MailVO mail = new MailVO();
 		mail.setMailTo(vo.getAdminEmail());
 		mail.setMailSubject(vo.getAdminId()+"님의 비밀번호 찾기 메일입니다.");
-		mail.setMailContent("비밀번호는 " + uuid + "입니다.");
+		mail.setMailContent("임시비밀번호는 " + uuid + "입니다.");
 		mailSender.sendMail(mail);
 		
 		managerDAO.updatePassManager(vo);

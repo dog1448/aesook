@@ -4,7 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<c:if test="${check eq 'FindId'}">
+
+<c:if test="${check eq 'noNameEmail'}">
+	<script type="text/javascript">
+		alert("이름 또는 이메일이 일치하지 않습니다.");
+	</script>
+</c:if>
+<c:if test="${check eq 'findId'}">
 	<script type="text/javascript">
 		alert("ID가 이메일로 발송되었습니다.");
 	</script>
@@ -24,7 +30,7 @@
 		alert("비밀번호가 틀립니다.");
 	</script>
 </c:if>
-<c:if test="${check eq 'sendEmail'}">
+<c:if test="${check eq 'findPass'}">
 	<script type="text/javascript">
 		alert("비밀번호가 메일로 발송되었습니다.");
 	</script>

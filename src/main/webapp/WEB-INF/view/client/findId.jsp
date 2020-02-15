@@ -74,7 +74,7 @@
 				style="background-image: url('resources/client/images/bg-02.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form" action="" method="post" id="findIdForm">
+				<form class="login100-form validate-form" action="findId.do" method="post" id="findIdForm">
 					&nbsp;&nbsp;&nbsp;<a href="home.do"><img
 						src="resources/client/images/home.png"></a> <span
 						class="login100-form-title p-b-59"> 아이디 찾기 </span>

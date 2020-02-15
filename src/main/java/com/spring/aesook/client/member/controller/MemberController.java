@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.aesook.client.member.service.MemberFindIdService;
+import com.spring.aesook.client.member.service.MemberFindPassService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.vo.MemberVO;
 
@@ -18,6 +19,8 @@ public class MemberController {
     MemberService memberService;   
     @Autowired
     MemberFindIdService memberFindIdService;
+    @Autowired
+    MemberFindPassService memberFindPassService;
     
     
     //  --------------------------- 회원가입 ------------------------------------
@@ -67,6 +70,9 @@ public class MemberController {
 			return "/login";
 		} else {
 			if (user.getMemberPass().equals(vo.getMemberPass())) {
+				if(user.getMemberStatus().equals("R")) {
+					return "/registerWait";
+				}
 				model.addAttribute("login",user);
 			} else {
 				model.addAttribute("check", "noPass");
@@ -97,7 +103,7 @@ public class MemberController {
     	if(user == null) {
     		model.addAttribute("check","noId");
     	} else {
-    		model.addAttribute("check","FindId");
+    		model.addAttribute("check","findId");
     	}
     	
     	return "/login";
@@ -110,7 +116,20 @@ public class MemberController {
     }
     
     @RequestMapping(value="/findPass", method = RequestMethod.POST)
-    public String findPass() {
-    	return "";
+    public String findPass(MemberVO vo, Model model) {
+    	MemberVO user = memberService.getMember(vo);
+    	if(user == null) {
+    		model.addAttribute("check","noId");
+    	} else {
+    		if(vo.getMemberEmail().equals(user.getMemberEmail()) && vo.getMemberName().equals(user.getMemberName())) {
+    			model.addAttribute("check","findPass");
+    			memberFindPassService.findPass(user);
+    		} else {
+    			model.addAttribute("check","noNameEmail");
+    		}
+    		
+    	}
+    	
+    	return "/login";
     }
 }
