@@ -114,8 +114,14 @@ public class ManagerController {
 	@RequestMapping(value="/profile.admin", method=RequestMethod.POST)
 	public String modifyProfile(ManagerVO vo) {
 		managerService.updateManager(vo);
+		return "redirect:profile.admin";
+	}
+	
+	// --------------------------- Home -------------------------------------
+	@RequestMapping(value="/index.admin", method=RequestMethod.GET)
+	public String moveIndex() {
+		
 		return "/index";
-		//return "redirect:profile.admin";
 	}
 	
 }

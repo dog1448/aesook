@@ -15,7 +15,27 @@
 		alert("이메일이 틀립니다.");
 	</script>
 </c:if>
+<script>
+	function checkz() {
+	  	
+		//아이디 공백 확인
+	    if($("#tbId").val() == ""){
+	      alert("아이디를 입력해주세요");
+	      $("#tbId").focus();
+	      return;
+	    }
 
+		//아이디 공백 확인
+	    if($("#tbEmail").val() == ""){
+	      alert("이메일를 입력해주세요");
+	      $("#tbEmail").focus();
+	      return;
+	    }
+	  	
+	    $('#findForm').submit();
+	}
+	
+</script>
 <%@ include file="head.jspf" %>
 </head>
 <body>
@@ -30,25 +50,25 @@
                         </div>
                         <div class="panel-body">
                         	<c:if test="${findEmail eq false}">
-                            <form role="form" action="findPassword.admin" method="post">
+                            <form role="form" action="findPassword.admin" method="post" id="findForm">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="UserId" name="adminId" type="text" autofocus>
+                                        <input class="form-control-admin" placeholder="UserId" name="adminId" type="text" id="tbId" autofocus>
                                     </div>
-                                    <button type="submit" class="btn btn-lg btn-success btn-block">Next</button>
+                                    <button type="button" onclick="checkz()" class="btn btn-lg btn-success btn-block">Next</button>
                                     <a href="login.admin" class="btn btn-lg btn-warning btn-block">Cancel</a>
                                 </fieldset>
                             </form>
                             </c:if>
                             <c:if test="${findEmail eq true }">
-                            <form role="form" action="findSendEmail.admin" method="post">
+                            <form role="form" action="findSendEmail.admin" method="post" id="findForm">
                             	<fieldset>
 	                                  <div class="form-group">
-	                                      <input class="form-control-admin" placeholder="UserEmail" name="myEmail" type="text">
+	                                      <input class="form-control-admin" placeholder="UserEmail" name="myEmail" id="tbEmail" type="text">
 	                                  	  <input type="hidden" value="${user.adminId}" name="adminId"/>
 	                                  	  <input type="hidden" value="${user.adminEmail}" name="adminEmail"/>
 	                                  </div>
-                                   	  <button type="submit" class="btn btn-lg btn-success btn-block">Send</button>
+                                   	  <button type="button" onclick="checkz()"  class="btn btn-lg btn-success btn-block">Send</button>
                                       <a href="login.admin" class="btn btn-lg btn-warning btn-block">Cancel</a>
                                  </fieldset>
                             </form>
