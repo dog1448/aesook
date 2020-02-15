@@ -1,5 +1,7 @@
 package com.spring.aesook.admin.manager.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,7 +50,7 @@ public class ManagerController {
 			return "/login";
 		} else {
 			if (user.getAdminPass().equals(vo.getAdminPass())) {
-				model.addAttribute("user",user);
+				model.addAttribute("login",user);
 			} else {
 				model.addAttribute("check", "noPass");
 				return "/login";
@@ -79,7 +81,7 @@ public class ManagerController {
 		return "/findPassword";
 	}
 	
-	@RequestMapping(value="/sendEmail.admin" ,  method=RequestMethod.POST)
+	@RequestMapping(value="/findSendEmail.admin" ,  method=RequestMethod.POST)
 	public String sendEmail(@RequestParam("myEmail") String myEmail, ManagerVO vo, Model model) {
 		if(vo.getAdminEmail().equals(myEmail)) {
 			managerLoginService.sendEmailPass(vo);
@@ -91,8 +93,30 @@ public class ManagerController {
 		return "/findPassword";
 	}
 	
-
+	// --------------------------- 로그아웃 ------------------------------------
+	@RequestMapping(value="/logout.admin")
+	public String logout(HttpSession httpSession) {
+		httpSession.invalidate();
+		return "/login";
+	}
 	
+	
+	// --------------------------- 프로파일 -------------------------------------
+	@RequestMapping(value="/profile.admin", method=RequestMethod.GET)
+	public String moveProfile(HttpSession httpSession, Model model) {
+		ManagerVO user = (ManagerVO) httpSession.getAttribute("login");
+		if(user != null) {
+			model.addAttribute("user",user);
+		}
+		return "/profile";
+	}
+	
+	@RequestMapping(value="/profile.admin", method=RequestMethod.POST)
+	public String modifyProfile(ManagerVO vo) {
+		managerService.updateManager(vo);
+		return "/index";
+		//return "redirect:profile.admin";
+	}
 	
 }
 

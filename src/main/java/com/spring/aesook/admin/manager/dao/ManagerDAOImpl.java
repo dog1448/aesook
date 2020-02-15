@@ -19,6 +19,10 @@ public class ManagerDAOImpl implements ManagerDAO {
 	}
 	
 	public void updateManager(ManagerVO vo) {
+		sqlSessionTemplate.update(namespace + ".updateManager", vo);
+	}
+	
+	public void updatePassManager(ManagerVO vo) {
 		sqlSessionTemplate.update(namespace + ".updatePassManager",vo);
 	}
 	

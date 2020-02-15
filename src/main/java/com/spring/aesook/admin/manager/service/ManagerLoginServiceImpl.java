@@ -29,7 +29,7 @@ public class ManagerLoginServiceImpl implements ManagerLoginService {
 		mail.setMailContent("비밀번호는 " + uuid + "입니다.");
 		mailSender.sendMail(mail);
 		
-		managerDAO.updateManager(vo);
+		managerDAO.updatePassManager(vo);
 	}
 	
 	

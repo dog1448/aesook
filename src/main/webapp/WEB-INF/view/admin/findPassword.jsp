@@ -41,7 +41,7 @@
                             </form>
                             </c:if>
                             <c:if test="${findEmail eq true }">
-                            <form role="form" action="sendEmail.admin" method="post">
+                            <form role="form" action="findSendEmail.admin" method="post">
                             	<fieldset>
 	                                  <div class="form-group">
 	                                      <input class="form-control-admin" placeholder="UserEmail" name="myEmail" type="text">

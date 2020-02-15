@@ -31,12 +31,11 @@
                                         <input class="form-control-admin" placeholder="Name" name="adminName" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="Password" name="adminPass" type="password">
-                                        <input class="form-control-admin" placeholder="Password Confirm" name="adminPass2" type="password">
                                         <input type="hidden" value="S" name="adminGrade">
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
                                     <input type="submit" class="btn btn-lg btn-success btn-block" value="Register">
+                                    <input type="button" class="btn btn-lg btn-warning btn-block" value="Cancel" onclick="javascript:history.go(-1);">
                                 </fieldset>
                             </form>
                         </div>
