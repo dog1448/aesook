@@ -8,5 +8,5 @@ public interface ManagerDAO {
 	void updateManager(ManagerVO vo);
 	void updatePassManager(ManagerVO vo);
 	ManagerVO getManager(ManagerVO vo);
-	
+	int idCheck(ManagerVO vo);
 }

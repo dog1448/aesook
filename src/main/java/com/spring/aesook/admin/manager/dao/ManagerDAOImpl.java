@@ -29,6 +29,13 @@ public class ManagerDAOImpl implements ManagerDAO {
 	public ManagerVO getManager(ManagerVO vo) {
 		return sqlSessionTemplate.selectOne(namespace + ".getManager",vo);
 	}
+
+	@Override
+	public int idCheck(ManagerVO vo) {
+		System.out.println(vo);
+		int result = sqlSessionTemplate.selectOne(namespace + ".idCheck", vo);
+		return result;
+	}
 	
 	
 	
