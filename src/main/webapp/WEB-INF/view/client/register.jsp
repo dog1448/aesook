@@ -41,7 +41,7 @@
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				
-				<form class="login100-form validate-form" action="inserthome.do" method="post" name="register">
+				<form class="login100-form validate-form" action="register.do" method="post" name="register">
 					&nbsp;&nbsp;&nbsp;<a href="home.jsp"><img src="resources/client/images/home.png"></a>
 					<span class="login100-form-title p-b-59">
 						회원가입

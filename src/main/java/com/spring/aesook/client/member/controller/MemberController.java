@@ -15,14 +15,14 @@ public class MemberController {
     @Autowired
     MemberService memberService;    
     
-    
+    //  --------------------------- 회원가입 ------------------------------------
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
     }
 
 
-    @RequestMapping(value = "/inserthome.do",  method = RequestMethod.POST)
+    @RequestMapping(value = "/register.do",  method = RequestMethod.POST)
     public String insertMember(MemberVO vo){  			
     	int result = memberService.checkLoginId(vo);
     	
@@ -39,7 +39,7 @@ public class MemberController {
     }
     
     //아이디 중복체크    
-    @RequestMapping(value = "/idChk.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/registerIdChk.do", method = RequestMethod.POST)
     @ResponseBody
     public int checkId(MemberVO vo){
     	int result = memberService.checkLoginId(vo);
