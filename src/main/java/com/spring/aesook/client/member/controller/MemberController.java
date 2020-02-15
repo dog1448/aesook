@@ -21,7 +21,8 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public class MemberController {
     @Autowired
     MemberService memberService;    
-   
+    
+    
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";

@@ -26,6 +26,26 @@
 	</script>
 </c:if>
 <%@ include file="head.jspf" %>
+<script>
+	function checkz() {
+	  	
+		//아이디 공백 확인
+	    if($("#tbId").val() == ""){
+	      alert("아이디를 입력해주세요");
+	      $("#tbId").focus();
+	      return;
+	    }
+	         
+		//아이디 공백 확인
+	    if($("#tbPass").val() == ""){
+	      alert("비밀번호를 입력해주세요");
+	      $("#tbPass").focus();
+	      return;
+	    }
+	  	
+	    $('#loginForm').submit();
+	}
+</script>
 </head>
 <body>
 <div id="wrapper">
@@ -38,20 +58,20 @@
                             <h3 class="panel-title">Please Sign In</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="login.admin" method="post">
+                            <form role="form" action="login.admin" method="post" id="loginForm">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="UserId" name="adminId" type="text" autofocus>
+                                        <input class="form-control-admin" placeholder="UserId" name="adminId" type="text" id="tbId" autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control-admin" placeholder="Password" name="adminPass" type="password">
+                                        <input class="form-control-admin" placeholder="Password" name="adminPass" id="tbPass" type="password">
                                     </div>
                                     <div class="checkbox">
                                         <label>
                                             <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                         </label>
                                     </div>
-                                    <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                                    <button type="button" onclick="checkz()" class="btn btn-lg btn-success btn-block">Login</button>
                                     <a href="findPassword.admin" class="btn btn-lg btn-warning btn-block">Find Password</a>
                                 </fieldset>
                             </form>
