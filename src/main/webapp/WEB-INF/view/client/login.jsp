@@ -30,6 +30,24 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="resources/client/css/util.css">
 	<link rel="stylesheet" type="text/css" href="resources/client/css/main.css">
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script type='text/javascript'>
+	  //<![CDATA[
+	    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+	    Kakao.init('9a420c9144db716e2307e39a3ca05cf4');
+	    function loginWithKakao() {
+	      // 로그인 창을 띄웁니다.
+	      Kakao.Auth.login({
+	        success: function(authObj) {
+	          alert(JSON.stringify(authObj));
+	        },
+	        fail: function(err) {
+	          alert(JSON.stringify(err));
+	        }
+	      });
+	    };
+	  //]]>
+	</script>
 
 </head>
 <body style="background-color: #999999;">
@@ -76,9 +94,9 @@
 					<div class="input100"></div>
 					
 					<div class="input100">
-						<div id="kakao_id_login" style="text-align: center"> 
-							<a href="${#kakao_url}"> <img width="223" src="resources/client/images/kakao.png" /></a> 
-						</div>
+						<a id="custom-login-btn" href="javascript:loginWithKakao()">
+							<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+						</a>
 					</div>
 					<div class="input100">네이버아이디로 로그인</div>
 				</form>
@@ -88,6 +106,7 @@
 	
 <!--===============================================================================================-->
 	<script src="resources/client/vendor/jquery/jquery-3.2.1.min.js"></script>
+	
 
 </body>
 </html>
