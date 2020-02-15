@@ -51,4 +51,11 @@ public class ManagerVO {
 		this.adminGrade = adminGrade;
 	}
 
+	@Override
+	public String toString() {
+		return "ManagerVO [adminId=" + adminId + ", adminPass=" + adminPass + ", adminName=" + adminName
+				+ ", adminEmail=" + adminEmail + ", adminGrade=" + adminGrade + "]";
+	}
+	
+	
 }

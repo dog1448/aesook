@@ -5,5 +5,8 @@ import com.spring.aesook.admin.manager.vo.ManagerVO;
 public interface ManagerDAO {
 	
 	void insertManager(ManagerVO vo);
+	void updateManager(ManagerVO vo);
+	void updatePassManager(ManagerVO vo);
 	ManagerVO getManager(ManagerVO vo);
+	
 }

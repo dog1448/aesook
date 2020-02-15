@@ -4,6 +4,5 @@ import com.spring.aesook.admin.manager.vo.ManagerVO;
 
 public interface ManagerLoginService {
 	
-	ManagerVO checkLogin(ManagerVO vo);
-	
+	void sendEmailPass(ManagerVO vo);
 }

@@ -15,12 +15,19 @@ public class ManagerDAOImpl implements ManagerDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insertManager(ManagerVO vo) {
-		sqlSessionTemplate.insert(namespace +".insertManager", vo);
+		sqlSessionTemplate.insert(namespace + ".insertManager", vo);
+	}
+	
+	public void updateManager(ManagerVO vo) {
+		sqlSessionTemplate.update(namespace + ".updateManager", vo);
+	}
+	
+	public void updatePassManager(ManagerVO vo) {
+		sqlSessionTemplate.update(namespace + ".updatePassManager",vo);
 	}
 	
 	public ManagerVO getManager(ManagerVO vo) {
-		System.out.println(vo.getAdminId());
-		return sqlSessionTemplate.selectOne(namespace+".getManager",vo);
+		return sqlSessionTemplate.selectOne(namespace + ".getManager",vo);
 	}
 	
 	

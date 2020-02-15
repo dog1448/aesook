@@ -9,6 +9,14 @@
 		VALUES(#{adminId}, #{adminPass}, #{adminName}, #{adminEmail}, 'S')
 	</insert>
 	
+	<update id="updateManager" parameterType="manager">
+		UPDATE admin SET admin_pass = #{adminPass}, admin_email = #{adminEmail} WHERE admin_id = #{adminId}
+	</update>
+	
+	<update id="updatePassManager" parameterType="manager">
+		UPDATE admin SET admin_pass = #{adminPass} WHERE admin_id = #{adminId}
+	</update>
+	
 	<select id="getManager" resultType="manager" parameterType="manager" >
 		select * from admin where admin_id = #{adminId}
 	</select>

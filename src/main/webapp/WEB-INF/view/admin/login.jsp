@@ -20,6 +20,11 @@
 		alert("비밀번호가 틀립니다.");
 	</script>
 </c:if>
+<c:if test="${check eq 'sendEmail'}">
+	<script type="text/javascript">
+		alert("비밀번호가 메일로 발송되었습니다.");
+	</script>
+</c:if>
 <%@ include file="head.jspf" %>
 </head>
 <body>

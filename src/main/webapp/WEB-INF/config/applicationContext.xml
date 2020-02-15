@@ -35,5 +35,7 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactroyBean"></constructor-arg>
 	</bean>
 	
+	<bean id="mailSender" class="com.spring.aesook.common.mail.NaverMailSender"></bean>
+	
 	<context:component-scan base-package="com.spring.aesook"></context:component-scan>
 </beans>
