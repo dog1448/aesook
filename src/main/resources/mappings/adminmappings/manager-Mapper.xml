@@ -20,5 +20,9 @@
 	<select id="getManager" resultType="manager" parameterType="manager" >
 		select * from admin where admin_id = #{adminId}
 	</select>
-
+	
+	<select id="idCheck" resultType="int" parameterType="manager">
+		select count(*) from admin
+		where admin_id = #{adminId}
+	</select>
 </mapper>
