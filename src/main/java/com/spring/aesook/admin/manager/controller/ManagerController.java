@@ -54,6 +54,8 @@ public class ManagerController {
 		int result = managerRegisterService.idCheck(vo);
 		return result;
 	}
+	
+	
 	//  --------------------------- 로그인 ------------------------------------
 	@RequestMapping(value = "/login.admin", method = RequestMethod.GET)
 	public String moveLogin(ManagerVO vo) {
@@ -76,8 +78,8 @@ public class ManagerController {
 				return "/login";
 			}
 		}
-		
-		return "/index";
+
+		return "/index"; // 나중에 interceptor로 지울 부분( login.admin은 인터셉터가 처리 )
 	}
 	
 	
@@ -141,8 +143,12 @@ public class ManagerController {
 	@RequestMapping(value="/index.admin", method=RequestMethod.GET)
 	public String moveIndex() {
 		
+		// Index화면에 들어갈 DB 자료
+		
+		
 		return "/index";
 	}
+	
 	
 }
 

@@ -19,12 +19,26 @@
         ,#{memberStatus})
     </insert>
     
+    <update id="updatePassMember" parameterType="member">
+		UPDATE member SET member_pass = #{memberPass} WHERE member_id = #{memberId}
+	</update>
+    
+    <select id="getMember" resultType="member" parameterType="member">
+    	SELECT * FROM member WHERE member_id = #{memberId}
+    </select>
+    
+    <select id="getFindIdMember" resultType="member" parameterType="member">
+    	SELECT * FROM member WHERE member_name = #{memberName} AND member_email = #{memberEmail}
+    </select>
+    
     <select id="getId" resultType="int" parameterType="member">
         select count(*) from member where member_id = #{memberId}
     </select>
     
+
     <update id="updateStatusMember" parameterType="member">
     	UPDATE member SET member_status = #{memberStatus} WHERE member_id = #{memberId} 
     </update>
+
 </mapper>
 
