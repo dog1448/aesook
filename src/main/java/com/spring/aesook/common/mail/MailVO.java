@@ -8,12 +8,16 @@ public class MailVO {
 
 	private String mailSubject;
 
-	private String mailContent;
+	private Object mailContent;
 
 	private String contentType;
 	
 	public MailVO() {
-		contentType = "html/plain";
+		contentType = "text/plain";
+	}
+	
+	public MailVO(String contentType) {
+		this.contentType = contentType;
 	}
 
 
@@ -33,11 +37,11 @@ public class MailVO {
 		this.mailSubject = mailSubject;
 	}
 
-	public String getMailContent() {
+	public Object getMailContent() {
 		return mailContent;
 	}
 
-	public void setMailContent(String mailContent) {
+	public void setMailContent(Object mailContent) {
 		this.mailContent = mailContent;
 	}
 
