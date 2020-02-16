@@ -5,26 +5,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
+import com.spring.aesook.client.member.service.MemberRegisterService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 @Controller
 public class MemberController {
 	
+    
+
     @Autowired
+    MemberRegisterService memberRegisterService;
+   @Autowired
     MemberService memberService;   
     @Autowired
     MemberFindIdService memberFindIdService;
     @Autowired
     MemberFindPassService memberFindPassService;
     
+
     
-    //  --------------------------- È¸¿ø°¡ÀÔ ------------------------------------
-    @RequestMapping(value = "/register.do", method = RequestMethod.GET)
+    //  --------------------------- íšŒì›ê°€ì… ------------------------------------
+    @RequestMapping(value = "/registerMove.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
     }
@@ -34,19 +42,28 @@ public class MemberController {
     public String insertMember(MemberVO vo){  			
     	int result = memberService.checkLoginId(vo);
     	
-    	try {
+    	
     		if(result == 1) {
         		return "/register";
         	} else if(result == 0) {
+        		
         		 memberService.insertMember(vo);
+        		 memberRegisterService.sendEmailConfirm(vo);
         	}       
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}    	
-        return "/login";
+		   	
+        return "/registerWait";
     }
     
-    //¾ÆÀÌµğ Áßº¹Ã¼Å©    
+    @RequestMapping(value = "/registerConfirm.do", method = RequestMethod.GET)
+    public String updateStatusMember(@RequestParam("confirm") String confirm, MemberVO vo, Model model) {
+    	if(confirm.equals("y")) {
+    		vo.setMemberStatus("G");
+    		memberService.updateStatusMember(vo);
+    	}
+    	return "/login";
+    }
+    
+    //ì•„ì´ë”” ì¤‘ë³µì²´í¬    
     @RequestMapping(value = "/registerIdChk.do", method = RequestMethod.POST)
     @ResponseBody
     public int checkId(MemberVO vo){
@@ -55,7 +72,7 @@ public class MemberController {
     } 
     
     
-    // --------------------------- ·Î±×ÀÎ -------------------------------------
+    // --------------------------- ë¡œê·¸ì¸ -------------------------------------
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -80,7 +97,7 @@ public class MemberController {
 			}
 		}
 	
-    	return "/home"; // Áö¿ï ¿¹Á¤ ( login.do´Â ÀÎÅÍ¼ÁÅÍ°¡ Ã³¸® )
+    	return "/home"; // ì§€ìš¸ ì˜ˆì • ( login.doëŠ” ì¸í„°ì…‰í„°ê°€ ì²˜ë¦¬ )
     }
     
     
@@ -91,7 +108,7 @@ public class MemberController {
     }
     
     
-    // --------------------------- ¾ÆÀÌµğ Ã£±â -------------------------------------
+    // --------------------------- ì•„ì´ë”” ì°¾ê¸° -------------------------------------
     @RequestMapping(value="/findId", method = RequestMethod.GET)
     public String moveFindId() {
     	return "/findId";
@@ -109,7 +126,7 @@ public class MemberController {
     	return "/login";
     }
     
-    // --------------------------- ºñ¹Ğ¹øÈ£ Ã£±â -------------------------------------
+    // --------------------------- ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° -------------------------------------
     @RequestMapping(value="/findPass", method = RequestMethod.GET)
     public String moveFindPass() {
     	return "/findPass";

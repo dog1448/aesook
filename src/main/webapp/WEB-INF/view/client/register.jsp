@@ -37,7 +37,7 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('resources/client/images/bg-02.jpg');"></div>
+			<div class="login100-more" style="background-image: url('resources/client/images/img_bg_5.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				
@@ -88,7 +88,7 @@
 						<input class="input100" type="text" name="memberPhone" id="memberPhone" placeholder="Phone number...">
 						<span class="focus-input100"></span>
 					</div>
-					<input type="hidden" name="memberStatus" value="G">
+					<input type="hidden" name="memberStatus" value="R">
 					<div class="flex-m w-full p-b-33">
 						<div class="contact100-form-checkbox">
 							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
