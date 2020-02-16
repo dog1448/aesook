@@ -54,6 +54,8 @@ public class ManagerController {
 		int result = managerRegisterService.idCheck(vo);
 		return result;
 	}
+	
+	
 	//  --------------------------- ·Î±×ÀÎ ------------------------------------
 	@RequestMapping(value = "/login.admin", method = RequestMethod.GET)
 	public String moveLogin(ManagerVO vo) {

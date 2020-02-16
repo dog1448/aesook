@@ -29,7 +29,7 @@ public class NaverMailSender implements MailSender {
 		props.put("mail.smtp.ssl.trust", host);
 	}
 	
-	private Message sendingHead() {
+	private MimeMessage sendingHead() {
 		Session session = Session.getDefaultInstance(props, new Authenticator() {
 			String un = user;
 			String pw = pass;
@@ -41,7 +41,7 @@ public class NaverMailSender implements MailSender {
 			
 		});
 		session.setDebug(true);
-		Message msg = new MimeMessage(session);
+		MimeMessage msg = new MimeMessage(session);
 		return msg;
 	}
 	
@@ -50,12 +50,12 @@ public class NaverMailSender implements MailSender {
 	// Àü¼Û
 	public void sendMail(MailVO mail) {
 		setConfig();
-		Message msg = sendingHead();
+		MimeMessage msg = sendingHead();
 		try {
 			msg.setFrom(new InternetAddress(user+tail));
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(mail.getMailTo()));
 			msg.setSubject(mail.getMailSubject());
-			msg.setText(mail.getMailContent());
+			msg.setContent((String)mail.getMailContent(), mail.getContentType()+"; charset=UTF-8");
 		} catch (AddressException e) {
 			e.printStackTrace();
 		} catch (MessagingException e) {

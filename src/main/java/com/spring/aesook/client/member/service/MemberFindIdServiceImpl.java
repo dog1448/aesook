@@ -24,7 +24,7 @@ public class MemberFindIdServiceImpl implements MemberFindIdService {
 			MailVO mail = new MailVO();
 			mail.setMailTo(user.getMemberEmail());
 			mail.setMailSubject(user.getMemberName()+"님의 ID찾기 입니다.");
-			mail.setMailContent("ID : "+createComplexId(user.getMemberId()));
+			mail.setMailContent("ID : "+createComplexId(user.getMemberId()) );
 			mailSender.sendMail(mail);
 		}
 		
