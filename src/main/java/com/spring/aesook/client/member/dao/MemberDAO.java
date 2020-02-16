@@ -6,4 +6,5 @@ public interface MemberDAO {
 	public void insertMember(MemberVO vo);
 	public MemberVO getMember(MemberVO vo);
 	public int getId(MemberVO vo);
+	public void updateStatusMember(MemberVO vo);
 }

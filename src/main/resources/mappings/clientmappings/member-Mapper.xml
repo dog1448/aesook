@@ -22,5 +22,9 @@
     <select id="getId" resultType="int" parameterType="member">
         select count(*) from member where member_id = #{memberId}
     </select>
+    
+    <update id="updateStatusMember" parameterType="member">
+    	UPDATE member SET member_status = #{memberStatus} WHERE member_id = #{memberId} 
+    </update>
 </mapper>
 

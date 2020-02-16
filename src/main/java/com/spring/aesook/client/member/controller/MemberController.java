@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.aesook.client.member.service.MemberRegisterService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.vo.MemberVO;
 
@@ -14,9 +16,11 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public class MemberController {
     @Autowired
     MemberService memberService;    
+    @Autowired
+    MemberRegisterService memberRegisterService;
     
     //  --------------------------- 회원가입 ------------------------------------
-    @RequestMapping(value = "/register.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/registerMove.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
     }
@@ -26,16 +30,25 @@ public class MemberController {
     public String insertMember(MemberVO vo){  			
     	int result = memberService.checkLoginId(vo);
     	
-    	try {
+    	
     		if(result == 1) {
         		return "/register";
         	} else if(result == 0) {
+        		
         		 memberService.insertMember(vo);
+        		 memberRegisterService.sendEmailConfirm(vo);
         	}       
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}    	
-        return "/login";
+		   	
+        return "/registerWait";
+    }
+    
+    @RequestMapping(value = "/registerConfirm.do", method = RequestMethod.GET)
+    public String updateStatusMember(@RequestParam("confirm") String confirm, MemberVO vo, Model model) {
+    	if(confirm.equals("y")) {
+    		vo.setMemberStatus("G");
+    		memberService.updateStatusMember(vo);
+    	}
+    	return "/login";
     }
     
     //아이디 중복체크    

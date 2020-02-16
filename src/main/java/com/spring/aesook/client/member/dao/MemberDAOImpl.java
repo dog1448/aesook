@@ -25,4 +25,10 @@ public class MemberDAOImpl implements MemberDAO {
     public int getId(MemberVO vo){
         return sqlSessionTemplate.selectOne(namespace + ".getId", vo);
     }
+
+	@Override
+	public void updateStatusMember(MemberVO vo) {
+		sqlSessionTemplate.update(namespace + ".updateStatusMember", vo);		
+	}
+ 
 }
