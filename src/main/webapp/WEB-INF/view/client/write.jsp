@@ -81,7 +81,7 @@
         <div class="container">
             <table class="table table-bordered">
                 <thead>
-                    <caption> 글쓰기 </caption>
+                    <caption> 글쓰기  </caption>
                 </thead>
                 <tbody>
                     <form action="write_ok.jsp" method="post" encType="multiplart/form-data">

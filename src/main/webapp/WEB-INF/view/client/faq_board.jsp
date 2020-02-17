@@ -9,7 +9,7 @@
 <!-- 뷰포트 -->
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
-<title>jsp 게시판 웹사이트</title>
+<title>jsp 게시판 웹사이트 </title>
 <style type="text/css">
 a, a:hover {
 	color: #000000;
