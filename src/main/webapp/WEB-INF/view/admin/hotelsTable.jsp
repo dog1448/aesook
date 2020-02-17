@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.spring.aesook.admin.datalist.vo.HotelsVO" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,13 +40,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                           	 <c:forEach	var="hotel" items="${ hotelsList}">
                                                 <tr class="odd gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
+                                                    <td>${hotel.hotelsCode }</td>
+                                                    <td><a href="hotelsInfo.admin?hotelsCode=${hotel.hotelsCode }">${hotel.hotelsName }</a></td>
+                                                    <td>${hotel.hotelsType }</td>
+                                                    <td class="center">${hotel.memberNo }</td>
+                                                    <td class="center">${hotel.hotelsPhone }</td>
                                                 </tr>
+                                               </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

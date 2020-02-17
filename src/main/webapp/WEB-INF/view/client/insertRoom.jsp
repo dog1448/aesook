@@ -41,6 +41,7 @@
 								<div class="row form-group">
 									<div class="col-md-12">
 										&nbsp;&nbsp;&nbsp;&nbsp;
+
 										<label><input type="radio" name="rooms" value="hotel">호텔</label>
 											&nbsp;&nbsp;&nbsp;&nbsp;
 											<label><input type="radio" name="rooms" value="motel">모텔</label>
@@ -49,14 +50,17 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;
 													<label><input type="radio" name="rooms"	value="guesthouse">게스트하우스</label>
 													&nbsp;&nbsp;&nbsp;&nbsp;
-														<label><input type="radio" name="rooms"	value="resort/condo">리조트/콘도</label>
+														<label><input type="radio" name="rooms"	value="resort/condo">리조트</label>
+
 									</div>
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
 								<h2>숙소 이름</h2>
 								<div class="col-md-12 form-group">
+
 									<input type="text" id="room-name" class="form-control" placeholder="숙소명 입력하세요">
+
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
@@ -71,16 +75,19 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="input-group">
+
 												<input type="text" class="form-control" placeholder="위치값 URL입력">
-												
+										
 												<span class="input-group-btn">
 													<button class="btn btn-default" type="button">검색</button>
 												</span>
 											</div>
 										</div>
 									</div>
+
 									<label>위치</label>
 									<input type="text" id="location" class="form-control" placeholder="주소를 입력하세요">
+
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
@@ -146,6 +153,7 @@
 													value="motel">파티룸</label>
 												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
 														value="pension">와이파이</label>
+
 									</div>
 								</div>
 
