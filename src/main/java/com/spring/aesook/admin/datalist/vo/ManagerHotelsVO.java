@@ -3,7 +3,7 @@ package com.spring.aesook.admin.datalist.vo;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HotelsVO {
+public class ManagerHotelsVO {
 	private int hotelsCode;
 	private String hotelsName;
 	private String hotelsType;
