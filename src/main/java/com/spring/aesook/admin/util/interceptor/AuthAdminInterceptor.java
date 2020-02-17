@@ -1,4 +1,4 @@
-package com.spring.aesook.admin.util;
+package com.spring.aesook.admin.util.interceptor;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

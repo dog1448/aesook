@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+ 
 <!DOCTYPE HTML>
 <html>
 <!--head-->
@@ -23,7 +25,7 @@
 			<div class="row">
 				<div class="col">
 					<div>
-						<h1 align="center">호텔/모텔 등(값 넘겨 받을 것)</h1>
+						<h1 align="center">모텔</h1>
 						<h3>지역선택</h3>
 					</div>
 					<hr style="border: 0; height: 1px; background: black;">
@@ -828,7 +830,7 @@
 				<div class="row">
 					<div
 						class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>인기 모텔/호텔 등 (값 넘겨 받는 곳)</h2>
+						<h2>인기 모텔</h2>
 					</div>
 				</div>
 				<div class="row">
