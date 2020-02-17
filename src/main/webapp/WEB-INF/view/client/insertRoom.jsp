@@ -41,22 +41,22 @@
 								<div class="row form-group">
 									<div class="col-md-12">
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<label><input type="radio" name="rooms" value="hotel">호텔</label>
+										<label><input type="radio" name="hotelsType" value="hotel">호텔</label>
 											&nbsp;&nbsp;&nbsp;&nbsp;
-											<label><input type="radio" name="rooms" value="motel">모텔</label>
+											<label><input type="radio" name="hotelsType" value="motel">모텔</label>
 												&nbsp;&nbsp;&nbsp;&nbsp;
-												<label><input type="radio" name="rooms" value="pension">팬션</label>
+												<label><input type="radio" name="hotelsType" value="pension">팬션</label>
 													&nbsp;&nbsp;&nbsp;&nbsp;
-													<label><input type="radio" name="rooms"	value="guesthouse">게스트하우스</label>
+													<label><input type="radio" name="hotelsType"	value="guesthouse">게스트하우스</label>
 													&nbsp;&nbsp;&nbsp;&nbsp;
-														<label><input type="radio" name="rooms"	value="resort/condo">리조트/콘도</label>
+														<label><input type="radio" name="hotelsType"	value="resort/condo">리조트</label>
 									</div>
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
 								<h2>숙소 이름</h2>
 								<div class="col-md-12 form-group">
-									<input type="text" id="room-name" class="form-control" placeholder="숙소명 입력하세요">
+									<input type="text" id="hotelsName" class="form-control" placeholder="숙소명 입력하세요">
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
@@ -71,7 +71,7 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="input-group">
-												<input type="text" class="form-control" placeholder="위치값 URL입력">
+												<input type="text" class="form-control" placeholder="우편번호" id="hotelsZipcode">
 												
 												<span class="input-group-btn">
 													<button class="btn btn-default" type="button">검색</button>
@@ -80,7 +80,12 @@
 										</div>
 									</div>
 									<label>위치</label>
-									<input type="text" id="location" class="form-control" placeholder="주소를 입력하세요">
+									<input type="text" id="hotelsAddress1" class="form-control" placeholder="주소를 입력하세요">
+									<input type="text" id="hotelsAddress2" class="form-control" placeholder="상세주소를 입력하세요">
+									<input type="text" id="hotelsPath" class="form-control" placeholder="오시는길">
+									<label>연락처</label>
+									<input type="text" id="hotelsPhone" class="form-control" placeholder="번호">
+
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
@@ -124,28 +129,32 @@
 									</div>
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
-
-
+								<h2>이용안내</h2>
+								<textarea name=hotelsInfo rows="8" cols="50"></textarea>
+								<h2>숙소소개</h2>
+								<textarea name="hotelsIntroduce" rows="8" cols="50"></textarea>
 								<h2>편의시설/서비스</h2>
 								<div class="row">
 									<div class="col-md-12 form-group">
-										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityParking"
 												value="hotel">주차가능</label>
-											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
-													value="motel">식사가능</label>
-												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
-														value="pension">레스토랑</label>
-													&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
-															value="guesthouse">비즈니스</label>
+											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityPool"
+													value="motel">수영장가능</label>
+												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityBreakfast"
+														value="pension">조식</label>
+													&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityFitness"
+															value="guesthouse">휘트니스</label>
 									</div>
 									<div>&nbsp;</div>
 									<div class="col-md-12 form-group">
-										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
-												value="hotel">24시간 데스크</label>
-											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityPC"
+												value="hotel">PC</label>
+											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityParty"
 													value="motel">파티룸</label>
-												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityWifi"
 														value="pension">와이파이</label>
+														&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityAmenity"
+															value="pension">어메니티;</label>
 									</div>
 								</div>
 
