@@ -133,7 +133,7 @@
 							<button class="login100-form-btn" type="button" onclick="checkz()">로그인</button>														
 						</div>
 
-						<a href="registerMove.do" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+						<a href="register.do" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							회원가입
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class HotelsController {
+public class MemberHotelsController {
 	
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
 	public String hotelMove(@RequestParam(value = "type", defaultValue = "h", required = false) String type) {

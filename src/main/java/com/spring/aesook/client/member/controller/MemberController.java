@@ -1,5 +1,7 @@
 package com.spring.aesook.client.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,8 @@ public class MemberController {
     @Autowired
     MemberFindPassService memberFindPassService;   
 
-    @RequestMapping(value = "/registerMove.do", method = RequestMethod.GET)
+    //---------------------------회원가입------------------------------------
+    @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
     }
@@ -69,13 +72,14 @@ public class MemberController {
     } 
         
 
+    //-------------------------------로그인--------------------------
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
     }
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-    public String checkLogin(MemberVO vo, Model model) {
+    public String checkLogin(MemberVO vo, Model model,HttpSession session) {//세션은 지울 예정입니다. 지금 인터셉트 닫혀있어서 썼음
     	MemberVO user = memberService.getMember(vo);
     	
     	if(user == null) {
@@ -93,6 +97,7 @@ public class MemberController {
 				return "/login";
 			}
 		}
+    	session.setAttribute("login", user);
     	return "/home"; // 
 
     }
@@ -150,6 +155,24 @@ public class MemberController {
     @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
     public String moveInsertRoom() {
     	return "/insertRoom";
+    }
+    
+    //----------------------------------개인정보 수정--------------------------------------------
+    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
+    public String moveModifyInfo(HttpSession session, Model model) {
+    	MemberVO login = (MemberVO)session.getAttribute("login");
+    	if(login != null) {
+    		model.addAttribute("login",login);
+    	}
+    	return "/modify_info";
+    }
+    
+    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.POST)
+    public String modifyInfo(MemberVO vo, Model model) {
+    	System.out.println(vo.getMemberPhone().toString());
+    	memberService.updateInfoMember(vo);
+    	System.out.println(vo.getMemberPhone().toString());
+    	return "/home";
     }
     
 }
