@@ -31,7 +31,7 @@ public class MemberController {
     
 
     
-    //  --------------------------- 회원가입 ------------------------------------
+    
     @RequestMapping(value = "/registerMove.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
@@ -63,7 +63,7 @@ public class MemberController {
     	return "/login";
     }
     
-    //아이디 중복체크    
+        
     @RequestMapping(value = "/registerIdChk.do", method = RequestMethod.POST)
     @ResponseBody
     public int checkId(MemberVO vo){
@@ -72,7 +72,7 @@ public class MemberController {
     } 
     
     
-    // --------------------------- 로그인 -------------------------------------
+    // --------------------------- -------------------------------------
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -97,7 +97,7 @@ public class MemberController {
 			}
 		}
 	
-    	return "/home"; // 지울 예정 ( login.do는 인터셉터가 처리 )
+    	return "/home"; // 
     }
     
     
@@ -108,7 +108,7 @@ public class MemberController {
     }
     
     
-    // --------------------------- 아이디 찾기 -------------------------------------
+    // --------------------------- -------------------------------------
     @RequestMapping(value="/findId", method = RequestMethod.GET)
     public String moveFindId() {
     	return "/findId";
@@ -126,7 +126,7 @@ public class MemberController {
     	return "/login";
     }
     
-    // --------------------------- 비밀번호 찾기 -------------------------------------
+    // ---------------------------  -------------------------------------
     @RequestMapping(value="/findPass", method = RequestMethod.GET)
     public String moveFindPass() {
     	return "/findPass";
@@ -149,4 +149,10 @@ public class MemberController {
     	
     	return "/login";
     }
+    
+    @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
+    public String moveInsertRoom() {
+    	return "/insertRoom";
+    }
+    
 }
