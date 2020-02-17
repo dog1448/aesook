@@ -12,7 +12,7 @@
 		select booking_code, hotels_code, sort_type, room_code, member_id,
 		booking_check_in, booking_check_out,
 		booking_name, booking_phone, booking_cnt, 
-        to_date(booking_check_in, 'YYYY-MM-DD'), to_date(booking_check_in, 'YYYY-MM-DD'),
+        booking_date, booking_cancel_date,
 		booking_total_price, booking_status
     		from booking
     		where booking_code = #{bookingCode}

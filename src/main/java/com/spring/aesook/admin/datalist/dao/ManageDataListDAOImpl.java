@@ -26,7 +26,9 @@ public class ManageDataListDAOImpl implements ManagerDataListDAO {
 
 	@Override
 	public ManagerBookingVO getBookingInfo(String bookingCode) {
-		return sqlSessionTemplate.selectOne(namespace + ".getBookingInfo", bookingCode);
+		ManagerBookingVO aaa = sqlSessionTemplate.selectOne(namespace + ".getBookingInfo", bookingCode);
+		System.out.println(aaa);
+		return aaa;
 	}
 
 	@Override
@@ -34,8 +36,9 @@ public class ManageDataListDAOImpl implements ManagerDataListDAO {
 		sqlSessionTemplate.update(namespace + ".setBookingInfo", vo); 
 	}
 	
+
 	
-	//---------------------------- хёез
+	//---------------------------- 
 	@Override
 	public List<ManagerHotelsVO> getListHotels() {
 		return sqlSessionTemplate.selectList(namespace1+".getListHotels");
@@ -51,4 +54,5 @@ public class ManageDataListDAOImpl implements ManagerDataListDAO {
 		sqlSessionTemplate.update(namespace1+".updateHotel",vo);
 	}
 	
+
 }

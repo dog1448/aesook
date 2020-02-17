@@ -53,11 +53,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Check_In</label>
-                                                    <input class="form-control" type="text" value="${bookingInfo.bookingCheckIn}" name="bookingCheckIn" id="bookingCheckIn">
+                                                    <input class="form-control datePicker" type="text" value="${bookingInfo.bookingCheckIn}" name="bookingCheckIn" id="bookingCheckIn">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Check_Out</label>
-                                                    <input class="form-control" type="text" value="${bookingInfo.bookingCheckOut}" name="bookingCheckOut" id="bookingCheckOut">
+                                                    <input class="form-control datePicker" type="text" value="${bookingInfo.bookingCheckOut}" name="bookingCheckOut" id="bookingCheckOut">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Name</label>
@@ -71,22 +71,21 @@
                                                     <label>Booking_Cnt</label>
                                                     <input class="form-control" type="text" value="${bookingInfo.bookingCnt}" name="bookingCnt" id="bookingCnt">
                                                 </div>
-												<div class="form-group">
+                                                <div class="form-group">
                                                     <label>Booking_Date</label>
-                                                    <input class="form-control" type="date" value="${bookingInfo.bookingDate}" data-date-format="YYYY-MM-DD" name="bookingDate" id="bookingDate" >
+                                                    <input class="form-control" type="date" value="${bookingInfo.bookingDate}" name="bookingDate" id="bookingDate" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Cancel_Date</label>
-                                                    <input class="form-control" type="date" value="${bookingInfo.bookingCancelDate}" name="bookingCancelDate" id="bookingCancelDate" >
+                                                    <input class="form-control" type="date" value="${bookingInfo.bookingCancelDate}" name="bookingCancelDate" id="bookingCancelDate" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Total_Price</label>
-                                                    <input class="form-control" type="text" value="${bookingInfo.bookingTotalPrice}" id="bookingTotalPrice" disabled>
-                                                    <input type="hidden" value="${bookingInfo.bookingTotalPrice}" name="bookingTotalPrice">
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingTotalPrice}" name="bookingTotalPrice" id="bookingTotalPrice" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Status</label>
-                                                    <select class="form-control" id="statusSelectBox">
+                                                    <select class="form-control" id="statusSelectBox" name = "bookingStatus">
                                                         <option value="B">B</option>
                                                         <option value="C">C</option>
                                                         <option value="D">D</option>
@@ -96,8 +95,7 @@
 
                                                 <div class="col-lg-12"> 
                                                     <button type="submit" class="btn btn-default float-left">Modify</button>
-                                                    <button type="button" class="btn btn-default float-left">Delete</button>
-                                                    <button type="button" class="btn btn-default float-left">Cancel</button>
+                                                    <button type="button" class="btn btn-default" onclick="javascript:history.go(-1)">Cancel</button>
                                                     <button type="button" class="btn btn-warning float-left" id="disbt">disable</button>
                                                 </div>
                                             </form>
@@ -136,6 +134,8 @@
 
             $(function() {	
                 
+            	 $('#statusSelectBox')
+            	
                 $('.datePicker').datepicker({
                     format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
                     autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
