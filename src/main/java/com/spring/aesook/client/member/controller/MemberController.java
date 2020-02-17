@@ -28,7 +28,7 @@ public class MemberController {
     MemberFindIdService memberFindIdService;
     @Autowired
     MemberFindPassService memberFindPassService;   
-    
+
     @RequestMapping(value = "/registerMove.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
@@ -61,15 +61,14 @@ public class MemberController {
     	return "/registerSuccess";
     }
     
-      
     @RequestMapping(value = "/registerIdChk.do", method = RequestMethod.POST)
     @ResponseBody
     public int checkId(MemberVO vo){
     	int result = memberService.checkLoginId(vo);
     	return result;
     } 
-    
-    
+        
+
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -94,8 +93,8 @@ public class MemberController {
 				return "/login";
 			}
 		}
-	
-    	return "/home"; 
+    	return "/home"; // 
+
     }
     
     
@@ -106,7 +105,7 @@ public class MemberController {
     }
     
     
-    
+
     @RequestMapping(value="/findId", method = RequestMethod.GET)
     public String moveFindId() {
     	return "/findId";
@@ -124,7 +123,7 @@ public class MemberController {
     	return "/login";
     }
     
-    
+
     @RequestMapping(value="/findPass", method = RequestMethod.GET)
     public String moveFindPass() {
     	return "/findPass";
@@ -147,4 +146,10 @@ public class MemberController {
     	
     	return "/login";
     }
+    
+    @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
+    public String moveInsertRoom() {
+    	return "/insertRoom";
+    }
+    
 }
