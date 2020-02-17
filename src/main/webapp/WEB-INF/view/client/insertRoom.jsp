@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 
@@ -23,144 +23,143 @@
 						<div class="col-one-forth aside-stretch animate-box">
 							<div class="row">
 								<div class="col-md-12 about">
-									<h2>¼÷¼Ò°ü¸®</h2>
+									<h2>ìˆ™ì†Œê´€ë¦¬</h2>
 
 									<ul>
-										<li><a href="inserthotel.jsp">¼÷¼Ò µî·Ï ¹× ¼öÁ¤</a></li>
-										<li><a href="insertedRoom.jsp">µî·Ï ¼÷¼Ò</a></li>
-										<li><a href="statistics.jsp">Åë°è</a></li>
-										<li><a href="chat.jsp">1´ë 1¹®ÀÇ</a></li>
-										<li><a href="index.jsp">¸ÞÀÎ È¨</a></li>
+										<li><a href="inserthotel.jsp">ìˆ™ì†Œ ë“±ë¡ ë° ìˆ˜ì •</a></li>
+										<li><a href="insertedRoom.jsp">ë“±ë¡ ìˆ™ì†Œ</a></li>
+										<li><a href="statistics.jsp">í†µê³„</a></li>
+										<li><a href="chat.jsp">1ëŒ€ 1ë¬¸ì˜</a></li>
+										<li><a href="index.jsp">ë©”ì¸ í™ˆ</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-three-forth animate-box">
 							<form action="#">
-								<h2>¼÷¼Ò Á¾·ù</h2>
+								<h2>ìˆ™ì†Œ ì¢…ë¥˜</h2>
 								<div class="row form-group">
 									<div class="col-md-12">
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<label><input type="radio" name="hotelsType" value="hotel">È£ÅÚ</label>
+
+										<label><input type="radio" name="rooms" value="hotel">í˜¸í…”</label>
 											&nbsp;&nbsp;&nbsp;&nbsp;
-											<label><input type="radio" name="hotelsType" value="motel">¸ðÅÚ</label>
+											<label><input type="radio" name="rooms" value="motel">ëª¨í…”</label>
 												&nbsp;&nbsp;&nbsp;&nbsp;
-												<label><input type="radio" name="hotelsType" value="pension">ÆÒ¼Ç</label>
+												<label><input type="radio" name="rooms" value="pension">íŒ¬ì…˜</label>
 													&nbsp;&nbsp;&nbsp;&nbsp;
-													<label><input type="radio" name="hotelsType"	value="guesthouse">°Ô½ºÆ®ÇÏ¿ì½º</label>
+													<label><input type="radio" name="rooms"	value="guesthouse">ê²ŒìŠ¤íŠ¸í•˜ìš°ìŠ¤</label>
 													&nbsp;&nbsp;&nbsp;&nbsp;
-														<label><input type="radio" name="hotelsType"	value="resort/condo">¸®Á¶Æ®</label>
+														<label><input type="radio" name="rooms"	value="resort/condo">ë¦¬ì¡°íŠ¸</label>
+
 									</div>
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
-								<h2>¼÷¼Ò ÀÌ¸§</h2>
+								<h2>ìˆ™ì†Œ ì´ë¦„</h2>
 								<div class="col-md-12 form-group">
-									<input type="text" id="hotelsName" class="form-control" placeholder="¼÷¼Ò¸í ÀÔ·ÂÇÏ¼¼¿ä">
+
+									<input type="text" id="room-name" class="form-control" placeholder="ìˆ™ì†Œëª… ìž…ë ¥í•˜ì„¸ìš”">
+
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
 
-								<h2>¼÷¼Ò À§Ä¡</h2>
+								<h2>ìˆ™ì†Œ ìœ„ì¹˜</h2>
 								<div class="col-md-12 form-group">
 									<iframe id="map-detail-frame" width="652" height="217" frameborder="0"
 										scrolling="no" title="rooms-location"
 										src="https://goo.gl/maps/araV1CpH7VR57Svb9"></iframe>
 									<div>&nbsp;&nbsp;</div>
-									<label>URLÀÔ·Â</label>
+									<label>URLìž…ë ¥</label>
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="input-group">
-												<input type="text" class="form-control" placeholder="¿ìÆí¹øÈ£" id="hotelsZipcode">
-												
+
+												<input type="text" class="form-control" placeholder="ìœ„ì¹˜ê°’ URLìž…ë ¥">
+										
 												<span class="input-group-btn">
-													<button class="btn btn-default" type="button">°Ë»ö</button>
+													<button class="btn btn-default" type="button">ê²€ìƒ‰</button>
 												</span>
 											</div>
 										</div>
 									</div>
-									<label>À§Ä¡</label>
-									<input type="text" id="hotelsAddress1" class="form-control" placeholder="ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä">
-									<input type="text" id="hotelsAddress2" class="form-control" placeholder="»ó¼¼ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä">
-									<input type="text" id="hotelsPath" class="form-control" placeholder="¿À½Ã´Â±æ">
-									<label>¿¬¶ôÃ³</label>
-									<input type="text" id="hotelsPhone" class="form-control" placeholder="¹øÈ£">
+
+									<label>ìœ„ì¹˜</label>
+									<input type="text" id="location" class="form-control" placeholder="ì£¼ì†Œë¥¼ ìž…ë ¥í•˜ì„¸ìš”">
 
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
 
 
-								<h2>°´½Ç</h2>
+								<h2>ê°ì‹¤</h2>
 								<div class="dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										°´½Ç Ãß°¡ ¹× Á¦¿Ü
+										ê°ì‹¤ ì¶”ê°€ ë° ì œì™¸
 										<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-										<li><a href="#">°´½Ç Ãß°¡</a></li>
+										<li><a href="#">ê°ì‹¤ ì¶”ê°€</a></li>
 										<li role="separator" class="divider"></li>
-										<li><a href="#">°´½Ç Á¦°Å</a></li>										
+										<li><a href="#">ê°ì‹¤ ì œê±°</a></li>										
 									</ul>
 								</div>
 
 								<div class="form-group">
 									<div class="col-sm-6">
-										<label>¹æ ÀÌ¸§</label>
-										<input type="text" class="form-control" placeholder="¹æ ÀÌ¸§ ÀÔ·Â">
+										<label>ë°© ì´ë¦„</label>
+										<input type="text" class="form-control" placeholder="ë°© ì´ë¦„ ìž…ë ¥">
 									</div>
 									<div class="col-sm-6">
-										<label>ÀÎ¿ø</label>
-										<input type="text" class="form-control" placeholder="ÀÎ¿ø ¼ö ÀÔ·Â">
+										<label>ì¸ì›</label>
+										<input type="text" class="form-control" placeholder="ì¸ì› ìˆ˜ ìž…ë ¥">
 									</div>
 									<div class="col-sm-6">
-										<label>¿ä±Ý</label>
-										<input type="text" class="form-control" placeholder="¿ä±Ý ÀÔ·Â">
+										<label>ìš”ê¸ˆ</label>
+										<input type="text" class="form-control" placeholder="ìš”ê¸ˆ ìž…ë ¥">
 									</div>
 									<div class="col-sm-6">
-										<label>Æ¯Â¡</label>
-										<input type="text" class="form-control" placeholder="Æ¯Â¡ ÀÔ·Â">
+										<label>íŠ¹ì§•</label>
+										<input type="text" class="form-control" placeholder="íŠ¹ì§• ìž…ë ¥">
 									</div>
 									<div class="col-md-12">
-										<label>»çÁø ¾÷·Îµå</label>
+										<label>ì‚¬ì§„ ì—…ë¡œë“œ</label>
 										<div class="file-upload-wrapper">
 											<input type="file" id="input-file-now-custom-1" class="file-upload" data-default-file="https://mdbootstrap.com/img/Photos/Others/images/89.jpg" />
 										  </div>
 									</div>
 								</div>
 								<div>&nbsp;</div><div>&nbsp;</div>
-								<h2>ÀÌ¿ë¾È³»</h2>
-								<textarea name=hotelsInfo rows="8" cols="50"></textarea>
-								<h2>¼÷¼Ò¼Ò°³</h2>
-								<textarea name="hotelsIntroduce" rows="8" cols="50"></textarea>
-								<h2>ÆíÀÇ½Ã¼³/¼­ºñ½º</h2>
+
+
+								<h2>íŽ¸ì˜ì‹œì„¤/ì„œë¹„ìŠ¤</h2>
 								<div class="row">
 									<div class="col-md-12 form-group">
-										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityParking"
-												value="hotel">ÁÖÂ÷°¡´É</label>
-											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityPool"
-													value="motel">¼ö¿µÀå°¡´É</label>
-												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityBreakfast"
-														value="pension">Á¶½Ä</label>
-													&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityFitness"
-															value="guesthouse">ÈÖÆ®´Ï½º</label>
+										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+												value="hotel">ì£¼ì°¨ê°€ëŠ¥</label>
+											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+													value="motel">ì‹ì‚¬ê°€ëŠ¥</label>
+												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+														value="pension">ë ˆìŠ¤í† ëž‘</label>
+													&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+															value="guesthouse">ë¹„ì¦ˆë‹ˆìŠ¤</label>
 									</div>
 									<div>&nbsp;</div>
 									<div class="col-md-12 form-group">
-										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityPC"
-												value="hotel">PC</label>
-											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityParty"
-													value="motel">ÆÄÆ¼·ë</label>
-												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityWifi"
-														value="pension">¿ÍÀÌÆÄÀÌ</label>
-														&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="facilityAmenity"
-															value="pension">¾î¸Þ´ÏÆ¼;</label>
+										&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+												value="hotel">24ì‹œê°„ ë°ìŠ¤í¬</label>
+											&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+													value="motel">íŒŒí‹°ë£¸</label>
+												&nbsp;&nbsp;&nbsp;&nbsp;<labe><input type="checkbox" name="services"
+														value="pension">ì™€ì´íŒŒì´</label>
+
 									</div>
 								</div>
 
 
 								<div>
-									<button type="button" class="btn btn-info btn-lg">µî·Ï ¹× ¼öÁ¤</button>
+									<button type="button" class="btn btn-info btn-lg">ë“±ë¡ ë° ìˆ˜ì •</button>
 								</div>
 							</form>
 						</div>

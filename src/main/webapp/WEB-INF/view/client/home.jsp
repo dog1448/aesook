@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -11,7 +12,7 @@
 
 	<div id="page">
 		<%@ include file="main_header.jspf"%>
-		<!--index È­¸é »çÁø ºÎºÐ-->
+		<!--index í™”ë©´ ì‚¬ì§„ ë¶€ë¶„-->
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
@@ -22,8 +23,8 @@
 								<div
 									class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 									<div class="slider-text-inner text-center">
-										<h2>Áý°°ÀÌ Æí¾ÈÇÑ ¼÷¼Ò/¹º°¡ ´Ù¸¥ ´À³¦</h2>
-										<h1>¾Ö¼÷ÀÌ</h1>
+										<h2>ì§‘ê°™ì´ íŽ¸ì•ˆí•œ ìˆ™ì†Œ/ë­”ê°€ ë‹¤ë¥¸ ëŠë‚Œ</h2>
+										<h1>ì• ìˆ™ì´</h1>
 									</div>
 								</div>
 							</div>
@@ -33,18 +34,18 @@
 			</div>
 		</aside>
 
-		<!-- ÅëÇÕ °Ë»ö ºÎºÐ -->
+		<!-- í†µí•© ê²€ìƒ‰ ë¶€ë¶„ -->
 		<div id="colorlib-reservation">
 			<div class="row">
 				<div class="search-wrap">
 					<div class="tab-content">
 						<div id="flight" class="tab-pane fade in active">
-							<!-- °Ë»ö °ª -->
+							<!-- ê²€ìƒ‰ ê°’ -->
 							<form method="post" class="colorlib-form" action="">
 								<div class="row">
 									<div class="col-lg-10">
 										<div class="form-group">
-											<label for="date">ÅëÇÕ°Ë»ö</label>
+											<label for="date">í†µí•©ê²€ìƒ‰</label>
 											<div class="form-field">
 												<input type="text" id="location" class="form-control"
 													placeholder="Search Location">
@@ -52,7 +53,7 @@
 										</div>
 									</div>
 									<div class="col-md-2">
-										<input type="submit" name="submit" id="submit" value="°Ë»öÇÏ±â"
+										<input type="submit" name="submit" id="submit" value="ê²€ìƒ‰í•˜ê¸°"
 											class="btn btn-primary btn-block">
 									</div>
 								</div>
@@ -64,7 +65,7 @@
 			</div>
 		</div>
 
-		<!-- È£ÅÚ, ¸ðÅÚ, Ææ¼Ç, °Ô½ºÆ®ÇÏ¿ì½º, ¸®Á¶Æ®/ÄÜµµ Å¬¸¯ ºÎºÐ (ÆäÀÌÁö ÀÌµ¿½Ã ¼÷¼ÒÁ¾·ù µ¥ÀÌÅÍ °¡Áö°í ³Ñ¾î°¡¾ß ÇÒµí?) -->
+		<!-- í˜¸í…”, ëª¨í…”, íŽœì…˜, ê²ŒìŠ¤íŠ¸í•˜ìš°ìŠ¤, ë¦¬ì¡°íŠ¸/ì½˜ë„ í´ë¦­ ë¶€ë¶„ (íŽ˜ì´ì§€ ì´ë™ì‹œ ìˆ™ì†Œì¢…ë¥˜ ë°ì´í„° ê°€ì§€ê³  ë„˜ì–´ê°€ì•¼ í• ë“¯?) -->
 		<div id="colorlib-services">
 			<div class="container">
 				<div class="row no-gutters">
@@ -72,7 +73,7 @@
 						<div class="services">
 							<span class="icon"> <a href="selectRegion.do"><img
 									src="resources/client/images/hotel.png" /></a></span>
-							<h3>È£ÅÚ</h3>
+							<h3>í˜¸í…”</h3>
 						</div>
 					</div>
 					<div class="col-md-4 animate-box text-center">
@@ -80,7 +81,7 @@
 							<span class="icon"> <a href="selectRegion.do"><img
 									src="resources/client/images/motel.png" /></a>
 							</span>
-							<h3>¸ðÅÚ</h3>
+							<h3>ëª¨í…”</h3>
 						</div>
 					</div>
 					<div class="col-md-4 animate-box text-center">
@@ -88,7 +89,7 @@
 							<span class="icon"> <a href="selectRegion.do"><img
 									src="resources/client/images/pension.png" /></a>
 							</span>
-							<h3>Ææ¼Ç</h3>
+							<h3>íŽœì…˜</h3>
 						</div>
 					</div>
 					<div class="col-md-6 animate-box text-center">
@@ -96,7 +97,7 @@
 							<span class="icon"> <a href="selectRegion.do"><img
 									src="resources/client/images/guestHouse.png" /></a>
 							</span>
-							<h3>°Ô½ºÆ® ÇÏ¿ì½º</h3>
+							<h3>ê²ŒìŠ¤íŠ¸ í•˜ìš°ìŠ¤</h3>
 						</div>
 					</div>
 					<div class="col-md-6 animate-box text-center">
@@ -104,7 +105,7 @@
 							<span class="icon"> <a href="selectRegion.do"><img
 									src="resources/client/images/resort.png" /></a>
 							</span>
-							<h3>¸®Á¶Æ®/ÄÜµµ</h3>
+							<h3>ë¦¬ì¡°íŠ¸/ì½˜ë„</h3>
 						</div>
 					</div>
 				</div>
@@ -112,27 +113,27 @@
 		</div>
 		<hr>
 
-		<!-- ÀÎ±â ¼÷¼Ò ºÎºÐ -->
+		<!-- ì¸ê¸° ìˆ™ì†Œ ë¶€ë¶„ -->
 		<div id="colorlib-hotel">
 			<div class="container">
 				<div class="row">
 					<div
 						class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>ÀÎ±â ¼÷¼Ò</h2>
-						<p>±ÝÀÏÀÇ ÀÎ±â ¼÷¼Ò ¸ñ·ÏÀÔ´Ï´Ù.</p>
+						<h2>ì¸ê¸° ìˆ™ì†Œ</h2>
+						<p>ê¸ˆì¼ì˜ ì¸ê¸° ìˆ™ì†Œ ëª©ë¡ìž…ë‹ˆë‹¤.</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12 animate-box">
 						<div class="owl-carousel">
-							<!-- °¢ itemÀÌ ÇÏ³ªÀÇ ¼÷¼Ò ¸µÅ© ºÎºÐ -->
+							<!-- ê° itemì´ í•˜ë‚˜ì˜ ìˆ™ì†Œ ë§í¬ ë¶€ë¶„ -->
 							<div class="item">
 								<div class="hotel-entry">
-									<!-- ¿©±â¿¡ JSTL·Î DB °ªµé ¹Þ¾Æ ¼³Á¤ÇØ¾ßÇÔ -->
+									<!-- ì—¬ê¸°ì— JSTLë¡œ DB ê°’ë“¤ ë°›ì•„ ì„¤ì •í•´ì•¼í•¨ -->
 									<a href="hotels.do" class="hotel-img"
 										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
-											<span>±âº» ¼÷¹Úºñ</span><small> /1¹Ú</small>
+											<span>ê¸°ë³¸ ìˆ™ë°•ë¹„</span><small> /1ë°•</small>
 										</p>
 									</a>
 									<div class="desc">
@@ -143,21 +144,21 @@
 											545 Reviews
 										</p>
 										<h3>
-											<a href="room-detail.do">¼÷¼Ò¸í</a>
+											<a href="room-detail.do">ìˆ™ì†Œëª…</a>
 										</h3>
-										<span class="place">±âº»ÁÖ¼Ò</span>
-										<p>¼÷¼Ò¼Ò°³</p>
+										<span class="place">ê¸°ë³¸ì£¼ì†Œ</span>
+										<p>ìˆ™ì†Œì†Œê°œ</p>
 									</div>
 								</div>
 							</div>
-							<!-- °¢ itemÀÌ ÇÏ³ªÀÇ ¼÷¼Ò ¸µÅ© ºÎºÐ -->
+							<!-- ê° itemì´ í•˜ë‚˜ì˜ ìˆ™ì†Œ ë§í¬ ë¶€ë¶„ -->
 							<div class="item">
 								<div class="hotel-entry">
-									<!-- ¿©±â¿¡ JSTL·Î DB °ªµé ¹Þ¾Æ ¼³Á¤ÇØ¾ßÇÔ -->
+									<!-- ì—¬ê¸°ì— JSTLë¡œ DB ê°’ë“¤ ë°›ì•„ ì„¤ì •í•´ì•¼í•¨ -->
 									<a href="hotels.do" class="hotel-img"
 										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
-											<span>±âº» ¼÷¹Úºñ</span><small> /1¹Ú</small>
+											<span>ê¸°ë³¸ ìˆ™ë°•ë¹„</span><small> /1ë°•</small>
 										</p>
 									</a>
 									<div class="desc">
@@ -168,21 +169,21 @@
 											545 Reviews
 										</p>
 										<h3>
-											<a href="room-detail.do">¼÷¼Ò¸í</a>
+											<a href="room-detail.do">ìˆ™ì†Œëª…</a>
 										</h3>
-										<span class="place">±âº»ÁÖ¼Ò</span>
-										<p>¼÷¼Ò¼Ò°³</p>
+										<span class="place">ê¸°ë³¸ì£¼ì†Œ</span>
+										<p>ìˆ™ì†Œì†Œê°œ</p>
 									</div>
 								</div>
 							</div>
-							<!-- °¢ itemÀÌ ÇÏ³ªÀÇ ¼÷¼Ò ¸µÅ© ºÎºÐ -->
+							<!-- ê° itemì´ í•˜ë‚˜ì˜ ìˆ™ì†Œ ë§í¬ ë¶€ë¶„ -->
 							<div class="item">
 								<div class="hotel-entry">
-									<!-- ¿©±â¿¡ JSTL·Î DB °ªµé ¹Þ¾Æ ¼³Á¤ÇØ¾ßÇÔ -->
+									<!-- ì—¬ê¸°ì— JSTLë¡œ DB ê°’ë“¤ ë°›ì•„ ì„¤ì •í•´ì•¼í•¨ -->
 									<a href="hotels.do" class="hotel-img"
 										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
-											<span>±âº» ¼÷¹Úºñ</span><small> /1¹Ú</small>
+											<span>ê¸°ë³¸ ìˆ™ë°•ë¹„</span><small> /1ë°•</small>
 										</p>
 									</a>
 									<div class="desc">
@@ -193,21 +194,21 @@
 											545 Reviews
 										</p>
 										<h3>
-											<a href="room-detail.do">¼÷¼Ò¸í</a>
+											<a href="room-detail.do">ìˆ™ì†Œëª…</a>
 										</h3>
-										<span class="place">±âº»ÁÖ¼Ò</span>
-										<p>¼÷¼Ò¼Ò°³</p>
+										<span class="place">ê¸°ë³¸ì£¼ì†Œ</span>
+										<p>ìˆ™ì†Œì†Œê°œ</p>
 									</div>
 								</div>
 							</div>
-							<!-- °¢ itemÀÌ ÇÏ³ªÀÇ ¼÷¼Ò ¸µÅ© ºÎºÐ -->
+							<!-- ê° itemì´ í•˜ë‚˜ì˜ ìˆ™ì†Œ ë§í¬ ë¶€ë¶„ -->
 							<div class="item">
 								<div class="hotel-entry">
-									<!-- ¿©±â¿¡ JSTL·Î DB °ªµé ¹Þ¾Æ ¼³Á¤ÇØ¾ßÇÔ -->
+									<!-- ì—¬ê¸°ì— JSTLë¡œ DB ê°’ë“¤ ë°›ì•„ ì„¤ì •í•´ì•¼í•¨ -->
 									<a href="hotels.jsp" class="hotel-img"
 										style="background-image: url(resources/client/images/hotel-1.jpg);">
 										<p class="price">
-											<span>±âº» ¼÷¹Úºñ</span><small> /1¹Ú</small>
+											<span>ê¸°ë³¸ ìˆ™ë°•ë¹„</span><small> /1ë°•</small>
 										</p>
 									</a>
 									<div class="desc">
@@ -218,10 +219,10 @@
 											545 Reviews
 										</p>
 										<h3>
-											<a href="room-detail.jsp">¼÷¼Ò¸í</a>
+											<a href="room-detail.jsp">ìˆ™ì†Œëª…</a>
 										</h3>
-										<span class="place">±âº»ÁÖ¼Ò</span>
-										<p>¼÷¼Ò¼Ò°³</p>
+										<span class="place">ê¸°ë³¸ì£¼ì†Œ</span>
+										<p>ìˆ™ì†Œì†Œê°œ</p>
 									</div>
 								</div>
 							</div>
@@ -231,14 +232,14 @@
 			</div>
 		</div>
 
-		<!-- ÀÌº¥Æ® ¹è³Ê (4°³)-->
+		<!-- ì´ë²¤íŠ¸ ë°°ë„ˆ (4ê°œ)-->
 		<div class="colorlib-tour colorlib-light-grey">
 			<div class="container">
 				<div class="row">
 					<div
 						class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>ÀÌº¥Æ®</h2>
-						<p>Áö±Ý ÁøÇà ÁßÀÎ ÀÌº¥Æ®¸¦ È®ÀÎÇÏ¼¼¿ä</p>
+						<h2>ì´ë²¤íŠ¸</h2>
+						<p>ì§€ê¸ˆ ì§„í–‰ ì¤‘ì¸ ì´ë²¤íŠ¸ë¥¼ í™•ì¸í•˜ì„¸ìš”</p>
 					</div>
 				</div>
 			</div>

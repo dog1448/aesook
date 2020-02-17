@@ -662,5 +662,10 @@
 
 </div>
 <%@ include file="javascript.jspf" %>
+<!-- morris-->
+<script src="resources/admin/js/morris.min.js" type="text/javascript"></script>
+        
+<!-- morris-data-->
+<script src="resources/admin/js/morris-data.js" type="text/javascript"></script>
 </body>
 </html>

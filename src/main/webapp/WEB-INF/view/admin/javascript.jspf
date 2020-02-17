@@ -22,8 +22,3 @@
         <!-- Custom Theme JavaScript -->
         <script src="resources/admin/js/startmin.js" type="text/javascript"></script>
         
-		<!-- morris-->
-        <script src="resources/admin/js/morris.min.js" type="text/javascript"></script>
-        
-		<!-- morris-data-->
-        <script src="resources/admin/js/morris-data.js" type="text/javascript"></script>

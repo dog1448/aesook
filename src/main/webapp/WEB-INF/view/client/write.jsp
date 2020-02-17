@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -81,35 +81,35 @@
         <div class="container">
             <table class="table table-bordered">
                 <thead>
-                    <caption> ±€æ≤±‚ </caption>
+                    <caption> Í∏ÄÏì∞Í∏∞ </caption>
                 </thead>
                 <tbody>
                     <form action="write_ok.jsp" method="post" encType="multiplart/form-data">
                         <tr>
-                            <th>¡¶∏Ò: </th>
-                            <td><input type="text" placeholder="¡¶∏Ò¿ª ¿‘∑¬«œººø‰. " name="subject" class="form-control" /></td>
+                            <th>Ï†úÎ™©: </th>
+                            <td><input type="text" placeholder="Ï†úÎ™©ÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî. " name="subject" class="form-control" /></td>
                         </tr>
                         <tr>
-                            <th>≥ªøÎ: </th>
-                            <td><textarea cols="10" placeholder="≥ªøÎ¿ª ¿‘∑¬«œººø‰. " name="content"
+                            <th>ÎÇ¥Ïö©: </th>
+                            <td><textarea cols="10" placeholder="ÎÇ¥Ïö©ÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî. " name="content"
                                     class="form-control" style="height: 500px;"></textarea></td>
                         </tr>
                         <tr>
-                            <th>√∑∫Œ∆ƒ¿œ: </th>
-                            <td><input type="text" placeholder="∆ƒ¿œ¿ª º±≈√«œººø‰. " name="filename" class="form-control" />
+                            <th>Ï≤®Î∂ÄÌååÏùº: </th>
+                            <td><input type="text" placeholder="ÌååÏùºÏùÑ ÏÑ†ÌÉùÌïòÏÑ∏Ïöî. " name="filename" class="form-control" />
                             </td>
                         </tr>
 
                         <tr>
                             <td colspan="2">
                                 <!--
-                    <input type="button" value="µÓ∑œ" onclick="sendData()" class="pull-right"/>
+                    <input type="button" value="Îì±Î°ù" onclick="sendData()" class="pull-right"/>
                     <input type="button" value="reset" class="pull-left"/>
-                    <input type="button" value="±€ ∏Ò∑œ¿∏∑Œ... " class="pull-right" onclick="javascript:location.href='list.jsp'"/>
+                    <input type="button" value="Í∏Ä Î™©Î°ùÏúºÎ°ú... " class="pull-right" onclick="javascript:location.href='list.jsp'"/>
                     -->
-                                <a class="btn btn-default" onclick="sendData()"> µÓ∑œ </a>
+                                <a class="btn btn-default" onclick="sendData()"> Îì±Î°ù </a>
                                 <a class="btn btn-default" type="reset"> reset </a>
-                                <a class="btn btn-default" onclick="javascript:location.href='list'">±€ ∏Ò∑œ¿∏∑Œ...</a>
+                                <a class="btn btn-default" onclick="javascript:location.href='list'">Í∏Ä Î™©Î°ùÏúºÎ°ú...</a>
                             </td>
                         </tr>
                     </form>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -64,9 +64,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb-text">
-                            <h2>πÊ¿Ã∏ß</h2>
+                            <h2>Î∞©Ïù¥Î¶Ñ</h2>
                             <div>
-                                <a href="hotel-room.jsp">º˜º“∏Ì</a>
+                                <a href="hotel-room.jsp">ÏàôÏÜåÎ™Ö</a>
                             </div>
                         </div>
                     </div>
@@ -133,23 +133,23 @@
                             <h3>Your Reservation</h3>
                             <form action="#">
                                 <div class="check-date">
-                                    <label for="date-in">√º≈©¿Œ:</label>
+                                    <label for="date-in">Ï≤¥ÌÅ¨Ïù∏:</label>
                                     <input type="text" class="date-input" id="date-in">
                                     <i class="icon_calendar"></i>
                                 </div>
                                 <div class="check-date">
-                                    <label for="date-out">√º≈©æ∆øÙ:</label>
+                                    <label for="date-out">Ï≤¥ÌÅ¨ÏïÑÏõÉ:</label>
                                     <input type="text" class="date-input" id="date-out">
                                     <i class="icon_calendar"></i>
                                 </div>
                                 <div class="select-option">
-                                    <label for="guest">¿Œø¯:</label>
+                                    <label for="guest">Ïù∏Ïõê:</label>
                                     <select id="guest">
                                         <option value="">1</option>
                                         <option value="">2</option>
                                     </select>
                                 </div>
-                                <button type="submit"><a href="payment.jsp">øπæ‡«œ±‚</a></button>
+                                <button type="submit"><a href="payment.jsp">ÏòàÏïΩÌïòÍ∏∞</a></button>
                             </form>
                         </div>
                     </div>

@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- ∫‰∆˜∆Æ -->
+    <!-- Î∑∞Ìè¨Ìä∏ -->
     <meta name="viewport" content="width=device-width" initial-scale="1">
-    <!-- Ω∫≈∏¿œΩ√∆Æ ¬¸¡∂  -->
+    <!-- Ïä§ÌÉÄÏùºÏãúÌä∏ Ï∞∏Ï°∞  -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <title>jsp ∞‘Ω√∆« ¿•ªÁ¿Ã∆Æ</title>
+    <title>jsp Í≤åÏãúÌåê ÏõπÏÇ¨Ïù¥Ìä∏</title>
     <style type="text/css">
         a,
         a:hover {
@@ -69,23 +69,23 @@
 <body>
 
 
-    <!-- ≥◊∫Ò∞‘¿Ãº«  -->
+    <!-- ÎÑ§ÎπÑÍ≤åÏù¥ÏÖò  -->
     <div id="page">
         <%@include file="main_header.jspf" %>
         <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 		<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
         
-        <!-- ∞‘Ω√∆« -->
+        <!-- Í≤åÏãúÌåê -->
         <div class="container">
 
             <div class="row">
                 <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
                     <thead>
                         <tr>
-                            <th style="background-color: #eeeeee; text-align: center;">π¯»£</th>
-                            <th style="background-color: #eeeeee; text-align: center;">¡¶∏Ò</th>
-                            <th style="background-color: #eeeeee; text-align: center;">¿€º∫¿⁄</th>
-                            <th style="background-color: #eeeeee; text-align: center;">¿€º∫¿œ</th>
+                            <th style="background-color: #eeeeee; text-align: center;">Î≤àÌò∏</th>
+                            <th style="background-color: #eeeeee; text-align: center;">Ï†úÎ™©</th>
+                            <th style="background-color: #eeeeee; text-align: center;">ÏûëÏÑ±Ïûê</th>
+                            <th style="background-color: #eeeeee; text-align: center;">ÏûëÏÑ±Ïùº</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,15 +93,15 @@
                         <tr>
                             <td>1</td>
                             <td><a href="chat.jsp">EXAMPLE</a></td>
-                            <td>∞¸∏Æ¿⁄</td>
+                            <td>Í¥ÄÎ¶¨Ïûê</td>
                             <td>2020-02-07</td>
                         </tr>
 
                     </tbody>
                 </table>
-                <a href="#" class="btn btn-success btn-arrow-left">¿Ã¿¸</a>
+                <a href="#" class="btn btn-success btn-arrow-left">Ïù¥Ï†Ñ</a>
 
-                <a href="#" class="btn btn-success btn-arrow-left">¥Ÿ¿Ω</a>
+                <a href="#" class="btn btn-success btn-arrow-left">Îã§Ïùå</a>
             </div>
         </div>
         <div>&nbsp;</div>
@@ -115,9 +115,9 @@
         <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
     </div>
 
-    <!-- æ÷¥œ∏≈¿Ãº« ¥„¥Á JQUERY -->
+    <!-- Ïï†ÎãàÎß§Ïù¥ÏÖò Îã¥Îãπ JQUERY -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!-- ∫Œ∆ÆΩ∫∆Æ∑¶ JS  -->
+    <!-- Î∂ÄÌä∏Ïä§Ìä∏Îû© JS  -->
     <script src="resources/client/js/bootstrap.js"></script>
     <!-- jQuery -->
     <script src="resources/client/js/jquery.min.js"></script>

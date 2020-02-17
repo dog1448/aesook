@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 
@@ -28,18 +28,18 @@
                                 <div class="col-md-12 about">
                                     <h2>MYPAGE</h2>
                                     <ul>
-                                        <li><a href="booking.jsp">øπæ‡¡∂»∏</a></li>
-                                        <li><a href="myReview.jsp">≥™¿« »ƒ±‚</a></li>
-                                        <li><a href="modify_info.jsp">∞≥¿Œ¡§∫∏∞¸∏Æ</a></li>
-                                        <li><a href="brn.jsp">ªÁæ˜¿⁄µÓ∑œ</a></li>
-                                        <li><a href="inserthotel.jsp">º˜º“ ∞¸∏Æ</a></li>
-                                        <li><a href="withdrawal.jsp">»∏ø¯≈ª≈</a></li>
+                                        <li><a href="booking.jsp">ÏòàÏïΩÏ°∞Ìöå</a></li>
+                                        <li><a href="myReview.jsp">ÎÇòÏùò ÌõÑÍ∏∞</a></li>
+                                        <li><a href="modify_info.jsp">Í∞úÏù∏Ï†ïÎ≥¥Í¥ÄÎ¶¨</a></li>
+                                        <li><a href="brn.jsp">ÏÇ¨ÏóÖÏûêÎì±Î°ù</a></li>
+                                        <li><a href="inserthotel.jsp">ÏàôÏÜå Í¥ÄÎ¶¨</a></li>
+                                        <li><a href="withdrawal.jsp">ÌöåÏõêÌÉàÌá¥</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-three-forth animate-box">
-                            <h2>≥™¿« »ƒ±‚</h2>
+                            <h2>ÎÇòÏùò ÌõÑÍ∏∞</h2>
                             <div>&nbsp;</div>
                             <div class="row">
                                 <table class="table table-striped"
@@ -47,15 +47,15 @@
                                     <thead>
                                         <tr>
                                             <th style="background-color: #eeeeee; text-align: center;">
-                                                π¯»£</th>
+                                                Î≤àÌò∏</th>
                                             <th style="background-color: #eeeeee; text-align: center;">
-                                                ¡¶∏Ò</th>
+                                                Ï†úÎ™©</th>
                                             <th style="background-color: #eeeeee; text-align: center;">
-                                                ¿€º∫¿⁄</th>
+                                                ÏûëÏÑ±Ïûê</th>
                                             <th style="background-color: #eeeeee; text-align: center;">
-                                                ∫∞¡°</th>
+                                                Î≥ÑÏ†ê</th>
                                             <th style="background-color: #eeeeee; text-align: center;">
-                                                ¿€º∫¿œ</th>
+                                                ÏûëÏÑ±Ïùº</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,14 +63,14 @@
                                         <tr>
                                             <td>1</td>
                                             <td><a>EXAMPLE</a></td>
-                                            <td>ø‰««</td>
+                                            <td>ÏöîÌîº</td>
                                             <td>
                                                 <div class="starRev">
-                                                    <span class="starR on">∫∞1</span>
-                                                    <span class="starR on">∫∞2</span>
-                                                    <span class="starR on">∫∞3</span>
-                                                    <span class="starR on">∫∞4</span>
-                                                    <span class="starR on">∫∞5</span>
+                                                    <span class="starR on">Î≥Ñ1</span>
+                                                    <span class="starR on">Î≥Ñ2</span>
+                                                    <span class="starR on">Î≥Ñ3</span>
+                                                    <span class="starR on">Î≥Ñ4</span>
+                                                    <span class="starR on">Î≥Ñ5</span>
                                                 </div>
                                             </td>
                                             <td>2020-02-07</td>
@@ -78,8 +78,8 @@
 
                                     </tbody>
                                 </table>
-                                <a href="#" class="btn btn-success btn-arrow-left">¿Ã¿¸</a>
-                                <a href="#" class="btn btn-success btn-arrow-left">¥Ÿ¿Ω</a>
+                                <a href="#" class="btn btn-success btn-arrow-left">Ïù¥Ï†Ñ</a>
+                                <a href="#" class="btn btn-success btn-arrow-left">Îã§Ïùå</a>
                             </div>
                         </div>
                     </div>

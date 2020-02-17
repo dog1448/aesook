@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,62 +30,73 @@
 	<link rel="stylesheet" type="text/css" href="resources/client/css/util.css">
 	<link rel="stylesheet" type="text/css" href="resources/client/css/main.css">
 <!--===============================================================================================-->
+
+
 </head>
 <body style="background-color: #999999;">
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('resources/client/images/bg-02.jpg');"></div>
+			<div class="login100-more" style="background-image: url('resources/client/images/img_bg_5.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form" action="">
+				
+				<form class="login100-form validate-form" action="register.do" method="post" name="register">
 					&nbsp;&nbsp;&nbsp;<a href="home.jsp"><img src="resources/client/images/home.png"></a>
 					<span class="login100-form-title p-b-59">
-						È¸¿ø°¡ÀÔ
-					</span>		
+						íšŒì›ê°€ì…
+					</span>	
 				
 					<div class="wrap-input100 validate-input">						
-						<span class="label-input100">¾ÆÀÌµğ</span>						
-						<input class="input100" type="text" name="username" placeholder="Username...">
+						<span class="label-input100">ì•„ì´ë””</span>				
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" id="id_check" class="btn btn-success" onclick="checkId();" value="N">ì¤‘ë³µí™•ì¸</button>														
+						<input class="input100" type="text" name="memberId" id="memberId" placeholder="Username...">																
+						<span class="focus-input100"></span>												
+					</div>					
+					<div class="wrap-input100 validate-input">
+						<span class="label-input100">ë¹„ë°€ë²ˆí˜¸</span>
+						<input class="input100" type="Password" name="memberPass" id="memberPass" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>
-
+					
 					<div class="wrap-input100 validate-input">
-						<span class="label-input100">ºñ¹Ğ¹øÈ£</span>
-						<input class="input100" type="Password" name="pass" placeholder="*************">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input">
-						<span class="label-input100">ºñ¹Ğ¹øÈ£ È®ÀÎ</span>
-						<input class="input100" type="Password" name="repeat-pass" placeholder="*************">
+						<span class="label-input100">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</span>
+						<input class="input100" type="Password" name="checkPass" id="checkPass" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>	
+					
 					<div class="wrap-input100 validate-input">
-						<span class="label-input100">ÀÌ¸§</span>
-						<input class="input100" type="text" name="name" placeholder="Name...">
+						<span class="label-input100">ì´ë¦„</span>
+						<input class="input100" type="text" name="memberName" id="memberName" placeholder="Name...">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<span class="label-input100">ÀÌ¸ŞÀÏ</span>
-						<input class="input100" type="text" name="email" placeholder="Email addess...">
+						<span class="label-input100">ì´ë©”ì¼</span>
+						<input class="input100" type="text" name="memberEmail" id="memberEmail" placeholder="Email addess...">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<span class="label-input100">ÈŞ´ëÆù</span>
-						<input class="input100" type="text" name="phone" placeholder="Phone number...">
+						<span class="label-input100">íœ´ëŒ€í°</span>
+						<input class="input100" type="text" name="memberPhone" id="memberPhone" placeholder="Phone number...">
 						<span class="focus-input100"></span>
 					</div>
+					<input type="hidden" name="memberStatus" value="R">
 					<div class="flex-m w-full p-b-33">
 						<div class="contact100-form-checkbox">
 							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 							<label class="label-checkbox100" for="ckb1">
 								<span class="txt1">
-									È¸¿ø ¾à°ü¿¡ µ¿ÀÇÇÕ´Ï´Ù.
+									íšŒì› ì•½ê´€ì— ë™ì˜í•©ë‹ˆë‹¤.
 									<a href="#" class="txt2 hov1">
-										(¾à°üº¸±â)
+										(ì•½ê´€ë³´ê¸°)
 									</a>
 								</span>
 							</label>
@@ -95,37 +106,24 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" type="submit">
-								È¸¿ø°¡ÀÔ
-							</button>
+							<button class="login100-form-btn" type="submit" id="submit">íšŒì›ê°€ì…</button>
 						</div>
 
-						<a href="login.jsp" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-							·Î±×ÀÎ
+						<a href="login.do" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+							ë¡œê·¸ì¸
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>
 					</div>
 				</form>
+				
 			</div>
 		</div>
 	</div>
 	
-<!--===============================================================================================-->
 	<script src="resources/client/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="resources/client/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/bootstrap/js/popper.js"></script>
-	<script src="resources/client/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/daterangepicker/moment.min.js"></script>
-	<script src="resources/client/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/js/main_Login.js"></script>
-
+	<script src="resources/client/js/register.js"></script>
+	
+	
 </body>
 </html>
