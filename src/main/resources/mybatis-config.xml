@@ -8,14 +8,19 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
+
 		<typeAlias type="com.spring.aesook.admin.datalist.vo.HotelsVO" alias="hotels"/>
 		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>		
-		<typeAlias type="com.spring.aesook.client.board.vo.BoardVO" alias="memberBoard"/>		
+		<typeAlias type="com.spring.aesook.client.board.vo.BoardVO" alias="memberBoard"/>	
+    <typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerBookingVO" alias="booking"/>		
+
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/adminmappings/manager-Mapper.xml" />
+		<mapper resource="mappings/adminmappings/managerDataList-Mapper.xml" />
 		<mapper resource="mappings/clientmappings/member-Mapper.xml" />
-   	    <mapper resource="mappings/adminmappings/hotels-Mapper.xml"/>
-   	    <mapper resource="mappings/clientmappings/board-Mapper.xml"/>
+    <mapper resource="mappings/adminmappings/hotels-Mapper.xml"/>
+   	<mapper resource="mappings/clientmappings/board-Mapper.xml"/>
+
 	</mappers>
 </configuration>
