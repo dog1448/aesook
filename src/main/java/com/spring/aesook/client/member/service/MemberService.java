@@ -8,4 +8,5 @@ public interface MemberService {
     public MemberVO getMember(MemberVO vo);
     public int checkLoginId(MemberVO vo);
     public void updateStatusMember(MemberVO vo);
+    public void updateInfoMember(MemberVO vo);
 }

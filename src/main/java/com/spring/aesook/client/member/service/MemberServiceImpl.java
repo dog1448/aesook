@@ -32,4 +32,10 @@ public class MemberServiceImpl implements MemberService{
 	public void updateStatusMember(MemberVO vo) {
 		memberDAO.updateStatusMember(vo);
 	}
+
+	@Override
+	public void updateInfoMember(MemberVO vo) {		
+		memberDAO.updateInfoMember(vo);
+		System.out.println(vo.getMemberPhone().toString());
+	}
 }
