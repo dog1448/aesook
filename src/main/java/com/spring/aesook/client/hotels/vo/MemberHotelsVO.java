@@ -1,9 +1,9 @@
-package com.spring.aesook.admin.datalist.vo;
+package com.spring.aesook.client.hotels.vo;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class ManagerHotelsVO {
+public class MemberHotelsVO {
 	private int hotelsCode;
 	private String hotelsName;
 	private String hotelsType;
@@ -15,6 +15,7 @@ public class ManagerHotelsVO {
 	private String hotelsPath;
 	private String hotelsInfo;
 	private String hotelsIntroduce;
+	
 	public int getHotelsCode() {
 		return hotelsCode;
 	}
@@ -88,5 +89,7 @@ public class ManagerHotelsVO {
 				+ ", hotelsAddress1=" + hotelsAddress1 + ", hotelsAddress2=" + hotelsAddress2 + ", hotelsPath="
 				+ hotelsPath + ", hotelsInfo=" + hotelsInfo + ", hotelsIntroduce=" + hotelsIntroduce + "]";
 	}
+	
+	
 	
 }
