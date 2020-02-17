@@ -16,7 +16,8 @@
 	<!-- CSS / JS / Images -->
 	<mvc:resources mapping="/resources/**" location="resources/" />
 	
-	<!-- Admin Interceptors-->
+
+	<!-- Admin Interceptors -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/login.admin"/>

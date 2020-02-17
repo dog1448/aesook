@@ -50,7 +50,6 @@ public class ManagerController {
 	@ResponseBody
 	@RequestMapping(value = "/idCheck.admin", method = RequestMethod.POST)
 	public int idCheck(ManagerVO vo) {
-		System.out.println("컨트롤러");
 		int result = managerRegisterService.idCheck(vo);
 		return result;
 	}

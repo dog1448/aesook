@@ -22,72 +22,74 @@
                         <div class="col-lg-7">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Basic Form Elements
+                                    Booking Info Detail
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-7">
-                                            <form role="form" action="#">
+                                            <form role="form" action="bookingInfo.admin" method="post" id="modifyBookingInfo">
 
                                                 <fieldset id="field" disabled>
                                                 <div class="form-group">
                                                     <label>Booking_Code</label>
-                                                    <input class="form-control" disabled>
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingCode}" id="bookingCode" disabled>
+                                                    <input type="hidden" value="${bookingInfo.bookingCode}" name="bookingCode">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Hotels_Name</label>
-                                                    <input class="form-control" disabled>
+                                                    <label>Hotels_Code</label>
+                                                    <input class="form-control" type="text" value="${bookingInfo.hotelsCode}" name="hotelsCode" id="hotelsCode" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Member_Id</label>
-                                                    <input class="form-control" disabled>
+                                                    <input class="form-control" type="text" value="${bookingInfo.memberId}" name="memberId" id="memberId" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Room_Code</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" type="text" value="${bookingInfo.roomCode}" name="roomCode" id="roomCode">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Room_Type</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" type="text" value="${bookingInfo.sortType}" name="sortType" id="sortType">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Check_In</label>
-                                                    <input class="form-control datePicker">
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingCheckIn}" name="bookingCheckIn" id="bookingCheckIn">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Check_Out</label>
-                                                    <input class="form-control datePicker">
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingCheckOut}" name="bookingCheckOut" id="bookingCheckOut">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Name</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingName}" name="bookingName" id="bookingName">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booker_Phone</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingPhone}" name="bookingPhone" id="bookingPhone">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Cnt</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingCnt}" name="bookingCnt" id="bookingCnt">
                                                 </div>
-                                                <div class="form-group">
+												<div class="form-group">
                                                     <label>Booking_Date</label>
-                                                    <input class="form-control datePicker">
+                                                    <input class="form-control" type="date" value="${bookingInfo.bookingDate}" data-date-format="YYYY-MM-DD" name="bookingDate" id="bookingDate" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Cancel_Date</label>
-                                                    <input class="form-control datePicker">
+                                                    <input class="form-control" type="date" value="${bookingInfo.bookingCancelDate}" name="bookingCancelDate" id="bookingCancelDate" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Total_Price</label>
-                                                    <input class="form-control" disabled>
+                                                    <input class="form-control" type="text" value="${bookingInfo.bookingTotalPrice}" id="bookingTotalPrice" disabled>
+                                                    <input type="hidden" value="${bookingInfo.bookingTotalPrice}" name="bookingTotalPrice">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Status</label>
-                                                    <select class="form-control">
-                                                        <option>B</option>
-                                                        <option>C</option>
-                                                        <option>D</option>
+                                                    <select class="form-control" id="statusSelectBox">
+                                                        <option value="B">B</option>
+                                                        <option value="C">C</option>
+                                                        <option value="D">D</option>
                                                     </select>
                                                 </div>
                                                 </fieldset>
@@ -120,7 +122,12 @@
 <!-- DataPicker -->
 	<script>
             $(document).ready(function() {
+                
                 var isDisabled = $("#field").attr("disabled");
+            
+                $('#statusSelectBox').val('${bookingInfo.bookingStatus}').prop('selected', true);
+                
+                
             });
 
 
@@ -128,6 +135,7 @@
                     $("#field").attr("disabled", false); //활성화
 
             $(function() {	
+                
                 $('.datePicker').datepicker({
                     format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
                     autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
@@ -152,6 +160,8 @@
                     language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
                     
                 });//datepicker end
+                
+               
                 
             });//ready end
 
