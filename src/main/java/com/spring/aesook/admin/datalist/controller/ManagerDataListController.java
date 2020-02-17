@@ -25,13 +25,15 @@ public class ManagerDataListController {
 	@RequestMapping(value = "/bookingInfo.admin", method = RequestMethod.GET)
 	public String getBookingInfo(ManagerBookingVO vo, Model model) {
 		model.addAttribute("bookingInfo", managerBookingService.getBookingInfo(vo.getBookingCode()));
+		System.out.println(vo);
 		return "/bookingInfo";
 	}
 	
 	@RequestMapping(value = "/bookingInfo.admin", method = RequestMethod.POST)
-	public String setBookingInfo(ManagerBookingVO vo) {
+	public String setBookingInfo(ManagerBookingVO vo, Model model) {
 		managerBookingService.update(vo);
-		return "/bookingInfo";
+		model.addAttribute("bookingList", managerBookingService.getBookingList());
+		return "/bookingTable";
 	}
 	
 }

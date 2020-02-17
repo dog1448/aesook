@@ -104,6 +104,15 @@ public class ManagerBookingVO {
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
-
+	@Override
+	public String toString() {
+		return "ManagerBookingVO [bookingCode=" + bookingCode + ", hotelsCode=" + hotelsCode + ", sortType=" + sortType
+				+ ", roomCode=" + roomCode + ", memberId=" + memberId + ", bookingCheckIn=" + bookingCheckIn
+				+ ", bookingCheckOut=" + bookingCheckOut + ", bookingName=" + bookingName + ", bookingPhone="
+				+ bookingPhone + ", bookingCnt=" + bookingCnt + ", bookingDate=" + bookingDate + ", bookingCancelDate="
+				+ bookingCancelDate + ", bookingTotalPrice=" + bookingTotalPrice + ", bookingStatus=" + bookingStatus
+				+ "]";
+	}
+	
 	
 }
