@@ -28,9 +28,10 @@
 									<div class="slider-text-inner text-center">
 									
 									
-										<h1>이메일 인증 대기중 입니다.</h1>
-										<h2>이메일을 확인해 주세요.</h2>
 									
+										<h1>축하드립니다.</h1>
+										<h2>회원가입이 완료되었습니다.</h2>
+										<a href="login.do" class="btn btn-success">로그인 페이지로 이동</a>
 									
 									</div>
 								</div>

@@ -42,7 +42,7 @@
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				
 				<form class="login100-form validate-form" action="register.do" method="post" name="register">
-					&nbsp;&nbsp;&nbsp;<a href="home.jsp"><img src="resources/client/images/home.png"></a>
+					&nbsp;&nbsp;&nbsp;<a href="home.do"><img src="resources/client/images/home.png"></a>
 					<span class="login100-form-title p-b-59">
 						회원가입
 					</span>	
@@ -105,7 +105,7 @@
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
+							<div class="login100-form-bgbtn"> </div>
 							<button class="login100-form-btn" type="submit" id="submit">회원가입</button>
 						</div>
 

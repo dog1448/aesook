@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div class="colorlib-loader"></div>
+	<div class="colorlib-loader"> </div>
 
 	<div id="page">
 		<%@ include file="main_header.jspf"%>
@@ -71,14 +71,14 @@
 				<div class="row no-gutters">
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.do"><img
+							<span class="icon"> <a href="hotelMove.do"><img
 									src="resources/client/images/hotel.png" /></a></span>
 							<h3>호텔</h3>
 						</div>
 					</div>
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.do"><img
+							<span class="icon"> <a href="hotelMove.do?type=m"><img
 									src="resources/client/images/motel.png" /></a>
 							</span>
 							<h3>모텔</h3>
@@ -86,7 +86,7 @@
 					</div>
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.do"><img
+							<span class="icon"> <a href="hotelMove.do?type=p"><img
 									src="resources/client/images/pension.png" /></a>
 							</span>
 							<h3>펜션</h3>
@@ -94,7 +94,7 @@
 					</div>
 					<div class="col-md-6 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.do"><img
+							<span class="icon"> <a href="hotelMove.do?type=g"><img
 									src="resources/client/images/guestHouse.png" /></a>
 							</span>
 							<h3>게스트 하우스</h3>
@@ -102,10 +102,10 @@
 					</div>
 					<div class="col-md-6 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="selectRegion.do"><img
+							<span class="icon"> <a href="hotelMove.do?type=r"><img
 									src="resources/client/images/resort.png" /></a>
 							</span>
-							<h3>리조트/콘도</h3>
+							<h3>리조트</h3>
 						</div>
 					</div>
 				</div>

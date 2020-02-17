@@ -10,7 +10,7 @@
 
 <body>
 
-	<div class="colorlib-loader"></div>
+	<div class="colorlib-loader"> </div>
 	<div id="page">
 		<%@include file="main_header.jspf" %>
 		<div>&nbsp;</div>
