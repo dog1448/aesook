@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	
-	private final static String namespace = "client.member.vo.MemberVO";
+	private final static String namespace = "client.member.dao.MemberDAO";
 	
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;

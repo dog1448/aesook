@@ -10,9 +10,7 @@ import com.spring.aesook.admin.datalist.vo.ManagerHotelsVO;
 import com.spring.aesook.admin.datalist.vo.ManagerBookingVO;
 
 @Repository("managerDataListDAO")
-public class ManagerDataListDAOImpl implements ManagerDataListDAO {
-
-	private final static String namespace1 = "admin.datalist.dao.ManagerDataListDAO";
+public class ManagerDataListDAOImpl implements ManagerDataListDAO {	
 	
 	private final static String namespace = "admin.datalist.dao.ManagerDataListDAO";
 	
@@ -41,17 +39,17 @@ public class ManagerDataListDAOImpl implements ManagerDataListDAO {
 	//---------------------------- 
 	@Override
 	public List<ManagerHotelsVO> getListHotels() {
-		return sqlSessionTemplate.selectList(namespace1+".getListHotels");
+		return sqlSessionTemplate.selectList(namespace+".getListHotels");
 	}
 
 	@Override
 	public ManagerHotelsVO getHotels(int hotelsCode) {
-		return sqlSessionTemplate.selectOne(namespace1+".getHotels",hotelsCode);
+		return sqlSessionTemplate.selectOne(namespace+".getHotels",hotelsCode);
 	}
 
 	@Override
 	public void updateHotel(ManagerHotelsVO vo) {
-		sqlSessionTemplate.update(namespace1+".updateHotel",vo);
+		sqlSessionTemplate.update(namespace+".updateHotel",vo);
 	}
 	
 

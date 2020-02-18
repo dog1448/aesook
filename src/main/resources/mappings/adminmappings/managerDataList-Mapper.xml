@@ -31,5 +31,25 @@
 				booking_status = #{bookingStatus}
 			where booking_code = #{bookingCode}
 	</update>
+	
+	<select id="getListHotels" resultType="ManagerHotels">
+		SELECT *
+		FROM hotels
+	</select>
+
+	<select id="getHotels" resultType="ManagerHotels">
+	SELECT * 
+	FROM hotels
+	WHERE hotels_code=#{hotelsCode}
+	</select>
+	
+	<update id="updateHotel">
+	UPDATE hotels 
+	SET hotels_name=#{hotelsName}, hotels_type=#{hotelsType},
+	hotels_phone=#{hotelsPhone}, hotels_zipcode=#{hotelsZipcode},
+	hotels_address1=#{hotelsAddress1},hotels_address2=#{hotelsAddress2},
+	hotels_path=#{hotelsPath}, hotels_info=#{hotelsInfo},
+	hotels_introduce=#{hotelsIntroduce} where hotels_code=#{hotelsCode}
+	</update>
 
 </mapper>
