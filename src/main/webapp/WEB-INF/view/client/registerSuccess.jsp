@@ -25,10 +25,14 @@
 							<div class="row">
 								<div
 									class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-									<div class="slider-text-inner text-center">									
+									<div class="slider-text-inner text-center">
+									
+									
+									
 										<h1>축하드립니다.</h1>
 										<h2>회원가입이 완료되었습니다.</h2>
-										<a href="login.do" class="btn btn-success">로그인 페이지로 이동</a>									
+										<a href="login.do" class="btn btn-success">로그인 페이지로 이동</a>
+									
 									</div>
 								</div>
 							</div>

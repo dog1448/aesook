@@ -21,8 +21,21 @@
          <div class="container">
             <div class="row">
                <div class="about-flex">
-                  <!-- 숙소관리 사이드바 -->
-                  <%@ include file="accommodationManagementSidebar.jspf" %>
+                  <div class="col-one-forth aside-stretch animate-box">
+                     <div class="row">
+                        <div class="col-md-12 about">
+                           <h2>숙소관리</h2>
+
+                           <ul>
+                              <li><a href="inserthotel.jsp">숙소 등록 및 수정</a></li>
+                              <li><a href="insertedRoom.jsp">등록 숙소</a></li>
+                              <li><a href="statistics.jsp">통계</a></li>
+                              <li><a href="chat.jsp">1대 1문의</a></li>
+                              <li><a href="home.do">메인 홈</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
                   <div class="col-three-forth animate-box">
                      <form action="#">
                         <h2>숙소 종류</h2>
