@@ -4,12 +4,12 @@
 
 <mapper namespace="admin.datalist.dao.ManagerDataListDAO">
 
-	<select id="getListHotels" resultType="managerHotels">
+	<select id="getListHotels" resultType="hotels">
 		SELECT *
 		FROM hotels
 	</select>
 
-	<select id="getHotels" resultType="managerHotels">
+	<select id="getHotels" resultType="hotels">
 	SELECT * 
 	FROM hotels
 	WHERE hotels_code=#{hotelsCode}
