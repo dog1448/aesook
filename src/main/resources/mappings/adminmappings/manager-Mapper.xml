@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin.manager.dao.ManagerDAO">
+
+	<insert id="insertManager" parameterType="manager">
+		INSERT INTO admin (admin_id, admin_pass, admin_name, admin_email, admin_grade)
+		VALUES(#{adminId}, #{adminPass}, #{adminName}, #{adminEmail}, 'S')
+	</insert>
+	
+	<update id="updateManager" parameterType="manager">
+		UPDATE admin SET admin_pass = #{adminPass}, admin_email = #{adminEmail} WHERE admin_id = #{adminId}
+	</update>
+	
+	<update id="updatePassManager" parameterType="manager">
+		UPDATE admin SET admin_pass = #{adminPass} WHERE admin_id = #{adminId}
+	</update>
+	
+	<select id="getManager" resultType="manager" parameterType="manager" >
+		select * from admin where admin_id = #{adminId}
+	</select>
+	
+	<select id="idCheck" resultType="int" parameterType="manager">
+		select count(*) from admin
+		where admin_id = #{adminId}
+	</select>
+</mapper>

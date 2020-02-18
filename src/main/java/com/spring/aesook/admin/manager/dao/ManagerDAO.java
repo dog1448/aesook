@@ -1,0 +1,12 @@
+package com.spring.aesook.admin.manager.dao;
+
+import com.spring.aesook.admin.manager.vo.ManagerVO;
+
+public interface ManagerDAO {
+	
+	void insertManager(ManagerVO vo);
+	void updateManager(ManagerVO vo);
+	void updatePassManager(ManagerVO vo);
+	ManagerVO getManager(ManagerVO vo);
+	int idCheck(ManagerVO vo);
+}
