@@ -22,4 +22,9 @@ public class MemberHotelsController {
 		return "/hotel";
 	}
 	
+	@RequestMapping(value = "/insertHotels.do", method = RequestMethod.GET)
+	public String moveInsertHotels(){
+		return "/insertHotels";
+	}
+	
 }
