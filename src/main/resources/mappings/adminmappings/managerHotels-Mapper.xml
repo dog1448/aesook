@@ -4,12 +4,12 @@
 
 <mapper namespace="admin.datalist.vo.ManagerHotelsVO">
 
-	<select id="getListHotels" resultType="hotels">
+	<select id="getListHotels" resultType="ManagerHotels">
 		SELECT *
 		FROM hotels
 	</select>
 
-	<select id="getHotels" resultType="hotels">
+	<select id="getHotels" resultType="ManagerHotels">
 	SELECT * 
 	FROM hotels
 	WHERE hotels_code=#{hotelsCode}
