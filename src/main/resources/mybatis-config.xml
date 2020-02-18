@@ -9,16 +9,14 @@
 	<typeAliases>
 		<typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
 		<typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerHotelsVO" alias="ManagerHotels"/>
-		<typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerBookingVO" alias="booking"/>
 		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>		
-		<typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>	    	
+		<typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>	
+    	<typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerBookingVO" alias="booking"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappings/adminmappings/manager-Mapper.xml" />
-		<mapper resource="mappings/adminmappings/managerDataList-Mapper.xml" />		
+		<mapper resource="mappings/adminmappings/managerDataList-Mapper.xml" />
 		<mapper resource="mappings/clientmappings/member-Mapper.xml" />	    	
-		<mapper resource="mappings/clientmappings/member-HotelsMapper.xml" />	    	
-		<mapper resource="mappings/clientmappings/member-BoardMapper.xml" />	    	
 	</mappers>
 </configuration>
