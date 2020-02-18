@@ -9,7 +9,7 @@ import com.spring.aesook.admin.manager.vo.ManagerVO;
 @Repository("managerDAO")
 public class ManagerDAOImpl implements ManagerDAO {
 
-	private final static String namespace = "admin.manager.vo.ManagerVO";
+	private final static String namespace = "admin.manager.dao.ManagerDAO";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
