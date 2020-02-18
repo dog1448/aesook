@@ -9,6 +9,7 @@
 		
 	<div class="colorlib-loader"> </div>
 
+	<!-- 숙소 게시판 -->
 	<div id="page">
 		<%@include file="main_header.jspf" %>
 		<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
