@@ -8,7 +8,7 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
-		<typeAlias type="com.spring.aesook.admin.datalist.vo.HotelsVO" alias="hotels"/>
+		<typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerHotelsVO" alias="managerHotels"/>
 		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>		
 		<typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>	
     	<typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerBookingVO" alias="booking"/>
