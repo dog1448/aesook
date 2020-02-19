@@ -17,7 +17,6 @@ public class MemberFindIdServiceImpl implements MemberFindIdService {
 	private MailSender mailSender;
 	
 	public MemberVO findId(MemberVO vo) {
-		
 		MemberVO user = memberDAO.getFindIdMember(vo);
 		
 		if(user != null) {
