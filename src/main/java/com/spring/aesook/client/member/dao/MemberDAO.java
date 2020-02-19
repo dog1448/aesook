@@ -10,4 +10,5 @@ public interface MemberDAO {
 	public int getId(MemberVO vo);
 	public void updateStatusMember(MemberVO vo);
 	public void updateInfoMember(MemberVO vo);
+	public void updateWithdrawal(String memberId);
 }

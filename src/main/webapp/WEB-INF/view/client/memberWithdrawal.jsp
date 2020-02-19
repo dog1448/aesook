@@ -23,33 +23,20 @@
             <div class="container">
                 <div class="row">
                     <div class="about-flex">
-                        <div class="col-one-forth aside-stretch animate-box">
-                            <div class="row">
-                                <div class="col-md-12 about">
-                                    <h2>MYPAGE</h2>
-                                    <ul>
-                                        <li><a href="booking.jsp">예약조회</a></li>
-                                        <li><a href="myReview.jsp">나의 후기</a></li>
-                                        <li><a href="modify_info.jsp">개인정보관리</a></li>
-                                        <li><a href="brn.jsp">사업자등록</a></li>
-                                        <li><a href="inserthotel.jsp">숙소 관리</a></li>
-                                        <li><a href="withdrawal.jsp">회원탈퇴</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <%@ include file="myPageSidebar.jspf" %>
                         <div class="col-three-forth animate-box">
                             <h2>회원탈퇴</h2>
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">                              
-                                    <form action="doWithdrawal.do" method="POST" onsubmit="return passwordCheck()" >
+                                    <form action="doWithdrawal.do" method="GET" onsubmit="return passwordCheck()" >
                                     <div class="row form-group">
                                         <div class="col-md-12">
                                             <label for="subject">비밀번호 : </label>
                                             <input type="password" id="password" class="form-control"
-                                                placeholder="password">
-                                            <input type="hidden" id=memberpass value="${login.memberPass }">
+                                                placeholder="password" >
+                                            <input type="hidden" id=memberPass value="${user.memberPass }">
+                                            
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
