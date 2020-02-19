@@ -1,6 +1,7 @@
 package com.spring.aesook.client.board.vo;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 public class MemberBoardVO {
 	private String boardWriter;
@@ -74,5 +75,20 @@ public class MemberBoardVO {
 	public void setBoardType(String boardType) {
 		this.boardType = boardType;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "MemberBoardVO{" +
+				"boardWriter='" + boardWriter + '\'' +
+				", boardTitle='" + boardTitle + '\'' +
+				", boardContent='" + boardContent + '\'' +
+				", boardGroup=" + boardGroup +
+				", boardStep=" + boardStep +
+				", boardDepth=" + boardDepth +
+				", boardReadcount=" + boardReadcount +
+				", boardIP='" + boardIP + '\'' +
+				", boardDate=" + boardDate +
+				", boardType='" + boardType + '\'' +
+				'}';
+	}
 }
