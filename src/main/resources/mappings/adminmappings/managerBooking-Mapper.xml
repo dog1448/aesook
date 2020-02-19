@@ -4,11 +4,11 @@
 
 <mapper namespace="admin.datalist.dao.ManagerDataListDAO">
 		
-	<select id="getBooking" resultType="booking">
+	<select id="getBooking" resultType="managerBooking">
 		select * from booking
 	</select>
 	
-	<select id="getBookingInfo" resultType="booking">
+	<select id="getBookingInfo" resultType="managerBooking">
 		select booking_code, hotels_code, sort_type, room_code, member_id,
 		booking_check_in, booking_check_out,
 		booking_name, booking_phone, booking_cnt, 
@@ -18,7 +18,7 @@
     		where booking_code = #{bookingCode}
 	</select>
 	
-	<update id="setBookingInfo" parameterType="booking">
+	<update id="setBookingInfo" parameterType="managerBooking">
 		update booking
 			set room_code = #{roomCode},
 				sort_type = #{sortType},
