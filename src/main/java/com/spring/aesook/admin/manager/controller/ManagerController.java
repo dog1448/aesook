@@ -1,5 +1,7 @@
 package com.spring.aesook.admin.manager.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.aesook.admin.manager.service.ManagerLoginService;
 import com.spring.aesook.admin.manager.service.ManagerRegisterService;
 import com.spring.aesook.admin.manager.service.ManagerService;
 import com.spring.aesook.admin.manager.vo.ManagerVO;
+import com.spring.aesook.common.file.FileService;
+import com.spring.aesook.common.file.FileVO;
 
 @Controller
 public class ManagerController {
@@ -24,7 +30,7 @@ public class ManagerController {
 	private ManagerLoginService managerLoginService;
 	@Autowired
 	private ManagerRegisterService managerRegisterService;
-
+	
 	
 	//  --------------------------- 회원가입 ------------------------------------
 	@RequestMapping(value = "/register.admin", method = RequestMethod.GET)
@@ -143,8 +149,23 @@ public class ManagerController {
 	public String moveIndex() {
 		
 		// Index화면에 들어갈 DB 자료
-		
-		
+		return "/index";
+	}
+	
+	
+	// --------------------------- Alarm -------------------------------------
+	public String moveAlarm() {
+		return "alarm";
+	}
+	
+	// --------------------------- Pic -------------------------------------
+	@RequestMapping(value="/pic.admin" , method=RequestMethod.GET)
+	public String moveMainPic() {
+		return "/modifyMain";
+	}
+	
+	@RequestMapping(value="/pic.admin" , method=RequestMethod.POST)
+	public String uploadMainPic(MultipartFile file) {
 		return "/index";
 	}
 	

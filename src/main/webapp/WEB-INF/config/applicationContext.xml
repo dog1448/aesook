@@ -35,7 +35,13 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactroyBean"></constructor-arg>
 	</bean>
 	
+	<!-- MailSender -->
 	<bean id="mailSender" class="com.spring.aesook.common.mail.NaverMailSender"></bean>
+	
+	<!-- MultipartResolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760"></property>
+	</bean>
 	
 	<context:component-scan base-package="com.spring.aesook"></context:component-scan>
 </beans>

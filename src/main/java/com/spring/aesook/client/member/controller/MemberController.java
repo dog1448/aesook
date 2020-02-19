@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
 import com.spring.aesook.client.member.service.MemberRegisterService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.vo.MemberVO;
+import com.spring.aesook.common.file.FileService;
 
 @Controller
 @SessionAttributes("vo")
@@ -25,13 +26,13 @@ public class MemberController {
     @Autowired
     MemberRegisterService memberRegisterService;
     @Autowired
-    MemberService memberService;   
+    private MemberService memberService;   
     @Autowired
-    MemberFindIdService memberFindIdService;
+    private MemberFindIdService memberFindIdService;
     @Autowired
-    MemberFindPassService memberFindPassService;   
 
-    //---------------------------È¸¿ø°¡ÀÔ------------------------------------
+    private MemberFindPassService memberFindPassService;
+
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
@@ -72,14 +73,16 @@ public class MemberController {
     } 
         
 
-    //-------------------------------·Î±×ÀÎ--------------------------
+    //-------------------------------ë¡œê·¸ì¸--------------------------
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
     }
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-    public String checkLogin(MemberVO vo, Model model,HttpSession session) {//¼¼¼ÇÀº Áö¿ï ¿¹Á¤ÀÔ´Ï´Ù. Áö±İ ÀÎÅÍ¼ÁÆ® ´İÇôÀÖ¾î¼­ ½èÀ½
+
+    public String checkLogin(MemberVO vo, Model model,HttpSession session) {//ì„¸ì…˜ì€ ì§€ìš¸ ì˜ˆì •ì…ë‹ˆë‹¤. ì§€ê¸ˆ ì¸í„°ì…‰íŠ¸ ë‹«í˜€ìˆì–´ì„œ ì¼ìŒ
+
     	MemberVO user = memberService.getMember(vo);
     	
     	if(user == null) {
@@ -97,8 +100,9 @@ public class MemberController {
 				return "/login";
 			}
 		}
-    	session.setAttribute("login", user);
+
     	return "/home"; // 
+
 
     }
     
@@ -152,12 +156,13 @@ public class MemberController {
     	return "/login";
     }
     
+
     @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
     public String moveInsertRoom() {
     	return "/insertRoom";
     }
     
-    //----------------------------------°³ÀÎÁ¤º¸ ¼öÁ¤--------------------------------------------
+    //----------------------------------ê°œì¸ì •ë³´ ìˆ˜ì •--------------------------------------------
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");
