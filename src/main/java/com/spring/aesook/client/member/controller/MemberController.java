@@ -77,6 +77,10 @@ public class MemberController {
     } 
         
 
+
+    //-------------------------------Login-------------------------
+
+
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -104,7 +108,7 @@ public class MemberController {
 			}
 		}
 
-    	session.setAttribute("user", user);
+    	session.setAttribute("login", user); 
 
     	return "/home"; // 
 
@@ -166,6 +170,8 @@ public class MemberController {
     	return "/insertRoom";
     }
     
+
+    //----------------------------------modifyInfo--------------------------------------------
 
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
