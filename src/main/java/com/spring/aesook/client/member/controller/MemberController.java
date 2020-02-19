@@ -1,5 +1,6 @@
 package com.spring.aesook.client.member.controller;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
 import com.spring.aesook.client.member.service.MemberRegisterService;
 import com.spring.aesook.client.member.service.MemberService;
+import com.spring.aesook.client.member.service.MemberWithdrawalService;
 import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.common.file.FileService;
 
@@ -30,8 +32,10 @@ public class MemberController {
     @Autowired
     private MemberFindIdService memberFindIdService;
     @Autowired
-
     private MemberFindPassService memberFindPassService;
+    
+    @Autowired
+    MemberWithdrawalService memberWithdrawalService;
 
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
@@ -73,7 +77,6 @@ public class MemberController {
     } 
         
 
-   
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -100,14 +103,15 @@ public class MemberController {
 				return "/login";
 			}
 		}
+
     	session.setAttribute("user", user);
+
     	return "/home"; // 
 
 
     }
     
     
-    // --------------------------- HOME -------------------------------------
     @RequestMapping("/home.do")
     public String moveHome() {
     	return "/home";
@@ -162,7 +166,7 @@ public class MemberController {
     	return "/insertRoom";
     }
     
-   
+
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");
@@ -180,4 +184,18 @@ public class MemberController {
     	return "/home";
     }
     
+    @RequestMapping(value = "/doWithdrawal.do", method = RequestMethod.GET)
+    public String withdrawMember(MemberVO vo, Model model,HttpSession session) {
+    	MemberVO member = (MemberVO)session.getAttribute("user");
+    	String sessionId = member.getMemberId();
+    	System.out.println(sessionId);
+    	memberWithdrawalService.updateWithdrawal(sessionId);
+    	session.invalidate();
+    	return "/home";
+    }
+    
+    @RequestMapping(value = "/withdrawal.do", method = RequestMethod.GET)
+    public String moveWithdrawMember() {
+    	return "/memberWithdrawal";
+    }
 }

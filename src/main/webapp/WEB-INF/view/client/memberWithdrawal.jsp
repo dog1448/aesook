@@ -29,13 +29,14 @@
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">                              
-                                    <form action="doWithdrawal.do" method="POST" onsubmit="return passwordCheck()" >
+                                    <form action="doWithdrawal.do" method="GET" onsubmit="return passwordCheck()" >
                                     <div class="row form-group">
                                         <div class="col-md-12">
                                             <label for="subject">비밀번호 : </label>
                                             <input type="password" id="password" class="form-control"
-                                                placeholder="password">
-                                            <input type="hidden" id=memberpass value="${login.memberPass }">
+                                                placeholder="password" >
+                                            <input type="hidden" id=memberPass value="${user.memberPass }">
+                                            
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
