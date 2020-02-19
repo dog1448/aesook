@@ -8,4 +8,6 @@ public interface MemberDAO {
 	public MemberVO getMember(MemberVO vo);
 	public MemberVO getFindIdMember(MemberVO vo);
 	public int getId(MemberVO vo);
+	public void updateStatusMember(MemberVO vo);
+	public void updateInfoMember(MemberVO vo);
 }

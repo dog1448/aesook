@@ -5,29 +5,34 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
 import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
+import com.spring.aesook.client.member.service.MemberRegisterService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.common.file.FileService;
 
 @Controller
-public class MemberController {
-	
+@SessionAttributes("vo")
+public class MemberController {   
+
+    @Autowired
+    MemberRegisterService memberRegisterService;
     @Autowired
     private MemberService memberService;   
     @Autowired
     private MemberFindIdService memberFindIdService;
     @Autowired
+
     private MemberFindPassService memberFindPassService;
-    
-    
-    //  --------------------------- »∏ø¯∞°¿‘ ------------------------------------
+
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
         return "/register";
@@ -35,38 +40,49 @@ public class MemberController {
 
 
     @RequestMapping(value = "/register.do",  method = RequestMethod.POST)
-    public String insertMember(MemberVO vo){  			
+    public String insertMember(MemberVO vo, Model model){  			
     	int result = memberService.checkLoginId(vo);
     	
-    	try {
+    	
     		if(result == 1) {
         		return "/register";
         	} else if(result == 0) {
+        		
         		 memberService.insertMember(vo);
+        		 memberRegisterService.sendEmailConfirm(vo);
+        		 model.addAttribute("vo", vo);
         	}       
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}    	
-        return "/login";
+		   	
+        return "/registerWait";
     }
     
-    //æ∆¿Ãµ ¡ﬂ∫π√º≈©    
+    @RequestMapping(value = "/registerConfirm.do", method = RequestMethod.GET)
+    public String updateStatusMember(@ModelAttribute("vo") MemberVO vo, Model model) {
+    	
+    	vo.setMemberStatus("G");
+    	memberService.updateStatusMember(vo);    	
+    	
+    	return "/registerSuccess";
+    }
+    
     @RequestMapping(value = "/registerIdChk.do", method = RequestMethod.POST)
     @ResponseBody
     public int checkId(MemberVO vo){
     	int result = memberService.checkLoginId(vo);
     	return result;
     } 
-    
-    
-    // --------------------------- ∑Œ±◊¿Œ -------------------------------------
+        
+
+    //-------------------------------Î°úÍ∑∏Ïù∏--------------------------
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
     }
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-    public String checkLogin(MemberVO vo, Model model, HttpSession session) {
+
+    public String checkLogin(MemberVO vo, Model model,HttpSession session) {//ÏÑ∏ÏÖòÏùÄ ÏßÄÏö∏ ÏòàÏ†ïÏûÖÎãàÎã§. ÏßÄÍ∏à Ïù∏ÌÑ∞ÏÖâÌä∏ Îã´ÌòÄÏûàÏñ¥ÏÑú ÏçºÏùå
+
     	MemberVO user = memberService.getMember(vo);
     	
     	if(user == null) {
@@ -75,6 +91,7 @@ public class MemberController {
 		} else {
 			if (user.getMemberPass().equals(vo.getMemberPass())) {
 				if(user.getMemberStatus().equals("R")) {
+					
 					return "/registerWait";
 				}
 				model.addAttribute("login",user);
@@ -83,8 +100,10 @@ public class MemberController {
 				return "/login";
 			}
 		}
-    	
-    	return "/home"; // ¡ˆøÔ øπ¡§ ( login.do¥¬ ¿Œ≈Õº¡≈Õ∞° √≥∏Æ )
+
+    	return "/home"; // 
+
+
     }
     
     
@@ -95,7 +114,7 @@ public class MemberController {
     }
     
     
-    // --------------------------- æ∆¿Ãµ √£±‚ -------------------------------------
+
     @RequestMapping(value="/findId", method = RequestMethod.GET)
     public String moveFindId() {
     	return "/findId";
@@ -113,7 +132,7 @@ public class MemberController {
     	return "/login";
     }
     
-    // --------------------------- ∫Òπ–π¯»£ √£±‚ -------------------------------------
+
     @RequestMapping(value="/findPass", method = RequestMethod.GET)
     public String moveFindPass() {
     	return "/findPass";
@@ -135,6 +154,30 @@ public class MemberController {
     	}
     	
     	return "/login";
+    }
+    
+
+    @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
+    public String moveInsertRoom() {
+    	return "/insertRoom";
+    }
+    
+    //----------------------------------Í∞úÏù∏Ï†ïÎ≥¥ ÏàòÏ†ï--------------------------------------------
+    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
+    public String moveModifyInfo(HttpSession session, Model model) {
+    	MemberVO login = (MemberVO)session.getAttribute("login");
+    	if(login != null) {
+    		model.addAttribute("login",login);
+    	}
+    	return "/modify_info";
+    }
+    
+    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.POST)
+    public String modifyInfo(MemberVO vo, Model model) {
+    	System.out.println(vo.getMemberPhone().toString());
+    	memberService.updateInfoMember(vo);
+    	System.out.println(vo.getMemberPhone().toString());
+    	return "/home";
     }
     
 }

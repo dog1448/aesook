@@ -37,12 +37,12 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('resources/client/images/bg-02.jpg');"></div>
+			<div class="login100-more" style="background-image: url('resources/client/images/img_bg_5.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				
 				<form class="login100-form validate-form" action="register.do" method="post" name="register">
-					&nbsp;&nbsp;&nbsp;<a href="home.jsp"><img src="resources/client/images/home.png"></a>
+					&nbsp;&nbsp;&nbsp;<a href="home.do"><img src="resources/client/images/home.png"></a>
 					<span class="login100-form-title p-b-59">
 						회원가입
 					</span>	
@@ -88,7 +88,7 @@
 						<input class="input100" type="text" name="memberPhone" id="memberPhone" placeholder="Phone number...">
 						<span class="focus-input100"></span>
 					</div>
-					<input type="hidden" name="memberStatus" value="G">
+					<input type="hidden" name="memberStatus" value="R">
 					<div class="flex-m w-full p-b-33">
 						<div class="contact100-form-checkbox">
 							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
@@ -105,7 +105,7 @@
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
+							<div class="login100-form-bgbtn"> </div>
 							<button class="login100-form-btn" type="submit" id="submit">회원가입</button>
 						</div>
 
@@ -121,8 +121,132 @@
 	</div>
 	
 	<script src="resources/client/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/client/js/register.js"></script>
+<!--===============================================================================================-->	
+	<script type="text/javascript">
+	$("#memberId").change(function(){
+		$("#id_check").attr("value","N");
+	});
+
+	$(document).ready(function() {
+						$("#submit").on("click", function() {
+											var re = /^[a-zA-Z0-9]{6,12}$/ // 아이디와 패스워드 정규식	
+											var re2 = /^[가-힣]{2,4}$/;//이름 정규식
+											var re3 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;// 이메일이 적합한지 검사할 정규식								
+											var re4 = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})?[0-9]{3,4}?[0-9]{4}$/; // 휴대폰 정규식										
+											
+
+											var id = document.getElementById("memberId");
+											var pw = document.getElementById("memberPass");
+											var checkpw = document.getElementById("checkPass");
+											var name = document.getElementById("memberName");
+											var email = document.getElementById("memberEmail");
+											var phone = document.getElementById("memberPhone");
+											var checkbox = document.register.ckb1.checked;
+											var idcheck = $("#id_check").val();
+
+											if (!check(re, id,"아이디는 6~12자의 영문 대소문자와 숫자로만 입력하세요.")) {
+												return false;
+											}
+											
+											if(idcheck == "N"){
+												alert("중복확인 버튼을 눌러주세요.");
+												return false;
+											}								
+
+											if (!check(re, pw,"패스워드는 6~12자의 영문 대소문자와 숫자로만 입력하세요.")) {
+												return false;
+											}
+											
+											if(pw.value == id.value){
+												alert("아이디와 비밀번호가 같습니다.다시 입력하세요.");
+												pw.value = "";
+												pw.focus();
+												return false;
+											}
+
+											if (pw.value != checkpw.value) {
+												alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
+												checkpw.value = "";
+												checkpw.focus();
+												return false;
+											}
+
+											if (name.value == "") {
+												alert("이름을 입력해 주세요");
+												name.focus();
+												return false;
+											}
+											
+											if (!check(re2, name,"이름을 한글로 입력하세요.")) {
+												return false;
+											}
+
+											if (email.value == "") {
+												alert("이메일을 입력해 주세요");
+												email.focus();
+												return false;
+											}
+
+											if (!check(re3, email,"적합하지 않은 이메일 형식입니다.")) {
+												return false;
+											}
+
+											if (phone.value == "") {
+												alert("휴대폰을 입력해 주세요");
+												phone.focus();
+												return false;
+											}
+
+											if (!check(re4, phone,"적합하지 않은 휴대폰 번호입니다.")) {
+												return false;
+											}
+											if (!checkbox) {
+												alert("약관의 동의해주세요.");
+												return false;
+											}
+
+											alert("회원 가입 대기 중입니다. 이메일 인증을 완료해주세요.");
+										});
+	})								
+					
+	function check(re, what, message) {
+		if (re.test(what.value)) {
+			return true;
+		}
+		alert(message);
+		what.value = "";
+		what.focus();
+		// return false;
+	}
+
+	function checkId() {
+		var id = document.getElementById("memberId");
+		var re = /^[a-zA-Z0-9]{6,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+		$.ajax({
+			url : "registerIdChk.do",
+			type : "post",
+			dataType : "json",
+			data : {
+				"memberId" : $("#memberId").val()
+			},
+			success : function(data) {
+				if (data == 1) {
+					alert("중복된 아이디입니다.");
+				} else if (data == 0) {
+					if (!check(re, id, "아이디는 6~12자의 영문 대소문자와 숫자로만 입력하세요.")) {
+						
+					}else {
+						$("#id_check").attr("value","Y");
+						alert("사용가능한 아이디입니다.");
+					}
+
+				} 
+			}
+		})
+
+	}
+
+	</script>
 	
 	
 </body>

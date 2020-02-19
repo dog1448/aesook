@@ -35,5 +35,15 @@
         select count(*) from member where member_id = #{memberId}
     </select>
     
+
+    <update id="updateStatusMember" parameterType="member">
+    	UPDATE member SET member_status = #{memberStatus} WHERE member_id = #{memberId} 
+    </update>
+    
+    <update id="updateInfoMember" parameterType="member">
+    	UPDATE member SET member_email = #{memberEmail}, member_pass = #{memberPass},
+    	member_phone = #{memberPhone} WHERE member_id = #{memberId} 
+    </update>
+
 </mapper>
 
