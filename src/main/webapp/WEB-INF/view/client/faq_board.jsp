@@ -1,6 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 
@@ -130,19 +132,19 @@ a, a:hover {
 						</tr>
 					</thead>
 					<tbody>
-
+							<c:forEach items="${boards}" var="boards">
 						<tr>
-							<td>1</td>
-							<td><a>EXAMPLE</a></td>
-							<td>요피</td>
-							<td>2020-02-07</td>
+							<td><c:out value="${boards.boardSeq}"/></td>
+							<td><a href="${path}/BoardRead.do?boardNo=${boards.boardSeq}"><c:out value="${boards.boardTitle}"/></a></td>
+							<td><c:out value="${boards.boardWriter}"/></td>
+							<td><fmt:formatDate value="${boards.boardDate}" pattern="YYYY-MM-DD"/></td>
 						</tr>
-
+							</c:forEach>
 					</tbody>
 				</table>
 				<a href="#" class="btn btn-success btn-arrow-left">이전</a> <a
 					href="#" class="btn btn-success btn-arrow-left">다음</a> <a
-					href="write.html" class="btn btn-info pull-right">글쓰기</a>
+					href="write.do" class="btn btn-info pull-right">글쓰기</a>
 
 
 

@@ -1,15 +1,88 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="client.board.dao.MemberBoardDAO">
 
 	<insert id="insertBoard" parameterType="memberBoard">
-	
+	INSERT INTO board (
+	BOARD_SEQ
+	,board_writer
+	,board_title
+	,board_content
+	,board_step
+	,board_depth
+	,board_readcount
+	,board_ip
+	,board_date
+	,board_type
+	)
+	values(
+	BOARD_SEQ.nextval
+	,#{boardWriter}
+	,#{boardTitle}
+	,#{boardContent}
+	,#{boardStep}
+	,#{boardDepth}
+	,#{boardReadcount}
+	,#{boardIP}
+	,SYSDATE
+	,#{boardType}
+	)
 	</insert>
-	
+
+	<select id="getMemberBoard" resultType="memberBoard">
+		<![CDATA[
+		SELECT
+			   BOARD_SEQ,
+		 	   BOARD_TITLE,
+		       BOARD_CONTENT,
+		       BOARD_WRITER,
+		       BOARD_STEP,
+		       BOARD_DEPTH,
+		       BOARD_READCOUNT,
+		       BOARD_IP,
+		       BOARD_DATE,
+		       BOARD_TYPE
+		FROM BOARD where BOARD_TYPE = 'F'
+		order by BOARD_SEQ desc,BOARD_DATE desc
+		]]>
+	</select>
+
+	<update id="updateMemberBoard" parameterType="memberBoard">
+		update BOARD
+		set BOARD_TITLE = #{boardTitle}
+			,BOARD_CONTENT = #{boardContent}
+			where BOARD_SEQ =#{boardSeq}
+
+	</update>
+
+	<delete id="deleteMemberBoard" parameterType="memberBoard">
+		delete from BOARD
+		where BOARD_WRITER =#{boardWriter}
+	</delete>
+
+
 	<select id="getArticleCount" parameterType="memberBoard" resultType="int">
 		SELECT count(*) from BOARD
 	</select>
 
+	<select id="readMemberBoard" resultMap="MemberResultMap">
+		SELECT BOARD_SEQ
+			   ,BOARD_TITLE
+			   ,BOARD_CONTENT
+			   ,BOARD_WRITER
+			   ,BOARD_DATE
+		FROM
+				BOARD
+		WHERE BOARD_SEQ = #{boardSeq}
+	</select>
+
+	<resultMap id="MemberResultMap" type="memberBoard">
+		<id property="boardSeq" column="board_seq"/>
+		<result property="boardTitle" column="board_title"/>
+		<result property="boardContent" column="board_content"/>
+		<result property="boardDate" column="board_date"/>
+		<result property="boardReadcount" column="board_readcount"/>
+	</resultMap>
 </mapper>

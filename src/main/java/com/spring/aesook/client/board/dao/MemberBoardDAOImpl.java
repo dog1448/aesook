@@ -16,27 +16,29 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
     private SqlSessionTemplate sqlSessionTemplate;
 
 
-    @Override
     public void insertMemberBoard(MemberBoardVO memberBoardVO) {
-        sqlSessionTemplate.insert(NAMESPACE+".insertBoard",memberBoardVO);
+        sqlSessionTemplate.insert(NAMESPACE + ".insertBoard", memberBoardVO);
     }
 
-    @Override
     public void deleteMemberBoard(MemberBoardVO memberBoardVO) {
-        sqlSessionTemplate.delete(NAMESPACE+"deleteMemberBoard",memberBoardVO.getBoardWriter());
+        sqlSessionTemplate.delete(NAMESPACE + ".deleteMemberBoard", memberBoardVO.getBoardWriter());
     }
 
     @Override
     public void updateMemberBoard(MemberBoardVO memberBoardVO) {
-
+        sqlSessionTemplate.update(NAMESPACE + ".updateMemberBoard",memberBoardVO);
     }
 
-    @Override
-    public List<MemberBoardVO> getMemberBoard(MemberBoardVO memberBoardVO) {
-        return sqlSessionTemplate.selectList(NAMESPACE+".getMemberBoard");
+
+    public MemberBoardVO readMemberBoard(Integer BoardNo) {
+        return sqlSessionTemplate.selectOne(NAMESPACE+".readMemberBoard",BoardNo);
     }
 
-    @Override
+    public List<MemberBoardVO> getMemberBoard() throws Exception {
+        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoard");
+    }
+
+
     public MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO) {
         return null;
     }

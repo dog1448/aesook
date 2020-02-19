@@ -9,7 +9,11 @@ public interface MemberBoardDAO {
     void deleteMemberBoard(MemberBoardVO memberBoardVO);
     void updateMemberBoard(MemberBoardVO memberBoardVO);
 
-    List<MemberBoardVO> getMemberBoard(MemberBoardVO memberBoardVO);
+
+    MemberBoardVO readMemberBoard(Integer BoardNo);
+
+
+    List<MemberBoardVO> getMemberBoard()throws Exception;
     MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
 
 
