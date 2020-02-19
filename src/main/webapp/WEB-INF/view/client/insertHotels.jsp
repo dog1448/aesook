@@ -6,6 +6,42 @@
 <%@include file="head.jspf" %>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+function checkz() {
+	   //호텔타입 입력 확인
+    if($(':radio[name="hotelsType"]:checked').length < 1){
+      alert("숙소의 타입을 입력해주세요");
+      return;
+    }
+	   //호텔이름 입력 확인
+    if($("#hotelsName").val() == ""){
+      alert("숙소의 이름을 입력해주세요");
+      $("#hotelsName").focus();
+      return;
+    }
+	   //호텔 우편번호 입력 확인
+    if($("#hotelsZipcode").val() == ""){
+      alert("우편번호를 입력해주세요");
+      $("#hotelsZipcode").focus();
+      return;
+    }
+	   //호텔주소 입력 확인
+    if($("#hotelsAddress1").val() == ""){
+      alert("주소를 입력해주세요");
+      $("#hotelsAddress1").focus();
+      return;
+    }
+	   //호텔 전화번호 입력 확인
+    if($("#hotelsPhone").val() == ""){
+      alert("사업장 전화번호를 입력해주세요");
+      $("#hotelsPhone").focus();
+      return;
+    }
+         
+	$('#insertHotelsAll').submit();
+  
+}
+
 	function openZipAddress(){
     new daum.Postcode({
         oncomplete: function(data) {
@@ -78,16 +114,15 @@
                            <div class="col-md-12">
                               &nbsp;&nbsp;&nbsp;&nbsp;
 
-                              <label><input type="radio" name="hotelsType" value="hotel">호텔</label>
+                              <label><input type="radio" id="hotelsType" name="hotelsType" value="호텔">호텔</label>
                                  &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <label><input type="radio" name="hotelsType" value="motel">모텔</label>
+                                 <label><input type="radio" id="hotelsType" name="hotelsType" value="모텔">모텔</label>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="radio" name="hotelsType" value="pension">팬션</label>
+                                    <label><input type="radio" id="hotelsType" name="hotelsType" value="펜션">팬션</label>
                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                       <label><input type="radio" name="hotelsType" value="guesthouse">게스트하우스</label>
+                                       <label><input type="radio" id="hotelsType" name="hotelsType" value="게스트하우스">게스트하우스</label>
                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                          <label><input type="radio" name="hotelsType" value="resort">리조트/콘도</label>
-
+                                          <label><input type="radio" id="hotelsType" name="hotelsType" value="리조트">리조트</label>
                            </div>
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
@@ -95,14 +130,14 @@
                         <h2>숙소 이름</h2>
                         <div class="col-md-12 form-group">
 
-                           <input type="text" name="hotelsName" id="hotelsName" class="form-control" placeholder="숙소명 입력하세요">
-
+                           <input type="text" name="hotelsName" id="hotelsName" class="form-control" placeholder="숙소명 (지명 기입 가능  ex.홍대 기역모텔)">
+                           <input type="hidden" name="memberId" value="${user.memberId}">
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
 
 
                         <h2>숙소 위치</h2>
-                        <div class="col-md-12 form-group">
+								<div class="col-md-12 form-group">
                            <iframe id="map-detail-frame" width="652" height="217" frameborder="0"
                               scrolling="no" title="rooms-location"
                               src="https://goo.gl/maps/araV1CpH7VR57Svb9"></iframe>
@@ -124,58 +159,10 @@
                            <label>위치</label>
                            <input type="text" id="hotelsPath" name="hotelsPath" class="form-control" placeholder="오시는길(ex 종로 3가역으로부터 3분 거리)"><br></br>
                            <label>연락처</label>
-                           <input type="text" id="hotelsPhone" name="hotelsPhone" class="form-control" placeholder="사업장 전화번호">
+                           <input type="text" id="hotelsPhone" name="hotelsPhone" class="form-control" placeholder="사업장 혹은 사업주 전화번호">
 
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
-
-
-                        <h2>객실</h2>
-                        <div class="dropdown">
-                           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                             	 객실 추가 및 제외
-                              <span class="caret"></span>
-                           </button>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                              <li><a href="#">객실 추가</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">객실 제거</a></li>                              
-                           </ul>
-                        </div>
-
-                        <div class="form-group">
-                           <div class="col-sm-6">
-                              <label>방 이름</label>
-                              <input type="text" class="form-control" placeholder="방 이름 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>기준 인원</label>
-                              <input type="text" class="form-control" placeholder="인원 수 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>최대 인원</label>
-                              <input type="text" class="form-control" placeholder="인원 수 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>방 개수</label>
-                              <input type="text" class="form-control" placeholder="인원 수 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>평일 요금</label>
-                              <input type="text" class="form-control" placeholder="요금 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>공휴일 요금</label>
-                              <input type="text" class="form-control" placeholder="요금 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>인원 추가당 요금</label>
-                              <input type="text" class="form-control" placeholder="특징 입력">
-                           </div>
-                        </div>
-                        <div>&nbsp;</div><div>&nbsp;</div>
-						<br></br><br></br>
 						<h2>이용안내</h2>
                         	<textarea name="hotelsInfo" id="hotelsInfo" rows="8" cols="50"></textarea>
                         <br></br>
@@ -183,21 +170,8 @@
                         	<textarea name="hotelsIntroduce" id="hotelsIntroduce" rows="8" cols="50"></textarea>
                         <br></br>
                         <h2>편의시설/서비스</h2>
-                        	<div class="row">
-                          		<div class="col-md-12 form-group">
-                              		<label><input type="checkbox" name="facility" value="hotel">주차가능</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                 	<label><input type="checkbox" name="facility" value="motel">수영장가능</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="pension">조식</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="guesthouse">휘트니스</label>
-                                    <br></br>
-                                    <label><input type="checkbox" name="facility" value="hotel">PC</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                               		<label><input type="checkbox" name="facility" value="motel">파티룸</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="pension">와이파이</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="pension">어메니티</label>
- 		                        </div>
-                        </div>
                         <div>
-                           <button type="submit" class="btn btn-info btn-lg">등록</button>
+                           <button type="button" onclick="checkz()" class="btn btn-info btn-lg">등록</button>
                            <button type="button" class="btn btn-warning btn-lg">수정</button>
                         </div>
                      </form>
@@ -206,7 +180,7 @@
             </div>
          </div>
       </div>
-
+		
       <%@ include file="footer.jspf" %>
    </div>
 
