@@ -8,7 +8,7 @@ import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 public interface MemberHotelsDAO {
 	int getHotelsCode();
 	void insertHotels(MemberHotelsVO vo);
-	void insertRoomSort(MemberRoomSortVO vo);
-	void insertRoom(MemberRoomVO vo);
-	void inserHotelsFacility(MemberHotelsFacilityVO vo);
+	void insertSortType(MemberRoomSortVO vo);
+	//void insertRoom(MemberRoomVO vo);
+	//void inserHotelsFacility(MemberHotelsFacilityVO vo);
 }

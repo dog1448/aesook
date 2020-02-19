@@ -72,7 +72,7 @@
                      </div>
                   </div>
                   <div class="col-three-forth animate-box">
-                     <form action="#">
+                     <form role="form" method="post" action="insertHotelsAll.do" id="insertHotelsAll">
                         <h2>숙소 종류</h2>
                         <div class="row form-group">
                            <div class="col-md-12">
@@ -197,7 +197,7 @@
  		                        </div>
                         </div>
                         <div>
-                           <button type="button" class="btn btn-info btn-lg">등록</button>
+                           <button type="submit" class="btn btn-info btn-lg">등록</button>
                            <button type="button" class="btn btn-warning btn-lg">수정</button>
                         </div>
                      </form>

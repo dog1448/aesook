@@ -8,12 +8,18 @@
 	SELECT HOTELS_SEQ.NEXTVAL FROM DUAL 
 </select>
 
-<insert id="insertHotels">
+<insert id="insertHotels" parameterType="memberHotels">
 	INSERT INTO hotels 
 	VALUES(#{hotelsCode} #{hotelsName}, #{hotelsType}, #{memberNo}, 
 	#{hotelsPhone}, #{hotelsZipcode}, #{hotelsAddress1}, #{hotelsAddress2},
 	#{hotelsPath}, #{hotelsInfo}, #{hotelsIntroduce},)
 </insert>
 
+<insert id="inserSortType" parameterType="memberRoomSort">
+	INSERT INTO hotels 
+	VALUES(#{hotelsCode} #{sortType}, #{sortStandardCnt}, #{sortMaxCnt}, 
+	#{sortRoomCnt}, #{sortStandardPrice}, #{sortHolidayPrice}, #{sortAddPrice},
+	#{sortRoomInfo})
+</insert>
 
 </mapper>
