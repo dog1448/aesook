@@ -27,4 +27,15 @@ public class MemberServiceImpl implements MemberService{
 		int result = memberDAO.getId(vo);
 		return result;
 	}
+
+	@Override
+	public void updateStatusMember(MemberVO vo) {
+		memberDAO.updateStatusMember(vo);
+	}
+
+	@Override
+	public void updateInfoMember(MemberVO vo) {		
+		memberDAO.updateInfoMember(vo);
+		System.out.println(vo.getMemberPhone().toString());
+	}
 }

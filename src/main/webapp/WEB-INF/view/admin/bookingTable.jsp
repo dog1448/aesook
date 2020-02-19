@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Hotels Table
+                                    Booking Table
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -31,7 +32,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Booking_Code</th>
-                                                    <th>Hotels_Name</th>
+                                                    <th>Hotels_Code</th>
                                                     <th>Member_Id</th>
                                                     <th>Booking_Date</th>
                                                     <th>Booking_Total_Price</th>
@@ -39,14 +40,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            	<c:forEach items="${bookingList}" var = "bookingList">
                                                 <tr class="odd gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">B</td>
+                                                    <td>
+                                                    	<a href="bookingInfo.admin?bookingCode=${bookingList.bookingCode}">
+                                                    	<c:out value="${bookingList.bookingCode}"/></a>
+                                                    </td>
+                                                    <td><c:out value="${bookingList.hotelsCode}"/></td>
+                                                    <td><c:out value="${bookingList.memberId}"/></td>
+                                                    <td class="center"><fmt:formatDate value="${bookingList.bookingDate}" pattern="YYYY-MM-D"/></td>
+                                                    <td class="center"><c:out value="${bookingList.bookingTotalPrice}"/></td>
+                                                    <td class="center"><c:out value="${bookingList.bookingStatus}"/></td>
                                                 </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
