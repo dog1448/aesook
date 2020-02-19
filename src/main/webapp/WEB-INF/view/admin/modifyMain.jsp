@@ -18,7 +18,7 @@
                         <!-- /.col-lg-7 -->
                     </div>
                     <!-- /.row -->
-                    <form role="form" action="mainPic.html">
+                    <form role="form" action="pic.admin" method="post" enctype="multipart/form-data">
                         <div class="col-lg-7">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="file-upload">
-                                        <input type="file" name="logo file">&nbsp;
+                                        <input type="file" name="file">&nbsp;
                                     </div>
                                     <!-- /.row (nested) -->
                                 </div>
@@ -42,13 +42,16 @@
                                     Modify Main Image
                                 </div>
                                 <div class="panel-body">
+                                <!-- 
                                             <div class="file-upload">
                                                 <input type="file" name="main file1">&nbsp;
                                                 <input type="file" name="main file2">&nbsp;
                                                 <input type="file" name="main file">
                                             </div>
+                                  -->
                                     <!-- /.row (nested) -->
                                 </div>
+                               
                                 <!-- /.panel-body -->
                             </div>
                             <!-- /.panel -->

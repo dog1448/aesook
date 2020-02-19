@@ -1,26 +1,30 @@
 package com.spring.aesook.client.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.vo.MemberVO;
+import com.spring.aesook.common.file.FileService;
 
 @Controller
 public class MemberController {
 	
     @Autowired
-    MemberService memberService;   
+    private MemberService memberService;   
     @Autowired
-    MemberFindIdService memberFindIdService;
+    private MemberFindIdService memberFindIdService;
     @Autowired
-    MemberFindPassService memberFindPassService;
+    private MemberFindPassService memberFindPassService;
     
     
     //  --------------------------- 회원가입 ------------------------------------
@@ -62,7 +66,7 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-    public String checkLogin(MemberVO vo, Model model) {
+    public String checkLogin(MemberVO vo, Model model, HttpSession session) {
     	MemberVO user = memberService.getMember(vo);
     	
     	if(user == null) {
@@ -79,7 +83,7 @@ public class MemberController {
 				return "/login";
 			}
 		}
-	
+    	
     	return "/home"; // 지울 예정 ( login.do는 인터셉터가 처리 )
     }
     
@@ -132,4 +136,5 @@ public class MemberController {
     	
     	return "/login";
     }
+    
 }

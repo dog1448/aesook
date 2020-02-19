@@ -18,14 +18,18 @@
                 </ul>
 
                 <ul class="nav navbar-right navbar-top-links">
+                
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i> myPage <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="profile.admin"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                       		<li><a href="alarm.admin"><i class="fa fa-bell fa-fw"></i> Alarm</a>
                             </li>
                             <li class="divider"></li>
+                            <li><a href="profile.admin"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                            </li>
+                             <li class="divider"></li>
                             <li><a href="logout.admin"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>

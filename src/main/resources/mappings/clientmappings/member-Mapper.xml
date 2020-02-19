@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
-<mapper namespace="client.member.vo.MemberVO">
+<mapper namespace="client.member.dao.MemberDAO">
     <insert id="insertMember" parameterType="member">
         insert into member (
         member_id

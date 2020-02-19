@@ -20,12 +20,12 @@ public class AuthClientInterceptor extends HandlerInterceptorAdapter {
 		if(httpSession.getAttribute("login") == null) {
 			// log Âï±â
 			noLogin = true;
-			httpSession.setMaxInactiveInterval(3*60*60);
 			request.setAttribute("noLogin", noLogin);
 			RequestDispatcher rd = request.getRequestDispatcher("/login.do");
 			rd.forward(request, response);
 			return false;
 		}
+		httpSession.setMaxInactiveInterval(3*60*60);
 		return true;
  	}
 
