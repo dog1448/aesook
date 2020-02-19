@@ -4,18 +4,18 @@
 
 <mapper namespace="admin.datalist.vo.ManagerHotelsVO">
 
-	<select id="getListHotels" resultType="hotels">
+	<select id="getListHotels" resultType="managerHotels">
 		SELECT *
 		FROM hotels
 	</select>
 
-	<select id="getHotels" resultType="hotels">
+	<select id="getHotels" resultType="managerHotels" parameterType="managerHotels">
 	SELECT * 
 	FROM hotels
 	WHERE hotels_code=#{hotelsCode}
 	</select>
 	
-	<update id="updateHotel">
+	<update id="updateHotel" parameterType="managerHotels">
 	UPDATE hotels 
 	SET hotels_name=#{hotelsName}, hotels_type=#{hotelsType},
 	hotels_phone=#{hotelsPhone}, hotels_zipcode=#{hotelsZipcode},
