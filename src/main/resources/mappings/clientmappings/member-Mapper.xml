@@ -46,8 +46,8 @@
     </update>
 
 	<update id="updateWithdrawal" parameterType="member">
-      UPDATE member SET MEMBER_STATUS = 'G'
-      WHERE member_id = #{memberID}
+      UPDATE member SET MEMBER_STATUS = 'D'
+      WHERE member_id = #{memberId}
    </update>
 </mapper>
 
