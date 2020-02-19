@@ -45,9 +45,5 @@
     	member_phone = #{memberPhone} WHERE member_id = #{memberId} 
     </update>
 
-	<update id="updateWithdrawal" parameterType="member">
-      UPDATE member SET MEMBER_STATUS = 'G'
-      WHERE member_id = #{memberID}
-   </update>
 </mapper>
 
