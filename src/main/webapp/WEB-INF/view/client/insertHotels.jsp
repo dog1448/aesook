@@ -60,7 +60,6 @@
                      <div class="row">
                         <div class="col-md-12 about">
                            <h2>숙소관리</h2>
-
                            <ul>
                               <li><a href="inserthotel.jsp">숙소 등록 및 수정</a></li>
                               <li><a href="insertedRoom.jsp">등록 숙소</a></li>

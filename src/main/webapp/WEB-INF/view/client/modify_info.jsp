@@ -11,7 +11,7 @@
 	    var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/); //"아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다."
 	    var getName= RegExp(/^[가-힣]+$/);
 	    var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
-	    var getPhone = RegExp(/^\d{3}\d{3,4}\d{4}$/);		
+	    var getPhone = RegExp(/^\d{3}-\d{3,4}-\d{4}$/);		
 		   
 	    //이메일 공백 확인
 	    if($("#email").val() == ""){
@@ -92,21 +92,7 @@
             <div class="container">
                 <div class="row">
                     <div class="about-flex">
-                        <div class="col-one-forth aside-stretch animate-box">
-                            <div class="row">
-                                <div class="col-md-12 about">
-                                    <h2>MYPAGE</h2>
-                                    <ul>
-                                        <li><a href="booking.jsp">예약조회</a></li>
-                                        <li><a href="myReview.jsp">나의 후기</a></li>
-                                        <li><a href="modify_info.jsp">개인정보관리</a></li>
-                                        <li><a href="brn.jsp">사업자등록</a></li>
-                                        <li><a href="inserthotel.jsp">숙소 관리</a></li>
-                                        <li><a href="withdrawal.jsp">회원탈퇴</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <%@ include file="myPageSidebar.jspf" %>
                         <div class="col-three-forth animate-box">
                             <h2>개인정보관리</h2>
                             <div>&nbsp;</div>
@@ -116,8 +102,8 @@
 	                                    <div class="row form-group">
 	                                        <div class="col-md-12">
 	                                            <label for="subject">아이디 : </label>
-	                                            <input type="text" id="id" class="form-control" value="${login.memberId}" disabled>
-	                                            <input type="hidden" name="memberId" value="${login.memberId}">
+	                                            <input type="text" id="id" class="form-control" value="${user.memberId}" disabled>
+	                                            <input type="hidden" name="memberId" value="${user.memberId}">
 	                                        </div>
 	                                    </div>
 	                                    
@@ -125,15 +111,15 @@
 	                                    <div class="row form-group">
 	                                        <div class="col-md-12">
 	                                            <label for="subject">이메일 : </label>
-	                                            <input type="email" name="memberEmail" id="email" class="form-control" value="${login.memberEmail}">
+	                                            <input type="email" name="memberEmail" id="email" class="form-control" value="${user.memberEmail}">
 	                                        </div>
 	                                    </div>
 	                                    
 	                                     <div class="row form-group">
 	                                        <div class="col-md-12">
 	                                            <label for="subject">이름 : </label>
-	                                            <input type="text" id="name" class="form-control" value="${login.memberName}" disabled>
-	                                            <input type="hidden" name="memberName" value="${login.memberName}">
+	                                            <input type="text" id="name" class="form-control" value="${user.memberName}" disabled>
+	                                            <input type="hidden" name="memberName" value="${user.memberName}">
 	                                        </div>
 	                                    </div>
 	                                    
@@ -141,7 +127,7 @@
 	                                        <div class="col-md-12">
 	                                            <label for="subject">현재 비밀번호 : </label>
 	                                            <input type="password" id="currentPass" class="form-control">
-	                                            <input type="hidden" value="${login.memberPass}" id="pastPass"> 
+	                                            <input type="hidden" value="${user.memberPass}" id="pastPass"> 
 	                                        </div>
 	                                    </div>
 	                                    
@@ -162,7 +148,7 @@
 	                                    <div class="row form-group">
 	                                        <div class="col-md-12">
 	                                            <label for="subject">휴대폰 : </label>
-	                                            <input type="text" name="memberPhone" id="phone" class="form-control" value="${login.memberPhone}">
+	                                            <input type="text" name="memberPhone" id="phone" class="form-control" value="${user.memberPhone}">
 	                                        </div>
 	                                    </div>
 	

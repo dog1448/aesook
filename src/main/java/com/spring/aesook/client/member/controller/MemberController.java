@@ -73,7 +73,7 @@ public class MemberController {
     } 
         
 
-    //-------------------------------로그인--------------------------
+   
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -81,7 +81,7 @@ public class MemberController {
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
 
-    public String checkLogin(MemberVO vo, Model model,HttpSession session) {//세션은 지울 예정입니다. 지금 인터셉트 닫혀있어서 썼음
+    public String checkLogin(MemberVO vo, Model model,HttpSession session) {
 
     	MemberVO user = memberService.getMember(vo);
     	
@@ -100,7 +100,7 @@ public class MemberController {
 				return "/login";
 			}
 		}
-
+    	session.setAttribute("user", user);
     	return "/home"; // 
 
 
@@ -162,7 +162,7 @@ public class MemberController {
     	return "/insertRoom";
     }
     
-    //----------------------------------개인정보 수정--------------------------------------------
+   
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");
