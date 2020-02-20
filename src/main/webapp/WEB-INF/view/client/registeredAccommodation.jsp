@@ -36,11 +36,11 @@
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
-													<h2>숙소명</h2>													
-													<p>숙소종류 : </p>
-													<p>숙소위치 : </p>
-                                                    <p>객실 수 : </p>
-                                                    <p>편의시설/서비스 : </p>													
+													<h2>숙소명 : ${hotels.hotelsName}</h2><br></br>
+													<input type="hidden" name="memberId" value="${user.memberId}">									
+													<p>숙소종류 : ${hotels.hotelsName}</p>
+													<p>숙소위치 : ${hotels.hotelsAddress1}&nbsp;${hotels.hotelsAddress2}</p>
+                                                    <p>전화번호 : ${hotels.hotelsPhone}</p>												
 												</div>
 											</div>											
 										</div>

@@ -22,5 +22,7 @@
         <mapper resource="mappings/adminmappings/managerHotels-Mapper.xml"/>
         <mapper resource="mappings/clientmappings/member-Mapper.xml" />
         <mapper resource="mappings/clientmappings/memberBoard-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberHotels-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberHotelsList-Mapper.xml"/>         
 	</mappers>
 </configuration>

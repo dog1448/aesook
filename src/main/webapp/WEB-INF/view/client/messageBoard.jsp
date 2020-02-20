@@ -82,7 +82,7 @@
                 <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
                     <thead>
                         <tr>
-                            <th style="background-color: #eeeeee; text-align: center;"><a>보낸사람</a></th>
+                            <th style="background-color: #eeeeee; text-align: center;">보낸사람</th>
                             <th style="background-color: #eeeeee; text-align: center;">제목</th>                            
                             <th style="background-color: #eeeeee; text-align: center;">작성일</th>
                         </tr>

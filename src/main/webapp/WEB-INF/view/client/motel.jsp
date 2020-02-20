@@ -45,12 +45,12 @@
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">강남/역삼/삼성/논현</a></li>
+											<li><a href="hotelsList.do?type=모텔&sido=서울&region=강남/역삼/삼성/논현">강남/역삼/삼성/논현</a></li>
 
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">서초/신사/방배</a></li>
+											<li><a href="hotelsList.do?type=모텔&sido=서울&region=서초/방배">서초/방배</a></li>
 										</td>
 									</tr>
 									<tr>
@@ -86,7 +86,7 @@
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">신촌/홍대/합정</a></li>
+											<li><a href="hotelsList.do?type=모텔&sido=서울&region=서대문/마포">서대문/마포(홍대,합정,신촌)</a></li>
 										</td>
 									</tr>
 									<tr>
@@ -95,7 +95,7 @@
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">종로/대학로</a></li>
+											<li><a href="hotelsList.do?type=모텔&sido=서울&region=종로/대학로">종로/대학로</a></li>
 										</td>
 									</tr>
 									<tr>

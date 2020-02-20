@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.aesook.client.hotels.dao.MemberHotelsDAO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
-import com.spring.aesook.client.hotels.vo.MemberRoomSortVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 
 @Service("MemberHotelsService")
 public class MemberHotelsServiceImpl implements MemberHotelsService {
@@ -14,21 +14,13 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 	private MemberHotelsDAO memberHotelsDAO;
 	
 	@Override
-	public int getHotelsCode() {
-		return memberHotelsDAO.getHotelsCode();
-	}
-
-	@Override
 	public void insertHotels(MemberHotelsVO vo) {
-		vo.setHotelsCode(getHotelsCode());
 		memberHotelsDAO.insertHotels(vo);
-		
 	}
 
 	@Override
-	public void insertSortType(MemberRoomSortVO vo) {
-		vo.setHotelsCode(getHotelsCode());
-		memberHotelsDAO.insertSortType(vo);
+	public MemberHotelsVO getMyHotels(MemberVO vo) {
+		return memberHotelsDAO.getMyHotels(vo);
 	}
 	
 }
