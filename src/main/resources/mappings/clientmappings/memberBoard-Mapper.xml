@@ -77,6 +77,24 @@
 				BOARD
 		WHERE BOARD_SEQ = #{boardSeq}
 	</select>
+	
+	<select id="getMemberBoardFAQ" resultType="memberBoard">
+		<![CDATA[
+		SELECT
+			   BOARD_SEQ,
+		 	   BOARD_TITLE,
+		       BOARD_CONTENT,
+		       BOARD_WRITER,
+		       BOARD_STEP,
+		       BOARD_DEPTH,
+		       BOARD_READCOUNT,
+		       BOARD_IP,
+		       BOARD_DATE,
+		       BOARD_TYPE
+		FROM BOARD where BOARD_TYPE = 'F'
+		order by BOARD_SEQ desc,BOARD_DATE desc
+		]]>
+	</select>
 
 	<resultMap id="MemberResultMap" type="memberBoard">
 		<id property="boardSeq" column="board_seq"/>
