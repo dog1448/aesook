@@ -8,8 +8,12 @@ public interface MemberBoardDAO {
     void insertMemberBoard(MemberBoardVO memberBoardVO);
     void deleteMemberBoard(MemberBoardVO memberBoardVO);
     void updateMemberBoard(MemberBoardVO memberBoardVO);
+    Integer getBoardCount(Integer BoardCnt);
 
-    List<MemberBoardVO> getMemberBoard(MemberBoardVO memberBoardVO);
+    MemberBoardVO readMemberBoard(Integer BoardNo);
+
+
+    List<MemberBoardVO> getMemberBoard()throws Exception;
     MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
 
 

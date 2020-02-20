@@ -91,7 +91,7 @@ public class MemberController {
     public String checkLogin(MemberVO vo, Model model,HttpSession session) {
 
     	MemberVO user = memberService.getMember(vo);
-    	
+    	String id = vo.getMemberId();
     	if(user == null) {
 			model.addAttribute("check", "noId");
 			return "/login";
@@ -108,7 +108,8 @@ public class MemberController {
 			}
 		}
 
-    	session.setAttribute("login", user); 
+    session.setAttribute("user", user);
+		session.setAttribute("id",id);
 
     	return "/home"; // 
 

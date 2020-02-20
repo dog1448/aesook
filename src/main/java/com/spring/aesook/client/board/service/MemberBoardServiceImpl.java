@@ -25,16 +25,29 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 
     @Override
     public void updateMemberBoard(MemberBoardVO memberBoardVO) {
-    memberBoardDAO.deleteMemberBoard(memberBoardVO);
+    memberBoardDAO.updateMemberBoard(memberBoardVO);
+    }
+
+    public MemberBoardVO readMemberBoard(Integer BoardNo) {
+        return memberBoardDAO.readMemberBoard(BoardNo);
     }
 
     @Override
-    public List<MemberBoardVO> getMemberBoard(MemberBoardVO memberBoardVO) {
-        return memberBoardDAO.getMemberBoard(memberBoardVO);
+    public List<MemberBoardVO> getMemberBoard() throws Exception {
+        return memberBoardDAO.getMemberBoard();
     }
+
+
 
     @Override
     public MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO) {
         return null;
+    }
+
+    @Override
+    public Integer getBoardCount(Integer BoardCnt) {
+        memberBoardDAO.getBoardCount(BoardCnt);
+        return BoardCnt;
+
     }
 }

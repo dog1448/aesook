@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -84,21 +85,28 @@
                     <caption> 글쓰기  </caption>
                 </thead>
                 <tbody>
-                    <form action="write_ok.jsp" method="post" encType="multiplart/form-data">
+                    <form action="MoveList.do" method="post">
+                        <input type="hidden" name="boardWriter" id="boardWriter" value="${id}">
                         <tr>
                             <th>제목: </th>
-                            <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control" /></td>
+                            <td><input type="text" placeholder="제목을 입력하세요. " id="boardTitle" name="boardTitle" class="form-control" /></td>
                         </tr>
                         <tr>
                             <th>내용: </th>
-                            <td><textarea cols="10" placeholder="내용을 입력하세요. " name="content"
-                                    class="form-control" style="height: 500px;"></textarea></td>
+                            <td><textarea type="text" cols="10" placeholder="내용을 입력하세요. " id="boardContent" name="boardContent" class="form-control" style="height: 500px;" rows="30"></textarea></td>
                         </tr>
+
+                        <input type="hidden" name="boardType" id="boardType" value="F">
+                        <input type="hidden" name="boardIP" id="boardIP" value="123.123">
+
+
+                        <!--
                         <tr>
                             <th>첨부파일: </th>
                             <td><input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control" />
                             </td>
                         </tr>
+                        -->
 
                         <tr>
                             <td colspan="2">
@@ -107,9 +115,11 @@
                     <input type="button" value="reset" class="pull-left"/>
                     <input type="button" value="글 목록으로... " class="pull-right" onclick="javascript:location.href='list.jsp'"/>
                     -->
-                                <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+
+                                <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
+                                <input class="btn btn-default" type="submit" value="등록">
                                 <a class="btn btn-default" type="reset"> reset </a>
-                                <a class="btn btn-default" onclick="javascript:location.href='list'">글 목록으로...</a>
+                                <a class="btn btn-default" onclick="javascript:location.href='/FAQ_Board.do'">글 목록으로...</a>
                             </td>
                         </tr>
                     </form>
