@@ -45,15 +45,14 @@ public class MemberBoardController {
         model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
         return "/boardRead";
     }
-//전체글조회
+/*
     @RequestMapping(value = "/MemberBoard.do",method = RequestMethod.GET)
     public String boardCnt(@RequestParam("boardCnt") Integer boardCnt,Model model) throws Exception{
         model.addAttribute("boardCnt",memberBoardService.getBoardCount(boardCnt));
         return "faq_board";
 
     }
-    */
-
+*/
 
     @RequestMapping(value = "/BoardModify.do",method = RequestMethod.GET)
     public String modifyGET(@RequestParam("boardNo") Integer boardNo,Model model) throws Exception{
