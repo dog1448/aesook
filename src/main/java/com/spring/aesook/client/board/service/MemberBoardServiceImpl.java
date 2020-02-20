@@ -45,9 +45,9 @@ public class MemberBoardServiceImpl implements MemberBoardService {
     }
 
     @Override
-    public Integer getBoardCount(Integer BoardCnt) {
-        memberBoardDAO.getBoardCount(BoardCnt);
-        return BoardCnt;
-
+    public MemberBoardVO getBoardCount() {
+        return memberBoardDAO.getBoardCount();
     }
+
+
 }

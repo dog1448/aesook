@@ -30,10 +30,11 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
     }
 
     @Override
-    public Integer getBoardCount(Integer BoardCnt) {
-        sqlSessionTemplate.selectOne(NAMESPACE+".getBoardCount",BoardCnt);
-        return BoardCnt;
+    public MemberBoardVO getBoardCount() {
+        return sqlSessionTemplate.selectOne(NAMESPACE+".getBoardCount");
     }
+
+
 
 
     public MemberBoardVO readMemberBoard(Integer BoardNo) {

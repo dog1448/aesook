@@ -44,7 +44,7 @@
 		       BOARD_IP,
 		       BOARD_DATE,
 		       BOARD_TYPE
-		FROM BOARD where BOARD_TYPE = 'F'
+		FROM BOARD where BOARD_TYPE = 'Q'
 		order by BOARD_SEQ desc,BOARD_DATE desc
 		]]>
 	</select>
@@ -63,8 +63,8 @@
 	</delete>
 
 
-	<select id="getBoardCount" parameterType="memberBoard" resultType="Integer">
-		SELECT count(*) from BOARD
+	<select id="getBoardCount" parameterType="memberBoard">
+		SELECT count(*) from BOARD =#{boardCnt}
 	</select>
 
 	<select id="readMemberBoard" resultMap="MemberResultMap">
