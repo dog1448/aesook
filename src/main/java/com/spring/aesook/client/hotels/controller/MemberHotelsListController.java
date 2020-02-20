@@ -27,11 +27,7 @@ public class MemberHotelsListController {
 		int total = memberHotelsListService.countHotelsList(type, sido, region);		
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectHotelsList(type, sido, region);
-		model.addAttribute("viewAll", list);		
-		
-		for(MemberHotelsVO vo : list) {
-			System.out.println(vo.getHotelsName());
-		}
+		model.addAttribute("viewAll", list);			
 		
 		return "/accommodations";
 	}
