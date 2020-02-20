@@ -19,6 +19,8 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.aesook.client.image.vo.MemberBrnImageVO;
+
 @Service("fileService")
 public class FileServiceImpl implements FileService {
 
@@ -62,8 +64,9 @@ public class FileServiceImpl implements FileService {
 			return fileNames;
 		}
 		
-		public String getFile(FileVO file) {
-			return file.getSavePath() + file.getFileName();
+		public String getFilePath(FileVO file) {
+			System.out.println(context.getRealPath("/"));
+			return context.getRealPath("/") + file.getSavePath() + file.getFileName();
 		}
 		
  		/* 업로드 폴더 생성 */
@@ -75,6 +78,15 @@ public class FileServiceImpl implements FileService {
 			if(!dirPath.exists()){
 				dirPath.mkdir();
 			}
+		}
+		
+		public MemberBrnImageVO getMemberBrnImageFile(FileVO file) {
+			MemberBrnImageVO vo = new MemberBrnImageVO();
+			vo.setBrnImageName(file.getFileName());
+			vo.setBrnImageOrigin(file.getOriginName());
+			vo.setBrnImagePath(file.getSavePath());
+			vo.setBrnImageExtension(file.getExtension());
+			return vo;
 		}
 		
 		/* 썸네일 이미지 생성하기 

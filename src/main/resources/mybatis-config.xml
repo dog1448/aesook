@@ -13,7 +13,9 @@
 		    <typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
         <typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>  
         <typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsVO" alias="memberHotels"/>         
-        <typeAlias type="com.spring.aesook.client.hotels.vo.MemberRoomSortVO" alias="memberRoomSort"/>      
+        <typeAlias type="com.spring.aesook.client.hotels.vo.MemberRoomSortVO" alias="memberRoomSort"/>
+        <typeAlias type="com.spring.aesook.client.image.vo.MemberBrnImageVO" alias="memberBrnImage"/>
+        <typeAlias type="com.spring.aesook.client.alarm.vo.MemberAlarmVO" alias="memberAlarm"/>      
 	</typeAliases>
 	
 	<mappers>
@@ -21,6 +23,8 @@
       	<mapper resource="mappings/adminmappings/managerBooking-Mapper.xml" />
         <mapper resource="mappings/adminmappings/managerHotels-Mapper.xml"/>
         <mapper resource="mappings/clientmappings/member-Mapper.xml" />
-        <mapper resource="mappings/clientmappings/memberBoard-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberBoard-Mapper.xml"/>
+        <mapper resource="mappings/clientmappings/memberImage-Mapper.xml"/>
+        <mapper resource="mappings/clientmappings/memberAlarm-Mapper.xml"/>       
 	</mappers>
 </configuration>
