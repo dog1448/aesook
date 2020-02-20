@@ -12,5 +12,5 @@ public interface MemberBoardService {
     MemberBoardVO readMemberBoard(Integer BoardNo);
     List<MemberBoardVO> getMemberBoard() throws Exception;
     MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
-
+    Integer getBoardCount(Integer BoardCnt);
 }

@@ -43,4 +43,11 @@ public class MemberBoardServiceImpl implements MemberBoardService {
     public MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO) {
         return null;
     }
+
+    @Override
+    public Integer getBoardCount(Integer BoardCnt) {
+        memberBoardDAO.getBoardCount(BoardCnt);
+        return BoardCnt;
+
+    }
 }

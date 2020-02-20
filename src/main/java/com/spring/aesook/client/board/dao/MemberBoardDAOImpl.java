@@ -29,6 +29,12 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
         sqlSessionTemplate.update(NAMESPACE + ".updateMemberBoard",memberBoardVO);
     }
 
+    @Override
+    public Integer getBoardCount(Integer BoardCnt) {
+        sqlSessionTemplate.selectOne(NAMESPACE+".getBoardCount",BoardCnt);
+        return BoardCnt;
+    }
+
 
     public MemberBoardVO readMemberBoard(Integer BoardNo) {
         return sqlSessionTemplate.selectOne(NAMESPACE+".readMemberBoard",BoardNo);

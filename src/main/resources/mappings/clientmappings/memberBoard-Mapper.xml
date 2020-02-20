@@ -26,7 +26,7 @@
 	,#{boardDepth}
 	,#{boardReadcount}
 	,#{boardIP}
-	,SYSDATE
+	,TO_CHAR(SYSDATE,'YYYY-MM-DD')
 	,#{boardType}
 	)
 	</insert>
@@ -63,7 +63,7 @@
 	</delete>
 
 
-	<select id="getArticleCount" parameterType="memberBoard" resultType="int">
+	<select id="getBoardCount" parameterType="memberBoard" resultType="Integer">
 		SELECT count(*) from BOARD
 	</select>
 

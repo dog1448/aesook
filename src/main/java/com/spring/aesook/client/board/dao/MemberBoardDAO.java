@@ -8,7 +8,7 @@ public interface MemberBoardDAO {
     void insertMemberBoard(MemberBoardVO memberBoardVO);
     void deleteMemberBoard(MemberBoardVO memberBoardVO);
     void updateMemberBoard(MemberBoardVO memberBoardVO);
-
+    Integer getBoardCount(Integer BoardCnt);
 
     MemberBoardVO readMemberBoard(Integer BoardNo);
 

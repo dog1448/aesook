@@ -50,6 +50,13 @@ public class MemberBoardController {
         return "/boardRead";
     }
 
+    // 전체 글 조회 (GET)
+    @RequestMapping(value = "/MemberBoard.do",method = RequestMethod.GET)
+    public String boardCnt(@RequestParam("boardCnt") Integer boardCnt,Model model) throws Exception{
+        model.addAttribute("boardCnt",memberBoardService.getBoardCount(boardCnt));
+        return "faq_board";
+    }
+
     // 수정 폼 이동
     @RequestMapping(value = "/BoardModify.do",method = RequestMethod.GET)
     public String modifyGET(@RequestParam("boardNo") Integer boardNo,Model model) throws Exception{
