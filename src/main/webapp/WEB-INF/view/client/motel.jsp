@@ -86,7 +86,7 @@
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">신촌/홍대/합정</a></li>
+											<li><a href="hotelsList.do?type=motel&sido=서울&region=홍대/합정/마포/서대문">신촌/홍대/합정/마포</a></li>
 										</td>
 									</tr>
 									<tr>

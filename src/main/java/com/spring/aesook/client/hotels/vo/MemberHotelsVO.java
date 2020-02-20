@@ -7,7 +7,7 @@ public class MemberHotelsVO {
 	private int hotelsCode;
 	private String hotelsName;
 	private String hotelsType;
-	private int memberNo;
+	private String memberId;
 	private String hotelsPhone;
 	private String hotelsZipcode;
 	private String hotelsAddress1;
@@ -15,7 +15,6 @@ public class MemberHotelsVO {
 	private String hotelsPath;
 	private String hotelsInfo;
 	private String hotelsIntroduce;
-	
 	public int getHotelsCode() {
 		return hotelsCode;
 	}
@@ -34,11 +33,11 @@ public class MemberHotelsVO {
 	public void setHotelsType(String hotelsType) {
 		this.hotelsType = hotelsType;
 	}
-	public int getMemberNo() {
-		return memberNo;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getHotelsPhone() {
 		return hotelsPhone;
@@ -82,14 +81,5 @@ public class MemberHotelsVO {
 	public void setHotelsIntroduce(String hotelsIntroduce) {
 		this.hotelsIntroduce = hotelsIntroduce;
 	}
-	@Override
-	public String toString() {
-		return "MemberHotelsVO [hotelsCode=" + hotelsCode + ", hotelsName=" + hotelsName + ", hotelsType=" + hotelsType
-				+ ", memberNo=" + memberNo + ", hotelsPhone=" + hotelsPhone + ", hotelsZipcode=" + hotelsZipcode
-				+ ", hotelsAddress1=" + hotelsAddress1 + ", hotelsAddress2=" + hotelsAddress2 + ", hotelsPath="
-				+ hotelsPath + ", hotelsInfo=" + hotelsInfo + ", hotelsIntroduce=" + hotelsIntroduce + "]";
-	}
-	
-	
 	
 }

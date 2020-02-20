@@ -77,6 +77,10 @@ public class MemberController {
     } 
         
 
+
+    //-------------------------------Login-------------------------
+
+
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -103,8 +107,10 @@ public class MemberController {
 				return "/login";
 			}
 		}
-    	session.setAttribute("user", user);//삭제할 내용
+
+    session.setAttribute("user", user);
 		session.setAttribute("id",id);
+
     	return "/home"; // 
 
 
@@ -165,6 +171,9 @@ public class MemberController {
     	return "/insertRoom";
     }
     
+
+    //----------------------------------modifyInfo--------------------------------------------
+
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="client.hotels.dao.MemberHotelsListDAO">
+ 
+  	<select id="countHotelsList" resultType="int" parameterType="java.util.HashMap">
+  		SELECT COUNT(*) FROM hotels WHERE HOTELS_TYPE = #{type}
+  		AND HOTELS_ADDRESS1 LIKE '%'||#{sido}||'%' AND  
+  		<foreach collection="regionList" item="item" separator="or" open="(" close=")" index="index">
+  			HOTELS_ADDRESS1 LIKE '%'||#{item}||'%'
+  		</foreach>
+   	</select>	
+  	
+  	<select id="selectHotelsList" resultType="memberHotels">
+  		
+  	</select>
+ </mapper>

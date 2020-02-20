@@ -50,7 +50,7 @@
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">강남/역삼/삼성</a></li>
+											<li><a href="hotelsList.do?type=h&region=강남/역삼/삼성">강남/역삼/삼성</a></li>
 										</td>
 									</tr>
 									<tr>
@@ -86,7 +86,7 @@
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">홍대/합정/마포/서대문</a></li>
+											<li><a href="hotelsList.do?region=홍대/합정/마포/서대문">홍대/합정/마포/서대문</a></li>
 										</td>
 									</tr>
 									<tr>
@@ -115,7 +115,7 @@
 										<td>
 											<li><a href="hotels.jsp">성북/강북/노원/도봉</a></li>
 										</td>
-									</tr>									
+									</tr>																	
 								</table>
 							</ul>
 						</div>
@@ -198,7 +198,7 @@
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">인천국제공항/강화/을왕리/영종</a></li>
+											<li><a href="hotels.jsp">강화/영종</a></li>
 										</td>
 
 										<td>
