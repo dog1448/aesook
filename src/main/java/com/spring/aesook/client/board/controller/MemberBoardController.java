@@ -2,19 +2,15 @@ package com.spring.aesook.client.board.controller;
 
 import com.spring.aesook.client.board.service.MemberBoardService;
 import com.spring.aesook.client.board.vo.MemberBoardVO;
-import com.spring.aesook.client.member.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Controller
 public class MemberBoardController {
@@ -24,13 +20,17 @@ public class MemberBoardController {
 
     @RequestMapping(value = "/MemberBoard.do", method = RequestMethod.GET)
     public String moveBoard(Model model) throws Exception {
+        // Q&A °Ô½Ã±Û °¹¼ö
+        int qnaCnt = memberBoardService.getBoardCount();
+        model.addAttribute("qnaCnt",qnaCnt);
+        System.out.println("Q&A BOARD COUNT ="+qnaCnt);
         model.addAttribute("boards", memberBoardService.getMemberBoard());
-        return "/faq_board";
+        return "/memberQNABoard";
     }
 
     @RequestMapping(value = "/write.do", method = RequestMethod.GET)
     public String moveWrite(Model model) throws Exception {
-        return "/write";
+        return "/memberQNAWrite";
     }
 
     @RequestMapping(value = "/MoveList.do", method = RequestMethod.POST)
@@ -43,21 +43,13 @@ public class MemberBoardController {
     @RequestMapping(value = "/BoardRead.do", method = RequestMethod.GET)
     public String read(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
         model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
-        return "/boardRead";
+        return "/memberQNARead";
     }
-/*
-    @RequestMapping(value = "/MemberBoard.do",method = RequestMethod.GET)
-    public String boardCnt(@RequestParam("boardCnt") Integer boardCnt,Model model) throws Exception{
-        model.addAttribute("boardCnt",memberBoardService.getBoardCount(boardCnt));
-        return "faq_board";
-
-    }
-*/
 
     @RequestMapping(value = "/BoardModify.do",method = RequestMethod.GET)
     public String modifyGET(@RequestParam("boardNo") Integer boardNo,Model model) throws Exception{
         model.addAttribute("board",memberBoardService.readMemberBoard(boardNo));
-        return "/modifyMemberBoard";
+        return "/modifyMemberQNABoard";
     }
 
     @RequestMapping(value = "/BoardModify.do",method = RequestMethod.POST)
@@ -79,6 +71,8 @@ public class MemberBoardController {
         model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
         return "/memberFAQBoardRead";
     }
+
+
 
 }
 

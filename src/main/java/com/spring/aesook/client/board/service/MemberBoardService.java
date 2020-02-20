@@ -13,7 +13,7 @@ public interface MemberBoardService {
     List<MemberBoardVO> getMemberBoard() throws Exception;
     List<MemberBoardVO> getMemberBoardFAQ() throws Exception;
     MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
-    Integer getBoardCount(Integer BoardCnt);
+    int getBoardCount();
     
     
 }

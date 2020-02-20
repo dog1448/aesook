@@ -96,7 +96,7 @@
                             <td><textarea type="text" cols="10" placeholder="내용을 입력하세요. " id="boardContent" name="boardContent" class="form-control" style="height: 500px;" rows="30"></textarea></td>
                         </tr>
 
-                        <input type="hidden" name="boardType" id="boardType" value="F">
+                        <input type="hidden" name="boardType" id="boardType" value="Q">
                         <input type="hidden" name="boardIP" id="boardIP" value="123.123">
 
 
