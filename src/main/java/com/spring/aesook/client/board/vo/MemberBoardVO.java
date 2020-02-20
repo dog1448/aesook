@@ -4,6 +4,8 @@ package com.spring.aesook.client.board.vo;
 import java.util.Date;
 
 public class MemberBoardVO {
+	private Integer boardCnt;
+	private Integer boardSeq;
 	private String boardWriter;
 	private String boardTitle;
 	private String boardContent;
@@ -75,11 +77,27 @@ public class MemberBoardVO {
 	public void setBoardType(String boardType) {
 		this.boardType = boardType;
 	}
+	public Integer getBoardSeq() {
+		return boardSeq;
+	}
+
+	public Integer getBoardCnt() {
+		return boardCnt;
+	}
+
+	public void setBoardCnt(Integer boardCnt) {
+		this.boardCnt = boardCnt;
+	}
+
+	public void setBoardSeq(Integer boardSeq) {
+		this.boardSeq = boardSeq;
+	}
 
 	@Override
 	public String toString() {
 		return "MemberBoardVO{" +
-				"boardWriter='" + boardWriter + '\'' +
+				"boardSeq=" + boardSeq +
+				", boardWriter='" + boardWriter + '\'' +
 				", boardTitle='" + boardTitle + '\'' +
 				", boardContent='" + boardContent + '\'' +
 				", boardGroup=" + boardGroup +

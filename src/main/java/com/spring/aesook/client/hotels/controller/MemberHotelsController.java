@@ -44,9 +44,19 @@ public class MemberHotelsController {
 	}
 	
 	@RequestMapping(value="/insertHotelsAll.do", method = RequestMethod.POST)
-	public String inserHotelsAll(MemberHotelsVO hotelsVO, MemberRoomSortVO roomSortVO) {
-		memberHotelsService.insertHotels(hotelsVO);
-		memberHotelsService.insertSortType(roomSortVO);
-		return "/insertHotels";
+	public String inserHotelsAll(MemberHotelsVO vo) {
+		memberHotelsService.insertHotels(vo);
+		return "/registeredAccommodation";
+	}
+
+	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)
+	public String getMyHotels(HttpSession session, Model model){
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		if(user != null) {
+			model.addAttribute("user", user);
+			MemberHotelsVO vo = memberHotelsService.getMyHotels(user);
+			model.addAttribute("hotels", vo);
+		}
+		return "/registeredAccommodation";
 	}
 }

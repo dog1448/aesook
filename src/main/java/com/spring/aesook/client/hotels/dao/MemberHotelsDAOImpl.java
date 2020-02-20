@@ -10,6 +10,7 @@ import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomSortVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 
 @Repository("memberHotls")
 public class MemberHotelsDAOImpl implements MemberHotelsDAO{
@@ -18,12 +19,6 @@ public class MemberHotelsDAOImpl implements MemberHotelsDAO{
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
-	@Override
-	public int getHotelsCode() {
-		int code = sqlSessionTemplate.selectOne(namespace + ".getHotelsCode");
-		return code;
-	}
 
 	@Override
 	public void insertHotels(MemberHotelsVO vo) {
@@ -31,17 +26,8 @@ public class MemberHotelsDAOImpl implements MemberHotelsDAO{
 	}
 
 	@Override
-	public void insertSortType(MemberRoomSortVO vo) {
-		sqlSessionTemplate.insert(namespace + ".inserSortType", vo);
-		
+	public MemberHotelsVO getMyHotels(MemberVO vo) {
+		return sqlSessionTemplate.selectOne(namespace + ".selectHotels", vo);
 	}
-
-//	@Override
-//	public void insertRoom(MemberRoomVO vo) {
-//	}
-//
-//	@Override
-//	public void inserHotelsFacility(MemberHotelsFacilityVO vo) {
-//	}
 	
 }

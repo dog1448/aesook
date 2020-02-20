@@ -77,6 +77,10 @@ public class MemberController {
     } 
         
 
+
+    //-------------------------------Login-------------------------
+
+
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin() {
     	return "/login";
@@ -87,7 +91,7 @@ public class MemberController {
     public String checkLogin(MemberVO vo, Model model,HttpSession session) {
 
     	MemberVO user = memberService.getMember(vo);
-    	
+    	String id = vo.getMemberId();
     	if(user == null) {
 			model.addAttribute("check", "noId");
 			return "/login";
@@ -104,7 +108,8 @@ public class MemberController {
 			}
 		}
 
-    	session.setAttribute("user", user);
+    session.setAttribute("user", user);
+		session.setAttribute("id",id);
 
     	return "/home"; // 
 
@@ -166,6 +171,8 @@ public class MemberController {
     	return "/insertRoom";
     }
     
+
+    //----------------------------------modifyInfo--------------------------------------------
 
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
