@@ -11,6 +11,9 @@ public interface MemberBoardService {
     void updateMemberBoard(MemberBoardVO memberBoardVO);
     MemberBoardVO readMemberBoard(Integer BoardNo);
     List<MemberBoardVO> getMemberBoard() throws Exception;
+    List<MemberBoardVO> getMemberBoardFAQ() throws Exception;
     MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
     Integer getBoardCount(Integer BoardCnt);
+    
+    
 }

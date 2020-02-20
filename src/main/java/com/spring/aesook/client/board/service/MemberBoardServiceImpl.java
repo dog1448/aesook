@@ -50,4 +50,9 @@ public class MemberBoardServiceImpl implements MemberBoardService {
         return BoardCnt;
 
     }
+
+	@Override
+	public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
+		return memberBoardDAO.getMemberBoardFAQ();
+	}
 }

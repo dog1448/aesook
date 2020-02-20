@@ -48,4 +48,8 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
     public MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO) {
         return null;
     }
+    
+    public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
+        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoardFAQ");
+    }
 }

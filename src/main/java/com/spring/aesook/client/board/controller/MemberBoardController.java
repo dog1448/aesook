@@ -22,20 +22,17 @@ public class MemberBoardController {
     @Autowired
     MemberBoardService memberBoardService;
 
-    // 보드로 이동
     @RequestMapping(value = "/MemberBoard.do", method = RequestMethod.GET)
     public String moveBoard(Model model) throws Exception {
         model.addAttribute("boards", memberBoardService.getMemberBoard());
         return "/faq_board";
     }
 
-    // 글쓰기 폼 이동
     @RequestMapping(value = "/write.do", method = RequestMethod.GET)
     public String moveWrite(Model model) throws Exception {
         return "/write";
     }
 
-    // 글쓰기 기능(등록 처리)
     @RequestMapping(value = "/MoveList.do", method = RequestMethod.POST)
     public String writeArticle(MemberBoardVO memberBoardVO, HttpServletRequest request) {
         memberBoardService.insertMemberBoard(memberBoardVO);
@@ -43,29 +40,27 @@ public class MemberBoardController {
     }
 
 
-    // 조회 기능
     @RequestMapping(value = "/BoardRead.do", method = RequestMethod.GET)
     public String read(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
         model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
         return "/boardRead";
     }
-
-    // 전체 글 조회 (GET)
-    /*
+//전체글조회
     @RequestMapping(value = "/MemberBoard.do",method = RequestMethod.GET)
     public String boardCnt(@RequestParam("boardCnt") Integer boardCnt,Model model) throws Exception{
         model.addAttribute("boardCnt",memberBoardService.getBoardCount(boardCnt));
         return "faq_board";
-    }*/
 
-    // 수정 폼 이동
+    }
+    */
+
+
     @RequestMapping(value = "/BoardModify.do",method = RequestMethod.GET)
     public String modifyGET(@RequestParam("boardNo") Integer boardNo,Model model) throws Exception{
         model.addAttribute("board",memberBoardService.readMemberBoard(boardNo));
         return "/modifyMemberBoard";
     }
 
-    // 수정 기능
     @RequestMapping(value = "/BoardModify.do",method = RequestMethod.POST)
     public String modify(MemberBoardVO memberBoardVO , RedirectAttributes redirectAttributes) throws  Exception{
         memberBoardService.updateMemberBoard(memberBoardVO);
@@ -73,8 +68,18 @@ public class MemberBoardController {
 
         return "redirect:/MemberBoard.do";
     }
-    // 삭제 기능
-
+    
+    @RequestMapping(value = "/memberFAQ.do", method = RequestMethod.GET)
+    public String moveBoardFAQ(Model model) throws Exception {
+        model.addAttribute("boards", memberBoardService.getMemberBoardFAQ());
+        return "/memberFAQ";
+    }
+    
+    @RequestMapping(value = "/FAQBoardRead.do", method = RequestMethod.GET)
+    public String readFAQ(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
+        model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
+        return "/memberFAQBoardRead";
+    }
 
 }
 
