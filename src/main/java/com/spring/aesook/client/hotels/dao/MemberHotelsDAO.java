@@ -5,5 +5,5 @@ import com.spring.aesook.client.member.vo.MemberVO;
 
 public interface MemberHotelsDAO {
 	void insertHotels(MemberHotelsVO vo);
-	MemberHotelsVO getMyHotels(MemberVO vo);
+	MemberHotelsVO getMyHotels(MemberVO vo);	
 }

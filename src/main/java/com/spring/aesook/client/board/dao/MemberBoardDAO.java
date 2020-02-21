@@ -16,6 +16,7 @@ public interface MemberBoardDAO {
 
     List<MemberBoardVO> getMemberBoard(Criteria cri)throws Exception;
     List<MemberBoardVO> getMemberBoardFAQ()throws Exception;
+    List<MemberBoardVO> getMemberNoticeBoard()throws Exception;
     MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
 
 

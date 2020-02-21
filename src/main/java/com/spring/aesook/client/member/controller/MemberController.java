@@ -1,6 +1,5 @@
 package com.spring.aesook.client.member.controller;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
 import com.spring.aesook.client.member.service.MemberRegisterService;
 import com.spring.aesook.client.member.service.MemberService;
 import com.spring.aesook.client.member.service.MemberWithdrawalService;
 import com.spring.aesook.client.member.vo.MemberVO;
-import com.spring.aesook.common.file.FileService;
 
 @Controller
 @SessionAttributes("vo")
@@ -61,9 +58,8 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/registerConfirm.do", method = RequestMethod.GET)
-    public String updateStatusMember(@ModelAttribute("vo") MemberVO vo, Model model) {
+    public String updateStatusMember(@ModelAttribute("vo") MemberVO vo, Model model) {    	
     	
-    	vo.setMemberStatus("G");
     	memberService.updateStatusMember(vo);    	
     	
     	return "/registerSuccess";
@@ -88,10 +84,9 @@ public class MemberController {
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
 
-    public String checkLogin(MemberVO vo, Model model,HttpSession session) {
+    public String checkLogin(MemberVO vo, Model model,HttpSession session) {//session은 지울 예정
 
     	MemberVO user = memberService.getMember(vo);
-    	String id = vo.getMemberId();
     	if(user == null) {
 			model.addAttribute("check", "noId");
 			return "/login";
@@ -108,8 +103,7 @@ public class MemberController {
 			}
 		}
 
-    session.setAttribute("user", user);
-		session.setAttribute("id",id);
+    	session.setAttribute("login", user);
 
     	return "/home"; // 
 
