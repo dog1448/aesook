@@ -2,6 +2,8 @@ package com.spring.aesook.client.board.controller;
 
 import com.spring.aesook.client.board.service.MemberBoardService;
 import com.spring.aesook.client.board.vo.MemberBoardVO;
+import com.spring.aesook.common.pagination.Criteria;
+import com.spring.aesook.common.pagination.PageMaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +21,23 @@ public class MemberBoardController {
     MemberBoardService memberBoardService;
 
     @RequestMapping(value = "/MemberBoard.do", method = RequestMethod.GET)
-    public String moveBoard(Model model) throws Exception {
+    public String moveBoard(Model model, Criteria cri) throws Exception {
         // Q&A °Ô½Ã±Û °¹¼ö
         int qnaCnt = memberBoardService.getBoardCount();
         model.addAttribute("qnaCnt",qnaCnt);
         System.out.println("Q&A BOARD COUNT ="+qnaCnt);
-        model.addAttribute("boards", memberBoardService.getMemberBoard());
+
+        // Pagination
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(qnaCnt);
+        model.addAttribute("pageMaker",pageMaker);
+
+        // Set boardList attr
+        model.addAttribute("boards", memberBoardService.getMemberBoard(cri));
+
+
+
         return "/memberQNABoard";
     }
 

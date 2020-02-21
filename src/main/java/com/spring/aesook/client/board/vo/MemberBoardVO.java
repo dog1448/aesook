@@ -16,7 +16,10 @@ public class MemberBoardVO {
 	private String boardIP;
 	private Date boardDate;
 	private String boardType;
-	
+
+
+
+
 	public String getBoardWriter() {
 		return boardWriter;
 	}

@@ -1,6 +1,7 @@
 package com.spring.aesook.client.board.dao;
 
 import com.spring.aesook.client.board.vo.MemberBoardVO;
+import com.spring.aesook.common.pagination.Criteria;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,8 +40,9 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
         return sqlSessionTemplate.selectOne(NAMESPACE+".readMemberBoard",BoardNo);
     }
 
-    public List<MemberBoardVO> getMemberBoard() throws Exception {
-        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoard");
+    @Override
+    public List<MemberBoardVO> getMemberBoard(Criteria cri) throws Exception {
+        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoard",cri);
     }
 
 

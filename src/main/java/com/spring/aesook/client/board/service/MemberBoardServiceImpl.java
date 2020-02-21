@@ -2,6 +2,7 @@ package com.spring.aesook.client.board.service;
 
 import com.spring.aesook.client.board.dao.MemberBoardDAO;
 import com.spring.aesook.client.board.vo.MemberBoardVO;
+import com.spring.aesook.common.pagination.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,10 +34,9 @@ public class MemberBoardServiceImpl implements MemberBoardService {
     }
 
     @Override
-    public List<MemberBoardVO> getMemberBoard() throws Exception {
-        return memberBoardDAO.getMemberBoard();
+    public List<MemberBoardVO> getMemberBoard(Criteria cri) throws Exception {
+        return memberBoardDAO.getMemberBoard(cri);
     }
-
 
 
     @Override

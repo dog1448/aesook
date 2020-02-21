@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="client.board.dao.MemberBoardDAO">
 
-	<insert id="insertBoard" parameterType="memberBoard">
+    <insert id="insertBoard" parameterType="memberBoard">
 	INSERT INTO board (
 	BOARD_SEQ
 	,board_writer
@@ -31,26 +31,38 @@
 	)
 	</insert>
 
-	<select id="getMemberBoard" resultType="memberBoard">
-		<![CDATA[
-		SELECT
-			   BOARD_SEQ,
-		 	   BOARD_TITLE,
-		       BOARD_CONTENT,
-		       BOARD_WRITER,
-		       BOARD_STEP,
-		       BOARD_DEPTH,
-		       BOARD_READCOUNT,
-		       BOARD_IP,
-		       BOARD_DATE,
-		       BOARD_TYPE
-		FROM BOARD where BOARD_TYPE = 'Q'
-		order by BOARD_SEQ desc,BOARD_DATE desc
-
-		]]>
+    <select id="getMemberBoard" resultType="memberBoard" parameterType="pagination">
+<![CDATA[
+			SELECT
+            BOARD_SEQ
+            ,board_writer
+            ,board_title
+            ,board_content
+            ,board_step
+            ,board_depth
+            ,board_readcount
+            ,board_ip
+            ,board_date
+            ,board_type
+            FROM (
+            select BOARD_SEQ
+            ,board_writer
+            ,board_title
+            ,board_content
+            ,board_step
+            ,board_depth
+            ,board_readcount
+            ,board_ip
+            ,board_date
+            ,board_type
+            ,row_number() over(order by board_date desc) as RNUM
+            from board) board
+            where board_type='Q' and RNUM between #{rowStart} and #{rowEnd}
+            order by board_date desc
+       ]]>
 	</select>
 
-	<update id="updateMemberBoard" parameterType="memberBoard">
+    <update id="updateMemberBoard" parameterType="memberBoard">
 		update BOARD
 		set BOARD_TITLE = #{boardTitle}
 			,BOARD_CONTENT = #{boardContent}
@@ -58,17 +70,17 @@
 
 	</update>
 
-	<delete id="deleteMemberBoard" parameterType="memberBoard">
+    <delete id="deleteMemberBoard" parameterType="memberBoard">
 		delete from BOARD
 		where BOARD_WRITER =#{boardWriter}
 	</delete>
 
 
-	<select id="getBoardCount" parameterType="memberBoard" resultType="int">
+    <select id="getBoardCount" parameterType="memberBoard" resultType="int">
 		SELECT count(*) from BOARD where BOARD_TYPE='Q'
 	</select>
 
-	<select id="readMemberBoard" resultMap="MemberResultMap">
+    <select id="readMemberBoard" resultMap="MemberResultMap">
 		SELECT BOARD_SEQ
 			   ,BOARD_TITLE
 			   ,BOARD_CONTENT
@@ -78,30 +90,32 @@
 				BOARD
 		WHERE BOARD_SEQ = #{boardSeq}
 	</select>
-	
-	<select id="getMemberBoardFAQ" resultType="memberBoard">
+
+    <select id="getMemberBoardFAQ" resultType="memberBoard">
 		<![CDATA[
-		SELECT
-			   BOARD_SEQ,
-		 	   BOARD_TITLE,
-		       BOARD_CONTENT,
-		       BOARD_WRITER,
-		       BOARD_STEP,
-		       BOARD_DEPTH,
-		       BOARD_READCOUNT,
-		       BOARD_IP,
-		       BOARD_DATE,
-		       BOARD_TYPE
-		FROM BOARD where BOARD_TYPE = 'F'
-		order by BOARD_SEQ desc,BOARD_DATE desc
-		]]>
+
+                SELECT
+                       BOARD_SEQ,
+                        BOARD_TITLE,
+                       BOARD_CONTENT,
+                       BOARD_WRITER,
+                       BOARD_STEP,
+                       BOARD_DEPTH,
+                       BOARD_READCOUNT,
+                       BOARD_IP,
+                       BOARD_DATE,
+                       BOARD_TYPE
+                FROM BOARD where BOARD_TYPE = 'F'
+                order by BOARD_SEQ desc,BOARD_DATE desc
+
+        ]]>
 	</select>
 
-	<resultMap id="MemberResultMap" type="memberBoard">
-		<id property="boardSeq" column="board_seq"/>
-		<result property="boardTitle" column="board_title"/>
-		<result property="boardContent" column="board_content"/>
-		<result property="boardDate" column="board_date"/>
-		<result property="boardReadcount" column="board_readcount"/>
-	</resultMap>
+    <resultMap id="MemberResultMap" type="memberBoard">
+        <id property="boardSeq" column="board_seq"/>
+        <result property="boardTitle" column="board_title"/>
+        <result property="boardContent" column="board_content"/>
+        <result property="boardDate" column="board_date"/>
+        <result property="boardReadcount" column="board_readcount"/>
+    </resultMap>
 </mapper>
