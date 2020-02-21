@@ -29,5 +29,5 @@ public class MemberHotelsDAOImpl implements MemberHotelsDAO{
 	public MemberHotelsVO getMyHotels(MemberVO vo) {
 		return sqlSessionTemplate.selectOne(namespace + ".selectHotels", vo);
 	}
-	
+
 }

@@ -45,13 +45,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
     }
 
     @Override
-    public Integer getBoardCount(Integer BoardCnt) {
-        memberBoardDAO.getBoardCount(BoardCnt);
-        return BoardCnt;
-
+    public int getBoardCount() {
+        return memberBoardDAO.getBoardCount();
     }
 
-	@Override
+
+    @Override
 	public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
 		return memberBoardDAO.getMemberBoardFAQ();
 	}

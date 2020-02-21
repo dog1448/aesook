@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 
@@ -28,9 +28,11 @@
 							<div class="col-md-12">
 								<div class="wrap-division">
 									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-										<h2>숙소명</h2>																
+										<h2>${hotelsName }</h2>																
 									</div>
 									<div class="row">
+									
+									<c:forEach var="list" items="${list}">
 										<a href="room-details.jsp">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
@@ -41,117 +43,23 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>방 이름</h2>
-																<p class="price"><span>$45</span> <small>/ night</small>
+																<h2>${list.sortType}</h2>
+																<p class="price"><span>￦${list.sortStandardPrice}</span> <small>/ night</small>
 																</p>
-																<p>방 설명</p>
+																<p>최소인원 : ${list.sortStandardCnt}</p>
+																<p>최대인원 : ${list.sortMaxCnt}</p>
+																<p>추가요금 : ${list.sortAddPrice}</p>
+																<p>${list.sortRoomInfo}</p>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
 										</a>
-										<a href="room-details.jsp">
-											<div class="col-md-12 animate-box">
-												<div class="room-wrap">
-													<div class="row">
-														<div class="col-md-6 col-sm-6">
-															<div class="room-img"
-																style="background-image: url(resources/client/images/room-2.jpg);"></div>
-														</div>
-														<div class="col-md-6 col-sm-6">
-															<div class="desc">
-																<h2>방 이름</h2>
-																<p class="price"><span>$75</span> <small>/ night</small>
-																</p>
-																<p>방 설명</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</a>
-										<a href="room-details.jsp">
-											<div class="col-md-12 animate-box">
-												<div class="room-wrap">
-													<div class="row">
-														<div class="col-md-6 col-sm-6">
-															<div class="room-img"
-																style="background-image: url(resources/client/images/room-1.jpg);"></div>
-														</div>
-														<div class="col-md-6 col-sm-6">
-															<div class="desc">
-																<h2>방 이름</h2>
-																<p class="price"><span>$45</span> <small>/ night</small>
-																</p>
-																<p>방 설명</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</a>
-										<a href="room-details.jsp">
-											<div class="col-md-12 animate-box">
-												<div class="room-wrap">
-													<div class="row">
-														<div class="col-md-6 col-sm-6">
-															<div class="room-img"
-																style="background-image: url(resources/client/images/room-1.jpg);"></div>
-														</div>
-														<div class="col-md-6 col-sm-6">
-															<div class="desc">
-																<h2>방 이름</h2>
-																<p class="price"><span>$45</span> <small>/ night</small>
-																</p>
-																<p>방 설명</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</a>
-										<a href="room-details.jsp">
-											<div class="col-md-12 animate-box">
-												<div class="room-wrap">
-													<div class="row">
-														<div class="col-md-6 col-sm-6">
-															<div class="room-img"
-																style="background-image: url(resources/client/images/room-1.jpg);"></div>
-														</div>
-														<div class="col-md-6 col-sm-6">
-															<div class="desc">
-																<h2>방 이름</h2>
-																<p class="price"><span>$45</span> <small>/ night</small>
-																</p>
-																<p>방 설명</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</a>
-										<a href="room-details.jsp">
-											<div class="col-md-12 animate-box">
-												<div class="room-wrap">
-													<div class="row">
-														<div class="col-md-6 col-sm-6">
-															<div class="room-img"
-																style="background-image: url(resources/client/images/room-1.jpg);"></div>
-														</div>
-														<div class="col-md-6 col-sm-6">
-															<div class="desc">
-																<h2>방 이름</h2>
-																<p class="price"><span>$45</span> <small>/ night</small>
-																</p>
-																<p>방 설명</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</a>
+										</c:forEach>
+										
 										<!--리뷰 작성-->
+										<form method="post" action="#">
 										<div id="colorlib-contact">
 											<div class="container">
 												<div class="row">
@@ -192,6 +100,7 @@
 												</div>
 											</div>
 										</div>
+										</form>
 										<!-- 리뷰 끝-->
 										<!-- 게시판 -->
 										<div class="container">

@@ -18,6 +18,7 @@ public class MemberHotelsListController {
 	@Autowired
 	MemberHotelsListService memberHotelsListService;
 	
+	//숙소 리스트 게시 컨트롤러
 	@RequestMapping(value = "/hotelsList.do", method = RequestMethod.GET)
 	public String hotelsList(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type, 
 			@RequestParam(value = "sido") String sido, 
@@ -27,11 +28,7 @@ public class MemberHotelsListController {
 		int total = memberHotelsListService.countHotelsList(type, sido, region);		
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectHotelsList(type, sido, region);
-		model.addAttribute("viewAll", list);		
-		
-		for(MemberHotelsVO vo : list) {
-			System.out.println(vo.getHotelsName());
-		}
+		model.addAttribute("viewAll", list);			
 		
 		return "/accommodations";
 	}
