@@ -18,6 +18,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 	@Autowired
 	MemberHotelsListDAO memberHotelsListDAO;
 	
+	//숙소종류, 시도, 지역을 세팅(지역 같은 경우는 '/'별로 잘라서)
 	public HashMap<Object, Object> divide (String type, String sido, String region){
 		String[] array = region.split("/");
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
@@ -33,7 +34,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return map;
 	}	
 
-
+	//조건에 맞는 숙소 전체 개수 구하기
 	@Override
 	public int countHotelsList(String type, String sido, String region) {
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
@@ -41,7 +42,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return memberHotelsListDAO.countHotelsList(map);
 	}
 
-	
+	//숙소 리스트 불러오기
 	@Override
 	public List<MemberHotelsVO> selectHotelsList(String type, String sido, String region) {		
 		

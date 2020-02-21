@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.review.dao.MemberReviewDAO">
+	<insert id="insertReview" parameterType="memberReview">
+	INSERT INTO review  
+	values(
+	REVIEW_SEQ.nextval
+	,#{hotelsCode}
+	,#{memberId}
+	,#{bookingCode}
+	,#{reviewContents}
+	,TO_DATE(sysdate,'yyyy.mm.dd')
+	,#{reviewScore}
+	)
+	</insert>
+</mapper>
