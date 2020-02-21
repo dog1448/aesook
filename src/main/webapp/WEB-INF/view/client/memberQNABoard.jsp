@@ -110,22 +110,22 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <a href="#" class="btn btn-success btn-arrow-left">이전</a> <a
-                href="#" class="btn btn-success btn-arrow-left">다음</a> <a
-                href="write.do" class="btn btn-info pull-right">글쓰기</a>
 
-            <div id="paging"></div>
+            <c:if test="${pageMaker.prev}">
+            <a href="${path}/MemberBoard.do${pageMaker.makeQuery(pageMaker.startPage -1)}" class="btn btn-success btn-arrow-left">이전</a>
+            </c:if>
+
+            <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="point">
+                <li style="list-style: none; float: left; padding: 6px"><a href="${path}/MemberBoard.do${pageMaker.makeQuery(point)}">${point}</a> </li>
+            </c:forEach>
+
+            <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+            <a href="${path}/MemberBoard.do${pageMaker.makeQuery(pageMaker.endPage +1)}" class="btn btn-success btn-arrow-left">다음</a>
+            </c:if>
+            <a href="write.do" class="btn btn-info pull-right">글쓰기</a>
 
 
         </div>
-    </div>
-    <div>
-        <c:if test="${qnaCnt>5}">
-            ${boards.get(0).boardWriter}
-            ${boards.get(0).boardTitle}
-            ${boards.get(0).boardContent}
-            ${boards.get(0).boardDate}
-        </c:if>
     </div>
 
     <%@include file="footer.jspf" %>
@@ -148,21 +148,21 @@
     var dataPerPage = 5;    // 한 페이지에 나타낼 데이터 수
     var pageCount = 5;        // 한 화면에 나타낼 페이지 수
 
-    function paging(totalData, dataPerPage, pageCount, currentPage){
+    function paging(totalData, dataPerPage, pageCount, currentPage) {
 
         console.log("currentPage : " + currentPage);
 
-        var totalPage = Math.ceil(totalData/dataPerPage);    // 총 페이지 수
-        var pageGroup = Math.ceil(currentPage/pageCount);    // 페이지 그룹
+        var totalPage = Math.ceil(totalData / dataPerPage);    // 총 페이지 수
+        var pageGroup = Math.ceil(currentPage / pageCount);    // 페이지 그룹
 
         console.log("pageGroup : " + pageGroup);
 
         var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
-        if(last > totalPage)
+        if (last > totalPage)
             last = totalPage;
-        var first = last - (pageCount-1);    // 화면에 보여질 첫번째 페이지 번호
-        var next = last+1;
-        var prev = first-1;
+        var first = last - (pageCount - 1);    // 화면에 보여질 첫번째 페이지 번호
+        var next = last + 1;
+        var prev = first - 1;
 
         console.log("last : " + last);
         console.log("first : " + first);
@@ -173,37 +173,39 @@
 
         var html = "";
 
-        if(prev > 0)
+        if (prev > 0)
             html += "<a href=# id='prev'><</a> ";
 
-        for(var i=first; i <= last; i++){
+        for (var i = first; i <= last; i++) {
             html += "<a href='#' id=" + i + ">" + i + "</a> ";
         }
 
-        if(last < totalPage)
+        if (last < totalPage)
             html += "<a href=# id='next'>></a>";
 
         $("#paging").html(html);    // 페이지 목록 생성
         $("#paging a").css("color", "black");
-        $("#paging a#" + currentPage).css({"text-decoration":"none",
-            "color":"red",
-            "font-weight":"bold"});    // 현재 페이지 표시
+        $("#paging a#" + currentPage).css({
+            "text-decoration": "none",
+            "color": "red",
+            "font-weight": "bold"
+        });    // 현재 페이지 표시
 
-        $("#paging a").click(function(){
+        $("#paging a").click(function () {
 
             var $item = $(this);
             var $id = $item.attr("id");
             var selectedPage = $item.text();
 
-            if($id == "next")    selectedPage = next;
-            if($id == "prev")    selectedPage = prev;
+            if ($id == "next") selectedPage = next;
+            if ($id == "prev") selectedPage = prev;
 
             paging(totalData, dataPerPage, pageCount, selectedPage);
         });
 
     }
 
-    $("document").ready(function(){
+    $("document").ready(function () {
         paging(totalData, dataPerPage, pageCount, 1);
     });
 </script>
