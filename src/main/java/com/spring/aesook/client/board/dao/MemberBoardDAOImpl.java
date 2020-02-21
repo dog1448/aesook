@@ -51,4 +51,9 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
     public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
         return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoardFAQ");
     }
+
+	@Override
+	public List<MemberBoardVO> getMemberNoticeBoard() throws Exception {
+		return sqlSessionTemplate.selectList(NAMESPACE+".getMemberNoticeBoard");
+	}
 }
