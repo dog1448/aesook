@@ -7,7 +7,7 @@ import com.spring.aesook.client.hotels.dao.MemberHotelsDAO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 
-@Service("MemberHotelsService")
+@Service("memberHotelsService")
 public class MemberHotelsServiceImpl implements MemberHotelsService {
 	
 	@Autowired

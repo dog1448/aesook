@@ -38,8 +38,9 @@
 							<div>&nbsp;</div>				
 							<div class="row">								
 								<div class="col-md-12">	
-									<a href="room-details.jsp">								
+															
 									<div class="room-wrap">
+									<a href="room-details.jsp">		
 										<div class="row">
 											
 											<div class="col-md-6 col-sm-6">

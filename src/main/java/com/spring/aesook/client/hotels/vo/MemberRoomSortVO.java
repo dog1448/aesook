@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 public class MemberRoomSortVO {
 	private int hotelsCode;
 	private String sortType;
-	private int standardCnt;
-	private int maxCnt;
-	private int roomCnt;
-	private int standardPrice;
-	private int holidayPrice;
-	private int addPrice;
-	private String roomInfo;
+	private int sortStandardCnt;
+	private int sortMaxCnt;
+	private int sortRoomCnt;
+	private int sortStandardPrice;
+	private int sortHolidayPrice;
+	private int sortAddPrice;
+	private String sortRoomInfo;
 	
 	public int getHotelsCode() {
 		return hotelsCode;
@@ -26,47 +26,48 @@ public class MemberRoomSortVO {
 	public void setSortType(String sortType) {
 		this.sortType = sortType;
 	}
-	public int getStandardCnt() {
-		return standardCnt;
+	public int getSortStandardCnt() {
+		return sortStandardCnt;
 	}
-	public void setStandardCnt(int standardCnt) {
-		this.standardCnt = standardCnt;
+	public void setSortStandardCnt(int sortStandardCnt) {
+		this.sortStandardCnt = sortStandardCnt;
 	}
-	public int getMaxCnt() {
-		return maxCnt;
+	public int getSortMaxCnt() {
+		return sortMaxCnt;
 	}
-	public void setMaxCnt(int maxCnt) {
-		this.maxCnt = maxCnt;
+	public void setSortMaxCnt(int sortMaxCnt) {
+		this.sortMaxCnt = sortMaxCnt;
 	}
-	public int getRoomCnt() {
-		return roomCnt;
+	public int getSortRoomCnt() {
+		return sortRoomCnt;
 	}
-	public void setRoomCnt(int roomCnt) {
-		this.roomCnt = roomCnt;
+	public void setSortRoomCnt(int sortRoomCnt) {
+		this.sortRoomCnt = sortRoomCnt;
 	}
-	public int getStandardPrice() {
-		return standardPrice;
+	public int getSortStandardPrice() {
+		return sortStandardPrice;
 	}
-	public void setStandardPrice(int standardPrice) {
-		this.standardPrice = standardPrice;
+	public void setSortStandardPrice(int sortStandardPrice) {
+		this.sortStandardPrice = sortStandardPrice;
 	}
-	public int getHolidayPrice() {
-		return holidayPrice;
+	public int getSortHolidayPrice() {
+		return sortHolidayPrice;
 	}
-	public void setHolidayPrice(int holidayPrice) {
-		this.holidayPrice = holidayPrice;
+	public void setSortHolidayPrice(int sortHolidayPrice) {
+		this.sortHolidayPrice = sortHolidayPrice;
 	}
-	public int getAddPrice() {
-		return addPrice;
+	public int getSortAddPrice() {
+		return sortAddPrice;
 	}
-	public void setAddPrice(int addPrice) {
-		this.addPrice = addPrice;
+	public void setSortAddPrice(int sortAddPrice) {
+		this.sortAddPrice = sortAddPrice;
 	}
-	public String getRoomInfo() {
-		return roomInfo;
+	public String getSortRoomInfo() {
+		return sortRoomInfo;
 	}
-	public void setRoomInfo(String roomInfo) {
-		this.roomInfo = roomInfo;
+	public void setSortRoomInfo(String sortRoomInfo) {
+		this.sortRoomInfo = sortRoomInfo;
 	}
+	
 	
 }
