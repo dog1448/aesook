@@ -16,7 +16,7 @@
 
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="notice_board.do">공지사항</a></li>
+								<li class="active"><a href="noticeBoard.do">공지사항</a></li>
 								<li class="active"><a href="event_board.do">이벤트</a></li>
 
 								<li class="active"><a href="MemberBoard.do">Q&A</a></li>

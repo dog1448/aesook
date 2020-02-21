@@ -55,4 +55,10 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 	public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
 		return memberBoardDAO.getMemberBoardFAQ();
 	}
+
+	@Override
+	public List<MemberBoardVO> getMemberNoticeBoard() throws Exception {
+		
+		return memberBoardDAO.getMemberNoticeBoard();
+	}
 }
