@@ -17,13 +17,23 @@ public class MemberRoomSortDAOImpl implements MemberRoomSortDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
+	//방 목록 가져오기
 	@Override
 	public List<MemberRoomSortVO> getRoomSortList(int hotelsCode) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectRoomSort", hotelsCode);
 	}
 
+	// 방목록 화면에 쓸 숙소 정보 가져오기
 	@Override
 	public MemberHotelsVO getHotel(int hotelsCode) {
 		return sqlSessionTemplate.selectOne(namespace + ".getHotel", hotelsCode);
 	}
+	
+	//방 하나의 정보 가져오기
+	@Override
+	public MemberRoomSortVO getRoomSort(MemberRoomSortVO vo) {		
+		return sqlSessionTemplate.selectOne(namespace + ".selectRoomDescription", vo);
+	}
+	
+	
 }

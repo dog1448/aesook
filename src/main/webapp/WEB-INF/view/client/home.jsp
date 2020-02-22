@@ -16,15 +16,15 @@
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-					<li style="background-image: url(resources/client/images/img_bg_5.jpg);">
+					<li style="background-image: url(resources/client/images/hotel-5.jpg);">
 						<div class="overlay"></div>
 						<div class="container-fluids">
 							<div class="row">
 								<div
 									class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 									<div class="slider-text-inner text-center">
-										<h2>집같이 편안한 숙소/뭔가 다른 느낌</h2>
-										<h1>애숙이</h1>
+									<h2>집 같은 편안함</h2>
+									<h1>애숙이</h1>										
 									</div>
 								</div>
 							</div>
