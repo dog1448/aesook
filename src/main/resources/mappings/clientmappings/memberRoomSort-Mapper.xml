@@ -9,4 +9,8 @@
 	where HOTELS_CODE = #{hotelsCode} ORDER BY sort_standard_price asc
 </select>
 
+<select id="getHotel" resultType="memberHotels" parameterType="int">
+	select * from hotels 
+	where hotels_code = #{hotelsCode}
+</select>
 </mapper>

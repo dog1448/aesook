@@ -53,7 +53,7 @@
 								<c:forEach var="list" items="${viewAll}">
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="hotel-entry">
-											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}&hotelsName=${list.hotelsName}" class="hotel-img"
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
 												style="background-image: url(resources/client/images/hotel-1.jpg);">
 												<p class="price"><span>￦1,200,000</span><small> /night</small></p>												
 											</a>

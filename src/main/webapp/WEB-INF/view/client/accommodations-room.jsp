@@ -6,6 +6,22 @@
 
 <head>
 	<%@include file="head.jspf" %>
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=m98vgu013u&callback=initMap"></script>
+	<script type="text/javascript">
+		var map = null;
+	
+	    function initMap() {
+	        map = new naver.maps.Map('map', {
+	            center: new naver.maps.LatLng(37.3595704, 127.105399),
+	            zoom: 15
+	            
+	        });
+	        marker = new naver.maps.Marker({
+	            position: new naver.maps.LatLng(37.3595704, 127.105399),
+	            map: map
+	        });    
+	    }
+    </script>
 </head>
 
 <body>
@@ -28,15 +44,16 @@
 							<div class="col-md-12">
 								<div class="wrap-division">
 									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-										<h2>${hotelsName }</h2>																
+										<h2>${vo.hotelsName}</h2>																									
 									</div>
-									<div class="row">
-									
+									<!-- 방목록> -->									
+									<h3>방목록</h3>	
+									<div class="row">									
 									<c:forEach var="list" items="${list}">
 										<a href="room-details.jsp">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
-													<div class="row">
+													<div class="row">													
 														<div class="col-md-6 col-sm-6">
 															<div class="room-img"
 																style="background-image: url(resources/client/images/room-1.jpg);"></div>
@@ -51,61 +68,123 @@
 																<p>추가요금 : ${list.sortAddPrice}</p>
 																<p>${list.sortRoomInfo}</p>
 															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</a>
-										</c:forEach>
+														</div>														
+													</div>													
+												</div>												
+											</div>											
+										</a>																			
+										</c:forEach>										
 										
-										<!--리뷰 작성-->
-										<form method="post" action="#">
-										<div id="colorlib-contact">
-											<div class="container">
-												<div class="row">
-													<div class="col-md-10 col-md-offset-1 animate-box">	
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="subject">별점</label>
-																<div class="starRev">
-																	<span class="starR on">별1</span>
-																	<span class="starR on">별2</span>
-																	<span class="starR on">별3</span>
-																	<span class="starR on">별4</span>
-																	<span class="starR on">별5</span>
-																</div>
-															</div>
-														</div>
-
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="subject">제목</label>
-																<input type="text" id="subject" class="form-control"
-																	placeholder="">
-															</div>
-														</div>
-
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="message">내용</label>
-																<textarea name="message" id="message" cols="30"
-																	rows="10" class="form-control"
-																	placeholder=""></textarea>
-															</div>
-														</div>
-														<div class="form-group text-center">
-															<input type="submit" value="작성" class="btn btn-info">
-														</div>
-													</div>
-												</div>
+										<!-- 숙소 소개 -->
+										<h3>숙소 소개</h3>										
+										<div class="container">
+											<div class="row">
+												<p>${vo.hotelsIntroduce }</p>																										
+											</div>						
+										</div>
+											
+										<div>&nbsp;</div>
+										
+										<!-- 편의시설 및 테마 -->
+										<h3>편의시설 및 테마</h3>										
+										<div class="container">
+											<div class="row">
+											<c:if test="${facilityVO.facilityParking eq 'Y'}">
+												<div class="col-lg-1">
+												   	<img src="resources/client/images/icons/car.png">
+												   	<div>&nbsp;</div>												   	
+												   	<p style="text-align: center">주차장</p>
+												 </div>
+											</c:if>
+											<c:if test="${facilityVO.facilityPool eq 'Y'}">	 	
+												 <div class="col-lg-1">
+												    <img src="resources/client/images/icons/pool.png">
+												    <div>&nbsp;</div>												   
+												    <p style="text-align: center">수영장</p>
+												 </div>
+											</c:if>
+											<c:if test="${facilityVO.facilityBreakfast eq 'Y'}">	 
+												 <div class="col-lg-1">
+												    <img src="resources/client/images/icons/breakfast.png">
+												    <div>&nbsp;</div>												   
+												    <p style="text-align: center">조식 제공</p>
+												 </div>
+											</c:if>
+											<c:if test="${facilityVO.facilityFitness eq 'Y'}">	 
+												 <div class="col-lg-1">
+												    <img src="resources/client/images/icons/fitness.png">
+												    <div>&nbsp;</div>												   
+												    <p style="text-align: center">헬스장</p>
+												 </div>
+											</c:if>
+											<c:if test="${facilityVO.facilityWifi eq 'Y'}">	 	
+												 <div class="col-lg-1">
+												    <img src="resources/client/images/icons/wifi.png">
+												    <div>&nbsp;</div>												   
+												    <p style="text-align: center">와이파이</p>
+												 </div>
+											</c:if>
+											<c:if test="${facilityVO.facilityParty eq 'Y'}">	 
+												  <div class="col-lg-1">
+												    <img src="resources/client/images/icons/party.png">
+												    <div>&nbsp;</div>												   
+												    <p style="text-align: center">파티</p>
+												 </div>
+											</c:if>
+											<c:if test="${facilityVO.facilityPc eq 'Y'}">	 	
+												 <div class="col-lg-1">
+												    <img src="resources/client/images/icons/pc.png">
+												    <div>&nbsp;</div>												   
+												    <p style="text-align: center">PC</p>
+												 </div>	
+											</c:if>
+											<c:if test="${facilityVO.facilityAmenity eq 'Y'}">	 
+												 <div class="col-lg-1">
+												    <img src="resources/client/images/icons/amenity.png">
+												    <div>&nbsp;</div>												   
+												    <p style="text-align: center">편의시설</p>
+												 </div>
+											</c:if>	 																																	
+											</div>						
+										</div>	
+										
+										<div>&nbsp;</div>
+										
+										<!-- 이용안내 -->
+										<h3>이용안내</h3>										
+										<div class="container">
+											<div class="row">
+												<p>${vo.hotelsInfo}</p>																										
+											</div>						
+										</div>									
+										
+											
+										<div>&nbsp;</div>
+									
+										<h3>지도</h3>	
+										<!-- 네이버 맵 -->
+										<div class="container">										
+											<div class="row">
+												<div id="map" style="width:100%;height:400px;"></div>										
 											</div>
 										</div>
-										</form>
-										<!-- 리뷰 끝-->
-										<!-- 게시판 -->
+										
+										<div>&nbsp;</div>
+										
+										<!-- 찾아 오시는 길 -->
+										<h3>찾아 오시는 길</h3>										
 										<div class="container">
-
 											<div class="row">
+												<p>${vo.hotelsPath}</p>																										
+											</div>						
+										</div>
+										
+										<div>&nbsp;</div>
+										
+										<!-- 리뷰 게시판 -->									
+										<h3>리뷰</h3>										
+										<div class="container">
+											<div class="row">											
 												<table class="table table-striped"
 													style="text-align: center; border: 1px solid #dddddd">
 													<thead>
@@ -146,6 +225,8 @@
 												<a href="#" class="btn btn-success btn-arrow-left">다음</a>												
 											</div>
 										</div>
+										
+									
 									</div>
 								</div>
 							</div>
@@ -209,8 +290,7 @@
 
 
 		<div>&nbsp;</div>
-		<!-- 구글 맵 ??-->
-		<div id="map" class="colorlib-map"></div>
+				
 
 		<%@include file="footer.jspf" %>
 	</div>
