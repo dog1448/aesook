@@ -110,8 +110,8 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <a href="#" class="btn btn-success btn-arrow-left">이전</a> <a
-                href="#" class="btn btn-success btn-arrow-left">다음</a> <a
+            <a href="#" class="btn btn-success btn-arrow-left">이전</a> 
+            <a href="#" class="btn btn-success btn-arrow-left">다음</a> 
 			<div id="paging"></div>
 
         </div>
