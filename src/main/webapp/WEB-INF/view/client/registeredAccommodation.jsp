@@ -20,7 +20,7 @@
 				<div class="row">
 					<div class="about-flex">
 						 <!-- 숙소관리 사이드바 -->
-                 		 <%@ include file="accommodationManagementSidebar.jspf" %>
+                 		 <%@ include file="managementSidebar.jspf" %>
 						<div class="col-three-forth animate-box">	
 							<h2>예약 조회</h2>	
 							<div>&nbsp;</div>				

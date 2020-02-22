@@ -21,4 +21,9 @@ public class MemberRoomSortDAOImpl implements MemberRoomSortDAO {
 	public List<MemberRoomSortVO> getRoomSortList(int hotelsCode) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectRoomSort", hotelsCode);
 	}
+
+	@Override
+	public MemberHotelsVO getHotel(int hotelsCode) {
+		return sqlSessionTemplate.selectOne(namespace + ".getHotel", hotelsCode);
+	}
 }

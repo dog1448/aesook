@@ -20,4 +20,9 @@ public class MemberRoomSortServiceImpl implements MemberRoomSortService {
 		return memberRoomSortDAO.getRoomSortList(hotelsCode);
 	}
 
+	@Override
+	public MemberHotelsVO getHotel(int hotelsCode) {
+		return memberRoomSortDAO.getHotel(hotelsCode);
+	}
+
 }

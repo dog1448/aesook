@@ -7,7 +7,7 @@ import com.spring.aesook.client.review.dao.MemberReviewDAO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Service("memberReviewService")
-public class MemberReviewServiceImpl implements MemberReviewServiece {
+public class MemberReviewServiceImpl implements MemberReviewService {
 	
 	@Autowired
 	private MemberReviewDAO memberReivewDAO;
