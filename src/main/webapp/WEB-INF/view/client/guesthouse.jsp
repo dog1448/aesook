@@ -45,39 +45,39 @@
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">서울 전체</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=서울">서울 전체</a></li>
 
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">종로/삼청동/북촌/인사동</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=종로/삼청동/북촌/인사동">종로/삼청동/북촌/인사동</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">동대문/대학로/노원</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=동대문/대학로/노원">동대문/대학로/노원</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">홍대/신촌</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=홍대/신촌">홍대/신촌</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">명동/남산/남대문</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=명동/남산/남대문">명동/남산/남대문</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">강남/잠실/건대/뚝섬</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=강남/잠실/건대/뚝섬">강남/잠실/건대/뚝섬</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">서울역/용산/이태원</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=서울역/용산/이태원">서울역/용산/이태원</a></li>
 										</td>
 
 										<td>
-											<li><a href="hotels.jsp">영등포/여의도/노량진/김포공항/신림</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=서울&region=영등포/여의도/노량진/김포공항/신림">영등포/여의도/노량진/김포공항/신림</a></li>
 										</td>
 									</tr>																	
 								</table>
@@ -90,7 +90,7 @@
 								경기 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">								
-								<li><a href="hotels.jsp">경기 전체</a></li>				
+								<li><a href="hotelsList.do?type=게스트하우스&sido=경기&region=경기">경기 전체</a></li>				
 								
 							</ul>
 						</div>
@@ -101,7 +101,7 @@
 								인천 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">								
-								<li><a href="hotels.jsp">인천 전체</a></li>								
+								<li><a href="hotelsList.do?type=게스트하우스&sido=인천&region=인천">인천 전체</a></li>								
 							</ul>
 						</div>
 					</div>
@@ -115,7 +115,11 @@
 								충북/충남/대전 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">								
-								<li><a href="hotels.jsp">충북/충남/대전 전체</a></li>								
+								<li><a href="hotelsList.do?type=게스트하우스&sido=충북&region=충북">충북 전체</a></li>
+								<li role="separator" class="divider"></li>	
+								<li><a href="hotelsList.do?type=게스트하우스&sido=충남&region=충남">충남 전체</a></li>
+								<li role="separator" class="divider"></li>	
+								<li><a href="hotelsList.do?type=게스트하우스&sido=대전&region=대전">대전 전체</a></li>														
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
@@ -129,18 +133,18 @@
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">강원 전체</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=강원&region=강원">강원 전체</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">강릉/동해/삼척/태백정선/영월/평창</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=강원&region=강릉/동해/삼척/태백정선/영월/평창">강릉/동해/삼척/태백정선/영월/평창</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">속초/양양/고성</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=강원&region=속초/양양/고성">속초/양양/고성</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">춘천</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=강원&region=춘천">춘천</a></li>
 										</td>
 									</tr>
 								</table>
@@ -157,28 +161,18 @@
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">전북/전주/전남 전체</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=전북&region=전북">전북 전체</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">전주/완주/남원/진안</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=전남&region=전남">전남 전체</a></li>
 										</td>
 									</tr>
 									<tr>
-										<td>
-											<li><a href="hotels.jsp">군산/익산</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">여수</a></li>
-										</td>
+										<td colspan="2">
+											<li><a href="hotelsList.do?type=게스트하우스&sido=전주&region=전주">전주 전체</a></li>
+										</td>										
 									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">순천/담양/구례/곡성/광양</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">목포/완도/해남/강진/진도</a></li>
-										</td>
-									</tr>
+									
 								</table>
 							</ul>
 						</div>
@@ -193,7 +187,7 @@
 								광주 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">								
-								<li><a href="hotels.jsp">광주 전체</a></li>								
+								<li><a href="hotelsList.do?type=게스트하우스&sido=광주&region=광주">광주 전체</a></li>								
 							</ul>
 						</div>
 						
@@ -204,7 +198,7 @@
 								대구 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">								
-								<li><a href="hotels.jsp">대구 전체</a></li>								
+								<li><a href="hotelsList.do?type=게스트하우스&sido=대구&region=대구">대구 전체</a></li>								
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
@@ -218,15 +212,15 @@
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">경북/경주 전체</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=경북&region=경북">경북 전체</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">경주</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=경주&region=경주">경주</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">포항/안동/봉화/기타</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=경북&region=포항/안동/봉화">포항/안동/봉화</a></li>
 										</td>										
 									</tr>									
 								</table>
@@ -243,7 +237,9 @@
 								경남/울산 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="hotels.jsp">통영/거제/남해/울산/기타</a></li>								
+								<li><a href="hotelsList.do?type=게스트하우스&sido=경남&region=통영/거제/남해">통영/거제/남해</a></li>
+								<li role="separator" class="divider"></li>		
+								<li><a href="hotelsList.do?type=게스트하우스&sido=울산&region=울산">울산</a></li>						
 							</ul>
 						</div>
 
@@ -258,26 +254,26 @@
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">부산 전체</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=부산&region=부산">부산 전체</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">해운대/기장</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">남포동/자갈치</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">부산역/송도/감천</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=부산&region=해운대/기장">해운대/기장</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">광안리</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=부산&region=남포동/자갈치">남포동/자갈치</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">서면</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=부산&region=부산역/송도/감천">부산역/송도/감천</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=부산&region=광안리">광안리</a></li>
+										</td>
+										<td>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=부산&region=서면">서면</a></li>
 										</td>
 									</tr>									
 								</table>
@@ -295,46 +291,46 @@
 								<table class="table">
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">제주 전체</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=제주">제주 전체</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">제주공항(삼양해수욕장 방면)</a></li>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li><a href="hotels.jsp">제주공항(이호테우해변 방면)</a></li>
-										</td>
-										<td>
-											<li><a href="hotels.jsp">함덕(사려니숲길,산굼부리)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=제주공항">제주공항(삼양해수욕장 방면)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">월정/세화(월정리해변,비자림)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=제주공항">제주공항(이호테우해변 방면)</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">성산(우도,섭지코지)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=함덕">함덕(사려니숲길,산굼부리)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotels.jsp">표선/남원(제주민속촌,물영아리오름)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=월정/세화">월정/세화(월정리해변,비자림)</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">서귀포(중문관광단지,천지연폭포)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=성산">성산(우도,섭지코지)</a></li>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=표선/남원">표선/남원(제주민속촌,물영아리오름)</a></li>
+										</td>
+										<td>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=서귀포">서귀포(중문관광단지,천지연폭포)</a></li>
 										</td>
 									</tr>
 										<td>
-											<li><a href="hotels.jsp">산방산(모슬포항,마라도)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=산방산">산방산(모슬포항,마라도)</a></li>
 										</td>
 										<td>
-											<li><a href="hotels.jsp">협재(차귀도,풍차해안도로)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=협재">협재(차귀도,풍차해안도로)</a></li>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<li><a href="hotels.jsp">애월(곽지해변,새별오름)</a></li>
+											<li><a href="hotelsList.do?type=게스트하우스&sido=제주&region=애월">애월(곽지해변,새별오름)</a></li>
 										</td>
 									</tr>
 								</table>

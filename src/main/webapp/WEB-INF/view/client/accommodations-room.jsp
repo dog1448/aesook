@@ -50,7 +50,7 @@
 									<h3>방목록</h3>	
 									<div class="row">									
 									<c:forEach var="list" items="${list}">
-										<a href="room-details.jsp">
+										<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&sortType=${list.sortType}">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">													
@@ -61,11 +61,11 @@
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
 																<h2>${list.sortType}</h2>
-																<p class="price"><span>￦${list.sortStandardPrice}</span> <small>/ night</small>
+																<p class="price"><span>${list.sortStandardPrice} ￦</span> <small>&nbsp;숙박</small>
 																</p>
-																<p>최소인원 : ${list.sortStandardCnt}</p>
-																<p>최대인원 : ${list.sortMaxCnt}</p>
-																<p>추가요금 : ${list.sortAddPrice}</p>
+																<p>기준 : ${list.sortStandardCnt} 명</p>
+																<p>최대 : ${list.sortMaxCnt} 명</p>
+																<p>추가요금 : ${list.sortAddPrice} ￦</p>
 																<p>${list.sortRoomInfo}</p>
 															</div>
 														</div>														

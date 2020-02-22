@@ -54,22 +54,24 @@
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="hotel-entry">
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
-												style="background-image: url(resources/client/images/hotel-1.jpg);">
-												<p class="price"><span>￦1,200,000</span><small> /night</small></p>												
+												style="background-image: url(resources/client/images/hotel-1.jpg);">																						
 											</a>
 											
 											<div class="desc">
 												<p class="star">
-													<span><i class="icon-star-full"></i><i
-														class="icon-star-full"></i><i class="icon-star-full"></i><i
-														class="icon-star-full"></i><i class="icon-star-full"></i></span>
+													<span>
+														<i class="icon-star-full"></i>
+														<i class="icon-star-full"></i>
+														<i class="icon-star-full"></i>
+														<i class="icon-star-full"></i>
+														<i class="icon-star-full"></i>
+													</span>
 													545 Reviews
 												</p>
 												<h3>
 													<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}&hotelsName=${list.hotelsName}">${list.hotelsName}</a>
 												</h3>
-												<span class="place">${list.hotelsAddress1}
-													${list.hotelsAddress2 }</span>
+												<span class="place">${list.hotelsAddress1} ${list.hotelsAddress2 }</span>
 												<p>${list.hotelsInfo}</p>
 											</div>
 										</div>
