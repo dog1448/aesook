@@ -11,6 +11,7 @@ public class MemberReviewVO {
 	private String reviewContents;
 	private Date reviewDate;
 	private int reviewScore;
+	
 	public int getReviewSeq() {
 		return reviewSeq;
 	}

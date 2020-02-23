@@ -65,9 +65,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb-text">
-                            <h2>방이름</h2>
+                            <h2>${memberSortVO.sortType}</h2>
                             <div>
-                                <a href="hotel-room.jsp">숙소명</a>
+                                <h4>${memberhotelsVO.hotelsName}</h4>
                             </div>
                         </div>
                     </div>
@@ -85,47 +85,34 @@
                     <div class="col-lg-8">
                         <div class="room-details-item">
 
-                            <div class="rd-text">
-                                <h2>159$<span>/Pernight</span></h2>
+                            <div class="rd-text">                                
+                                <h2>${memberSortVO.sortStandardPrice} ￦<span>&nbsp;&nbsp;&nbsp;숙박</span></h2>
                                 <table>
-                                    <tbody>
+                                    <tbody>                                   		
                                         <tr>
-                                            <td class="r-o">Size:</td>
-                                            <td>30 ft</td>
+                                            <td class="r-o">기준: </td>
+                                            <td>${memberSortVO.sortStandardCnt} 명</td>
                                         </tr>
                                         <tr>
-                                            <td class="r-o">Capacity:</td>
-                                            <td>Max persion 5</td>
+                                            <td class="r-o">최대: </td>
+                                            <td>${memberSortVO.sortMaxCnt} 명</td>
                                         </tr>
                                         <tr>
-                                            <td class="r-o">Bed:</td>
-                                            <td>King Beds</td>
-                                        </tr>
+                                            <td class="r-o">추가요금: </td>
+                                            <td>${memberSortVO.sortAddPrice} ￦</td>
+                                        </tr> 
                                         <tr>
-                                            <td class="r-o">Services:</td>
-                                            <td>Wifi, Television, Bathroom,...</td>
-                                        </tr>
+                                            <td class="r-o">객실설명: </td>
+                                            <td>${memberSortVO.sortRoomInfo}</td>
+                                        </tr>   
                                     </tbody>
-                                </table>
-                                <p class="f-para">Motorhome or Trailer that is the question for you. Here are some of
-                                    the
-                                    advantages and disadvantages of both, so you will be confident when purchasing an
-                                    RV.
-                                    When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or
-                                    fifth
-                                    wheeler? The advantages and disadvantages of both are studied so that you can make
-                                    your
-                                    choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                    achievement of a lifetime. It can be similar to sojourning with your residence as
-                                    you
-                                    search the various sites of our great land, America.</p>
-                                <p>The two commonly known recreational vehicle classes are the motorized and towable.
-                                    Towable rvs are the travel trailers and the fifth wheel. The rv travel trailer or
-                                    fifth
-                                    wheel has the attraction of getting towed by a pickup or a car, thus giving the
-                                    adaptability of possessing transportation for you when you are parked at your
-                                    campsite.
-                                </p>
+                                </table>                              
+                               
+                               	<h2>예약공지</h2>
+                                <p class="f-para">예약공지 내용(애숙이 방침 쓰기)</p>
+                                
+                                <h2>취소규정</h2>
+                                <p>취소규정(애숙이 방침)</p>
                             </div>
                         </div>
                     </div>
@@ -150,7 +137,7 @@
                                         <option value="">2</option>
                                     </select>
                                 </div>
-                                <button type="submit"><a href="payment.jsp">예약하기</a></button>
+                                <button type="submit"><a href="payment.do">예약하기</a></button>
                             </form>
                         </div>
                     </div>

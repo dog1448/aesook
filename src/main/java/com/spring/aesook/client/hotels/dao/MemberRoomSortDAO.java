@@ -7,4 +7,6 @@ import com.spring.aesook.client.hotels.vo.MemberRoomSortVO;
 
 public interface MemberRoomSortDAO {
 	List<MemberRoomSortVO> getRoomSortList(int hotelsCode);
+	MemberHotelsVO getHotel(int hotelsCode);
+	MemberRoomSortVO getRoomSort(MemberRoomSortVO vo);
 }

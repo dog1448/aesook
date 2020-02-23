@@ -23,12 +23,11 @@
 								<div class="col-md-12 about">
 									<h2>myPage</h2>
 									<ul>
-										<li><a href="booking.jsp">예약조회</a></li>
-                                        <li><a href="myReview.jsp">나의 후기</a></li>
-                                        <li><a href="modify_info.jsp">개인정보관리</a></li>
-                                        <li><a href="brn.jsp">사업자등록</a></li>
-                                        <li><a href="inserthotel.jsp">숙소 관리</a></li>
-                                        <li><a href="withdrawal.jsp">회원탈퇴</a></li>
+										<li><a href="booking.do">예약조회</a></li>                                       
+                                        <li><a href="modify_info.do">개인정보관리</a></li>
+                                        <li><a href="brn.do">사업자등록</a></li>
+                                        <li><a href="inserthotels.do">숙소 관리</a></li>
+                                        <li><a href="memberWithdrawal.do">회원탈퇴</a></li>
 									</ul>
 								</div>
 							</div>
