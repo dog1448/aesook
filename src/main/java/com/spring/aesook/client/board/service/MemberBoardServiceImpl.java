@@ -38,6 +38,16 @@ public class MemberBoardServiceImpl implements MemberBoardService {
         return memberBoardDAO.getMemberBoard(cri);
     }
 
+    @Override
+    public List<MemberBoardVO> getMemberBoardFAQ(Criteria cri) throws Exception {
+        return memberBoardDAO.getMemberBoardFAQ(cri);
+    }
+
+    @Override
+    public List<MemberBoardVO> getMemberNoticeBoard(Criteria cri) throws Exception {
+        return memberBoardDAO.getMemberNoticeBoard(cri);
+    }
+
 
     @Override
     public MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO) {
@@ -49,15 +59,15 @@ public class MemberBoardServiceImpl implements MemberBoardService {
         return memberBoardDAO.getBoardCount();
     }
 
+    @Override
+    public int getFAQBoardCount() {
+        return memberBoardDAO.getFAQBoardCount();
+    }
 
     @Override
-	public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
-		return memberBoardDAO.getMemberBoardFAQ();
-	}
+    public int getNoticeBoardCount() {
+        return memberBoardDAO.getNoticeBoardCount();
+    }
 
-	@Override
-	public List<MemberBoardVO> getMemberNoticeBoard() throws Exception {
-		
-		return memberBoardDAO.getMemberNoticeBoard();
-	}
+
 }

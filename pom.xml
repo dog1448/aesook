@@ -236,7 +236,8 @@
 		</plugins>
 	</build>
 
-	<!--
+
+<!--
 	<build>
 		<finalName>aesook</finalName>
 		<plugins>

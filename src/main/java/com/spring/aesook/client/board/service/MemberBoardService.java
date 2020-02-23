@@ -12,10 +12,12 @@ public interface MemberBoardService {
     void updateMemberBoard(MemberBoardVO memberBoardVO);
     MemberBoardVO readMemberBoard(Integer BoardNo);
     List<MemberBoardVO> getMemberBoard(Criteria cri) throws Exception;
-    List<MemberBoardVO> getMemberBoardFAQ() throws Exception;
-    List<MemberBoardVO> getMemberNoticeBoard() throws Exception;
+    List<MemberBoardVO> getMemberBoardFAQ(Criteria cri) throws Exception;
+    List<MemberBoardVO> getMemberNoticeBoard(Criteria cri) throws Exception;
     MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
     int getBoardCount();
+    int getFAQBoardCount();
+    int getNoticeBoardCount();
     
     
 }

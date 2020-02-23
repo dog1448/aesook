@@ -92,6 +92,9 @@
                    style="text-align: center; border: 1px solid #dddddd">
                 <thead>
                 <tr>
+                    <th style="background-color: #eeeeee; text-align: center;">번호</th>
+
+
                     <th style="background-color: #eeeeee; text-align: center;">제목</th>
                     <th style="background-color: #eeeeee; text-align: center;">작성자</th>
                     <th style="background-color: #eeeeee; text-align: center;">작성일</th>
@@ -99,20 +102,30 @@
                 </thead>
 
                 <tbody>
-                
                 <c:forEach items="${boards}" var="boards">
                     <tr>
-                        <td><a href="${path}/noticeBoardRead.do?boardNo=${boards.boardSeq}">
-							<c:out value="${boards.boardTitle}"/></a></td>
-                        <td><c:out value="${boards.boardWriter}"/></td>
-                        <td><fmt:formatDate value="${boards.boardDate}"/></td>
+
+                        <td class="qna"><c:out value="${boards.rnum}"/></td>
+                        <td class="qna"><a href="${path}/noticeBoardRead.do?boardNo=${boards.boardSeq}">
+                            <c:out value="${boards.boardTitle}"/></a></td>
+                        <td class="qna"><c:out value="${boards.boardWriter}"/></td>
+                        <td class="qna"><fmt:formatDate value="${boards.boardDate}"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
-            <a href="#" class="btn btn-success btn-arrow-left">이전</a> <a
-                href="#" class="btn btn-success btn-arrow-left">다음</a> <a
-			<div id="paging"></div>
+
+            <c:if test="${pageMaker.prev}">
+                <a href="${path}/noticeBoard.do${pageMaker.makeQuery(pageMaker.startPage -1)}" class="btn btn-success btn-arrow-left">이전</a>
+            </c:if>
+
+            <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="point">
+                <li class="list-group-item" style="list-style: none; float: left; padding: 6px"><a href="${path}/noticeBoard.do${pageMaker.makeQuery(point)}">${point}</a> </li>
+            </c:forEach>
+
+            <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+                <a href="${path}/noticeBoard.do${pageMaker.makeQuery(pageMaker.endPage +1)}" class="btn btn-success btn-arrow-left">다음</a>
+            </c:if>
 
         </div>
     </div>
@@ -129,76 +142,6 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript">
-
-	var totalData = 1000;    // 총 데이터 수
-	var dataPerPage = 20;    // 한 페이지에 나타낼 데이터 수
-	var pageCount = 10;        // 한 화면에 나타낼 페이지 수
-
-	function paging(totalData, dataPerPage, pageCount, currentPage){
-
-		console.log("currentPage : " + currentPage);
-
-		var totalPage = Math.ceil(totalData/dataPerPage);    // 총 페이지 수
-		var pageGroup = Math.ceil(currentPage/pageCount);    // 페이지 그룹
-
-		console.log("pageGroup : " + pageGroup);
-
-		var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
-		if(last > totalPage)
-			last = totalPage;
-		var first = last - (pageCount-1);    // 화면에 보여질 첫번째 페이지 번호
-		var next = last+1;
-		var prev = first-1;
-
-		console.log("last : " + last);
-		console.log("first : " + first);
-		console.log("next : " + next);
-		console.log("prev : " + prev);
-
-		var $pingingView = $("#paging");
-
-		var html = "/MemberBoard.do";
-
-		if(prev > 0)
-			html += "<a href=# id='prev'><</a> ";
-
-		for(var i=first; i <= last; i++){
-			html += "<a href='#' id=" + i + ">" + i + "</a> ";
-		}
-
-		if(last < totalPage)
-			html += "<a href=# id='next'>></a>";
-
-		$("#paging").html(html);    // 페이지 목록 생성
-		$("#paging a").css("color", "black");
-		$("#paging a#" + currentPage).css({"text-decoration":"none",
-			"color":"red",
-			"font-weight":"bold"});    // 현재 페이지 표시
-
-		$("#paging a").click(function(){
-
-			var $item = $(this);
-			var $id = $item.attr("id");
-			var selectedPage = $item.text();
-
-			if($id == "next")    selectedPage = next;
-			if($id == "prev")    selectedPage = prev;
-
-			paging(totalData, dataPerPage, pageCount, selectedPage);
-		});
-
-	}
-
-	$("document").ready(function(){
-		paging(totalData, dataPerPage, pageCount, 1);
-	});
-</script>
-
-
-}
-</script>
 
 <!-- 애니매이션 담당 JQUERY -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

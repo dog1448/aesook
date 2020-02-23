@@ -33,33 +33,21 @@
 
     <select id="getMemberBoard" resultType="memberBoard" parameterType="pagination">
 <![CDATA[
-			SELECT
-            BOARD_SEQ
-            ,board_writer
-            ,board_title
-            ,board_content
-            ,board_step
-            ,board_depth
-            ,board_readcount
-            ,board_ip
-            ,board_date
-            ,board_type
-            FROM (
-            select BOARD_SEQ
-            ,board_writer
-            ,board_title
-            ,board_content
-            ,board_step
-            ,board_depth
-            ,board_readcount
-            ,board_ip
-            ,board_date
-            ,board_type
-            ,row_number() over(order by board_date desc) as RNUM
-            from board) board
-            where board_type='Q' and RNUM between #{rowStart} and #{rowEnd}
-            order by board_date desc
-       ]]>
+
+
+
+                select B.rnum, B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE
+                from
+                    (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE
+                     from (
+                              select BOARD_SEQ , BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE
+                              from board
+                              order by BOARD_SEQ desc) A
+                     where rownum <=#{rowEnd} and BOARD_TYPE='Q') B
+                where B.rnum >= #{rowStart} order by rownum
+
+
+        ]]>
 	</select>
 
     <update id="updateMemberBoard" parameterType="memberBoard">
@@ -80,6 +68,14 @@
 		SELECT count(*) from BOARD where BOARD_TYPE='Q'
 	</select>
 
+    <select id="getFAQBoardCount" parameterType="memberBoard" resultType="int">
+		SELECT count(*) from BOARD where BOARD_TYPE='F'
+	</select>
+
+    <select id="getNoticeBoardCount" parameterType="memberBoard" resultType="int">
+		SELECT count(*) from BOARD where BOARD_TYPE='N'
+	</select>
+
     <select id="readMemberBoard" resultMap="MemberResultMap">
 		SELECT BOARD_SEQ
 			   ,BOARD_TITLE
@@ -91,41 +87,50 @@
 		WHERE BOARD_SEQ = #{boardSeq}
 	</select>
 
-    <select id="getMemberBoardFAQ" resultType="memberBoard">
+    <select id="getMemberBoardFAQ" resultType="memberBoard" parameterType="pagination">
 		<![CDATA[
 
-                SELECT
-                       BOARD_SEQ,
-                        BOARD_TITLE,
-                       BOARD_CONTENT,
-                       BOARD_WRITER,
-                       BOARD_STEP,
-                       BOARD_DEPTH,
-                       BOARD_READCOUNT,
-                       BOARD_IP,
-                       BOARD_DATE,
-                       BOARD_TYPE
-                FROM BOARD where BOARD_TYPE = 'F'
-                order by BOARD_SEQ desc,BOARD_DATE desc
+
+
+
+
+                select B.rnum, B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE
+                from
+                    (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE
+                     from (
+                              select BOARD_SEQ , BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE
+                              from board
+                              order by BOARD_SEQ desc) A
+                     where rownum <=#{rowEnd} and BOARD_TYPE='F') B
+                where B.rnum >= #{rowStart} order by rownum
+
+
+
+
+
 
         ]]>
 	</select>
-	<select id="getMemberNoticeBoard" resultType="memberBoard">
+    <select id="getMemberNoticeBoard" resultType="memberBoard" parameterType="pagination">
 		<![CDATA[
-		SELECT
-			   BOARD_SEQ,
-		 	   BOARD_TITLE,
-		       BOARD_CONTENT,
-		       BOARD_WRITER,
-		       BOARD_STEP,
-		       BOARD_DEPTH,
-		       BOARD_READCOUNT,
-		       BOARD_IP,
-		       BOARD_DATE,
-		       BOARD_TYPE
-		FROM BOARD where BOARD_TYPE = 'N'
-		order by BOARD_SEQ desc,BOARD_DATE desc
-		]]>
+
+
+
+                select B.rnum, B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE
+                from
+                    (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE
+                     from (
+                              select BOARD_SEQ , BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE
+                              from board
+                              order by BOARD_SEQ desc) A
+                     where rownum <=#{rowEnd} and BOARD_TYPE='N') B
+                where B.rnum >= #{rowStart} order by rownum
+
+
+
+
+
+        ]]>
 	</select>
 
     <resultMap id="MemberResultMap" type="memberBoard">
@@ -135,4 +140,6 @@
         <result property="boardDate" column="board_date"/>
         <result property="boardReadcount" column="board_readcount"/>
     </resultMap>
+
+
 </mapper>
