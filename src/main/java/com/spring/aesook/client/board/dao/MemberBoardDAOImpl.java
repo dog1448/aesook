@@ -35,6 +35,16 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
         return sqlSessionTemplate.selectOne(NAMESPACE+".getBoardCount");
     }
 
+    @Override
+    public int getFAQBoardCount() {
+        return sqlSessionTemplate.selectOne(NAMESPACE + ".getFAQBoardCount");
+    }
+
+    @Override
+    public int getNoticeBoardCount() {
+        return sqlSessionTemplate.selectOne(NAMESPACE + ".getNoticeBoardCount");
+    }
+
 
     public MemberBoardVO readMemberBoard(Integer BoardNo) {
         return sqlSessionTemplate.selectOne(NAMESPACE+".readMemberBoard",BoardNo);
@@ -45,17 +55,22 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
         return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoard",cri);
     }
 
+    @Override
+    public List<MemberBoardVO> getMemberBoardFAQ(Criteria cri) throws Exception {
+        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoardFAQ",cri);
+
+    }
+
+    @Override
+    public List<MemberBoardVO> getMemberNoticeBoard(Criteria cri) throws Exception {
+        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberNoticeBoard",cri);
+
+    }
+
 
     public MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO) {
         return null;
     }
     
-    public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
-        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoardFAQ");
-    }
 
-	@Override
-	public List<MemberBoardVO> getMemberNoticeBoard() throws Exception {
-		return sqlSessionTemplate.selectList(NAMESPACE+".getMemberNoticeBoard");
-	}
 }
