@@ -19,6 +19,8 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.aesook.client.image.vo.MemberBrnImageVO;
+
 @Service("fileService")
 public class FileServiceImpl implements FileService {
 
@@ -30,7 +32,7 @@ public class FileServiceImpl implements FileService {
 			String originalName = file.getOriginalFilename();
 			byte[] fileData = file.getBytes();
 			String extension = originalName.substring(originalName.lastIndexOf(".")+1);
-			// 확장자(JPG, PNG, GIF)
+			// (JPG, PNG, GIF)
 			if(FileMediaType.getMediaType(extension) == null){
 				return null;
 			}
@@ -43,7 +45,7 @@ public class FileServiceImpl implements FileService {
 			File target = new File(realPath, saveName);
 			FileCopyUtils.copy(fileData, target);
 			
-			FileVO nfile = new FileVO(saveName, originalName, savePath, extension);
+			FileVO nfile = new FileVO(saveName, originalName, "resources/images/" + memberId +"/", extension);
 			return nfile;
 			
 		}
@@ -62,11 +64,12 @@ public class FileServiceImpl implements FileService {
 			return fileNames;
 		}
 		
-		public String getFile(FileVO file) {
-			return file.getSavePath() + file.getFileName();
+		public String getFilePath(FileVO file) {
+			System.out.println(context.getRealPath("/"));
+			return context.getRealPath("/") + file.getSavePath() + file.getFileName();
 		}
 		
- 		/* 업로드 폴더 생성 */
+ 		
 		private void makeDir(String realPath){
 			if(new File(realPath).exists()){
 				return;
@@ -77,14 +80,23 @@ public class FileServiceImpl implements FileService {
 			}
 		}
 		
-		/* 썸네일 이미지 생성하기 
+		public MemberBrnImageVO getMemberBrnImageFile(FileVO file) {
+			MemberBrnImageVO vo = new MemberBrnImageVO();
+			vo.setBrnImageName(file.getFileName());
+			vo.setBrnImageOrigin(file.getOriginName());
+			vo.setBrnImagePath(file.getSavePath());
+			vo.setBrnImageExtension(file.getExtension());
+			return vo;
+		}
+		
+		/* 
 		private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
 			
 			BufferedImage sourceImg = ImageIO.read(new File(path, fileName));
 			
 			BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
 			
-			String thumbnailName = path + File.separator + "s_" + fileName; // 썸네일 파일명
+			String thumbnailName = path + File.separator + "s_" + fileName; // 
 	 		
 			File newFile = new File(thumbnailName);
 			String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
