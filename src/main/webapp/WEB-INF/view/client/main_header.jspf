@@ -28,7 +28,7 @@
 								<c:if test="${sessionScope.login ne null}">
 									<li class="active"><a href="logout.do">로그아웃</a></li>
 								</c:if>
-								<li class="active"><a href="booking.do">MYPAGE</a></li>
+								<li class="active"><a href="modifyInfo.do">MYPAGE</a></li>
 							</ul>
 						</div>
 					</div>
