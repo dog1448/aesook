@@ -32,7 +32,8 @@
 											
 											<div class="col-md-6 col-sm-6">
 												<div class="room-img"
-													style="background-image: url(resources/client/images/room-1.jpg);"></div>
+													style="background-image: url(resources/client/images/room-1.jpg);">
+												</div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
@@ -46,6 +47,7 @@
 											</div>											
 										</div>
 										</a>
+										</div>
 										<div>&nbsp;</div>
 										
 										<a href="room-details.jsp">
