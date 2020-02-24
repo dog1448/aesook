@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
-import com.spring.aesook.client.hotels.vo.MemberRoomSortVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 @Controller

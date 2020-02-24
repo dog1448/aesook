@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.booking.dao.MemberBookingDAO">
+
+	<select parameterType="memberBooking" resultType="memberBooking" id="bookingList">
+		select h.hotels_name, b.booking_code, b.booking_date,
+		b.booking_check_in, b.booking_check_out, b.booking_total_price
+		from hotels h, booking b
+		where b.member_id = #{memberId} 
+		and b.hotels_code = h.hotels_code 
+	</select>
+
+	<select resultType="memberBooking" id="bookingInfo">
+		select * from booking
+		where booking_code = #{bookingCode} 
+	</select>
+
+	<update id="cancelBooking">
+		update booking
+		set booking_status ='C', booking_cancel_date = to_date(sysdate,'YYYY-MM-DD')
+		where booking_code = #{bookingCode} 
+	</update>
+
+</mapper>

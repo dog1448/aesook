@@ -17,6 +17,7 @@
 		<typeAlias type="com.spring.aesook.common.pagination.Criteria" alias="pagination"/>
 		<typeAlias type="com.spring.aesook.client.review.vo.MemberReviewVO" alias="memberReview"/>
 		<typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO" alias="memberFacility"/>
+		<typeAlias type="com.spring.aesook.client.booking.vo.MemberBookingVO" alias="memberBooking"/>
 	</typeAliases>
 	
 
@@ -30,6 +31,7 @@
         <mapper resource="mappings/clientmappings/memberHotelsList-Mapper.xml"/>         
         <mapper resource="mappings/clientmappings/memberReview-Mapper.xml"/>         
         <mapper resource="mappings/clientmappings/memberRoomSort-Mapper.xml"/>         
-        <mapper resource="mappings/clientmappings/memberHotelsFacility-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberHotelsFacility-Mapper.xml"/>     
+        <mapper resource="mappings/clientmappings/memberBooking-Mapper.xml"/>    
 	</mappers>
 </configuration>
