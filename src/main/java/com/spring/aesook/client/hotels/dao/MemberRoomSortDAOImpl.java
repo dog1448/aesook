@@ -34,6 +34,11 @@ public class MemberRoomSortDAOImpl implements MemberRoomSortDAO {
 	public MemberRoomSortVO getRoomSort(MemberRoomSortVO vo) {		
 		return sqlSessionTemplate.selectOne(namespace + ".selectRoomDescription", vo);
 	}
+
+	@Override
+	public void insertRoomSort(MemberRoomSortVO vo) {
+		sqlSessionTemplate.insert(namespace + ".insertRoomSort", vo);
+	}
 	
 	
 }

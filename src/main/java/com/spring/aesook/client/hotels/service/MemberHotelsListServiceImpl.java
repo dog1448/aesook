@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import com.spring.aesook.client.hotels.dao.MemberHotelsListDAO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 
 
 @Service("memberHotelsListService")
@@ -49,6 +50,13 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		map = divide(type, sido, region);		
 		return memberHotelsListDAO.selectHotelsList(map);
+	}
+
+	@Override
+	public List<MemberHotelsVO> selectHotelsListById(String memberId) {
+		MemberVO vo = new MemberVO();
+		vo.setMemberId(memberId);
+		return memberHotelsListDAO.selectHotelsListById(vo);
 	}
 
 

@@ -38,4 +38,9 @@ public class MemberRoomSortServiceImpl implements MemberRoomSortService {
 		return memberRoomSortDAO.getRoomSort(vo);
 	}
 
+	@Override
+	public void insertRoomSort(MemberRoomSortVO vo) {
+		memberRoomSortDAO.insertRoomSort(vo);
+	}
+
 }
