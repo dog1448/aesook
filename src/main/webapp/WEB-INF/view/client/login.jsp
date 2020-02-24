@@ -86,7 +86,7 @@
 	<script type='text/javascript'>
 	  //<![CDATA[
 	    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-	    Kakao.init('9a420c9144db716e2307e39a3ca05cf4');
+	    Kakao.init('099fe2e10a4fe77fb4de8c5a1e4d91d5');
 	    function loginWithKakao() {
 	      // 로그인 창을 띄웁니다.
 	      Kakao.Auth.login({
@@ -150,8 +150,7 @@
 						<a id="custom-login-btn" href="javascript:loginWithKakao()">
 							<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
 						</a>
-					</div>
-					<div class="input100">네이버아이디로 로그인</div>
+					</div>					
 			</div>
 		</div>
 	</div>
