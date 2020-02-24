@@ -9,4 +9,5 @@ public interface MemberRoomSortDAO {
 	List<MemberRoomSortVO> getRoomSortList(int hotelsCode);
 	MemberHotelsVO getHotel(int hotelsCode);
 	MemberRoomSortVO getRoomSort(MemberRoomSortVO vo);
+	void insertRoomSort(MemberRoomSortVO vo);
 }

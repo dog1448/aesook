@@ -21,4 +21,18 @@
 	select * from room_sort 
 	where hotels_code = #{hotelsCode} and sort_type = #{sortType}
 </select>
+
+<!-- 숙소등록 -->
+<insert id="insertRoomSort" parameterType="memberRoomSort">
+	insert into room_sort values(
+	#{hotelsCode},
+	#{sortType},
+	#{sortStandardCnt},
+	#{sortMaxCnt},
+	#{sortRoomCnt},
+	#{sortStandardPrice},
+	#{sortHolidayPrice},
+	#{sortAddPrice},
+	#{sortRoomInfo})
+</insert>
 </mapper>

@@ -9,4 +9,5 @@ public interface MemberRoomSortService {
 	List<MemberRoomSortVO> getRoomSortList(int hotelsCode);
 	MemberHotelsVO getHotel(int hotelsCode);
 	MemberRoomSortVO getRoomDescription(int hotelsCode, String sortType);
+	void insertRoomSort(MemberRoomSortVO vo);
 }
