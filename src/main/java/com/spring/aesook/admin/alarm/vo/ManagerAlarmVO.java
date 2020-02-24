@@ -1,8 +1,8 @@
-package com.spring.aesook.client.alarm.vo;
+package com.spring.aesook.admin.alarm.vo;
 
 import java.sql.Date;
 
-public class MemberAlarmVO {
+public class ManagerAlarmVO {
 
 	private String alarmSendId;
 	private String alarmRecieveId;
@@ -10,6 +10,10 @@ public class MemberAlarmVO {
 	private String alarmTitle;
 	private String alarmContents;
 	private Date alarmDate;
+	
+	private String brnImageName;
+	private String brnImagePath;
+	private String brnImageStatus;
 
 	public String getAlarmSendId() {
 		return alarmSendId;
@@ -59,11 +63,38 @@ public class MemberAlarmVO {
 		this.alarmDate = alarmDate;
 	}
 
+	public String getBrnImageName() {
+		return brnImageName;
+	}
+
+	public void setBrnImageName(String brnImageName) {
+		this.brnImageName = brnImageName;
+	}
+
+	public String getBrnImagePath() {
+		return brnImagePath;
+	}
+
+	public void setBrnImagePath(String brnImagePath) {
+		this.brnImagePath = brnImagePath;
+	}
+
+	public String getBrnImageStatus() {
+		return brnImageStatus;
+	}
+
+	public void setBrnImageStatus(String brnImageStatus) {
+		this.brnImageStatus = brnImageStatus;
+	}
+
 	@Override
 	public String toString() {
-		return "AlarmVO [alarmSendId=" + alarmSendId + ", alarmRecieveId=" + alarmRecieveId + ", alarmStatus="
-				+ alarmStatus + ", alarmTitle=" + alarmTitle + ", alarmContents=" + alarmContents + "]";
+		return "ManagerAlarmVO [alarmSendId=" + alarmSendId + ", alarmRecieveId=" + alarmRecieveId + ", alarmStatus="
+				+ alarmStatus + ", alarmTitle=" + alarmTitle + ", alarmContents=" + alarmContents + ", alarmDate="
+				+ alarmDate + ", brnImageName=" + brnImageName + ", brnImagePath=" + brnImagePath + ", brnImageStatus="
+				+ brnImageStatus + "]";
 	}
+	
 	
 	
 }

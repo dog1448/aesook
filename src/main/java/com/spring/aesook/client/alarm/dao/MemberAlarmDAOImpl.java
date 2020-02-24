@@ -17,4 +17,5 @@ public class MemberAlarmDAOImpl implements MemberAlarmDAO {
     public void insertMemberAlarm(MemberAlarmVO vo) {
     	sqlSessionTemplate.insert(namespace + ".insertMemberAlarm", vo);
     }
+    
 }

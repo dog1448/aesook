@@ -5,10 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.spring.aesook.client.member.vo.MemberVO;
 
 public class AuthClientInterceptor extends HandlerInterceptorAdapter {
 	
+	private static final String LOGIN = "login";
 	boolean noLogin;
 	
 	@Override

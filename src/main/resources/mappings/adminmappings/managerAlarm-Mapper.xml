@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="admin.alarm.dao.ManagerAlarmDAO">
+	
+	<insert id="insertManagerAlarm" parameterType="managerAlarm">
+		INSERT INTO alarm VALUES(#{alarmSendId}, #{alarmRecieveId}, 'N',
+		 #{alarmTitle}, #{alarmContents}, SYSDATE)
+	</insert>
+	
+	<update id="updateStatusManagerAlarm" parameterType="managerAlarm">
+		update alarm set alarm_status = 'Y' where alarm_send_id = #{alarmSendId}
+		 AND alarm_recieve_id = #{alarmRecieveId} AND alarm_status = 'N'
+	</update>
+	
+	<select id="getManagerAlarmList" resultType="managerAlarm" parameterType="managerAlarm">
+		select 
+		al.alarm_send_id,
+		al.alarm_recieve_id,
+		al.alarm_status,
+		al.alarm_title,
+		al.alarm_contents,
+		bimg.brn_image_name,
+		bimg.brn_image_path,
+		bimg.brn_image_status
+		FROM alarm al, brn_image bimg
+		where al.alarm_send_id = bimg.member_id AND al.alarm_Status = #{alarmStatus} AND al.alarm_recieve_id = 'Admin'
+	</select>
+	
+	
+</mapper>

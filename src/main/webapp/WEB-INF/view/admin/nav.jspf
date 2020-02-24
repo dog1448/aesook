@@ -60,7 +60,7 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-edit fa-fw"></i> Baord<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-edit fa-fw"></i> Board<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="boardList.admin">Board List</a>

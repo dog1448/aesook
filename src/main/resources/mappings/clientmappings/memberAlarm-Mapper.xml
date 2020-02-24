@@ -6,7 +6,7 @@
 	
 	<insert id="insertMemberAlarm" parameterType="memberAlarm">
 		INSERT INTO alarm VALUES(#{alarmSendId}, #{alarmRecieveId}, 'N',
-		 #{alarmTitle}, #{alarmContents})
+		 #{alarmTitle}, #{alarmContents}, SYSDATE)
 	</insert>
 
 </mapper>

@@ -22,7 +22,6 @@ public class MemberImageController {
     @RequestMapping(value = "/brn.do", method = RequestMethod.GET)
     public String moveBrn(HttpSession httpSession, Model model) {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login"); 
-    	System.out.println(user);
     	model.addAttribute("user", user);
     	return "/brn";
     }
@@ -30,7 +29,6 @@ public class MemberImageController {
     @RequestMapping(value = "/brn.do", method = RequestMethod.POST)
     public String insertBrn(MultipartFile file, HttpSession httpSession, Model model) {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login");
-    	System.out.println(user);
     	if(user != null) {
 			memberUpdateImageBrnService.updateImageBrn(file, user);
     		model.addAttribute("check","upBrn");

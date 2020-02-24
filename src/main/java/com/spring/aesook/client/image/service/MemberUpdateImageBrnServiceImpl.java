@@ -28,9 +28,10 @@ public class MemberUpdateImageBrnServiceImpl implements MemberUpdateImageBrnServ
 	
 	@Transactional(rollbackFor = Exception.class)
 	public void updateImageBrn(MultipartFile file , MemberVO user) {
-		// 1. 파일등록
-		FileVO fileVO = null;
-		MemberBrnImageVO vo = null;
+			
+			// 1. 파일등록
+			FileVO fileVO = null;
+			MemberBrnImageVO vo = null;
 			try {
 				fileVO = fileService.uploadFile(user.getMemberId(), file);
 				vo = fileService.getMemberBrnImageFile(fileVO);
@@ -39,15 +40,15 @@ public class MemberUpdateImageBrnServiceImpl implements MemberUpdateImageBrnServ
 			}
 			vo.setMemberId(user.getMemberId());
 			memberImageDAO.insertMemberImageBrn(vo);
-
+			
 			// 2. Alarm 등록
 			MemberAlarmVO alarm = new MemberAlarmVO();
 			alarm.setAlarmSendId(user.getMemberId());
 			alarm.setAlarmRecieveId("Admin");
-			alarm.setAlarmTitle(user.getMemberId() + "님의 사업자등록을 신청하였습니다.");
+			alarm.setAlarmTitle(user.getMemberId() + "님이 사업자등록을 신청하였습니다.");
 			alarm.setAlarmContents("사업자 등록 사진입니다.");			
 			memberAlarmDAO.insertMemberAlarm(alarm);
-			
+	
 			// 3. Member 상태 -> 'W'등록
 			user.setMemberStatus("W");
 			memberDAO.updateStatusMember(user);

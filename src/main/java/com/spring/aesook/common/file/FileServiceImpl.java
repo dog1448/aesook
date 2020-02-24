@@ -45,7 +45,7 @@ public class FileServiceImpl implements FileService {
 			File target = new File(realPath, saveName);
 			FileCopyUtils.copy(fileData, target);
 			
-			FileVO nfile = new FileVO(saveName, originalName, savePath, extension);
+			FileVO nfile = new FileVO(saveName, originalName, "resources/images/" + memberId +"/", extension);
 			return nfile;
 			
 		}
