@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="col-one-forth aside-stretch animate-box">
+		<div class="row">
+			<div class="col-md-12 about">
+				<h2>myPage</h2>
+				<ul>
+					<li><a href="/inserthotel.do">숙소 등록 및 수정</a></li>
+                    <li><a href="insertedRoom.jsp">등록 숙소</a></li>
+                    <li><a href="statistics.jsp">통계</a></li>
+                    <li><a href="chat.jsp">1대 1문의</a></li>
+                    <li><a href="home.do">메인 홈</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

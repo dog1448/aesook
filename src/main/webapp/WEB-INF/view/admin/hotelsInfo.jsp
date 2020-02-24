@@ -79,7 +79,7 @@
                                                 </fieldset>
 
                                                 <div class="col-lg-12"> 
-                                                    <button type="submit" class="btn btn-default float-left", id="modibt">Modify</button>
+                                                    <button type="submit" class="btn btn-default float-left" id="modibt">Modify</button>
                                                     <button type="button" class="btn btn-default float-left">Delete</button>
                                                     <button type="button" class="btn btn-default float-left" onclick="location='hotelsTable.admin'">Cancel</button>
                                                     <button type="button" class="btn btn-warning float-left" id="disbt">disable</button>

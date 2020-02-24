@@ -26,9 +26,8 @@ public class ManagerDataListDAOImpl implements ManagerDataListDAO {
 
 	@Override
 	public ManagerBookingVO getBookingInfo(String bookingCode) {
-		ManagerBookingVO aaa = sqlSessionTemplate.selectOne(namespace + ".getBookingInfo", bookingCode);
-		System.out.println(aaa);
-		return aaa;
+		ManagerBookingVO vo = sqlSessionTemplate.selectOne(namespace + ".getBookingInfo", bookingCode);
+		return vo;
 	}
 
 	@Override
