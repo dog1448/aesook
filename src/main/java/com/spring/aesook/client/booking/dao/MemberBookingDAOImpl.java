@@ -21,6 +21,11 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 		return sqlSessionTemplate.selectList(namespace + ".bookingList", vo);
 	}
 	
+	@Override
+	public List<MemberBookingVO> getCanceledBookingList(MemberBookingVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".canceledBookingList", vo);
+	}
+	
 	public MemberBookingVO getBookingInfo(String bookingCode) {
 		MemberBookingVO vo = sqlSessionTemplate.selectOne(namespace + ".bookingInfo", bookingCode);
 		return vo;
@@ -31,6 +36,9 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 		sqlSessionTemplate.update(namespace + ".cancelBooking", bookingCode);
 		
 	}
+
+
+
 	
 	
 }

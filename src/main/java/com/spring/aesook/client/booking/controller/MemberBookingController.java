@@ -31,17 +31,34 @@ public class MemberBookingController {
 		return "/bookingList";
 	}
 	
+	
+	@RequestMapping(value="/canceledBookingList.do", method = RequestMethod.GET)
+	public String getCanceledBookingList(HttpSession session, Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		if(user != null) {
+			model.addAttribute("user", user);
+			List<MemberBookingVO> canceledBookingList = memberBookingCheckService.getCanceledBookingList(user);
+			model.addAttribute("canceledBookingList", canceledBookingList);
+		}
+		return "/canceledBookingList";
+	}
+	
 	@RequestMapping(value="/bookingInfo.do", method = RequestMethod.GET)
-	public String getBookingInfo(MemberBookingVO vo, Model model) {
-		vo = memberBookingCheckService.getBookingInfo(vo.getBookingCode());
-		model.addAttribute("bookingInfo", vo);
+	public String getBookingInfo(MemberBookingVO vo, HttpSession session, Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		if(user != null) {
+			model.addAttribute("user", user);
+			vo = memberBookingCheckService.getBookingInfo(vo.getBookingCode());
+			model.addAttribute("bookingInfo", vo);
+		}
 		return "/bookingInfo";
 	}
 	
-	@RequestMapping(value="/cancelBooking.do", method = RequestMethod.GET)
+	@RequestMapping(value="/cancelBooking.do", method = RequestMethod.POST)
 	public String cancelBooking(MemberBookingVO vo) {
+		System.out.println(vo.toString());
 		memberBookingCheckService.cancelBooking(vo.getBookingCode());
-		return "/home";
+		return "redirect:canceledBookingList.do";
 	}
 
 	

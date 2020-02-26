@@ -23,6 +23,13 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	}
 
 	@Override
+	public List<MemberBookingVO> getCanceledBookingList(MemberVO user) {
+		MemberBookingVO vo = new MemberBookingVO();
+		vo.setMemberId(user.getMemberId());
+		return memberBookingDAO.getCanceledBookingList(vo);
+	}
+
+	@Override
 	public MemberBookingVO getBookingInfo(String bookingCode) {
 		return memberBookingDAO.getBookingInfo(bookingCode);
 	}
@@ -31,6 +38,7 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	public void cancelBooking(String bookingCode) {
 		memberBookingDAO.cancelBooking(bookingCode);
 	}
+
 	
 	
 }

@@ -9,6 +9,8 @@ public interface MemberBookingCheckService {
 	
 	List<MemberBookingVO> getBookingList(MemberVO user);
 	
+	List<MemberBookingVO> getCanceledBookingList(MemberVO user);
+
 	MemberBookingVO getBookingInfo(String bookingCode);
 	
 	void cancelBooking(String bookingCode);

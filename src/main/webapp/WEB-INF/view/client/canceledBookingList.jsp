@@ -24,29 +24,28 @@
 						<%@ include file="myPageSidebar.jspf" %>
 						<div class="col-three-forth animate-box">	
 						<input type="hidden" name="memberId" value="${user.memberId}">
-							<h2>예약 조회</h2>	
+							<h2>취소된 예약 조회</h2>	
 							<div>&nbsp;</div>				
 							<div class="row">								
 								<div class="col-md-12">	
 									<div class="room-wrap">
-									<c:if test="${empty bookingList}">
-										<p class="price"><span>조회되는 예약 내역이 없습니다.</span></p>
+									<c:if test="${empty canceledBookingList}">
+										<p class="price"><span>조회되는 취소 내역이 없습니다.</span></p>
 									</c:if>
-									<c:if test="${!empty bookingList}">
-									<c:forEach var="booking" items="${bookingList}">	
-										<div class="row">
-											<input type="hidden" name="bookingCode" value="${booking.bookingCode}">
-											<a href="bookingInfo.do?bookingCode=${booking.bookingCode}">								
+									<c:if test="${!empty canceledBookingList}">
+									<c:forEach var="canceledbooking" items="${canceledBookingList}">	
+										<div class="row">							
 											<div class="col-md-6 col-sm-6">
 												<div class="room-img"style="background-image: url(resources/client/images/room-1.jpg);"></div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
-													<h2>숙소명 : ${booking.hotelsName}</h2>
-													<p class="price"><span>${booking.bookingTotalPrice}￦</span> <small>/ allNight</small></p>
-													<p>체크인    : ${booking.bookingCheckIn}</p>
-													<p>체크아웃 : ${booking.bookingCheckOut}</p>
-													<p>예약일자 : ${booking.bookingDate}</p>													
+													<h2>숙소명 : ${canceledbooking.hotelsName}</h2>
+													<p class="price"><span>${canceledbooking.bookingTotalPrice}￦</span> <small>/ allNight</small></p>
+													<p>방종류   : ${canceledbooking.sortType}</p>
+													<p>체크인    : ${canceledbooking.bookingCheckIn} / 체크아웃 : ${canceledbooking.bookingCheckOut}</p>
+													<p>예약일자 : ${canceledbooking.bookingDate}</p>													
+													<p><font color="red">취소일자 : ${canceledbooking.bookingCancelDate}</font></p>													
 												</div><!-- desc -->
 											</div> <!-- col-md-6 col-sm-6 -->											
 										</a>
