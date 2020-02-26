@@ -29,8 +29,8 @@ function register() {
                         <hr>       
 						<form method="post" action="insertRoomSort.do">
 													
-	                        <div class="form-group">
-	                        <input type="hidden" name="memberId" value="${memberId}">
+	                        <div class="form-group">	                       
+	                        <input type="hidden" name="memberId" value="${memberId}"> 
 	                           <div class="col-sm-6">
 	                           <label>숙소 선택</label><br>	                          
 								<select name="hotelsCode">
@@ -73,7 +73,7 @@ function register() {
 	                              <input type="text" class="form-control" placeholder="설명 입력" name="sortRoomInfo">
 	                           </div>
 	                        </div>
-	                        <div>&nbsp;</div>
+	                        <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 	                        <hr>                        
 	                        <div>
 	                           <button type="submit" class="btn btn-info" onclick="register()">등록</button>	                                                                            

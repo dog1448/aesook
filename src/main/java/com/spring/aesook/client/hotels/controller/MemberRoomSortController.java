@@ -42,7 +42,8 @@ public class MemberRoomSortController {
 	
 	//객실 등록하는 페이지로 이동하는 컨트롤러임
 	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.GET)
-	public String moveInsertRoomSort(@RequestParam("memberId") String memberId, Model model) {
+	public String moveInsertRoomSort(@RequestParam(value = "memberId", required = false) String memberId, 
+			Model model) {
 		
 		List<MemberHotelsVO> memberHotelsList = memberHotelsListService.selectHotelsListById(memberId);
 		
@@ -52,12 +53,13 @@ public class MemberRoomSortController {
 		return "/insertRoomSort";
 	}
 	
-	//객실 등록하는 컨트롤러임
+	//객실 등록하는 컨트롤러임 + Table Room에도 같이 들어감.
 	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)
 	public String InsertRoomSort(MemberRoomSortVO vo, @RequestParam("memberId") String memberId,
 			Model model) {
 		
 		memberRoomSortService.insertRoomSort(vo);
+		memberRoomSortService.insertRoom(vo);
 		
 		return "redirect:insertRoomSort.do?memberId="+memberId;
 	}
