@@ -1,5 +1,7 @@
 package com.spring.aesook.client.hotels.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,22 @@ public class MemberRoomSortServiceImpl implements MemberRoomSortService {
 	@Override
 	public void insertRoomSort(MemberRoomSortVO vo) {
 		memberRoomSortDAO.insertRoomSort(vo);
+	}
+
+	@Override
+	public void insertRoom(MemberRoomSortVO vo) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		ArrayList<Integer> roomList = new ArrayList<Integer>();
+		
+		int cnt = vo.getSortRoomCnt();
+		
+		for(int i=0; i<cnt; i++) {
+			roomList.add(i);
+		}
+		map.put("roomList", roomList);
+		map.put("vo", vo);
+		
+		memberRoomSortDAO.insertRoom(map);
 	}
 
 }

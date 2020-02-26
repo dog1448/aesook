@@ -13,9 +13,10 @@
 				<h2>숙소관리</h2>
 				<ul>
 					<li><a href="insertHotels.do">숙소 등록</a></li>
-					<li><a href="insertRoomSort.do">객실 등록 </a></li><!-- 객실등록은 넘어갈 때 아이디값을 Get방식으로 넘기면서 가야함! 까먹지말아야함. -->
+					<!-- 객실등록은 넘어갈 때 아이디값을 Get방식으로 넘기면서 가야함! 까먹지말아야함. -->
+					<li><a href="insertRoomSort.do?memberId=${login.memberId}">객실 등록 </a></li>
 					<li><a href="insertedRoom.jsp">등록 숙소 확인 및 수정</a></li>
-					<li><a href="statistics.jsp">통계</a></li>
+					<li><a href="statistics.do">통계</a></li>
 					<li><a href="messageBoard.do">1대 1문의</a></li>
 					<li><a href="home.do">메인 홈</a></li>
 				</ul>

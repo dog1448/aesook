@@ -1,5 +1,6 @@
 package com.spring.aesook.client.hotels.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -38,6 +39,11 @@ public class MemberRoomSortDAOImpl implements MemberRoomSortDAO {
 	@Override
 	public void insertRoomSort(MemberRoomSortVO vo) {
 		sqlSessionTemplate.insert(namespace + ".insertRoomSort", vo);
+	}
+
+	@Override
+	public void insertRoom(HashMap<Object, Object> map) {
+		
 	}
 	
 	

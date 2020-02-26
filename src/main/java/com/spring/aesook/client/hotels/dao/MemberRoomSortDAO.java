@@ -1,5 +1,6 @@
 package com.spring.aesook.client.hotels.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
@@ -10,4 +11,5 @@ public interface MemberRoomSortDAO {
 	MemberHotelsVO getHotel(int hotelsCode);
 	MemberRoomSortVO getRoomSort(MemberRoomSortVO vo);
 	void insertRoomSort(MemberRoomSortVO vo);
+	void insertRoom(HashMap<Object, Object> map);
 }

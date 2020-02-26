@@ -186,7 +186,7 @@ public class MemberController {
     	return "/home";
     }
     
-    @RequestMapping(value = "/doWithdrawal.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.POST)
     public String withdrawMember(MemberVO vo, Model model,HttpSession session) {
     	MemberVO member = (MemberVO)session.getAttribute("user");
     	String sessionId = member.getMemberId();
@@ -196,7 +196,7 @@ public class MemberController {
     	return "/home";
     }
     
-    @RequestMapping(value = "/withdrawal.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.GET)
     public String moveWithdrawMember() {
     	return "/memberWithdrawal";
     }

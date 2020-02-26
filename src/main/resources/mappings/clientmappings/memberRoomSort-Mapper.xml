@@ -35,4 +35,5 @@
 	#{sortAddPrice},
 	#{sortRoomInfo})
 </insert>
+
 </mapper>
