@@ -200,4 +200,11 @@ public class MemberController {
     public String moveWithdrawMember() {
     	return "/memberWithdrawal";
     }
+    
+    //------------------------logout--------------------------------------------
+    @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+    	session.invalidate();
+    	return "/login";
+    }
 }
