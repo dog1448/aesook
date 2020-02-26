@@ -111,9 +111,13 @@ public class MemberBookingVO {
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "MemberBookingVO [bookingCode=" + bookingCode + ", hotelsCode=" + hotelsCode + ", hotelsName="
+				+ hotelsName + ", sortType=" + sortType + ", roomCode=" + roomCode + ", memberId=" + memberId
+				+ ", bookingCheckIn=" + bookingCheckIn + ", bookingCheckOut=" + bookingCheckOut + ", bookingName="
+				+ bookingName + ", bookingPhone=" + bookingPhone + ", bookingCnt=" + bookingCnt + ", bookingDate="
+				+ bookingDate + ", bookingCancelDate=" + bookingCancelDate + ", bookingTotalPrice=" + bookingTotalPrice
+				+ ", bookingStatus=" + bookingStatus + "]";
+	}
 }

@@ -4,6 +4,25 @@
 <html>
 <head>
 <%@include file="head.jspf" %>
+<script>
+	function checkz() {
+	 	// 공백확인
+	    if ($("#confirmPass").val() == "") {
+	     alert("비밀번호를 입력해주세요");
+	     $("#confirmPass").val("");
+	     $("#confirmPass").focus();
+	     return;
+	   }
+	    //비밀번호 확인
+	    if($("#confirmPass").val() != ($("#memberPass").val())){ 
+	    alert("비밀번호가 틀립니다.");
+	    $("#confirmPass").val("");
+	    $("#confirmPass").focus();
+	    return;
+	   }
+		$('#cancelBooking').submit();
+	}
+</script>
 </head>
 <body>
    <div class="colorlib-loader">  </div>
@@ -20,7 +39,6 @@
                <!-- sideBar -->
 				<%@ include file="myPageSidebar.jspf" %>
                   <div class="col-three-forth animate-box">
-                     <form role="form" method="post" action="cancelBooking.do">
                         <h2>숙소 정보</h2>
                         <h4>숙소 이름 : ${bookingInfo.hotelsName}</h4>
                         <h4>방 타입 : ${bookingInfo.sortType}</h4>
@@ -37,11 +55,8 @@
                            <button type="button" onclick="javascript:history.go(-1)" class="btn btn-secondary btn-lg">뒤로가기</button>
                            <button type="button" onclick = "location.href = 'writeReview.do?bookingCode=${bookingInfo.bookingCode}'" class="btn btn-info btn-lg">후기쓰기</button>
                            <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#cancelModal">예매취소</button>
-                           <input type="hidden" name="bookingCode" value="${bookingInfo.bookingCode}">
                            <input type="hidden" name="memberId" value="${bookingInfo.memberId}">
                         </div>
-                        
-                       </form>
                     </div>
                  </div>
                </div>
@@ -49,6 +64,8 @@
           </div>
           <!--Modal: modalPush-->
 <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form role="form" id="cancelBooking" method="post" action="cancelBooking.do">
+<input type="hidden" name="bookingCode" value="${bookingInfo.bookingCode}">
   <div class="modal-dialog modal-notify modal-info" role="document">
     <!--Content-->
     <div class="modal-content text-center">
@@ -62,18 +79,20 @@
 
         <i class="fas fa-bell"></i>
         <p>정말 예약을 취소하시겠습니까?</p>
-		<input type="password" placeholder="비밀번호 확인"><br></br>
+		<input type="password" id="confirmPass" placeholder="비밀번호 확인"><br></br>
+		<input type="hidden" value="${user.memberPass}" id="memberPass">
 
       </div>
 
       <!--Footer-->
       <div class="modal-footer flex-center">
-        <button type="button" onclick = "location.href = 'cancelBooking.do?bookingCode=${bookingInfo.bookingCode}'" class="btn btn-info">Yes</button>
+        <button type="button" onclick="checkz()" class="btn btn-info">Yes</button>
         <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No</a>
       </div>
     </div>
     <!--/.Content-->
   </div>
+</form>
 </div>
 <!--Modal: modalPush-->
       <%@ include file="footer.jspf" %>
