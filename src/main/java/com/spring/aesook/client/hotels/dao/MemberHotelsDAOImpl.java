@@ -4,12 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.aesook.admin.datalist.vo.ManagerHotelsVO;
-import com.spring.aesook.admin.manager.vo.ManagerVO;
-import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
-import com.spring.aesook.client.hotels.vo.MemberRoomSortVO;
-import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 @Repository("memberHotls")

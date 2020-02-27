@@ -111,7 +111,7 @@ public class MemberController {
 
     	session.setAttribute("login", user);
 		session.setAttribute("id" ,id);
-    	return "/home"; // 
+    	return "redirect:home.do"; // 
 
 
     }

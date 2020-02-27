@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="client.hotels.dao.MemberRoomSortDAO">
+<mapper namespace="client.hotels.dao.MemberRoomDAO">
 
 <!-- 방 전체 리스트 가져오기 -->
-<select id="selectRoomSort" resultType="memberRoomSort">
-	select * from room_sort
-	where HOTELS_CODE = #{hotelsCode} ORDER BY sort_standard_price asc
+<select id="selectRoom" resultType="memberRoom">
+	select * from room
+	where HOTELS_CODE = #{hotelsCode} ORDER BY room_standard_price asc
 </select>
 
 <!-- 숙소 정보 가져오기 (호텔 정보 필요해서) -->
@@ -17,23 +17,27 @@
 </select>
 
 <!-- 방 하나의 정보 가져오기  조건 2개-->
-<select id="selectRoomDescription" resultType="memberRoomSort" parameterType="memberRoomSort">
-	select * from room_sort 
-	where hotels_code = #{hotelsCode} and sort_type = #{sortType}
+<select id="selectRoomDescription" resultType="memberRoom" parameterType="memberRoom">
+	select * from room 
+	where hotels_code = #{hotelsCode} and room_name = #{roomName}
 </select>
 
 <!-- 숙소등록 -->
-<insert id="insertRoomSort" parameterType="memberRoomSort">
-	insert into room_sort values(
+<insert id="insertRoom" parameterType="memberRoom">
+	insert into room values(
 	#{hotelsCode},
-	#{sortType},
-	#{sortStandardCnt},
-	#{sortMaxCnt},
-	#{sortRoomCnt},
-	#{sortStandardPrice},
-	#{sortHolidayPrice},
-	#{sortAddPrice},
-	#{sortRoomInfo})
+	#{roomName},
+	#{roomSort},
+	#{roomStandardCnt},
+	#{roomMaxCnt},
+	#{roomRoomCnt},
+	#{roomStandardPrice},
+	#{roomHolidayPrice},
+	#{roomAddPrice},
+	#{roomRoomInfo})
 </insert>
 
+<select id="roomNameCheck" resultType="int" parameterType="memberRoom">
+    select count(*) from room where room_Name = #{roomName} And hotels_code = #{hotelsCode}
+</select>
 </mapper>

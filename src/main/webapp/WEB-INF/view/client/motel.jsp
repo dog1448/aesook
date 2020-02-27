@@ -837,9 +837,10 @@
 								<div class="item">
 									<div class="hotel-entry">
 										<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
-											style="background-image: url(resources/client/images/hotel-1.jpg);">										
+											style="background-image: url(resources/client/images/hotel-1.jpg);">																				
 										</a>
-										<div class="desc">										
+										<div class="desc">
+										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>										
 											<h3>
 												<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}">${list.hotelsName}</a>
 											</h3>
