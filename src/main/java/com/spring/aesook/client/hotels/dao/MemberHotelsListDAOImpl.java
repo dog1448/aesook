@@ -32,5 +32,15 @@ public class MemberHotelsListDAOImpl implements MemberHotelsListDAO {
 	public List<MemberHotelsVO> selectHotelsListById(MemberVO vo) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectHotelsListById", vo);
 	}
+	//ÀüÃ¼ ¼÷¼Ò top 10
+	@Override
+	public List<MemberHotelsVO> selectAccommodationTop10() {		
+		return sqlSessionTemplate.selectList(namespace + ".selectAccommodationTop10");
+	}
+
+	@Override
+	public List<MemberHotelsVO> selectAccommodationTop10ByType(MemberHotelsVO vo) {		
+		return sqlSessionTemplate.selectList(namespace + ".selectAccommodationTop10ByType", vo);
+	}
 
 }

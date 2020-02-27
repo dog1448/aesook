@@ -1,5 +1,7 @@
 package com.spring.aesook.client.hotels.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.member.vo.MemberVO;
@@ -18,18 +21,25 @@ public class MemberHotelsController {
 	
 	@Autowired
 	private MemberHotelsService memberHotelsService;
+	@Autowired
+	MemberHotelsListService memberHotelsListService;
 	
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
-	public String moveHotel(@RequestParam(value = "type", defaultValue = "h", required = false) String type) {
-		if(type.equals("m")) {
+	public String moveHotel(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type
+			, Model model) {
+		
+		List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10ByType(type);
+		model.addAttribute("top10", list);
+		if(type.equals("모텔")) {
 			return "/motel";
-		} else if(type.equals("p")) {
+		} else if(type.equals("펜션")) {
 			return "/pension";
-		} else if(type.equals("g")) {
+		} else if(type.equals("게스트하우스")) {
 			return "/guesthouse";
-		} else if(type.equals("r")) {
+		} else if(type.equals("리조트")) {
 			return "/resort";
 		}
+		
 		return "/hotel";
 	}
 	

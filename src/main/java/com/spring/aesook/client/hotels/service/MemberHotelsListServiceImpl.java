@@ -59,5 +59,18 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return memberHotelsListDAO.selectHotelsListById(vo);
 	}
 
+	//ÀüÃ¼ ¼÷¼Ò top 4
+	@Override
+	public List<MemberHotelsVO> selectAccommodationTop10() {		
+		return memberHotelsListDAO.selectAccommodationTop10();
+	}
+
+	@Override
+	public List<MemberHotelsVO> selectAccommodationTop10ByType(String type) {
+		MemberHotelsVO vo = new MemberHotelsVO();
+		vo.setHotelsType(type);
+		return memberHotelsListDAO.selectAccommodationTop10ByType(vo);
+	}
+
 
 }

@@ -1,5 +1,7 @@
 package com.spring.aesook.client.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.spring.aesook.client.hotels.service.MemberHotelsListService;
+import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
 import com.spring.aesook.client.member.service.MemberRegisterService;
@@ -30,7 +34,8 @@ public class MemberController {
     private MemberFindIdService memberFindIdService;
     @Autowired
     private MemberFindPassService memberFindPassService;
-    
+    @Autowired
+	MemberHotelsListService memberHotelsListService;
     @Autowired
     MemberWithdrawalService memberWithdrawalService;
 
@@ -113,7 +118,9 @@ public class MemberController {
     
     
     @RequestMapping("/home.do")
-    public String moveHome() {
+    public String moveHome(Model model) {
+    	List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10();
+		model.addAttribute("top10", list);
     	return "/home";
     }
     
