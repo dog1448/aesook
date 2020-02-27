@@ -10,4 +10,6 @@ public interface MemberHotelsListDAO {
 	public int countHotelsList(HashMap<Object, Object> map);
 	public List<MemberHotelsVO> selectHotelsList(HashMap<Object, Object> map);
 	public List<MemberHotelsVO> selectHotelsListById(MemberVO vo);
+	public List<MemberHotelsVO> selectAccommodationTop10();
+	public List<MemberHotelsVO> selectAccommodationTop10ByType(MemberHotelsVO vo);
 }
