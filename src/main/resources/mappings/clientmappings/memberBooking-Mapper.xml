@@ -24,8 +24,10 @@
 	</select>
 
 	<select resultType="memberBooking" id="bookingInfo">
-		select * from booking
-		where booking_code = #{bookingCode} 
+		select b.*, h.hotels_name
+        from booking b, hotels h
+        where b.booking_code = #{bookingCode}
+        and b.hotels_code = h.hotels_code
 	</select>
 
 	<update id="cancelBooking">
