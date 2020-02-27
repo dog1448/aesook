@@ -9,13 +9,13 @@ import com.spring.aesook.client.review.vo.MemberReviewVO;
 @Repository
 public class MemberReviewDAOImpl implements MemberReviewDAO {
 	
-	private final static String namespace = "client.review.dao.MemberReivewDAO";
+	private final static String namespace = "client.review.dao.MemberReviewDAO";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
-	public void insertReview(MemberReviewVO reviewVO) {
-		sqlSessionTemplate.insert(namespace + ".insertReview", reviewVO);
+	public void insertReview(MemberReviewVO vo) {
+		sqlSessionTemplate.insert(namespace + ".insertReview", vo);
 	}
 }
