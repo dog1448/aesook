@@ -1,148 +1,106 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE HTML>
 <html>
+	<head>
+	<%@include file="head.jspf" %>
+	<script type="text/javascript">
+	function checkz() {
+		
+	    if($("#fname").val() == ""){
+		   alert("받는 사람을 입력하세요.");
+		   $("#fname").focus();
+		   return;
+		}
+		
+	    if($("#subject").val() == ""){
+			alert("제목을 입력하세요.");
+			$("#subject").focus();
+			return;
+		}
+	    
+	    if($("#message").val() == ""){
+			alert("내용을 입력하세요.");
+			$("#message").focus();
+			return;
+		}
+	    
+	    $('#alarmWriteForm').submit();
+	}
+	</script>
+	</head>
+	
+	<body>
+		
+	<div class="colorlib-loader"> </div>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- 뷰포트 -->
-    <meta name="viewport" content="width=device-width" initial-scale="1">
-    <!-- 스타일시트 참조  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <title>jsp 게시판 웹사이트</title>
-    <style type="text/css">
-        a,
-        a:hover {
-            color: #000000;
-            text-decoration: none;
-        }
-    </style>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
+	<div id="page">
+		<%@include file="main_header.jspf" %>
+		
+		
+		<div id="colorlib-contact">
+			<div class="container">
+				<div class="row">
+				
+				<div class="col-md-10 col-md-offset-1 animate-box">
+				<div>&nbsp;</div>
+						<h3>쪽지보기</h3>
+						<form action="alarmWrite.do" method="post" id="alarmWriteForm">
+							<div class="row form-group">
+								<div class="col-md-6 padding-bottom">
+									<label for="fname">받는 사람</label>
+									<c:if test="${inquiry ne 'inquiry'}">
+										<input type="text" id="fname" class="form-control" value="${alarm.alarmSendId}" disabled="disabled">
+										<input type="hidden" value="${alarm.alarmSendId}" name="alarmRecieveId">
+									</c:if>
+									<c:if test="${inquiry eq 'inquiry'}">									
+										<input type="text" id="fname" class="form-control" value="${hotels.MemberId}" disabled="disabled">
+										<input type="hidden" name="alarmRecieveId" value="${hotels.MemberId}">
+									</c:if>
+								</div>
+								<div class="col-md-6">
+									<label for="lname">보내는 사람</label>
+									<input type="text" id="lname" class="form-control" value="${user.memberId}" disabled="disabled">
+									<input type="hidden" name="alarmSendId" value="${user.memberId}">
+								</div>
+							</div>
 
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:description" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="subject">제목</label>
+									<c:if test="${reply eq 'reply'}">
+										<input type="text" id="subject" name="alarmTitle" class="form-control" value="[답변]">
+									</c:if>
+									<c:if test="${reply ne 'reply'}">												
+										<input type="text" id="subject" name="alarmTitle" class="form-control" placeholder="제목을 입력하세요">
+									</c:if>
+								</div>
+							</div>
 
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="message">Message</label>
+									<textarea id="message" name="alarmContents" cols="30" rows="10" class="form-control" placeholder="내용을 입력하세요"></textarea>
+								</div>
+							</div>
+							<div class="form-group text-center">
+								<input type="button" value="보내기" onclick="checkz()" class="btn btn-info btn-outline">
+								<input type="button" value="돌아가기" onclick="location.href='alarm.do'" class="btn btn-primary btn-outline">
+							</div>
 
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="resources/client/css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="resources/client/css/icomoon.css">
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="resources/client/css/bootstrap.css">
+						</form>		
+					</div>
+				
+				
+				</div>
+			</div>
+		</div>
+		<%@include file="footer.jspf" %>
+	</div>
 
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="resources/client/css/magnific-popup.css">
-
-    <!-- Flexslider  -->
-    <link rel="stylesheet" href="resources/client/css/flexslider.css">
-
-    <!-- Owl Carousel -->
-    <link rel="stylesheet" href="resources/client/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="resources/client/css/owl.theme.default.min.css">
-
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="resources/client/css/bootstrap-datepicker.css">
-    <!-- Flaticons  -->
-    <link rel="stylesheet" href="resources/client/fonts/flaticon/font/flaticon.css">
-
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="resources/client/css/style.css">
-
-    <!-- Modernizr JS -->
-    <script src="resources/client/js/modernizr-2.6.2.min.js"></script>
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-
-<body>
-
-
-    <!-- 네비게이션  -->
-    <div id="page">
-        <%@include file="main_header.jspf" %>
-        <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
-		<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
-        
-        <!-- 게시판 -->
-         <div class="container">
-            <table class="table table-bordered">
-                <thead>
-                    <caption> 쪽지 쓰기 </caption>
-                </thead>
-                <tbody>
-                    <form action="write_ok.jsp" method="post" encType="multiplart/form-data">
-                        <tr>
-                            <th style="width: 200px;">받는 사람 </th>
-                            <td>정재훈</td>
-                        </tr>                                 
-                        <tr>
-                            <th>제목 </th>
-                            <td><textarea cols="10" placeholder="제목을 입력하세요. " class="form-control"></textarea></td>
-                        </tr>                     
-                       
-                        <tr>
-                            <th>내용 </th>
-                            <td><textarea cols="10" placeholder="내용을 입력하세요. " name="content"
-                                    class="form-control" style="height: 20vmax;"></textarea></td>
-                        </tr>                     
-
-                        <tr>
-                            <td colspan="2">                            
-                                <button class="btn btn-default" onclick="sendData()" type="submit"> 보내기 </button>                                
-                            </td>
-                        </tr>
-                    </form>
-                </tbody>
-            </table>
-        </div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <%@include file="footer.jspf" %>
-    </div>
-
-	 <div class="gototop js-top">
-        <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
-    </div>
-
-    <!-- 애니매이션 담당 JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!-- 부트스트랩 JS  -->
-    <script src="resources/client/js/bootstrap.js"></script>
-    <!-- jQuery -->
-    <script src="resources/client/js/jquery.min.js"></script>
-    <!-- jQuery Easing -->
-    <script src="resources/client/js/jquery.easing.1.3.js"></script>
-
-    <!-- Waypoints -->
-    <script src="resources/client/js/jquery.waypoints.min.js"></script>
-    <!-- Flexslider -->
-    <script src="resources/client/js/jquery.flexslider-min.js"></script>
-    <!-- Owl carousel -->
-    <script src="resources/client/js/owl.carousel.min.js"></script>
-    <!-- Magnific Popup -->
-    <script src="resources/client/js/jquery.magnific-popup.min.js"></script>
-    <script src="resources/client/js/magnific-popup-options.js"></script>
-    <!-- Date Picker -->
-    <script src="resources/client/js/bootstrap-datepicker.js"></script>
-    <!-- Stellar Parallax -->
-    <script src="resources/client/js/jquery.stellar.min.js"></script>
-
-    <!-- Main -->
-    <script src="resources/client/js/main.js"></script>
-</body>
-
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+	</div>	
+	</body>
 </html>

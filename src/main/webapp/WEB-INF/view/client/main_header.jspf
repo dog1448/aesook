@@ -21,7 +21,7 @@
 								<li class="active"><a href="event_board.do">이벤트</a></li>
 								<li class="active"><a href="MemberBoard.do">Q&A</a></li>
 								<li class="active"><a href="memberFAQ.do">FAQ</a></li>
-								<li class="active"><a href="messageBoard.do">메세지</a></li>
+								<li class="active"><a href="alarm.do">메세지</a></li>
 								<c:if test="${sessionScope.login eq null}">
 									<li class="active"><a href="login.do">로그인</a></li>
 								</c:if>

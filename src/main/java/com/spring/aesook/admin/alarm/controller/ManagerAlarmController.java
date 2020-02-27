@@ -39,7 +39,7 @@ public class ManagerAlarmController {
 		if (Boolean.parseBoolean(status)) {
 			managerAlarmStatusService.successAlarm(vo);
 		} else {
-			
+			managerAlarmStatusService.failAlarm(vo);
 		}
 		
 		return "redirect:alarm.admin";

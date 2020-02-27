@@ -4,12 +4,21 @@ import java.sql.Date;
 
 public class MemberAlarmVO {
 
+	private int alarmNo;
 	private String alarmSendId;
 	private String alarmRecieveId;
 	private String alarmStatus;
 	private String alarmTitle;
 	private String alarmContents;
 	private Date alarmDate;
+	
+	public int getAlarmNo() {
+		return alarmNo;
+	}
+
+	public void setAlarmNo(int alarmNo) {
+		this.alarmNo = alarmNo;
+	}
 
 	public String getAlarmSendId() {
 		return alarmSendId;
@@ -61,9 +70,12 @@ public class MemberAlarmVO {
 
 	@Override
 	public String toString() {
-		return "AlarmVO [alarmSendId=" + alarmSendId + ", alarmRecieveId=" + alarmRecieveId + ", alarmStatus="
-				+ alarmStatus + ", alarmTitle=" + alarmTitle + ", alarmContents=" + alarmContents + "]";
+		return "MemberAlarmVO [alarmNo=" + alarmNo + ", alarmSendId=" + alarmSendId + ", alarmRecieveId="
+				+ alarmRecieveId + ", alarmStatus=" + alarmStatus + ", alarmTitle=" + alarmTitle + ", alarmContents="
+				+ alarmContents + ", alarmDate=" + alarmDate + "]";
 	}
+
+
 	
 	
 }
