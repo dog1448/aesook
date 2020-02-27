@@ -16,7 +16,7 @@
 		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
         <typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>  
         <typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsVO" alias="memberHotels"/>         
-        <typeAlias type="com.spring.aesook.client.hotels.vo.MemberRoomSortVO" alias="memberRoomSort"/>
+        <typeAlias type="com.spring.aesook.client.hotels.vo.MemberRoomVO" alias="memberRoom"/>
 		<typeAlias type="com.spring.aesook.common.pagination.Criteria" alias="pagination"/>
 		<typeAlias type="com.spring.aesook.client.review.vo.MemberReviewVO" alias="memberReview"/>
 		<typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO" alias="memberFacility"/>
