@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Repository("memberBookingDAO")
 public class MemberBookingDAOImpl implements MemberBookingDAO {
@@ -26,19 +27,16 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 		return sqlSessionTemplate.selectList(namespace + ".canceledBookingList", vo);
 	}
 	
-	public MemberBookingVO getBookingInfo(String bookingCode) {
+	public MemberBookingVO getBookingInfo(int bookingCode) {
 		MemberBookingVO vo = sqlSessionTemplate.selectOne(namespace + ".bookingInfo", bookingCode);
 		return vo;
 	}
 
 	@Override
-	public void cancelBooking(String bookingCode) {
+	public void cancelBooking(int bookingCode) {
 		sqlSessionTemplate.update(namespace + ".cancelBooking", bookingCode);
 		
 	}
 
 
-
-	
-	
 }

@@ -58,7 +58,7 @@ function checkz() {
 															<div class="col-md-12">
 																<label for="subject">
 																<h4>숙소명 : ${bookingInfo.hotelsName}</h4>
-																<h4>방종류 : ${bookingInfo.sortType}</h4>
+																<h4>방종류 : ${bookingInfo.roomSort}</h4>
 																<input type="hidden" value="${user.memberId}" name="memberId">
 																<input type="hidden" value="${bookingInfo.hotelsCode}" name="hotelsCode">
 																<input type="hidden" value="${bookingInfo.bookingCode}" name="bookingCode">

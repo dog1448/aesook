@@ -18,4 +18,16 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 	public void insertReview(MemberReviewVO vo) {
 		sqlSessionTemplate.insert(namespace + ".insertReview", vo);
 	}
+
+	@Override
+	public void updateStatus(int bookingCode) {
+		sqlSessionTemplate.update(namespace + ".updateStatus", bookingCode); 
+		
+	}
+	
+	@Override
+	public MemberReviewVO getReview(int bookingCode) {
+		return sqlSessionTemplate.selectOne(namespace + ".getReview", bookingCode);
+	}
+	
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.aesook.client.booking.service.MemberBookingCheckService;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
 import com.spring.aesook.client.member.vo.MemberVO;
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Controller
 public class MemberBookingController {
@@ -44,19 +45,21 @@ public class MemberBookingController {
 	}
 	
 	@RequestMapping(value="/bookingInfo.do", method = RequestMethod.GET)
-	public String getBookingInfo(MemberBookingVO vo, HttpSession session, Model model) {
-		MemberVO user = (MemberVO)session.getAttribute("login");
-		if(user != null) {
-			model.addAttribute("user", user);
-			vo = memberBookingCheckService.getBookingInfo(vo.getBookingCode());
-			model.addAttribute("bookingInfo", vo);
+	public String getBookingInfo(MemberBookingVO bookingVO, HttpSession session, Model model) {
+		MemberVO userVO = (MemberVO)session.getAttribute("login");
+		MemberReviewVO reviewVO;
+		if(userVO != null) {
+			model.addAttribute("user", userVO);
+			bookingVO = memberBookingCheckService.getBookingInfo(bookingVO.getBookingCode());
+			model.addAttribute("bookingInfo", bookingVO);
+			reviewVO = memberBookingCheckService.getReview(bookingVO.getBookingCode());
+			model.addAttribute("review", reviewVO);
 		}
 		return "/bookingInfo";
 	}
 	
 	@RequestMapping(value="/cancelBooking.do", method = RequestMethod.POST)
 	public String cancelBooking(MemberBookingVO vo) {
-		System.out.println(vo.toString());
 		memberBookingCheckService.cancelBooking(vo.getBookingCode());
 		return "redirect:canceledBookingList.do";
 	}

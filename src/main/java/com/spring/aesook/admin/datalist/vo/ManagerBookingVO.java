@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
 public class ManagerBookingVO {
 	private String bookingCode;
 	private int hotelsCode;
-	private String sortType;
-	private String roomCode;
+	private String hotelsName;
+	private String roomName;
+	private String roomSort;
 	private String memberId;
 	private String bookingCheckIn;
 	private String bookingCheckOut;
@@ -32,17 +33,23 @@ public class ManagerBookingVO {
 	public void setHotelsCode(int hotelsCode) {
 		this.hotelsCode = hotelsCode;
 	}
-	public String getSortType() {
-		return sortType;
+	public String getHotelsName() {
+		return hotelsName;
 	}
-	public void setSortType(String sortType) {
-		this.sortType = sortType;
+	public void setHotelsName(String hotelsName) {
+		this.hotelsName = hotelsName;
 	}
-	public String getRoomCode() {
-		return roomCode;
+	public String getRoomName() {
+		return roomName;
 	}
-	public void setRoomCode(String roomCode) {
-		this.roomCode = roomCode;
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+	public String getRoomSort() {
+		return roomSort;
+	}
+	public void setRoomSort(String roomSort) {
+		this.roomSort = roomSort;
 	}
 	public String getMemberId() {
 		return memberId;
@@ -104,15 +111,15 @@ public class ManagerBookingVO {
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
+	
 	@Override
 	public String toString() {
-		return "ManagerBookingVO [bookingCode=" + bookingCode + ", hotelsCode=" + hotelsCode + ", sortType=" + sortType
-				+ ", roomCode=" + roomCode + ", memberId=" + memberId + ", bookingCheckIn=" + bookingCheckIn
-				+ ", bookingCheckOut=" + bookingCheckOut + ", bookingName=" + bookingName + ", bookingPhone="
-				+ bookingPhone + ", bookingCnt=" + bookingCnt + ", bookingDate=" + bookingDate + ", bookingCancelDate="
-				+ bookingCancelDate + ", bookingTotalPrice=" + bookingTotalPrice + ", bookingStatus=" + bookingStatus
-				+ "]";
+		return "MemberBookingVO [bookingCode=" + bookingCode + ", hotelsCode=" + hotelsCode + ", hotelsName="
+				+ hotelsName + ", roomName=" + roomName + ", roomSort=" + roomSort + ", memberId=" + memberId
+				+ ", bookingCheckIn=" + bookingCheckIn + ", bookingCheckOut=" + bookingCheckOut + ", bookingName="
+				+ bookingName + ", bookingPhone=" + bookingPhone + ", bookingCnt=" + bookingCnt + ", bookingDate="
+				+ bookingDate + ", bookingCancelDate=" + bookingCancelDate + ", bookingTotalPrice=" + bookingTotalPrice
+				+ ", bookingStatus=" + bookingStatus + "]";
 	}
-	
 	
 }

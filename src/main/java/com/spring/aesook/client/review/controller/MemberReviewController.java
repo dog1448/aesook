@@ -33,7 +33,9 @@ public class MemberReviewController {
 	@RequestMapping(value = "/insertReview.do", method = RequestMethod.POST)
 	public String insertReview(MemberReviewVO vo) {
 		memberReviewService.insertReview(vo);
+		memberReviewService.updateStatus(vo.getBookingCode());
 		return "redirect:bookingList.do";
 	}
+
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -41,7 +42,7 @@
                   <div class="col-three-forth animate-box">
                         <h2>숙소 정보</h2>
                         <h4>숙소 이름 : ${bookingInfo.hotelsName}</h4>
-                        <h4>방 타입 : ${bookingInfo.sortType}</h4>
+                        <h4>방 타입 : ${bookingInfo.roomSort}</h4>
                         <div>&nbsp;</div><div>&nbsp;</div>
                         <h2>예약 정보</h2>
                         <h4>예약자 이름 : ${bookingInfo.bookingName}</h4>
@@ -53,7 +54,12 @@
                         <div>
                         <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
                            <button type="button" onclick="javascript:history.go(-1)" class="btn btn-secondary btn-lg">뒤로가기</button>
-                           <button type="button" onclick = "location.href = 'writeReview.do?bookingCode=${bookingInfo.bookingCode}'" class="btn btn-info btn-lg">후기쓰기</button>
+                           <c:if test="${bookingInfo.bookingStatus eq 'R'}">
+		                           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reviewModal">내가 쓴 후기</button>
+							</c:if>
+                           <c:if test="${bookingInfo.bookingStatus eq 'B'}">
+									<button type="button" onclick = "location.href = 'writeReview.do?bookingCode=${bookingInfo.bookingCode}'" class="btn btn-info btn-lg">후기 쓰기</button>
+							</c:if>
                            <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#cancelModal">예매취소</button>
                            <input type="hidden" name="memberId" value="${bookingInfo.memberId}">
                         </div>
@@ -62,7 +68,7 @@
                </div>
             </div>
           </div>
-          <!--Modal: modalPush-->
+          <!--#cancelModal: modalPush-->
 <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <form role="form" id="cancelBooking" method="post" action="cancelBooking.do">
 <input type="hidden" name="bookingCode" value="${bookingInfo.bookingCode}">
@@ -93,6 +99,37 @@
     <!--/.Content-->
   </div>
 </form>
+</div>
+<!--Modal: modalPush-->
+
+          <!--#reviewModal: modalPush-->
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+      <!--Header-->
+      	<div class="modal-header d-flex justify-content-center">
+        <p class="heading">
+        	<br>숙소명 : ${bookingInfo.hotelsName}
+        	<br>방종류 : ${bookingInfo.roomSort}
+        	<br></br>날   짜 : ${review.reviewDate}
+        </p>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+		
+		${review.reviewContents}
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">확인</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
 </div>
 <!--Modal: modalPush-->
       <%@ include file="footer.jspf" %>
