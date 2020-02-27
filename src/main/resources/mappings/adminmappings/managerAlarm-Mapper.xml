@@ -5,7 +5,7 @@
 <mapper namespace="admin.alarm.dao.ManagerAlarmDAO">
 	
 	<insert id="insertManagerAlarm" parameterType="managerAlarm">
-		INSERT INTO alarm VALUES(#{alarmSendId}, #{alarmRecieveId}, 'N',
+		INSERT INTO alarm VALUES(alarm_seq.nextval, #{alarmSendId}, #{alarmRecieveId}, 'N',
 		 #{alarmTitle}, #{alarmContents}, SYSDATE)
 	</insert>
 	

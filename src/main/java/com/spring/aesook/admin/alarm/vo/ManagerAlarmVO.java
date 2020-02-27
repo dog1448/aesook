@@ -3,7 +3,8 @@ package com.spring.aesook.admin.alarm.vo;
 import java.sql.Date;
 
 public class ManagerAlarmVO {
-
+	
+	private int alarmNo;
 	private String alarmSendId;
 	private String alarmRecieveId;
 	private String alarmStatus;
@@ -14,6 +15,15 @@ public class ManagerAlarmVO {
 	private String brnImageName;
 	private String brnImagePath;
 	private String brnImageStatus;
+
+
+	public int getAlarmNo() {
+		return alarmNo;
+	}
+
+	public void setAlarmNo(int alarmNo) {
+		this.alarmNo = alarmNo;
+	}
 
 	public String getAlarmSendId() {
 		return alarmSendId;

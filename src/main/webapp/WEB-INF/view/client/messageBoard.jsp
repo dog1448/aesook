@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -77,24 +78,35 @@
         
         <!-- 게시판 -->
         <div class="container">
-            <h2>쪽지</h2>
             <div class="row">
-                <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+             <h2>쪽지함</h2>
+            	<div class="text-right">
+            		<input class="btn btn-info btn-sm btn-outline" onclick="location.href='alarm.do?status=N'" type="button" value="안 읽은 쪽지함">&nbsp;&nbsp;
+            		<input class="btn btn-info btn-sm btn-outline" onclick="location.href='alarm.do?status=Y'" type="button" value="읽은 쪽지함">&nbsp;&nbsp;
+            	</div>
+                <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th style="background-color: #eeeeee; text-align: center;">보낸사람</th>
-                            <th style="background-color: #eeeeee; text-align: center;">제목</th>                            
-                            <th style="background-color: #eeeeee; text-align: center;">작성일</th>
+                            <th style="background-color: #eeeeee; width:20%">보낸사람</th>
+                            <th style="background-color: #eeeeee; width:60%">제목</th>                            
+                            <th style="background-color: #eeeeee; width:20%">작성일</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <td>정재훈</td>
-                            <td><a href="messageForm.do">답변드립니다.</a></td>                            
-                            <td>2020-02-07</td>
-                        </tr>
-
+                    <c:if test="${empty alarmList}">
+                    <tr>
+                    	<td colspan="3">
+                    	<p class="text-center"><strong>쪽지 내용이 없습니다.</strong></p>
+                    	</td>
+                   	</tr>
+                    </c:if>
+					<c:forEach var="alarm" items="${alarmList}">
+						<tr>
+							<td>${alarm.alarmSendId}</td>
+							<td><a href="alarmContent.do?alarmNo=${alarm.alarmNo}">${alarm.alarmTitle}</a></td>
+							<td>${alarm.alarmDate}</td>
+						</tr>
+					</c:forEach>
                     </tbody>
                 </table>
                 <a href="#" class="btn btn-success btn-arrow-left">이전</a>
