@@ -7,5 +7,8 @@ public interface MemberReviewService {
 	
 	void insertReview(MemberReviewVO vo);
 	
-	MemberBookingVO getBookingInfo(String bookingCode);
+	MemberBookingVO getBookingInfo(int bookingCode);
+	
+	void updateStatus(int bookingCode);
+	
 }

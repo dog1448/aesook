@@ -42,7 +42,7 @@
 												<div class="desc">
 													<h2>숙소명 : ${canceledbooking.hotelsName}</h2>
 													<p class="price"><span>${canceledbooking.bookingTotalPrice}￦</span> <small>/ allNight</small></p>
-													<p>방종류   : ${canceledbooking.sortType}</p>
+													<p>방종류   : ${canceledbooking.roomSort}</p>
 													<p>체크인    : ${canceledbooking.bookingCheckIn} / 체크아웃 : ${canceledbooking.bookingCheckOut}</p>
 													<p>예약일자 : ${canceledbooking.bookingDate}</p>													
 													<p><font color="red">취소일자 : ${canceledbooking.bookingCancelDate}</font></p>													

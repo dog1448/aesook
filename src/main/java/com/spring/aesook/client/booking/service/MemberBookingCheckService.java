@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
 import com.spring.aesook.client.member.vo.MemberVO;
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 public interface MemberBookingCheckService {
 	
@@ -11,7 +12,9 @@ public interface MemberBookingCheckService {
 	
 	List<MemberBookingVO> getCanceledBookingList(MemberVO user);
 
-	MemberBookingVO getBookingInfo(String bookingCode);
+	MemberBookingVO getBookingInfo(int bookingCode);
 	
-	void cancelBooking(String bookingCode);
+	void cancelBooking(int bookingCode);
+	
+	MemberReviewVO getReview(int bookingCode);
 }

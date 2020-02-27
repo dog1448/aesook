@@ -48,7 +48,7 @@
                                                     </td>
                                                     <td><c:out value="${bookingList.hotelsCode}"/></td>
                                                     <td><c:out value="${bookingList.memberId}"/></td>
-                                                    <td class="center"><fmt:formatDate value="${bookingList.bookingDate}" pattern="YYYY-MM-D"/></td>
+                                                    <td class="center"><fmt:formatDate value="${bookingList.bookingDate}" pattern="yyyy-MM-dd"/></td>
                                                     <td class="center"><c:out value="${bookingList.bookingTotalPrice}"/></td>
                                                     <td class="center"><c:out value="${bookingList.bookingStatus}"/></td>
                                                 </tr>

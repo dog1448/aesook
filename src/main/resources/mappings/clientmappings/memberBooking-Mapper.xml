@@ -10,11 +10,12 @@
 		from hotels h, booking b
 		where b.member_id = #{memberId} 
 		and b.hotels_code = h.hotels_code 
-		and b.booking_status = 'B'
+		and (b.booking_status = 'B' 
+		or b.booking_status = 'R')
 	</select>
 
 	<select parameterType="memberBooking" resultType="memberBooking" id="canceledBookingList">
-		select h.hotels_name, b.booking_code, b.sort_type, 
+		select h.hotels_name, b.booking_code, b.room_sort, 
 		b.booking_date, b.booking_cancel_date, 
 		b.booking_check_in, b.booking_check_out, b.booking_total_price
 		from hotels h, booking b

@@ -22,8 +22,13 @@ public class MemberReviewServiceImpl implements MemberReviewService {
 	}
 
 	@Override
-	public MemberBookingVO getBookingInfo(String bookingCode) {
+	public MemberBookingVO getBookingInfo(int bookingCode) {
 		return memberBookingDAO.getBookingInfo(bookingCode);
+	}
+
+	@Override
+	public void updateStatus(int bookingCode) {
+		memberReivewDAO.updateStatus(bookingCode);
 	}
 	
 }

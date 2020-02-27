@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberBookingVO {
-	private String bookingCode;
+	private int bookingCode;
 	private int hotelsCode;
 	private String hotelsName;
-	private String sortType;
-	private String roomCode;
+	private String roomName;
+	private String roomSort;
 	private String memberId;
 	private String bookingCheckIn;
 	private String bookingCheckOut;
@@ -21,10 +21,11 @@ public class MemberBookingVO {
 	private Date bookingCancelDate;
 	private int bookingTotalPrice;
 	private String bookingStatus;
-	public String getBookingCode() {
+	
+	public int getBookingCode() {
 		return bookingCode;
 	}
-	public void setBookingCode(String bookingCode) {
+	public void setBookingCode(int bookingCode) {
 		this.bookingCode = bookingCode;
 	}
 	public int getHotelsCode() {
@@ -39,17 +40,17 @@ public class MemberBookingVO {
 	public void setHotelsName(String hotelsName) {
 		this.hotelsName = hotelsName;
 	}
-	public String getSortType() {
-		return sortType;
+	public String getRoomName() {
+		return roomName;
 	}
-	public void setSortType(String sortType) {
-		this.sortType = sortType;
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
 	}
-	public String getRoomCode() {
-		return roomCode;
+	public String getRoomSort() {
+		return roomSort;
 	}
-	public void setRoomCode(String roomCode) {
-		this.roomCode = roomCode;
+	public void setRoomSort(String roomSort) {
+		this.roomSort = roomSort;
 	}
 	public String getMemberId() {
 		return memberId;
@@ -111,13 +112,15 @@ public class MemberBookingVO {
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
+	
 	@Override
 	public String toString() {
 		return "MemberBookingVO [bookingCode=" + bookingCode + ", hotelsCode=" + hotelsCode + ", hotelsName="
-				+ hotelsName + ", sortType=" + sortType + ", roomCode=" + roomCode + ", memberId=" + memberId
+				+ hotelsName + ", roomName=" + roomName + ", roomSort=" + roomSort + ", memberId=" + memberId
 				+ ", bookingCheckIn=" + bookingCheckIn + ", bookingCheckOut=" + bookingCheckOut + ", bookingName="
 				+ bookingName + ", bookingPhone=" + bookingPhone + ", bookingCnt=" + bookingCnt + ", bookingDate="
 				+ bookingDate + ", bookingCancelDate=" + bookingCancelDate + ", bookingTotalPrice=" + bookingTotalPrice
 				+ ", bookingStatus=" + bookingStatus + "]";
 	}
+	
 }

@@ -8,12 +8,17 @@ import org.springframework.stereotype.Service;
 import com.spring.aesook.client.booking.dao.MemberBookingDAO;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
 import com.spring.aesook.client.member.vo.MemberVO;
+import com.spring.aesook.client.review.dao.MemberReviewDAO;
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Service("MemberBookingCheckService")
 public class MemberBookingCheckServiceImpl implements MemberBookingCheckService {
 	
 	@Autowired
 	private MemberBookingDAO memberBookingDAO;
+	@Autowired
+	private MemberReviewDAO memberReivewDAO;
+	
 
 	@Override
 	public List<MemberBookingVO> getBookingList(MemberVO user) {
@@ -30,15 +35,19 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	}
 
 	@Override
-	public MemberBookingVO getBookingInfo(String bookingCode) {
+	public MemberBookingVO getBookingInfo(int bookingCode) {
 		return memberBookingDAO.getBookingInfo(bookingCode);
 	}
 
 	@Override
-	public void cancelBooking(String bookingCode) {
+	public void cancelBooking(int bookingCode) {
 		memberBookingDAO.cancelBooking(bookingCode);
 	}
-
+	
+	@Override
+	public MemberReviewVO getReview(int bookingCode) {
+		return memberReivewDAO.getReview(bookingCode);
+	}
 	
 	
 }
