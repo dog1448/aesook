@@ -445,8 +445,7 @@
 										</div>
 									</div>
 								</div>
-							</c:forEach>
-							
+							</c:forEach>							
 						</div>
 					</div>
 				</div>
