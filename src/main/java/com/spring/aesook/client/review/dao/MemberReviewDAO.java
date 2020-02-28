@@ -1,5 +1,7 @@
 package com.spring.aesook.client.review.dao;
 
+import java.util.List;
+
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 public interface MemberReviewDAO {
@@ -8,4 +10,8 @@ public interface MemberReviewDAO {
 	void updateStatus(int bookingCode);
 	
 	MemberReviewVO getReview(int bookingCode);
+	
+	List<MemberReviewVO> getReviewList(int hotelsCode);
+	
+	double getScoreAvg(int hotelsCode);
 }

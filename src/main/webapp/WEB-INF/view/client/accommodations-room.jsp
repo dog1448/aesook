@@ -169,42 +169,32 @@
 										<h3>리뷰</h3>										
 										<div class="container">
 											<div class="row">											
-												<table class="table table-striped"
-													style="text-align: center; border: 1px solid #dddddd">
-													<thead>
-														<tr>
-															<th style="background-color: #eeeeee; text-align: center;">
-																번호</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																제목</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																작성자</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																별점</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																작성일</th>
-														</tr>
-													</thead>
-													<tbody>
-
-														<tr>
-															<td>1</td>
-															<td><a>EXAMPLE</a></td>
-															<td>요피</td>
-															<td>																
-																<div class="starRev">
-																	<span class="starR on">별1</span>
-																	<span class="starR on">별2</span>
-																	<span class="starR on">별3</span>
-																	<span class="starR on">별4</span>
-																	<span class="starR on">별5</span>
-																</div>
-															</td>
-															<td>2020-02-07</td>
-														</tr>
-
-													</tbody>
-												</table>
+												<i class="icon-star-full"></i>
+												<small>전체 누적 평점</small>
+												<h1><strong>${scoreAvg}</strong>&nbsp;<small>/5</small></h1>
+												<hr>
+												<c:forEach var="review" items="${review}">
+														<span class="icon">
+													<c:if test="${review.reviewScore >= 4}">
+														<img src="resources/client/images/good.png" width="35" height="35"/>&nbsp;
+													</c:if>
+													<c:if test="${review.reviewScore == 3}">
+														<img src="resources/client/images/soso.png" width="35" height="35"/>&nbsp;
+													</c:if>
+													<c:if test="${review.reviewScore <= 2}">
+														<img src="resources/client/images/bad.png" width="35" height="35"/>&nbsp;
+													</c:if>
+														<c:forEach var="i" begin="1" end="${review.reviewScore}" step="1">
+															<i class="icon-star-full"></i>
+														</c:forEach>
+													</span>
+													<div>&nbsp;</div>
+													작성자 : ${review.memberId}
+													<div class="text-left">날   짜 : ${review.reviewDate}</div>
+													<div>&nbsp;</div>
+													${review.reviewContents}
+													<hr>
+												</c:forEach>
 												<a href="#" class="btn btn-success btn-arrow-left">이전</a>
 												<a href="#" class="btn btn-success btn-arrow-left">다음</a>												
 											</div>
