@@ -64,5 +64,12 @@ public class MemberHotelsFacilityVO {
 	public void setFacilityAmenity(String facilityAmenity) {
 		this.facilityAmenity = facilityAmenity;
 	}
+	@Override
+	public String toString() {
+		return "MemberHotelsFacilityVO [hotelsCode=" + hotelsCode + ", facilityParking=" + facilityParking
+				+ ", facilityPool=" + facilityPool + ", facilityBreakfast=" + facilityBreakfast + ", facilityFitness="
+				+ facilityFitness + ", facilityWifi=" + facilityWifi + ", facilityParty=" + facilityParty
+				+ ", facilityPc=" + facilityPc + ", facilityAmenity=" + facilityAmenity + "]";
+	}	
 	
 }

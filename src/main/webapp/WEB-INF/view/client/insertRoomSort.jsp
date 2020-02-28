@@ -20,35 +20,28 @@
                  <!-- 사이드바 -->
                  <%@ include file="managementSidebar.jspf" %>
                   <div class="col-three-forth animate-box">                    
-
-                        <h2>객실 등록 및 수정</h2>
+						<nav class="navbar navbar-default">					  				    
+						    <ul class="nav navbar-nav">
+						      <li><a href="#">숙소 등록</a></li>
+						      <li class="active"><a href="#">객실 등록</a></li>
+						      <li><a href="#">사진 등록</a></li>
+						      <li><a href="#">약관 동의</a></li>
+						    </ul>					  
+						</nav>      
                         <hr>       
-						<form method="post" action="insertRoomSort.do">
-													
-	                        <div class="form-group">	                       
-	                        <input type="hidden" name="memberId" value="${memberId}"> 
+                        <input type="hidden" name="memberHotelsVO" value="${memberHotelsVO}"> 
+	                    <input type="hidden" name="memberFacilityVO" value="${memberFacilityVO}"> 
+						<form method="post" action="insertRoomSort.do">													
+	                        <div class="form-group">	                        
 	                           <div class="col-sm-6">
-	                           <label>숙소 선택</label><br>	                          
-								<select name="hotelsCode" id="hotelsCode">
-								 <c:forEach var="list" items="${memberHotelsList}">								  
-								  <option value="${list.hotelsCode}" >${list.hotelsName}</option>
-								  </c:forEach>								
-								</select>
-								
-	                           </div>	                            
+	                              <label>방 이름</label>
+	                              <input type="text" class="form-control" placeholder="Ex>101호, 새싹방" name="roomName" id="roomName">
+	                           </div>	                                                     
 	                           <div class="col-sm-6">
 	                              <label>방 종류</label>
 	                              <input type="text" class="form-control" placeholder="Ex>디럭스룸, 스위트룸" name="roomSort" id="roomSort">
 	                           </div>
-	                           <div class="col-sm-6">
-	                              <label>방 이름</label>
-	                              <input type="text" class="form-control" placeholder="Ex>101호, 새싹방" name="roomName" id="roomName">
-	                           </div>
-	                           <div>&nbsp;</div>
-	                           <div class="col-sm-6">
-	                              <button type="button" id="roomCheck" class="btn btn-success" onclick="checkName();" value="N">방 이름 중복확인</button>
-	                           </div>
-	                           <div>&nbsp;</div>
+	                          
 	                           <div class="col-sm-6">
 	                              <label>기준 인원</label>
 	                              <input type="text" class="form-control" placeholder="인원 수 입력" name="roomStandardCnt" id="roomStandardCnt">
@@ -77,7 +70,8 @@
 	                        <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 	                        <hr>                        
 	                        <div>
-	                           <button type="submit" id="submit" class="btn btn-info" onclick="register()">등록</button>	                                                                            
+	                           <button type="button" id="submit" class="btn btn-info">다음</button>	
+	                           <button type="button" class="btn btn-success" onclick="history.go(-1);">이전</button>                                                                            
 	                        </div>                        
                      </form>
                      
@@ -94,26 +88,18 @@
       <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
    </div>   
 	<script type="text/javascript">
-$("#roomName").change(function(){
-	$("#roomCheck").attr("value","N");
-});
-
 $(document).ready(function() {
 	$("#submit").on("click", function() {
-	if($("#roomSort").val() == ""){
-		alert("방 종류를 입력하세요.");
-		$("#roomSort").focus();
-		return false;
-	}	
 	if($("#roomName").val() == ""){
 		alert("방 이름을 입력하세요.");
 		$("#roomName").focus();
 		return false;
-	}
-	if($("#roomCheck").val() == "N"){
-		alert("중복확인 버튼을 눌러주세요.");
+	}	
+	if($("#roomSort").val() == ""){
+		alert("방 종류를 입력하세요.");
+		$("#roomSort").focus();
 		return false;
-	}
+	}		
 	if($("#roomStandardCnt").val() == ""){
 		alert("방 최소 인원을 입력하세요.");
 		$("#roomStandardCnt").focus();
@@ -153,27 +139,7 @@ $(document).ready(function() {
 	});
 })
 
-function checkName() {
-	$.ajax({
-		url : "roomNameChk.do",
-		type : "post",
-		dataType : "json",
-		data : {
-			"roomName" : $("#roomName").val(),
-			"hotelsCode" : $("#hotelsCode").val()
-		},
-		success : function(data) {
-			if (data == 1) {
-				alert("중복된 방 이름입니다.");
-				return false;
-			} else if (data == 0) {				
-				$("#roomCheck").attr("value","Y");
-				alert("사용가능한 방 이름입니다.");		
 
-			} 
-		}
-	})
-}
 </script>	
 </body>
 

@@ -126,7 +126,7 @@
 												 <div class="col-lg-1">
 												    <img src="resources/client/images/icons/amenity.png">
 												    <div>&nbsp;</div>												   
-												    <p style="text-align: center">편의시설</p>
+												    <p style="text-align: center">어메니티</p>
 												 </div>
 											</c:if>	 																																	
 											</div>						

@@ -32,7 +32,7 @@ public class MemberRoomController {
 	@Autowired
 	private MemberHotelsService memberHotelsService;
 	
-	//숙소의 방들 게시하는 컨트롤러임
+	//Show Accommodations
 	@RequestMapping(value = "/accommodationsRoom.do", method = RequestMethod.GET)
 	public String roomList(@RequestParam(value = "hotelsCode") int hotelsCode, Model model) {
 		
@@ -47,32 +47,9 @@ public class MemberRoomController {
 		model.addAttribute("review", reviewVO);
 		model.addAttribute("scoreAvg", scoreAvg);
 		return "/accommodations-room";
-	}
+	}		
 	
-	//객실 등록하는 페이지로 이동하는 컨트롤러임
-	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.GET)
-	public String moveInsertRoomSort(@RequestParam(value = "memberId", required = false) String memberId, 
-			Model model) {
-		
-		List<MemberHotelsVO> memberHotelsList = memberHotelsListService.selectHotelsListById(memberId);
-		
-		model.addAttribute("memberHotelsList", memberHotelsList);
-		model.addAttribute("memberId", memberId);
-		
-		return "/insertRoomSort";
-	}
-	
-	//객실 등록하는 컨트롤러임 
-	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)
-	public String InsertRoomSort(MemberRoomVO vo, @RequestParam("memberId") String memberId,
-			Model model) {	
-		
-		memberRoomService.insertRoom(vo);
-		
-		return "redirect:insertRoomSort.do?memberId="+memberId;
-	}
-	
-	//방 상세 설명하는 페이지에 방 정보 가져오는 컨트롤러
+	//Show Room Description 
 	@RequestMapping(value = "/roomDescription.do", method = RequestMethod.GET)
 	public String getRoomDescription(@RequestParam("hotelsCode") int hotelsCode,
 			@RequestParam("roomName") String roomName, Model model) {
@@ -85,7 +62,7 @@ public class MemberRoomController {
 		return "/roomDescription";
 	}
 	
-	//방 이름 (roomName 중복 체크)
+	//Room Name check
 	@RequestMapping(value = "/roomNameChk.do", method = RequestMethod.POST)
     @ResponseBody
     public int checkId(MemberRoomVO vo){

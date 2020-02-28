@@ -9,4 +9,12 @@
 	where HOTELS_CODE = #{hotelsCode} 
 </select>
 
+<insert id="insertFacility" parameterType="memberFacility">
+	insert into facility values(
+		#{hotelsCode}, #{facilityParking}, 
+		#{facilityPool}, #{facilityBreakfast},
+		#{facilityFitness}, #{facilityWifi},
+		#{facilityParty}, #{facilityPc},
+		#{facilityAmenity})
+</insert>
 </mapper>

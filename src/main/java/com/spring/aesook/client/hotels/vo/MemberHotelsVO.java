@@ -14,7 +14,7 @@ public class MemberHotelsVO {
 	private String hotelsAddress2;
 	private String hotelsPath;
 	private String hotelsInfo;
-	private String hotelsIntroduce;	
+	private String hotelsIntroduce;		
 	
 	public String getMemberId() {
 		return memberId;
@@ -87,11 +87,9 @@ public class MemberHotelsVO {
 	@Override
 	public String toString() {
 		return "MemberHotelsVO [hotelsCode=" + hotelsCode + ", hotelsName=" + hotelsName + ", hotelsType=" + hotelsType
-				+ ", memberNo=" + memberId + ", hotelsPhone=" + hotelsPhone + ", hotelsZipcode=" + hotelsZipcode
+				+ memberId + ", hotelsPhone=" + hotelsPhone + ", hotelsZipcode=" + hotelsZipcode
 				+ ", hotelsAddress1=" + hotelsAddress1 + ", hotelsAddress2=" + hotelsAddress2 + ", hotelsPath="
 				+ hotelsPath + ", hotelsInfo=" + hotelsInfo + ", hotelsIntroduce=" + hotelsIntroduce + "]";
 	}
-	
-
 	
 }
