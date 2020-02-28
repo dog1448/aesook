@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
+import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Controller
 public class MemberRoomController {
@@ -27,6 +29,8 @@ public class MemberRoomController {
 	private MemberHotelsFacilityService memberHotelsFacilityService;
 	@Autowired
 	private MemberHotelsListService memberHotelsListService;
+	@Autowired
+	private MemberHotelsService memberHotelsService;
 	
 	//숙소의 방들 게시하는 컨트롤러임
 	@RequestMapping(value = "/accommodationsRoom.do", method = RequestMethod.GET)
@@ -35,10 +39,13 @@ public class MemberRoomController {
 		List<MemberRoomVO> list = memberRoomService.getRoomList(hotelsCode);
 		MemberHotelsVO hotelsVO = memberRoomService.getHotel(hotelsCode);
 		MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
+		List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
+		double scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
 		model.addAttribute("list",list);		
 		model.addAttribute("vo", hotelsVO);
 		model.addAttribute("facilityVO", facilityVO);
-		
+		model.addAttribute("review", reviewVO);
+		model.addAttribute("scoreAvg", scoreAvg);
 		return "/accommodations-room";
 	}
 	

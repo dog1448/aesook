@@ -1,5 +1,7 @@
 package com.spring.aesook.client.review.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,5 +31,16 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 	public MemberReviewVO getReview(int bookingCode) {
 		return sqlSessionTemplate.selectOne(namespace + ".getReview", bookingCode);
 	}
+
+	@Override
+	public List<MemberReviewVO> getReviewList(int hotelsCode) {
+		return sqlSessionTemplate.selectList(namespace + ".getReviewList", hotelsCode);
+	}
+
+	@Override
+	public double getScoreAvg(int hotelsCode) {
+		return sqlSessionTemplate.selectOne(namespace + ".getScoreAvg", hotelsCode);
+	}
+	
 	
 }

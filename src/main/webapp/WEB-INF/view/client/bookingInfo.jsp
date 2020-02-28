@@ -29,9 +29,9 @@
    <div class="colorlib-loader">  </div>
 
    <div id="page">
-      <nav class="colorlib-nav" role="navigation">
-
-      </nav>
+   		 <%@ include file="main_header.jspf" %>
+   		 
+   		 <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 
       <div id="colorlib-about">
          <div class="container">
@@ -112,20 +112,32 @@
         <p class="heading">
         	<br>숙소명 : ${bookingInfo.hotelsName}
         	<br>방종류 : ${bookingInfo.roomSort}
-        	<br></br>날   짜 : ${review.reviewDate}
+        	<br>날   짜 : ${review.reviewDate}
         </p>
       </div>
 
       <!--Body-->
       <div class="modal-body">
-		
+		<c:if test="${review.reviewScore >= 4}">
+			<img src="resources/client/images/good.png" width="35"
+				height="35" />&nbsp;
+		</c:if>
+		<c:if test="${review.reviewScore == 3}">
+			<img src="resources/client/images/soso.png" width="35"
+				height="35" />&nbsp;
+		</c:if>
+		<c:if test="${review.reviewScore <= 2}">
+			<img src="resources/client/images/bad.png" width="35" height="35" />&nbsp;
+		</c:if>
+			<c:forEach var="i" begin="1" end="${review.reviewScore}" step="1">
+				<i class="icon-star-full"></i>
+			</c:forEach><br></br>
 		${review.reviewContents}
-
       </div>
 
       <!--Footer-->
       <div class="modal-footer flex-center">
-        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">확인</a>
+        <a type="button" class="btn btn-info waves-effect" data-dismiss="modal">확인</a>
       </div>
     </div>
     <!--/.Content-->
