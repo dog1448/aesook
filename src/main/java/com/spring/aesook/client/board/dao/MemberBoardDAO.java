@@ -14,6 +14,8 @@ public interface MemberBoardDAO {
     int getNoticeBoardCount();
 
     MemberBoardVO readMemberBoard(Integer BoardNo);
+    MemberBoardVO readMemberBoardFAQ(Integer BoardNo);
+    MemberBoardVO readMemberBoardNotice(Integer BoardNo);
 
 
     List<MemberBoardVO> getMemberBoard(Criteria cri)throws Exception;
