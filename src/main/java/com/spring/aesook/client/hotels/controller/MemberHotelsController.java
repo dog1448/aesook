@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
+import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
+import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 @Controller
@@ -52,12 +54,34 @@ public class MemberHotelsController {
 		return "/insertHotels";
 	}
 	
+	//Insert Accommodation
 	@RequestMapping(value="/insertHotelsAll.do", method = RequestMethod.POST)
-	public String inserHotelsAll(MemberHotelsVO vo) {
-		memberHotelsService.insertHotels(vo);
-		return "/registeredAccommodation";
+	public String inserHotelsAll(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO, Model model) {
+		model.addAttribute("memberHotelsVO", memberHotelsVO);
+		model.addAttribute("memberFacilityVO", memberFacilityVO);
+		return "/insertRoomSort";
 	}
 
+	//Insert Room
+	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)
+	public String InsertRoomSort(MemberRoomVO memberRoomVO, @RequestParam("memberHotelsVO") MemberHotelsVO memberHotelsVO,
+			@RequestParam("memberFacilityVO") MemberHotelsFacilityVO memberFacilityVO ,Model model) {	
+		
+		model.addAttribute("memberHotelsVO", memberHotelsVO);
+		model.addAttribute("memberFacilityVO", memberFacilityVO);
+		model.addAttribute("memberRoomVO", memberRoomVO);
+		
+		return "/insertPic";
+	}
+	
+	//TermsOfUse
+	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
+	public String hostTermsOfUse(
+			) {
+		
+		return "/hostTermsOfUse";
+	}
+	
 	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)
 	public String getMyHotels(HttpSession session, Model model){
 		MemberVO user = (MemberVO)session.getAttribute("login");

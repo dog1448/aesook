@@ -17,29 +17,31 @@ public class MemberRoomDAOImpl implements MemberRoomDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	//방 목록 가져오기
+	//Get Room List
 	@Override
 	public List<MemberRoomVO> getRoomList(int hotelsCode) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectRoom", hotelsCode);
 	}
 
-	// 방목록 화면에 쓸 숙소 정보 가져오기
+	//Get Accommodation
 	@Override
 	public MemberHotelsVO getHotel(int hotelsCode) {
 		return sqlSessionTemplate.selectOne(namespace + ".getHotel", hotelsCode);
 	}
 	
-	//방 하나의 정보 가져오기
+	//Get Room Description
 	@Override
 	public MemberRoomVO getRoom(MemberRoomVO vo) {		
 		return sqlSessionTemplate.selectOne(namespace + ".selectRoomDescription", vo);
 	}
 
+	//Insert Room
 	@Override
 	public void insertRoom(MemberRoomVO vo) {
 		sqlSessionTemplate.insert(namespace + ".insertRoom", vo);
 	}
-
+	
+	//Room Name Check
 	@Override
 	public int roomNameCheck(MemberRoomVO vo) {
 		

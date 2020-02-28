@@ -15,19 +15,19 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 	@Autowired
 	private MemberRoomDAO memberRoomDAO;
 
-	// 방 목록 가져오는 서비스
+	// Get Room List
 	@Override
 	public List<MemberRoomVO> getRoomList(int hotelsCode) {		
 		return memberRoomDAO.getRoomList(hotelsCode);
 	}
 
-	// 방 목록 화면에 사용할 숙소 정보 가져올 서비스
+	// Get Accommodation
 	@Override
 	public MemberHotelsVO getHotel(int hotelsCode) {
 		return memberRoomDAO.getHotel(hotelsCode);
 	}
 
-	// 방 하나의 정보 가져올 서비스
+	// Get Room Description
 	@Override
 	public MemberRoomVO getRoomDescription(int hotelsCode, String roomName) {
 		
@@ -38,11 +38,13 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 		return memberRoomDAO.getRoom(vo);
 	}
 
+	//Insert Room
 	@Override
 	public void insertRoom(MemberRoomVO vo) {
 		memberRoomDAO.insertRoom(vo);
 	}
 
+	//Room Name Check
 	@Override
 	public int roomNameCheck(MemberRoomVO vo) {		
 		return memberRoomDAO.roomNameCheck(vo);
