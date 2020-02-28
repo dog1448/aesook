@@ -106,7 +106,7 @@
                     <tr>
 
                         <td class="qna"><c:out value="${boards.rnum}"/></td>
-                        <td class="qna"><a href="${path}/noticeBoardRead.do?boardNo=${boards.boardSeq}">
+                        <td class="qna"><a href="${path}/noticeBoardRead.do?boardNo=${boards.rnum}">
                             <c:out value="${boards.boardTitle}"/></a></td>
                         <td class="qna"><c:out value="${boards.boardWriter}"/></td>
                         <td class="qna"><fmt:formatDate value="${boards.boardDate}"/></td>

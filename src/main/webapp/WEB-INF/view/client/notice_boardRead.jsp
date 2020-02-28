@@ -100,7 +100,7 @@
                 </tr>
                 <div class ="box">
                     <form role="form" method="post">
-                        <input type="hidden" name="boardNo" value="${board.boardSeq}">
+                        <input type="hidden" name="boardNo" value="${board.rnum}">
                     </form>
                     <button type="button" class="btn btn-default listBtn"><i class="fa fa-list"></i>목록</button>
                     <div class ="pull-right">

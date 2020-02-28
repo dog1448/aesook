@@ -34,6 +34,16 @@ public class MemberBoardServiceImpl implements MemberBoardService {
     }
 
     @Override
+    public MemberBoardVO readMemberBoardFAQ(Integer BoardNo) {
+        return memberBoardDAO.readMemberBoardFAQ(BoardNo);
+    }
+
+    @Override
+    public MemberBoardVO readMemberBoardNotice(Integer BoardNo) {
+        return memberBoardDAO.readMemberBoardNotice(BoardNo);
+    }
+
+    @Override
     public List<MemberBoardVO> getMemberBoard(Criteria cri) throws Exception {
         return memberBoardDAO.getMemberBoard(cri);
     }
