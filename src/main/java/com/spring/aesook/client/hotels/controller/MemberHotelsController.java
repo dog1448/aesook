@@ -58,6 +58,11 @@ public class MemberHotelsController {
 		return "/registeredAccommodation";
 	}
 
+	@RequestMapping(value="/insertPic.do")
+	public String insertPic() {
+		return "/insertPic";
+	}
+	
 	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)
 	public String getMyHotels(HttpSession session, Model model){
 		MemberVO user = (MemberVO)session.getAttribute("login");
