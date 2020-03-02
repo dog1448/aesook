@@ -100,6 +100,7 @@
                         <input type="hidden" name="boardType" id="boardType" value="Q">
                         <input type="hidden" name="boardIP" id="boardIP" value="123.123">
 
+                        <input type="hidden" name="boardGroup" value="${seq+1}">
                         <input type="hidden" name="boardStep" value="0">
                         <input type="hidden" name="boardDepth" value="0">
 
