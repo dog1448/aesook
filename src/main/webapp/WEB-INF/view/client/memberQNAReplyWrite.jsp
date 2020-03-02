@@ -99,9 +99,8 @@
 
                 <input type="hidden" name="boardType" id="boardType" value="Q">
                 <input type="hidden" name="boardIP" id="boardIP" value="123.123">
-                <input type="hidden" name="boardGroup" value="${reply.boardGroup}">
-                <input type="hidden" name="boardStep" value="${reply.boardStep + 1}">
-                <input type="hidden" name="boardDepth" value="${reply.boardDepth + 1}">
+                <input type="hidden" name="boardGroup" value="${reply.boardSeq}">
+                <input type="hidden" name="boardStep" value="${reply.boardSeq}">
 
 
 
