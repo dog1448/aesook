@@ -10,5 +10,5 @@ public interface MemberHotelsService {
 	void insertHotels(MemberHotelsVO vo);
 	MemberHotelsVO getMyHotels(MemberVO vo);
 	List<MemberReviewVO> getReviewList(int hotelsCode);
-	double getScoreAvg(int hotelsCode);
+	String getScoreAvg(int hotelsCode);
 }

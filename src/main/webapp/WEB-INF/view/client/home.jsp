@@ -43,7 +43,7 @@
 							<!-- 검색 값 -->
 							<form method="post" class="colorlib-form" action="">
 								<div class="row">
-									<div class="col-lg-10">
+									<div class="col-lg-6 col-lg-offset-2">
 										<div class="form-group">
 											<label for="date">통합검색</label>
 											<div class="form-field">

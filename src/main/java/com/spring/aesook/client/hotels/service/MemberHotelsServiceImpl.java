@@ -35,7 +35,7 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 	}
 
 	@Override
-	public double getScoreAvg(int hotelsCode) {
+	public String getScoreAvg(int hotelsCode) {
 		return memberReviewDAO.getScoreAvg(hotelsCode);
 	}
 	

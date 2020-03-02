@@ -40,7 +40,7 @@ public class MemberRoomController {
 		MemberHotelsVO hotelsVO = memberRoomService.getHotel(hotelsCode);
 		MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
 		List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
-		double scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
+		String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
 		model.addAttribute("list",list);		
 		model.addAttribute("vo", hotelsVO);
 		model.addAttribute("facilityVO", facilityVO);

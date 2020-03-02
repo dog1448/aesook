@@ -29,7 +29,7 @@
 		where hotels_code = #{hotelsCode}
 	</select>
 	
-	<select id="getScoreAvg" resultType="double">
+	<select id="getScoreAvg" resultType="String">
 		select round(avg(review_score),1) avg
 		from review
 		where hotels_code = #{hotelsCode}
