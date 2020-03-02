@@ -11,6 +11,7 @@ public class MemberRoomVO {
 	private int roomHolidayPrice;
 	private int roomAddPrice;
 	private String roomRoomInfo;
+	
 	public int getHotelsCode() {
 		return hotelsCode;
 	}
