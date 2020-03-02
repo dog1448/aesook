@@ -31,8 +31,10 @@
                         <hr>       
                         <input type="hidden" name="memberHotelsVO" value="${memberHotelsVO}"> 
 	                    <input type="hidden" name="memberFacilityVO" value="${memberFacilityVO}"> 
-						<form method="post" action="insertRoomSort.do">													
-	                        <div class="form-group">	                        
+						<form method="post" action="insertRoomSort.do">
+						<button type="button" class="btn btn-success" onclick="add();">객실 추가</button>						
+						<div id="hey">												
+	                        <div class="form-group">
 	                           <div class="col-sm-6">
 	                              <label>방 이름</label>
 	                              <input type="text" class="form-control" placeholder="Ex>101호, 새싹방" name="roomName" id="roomName">
@@ -40,8 +42,7 @@
 	                           <div class="col-sm-6">
 	                              <label>방 종류</label>
 	                              <input type="text" class="form-control" placeholder="Ex>디럭스룸, 스위트룸" name="roomSort" id="roomSort">
-	                           </div>
-	                          
+	                           </div>	                          
 	                           <div class="col-sm-6">
 	                              <label>기준 인원</label>
 	                              <input type="text" class="form-control" placeholder="인원 수 입력" name="roomStandardCnt" id="roomStandardCnt">
@@ -67,7 +68,10 @@
 	                              <input type="text" class="form-control" placeholder="요금 입력" name="roomAddPrice" id="roomAddPrice">
 	                           </div>	                                                         
 	                        </div>
+	                        <div>&nbsp;</div>
+	                        <button type="button" class="btn btn-secondary" onclick="del();" id="hot">객실 삭제</button>
 	                        <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
+	                      </div> 
 	                        <hr>                        
 	                        <div>
 	                           <button type="button" id="submit" class="btn btn-info">다음</button>	
@@ -139,6 +143,14 @@ $(document).ready(function() {
 	});
 })
 
+var room = '<div class="form-group"><div class="col-sm-6"><label>방 이름</label><input type="text" class="form-control" placeholder="Ex>101호, 새싹방" name="roomName" id="roomName"></div><div class="col-sm-6"><label>방 종류</label><input type="text" class="form-control" placeholder="Ex>디럭스룸, 스위트룸" name="roomSort" id="roomSort"></div><div class="col-sm-6"><label>기준 인원</label><input type="text" class="form-control" placeholder="인원 수 입력" name="roomStandardCnt" id="roomStandardCnt"></div><div class="col-sm-6"><label>최대 인원</label><input type="text" class="form-control" placeholder="인원 수 입력" name="roomMaxCnt" id="roomMaxCnt"></div><div class="col-sm-6"><label>방 상세설명</label><input type="text" class="form-control" placeholder="설명 입력" name="roomRoomInfo" id="roomRoomInfo"></div><div class="col-sm-6"><label>평일 요금</label><input type="text" class="form-control" placeholder="요금 입력" name="roomStandardPrice" id="roomStandardPrice"></div><div class="col-sm-6"><label>공휴일 요금</label><input type="text" class="form-control" placeholder="요금 입력" name="roomHolidayPrice" id="roomHolidayPrice"></div><div class="col-sm-6"><label>인원 추가당 요금</label><input type="text" class="form-control" placeholder="요금 입력" name="roomAddPrice" id="roomAddPrice"></div></div><div>&nbsp;</div><button type="button" class="btn btn-secondary" onclick="del();" id="hot">객실 삭제</button><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>'
+
+function add() {
+	$("#hey").append(room);
+}
+function del() {
+	$(this).closest(".form-group").remove();
+}
 
 </script>	
 </body>
