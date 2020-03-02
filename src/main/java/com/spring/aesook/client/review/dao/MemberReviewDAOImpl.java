@@ -38,7 +38,7 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 	}
 
 	@Override
-	public double getScoreAvg(int hotelsCode) {
+	public String getScoreAvg(int hotelsCode) {
 		return sqlSessionTemplate.selectOne(namespace + ".getScoreAvg", hotelsCode);
 	}
 	

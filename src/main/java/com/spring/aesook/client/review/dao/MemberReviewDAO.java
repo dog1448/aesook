@@ -13,5 +13,5 @@ public interface MemberReviewDAO {
 	
 	List<MemberReviewVO> getReviewList(int hotelsCode);
 	
-	double getScoreAvg(int hotelsCode);
+	String getScoreAvg(int hotelsCode);
 }

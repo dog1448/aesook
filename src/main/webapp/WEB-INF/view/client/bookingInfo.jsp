@@ -83,7 +83,7 @@
       <!--Body-->
       <div class="modal-body">
 
-        <i class="fas fa-bell"></i>
+        <img src="resources/client/images/again.png" width="50" height="50"/><br></br>
         <p>정말 예약을 취소하시겠습니까?</p>
 		<input type="password" id="confirmPass" placeholder="비밀번호 확인"><br></br>
 		<input type="hidden" value="${user.memberPass}" id="memberPass">

@@ -171,7 +171,12 @@
 											<div class="row">											
 												<i class="icon-star-full"></i>
 												<small>전체 누적 평점</small>
-												<h1><strong>${scoreAvg}</strong>&nbsp;<small>/5</small></h1>
+												<c:if test="${scoreAvg eq null}">
+													<br></br><h4>등록된 리뷰가 없습니다.</h4>
+												</c:if>
+												<c:if test="${scoreAvg ne null}">
+													<h1><strong>${scoreAvg}</strong>&nbsp;<small>/5</small></h1>
+												</c:if>
 												<hr>
 												<c:forEach var="review" items="${review}">
 														<span class="icon">
