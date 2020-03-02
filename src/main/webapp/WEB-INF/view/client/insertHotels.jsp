@@ -74,7 +74,7 @@ function checkz() {
             document.getElementById('hotelsAddress1').value = fullRoadAddr;
         	}
     	}).open();
-    }
+    }	
 </script>
 </head>
 
@@ -83,23 +83,27 @@ function checkz() {
 
    <div class="colorlib-loader">  </div>
 
-   <div id="page">
-      <nav class="colorlib-nav" role="navigation">
-
-      </nav>
+   <div id="page">   
 
       <div id="colorlib-about">
-         <div class="container">
+         <div class="container">          
             <div class="row">
                <div class="about-flex">
                   <!-- 사이드바 -->
                  <%@ include file="managementSidebar.jspf" %>
                        
                   <div class="col-three-forth animate-box">
-                  <h2>숙소 등록 및 수정</h2>
+                  	<nav class="navbar navbar-default">					  				    
+					    <ul class="nav navbar-nav">
+					      <li class="active"><a href="#">숙소 등록</a></li>
+					      <li><a href="#">객실 등록</a></li>
+					      <li><a href="#">사진 등록</a></li>
+					      <li><a href="#">약관 동의</a></li>
+					    </ul>					  
+					</nav>                 
                      <hr>      
                      <form role="form" method="post" action="insertHotelsAll.do" id="insertHotelsAll">
-                        <h2>숙소 종류</h2>
+                        <h3>숙소 종류</h3>
                         <div class="row form-group">
                            <div class="col-md-12">
                               &nbsp;&nbsp;&nbsp;&nbsp;
@@ -117,7 +121,7 @@ function checkz() {
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
 
-                        <h2>숙소 이름</h2>
+                        <h3>숙소 이름</h3>
                         <div class="col-md-12 form-group">
 
                            <input type="text" name="hotelsName" id="hotelsName" class="form-control" placeholder="숙소명 (지명 기입 가능  ex.홍대 기역모텔)">
@@ -126,7 +130,7 @@ function checkz() {
                         <div>&nbsp;</div><div>&nbsp;</div>
 
 
-                        <h2>숙소 위치</h2>
+                        <h3>숙소 위치</h3>
 								<div class="col-md-12 form-group">
                            <iframe id="map-detail-frame" width="652" height="217" frameborder="0"
                               scrolling="no" title="rooms-location"
@@ -153,16 +157,26 @@ function checkz() {
 
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
-						<h2>이용안내</h2>
+						<h3>이용안내</h3>
                         	<textarea name="hotelsInfo" id="hotelsInfo" rows="8" cols="50"></textarea>
                         <br></br>
-                        <h2>숙소소개</h2>
+                        <h3>숙소소개</h3>
                         	<textarea name="hotelsIntroduce" id="hotelsIntroduce" rows="8" cols="50"></textarea>
                         <br></br>
-                        <h2>편의시설/서비스</h2>
+                        <h3>편의시설/서비스</h3>
                         <div>
-                           <button type="button" onclick="checkz()" class="btn btn-info btn-lg">등록</button>
-                           <button type="button" class="btn btn-warning btn-lg">수정</button>
+                           <label><input type="checkbox" value="Y" name="facilityParking">&nbsp;&nbsp;주차</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityPool">&nbsp;&nbsp;수영장</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityBreakfast">&nbsp;&nbsp;조식</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityFitness">&nbsp;&nbsp;헬스장</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityWifi">&nbsp;&nbsp;와이파이</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityParty">&nbsp;&nbsp;파티</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityPc">&nbsp;&nbsp;개인PC</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityAmenity">&nbsp;&nbsp;어메니티</label>&nbsp;&nbsp;
+                        </div>
+                        <hr>
+                        <div>
+                           <button type="button" onclick="checkz()" class="btn btn-info">다음</button>
                         </div>
                      </form>
                   </div>
@@ -177,7 +191,7 @@ function checkz() {
    <div class="gototop js-top">
       <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
    </div>   
-
+	
 </body>
 
 </html>

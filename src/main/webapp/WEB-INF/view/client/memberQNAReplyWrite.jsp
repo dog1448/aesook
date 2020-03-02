@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -85,29 +86,48 @@
             <caption> 글쓰기  </caption>
             </thead>
             <tbody>
+            <form action="QNAReply.do" method="post">
                 <input type="hidden" name="boardWriter" id="boardWriter" value="${id}">
                 <tr>
                     <th>제목: </th>
-                    <td><h3>${board.boardTitle}</h3></td>
-                </tr>
-                <tr>
-                    <th>작성자: </th>
-                    <td><h3>${board.boardWriter}</h3></td>
+                    <td><input type="text" placeholder="제목을 입력하세요. " id="boardTitle" name="boardTitle" class="form-control" value="[답글] : " /></td>
                 </tr>
                 <tr>
                     <th>내용: </th>
-                    <td><div class="text-body" style="height: 700px">${board.boardContent}</div></td>
+                    <td><textarea type="text" cols="10" placeholder="내용을 입력하세요. " id="boardContent" name="boardContent" class="form-control" style="height: 500px;" rows="30"></textarea></td>
                 </tr>
-                <div class ="box">
-                    <form role="form" method="post">
-                        <input type="hidden" name="boardNo" value="${board.rnum}">
-                    </form>
-                    <button type="button" class="btn btn-default listBtn"><i class="fa fa-list"></i>목록</button>
-                    <div class ="pull-right">
-                        <button type="submit" class="btn btn-warning modBtn"><i class="fa fa-edit"></i>수정</button>
-                        <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
-                    </div>
-                </div>
+
+                <input type="hidden" name="boardType" id="boardType" value="Q">
+                <input type="hidden" name="boardIP" id="boardIP" value="123.123">
+                <input type="hidden" name="boardGroup" value="${reply.boardGroup}">
+                <input type="hidden" name="boardStep" value="${reply.boardStep + 1}">
+                <input type="hidden" name="boardDepth" value="${reply.boardDepth + 1}">
+
+
+
+                <!--
+                <tr>
+                    <th>첨부파일: </th>
+                    <td><input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control" />
+                    </td>
+                </tr>
+                -->
+
+                <tr>
+                    <td colspan="2">
+                        <!--
+            <input type="button" value="등록" onclick="sendData()" class="pull-right"/>
+            <input type="button" value="reset" class="pull-left"/>
+            <input type="button" value="글 목록으로... " class="pull-right" onclick="javascript:location.href='list.jsp'"/>
+            -->
+
+                        <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
+                        <input class="btn btn-default" type="submit" value="등록">
+                        <a class="btn btn-default" type="reset"> reset </a>
+                        <a class="btn btn-default" onclick="javascript:location.href='/FAQ_Board.do'">글 목록으로...</a>
+                    </td>
+                </tr>
+            </form>
             </tbody>
         </table>
     </div>
@@ -115,33 +135,6 @@
     <div>&nbsp;</div>
     <div>&nbsp;</div>
     <div>&nbsp;</div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        var formObj = $("form[role='form']");
-        console.log(formObj);
-
-        $(".modBtn").on("click",function() {
-            formObj.attr("action","BoardModify.do");
-            formObj.attr("method","get");
-            formObj.submit();
-        });
-
-        $(".delBtn").on("click",function() {
-            formObj.attr("action","BoardRemove.do");
-            formObj.submit();
-        });
-
-        $(".listBtn").on("click",function () {
-            self.location = "/aesook/MemberBoard.do"
-        });
-
-    });
-</script>
-
-
     <%@include file="footer.jspf" %>
 </div>
 <div class="gototop js-top">

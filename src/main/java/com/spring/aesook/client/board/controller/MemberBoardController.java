@@ -72,6 +72,18 @@ public class MemberBoardController {
         return "redirect:/MemberBoard.do";
     }
 
+    @RequestMapping(value = "/MoveQNAReply.do",method = RequestMethod.GET)
+    public String moveQNAReply(@RequestParam("boardNo") Integer boardNo, Model model){
+        model.addAttribute("reply", memberBoardService.readMemberBoard(boardNo));
+        return "/memberQNAReplyWrite";
+    }
+
+    @RequestMapping(value = "/QNAReply.do",method = RequestMethod.POST)
+    public String QNAReplyWrite(Model model,MemberBoardVO memberBoardVO) {
+
+        memberBoardService.insertMemberBoard(memberBoardVO);
+        return "redirect:/MemberBoard.do";
+    }
     //-------------------------FAQ
     @RequestMapping(value = "/memberFAQ.do", method = RequestMethod.GET)
     public String moveBoardFAQ(Model model, Criteria cri) throws Exception {
@@ -94,7 +106,7 @@ public class MemberBoardController {
 
     @RequestMapping(value = "/FAQBoardRead.do", method = RequestMethod.GET)
     public String readFAQ(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
-        model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
+        model.addAttribute("board", memberBoardService.readMemberBoardFAQ(boardNo));
         return "/memberFAQBoardRead";
     }
 
@@ -119,7 +131,7 @@ public class MemberBoardController {
 
     @RequestMapping(value = "/noticeBoardRead.do", method = RequestMethod.GET)
     public String readNoticeboard(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
-        model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
+        model.addAttribute("board", memberBoardService.readMemberBoardNotice(boardNo));
         return "/notice_boardRead";
     }
 
