@@ -32,5 +32,4 @@ public class MemberHotelsListController {
 		
 		return "/accommodations";
 	}
-	
 }

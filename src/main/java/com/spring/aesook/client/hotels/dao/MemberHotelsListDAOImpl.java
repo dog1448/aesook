@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 
 @Repository
 public class MemberHotelsListDAOImpl implements MemberHotelsListDAO {
@@ -25,6 +26,21 @@ public class MemberHotelsListDAOImpl implements MemberHotelsListDAO {
 	@Override
 	public List<MemberHotelsVO> selectHotelsList(HashMap<Object, Object> map) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectHotelsList", map);
+	}
+
+	@Override
+	public List<MemberHotelsVO> selectHotelsListById(MemberVO vo) {		
+		return sqlSessionTemplate.selectList(namespace + ".selectHotelsListById", vo);
+	}
+	//ÀüÃ¼ ¼÷¼Ò top 10
+	@Override
+	public List<MemberHotelsVO> selectAccommodationTop10() {		
+		return sqlSessionTemplate.selectList(namespace + ".selectAccommodationTop10");
+	}
+
+	@Override
+	public List<MemberHotelsVO> selectAccommodationTop10ByType(MemberHotelsVO vo) {		
+		return sqlSessionTemplate.selectList(namespace + ".selectAccommodationTop10ByType", vo);
 	}
 
 }

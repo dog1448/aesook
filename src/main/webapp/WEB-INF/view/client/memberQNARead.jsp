@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -104,6 +105,7 @@
                     </form>
                     <button type="button" class="btn btn-default listBtn"><i class="fa fa-list"></i>목록</button>
                     <div class ="pull-right">
+                        <button type="button" class="btn btn-default replyBtn"><i class="fa fa-list"></i>답글</button>
                         <button type="submit" class="btn btn-warning modBtn"><i class="fa fa-edit"></i>수정</button>
                         <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
                     </div>
@@ -128,6 +130,12 @@
             formObj.attr("method","get");
             formObj.submit();
         });
+
+        $(".replyBtn").on("click",function () {
+            formObj.attr("action","MoveQNAReply.do");
+            formObj.attr("method","get");
+            formObj.submit();
+        })
 
         $(".delBtn").on("click",function() {
             formObj.attr("action","BoardRemove.do");

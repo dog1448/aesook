@@ -29,7 +29,7 @@
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">                              
-                                    <form action="doWithdrawal.do" method="GET" onsubmit="return passwordCheck()" >
+                                    <form action="memberWithdrawal.do" method="GET" onsubmit="return passwordCheck()" >
                                     <div class="row form-group">
                                         <div class="col-md-12">
                                             <label for="subject">비밀번호 : </label>

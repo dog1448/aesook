@@ -1,7 +1,14 @@
 package com.spring.aesook.client.review.service;
 
+import com.spring.aesook.client.booking.vo.MemberBookingVO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 public interface MemberReviewService {
-	public void insertReview(MemberReviewVO reviewVO);
+	
+	void insertReview(MemberReviewVO vo);
+	
+	MemberBookingVO getBookingInfo(int bookingCode);
+	
+	void updateStatus(int bookingCode);
+	
 }

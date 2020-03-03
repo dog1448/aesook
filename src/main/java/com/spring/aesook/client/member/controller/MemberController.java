@@ -1,5 +1,7 @@
 package com.spring.aesook.client.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.spring.aesook.client.hotels.service.MemberHotelsListService;
+import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.member.service.MemberFindIdService;
 import com.spring.aesook.client.member.service.MemberFindPassService;
 import com.spring.aesook.client.member.service.MemberRegisterService;
@@ -30,7 +34,8 @@ public class MemberController {
     private MemberFindIdService memberFindIdService;
     @Autowired
     private MemberFindPassService memberFindPassService;
-    
+    @Autowired
+	MemberHotelsListService memberHotelsListService;
     @Autowired
     MemberWithdrawalService memberWithdrawalService;
 
@@ -87,6 +92,7 @@ public class MemberController {
     public String checkLogin(MemberVO vo, Model model,HttpSession session) {//session은 지울 예정
 
     	MemberVO user = memberService.getMember(vo);
+    	String id = vo.getMemberId();
     	if(user == null) {
 			model.addAttribute("check", "noId");
 			return "/login";
@@ -104,15 +110,17 @@ public class MemberController {
 		}
 
     	session.setAttribute("login", user);
-
-    	return "/home"; // 
+		session.setAttribute("id" ,id);
+    	return "redirect:home.do"; // 
 
 
     }
     
     
     @RequestMapping("/home.do")
-    public String moveHome() {
+    public String moveHome(Model model) {
+    	List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10();
+		model.addAttribute("top10", list);
     	return "/home";
     }
     
@@ -185,7 +193,7 @@ public class MemberController {
     	return "/home";
     }
     
-    @RequestMapping(value = "/doWithdrawal.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.POST)
     public String withdrawMember(MemberVO vo, Model model,HttpSession session) {
     	MemberVO member = (MemberVO)session.getAttribute("user");
     	String sessionId = member.getMemberId();
@@ -195,8 +203,15 @@ public class MemberController {
     	return "/home";
     }
     
-    @RequestMapping(value = "/withdrawal.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.GET)
     public String moveWithdrawMember() {
     	return "/memberWithdrawal";
+    }
+    
+    //------------------------logout--------------------------------------------
+    @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+    	session.invalidate();
+    	return "/login";
     }
 }

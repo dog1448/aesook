@@ -6,22 +6,6 @@
 
 <head>
 	<%@include file="head.jspf" %>
-	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=m98vgu013u&callback=initMap"></script>
-	<script type="text/javascript">
-		var map = null;
-	
-	    function initMap() {
-	        map = new naver.maps.Map('map', {
-	            center: new naver.maps.LatLng(37.3595704, 127.105399),
-	            zoom: 15
-	            
-	        });
-	        marker = new naver.maps.Marker({
-	            position: new naver.maps.LatLng(37.3595704, 127.105399),
-	            map: map
-	        });    
-	    }
-    </script>
 </head>
 
 <body>
@@ -50,7 +34,7 @@
 									<h3>방목록</h3>	
 									<div class="row">									
 									<c:forEach var="list" items="${list}">
-										<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&sortType=${list.sortType}">
+										<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomName}">
 											<div class="col-md-12 animate-box">
 												<div class="room-wrap">
 													<div class="row">													
@@ -60,13 +44,13 @@
 														</div>
 														<div class="col-md-6 col-sm-6">
 															<div class="desc">
-																<h2>${list.sortType}</h2>
-																<p class="price"><span>${list.sortStandardPrice} ￦</span> <small>&nbsp;숙박</small>
+																<h2>${list.roomSort}</h2>
+																<p class="price"><span>${list.roomStandardPrice} ￦</span> <small>&nbsp;숙박</small>
 																</p>
-																<p>기준 : ${list.sortStandardCnt} 명</p>
-																<p>최대 : ${list.sortMaxCnt} 명</p>
-																<p>추가요금 : ${list.sortAddPrice} ￦</p>
-																<p>${list.sortRoomInfo}</p>
+																<p>기준 : ${list.roomStandardCnt} 명</p>
+																<p>최대 : ${list.roomMaxCnt} 명</p>
+																<p>추가요금 : ${list.roomAddPrice} ￦</p>
+																<p>${list.roomRoomInfo}</p>
 															</div>
 														</div>														
 													</div>													
@@ -142,7 +126,7 @@
 												 <div class="col-lg-1">
 												    <img src="resources/client/images/icons/amenity.png">
 												    <div>&nbsp;</div>												   
-												    <p style="text-align: center">편의시설</p>
+												    <p style="text-align: center">어메니티</p>
 												 </div>
 											</c:if>	 																																	
 											</div>						
@@ -162,10 +146,10 @@
 										<div>&nbsp;</div>
 									
 										<h3>지도</h3>	
-										<!-- 네이버 맵 -->
-										<div class="container">										
+										<!-- 맵 -->
+										<div class="container">									
 											<div class="row">
-												<div id="map" style="width:100%;height:400px;"></div>										
+												<div id="map" style="width:100%;height:350px;"></div>										
 											</div>
 										</div>
 										
@@ -185,42 +169,37 @@
 										<h3>리뷰</h3>										
 										<div class="container">
 											<div class="row">											
-												<table class="table table-striped"
-													style="text-align: center; border: 1px solid #dddddd">
-													<thead>
-														<tr>
-															<th style="background-color: #eeeeee; text-align: center;">
-																번호</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																제목</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																작성자</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																별점</th>
-															<th style="background-color: #eeeeee; text-align: center;">
-																작성일</th>
-														</tr>
-													</thead>
-													<tbody>
-
-														<tr>
-															<td>1</td>
-															<td><a>EXAMPLE</a></td>
-															<td>요피</td>
-															<td>																
-																<div class="starRev">
-																	<span class="starR on">별1</span>
-																	<span class="starR on">별2</span>
-																	<span class="starR on">별3</span>
-																	<span class="starR on">별4</span>
-																	<span class="starR on">별5</span>
-																</div>
-															</td>
-															<td>2020-02-07</td>
-														</tr>
-
-													</tbody>
-												</table>
+												<i class="icon-star-full"></i>
+												<small>전체 누적 평점</small>
+												<c:if test="${scoreAvg eq null}">
+													<br></br><h4>등록된 리뷰가 없습니다.</h4>
+												</c:if>
+												<c:if test="${scoreAvg ne null}">
+													<h1><strong>${scoreAvg}</strong>&nbsp;<small>/5</small></h1>
+												</c:if>
+												<hr>
+												<c:forEach var="review" items="${review}">
+														<span class="icon">
+													<c:if test="${review.reviewScore >= 4}">
+														<img src="resources/client/images/good.png" width="35" height="35"/>&nbsp;
+													</c:if>
+													<c:if test="${review.reviewScore == 3}">
+														<img src="resources/client/images/soso.png" width="35" height="35"/>&nbsp;
+													</c:if>
+													<c:if test="${review.reviewScore <= 2}">
+														<img src="resources/client/images/bad.png" width="35" height="35"/>&nbsp;
+													</c:if>
+														<c:forEach var="i" begin="1" end="${review.reviewScore}" step="1">
+															<i class="icon-star-full"></i>
+														</c:forEach>
+													</span>
+													<div>&nbsp;</div>
+													작성자 : ${review.memberId}
+													<div class="text-left">날   짜 : ${review.reviewDate}</div>
+													<div>&nbsp;</div>
+													${review.reviewContents}
+													<hr>
+												</c:forEach>
 												<a href="#" class="btn btn-success btn-arrow-left">이전</a>
 												<a href="#" class="btn btn-success btn-arrow-left">다음</a>												
 											</div>
@@ -293,6 +272,46 @@
 				
 
 		<%@include file="footer.jspf" %>
+		
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=099fe2e10a4fe77fb4de8c5a1e4d91d5&libraries=services"></script>
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+	
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch('${vo.hotelsAddress1}', function(result, status) {
+	
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">${vo.hotelsName}</div>'
+	        });
+	        infowindow.open(map, marker);
+	
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	});    
+	</script>
 	</div>
 
 	<div class="gototop js-top">

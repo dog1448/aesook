@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -43,7 +43,7 @@
 							<!-- 검색 값 -->
 							<form method="post" class="colorlib-form" action="">
 								<div class="row">
-									<div class="col-lg-10">
+									<div class="col-lg-6 col-lg-offset-2">
 										<div class="form-group">
 											<label for="date">통합검색</label>
 											<div class="form-field">
@@ -78,7 +78,7 @@
 					</div>
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=m"><img
+							<span class="icon"> <a href="hotelMove.do?type=모텔"><img
 									src="resources/client/images/motel.png" /></a>
 							</span>
 							<h3>모텔</h3>
@@ -86,7 +86,7 @@
 					</div>
 					<div class="col-md-4 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=p"><img
+							<span class="icon"> <a href="hotelMove.do?type=펜션"><img
 									src="resources/client/images/pension.png" /></a>
 							</span>
 							<h3>펜션</h3>
@@ -94,7 +94,7 @@
 					</div>
 					<div class="col-md-6 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=g"><img
+							<span class="icon"> <a href="hotelMove.do?type=게스트하우스"><img
 									src="resources/client/images/guestHouse.png" /></a>
 							</span>
 							<h3>게스트 하우스</h3>
@@ -102,7 +102,7 @@
 					</div>
 					<div class="col-md-6 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=r"><img
+							<span class="icon"> <a href="hotelMove.do?type=리조트"><img
 									src="resources/client/images/resort.png" /></a>
 							</span>
 							<h3>리조트</h3>
@@ -126,106 +126,27 @@
 				<div class="row">
 					<div class="col-md-12 animate-box">
 						<div class="owl-carousel">
+						
 							<!-- 각 item이 하나의 숙소 링크 부분 -->
+							<c:forEach var="list" items="${top10}">
 							<div class="item">
 								<div class="hotel-entry">
 									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.do" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
+									<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
+										style="background-image: url(resources/client/images/hotel-1.jpg);">																				
 									</a>
 									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
+									<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>										
 										<h3>
-											<a href="room-detail.do">숙소명</a>
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}">${list.hotelsName}</a>
 										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
+										<span class="place">${list.hotelsAddress1}</span>
+										<p>${list.hotelsInfo}</p>
 									</div>
 								</div>
 							</div>
-							<!-- 각 item이 하나의 숙소 링크 부분 -->
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.do" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
-									</a>
-									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
-										<h3>
-											<a href="room-detail.do">숙소명</a>
-										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
-									</div>
-								</div>
-							</div>
-							<!-- 각 item이 하나의 숙소 링크 부분 -->
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.do" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
-									</a>
-									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
-										<h3>
-											<a href="room-detail.do">숙소명</a>
-										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
-									</div>
-								</div>
-							</div>
-							<!-- 각 item이 하나의 숙소 링크 부분 -->
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
-									</a>
-									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
-										<h3>
-											<a href="room-detail.jsp">숙소명</a>
-										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
-									</div>
-								</div>
-							</div>
+							</c:forEach>	
+													
 						</div>
 					</div>
 				</div>

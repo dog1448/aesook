@@ -44,12 +44,12 @@
                                                     <input class="form-control" type="text" value="${bookingInfo.memberId}" name="memberId" id="memberId" disabled>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Room_Code</label>
-                                                    <input class="form-control" type="text" value="${bookingInfo.roomCode}" name="roomCode" id="roomCode">
+                                                    <label>Room_Name</label>
+                                                    <input class="form-control" type="text" value="${bookingInfo.roomName}" name="roomName" id="roomName">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Room_Type</label>
-                                                    <input class="form-control" type="text" value="${bookingInfo.sortType}" name="sortType" id="sortType">
+                                                    <label>Room_Sort</label>
+                                                    <input class="form-control" type="text" value="${bookingInfo.roomSort}" name="roomSort" id="roomSort">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Check_In</label>

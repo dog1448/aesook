@@ -18,7 +18,7 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
 
 
     public void insertMemberBoard(MemberBoardVO memberBoardVO) {
-        sqlSessionTemplate.insert(NAMESPACE + ".insertBoard", memberBoardVO);
+            sqlSessionTemplate.insert(NAMESPACE + ".insertBoard", memberBoardVO);
     }
 
     public void deleteMemberBoard(MemberBoardVO memberBoardVO) {
@@ -35,14 +35,53 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
         return sqlSessionTemplate.selectOne(NAMESPACE+".getBoardCount");
     }
 
+    @Override
+    public int getFAQBoardCount() {
+        return sqlSessionTemplate.selectOne(NAMESPACE + ".getFAQBoardCount");
+    }
+
+    @Override
+    public int getNoticeBoardCount() {
+        return sqlSessionTemplate.selectOne(NAMESPACE + ".getNoticeBoardCount");
+    }
+
+    @Override
+    public int getQNABoardSeq() {
+        return sqlSessionTemplate.selectOne(NAMESPACE+".getQNABoardSeq");
+    }
+
 
     public MemberBoardVO readMemberBoard(Integer BoardNo) {
         return sqlSessionTemplate.selectOne(NAMESPACE+".readMemberBoard",BoardNo);
     }
 
     @Override
+    public MemberBoardVO readMemberBoardFAQ(Integer BoardNo) {
+        return sqlSessionTemplate.selectOne(NAMESPACE+".readMemberBoardFAQ",BoardNo);
+    }
+
+    @Override
+    public MemberBoardVO readMemberBoardNotice(Integer BoardNo) {
+        return sqlSessionTemplate.selectOne(NAMESPACE+".readMemberBoardNotice",BoardNo);
+    }
+
+
+
+    @Override
     public List<MemberBoardVO> getMemberBoard(Criteria cri) throws Exception {
         return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoard",cri);
+    }
+
+    @Override
+    public List<MemberBoardVO> getMemberBoardFAQ(Criteria cri) throws Exception {
+        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoardFAQ",cri);
+
+    }
+
+    @Override
+    public List<MemberBoardVO> getMemberNoticeBoard(Criteria cri) throws Exception {
+        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberNoticeBoard",cri);
+
     }
 
 
@@ -50,12 +89,5 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
         return null;
     }
     
-    public List<MemberBoardVO> getMemberBoardFAQ() throws Exception {
-        return sqlSessionTemplate.selectList(NAMESPACE + ".getMemberBoardFAQ");
-    }
 
-	@Override
-	public List<MemberBoardVO> getMemberNoticeBoard() throws Exception {
-		return sqlSessionTemplate.selectList(NAMESPACE+".getMemberNoticeBoard");
-	}
 }
