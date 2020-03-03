@@ -28,51 +28,30 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-7">
-                                            <form role="form" action="#">
-                                                <input type="hidden" value="#gourp">
-                                                <input type="hidden" value="#step">
-                                                <input type="hidden" value="#depth">
-                                                <fieldset id="field" disabled>
+                                            <form role="form" action="insertBoard.admin" method="post" onsubmit="return checkz()">
+                                               
                                                 <div class="form-group">
-                                                    <label>Board_Seq</label>
-                                                    <input class="form-control" disabled>
+                                                    <label>제목</label>
+                                                    <input class="form-control" name="BoardTitle" id="BoardTitle" placeholder="제목 입력">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Board_Title</label>
-                                                    <input class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Board_Content</label>
-                                                    <textarea class="form-control" rows="15"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>ReadCount</label>
-                                                    <input class="form-control" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>IP</label>
-                                                    <input class="form-control" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Board_Date</label>
-                                                    <input class="form-control" disabled>
+                                                    <label>내용</label>
+                                                    <textarea class="form-control" rows="15" name="BoardContent" id="BoardContent" placeholder="내용을 입력"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Board_Type</label>
-                                                    <select class="form-control">
+                                                    <select class="form-control" name="BoardType">
                                                         <option>Q</option>
                                                         <option>F</option>
                                                         <option>N</option>
                                                     </select>
                                                 </div>
-                                                
-                                                </fieldset>
+                                                <input type="hidden" name="boardIp" value="127.0.0.1"> 
+                                             
 
                                                 <div class="col-lg-12"> 
-                                                    <button type="submit" class="btn btn-default float-left">Modify</button>
-                                                    <button type="button" class="btn btn-default float-left">Delete</button>
-                                                    <button type="button" class="btn btn-default float-left">Cancel</button>
-                                                    <button type="button" class="btn btn-warning float-left" id="disbt">disable</button>
+                                                    <button type="submit" class="btn btn-default float-left">작성</button>
+                                                    <button type="button" class="btn btn-default float-left">취소</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -95,14 +74,29 @@
 </div>
 <%@ include file="javascript.jspf" %>
 <script>
-            $(document).ready(function() {
-                var isDisabled = $("#field").attr("disabled");
-            });
-
-
-            $('#disbt').click(function(isDisabled) {
-                    $("#field").attr("disabled", false); //활성화
-            });
+function checkz() {
+  	
+	//제목 공백 확인
+    if($("#BoardTitle").val() == ""){
+      alert("제목을 입력해 주세요");
+      $("#BoardTitle").focus();
+      return false;
+    }
+         
+	//내용공백
+    if($("#BoardContent").val() == ""){
+      alert("내용을 입력해 주세요");
+      $("#BoardContent").focus();
+      return false;
+    }
+  	
+	return true;
+    
+}
+            
+            
+            
 </script>
 </body>
 </html>
+
