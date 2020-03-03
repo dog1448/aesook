@@ -22,7 +22,7 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
     }
 
     public void deleteMemberBoard(MemberBoardVO memberBoardVO) {
-        sqlSessionTemplate.delete(NAMESPACE + ".deleteMemberBoard", memberBoardVO.getBoardWriter());
+        sqlSessionTemplate.update(NAMESPACE + ".deleteMemberBoard", memberBoardVO);
     }
 
     @Override

@@ -93,6 +93,7 @@ public class MemberController {
 
     	MemberVO user = memberService.getMember(vo);
     	String id = vo.getMemberId();
+    	String pw = vo.getMemberPass();
     	if(user == null) {
 			model.addAttribute("check", "noId");
 			return "/login";
@@ -111,6 +112,8 @@ public class MemberController {
 
     	session.setAttribute("login", user);
 		session.setAttribute("id" ,id);
+		session.setAttribute("pw",pw);
+
     	return "redirect:home.do"; // 
 
 

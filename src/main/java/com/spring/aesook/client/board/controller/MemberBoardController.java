@@ -73,6 +73,20 @@ public class MemberBoardController {
         return "redirect:/MemberBoard.do";
     }
 
+    @RequestMapping(value = "/deleteQNA.do",method = RequestMethod.GET)
+    public String moveQNADelete(@RequestParam("boardNo") Integer boardNo,Model model){
+        model.addAttribute("board",memberBoardService.readMemberBoard(boardNo));
+        return "/MemberQNABoardDelete";
+    }
+
+    @RequestMapping(value = "/deleteQNA.do",method = RequestMethod.POST)
+    public String deleteQNA(MemberBoardVO memberBoardVO){
+        System.out.println(memberBoardVO.toString());
+        memberBoardService.deleteMemberBoard(memberBoardVO);
+        return "redirect:/MemberBoard.do";
+    }
+
+
     @RequestMapping(value = "/MoveQNAReply.do",method = RequestMethod.GET)
     public String moveQNAReply(@RequestParam("boardNo") Integer boardNo, Model model){
         model.addAttribute("reply", memberBoardService.readMemberBoard(boardNo));
@@ -81,7 +95,6 @@ public class MemberBoardController {
 
     @RequestMapping(value = "/QNAReply.do",method = RequestMethod.POST)
     public String QNAReplyWrite(Model model,MemberBoardVO memberBoardVO) {
-
         memberBoardService.insertMemberBoard(memberBoardVO);
         return "redirect:/MemberBoard.do";
     }
