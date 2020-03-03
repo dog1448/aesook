@@ -25,17 +25,20 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 		vo.setHotelsCode(hotelsCode);
 		memberHotelsDAO.insertHotels(vo);
 	}
-
+	
+	//내가(호텔사장이) 등록한 호텔 리스트
 	@Override
 	public List<MemberHotelsVO> getMyHotels(MemberVO vo) {
 		return memberHotelsDAO.getMyHotels(vo);
 	}
-
+	
+	//후기 리스트
 	@Override
 	public List<MemberReviewVO> getReviewList(int hotelsCode) {
 		return memberReviewDAO.getReviewList(hotelsCode);
 	}
-
+	
+	//후기 평점
 	@Override
 	public String getScoreAvg(int hotelsCode) {
 		return memberReviewDAO.getScoreAvg(hotelsCode);

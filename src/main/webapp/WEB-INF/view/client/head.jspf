@@ -48,8 +48,9 @@
 	
 	<!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <!-- Theme style  -->
+    <!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+<!-- Theme style  -->
     <link rel="stylesheet" href="resources/client/css/style.css">
 
     <!-- Modernizr JS -->

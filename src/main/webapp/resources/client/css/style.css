@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6, figure {
     .colorlib-nav {
       margin: 0; } }
   .colorlib-nav .top-menu {
-    background-color: rgba(255, 221, 0, 0.7);
+    background-color: #4bc0d287;
     padding: 10px 10px; }
     @media screen and (max-width: 768px) {
       .colorlib-nav .top-menu {

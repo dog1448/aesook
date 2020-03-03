@@ -71,6 +71,12 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		vo.setHotelsType(type);
 		return memberHotelsListDAO.selectAccommodationTop10ByType(vo);
 	}
-
+	
+	//검색한 호텔 리스트
+	@Override
+	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo) {
+		return memberHotelsListDAO.getSearchedHotelsList(vo);
+	}
+	
 
 }
