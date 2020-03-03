@@ -22,7 +22,7 @@
 						 <!-- 숙소관리 사이드바 -->
                  		 <%@ include file="managementSidebar.jspf" %>
 						<div class="col-three-forth animate-box">	
-							<h2>예약 조회</h2>	
+							<h2>내가 등록한 숙소</h2>	
 							<div>&nbsp;</div>				
 							<div class="row">								
 								<div class="col-md-12">	

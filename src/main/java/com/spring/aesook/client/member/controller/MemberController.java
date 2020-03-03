@@ -1,6 +1,8 @@
 package com.spring.aesook.client.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +29,7 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public class MemberController {   
 
     @Autowired
-    MemberRegisterService memberRegisterService;
+    private MemberRegisterService memberRegisterService;
     @Autowired
     private MemberService memberService;   
     @Autowired
@@ -35,9 +37,9 @@ public class MemberController {
     @Autowired
     private MemberFindPassService memberFindPassService;
     @Autowired
-	MemberHotelsListService memberHotelsListService;
+    private MemberHotelsListService memberHotelsListService;
     @Autowired
-    MemberWithdrawalService memberWithdrawalService;
+    private MemberWithdrawalService memberWithdrawalService;
 
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
@@ -124,7 +126,14 @@ public class MemberController {
     	return "/home";
     }
     
-    
+    @ModelAttribute("conditionMap")
+    public Map<String, String> searchConditionMap() {
+    Map<String, String> conditionMap = new HashMap<String, String>();
+    conditionMap.put("SUBWAY", "PATH");
+    conditionMap.put("HOTEL NAME", "NAME");
+    conditionMap.put("LOCATION", "ADDRESS");
+    return conditionMap;
+    }
 
     @RequestMapping(value="/findId", method = RequestMethod.GET)
     public String moveFindId() {

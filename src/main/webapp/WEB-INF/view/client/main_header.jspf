@@ -16,24 +16,22 @@
 					<div class="row">
 						<div class="col-xs-2">
 							<div id="colorlib-logo">
-								<a href="home.do"> <img src="resources/client/images/aesookLogo2.png"></a>
+								<a href="home.do"> <img src="resources/client/images/aesook_black_2.png" height="70rem"></a>
 							</div>
 						</div>
-
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="noticeBoard.do">공지사항</a></li>
-								<li class="active"><a href="event_board.do">이벤트</a></li>
+								<li class="active"><a href="noticeBoard.do">Notice</a></li>
 								<li class="active"><a href="MemberBoard.do">Q&A</a></li>
 								<li class="active"><a href="memberFAQ.do">FAQ</a></li>
-								<li class="active"><a href="alarm.do">메세지</a></li>
+								<li class="active"><a href="alarm.do">Message</a></li>
 								<c:if test="${sessionScope.login eq null}">
-									<li class="active"><a href="login.do">로그인</a></li>
+									<li class="active"><a href="login.do">Login</a></li>
 								</c:if>
 								<c:if test="${sessionScope.login ne null}">
-									<li class="active"><a href="logout.do" onclick="logout()">로그아웃</a></li>
+									<li class="active"><a href="logout.do" onclick="logout()">Logout</a></li>
 								</c:if>
-								<li class="active"><a href="bookingList.do">MYPAGE</a></li>
+								<li class="active"><a href="bookingList.do">MyPage</a></li>
 							</ul>
 						</div>
 					</div>

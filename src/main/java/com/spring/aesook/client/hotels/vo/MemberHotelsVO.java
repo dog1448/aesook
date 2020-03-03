@@ -15,6 +15,8 @@ public class MemberHotelsVO {
 	private String hotelsPath;
 	private String hotelsInfo;
 	private String hotelsIntroduce;		
+	private String searchCondition;
+	private String searchKeyword;
 	
 	public String getMemberId() {
 		return memberId;
@@ -83,7 +85,18 @@ public class MemberHotelsVO {
 	public void setHotelsIntroduce(String hotelsIntroduce) {
 		this.hotelsIntroduce = hotelsIntroduce;
 	}
-
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 	@Override
 	public String toString() {
 		return "MemberHotelsVO [hotelsCode=" + hotelsCode + ", hotelsName=" + hotelsName + ", hotelsType=" + hotelsType
