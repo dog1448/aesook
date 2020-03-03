@@ -27,8 +27,7 @@ public class MemberRoomController {
 	private MemberRoomService memberRoomService;
 	@Autowired
 	private MemberHotelsFacilityService memberHotelsFacilityService;
-	@Autowired
-	private MemberHotelsListService memberHotelsListService;
+
 	@Autowired
 	private MemberHotelsService memberHotelsService;
 	

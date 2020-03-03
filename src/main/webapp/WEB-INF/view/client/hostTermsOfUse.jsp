@@ -4,6 +4,7 @@
 <html>
 <head>
 <%@ include file="head.jspf"%>
+
 </head>
 <body>
 
@@ -16,10 +17,9 @@
 					<div class="col-three-forth animate-box">
 						<nav class="navbar navbar-default">
 							<ul class="nav navbar-nav">
+								<li class="active"><a href="#">약관 동의</a></li>
 								<li><a href="#">숙소 등록</a></li>
 								<li><a href="#">객실 등록</a></li>
-								<li><a href="#">사진 등록</a></li>
-								<li class="active"><a href="#">약관 동의</a></li>
 							</ul>
 						</nav>
 						<hr>
@@ -279,24 +279,37 @@
 							주소지를 관할하는 지방 법원을 합의관할로 지정하여 대한민국 법령에 준거하여 소송을 진행합니다.<br> <br>
 							부칙 (시행일)<br> 본 약관은 2018년 5월 28일부터 적용합니다.<br>
 						</p>
-
-						<div class="text-right">
-							<label><input type="checkbox"> 이용약관에 동의합니다.</label>
-						</div>
-						<div class="text-right">
-							<button class="btn btn-info">등록</button>
-							<button type="button" class="btn btn-success" onclick="history.go(-1);">이전</button>
-						</div>
+						<form action="insertHotels.do" method="post">						
+							<div class="text-right">
+								<label><input type="checkbox" name="agree" id="agree"> 이용약관에 동의합니다.</label>
+							</div>
+							<div class="text-right">
+								<button class="btn btn-info" type="submit" id="submit">다음</button>
+							</div>
+						</form>
 						<div>&nbsp;</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</div>	
 	<%@ include file="footer.jspf"%>
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#submit").on("click", function() {
+				if($("input:checkbox[id=agree]").is(":checked") == true) {
+				  
+				} 
+				if($("input:checkbox[id=agree]").is(":checked") == false) {
+					alert('약관에 동의해주세요.');
+					return false;
+				}
+			});
+		})
+	
+</script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 
 <insert id="insertHotels" parameterType="memberHotels">
 	INSERT INTO hotels 
-	VALUES(hotels_seq.nextval, #{hotelsName}, #{hotelsType}, #{memberId}, 
+	VALUES(#{hotelsCode}, #{hotelsName}, #{hotelsType}, #{memberId}, 
 	#{hotelsPhone}, #{hotelsZipcode}, #{hotelsAddress1}, #{hotelsAddress2},
 	#{hotelsPath}, #{hotelsInfo}, #{hotelsIntroduce})
 </insert>
@@ -14,5 +14,9 @@
 <select id="selectHotels" resultType="memberHotels">
 	select * from hotels
 	where member_id = #{memberId}
+</select>
+
+<select id="selectHotelsCode" resultType="int">
+	select hotels_seq.nextval from dual
 </select>
 </mapper>

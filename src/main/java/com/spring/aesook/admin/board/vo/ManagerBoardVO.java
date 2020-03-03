@@ -2,6 +2,8 @@ package com.spring.aesook.admin.board.vo;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+@Component
 public class ManagerBoardVO {
 
 	private int BoardSeq;
@@ -18,6 +20,14 @@ public class ManagerBoardVO {
 
 	public int getBoardSeq() {
 		return BoardSeq;
+	}
+
+	@Override
+	public String toString() {
+		return "ManagerBoardVO [BoardSeq=" + BoardSeq + ", BoardWriter=" + BoardWriter + ", BoardTitle=" + BoardTitle
+				+ ", BoardContent=" + BoardContent + ", BoardGroup=" + BoardGroup + ", BoardStep=" + BoardStep
+				+ ", BoardDepth=" + BoardDepth + ", BoardReadcount=" + BoardReadcount + ", BoardIp=" + BoardIp
+				+ ", BoardDate=" + BoardDate + ", BoardType=" + BoardType + "]";
 	}
 
 	public void setBoardSeq(int boardSeq) {
@@ -83,7 +93,7 @@ public class ManagerBoardVO {
 	public String getBoardIp() {
 		return BoardIp;
 	}
-
+	
 	public void setBoardIp(String boardIp) {
 		BoardIp = boardIp;
 	}

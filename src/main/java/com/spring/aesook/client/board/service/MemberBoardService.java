@@ -10,6 +10,8 @@ public interface MemberBoardService {
     void insertMemberBoard(MemberBoardVO memberBoardVO);
     void deleteMemberBoard(MemberBoardVO memberBoardVO);
     void updateMemberBoard(MemberBoardVO memberBoardVO);
+
+
     MemberBoardVO readMemberBoard(Integer BoardNo);
     MemberBoardVO readMemberBoardFAQ(Integer BoardNo);
     MemberBoardVO readMemberBoardNotice(Integer BoardNo);
@@ -17,10 +19,12 @@ public interface MemberBoardService {
     List<MemberBoardVO> getMemberBoard(Criteria cri) throws Exception;
     List<MemberBoardVO> getMemberBoardFAQ(Criteria cri) throws Exception;
     List<MemberBoardVO> getMemberNoticeBoard(Criteria cri) throws Exception;
-    MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
+
     int getBoardCount();
     int getFAQBoardCount();
     int getNoticeBoardCount();
-    
-    
+    int getQNABoardSeq();
+
+    MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO);
+
 }

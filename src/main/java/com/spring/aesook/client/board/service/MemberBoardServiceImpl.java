@@ -79,5 +79,10 @@ public class MemberBoardServiceImpl implements MemberBoardService {
         return memberBoardDAO.getNoticeBoardCount();
     }
 
+    @Override
+    public int getQNABoardSeq() {
+        return memberBoardDAO.getQNABoardSeq();
+    }
+
 
 }

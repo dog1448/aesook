@@ -1,5 +1,6 @@
 package com.spring.aesook.client.hotels.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,12 +8,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
+import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
@@ -23,8 +28,15 @@ public class MemberHotelsController {
 	
 	@Autowired
 	private MemberHotelsService memberHotelsService;
+	
 	@Autowired
-	MemberHotelsListService memberHotelsListService;
+	private MemberHotelsListService memberHotelsListService;
+	
+	@Autowired
+	private MemberRoomService memberRoomService;
+	
+	@Autowired
+	private MemberHotelsFacilityService memberHotelsFacilityService;
 	
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
 	public String moveHotel(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type
@@ -45,12 +57,10 @@ public class MemberHotelsController {
 		return "/hotel";
 	}
 	
-	@RequestMapping(value = "/insertHotels.do", method = RequestMethod.GET)
-	public String moveInsertHotels(HttpSession session, Model model){
-		MemberVO user = (MemberVO)session.getAttribute("login");
-		if(user != null) {
-			model.addAttribute("user", user);
-		}
+	//Move InsertHotels
+	@RequestMapping(value = "/insertHotels.do", method = RequestMethod.POST)
+	public String moveInsertHotels(Model model){
+		
 		return "/insertHotels";
 	}
 	
@@ -59,27 +69,66 @@ public class MemberHotelsController {
 	public String inserHotelsAll(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO, Model model) {
 		model.addAttribute("memberHotelsVO", memberHotelsVO);
 		model.addAttribute("memberFacilityVO", memberFacilityVO);
+		System.out.println(memberHotelsVO.toString());
+		System.out.println(memberFacilityVO.toString());
 		return "/insertRoomSort";
 	}
-
+	
 	//Insert Room
-	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)
-	public String InsertRoomSort(MemberRoomVO memberRoomVO, @RequestParam("memberHotelsVO") MemberHotelsVO memberHotelsVO,
-			@RequestParam("memberFacilityVO") MemberHotelsFacilityVO memberFacilityVO ,Model model) {	
+	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)	
+	public String InsertRoomSort(
+			MemberHotelsVO memberHotelsVO,
+			MemberHotelsFacilityVO memberFacilityVO,
+			//VO 자체를 배열로 해볼라고 했는데 계속 안먹어서 이렇게함... 
+			@RequestParam("roomName") String[] roomName,			
+			@RequestParam("roomSort") String[] roomSort,			
+			@RequestParam("roomStandardCnt") int[] roomStandardCnt,			
+			@RequestParam("roomMaxCnt") int[] roomMaxCnt,
+			@RequestParam("roomStandardPrice") int[] roomStandardPrice,			
+			@RequestParam("roomHolidayPrice") int[] roomHolidayPrice,			
+			@RequestParam("roomAddPrice") int[] roomAddPrice,
+			@RequestParam("roomRoomInfo") String[] roomRoomInfo,
+			Model model, String memberId) {	
 		
-		model.addAttribute("memberHotelsVO", memberHotelsVO);
-		model.addAttribute("memberFacilityVO", memberFacilityVO);
-		model.addAttribute("memberRoomVO", memberRoomVO);
+		ArrayList<MemberRoomVO> roomList = new ArrayList<MemberRoomVO>();
 		
-		return "/insertPic";
+		//Get Dual hotels.sequence
+		int hotelsCode = memberHotelsService.getHotelsCode();
+		
+		//여기서 리스트에 담아서 해야 모델 넘길 때 편하니.. 서비스가서 하기 좀 그럴꺼 같았음..
+		for(int i=0; i<roomName.length; i++) {
+			MemberRoomVO vo = new MemberRoomVO();
+			vo.setHotelsCode(hotelsCode);
+			vo.setRoomName(roomName[i]);
+			vo.setRoomSort(roomSort[i]);
+			vo.setRoomStandardCnt(roomStandardCnt[i]);
+			vo.setRoomMaxCnt(roomMaxCnt[i]);
+			vo.setRoomRoomCnt(1);
+			vo.setRoomStandardPrice(roomStandardPrice[i]);
+			vo.setRoomHolidayPrice(roomHolidayPrice[i]);
+			vo.setRoomAddPrice(roomAddPrice[i]);
+			vo.setRoomRoomInfo(roomRoomInfo[i]);
+			roomList.add(vo);
+		}	
+		
+		memberHotelsFacilityService.insertFacility(memberFacilityVO, hotelsCode);
+		memberHotelsService.insertHotels(memberHotelsVO, hotelsCode, memberId);
+		memberRoomService.insertRoom(roomList);
+		
+		return "redirect:registeredAccommodation.do";
 	}
 	
-	//TermsOfUse
+	//Move Terms Of Use
 	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
-	public String hostTermsOfUse(
-			) {
+	public String MovehostTermsOfUse() {		
 		
 		return "/hostTermsOfUse";
+	}
+	
+	//Check Terms Of Use
+	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.POST)
+	public String hostTermsOfUse() {
+		return "/insertHotels";
 	}
 	
 	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)
@@ -87,8 +136,8 @@ public class MemberHotelsController {
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		if(user != null) {
 			model.addAttribute("user", user);
-			MemberHotelsVO vo = memberHotelsService.getMyHotels(user);
-			model.addAttribute("hotels", vo);
+			List<MemberHotelsVO> hotelsList = memberHotelsService.getMyHotels(user);
+			model.addAttribute("hotels", hotelsList);
 		}
 		return "/registeredAccommodation";
 	}

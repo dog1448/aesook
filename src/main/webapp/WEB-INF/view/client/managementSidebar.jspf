@@ -12,7 +12,7 @@
 			<div class="col-md-12 about">
 				<h2>숙소관리</h2>
 				<ul>
-					<li><a href="insertHotels.do">숙소 등록</a></li>					
+					<li><a href="hostTermsOfUse.do">숙소 등록</a></li>					
 					<li><a href="registeredAccommodation.do">등록 숙소 확인 및 수정</a></li>
 					<li><a href="statistics.do">통계</a></li>
 					<li><a href="messageBoard.do">1대 1문의</a></li>

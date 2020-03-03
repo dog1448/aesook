@@ -1,5 +1,7 @@
 package com.spring.aesook.client.hotels.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +42,10 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 
 	//Insert Room
 	@Override
-	public void insertRoom(MemberRoomVO vo) {
-		memberRoomDAO.insertRoom(vo);
+	public void insertRoom(ArrayList<MemberRoomVO> roomList) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		map.put("roomList", roomList);
+		memberRoomDAO.insertRoom(map);
 	}
 
 	//Room Name Check
