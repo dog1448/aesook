@@ -22,10 +22,9 @@
 						<div class="col-three-forth animate-box">
 							<nav class="navbar navbar-default">
 								<ul class="nav navbar-nav">
+									<li><a href="#">약관 동의</a></li>
 									<li><a href="#">숙소 등록</a></li>
 									<li class="active"><a href="#">객실 등록</a></li>
-									<li><a href="#">사진 등록</a></li>
-									<li><a href="#">약관 동의</a></li>
 								</ul>
 							</nav>
 							<hr>							
@@ -99,8 +98,8 @@
 								<div>&nbsp;</div>
 								<hr>
 								<div>
-									<button type="submit" id="submit" class="btn btn-info">다음</button>
-									<button type="button" class="btn btn-success" onclick="history.go(-1);">이전</button>
+									<button type="submit" id="submit" class="btn btn-info">등록</button>
+									<button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>									
 								</div>
 							</form>
 

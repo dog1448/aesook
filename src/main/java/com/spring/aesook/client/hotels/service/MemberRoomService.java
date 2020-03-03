@@ -1,5 +1,6 @@
 package com.spring.aesook.client.hotels.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
@@ -9,6 +10,6 @@ public interface MemberRoomService {
 	List<MemberRoomVO> getRoomList(int hotelsCode);
 	MemberHotelsVO getHotel(int hotelsCode);
 	MemberRoomVO getRoomDescription(int hotelsCode, String sortType);
-	void insertRoom(MemberRoomVO vo);
+	void insertRoom(ArrayList<MemberRoomVO> roomList);
 	int roomNameCheck(MemberRoomVO vo);
 }

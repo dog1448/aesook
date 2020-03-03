@@ -20,12 +20,14 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 	private MemberReviewDAO memberReviewDAO;
 	
 	@Override
-	public void insertHotels(MemberHotelsVO vo) {
+	public void insertHotels(MemberHotelsVO vo, int hotelsCode, String memberId) {
+		vo.setMemberId(memberId);
+		vo.setHotelsCode(hotelsCode);
 		memberHotelsDAO.insertHotels(vo);
 	}
 
 	@Override
-	public MemberHotelsVO getMyHotels(MemberVO vo) {
+	public List<MemberHotelsVO> getMyHotels(MemberVO vo) {
 		return memberHotelsDAO.getMyHotels(vo);
 	}
 
@@ -37,6 +39,11 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 	@Override
 	public String getScoreAvg(int hotelsCode) {
 		return memberReviewDAO.getScoreAvg(hotelsCode);
+	}
+
+	@Override
+	public int getHotelsCode() {		
+		return memberHotelsDAO.getHotelsCode();
 	}
 	
 }
