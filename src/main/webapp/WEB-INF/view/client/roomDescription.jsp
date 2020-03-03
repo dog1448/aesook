@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb-text">
-                            <h2>${memberSortVO.sortType}</h2>
+                            <h2>${memberRoomVO.roomSort}</h2>
                             <div>
                                 <h4>${memberhotelsVO.hotelsName}</h4>
                             </div>
@@ -86,24 +86,24 @@
                         <div class="room-details-item">
 
                             <div class="rd-text">                                
-                                <h2>${memberSortVO.sortStandardPrice} ￦<span>&nbsp;&nbsp;&nbsp;숙박</span></h2>
+                                <h2>${memberRoomVO.roomStandardPrice} ￦<span>&nbsp;&nbsp;&nbsp;숙박</span></h2>
                                 <table>
                                     <tbody>                                   		
                                         <tr>
                                             <td class="r-o">기준: </td>
-                                            <td>${memberSortVO.sortStandardCnt} 명</td>
+                                            <td>${memberRoomVO.roomStandardCnt} 명</td>
                                         </tr>
                                         <tr>
                                             <td class="r-o">최대: </td>
-                                            <td>${memberSortVO.sortMaxCnt} 명</td>
+                                            <td>${memberRoomVO.roomMaxCnt} 명</td>
                                         </tr>
                                         <tr>
                                             <td class="r-o">추가요금: </td>
-                                            <td>${memberSortVO.sortAddPrice} ￦</td>
+                                            <td>${memberRoomVO.roomAddPrice} ￦</td>
                                         </tr> 
                                         <tr>
                                             <td class="r-o">객실설명: </td>
-                                            <td>${memberSortVO.sortRoomInfo}</td>
+                                            <td>${memberRoomVO.roomRoomInfo}</td>
                                         </tr>   
                                     </tbody>
                                 </table>                              

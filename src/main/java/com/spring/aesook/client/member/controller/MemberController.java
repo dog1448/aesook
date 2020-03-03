@@ -191,18 +191,19 @@ public class MemberController {
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");
+    	MemberVO user = memberService.getMember(login);
     	if(login != null) {
-    		model.addAttribute("login",login);
+    		model.addAttribute("login",user);
     	}
     	return "/modify_info";
     }
     
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.POST)
     public String modifyInfo(MemberVO vo, Model model) {
-    	System.out.println(vo.getMemberPhone().toString());
+    	
     	memberService.updateInfoMember(vo);
-    	System.out.println(vo.getMemberPhone().toString());
-    	return "/home";
+    	
+    	return "redirect:modifyInfo.do";
     }
     
     @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.POST)
