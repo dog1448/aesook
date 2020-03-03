@@ -1,7 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-
+         pageEncoding="UTF-8" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -23,20 +24,20 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
 
     <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:description" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:image" content=""/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content=""/>
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
@@ -78,38 +79,64 @@
 
 <div id="page">
     <%@include file="main_header.jspf" %>
-    <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
-    <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
     <div class="container">
         <table class="table table-bordered">
             <thead>
-            <caption> 글쓰기  </caption>
+            <caption> 게시글 삭제</caption>
             </thead>
             <tbody>
-                <input type="hidden" name="boardWriter" id="boardWriter" value="${id}">
-                <tr>
-                    <th>제목: </th>
-                    <td><h3>${board.boardTitle}</h3></td>
-                </tr>
-                <tr>
-                    <th>작성자: </th>
-                    <td><h3>${board.boardWriter}</h3></td>
-                </tr>
-                <tr>
-                    <th>내용: </th>
-                    <td><div class="text-body" style="height: 700px">${board.boardContent}</div></td>
-                </tr>
-                <div class ="box">
-                    <form role="form" method="post">
-                        <input type="hidden" name="boardNo" value="${board.boardSeq}">
-                    </form>
-                    <button type="button" class="btn btn-default listBtn"><i class="fa fa-list"></i>목록</button>
-                    <div class ="pull-right">
-                        <button type="button" class="btn btn-default replyBtn"><i class="fa fa-list"></i>답글</button>
-                        <button type="submit" class="btn btn-warning modBtn"><i class="fa fa-edit"></i>수정</button>
-                        <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
-                    </div>
+            <form role="form" id="writeForm" method="post" action="${path}/deleteQNA.do">
+                <input type="hidden" name="boardTitle" id="boardTitle" value="삭제된 게시글입니다.">
+                <input type="hidden" name="boardContent" id="boardContent" value="삭제된 게시글입니다.">
+                <input type="hidden" name="boardSeq" id="boardSeq" value="${board.boardSeq}">
+                <input type="hidden" name="boardType" value="Q">
+                <div class="form-group">
+                    <tr>
+                        <th>비밀번호 확인 :</th>
+                        <td><input type="password" placeholder="비밀번호를 입력하세요." id="password"
+                                   class="form-control"/></td>
+                    </tr>
                 </div>
+
+
+
+
+                <div class="form-group">
+
+                </div>
+
+
+                <!--
+                <tr>
+                    <th>첨부파일: </th>
+                    <td><input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control" />
+                    </td>
+                </tr>
+                -->
+
+                <tr>
+                    <td colspan="2">
+                        <!--
+            <input type="button" value="등록" onclick="sendData()" class="pull-right"/>
+            <input type="button" value="reset" class="pull-left"/>
+            <input type="button" value="글 목록으로... " class="pull-right" onclick="javascript:location.href='list.jsp'"/>
+            -->
+
+                        <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
+                        <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
+                        <a class="btn btn-default" type="reset"> 초기화 </a>
+                        <a class="btn btn-default" onclick="javascript:location.href='/FAQ_Board.do'">글 목록으로...</a>
+                    </td>
+                </tr>
+            </form>
             </tbody>
         </table>
     </div>
@@ -117,45 +144,27 @@
     <div>&nbsp;</div>
     <div>&nbsp;</div>
     <div>&nbsp;</div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        var formObj = $("form[role='form']");
-        console.log(formObj);
-
-        $(".modBtn").on("click",function() {
-            formObj.attr("action","BoardModify.do");
-            formObj.attr("method","get");
-            formObj.submit();
-        });
-
-        $(".replyBtn").on("click",function () {
-            formObj.attr("action","MoveQNAReply.do");
-            formObj.attr("method","get");
-            formObj.submit();
-        })
-
-        $(".delBtn").on("click",function() {
-            formObj.attr("action","deleteQNA.do");
-            formObj.attr("method","get");
-            formObj.submit();
-        });
-
-        $(".listBtn").on("click",function () {
-            self.location = "/aesook/MemberBoard.do"
-        });
-
-    });
-</script>
-
-
     <%@include file="footer.jspf" %>
 </div>
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var formObj = $("form[role='form']");
+        var password = $('#password');
+
+        if(password === ${pw}) {
+            $(".delBtn").on("click", function () {
+                formObj.submit();
+            });
+        }else {
+            alert("비밀번호가 다릅니다.")
+        }
+    });
+
+</script>
 
 <!-- jQuery -->
 <script src="resources/client/js/jquery.min.js"></script>
