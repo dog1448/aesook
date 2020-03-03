@@ -95,10 +95,9 @@ function checkz() {
                   <div class="col-three-forth animate-box">
                   	<nav class="navbar navbar-default">					  				    
 					    <ul class="nav navbar-nav">
+					   	  <li><a href="#">약관 동의</a></li>
 					      <li class="active"><a href="#">숙소 등록</a></li>
-					      <li><a href="#">객실 등록</a></li>
-					      <li><a href="#">사진 등록</a></li>
-					      <li><a href="#">약관 동의</a></li>
+					      <li><a href="#">객실 등록</a></li>					    
 					    </ul>					  
 					</nav>                 
                      <hr>      
@@ -125,7 +124,7 @@ function checkz() {
                         <div class="col-md-12 form-group">
 
                            <input type="text" name="hotelsName" id="hotelsName" class="form-control" placeholder="숙소명 (지명 기입 가능  ex.홍대 기역모텔)">
-                           <input type="hidden" name="memberId" value="${user.memberId}">
+                           <input type="hidden" name="memberId" value="${login.memberId}">
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
 
@@ -177,6 +176,7 @@ function checkz() {
                         <hr>
                         <div>
                            <button type="button" onclick="checkz()" class="btn btn-info">다음</button>
+                           <button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>
                         </div>
                      </form>
                   </div>

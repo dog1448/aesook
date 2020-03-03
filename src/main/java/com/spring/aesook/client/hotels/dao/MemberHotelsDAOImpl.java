@@ -1,5 +1,7 @@
 package com.spring.aesook.client.hotels.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,8 +23,13 @@ public class MemberHotelsDAOImpl implements MemberHotelsDAO{
 	}
 
 	@Override
-	public MemberHotelsVO getMyHotels(MemberVO vo) {
-		return sqlSessionTemplate.selectOne(namespace + ".selectHotels", vo);
+	public List<MemberHotelsVO> getMyHotels(MemberVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".selectHotels", vo);
+	}
+
+	@Override
+	public int getHotelsCode() {		
+		return sqlSessionTemplate.selectOne(namespace + ".selectHotelsCode");
 	}
 
 }

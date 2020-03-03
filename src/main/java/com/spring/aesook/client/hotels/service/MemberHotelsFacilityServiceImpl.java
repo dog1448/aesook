@@ -20,4 +20,10 @@ public class MemberHotelsFacilityServiceImpl implements MemberHotelsFacilityServ
 		return memberHotelsFacilityDAO.getFacility(vo);
 	}
 
+	@Override
+	public void insertFacility(MemberHotelsFacilityVO vo, int hotelsCode) {
+		vo.setHotelsCode(hotelsCode);
+		memberHotelsFacilityDAO.insertFacility(vo);
+	}
+
 }
