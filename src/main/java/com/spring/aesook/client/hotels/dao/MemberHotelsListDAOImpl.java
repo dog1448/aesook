@@ -42,5 +42,11 @@ public class MemberHotelsListDAOImpl implements MemberHotelsListDAO {
 	public List<MemberHotelsVO> selectAccommodationTop10ByType(MemberHotelsVO vo) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectAccommodationTop10ByType", vo);
 	}
+	//검색한 호텔 리스트
+	@Override
+	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".getSearchedHotelsList", vo);
+	}
+	
 
 }

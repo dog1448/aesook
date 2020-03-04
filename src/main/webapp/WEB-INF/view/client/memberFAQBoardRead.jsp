@@ -101,11 +101,14 @@
                 <div class ="box">
                     <form role="form" method="post">
                         <input type="hidden" name="boardNo" value="${board.rnum}">
+                        <input type="hidden" name="boardSeq" value="${board.boardSeq}">
                     </form>
                     <button type="button" class="btn btn-default listBtn"><i class="fa fa-list"></i>목록</button>
                     <div class ="pull-right">
+                        <!--
                         <button type="submit" class="btn btn-warning modBtn"><i class="fa fa-edit"></i>수정</button>
                         <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
+                        -->
                     </div>
                 </div>
             </tbody>
@@ -117,6 +120,7 @@
     <div>&nbsp;</div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -140,6 +144,7 @@
 
     });
 </script>
+-->
 
 
     <%@include file="footer.jspf" %>

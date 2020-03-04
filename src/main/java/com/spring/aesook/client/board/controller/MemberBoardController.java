@@ -42,11 +42,13 @@ public class MemberBoardController {
 
     @RequestMapping(value = "/write.do", method = RequestMethod.GET)
     public String moveWrite(Model model) throws Exception {
+        int seq = memberBoardService.getQNABoardSeq();
+        model.addAttribute("seq", seq);
         return "/memberQNAWrite";
     }
 
     @RequestMapping(value = "/MoveList.do", method = RequestMethod.POST)
-    public String writeArticle(MemberBoardVO memberBoardVO, HttpServletRequest request) {
+    public String writeArticle(MemberBoardVO memberBoardVO, Model model) {
         memberBoardService.insertMemberBoard(memberBoardVO);
         return "redirect:/MemberBoard.do";
     }
@@ -68,9 +70,22 @@ public class MemberBoardController {
     public String modify(MemberBoardVO memberBoardVO, RedirectAttributes redirectAttributes) throws Exception {
         memberBoardService.updateMemberBoard(memberBoardVO);
         redirectAttributes.addFlashAttribute("msg", "modSucess");
-
         return "redirect:/MemberBoard.do";
     }
+
+    @RequestMapping(value = "/deleteQNA.do",method = RequestMethod.GET)
+    public String moveQNADelete(@RequestParam("boardNo") Integer boardNo,Model model){
+        model.addAttribute("board",memberBoardService.readMemberBoard(boardNo));
+        return "/MemberQNABoardDelete";
+    }
+
+    @RequestMapping(value = "/deleteQNA.do",method = RequestMethod.POST)
+    public String deleteQNA(MemberBoardVO memberBoardVO){
+        System.out.println(memberBoardVO.toString());
+        memberBoardService.deleteMemberBoard(memberBoardVO);
+        return "redirect:/MemberBoard.do";
+    }
+
 
     @RequestMapping(value = "/MoveQNAReply.do",method = RequestMethod.GET)
     public String moveQNAReply(@RequestParam("boardNo") Integer boardNo, Model model){
@@ -80,7 +95,6 @@ public class MemberBoardController {
 
     @RequestMapping(value = "/QNAReply.do",method = RequestMethod.POST)
     public String QNAReplyWrite(Model model,MemberBoardVO memberBoardVO) {
-
         memberBoardService.insertMemberBoard(memberBoardVO);
         return "redirect:/MemberBoard.do";
     }

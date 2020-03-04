@@ -50,7 +50,7 @@
 						<div class="row">
 							<div class="wrap-division">
 							
-								<c:forEach var="list" items="${viewAll}">
+								<c:forEach var="list" items="${searchedList}">
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="hotel-entry">
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
@@ -71,7 +71,7 @@
 												<h3>
 													<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}&hotelsName=${list.hotelsName}">${list.hotelsName}</a>
 												</h3>
-												<span class="place">${list.hotelsAddress1} ${list.hotelsAddress2}</span>
+												<span class="place">${list.hotelsAddress1} ${list.hotelsAddress2 }</span>
 												<p>${list.hotelsInfo}</p>
 											</div>
 										</div>

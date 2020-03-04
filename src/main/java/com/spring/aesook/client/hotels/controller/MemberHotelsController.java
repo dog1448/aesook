@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
+import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
@@ -26,34 +28,39 @@ public class MemberHotelsController {
 	
 	@Autowired
 	private MemberHotelsService memberHotelsService;
+	
 	@Autowired
-	MemberHotelsListService memberHotelsListService;
+	private MemberHotelsListService memberHotelsListService;
+	
+	@Autowired
+	private MemberRoomService memberRoomService;
+	
+	@Autowired
+	private MemberHotelsFacilityService memberHotelsFacilityService;
 	
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
-	public String moveHotel(@RequestParam(value = "type", defaultValue = "È£ÅÚ", required = false) String type
+	public String moveHotel(@RequestParam(value = "type", defaultValue = "í˜¸í…”", required = false) String type
 			, Model model) {
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10ByType(type);
 		model.addAttribute("top10", list);
-		if(type.equals("¸ğÅÚ")) {
+		if(type.equals("ëª¨í…”")) {
 			return "/motel";
-		} else if(type.equals("Ææ¼Ç")) {
+		} else if(type.equals("íœì…˜")) {
 			return "/pension";
-		} else if(type.equals("°Ô½ºÆ®ÇÏ¿ì½º")) {
+		} else if(type.equals("ê²ŒìŠ¤íŠ¸í•˜ìš°ìŠ¤")) {
 			return "/guesthouse";
-		} else if(type.equals("¸®Á¶Æ®")) {
+		} else if(type.equals("ë¦¬ì¡°íŠ¸")) {
 			return "/resort";
 		}
 		
 		return "/hotel";
 	}
 	
-	@RequestMapping(value = "/insertHotels.do", method = RequestMethod.GET)
-	public String moveInsertHotels(HttpSession session, Model model){
-		MemberVO user = (MemberVO)session.getAttribute("login");
-		if(user != null) {
-			model.addAttribute("user", user);
-		}
+	//Move InsertHotels
+	@RequestMapping(value = "/insertHotels.do", method = RequestMethod.POST)
+	public String moveInsertHotels(Model model){
+		
 		return "/insertHotels";
 	}
 	
@@ -70,7 +77,7 @@ public class MemberHotelsController {
 	public String InsertRoomSort(
 			MemberHotelsVO memberHotelsVO,
 			MemberHotelsFacilityVO memberFacilityVO,
-			//VO ÀÚÃ¼¸¦ ¹è¿­·Î ÇØº¼¶ó°í Çß´Âµ¥ °è¼Ó ¾È¸Ô¾î¼­ ÀÌ·¸°ÔÇÔ... 
+			//VO ìì²´ë¥¼ ë°°ì—´ë¡œ í•´ë³¼ë¼ê³  í–ˆëŠ”ë° ê³„ì† ì•ˆë¨¹ì–´ì„œ ì´ë ‡ê²Œí•¨... 
 			@RequestParam("roomName") String[] roomName,			
 			@RequestParam("roomSort") String[] roomSort,			
 			@RequestParam("roomStandardCnt") int[] roomStandardCnt,			
@@ -79,38 +86,48 @@ public class MemberHotelsController {
 			@RequestParam("roomHolidayPrice") int[] roomHolidayPrice,			
 			@RequestParam("roomAddPrice") int[] roomAddPrice,
 			@RequestParam("roomRoomInfo") String[] roomRoomInfo,
-			Model model) {	
+			Model model, String memberId) {	
 		
 		ArrayList<MemberRoomVO> roomList = new ArrayList<MemberRoomVO>();
 		
-		//¿©±â¼­ ¸®½ºÆ®¿¡ ´ã¾Æ¼­ ÇØ¾ß ¸ğµ¨ ³Ñ±æ ¶§ ÆíÇÏ´Ï.. ¼­ºñ½º°¡¼­ ÇÏ±â Á» ±×·²²¨ °°¾ÒÀ½..
+		//Get Dual hotels.sequence
+		int hotelsCode = memberHotelsService.getHotelsCode();
+		
+		//ì—¬ê¸°ì„œ ë¦¬ìŠ¤íŠ¸ì— ë‹´ì•„ì„œ í•´ì•¼ ëª¨ë¸ ë„˜ê¸¸ ë•Œ í¸í•˜ë‹ˆ.. ì„œë¹„ìŠ¤ê°€ì„œ í•˜ê¸° ì¢€ ê·¸ëŸ´êº¼ ê°™ì•˜ìŒ..
 		for(int i=0; i<roomName.length; i++) {
 			MemberRoomVO vo = new MemberRoomVO();
+			vo.setHotelsCode(hotelsCode);
 			vo.setRoomName(roomName[i]);
 			vo.setRoomSort(roomSort[i]);
 			vo.setRoomStandardCnt(roomStandardCnt[i]);
 			vo.setRoomMaxCnt(roomMaxCnt[i]);
+			vo.setRoomRoomCnt(1);
 			vo.setRoomStandardPrice(roomStandardPrice[i]);
 			vo.setRoomHolidayPrice(roomHolidayPrice[i]);
 			vo.setRoomAddPrice(roomAddPrice[i]);
 			vo.setRoomRoomInfo(roomRoomInfo[i]);
 			roomList.add(vo);
-		}
+		}	
 		
-		model.addAttribute("roomList", roomList);
-		model.addAttribute("memberHotelsVO", memberHotelsVO);
-		model.addAttribute("memberFacilityVO", memberFacilityVO);	
+		memberHotelsFacilityService.insertFacility(memberFacilityVO, hotelsCode);
+		memberHotelsService.insertHotels(memberHotelsVO, hotelsCode, memberId);
+		memberRoomService.insertRoom(roomList);
 		
-		return "/insertPic";
+
+		return "redirect:registeredAccommodation.do";
 	}
 	
-	
-	//TermsOfUse
+	//Move Terms Of Use
 	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
-	public String hostTermsOfUse(
-			) {
+	public String MovehostTermsOfUse() {		
 		
 		return "/hostTermsOfUse";
+	}
+	
+	//Check Terms Of Use
+	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.POST)
+	public String hostTermsOfUse() {
+		return "/insertHotels";
 	}
 	
 	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)
@@ -118,8 +135,8 @@ public class MemberHotelsController {
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		if(user != null) {
 			model.addAttribute("user", user);
-			MemberHotelsVO vo = memberHotelsService.getMyHotels(user);
-			model.addAttribute("hotels", vo);
+			List<MemberHotelsVO> hotelsList = memberHotelsService.getMyHotels(user);
+			model.addAttribute("hotels", hotelsList);
 		}
 		return "/registeredAccommodation";
 	}

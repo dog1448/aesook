@@ -101,7 +101,7 @@
                 </tr>
                 <div class ="box">
                     <form role="form" method="post">
-                        <input type="hidden" name="boardNo" value="${board.rnum}">
+                        <input type="hidden" name="boardNo" value="${board.boardSeq}">
                     </form>
                     <button type="button" class="btn btn-default listBtn"><i class="fa fa-list"></i>목록</button>
                     <div class ="pull-right">
@@ -138,7 +138,8 @@
         })
 
         $(".delBtn").on("click",function() {
-            formObj.attr("action","BoardRemove.do");
+            formObj.attr("action","deleteQNA.do");
+            formObj.attr("method","get");
             formObj.submit();
         });
 

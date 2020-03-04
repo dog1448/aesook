@@ -1,6 +1,8 @@
 package com.spring.aesook.client.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +29,7 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public class MemberController {   
 
     @Autowired
-    MemberRegisterService memberRegisterService;
+    private MemberRegisterService memberRegisterService;
     @Autowired
     private MemberService memberService;   
     @Autowired
@@ -35,9 +37,9 @@ public class MemberController {
     @Autowired
     private MemberFindPassService memberFindPassService;
     @Autowired
-	MemberHotelsListService memberHotelsListService;
+    private MemberHotelsListService memberHotelsListService;
     @Autowired
-    MemberWithdrawalService memberWithdrawalService;
+    private MemberWithdrawalService memberWithdrawalService;
 
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
@@ -93,6 +95,7 @@ public class MemberController {
 
     	MemberVO user = memberService.getMember(vo);
     	String id = vo.getMemberId();
+    	String pw = vo.getMemberPass();
     	if(user == null) {
 			model.addAttribute("check", "noId");
 			return "/login";
@@ -111,6 +114,8 @@ public class MemberController {
 
     	session.setAttribute("login", user);
 		session.setAttribute("id" ,id);
+		session.setAttribute("pw",pw);
+
     	return "redirect:home.do"; // 
 
 
@@ -124,7 +129,14 @@ public class MemberController {
     	return "/home";
     }
     
-    
+    @ModelAttribute("conditionMap")
+    public Map<String, String> searchConditionMap() {
+    Map<String, String> conditionMap = new HashMap<String, String>();
+    conditionMap.put("SUBWAY", "PATH");
+    conditionMap.put("HOTEL NAME", "NAME");
+    conditionMap.put("LOCATION", "ADDRESS");
+    return conditionMap;
+    }
 
     @RequestMapping(value="/findId", method = RequestMethod.GET)
     public String moveFindId() {
@@ -179,18 +191,19 @@ public class MemberController {
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");
+    	MemberVO user = memberService.getMember(login);
     	if(login != null) {
-    		model.addAttribute("login",login);
+    		model.addAttribute("login",user);
     	}
     	return "/modify_info";
     }
     
     @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.POST)
     public String modifyInfo(MemberVO vo, Model model) {
-    	System.out.println(vo.getMemberPhone().toString());
+    	
     	memberService.updateInfoMember(vo);
-    	System.out.println(vo.getMemberPhone().toString());
-    	return "/home";
+    	
+    	return "redirect:modifyInfo.do";
     }
     
     @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.POST)

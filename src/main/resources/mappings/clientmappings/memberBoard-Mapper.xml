@@ -37,18 +37,35 @@
 <![CDATA[
 
 
-		select B.rnum,B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
-        from
-            (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
+		select * from
+              (
+             select ROWNUM as rnum,
+                    data.*
              from (
-                      select  BOARD_SEQ,BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
-                      from board
-                      order by ROWNUM,BOARD_GROUP asc ,BOARD_STEP asc) A
-             where rownum <=#{rowEnd} and BOARD_TYPE='Q') B
-        where B.rnum >= #{rowStart} order by rownum
-
-
+                      select level,
+                             BOARD_SEQ,
+                             BOARD_TITLE,
+                             BOARD_TYPE,
+                             BOARD_GROUP,
+                             BOARD_STEP,
+                             BOARD_DEPTH,
+                             BOARD_CONTENT,
+                             BOARD_DATE,
+                             BOARD_WRITER,
+                             BOARD_IP
+                      from BOARD where BOARD_TYPE='Q'
+                      start with BOARD_STEP =0
+                      connect by prior BOARD_SEQ = BOARD_STEP
+                      order SIBLINGS BY BOARD_STEP desc
+                  )
+        data
+    )
+where rnum>=#{rowStart} and rnum<=#{rowEnd}
         ]]>
+	</select>
+
+	<select id="getQNABoardSeq" parameterType="memberBoard" resultType="int">
+		select BOARD_SEQ.nextval from DUAL
 	</select>
 
     <update id="updateMemberBoard" parameterType="memberBoard">
@@ -59,10 +76,12 @@
 
 	</update>
 
-    <delete id="deleteMemberBoard" parameterType="memberBoard">
-		delete from BOARD
-		where BOARD_WRITER =#{boardWriter}
-	</delete>
+    <update id="deleteMemberBoard" parameterType="memberBoard">
+		update BOARD
+		set BOARD_TITLE = #{boardTitle}
+			,BOARD_CONTENT = #{boardContent}
+			where BOARD_SEQ =#{boardSeq}
+	</update>
 
 
     <select id="getBoardCount" parameterType="memberBoard" resultType="int">
@@ -86,7 +105,7 @@
 		from board
 		order by ROWNUM,BOARD_GROUP desc ,BOARD_STEP asc ,BOARD_DEPTH desc ) A
 		where BOARD_TYPE='Q') B
-		where rnum =#{rnum}
+		where BOARD_SEQ =#{boardSeq}
 	</select>
 
     <select id="readMemberBoardFAQ" resultMap="MemberResultMap">
@@ -117,15 +136,17 @@
     <select id="getMemberBoardFAQ" resultType="memberBoard" parameterType="pagination">
 		<![CDATA[
 
-                        select B.rnum,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
-        from
-            (select rownum as rnum, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
-             from (
-                      select  BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
-                      from board
-                      order by ROWNUM,BOARD_GROUP desc ,BOARD_STEP asc) A
-             where rownum <=#{rowEnd} and BOARD_TYPE='F') B
-        where B.rnum >= #{rowStart} order by rownum
+
+                                select B.rnum,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
+                from
+                    (select rownum as rnum, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
+                     from (
+                              select  BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
+                              from board
+                              order by ROWNUM,BOARD_GROUP desc ,BOARD_STEP asc) A
+                     where rownum <=#{rowEnd} and BOARD_TYPE='F') B
+                where B.rnum >= #{rowStart} order by rownum
+
 
         ]]>
 	</select>
@@ -135,15 +156,17 @@
 
 
 
-                        select B.rnum, B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE
-                        from
-                            (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE
-                             from (
-                                      select BOARD_SEQ , BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE
-                                      from board
-                                      order by BOARD_SEQ asc) A
-                             where rownum <=#{rowEnd} and BOARD_TYPE='N') B
-                        where B.rnum >= #{rowStart} order by rownum
+
+                                select B.rnum, B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE
+                                from
+                                    (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE
+                                     from (
+                                              select BOARD_SEQ , BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE
+                                              from board
+                                              order by BOARD_SEQ asc) A
+                                     where rownum <=#{rowEnd} and BOARD_TYPE='N') B
+                                where B.rnum >= #{rowStart} order by rownum
+
 
 
 

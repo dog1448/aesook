@@ -6,7 +6,6 @@
 <%@include file="head.jspf" %>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
 function checkz() {
 	   //호텔타입 입력 확인
     if($(':radio[name="hotelsType"]:checked').length < 1){
@@ -42,7 +41,8 @@ function checkz() {
   
 }
 
-	function openZipAddress(){
+
+function openZipAddress(){
     new daum.Postcode({
         oncomplete: function(data) {
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
@@ -71,9 +71,10 @@ function checkz() {
             console.log(fullRoadAddr);
             
             document.getElementById('hotelsZipcode').value = data.zonecode; //5자리 새우편번호 사용
-            document.getElementById('hotelsAddress1').value = fullRoadAddr;
+            document.getElementById('hotelsAddress1').value = fullRoadAddr;        
+            
         	}
-    	}).open();
+    	}).open();    	
     }	
 </script>
 </head>
@@ -95,10 +96,9 @@ function checkz() {
                   <div class="col-three-forth animate-box">
                   	<nav class="navbar navbar-default">					  				    
 					    <ul class="nav navbar-nav">
+					   	  <li><a href="#">약관 동의</a></li>
 					      <li class="active"><a href="#">숙소 등록</a></li>
-					      <li><a href="#">객실 등록</a></li>
-					      <li><a href="#">사진 등록</a></li>
-					      <li><a href="#">약관 동의</a></li>
+					      <li><a href="#">객실 등록</a></li>					    
 					    </ul>					  
 					</nav>                 
                      <hr>      
@@ -125,17 +125,14 @@ function checkz() {
                         <div class="col-md-12 form-group">
 
                            <input type="text" name="hotelsName" id="hotelsName" class="form-control" placeholder="숙소명 (지명 기입 가능  ex.홍대 기역모텔)">
-                           <input type="hidden" name="memberId" value="${user.memberId}">
+                           <input type="hidden" name="memberId" value="${login.memberId}">
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
 
 
                         <h3>숙소 위치</h3>
-								<div class="col-md-12 form-group">
-                           <iframe id="map-detail-frame" width="652" height="217" frameborder="0"
-                              scrolling="no" title="rooms-location"
-                              src="https://goo.gl/maps/araV1CpH7VR57Svb9"></iframe>
-                           <div>&nbsp;&nbsp;</div>
+						<div class="col-md-12 form-group">
+                          
                            <label>주소 입력</label>
                            <div class="row">
                               <div class="col-lg-6">
@@ -146,7 +143,7 @@ function checkz() {
                                        <button class="btn btn-default" onclick="openZipAddress()" type="button">검색</button>
                                     </span>
                                  </div>
-                              </div>
+                              </div>                              
                            </div>
                            <input type="text" id="hotelsAddress1" name="hotelsAddress1" class="form-control" placeholder="주소를 입력하세요" readonly="readonly">
                            <input type="text" id="hotelsAddress2" name="hotelsAddress2" class="form-control" placeholder="상세주소를 입력하세요"><br></br>
@@ -177,6 +174,7 @@ function checkz() {
                         <hr>
                         <div>
                            <button type="button" onclick="checkz()" class="btn btn-info">다음</button>
+                           <button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>
                         </div>
                      </form>
                   </div>
@@ -185,7 +183,7 @@ function checkz() {
          </div>
       </div>
 		
-      <%@ include file="footer.jspf" %>
+      <%@ include file="footer.jspf" %>  
    </div>
 
    <div class="gototop js-top">
@@ -193,5 +191,4 @@ function checkz() {
    </div>   
 	
 </body>
-
 </html>

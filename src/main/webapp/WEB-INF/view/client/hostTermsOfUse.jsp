@@ -4,6 +4,7 @@
 <html>
 <head>
 <%@ include file="head.jspf"%>
+
 </head>
 <body>
 
@@ -16,18 +17,18 @@
 					<div class="col-three-forth animate-box">
 						<nav class="navbar navbar-default">
 							<ul class="nav navbar-nav">
+								<li class="active"><a href="#">약관 동의</a></li>
 								<li><a href="#">숙소 등록</a></li>
 								<li><a href="#">객실 등록</a></li>
-								<li><a href="#">사진 등록</a></li>
-								<li class="active"><a href="#">약관 동의</a></li>
 							</ul>
 						</nav>
 						<hr>
 						<div>&nbsp;</div>
 						<h2>호스트 이용약관</h2>
-
-						<h4>제 1장 총칙</h4>
+						<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>					
+						<div style="overflow:scroll;width:700px; height:600px;">
 						<p>
+							제 1장 총칙<br>
 							제 1조 [목적]<br> 이 약관은 애숙이(이하 "회사"라 함)와 제휴점(이하 "회원"이라 함)간에
 							"회사"가 제공하는 광고플랫폼 및 숙박예약 서비스인 애숙이 및 제반 서비스(이하 “서비스”라함)를 유선 또는 무선
 							인터넷 등의 수단으로 이용함에 있어 "회사"와 "회원"간의 권리, 이용에 관한 제반 사항과 기타 필요한 사항을
@@ -279,24 +280,39 @@
 							주소지를 관할하는 지방 법원을 합의관할로 지정하여 대한민국 법령에 준거하여 소송을 진행합니다.<br> <br>
 							부칙 (시행일)<br> 본 약관은 2018년 5월 28일부터 적용합니다.<br>
 						</p>
-
-						<div class="text-right">
-							<label><input type="checkbox"> 이용약관에 동의합니다.</label>
 						</div>
-						<div class="text-right">
-							<button class="btn btn-info">등록</button>
-							<button type="button" class="btn btn-success" onclick="history.go(-1);">이전</button>
-						</div>
+						<div>&nbsp;</div>
+						<form action="insertHotels.do" method="post">						
+							<div class="text-right">
+								<label><input type="checkbox" name="agree" id="agree"> 이용약관에 동의합니다.</label>
+							</div>
+							<div class="text-right">
+								<button class="btn btn-info" type="submit" id="submit">다음</button>
+							</div>
+						</form>
 						<div>&nbsp;</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</div>	
 	<%@ include file="footer.jspf"%>
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#submit").on("click", function() {
+				if($("input:checkbox[id=agree]").is(":checked") == true) {
+				  
+				} 
+				if($("input:checkbox[id=agree]").is(":checked") == false) {
+					alert('약관에 동의해주세요.');
+					return false;
+				}
+			});
+		})
+	
+</script>
 </body>
 </html>
