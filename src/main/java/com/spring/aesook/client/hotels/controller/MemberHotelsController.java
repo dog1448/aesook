@@ -69,8 +69,6 @@ public class MemberHotelsController {
 	public String inserHotelsAll(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO, Model model) {
 		model.addAttribute("memberHotelsVO", memberHotelsVO);
 		model.addAttribute("memberFacilityVO", memberFacilityVO);
-		System.out.println(memberHotelsVO.toString());
-		System.out.println(memberFacilityVO.toString());
 		return "/insertRoomSort";
 	}
 	
@@ -78,8 +76,7 @@ public class MemberHotelsController {
 	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)	
 	public String InsertRoomSort(
 			MemberHotelsVO memberHotelsVO,
-			MemberHotelsFacilityVO memberFacilityVO,
-			//VO 자체를 배열로 해볼라고 했는데 계속 안먹어서 이렇게함... 
+			MemberHotelsFacilityVO memberFacilityVO,			
 			@RequestParam("roomName") String[] roomName,			
 			@RequestParam("roomSort") String[] roomSort,			
 			@RequestParam("roomStandardCnt") int[] roomStandardCnt,			
@@ -95,7 +92,7 @@ public class MemberHotelsController {
 		//Get Dual hotels.sequence
 		int hotelsCode = memberHotelsService.getHotelsCode();
 		
-		//여기서 리스트에 담아서 해야 모델 넘길 때 편하니.. 서비스가서 하기 좀 그럴꺼 같았음..
+		
 		for(int i=0; i<roomName.length; i++) {
 			MemberRoomVO vo = new MemberRoomVO();
 			vo.setHotelsCode(hotelsCode);
@@ -103,7 +100,6 @@ public class MemberHotelsController {
 			vo.setRoomSort(roomSort[i]);
 			vo.setRoomStandardCnt(roomStandardCnt[i]);
 			vo.setRoomMaxCnt(roomMaxCnt[i]);
-			vo.setRoomRoomCnt(1);
 			vo.setRoomStandardPrice(roomStandardPrice[i]);
 			vo.setRoomHolidayPrice(roomHolidayPrice[i]);
 			vo.setRoomAddPrice(roomAddPrice[i]);
@@ -115,6 +111,7 @@ public class MemberHotelsController {
 		memberHotelsService.insertHotels(memberHotelsVO, hotelsCode, memberId);
 		memberRoomService.insertRoom(roomList);
 		
+
 		return "redirect:registeredAccommodation.do";
 	}
 	

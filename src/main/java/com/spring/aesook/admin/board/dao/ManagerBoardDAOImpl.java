@@ -41,6 +41,16 @@ public class ManagerBoardDAOImpl implements ManagerBoardDAO{
 	public void deleteBoard(ManagerBoardVO vo) {
 		sqlSessionTemplate.update(namespace+".deleteBoard",vo);		
 	}
+
+	@Override
+	public void insertBoardReply(ManagerBoardVO vo) {
+		sqlSessionTemplate.update(namespace+".insertBoardReply",vo);
+	}
+
+	@Override
+	public void increaseCnt(ManagerBoardVO vo) {
+		sqlSessionTemplate.update(namespace+".increaseCnt",vo);
+	}
 	
 	
 	

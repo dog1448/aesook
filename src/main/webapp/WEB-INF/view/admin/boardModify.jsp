@@ -27,11 +27,11 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-7">
-										<form role="form" action="updateBoard.admin" onclick="return modibtClick()" method="post">
-											<input type="hidden" value="#gourp"> <input
-												type="hidden" value="#step"> <input type="hidden"
-												value="#depth">
+										<form role="form" method="post">
+											<input type="hidden" name="BoardSeq" value="${board.boardSeq }">
+												
 											<fieldset id="field" disabled>
+												
 												<div class="form-group">
 													<label>Board_Title</label>
 													<textarea class="form-control" id="test" name="BoardTitle">${board.boardTitle }</textarea>
@@ -42,7 +42,7 @@
 												</div>
 												<div class="form-group">
 													<label>IP</label> <input class="form-control" disabled
-														value=${board.boardIp } name="BoardIp">
+														value="${board.boardIp }" name="BoardIp">
 												</div>
 												<div class="form-group">
 													<label>Board_Date</label>
@@ -51,6 +51,7 @@
 												</div>
 												<div class="form-group">
 													<label>Board_Type</label> <select class="form-control" name="BoardType">
+														<option value="${board.boardType }" selected disabled hidden>${board.boardType }</option>
 														<option>Q</option>
 														<option>F</option>
 														<option>N</option>
@@ -60,12 +61,11 @@
 											</fieldset>
 
 											<div class="col-lg-12">
-												<button type="submit" class="btn btn-default float-left">Modify</button>
-												<button type="button" class="btn btn-default float-left">Delete</button>
-												<button type="button" class="btn btn-default float-left"
-													onclick="location='boardList.admin'">Cancel</button>
-												<button type="button" class="btn btn-warning float-left"
-													id="disbt">disable</button>
+												<button type="submit" class="btn btn-default float-left modibt">Modify</button>
+												<button type="button" class="btn btn-default float-left deletebt">Delete</button>
+												<button type="button" class="btn btn-default float-left canclebt">Cancel</button>
+												<button type="button" class="btn btn-warning float-left" id="disbt">disable</button>
+												<button type="submit" class="btn btn-warning float-left replybt">Reply</button>
 											</div>
 										</form>
 									</div>
@@ -94,6 +94,7 @@
 
 			var cnt = 0;
             $(document).ready(function() {
+            	var formObj = $("form[role='form']");
                 var isDisabled = $("#field").attr("disabled");
                 $('#test').on('keyup', function() {
 
@@ -109,13 +110,41 @@
                 $('#test2').on('keyup', function() {
 
 
-
+					
                     if($(this).val().length > 5000) {
 
                         $(this).val($(this).val().substring(0, 5000));
 
                     }
                 });
+                
+                $(".modibt").on("click",function() {
+                	if(cnt==0){
+                		alert("Disable을 해주세요.");
+                		return false;
+                	}else if(cnt>0){
+                    formObj.attr("action","updateBoard.admin");
+                    formObj.attr("method","post");
+                    formObj.submit();
+                	}
+                });
+
+                $(".replybt").on("click",function () {
+                    formObj.attr("action","moveAdminReply.admin");
+                    formObj.attr("method","get");
+                    formObj.submit();
+                })
+
+                $(".deletebt").on("click",function() {
+                    formObj.attr("action","deleteAdminBoard.admin");
+                    formObj.submit();
+                });
+
+                $(".canclebt").on("click",function () {
+                    self.location = "/aesook/boardList.admin"
+                });
+                
+                
             });
 
 
@@ -125,14 +154,7 @@
                     cnt++;
             });
             
-           function modibtClick(){
-            	if(cnt==0){
-            		alert("Disable을 해주세요.");
-            		return false;
-            	}else if(cnt>0){
-            		return true;
-            	}
-            }
+          
             
             
             

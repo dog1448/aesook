@@ -33,7 +33,6 @@
 		#{item.roomSort},
 		#{item.roomStandardCnt},
 		#{item.roomMaxCnt},
-		#{item.roomRoomCnt},
 		#{item.roomStandardPrice},
 		#{item.roomHolidayPrice},
 		#{item.roomAddPrice},

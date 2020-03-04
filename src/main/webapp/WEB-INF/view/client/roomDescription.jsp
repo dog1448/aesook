@@ -37,6 +37,25 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
+        
+          <!-- Testimonial Section Begin -->
+        <section class="testimonial-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="testimonial-slider owl-carousel">
+                            <div class="ts-item">
+                                <img src="resources/client/images/room-1.jpg" alt="">
+                            </div>
+                            <div class="ts-item">
+                                <img src="resources/client/images/room-2.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonial Section End -->
 
         <!-- Breadcrumb Section Begin -->
         <div class="breadcrumb-section">
@@ -63,7 +82,6 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="room-details-item">
-
                             <div class="rd-text">                                
                                 <h2>${memberRoomVO.roomStandardPrice} ￦<span>&nbsp;&nbsp;&nbsp;숙박</span></h2>
                                 <table>
@@ -92,7 +110,7 @@
                                 
                                 <h2>취소규정</h2>
                                 <p>취소규정(애숙이 방침)</p>
-                            </div>
+                            </div>                           
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -101,21 +119,29 @@
                             <form action="#">
                                 <div class="check-date">
                                     <label for="date-in">체크인:</label>
-                                    <input type="text" class="date-input" id="date-in">
+                                    <input type="text" class="date-input" id="date-in" name="bookingCheckIn">
                                     <i class="icon_calendar"></i>
                                 </div>
                                 <div class="check-date">
                                     <label for="date-out">체크아웃:</label>
-                                    <input type="text" class="date-input" id="date-out">
+                                    <input type="text" class="date-input" id="date-out" name="bookingCheckOut">
                                     <i class="icon_calendar"></i>
                                 </div>
                                 <div class="select-option">
                                     <label for="guest">인원:</label>
-                                    <select id="guest">
-                                        <option value="">1</option>
-                                        <option value="">2</option>
+                                    <select id="guest" name="bookingCnt">
+                                        <option value="">1</option>                                       
                                     </select>
                                 </div>
+                                <div>
+									<label for="email">에약자 이름</label>
+									<input type="text" id="email" class="form-control" placeholder="이름을 입력하세요">
+								</div>
+								<div>&nbsp;</div>
+								<div>
+									<label for="email">예약자 전화번호</label>
+									<input type="text" id="email" class="form-control" placeholder="-를 붙여 입력하세요.">
+								</div>                               
                                 <button type="submit"><a href="payment.do">예약하기</a></button>
                             </form>
                         </div>
