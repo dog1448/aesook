@@ -61,7 +61,6 @@ public class ManagerDataListController {
 	
 	@RequestMapping(value = "/updateHotel.admin", method =RequestMethod.POST)
 	public String updateHotel(ManagerHotelsVO vo) {
-		System.out.println(vo);
 		managerHotelService.updateHotel(vo);
 		return "redirect:/hotelsTable.admin";
 	}
