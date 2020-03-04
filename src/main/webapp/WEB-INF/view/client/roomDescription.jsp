@@ -38,27 +38,6 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
 
-
-        <!-- Testimonial Section Begin -->
-        <section class="testimonial-section spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <div class="testimonial-slider owl-carousel">
-                            <div class="ts-item">
-                                <img src="resources/client/images/room-details.jpg" alt="">
-                            </div>
-                            <div class="ts-item">
-                                <img src="resources/client/images/room-details.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonial Section End -->
-
         <!-- Breadcrumb Section Begin -->
         <div class="breadcrumb-section">
             <div class="container">
