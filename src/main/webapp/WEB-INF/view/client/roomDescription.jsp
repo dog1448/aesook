@@ -37,6 +37,25 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
+        
+          <!-- Testimonial Section Begin -->
+        <section class="testimonial-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="testimonial-slider owl-carousel">
+                            <div class="ts-item">
+                                <img src="resources/client/images/room-1.jpg" alt="">
+                            </div>
+                            <div class="ts-item">
+                                <img src="resources/client/images/room-2.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonial Section End -->
 
         <!-- Breadcrumb Section Begin -->
         <div class="breadcrumb-section">
@@ -108,14 +127,7 @@
                                     <label for="date-out">체크아웃:</label>
                                     <input type="text" class="date-input" id="date-out">
                                     <i class="icon_calendar"></i>
-                                </div>
-                                <div class="select-option">
-                                    <label for="guest">인원:</label>
-                                    <select id="guest">
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                    </select>
-                                </div>
+                                </div>                               
                                 <button type="submit"><a href="payment.do">예약하기</a></button>
                             </form>
                         </div>
