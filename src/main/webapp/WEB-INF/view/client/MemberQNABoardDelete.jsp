@@ -93,7 +93,7 @@
             <caption> 게시글 삭제</caption>
             </thead>
             <tbody>
-            <form role="form" id="writeForm" method="post" action="${path}/deleteQNA.do">
+            <form role="form" id="deleteForm" method="post" action="${path}/deleteQNA.do">
                 <input type="hidden" name="boardTitle" id="boardTitle" value="삭제된 게시글입니다.">
                 <input type="hidden" name="boardContent" id="boardContent" value="삭제된 게시글입니다.">
                 <input type="hidden" name="boardSeq" id="boardSeq" value="${board.boardSeq}">
@@ -101,12 +101,9 @@
                 <div class="form-group">
                     <tr>
                         <th>비밀번호 확인 :</th>
-                        <td><input type="password" placeholder="비밀번호를 입력하세요." id="password"
-                                   class="form-control"/></td>
+                        <td><input type="password" placeholder="비밀번호를 입력하세요." id="password1" class="form-control"/></td>
                     </tr>
                 </div>
-
-
 
 
                 <div class="form-group">
@@ -133,7 +130,8 @@
                         <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
                         <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
                         <a class="btn btn-default" type="reset"> 초기화 </a>
-                        <a class="btn btn-default" onclick="javascript:location.href='/FAQ_Board.do'">글 목록으로...</a>
+                        <a class="btn btn-default" onclick="javascript:location.href='${path}/MemberBoard.do'">글
+                            목록으로...</a>
                     </td>
                 </tr>
             </form>
@@ -153,16 +151,31 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var formObj = $("form[role='form']");
-        var password = $('#password');
+        var password = $('#password1');
+        var sessionPw = '${pw}';
 
-        if(password === ${pw}) {
-            $(".delBtn").on("click", function () {
+        $(".delBtn").on("click", function () {
+            if (password.val() === '') {
+                alert("비밀번호를 입력하세요.");
+                return false;
+            }
+
+            if (password.val() === sessionPw) {
                 formObj.submit();
-            });
-        }else {
-            alert("비밀번호가 다릅니다.")
-        }
+                return true;
+            }
+            if (password.val() !==sessionPw) {
+                alert("비밀번호가 다릅니다.");
+                console.log(password);
+                return false;
+            }
+            if (sessionPw === "020211"){
+                alert("맞아요")
+            }
+
+        });
     });
+
 
 </script>
 
