@@ -63,8 +63,11 @@ public class MemberBookingController {
 		memberBookingCheckService.cancelBooking(vo.getBookingCode());
 		return "redirect:canceledBookingList.do";
 	}
-
 	
+	@RequestMapping(value="/payment.do", method = RequestMethod.GET)
+	public String movePayment() {
+		return "/payment";
+	}
 	
 	
 }
