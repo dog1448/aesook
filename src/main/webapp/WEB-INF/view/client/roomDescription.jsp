@@ -134,7 +134,7 @@
                                     </select>
                                 </div>
                                 <div>
-									<label for="email">에약자 이름</label>
+									<label for="email">예약자 이름</label>
 									<input type="text" id="email" class="form-control" placeholder="이름을 입력하세요">
 								</div>
 								<div>&nbsp;</div>
