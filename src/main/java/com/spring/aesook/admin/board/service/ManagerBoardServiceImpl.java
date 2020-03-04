@@ -39,4 +39,14 @@ public class ManagerBoardServiceImpl implements ManagerBoardService {
 		managerBoardDAO.deleteBoard(vo);
 	}
 
+	@Override
+	public void insertBoardReply(ManagerBoardVO vo) {
+		managerBoardDAO.insertBoardReply(vo);
+	}
+
+	@Override
+	public void increaseCnt(ManagerBoardVO vo) {
+		managerBoardDAO.increaseCnt(vo);
+	}
+
 }
