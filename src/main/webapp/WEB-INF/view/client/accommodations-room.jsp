@@ -7,167 +7,127 @@
 <head>
 <%@include file="head.jspf"%>
 <style type="text/css">
-.slider {
-	width: 90vmin;
-	height: 90vmin;
-	-webkit-perspective: 100vmin;
-	perspective: 100vmin;
-	margin: auto;
-	-webkit-perspective-origin: top center;
-	perspective-origin: top center;
-	position: relative;
-	box-sizing: border-box;
-}
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
 
-.slider__item {
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	padding-top: 15vmin;
-	box-sizing: border-box;
-	-webkit-transition: -webkit-transform 0.18s ease;
-	transition: -webkit-transform 0.18s ease;
-	transition: transform 0.18s ease;
-	transition: transform 0.18s ease, -webkit-transform 0.18s ease;
-}
-
-.slider__item:nth-child(1) {
-	-webkit-transform: translate3d(0, 0, 0vmin);
-	transform: translate3d(0, 0, 0vmin);
-	-webkit-transition-delay: 0s;
-	transition-delay: 0s;
-	z-index: 7;
-}
-
-.slider__item:nth-child(2) {
-	-webkit-transform: translate3d(0, 0, -15vmin);
-	transform: translate3d(0, 0, -15vmin);
-	-webkit-transition-delay: 0.05s;
-	transition-delay: 0.05s;
-	z-index: 6;
-}
-
-.slider__item:nth-child(3) {
-	-webkit-transform: translate3d(0, 0, -30vmin);
-	transform: translate3d(0, 0, -30vmin);
-	-webkit-transition-delay: 0.1s;
-	transition-delay: 0.1s;
-	z-index: 5;
-}
-
-.slider__item:nth-child(4) {
-	-webkit-transform: translate3d(0, 0, -45vmin);
-	transform: translate3d(0, 0, -45vmin);
-	-webkit-transition-delay: 0.15s;
-	transition-delay: 0.15s;
-	z-index: 4;
-}
-
-.slider__item:nth-child(5) {
-	-webkit-transform: translate3d(0, 0, -60vmin);
-	transform: translate3d(0, 0, -60vmin);
-	-webkit-transition-delay: 0.2s;
-	transition-delay: 0.2s;
-	z-index: 3;
-}
-
-.slider__item:nth-child(6) {
-	-webkit-transform: translate3d(0, 0, -75vmin);
-	transform: translate3d(0, 0, -75vmin);
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.25s;
-	z-index: 2;
-}
-
-.slider__item:nth-child(7) {
-	-webkit-transform: translate3d(0, 0, -90vmin);
-	transform: translate3d(0, 0, -90vmin);
-	-webkit-transition-delay: 0.3s;
-	transition-delay: 0.3s;
-	z-index: 1;
-}
-
-.slider__item:nth-child(8) {
-	-webkit-transform: translate3d(0, 0, -105vmin);
-	transform: translate3d(0, 0, -105vmin);
-	-webkit-transition-delay: 0.35s;
-	transition-delay: 0.35s;
-	z-index: 0;
-}
-
-.slider__image {
-	width: 100%;
-	height: 80%;
-	background-color: #999;
-	border: 1.5vmin solid #eee;
-	box-sizing: border-box;
-	box-shadow: 0px 3vmin 3vmin rgba(0, 0, 0, 0.75), 0 -1.5vmin 2.7vmin
-		rgba(0, 0, 0, 0.75);
-	overflow: hidden;
-	display: block;
-	-webkit-transition: opacity 0.2s ease, -webkit-transform 0.18s ease;
-	transition: opacity 0.2s ease, -webkit-transform 0.18s ease;
-	transition: transform 0.18s ease, opacity 0.2s ease;
-	transition: transform 0.18s ease, opacity 0.2s ease, -webkit-transform
-		0.18s ease;
-	-webkit-transform-origin: bottom center;
-	transform-origin: bottom center;
-}
-
-.slider__caption {
-	height: 20%;
-	font-weight: bold;
-	color: rgba(255, 255, 255, 0.8);
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-}
-
-.slider__btn {
-	position: absolute;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	right: 0;
-	width: 9vmin;
-	height: 9vmin;
-	margin: 2vmin auto;
-	border-right: 2vmin solid rgba(051, 051, 051, 0.8);
-	border-bottom: 2vmin solid rgba(051, 051, 051, 0.65);
-	z-index: 100;
-	cursor: pointer;
-	-webkit-transform: perspective(10vmin) rotateX(-30deg) rotateZ(45deg);
-	transform: perspective(10vmin) rotateX(-30deg) rotateZ(45deg);
+	z-index: 10;
+}
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+	margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	z-index: 1;
+}
+/* Declare heights because of positioning of img element */
+.carousel .item {
+	height: 500px;
+	background-color: #555;
 }
 
-.slider__btn:active {
-	border-right-color: #dd6;
-	border-bottom-color: #dd6;
+.carousel img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 400px;
+}
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Pad the edges of the mobile views a bit */
+.marketing {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.marketing h2 {
+	font-weight: normal;
+}
+
+.marketing .col-lg-4 p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* Featurettes
+------------------------- */
+.featurette-divider {
+	margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+.featurette {
+	padding-top: 120px;
+	/* Vertically center images part 1: add padding above and below text. */
+	overflow: hidden;
+	/* Vertically center images part 2: clear their floats. */
+}
+
+.featurette-image {
+	margin-top: -120px;
+	/* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+}
+
+/* Give some space on the sides of the floated elements so text doesn't run right into it. */
+.featurette-image.pull-left {
+	margin-right: 40px;
+}
+
+.featurette-image.pull-right {
+	margin-left: 40px;
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+	font-size: 50px;
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -1px;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media ( min-width : 768px) {
+	/* Remve the edge padding needed for mobile */
+	.marketing {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	/* Navbar positioning foo */
+	.navbar-wrapper {
+		margin-top: 20px;
+		margin-bottom: -90px;
+		/* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+	}
+	/* The navbar becomes detached from the top, so we round the corners */
+	.navbar-wrapper .navbar {
+		border-radius: 4px;
+	}
+
+	/* Bump up size of carousel content */
+	.carousel-caption p {
+		margin-bottom: 20px;
+		font-size: 21px;
+		line-height: 1.4;
+	}
 }
 </style>
-<script type="text/javascript">
-	$(function() {
-		var btn = $(".slider__btn");
-
-		btn.on("click", function() {
-			$(".slider__item").first().clone().appendTo(".slider");
-			$(".slider__image").first().css({
-				transform : "rotateX(-180deg)",
-				opacity : 0
-			});
-			setTimeout(function() {
-				$(".slider__item").first().remove();
-			}, 200);
-		});
-	});
-</script>
 </head>
 
 <body>
@@ -179,42 +139,36 @@
 		<div class="colorlib-wrap">
 			<div class="container">
 				<div class="row">
-					<div class="slider">
-						<figure class="slider__item">
-							<img class="slider__image" src="resources/client/images/room-1.jpg" />
-							<figcaption class="slider__caption"></figcaption>
-						</figure>
-						<figure class="slider__item">
-							<img class="slider__image" src="resources/client/images/room-1.jpg" />
-							<figcaption class="slider__caption"></figcaption>
-						</figure>
-						<figure class="slider__item">
-							<img class="slider__image" src="resources/client/images/room-1.jpg" />
-							<figcaption class="slider__caption"></figcaption>
-						</figure>
-						<figure class="slider__item">
-							<img class="slider__image" src="resources/client/images/room-1.jpg" />
-							<figcaption class="slider__caption"></figcaption>
-						</figure>
-						<figure class="slider__item">
-							<img class="slider__image" src="resources/client/images/room-1.jpg" />
-							<figcaption class="slider__caption"></figcaption>
-						</figure>
-						<figure class="slider__item">
-							<img class="slider__image" src="resources/client/images/room-1.jpg" />
-							<figcaption class="slider__caption"></figcaption>
-						</figure>
-						<figure class="slider__item">
-							<img class="slider__image" src="resources/client/images/room-1.jpg" />
-							<figcaption class="slider__caption"></figcaption>
-						</figure>
-						<div class="slider__btn"></div>
+					<div id="myCarousel" class="carousel slide">
+						<div class="carousel-inner">
+							<div class="item active">
+								<img src="resources/client/images/room-1.jpg"
+									class="img-responsive" style="width: 1200px; height: 500px;">
+
+							</div>
+							<div class="item">
+								<img src="resources/client/images/room-2.jpg"
+									class="img-responsive" style="width: 1200px; height: 500px;">
+
+							</div>
+							<div class="item">
+								<img src="resources/client/images/room-3.jpg"
+									class="img-responsive" style="width: 1200px; height: 500px;">
+
+							</div>
+						</div>
+						<!-- Controls -->
+						<a class="left carousel-control" href="#myCarousel"
+							data-slide="prev"> <span class="icon-prev"></span>
+						</a> <a class="right carousel-control" href="#myCarousel"
+							data-slide="next"> <span class="icon-next"></span>
+						</a>
 					</div>
-				
+					<!-- /.carousel -->
 					<div class="col-md-9">
 						<div class="row">
-
 							<div class="col-md-12">
+
 								<div class="wrap-division">
 									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
 										<h2>${vo.hotelsName}</h2>
@@ -236,12 +190,13 @@
 																<div class="desc">
 																	<h2>${list.roomSort}</h2>
 																	<p class="price">
-																		<span>${list.roomStandardPrice} ￦</span> <small>&nbsp;숙박</small>
+																		평일:&nbsp;<span>${list.roomStandardPrice} ￦</span> <small>&nbsp;숙박</small>
+																	</p>
+																	<p class="price">
+																		주말:&nbsp;<span>${list.roomHolidayPrice} ￦</span> <small>&nbsp;숙박</small>
 																	</p>
 																	<p>기준 : ${list.roomStandardCnt} 명</p>
 																	<p>최대 : ${list.roomMaxCnt} 명</p>
-																	<p>추가요금 : ${list.roomAddPrice} ￦</p>
-																	<p>${list.roomRoomInfo}</p>
 																</div>
 															</div>
 														</div>
@@ -405,7 +360,6 @@
 							</div>
 						</div>
 					</div>
-
 					<!-- SIDEBAR-->
 					<div class="col-md-3">
 						<div class="sidebar-wrap">
@@ -430,21 +384,6 @@
 													<i class="icon icon-calendar2"></i> <input type="text"
 														id="date" class="form-control date"
 														placeholder="Check-out date">
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<label for="guests">인원</label>
-												<div class="form-field">
-													<i class="icon icon-arrow-down3"></i> <select name="people"
-														id="people" class="form-control">
-														<option value="#">1</option>
-														<option value="#">2</option>
-														<option value="#">3</option>
-														<option value="#">4</option>
-														<option value="#">5+</option>
-													</select>
 												</div>
 											</div>
 										</div>
@@ -518,7 +457,6 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-
 </body>
 
 </html>
