@@ -190,13 +190,13 @@
 																<div class="desc">
 																	<h2>${list.roomSort}</h2>
 																	<p class="price">
-																		평일:&nbsp;<span>${list.roomStandardPrice} ￦</span> <small>&nbsp;숙박</small>
-																	</p>
+																		<span>${list.roomStandardPrice} ￦</span> <small>&nbsp;평일</small>
 																	<p class="price">
-																		주말:&nbsp;<span>${list.roomHolidayPrice} ￦</span> <small>&nbsp;숙박</small>
-																	</p>
-																	<p>기준 : ${list.roomStandardCnt} 명</p>
-																	<p>최대 : ${list.roomMaxCnt} 명</p>
+																		<span><font color="red">${list.roomHolidayPrice} ￦</font></span>
+																		<small>&nbsp;공휴일</small></p>
+																	<p>기준 : ${list.roomStandardCnt} 명
+																	&nbsp;/&nbsp;&nbsp;최대 : ${list.roomMaxCnt} 명</p>
+																	<p>인원당 추가요금 : ${list.roomAddPrice} ￦</p>
 																</div>
 															</div>
 														</div>
@@ -364,32 +364,41 @@
 					<div class="col-md-3">
 						<div class="sidebar-wrap">
 							<div class="side search-wrap animate-box">
-								<h3 class="sidebar-heading">방 검색</h3>
+								<h3 class="sidebar-heading">상세 검색</h3>
 								<form method="post" class="colorlib-form">
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-												<label for="date">체크인:</label>
+												<label>체크인</label>
 												<div class="form-field">
-													<i class="icon icon-calendar2"></i> <input type="text"
-														id="date" class="form-control date"
+													<i class="icon icon-calendar2"></i> 
+													<input type="text" id="date-in" class="form-control date"
 														placeholder="Check-in date">
 												</div>
 											</div>
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<label for="date">체크아웃:</label>
+												<label>체크아웃</label>
 												<div class="form-field">
-													<i class="icon icon-calendar2"></i> <input type="text"
-														id="date" class="form-control date"
+													<i class="icon icon-calendar2"></i> 
+													<input type="text" id="date-out" class="form-control date"
 														placeholder="Check-out date">
 												</div>
 											</div>
 										</div>
 										<div class="col-md-12">
+											<div class="form-group">
+												<label for="guests">인원</label>
+												<div class="form-field">
+													<i class="icon icon-pencil"></i> 
+													<input type="text" id="cnt" class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
 											<input type="submit" name="submit" id="submit" value="검색"
-												class="btn btn-primary btn-block">
+												class="btn btn-info btn-block">
 										</div>
 									</div>
 								</form>

@@ -63,6 +63,7 @@ function checkz() {
 										<div class="form-group">
 											<div class="form-field">
 												<div class="col-lg-4">
+													<i class="icon icon-arrow-down3"></i> 
 													<select id="searchCodition" name="searchCondition" class="form-control">
 														<c:forEach items="${conditionMap}" var="option">
 																<option value="${option.value}">${option.key}</option>
