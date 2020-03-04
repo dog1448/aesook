@@ -6,7 +6,6 @@ public class MemberRoomVO {
 	private String roomSort;
 	private int roomStandardCnt;
 	private int roomMaxCnt;
-	private int roomRoomCnt;
 	private int roomStandardPrice;
 	private int roomHolidayPrice;
 	private int roomAddPrice;
@@ -41,13 +40,7 @@ public class MemberRoomVO {
 	}
 	public void setRoomMaxCnt(int roomMaxCnt) {
 		this.roomMaxCnt = roomMaxCnt;
-	}
-	public int getRoomRoomCnt() {
-		return roomRoomCnt;
-	}
-	public void setRoomRoomCnt(int roomRoomCnt) {
-		this.roomRoomCnt = roomRoomCnt;
-	}
+	}	
 	public int getRoomStandardPrice() {
 		return roomStandardPrice;
 	}

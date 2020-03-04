@@ -39,18 +39,18 @@ public class MemberHotelsController {
 	private MemberHotelsFacilityService memberHotelsFacilityService;
 	
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
-	public String moveHotel(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type
+	public String moveHotel(@RequestParam(value = "type", defaultValue = "ȣ��", required = false) String type
 			, Model model) {
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10ByType(type);
 		model.addAttribute("top10", list);
-		if(type.equals("모텔")) {
+		if(type.equals("����")) {
 			return "/motel";
-		} else if(type.equals("펜션")) {
+		} else if(type.equals("���")) {
 			return "/pension";
-		} else if(type.equals("게스트하우스")) {
+		} else if(type.equals("�Խ�Ʈ�Ͽ콺")) {
 			return "/guesthouse";
-		} else if(type.equals("리조트")) {
+		} else if(type.equals("����Ʈ")) {
 			return "/resort";
 		}
 		
@@ -76,8 +76,7 @@ public class MemberHotelsController {
 	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)	
 	public String InsertRoomSort(
 			MemberHotelsVO memberHotelsVO,
-			MemberHotelsFacilityVO memberFacilityVO,
-			//VO 자체를 배열로 해볼라고 했는데 계속 안먹어서 이렇게함... 
+			MemberHotelsFacilityVO memberFacilityVO,			
 			@RequestParam("roomName") String[] roomName,			
 			@RequestParam("roomSort") String[] roomSort,			
 			@RequestParam("roomStandardCnt") int[] roomStandardCnt,			
@@ -93,7 +92,7 @@ public class MemberHotelsController {
 		//Get Dual hotels.sequence
 		int hotelsCode = memberHotelsService.getHotelsCode();
 		
-		//여기서 리스트에 담아서 해야 모델 넘길 때 편하니.. 서비스가서 하기 좀 그럴꺼 같았음..
+		
 		for(int i=0; i<roomName.length; i++) {
 			MemberRoomVO vo = new MemberRoomVO();
 			vo.setHotelsCode(hotelsCode);
@@ -101,7 +100,6 @@ public class MemberHotelsController {
 			vo.setRoomSort(roomSort[i]);
 			vo.setRoomStandardCnt(roomStandardCnt[i]);
 			vo.setRoomMaxCnt(roomMaxCnt[i]);
-			vo.setRoomRoomCnt(1);
 			vo.setRoomStandardPrice(roomStandardPrice[i]);
 			vo.setRoomHolidayPrice(roomHolidayPrice[i]);
 			vo.setRoomAddPrice(roomAddPrice[i]);
