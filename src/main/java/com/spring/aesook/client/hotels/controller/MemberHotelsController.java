@@ -39,18 +39,18 @@ public class MemberHotelsController {
 	private MemberHotelsFacilityService memberHotelsFacilityService;
 	
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
-	public String moveHotel(@RequestParam(value = "type", defaultValue = "È£ÅÚ", required = false) String type
+	public String moveHotel(@RequestParam(value = "type", defaultValue = "í˜¸í…”", required = false) String type
 			, Model model) {
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10ByType(type);
 		model.addAttribute("top10", list);
-		if(type.equals("¸ğÅÚ")) {
+		if(type.equals("ëª¨í…”")) {
 			return "/motel";
-		} else if(type.equals("Ææ¼Ç")) {
+		} else if(type.equals("íœì…˜")) {
 			return "/pension";
-		} else if(type.equals("°Ô½ºÆ®ÇÏ¿ì½º")) {
+		} else if(type.equals("ê²ŒìŠ¤íŠ¸í•˜ìš°ìŠ¤")) {
 			return "/guesthouse";
-		} else if(type.equals("¸®Á¶Æ®")) {
+		} else if(type.equals("ë¦¬ì¡°íŠ¸")) {
 			return "/resort";
 		}
 		
@@ -69,8 +69,6 @@ public class MemberHotelsController {
 	public String inserHotelsAll(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO, Model model) {
 		model.addAttribute("memberHotelsVO", memberHotelsVO);
 		model.addAttribute("memberFacilityVO", memberFacilityVO);
-		System.out.println(memberHotelsVO.toString());
-		System.out.println(memberFacilityVO.toString());
 		return "/insertRoomSort";
 	}
 	
@@ -79,7 +77,7 @@ public class MemberHotelsController {
 	public String InsertRoomSort(
 			MemberHotelsVO memberHotelsVO,
 			MemberHotelsFacilityVO memberFacilityVO,
-			//VO ÀÚÃ¼¸¦ ¹è¿­·Î ÇØº¼¶ó°í Çß´Âµ¥ °è¼Ó ¾È¸Ô¾î¼­ ÀÌ·¸°ÔÇÔ... 
+			//VO ìì²´ë¥¼ ë°°ì—´ë¡œ í•´ë³¼ë¼ê³  í–ˆëŠ”ë° ê³„ì† ì•ˆë¨¹ì–´ì„œ ì´ë ‡ê²Œí•¨... 
 			@RequestParam("roomName") String[] roomName,			
 			@RequestParam("roomSort") String[] roomSort,			
 			@RequestParam("roomStandardCnt") int[] roomStandardCnt,			
@@ -95,7 +93,7 @@ public class MemberHotelsController {
 		//Get Dual hotels.sequence
 		int hotelsCode = memberHotelsService.getHotelsCode();
 		
-		//¿©±â¼­ ¸®½ºÆ®¿¡ ´ã¾Æ¼­ ÇØ¾ß ¸ğµ¨ ³Ñ±æ ¶§ ÆíÇÏ´Ï.. ¼­ºñ½º°¡¼­ ÇÏ±â Á» ±×·²²¨ °°¾ÒÀ½..
+		//ì—¬ê¸°ì„œ ë¦¬ìŠ¤íŠ¸ì— ë‹´ì•„ì„œ í•´ì•¼ ëª¨ë¸ ë„˜ê¸¸ ë•Œ í¸í•˜ë‹ˆ.. ì„œë¹„ìŠ¤ê°€ì„œ í•˜ê¸° ì¢€ ê·¸ëŸ´êº¼ ê°™ì•˜ìŒ..
 		for(int i=0; i<roomName.length; i++) {
 			MemberRoomVO vo = new MemberRoomVO();
 			vo.setHotelsCode(hotelsCode);
@@ -115,6 +113,7 @@ public class MemberHotelsController {
 		memberHotelsService.insertHotels(memberHotelsVO, hotelsCode, memberId);
 		memberRoomService.insertRoom(roomList);
 		
+
 		return "redirect:registeredAccommodation.do";
 	}
 	

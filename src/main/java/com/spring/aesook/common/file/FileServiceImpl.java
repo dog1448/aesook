@@ -19,7 +19,9 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.image.vo.MemberBrnImageVO;
+import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 
 @Service("fileService")
 public class FileServiceImpl implements FileService {
@@ -80,12 +82,53 @@ public class FileServiceImpl implements FileService {
 			}
 		}
 		
+		// 다시 손볼것
+	     public void remove(String filePath, String voName) {
+		      
+		      // dirIndex에 -1이 들어오면 업로드를 처음 요청하는 상황이므로  바로 return: 메서드 종료
+		      
+		      if(filePath == null){
+		         return;
+		      }
+		      
+		      int dirIndex = filePath.indexOf(voName);
+		      if (dirIndex == -1 ) {
+		         System.out.println("업로드 첫 요청");
+		         return;
+		      }
+		      
+		      String fixedPath = context.getRealPath("/") + filePath.substring(dirIndex);
+		      System.out.println("fixedPath : " + fixedPath);
+		      
+		      
+		      File toRemoveFile = new File(fixedPath);
+		      if(toRemoveFile.exists()) {
+		         if(toRemoveFile.delete()) {
+		            System.out.println("삭제 완료");
+		         }
+		      }
+		      else {
+		         System.out.println("경로에 파일이 없습니다.");
+		      }
+		      
+		      
+	    }
+		
 		public MemberBrnImageVO getMemberBrnImageFile(FileVO file) {
 			MemberBrnImageVO vo = new MemberBrnImageVO();
 			vo.setBrnImageName(file.getFileName());
 			vo.setBrnImageOrigin(file.getOriginName());
 			vo.setBrnImagePath(file.getSavePath());
 			vo.setBrnImageExtension(file.getExtension());
+			return vo;
+		}
+		
+		public MemberHotelsImageVO getMemberHotelsImageFile(FileVO file) {
+			MemberHotelsImageVO vo = new MemberHotelsImageVO();
+			vo.setHotelsImageName(file.getFileName());
+			vo.setHotelsImageOrigin(file.getOriginName());
+			vo.setHotelsImagePath(file.getSavePath());
+			vo.setHotelsImageExtension(file.getExtension());
 			return vo;
 		}
 		
