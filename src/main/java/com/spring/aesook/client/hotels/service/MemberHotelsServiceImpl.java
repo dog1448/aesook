@@ -26,7 +26,7 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 		memberHotelsDAO.insertHotels(vo);
 	}
 	
-	//내가(호텔사장이) 등록한 호텔 리스트
+	//Host's hotels
 	@Override
 	public List<MemberHotelsVO> getMyHotels(MemberVO vo) {
 		return memberHotelsDAO.getMyHotels(vo);
