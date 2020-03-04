@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.spring.aesook.admin.board.service.ManagerBoardService;
 import com.spring.aesook.admin.board.vo.ManagerBoardVO;
 
@@ -38,17 +37,38 @@ public class ManagerBoardController {
 	}
 	
 	@RequestMapping(value = "boardModify.admin", method = RequestMethod.GET)
-	public String moveAdminBoardModify(@RequestParam int boardSeq, Model model) {
+	public String moveAdminBoardModify(@RequestParam Integer boardSeq, Model model) {
 		ManagerBoardVO vo = managerBoardService.getBoard(boardSeq);
+		managerBoardService.increaseCnt(vo);
+		System.out.println(vo);
 		model.addAttribute("board",vo);
 		return "/boardModify";
 	}
 	
 	@RequestMapping(value = "updateBoard.admin", method = RequestMethod.POST)
 	public String updateAdminBoard(ManagerBoardVO vo) {
+		System.out.println(vo);
 		managerBoardService.updateBoard(vo);
-		return "redirect:/boardList.admin";
+		return "redirect:boardList.admin";
 	}
-	
+
+    @RequestMapping(value = "moveAdminReply.admin",method = RequestMethod.GET)
+	public String moveAdminBoardReply(@RequestParam("BoardSeq") Integer boardSeq, Model model) {
+    	System.out.println(boardSeq);
+		model.addAttribute("reply", managerBoardService.getBoard(boardSeq));
+		return "/boardReply";
+	}
+    
+    @RequestMapping(value="insertBoardReply.admin", method=RequestMethod.POST)
+    public String insertAdminBoardReply(ManagerBoardVO vo) {
+    	managerBoardService.insertBoardReply(vo);
+    	return "redirect:boardList.admin";
+    }
+    
+    @RequestMapping(value = "deleteAdminBoard.admin", method = RequestMethod.POST)
+    public String deleteAdminBoard(ManagerBoardVO vo) {
+    	managerBoardService.deleteBoard(vo);
+    	return "redirect:boardList.admin"; 
+    }
 	
 }

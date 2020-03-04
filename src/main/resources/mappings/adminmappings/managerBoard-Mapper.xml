@@ -36,9 +36,34 @@
 	</insert>
   
   	<select id="getListBoard" resultType="managerBoard" parameterType="managerBoard"> 
-		SELECT *
-		FROM BOARD 
-		order by BOARD_SEQ desc
+		<![CDATA[
+
+
+		select * from
+              (
+             select ROWNUM as rnum,
+                    data.*
+             from (
+                      select level,
+                             BOARD_SEQ,
+                             BOARD_TITLE,
+                             BOARD_TYPE,
+                             BOARD_GROUP,
+                             BOARD_STEP,
+                             BOARD_DEPTH,
+                             BOARD_CONTENT,
+                             BOARD_DATE,
+                             BOARD_WRITER,
+                             BOARD_IP,
+                             BOARD_READCOUNT
+                      from BOARD 
+                      start with BOARD_STEP =0
+                      connect by prior BOARD_SEQ = BOARD_STEP
+                      order SIBLINGS BY BOARD_STEP desc
+                  )
+        data
+    )
+        ]]>
 	</select>
   
   <select id="getBoard" resultType="managerBoard" parameterType="managerBoard">
@@ -50,6 +75,48 @@
   	SET board_title=#{boardTitle}, board_content=#{boardContent},
   	board_type=#{boardType}
   	WHERE board_seq=#{boardSeq}
+  </update>
+  
+  <insert id="insertBoardReply" parameterType="managerBoard">
+  	INSERT INTO board (
+	Board_Seq,
+	Board_Writer,
+	Board_Title,
+	Board_Content,
+	Board_Group,
+	Board_Step,
+	Board_Depth,
+	Board_Readcount,
+	Board_Ip,
+	Board_Date,
+	Board_Type
+	)
+	values(
+	BOARD_SEQ.nextval
+	,'관리자'
+	,#{BoardTitle}
+	,#{BoardContent}
+	,#{BoardGroup}
+	,#{BoardStep}
+	,#{BoardDepth}
+	,#{BoardReadcount}
+	,#{BoardIp}
+	,TO_DATE(sysdate,'yyyy.mm.dd')
+	,#{BoardType}
+	)
+  </insert>
+  
+  <update id="deleteBoard" parameterType="managerBoard">
+  UPDATE Board SET
+  board_title='삭제된 게시글입니다.',
+  board_content='삭제된 게시글입니다.'
+  WHERE board_seq=#{BoardSeq}
+  </update>
+  
+  <update id="increaseCnt" parameterType="managerBoard">
+  UPDATE Board SET
+  board_readcount=#{BoardReadcount}+1
+  WHERE board_seq=#{boardSeq}
   </update>
   
   </mapper>

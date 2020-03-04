@@ -49,8 +49,8 @@
                                                     <td>${boardList.boardSeq}</td>
                                                     <td>${boardList.boardWriter}</td>
                                                     <td><a href="boardModify.admin?boardSeq=${boardList.boardSeq}">${boardList.boardTitle }</a></td>
-                                                    <td>${boardList.boardReadcount }</td>
-                                                    <td class="text-center"><fmt:formatDate value="${boardList.boardDate}"/></td>
+                                                    <td class="text-center">${boardList.boardReadcount }</td>
+                                                    <td class="text-center"><fmt:formatDate value="${boardList.boardDate}" pattern="yy/MM/dd"/></td>
                                                     <td class="center">${boardList.boardIp }</td>
                                                     <td class="text-center">${boardList.boardType}</td>
                                                     <td>show me the</td>
@@ -80,6 +80,7 @@
             $(document).ready(function() {
                 var table = $('#dataTables-example').DataTable({
                         responsive: true,
+                        "ordering" : false,
                         scrollY: "100%",
                         columnDefs: [
                         { targets: 0, width:'5%' }, // Board_No
