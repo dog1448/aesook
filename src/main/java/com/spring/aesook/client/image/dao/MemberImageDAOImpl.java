@@ -1,10 +1,13 @@
 package com.spring.aesook.client.image.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.client.image.vo.MemberBrnImageVO;
+import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 
 @Repository("memberImageDAO")
 public class MemberImageDAOImpl implements MemberImageDAO {
@@ -18,4 +21,8 @@ public class MemberImageDAOImpl implements MemberImageDAO {
 		sqlSessionTemplate.insert(namespace+".insertMemberBrnImage", vo);
 	}
 	
+	public void insertMemberHotelsImage(List<MemberHotelsImageVO> vo) {
+		sqlSessionTemplate.insert(namespace + ".insertMemberHotelsImage", vo);
+	}
 }
+ 

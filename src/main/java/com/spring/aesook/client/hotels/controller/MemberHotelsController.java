@@ -30,18 +30,18 @@ public class MemberHotelsController {
 	MemberHotelsListService memberHotelsListService;
 	
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
-	public String moveHotel(@RequestParam(value = "type", defaultValue = "í˜¸í…”", required = false) String type
+	public String moveHotel(@RequestParam(value = "type", defaultValue = "È£ÅÚ", required = false) String type
 			, Model model) {
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10ByType(type);
 		model.addAttribute("top10", list);
-		if(type.equals("ëª¨í…”")) {
+		if(type.equals("¸ðÅÚ")) {
 			return "/motel";
-		} else if(type.equals("íŽœì…˜")) {
+		} else if(type.equals("Ææ¼Ç")) {
 			return "/pension";
-		} else if(type.equals("ê²ŒìŠ¤íŠ¸í•˜ìš°ìŠ¤")) {
+		} else if(type.equals("°Ô½ºÆ®ÇÏ¿ì½º")) {
 			return "/guesthouse";
-		} else if(type.equals("ë¦¬ì¡°íŠ¸")) {
+		} else if(type.equals("¸®Á¶Æ®")) {
 			return "/resort";
 		}
 		
@@ -62,14 +62,7 @@ public class MemberHotelsController {
 	public String inserHotelsAll(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO, Model model) {
 		model.addAttribute("memberHotelsVO", memberHotelsVO);
 		model.addAttribute("memberFacilityVO", memberFacilityVO);
-		System.out.println(memberHotelsVO.toString());
-		System.out.println(memberFacilityVO.toString());
 		return "/insertRoomSort";
-	}
-
-	@RequestMapping(value="/insertPic.do")
-	public String insertPic() {
-		return "/insertPic";
 	}
 	
 	//Insert Room
@@ -108,8 +101,9 @@ public class MemberHotelsController {
 		model.addAttribute("memberHotelsVO", memberHotelsVO);
 		model.addAttribute("memberFacilityVO", memberFacilityVO);	
 		
-		return "/";
+		return "/insertPic";
 	}
+	
 	
 	//TermsOfUse
 	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
