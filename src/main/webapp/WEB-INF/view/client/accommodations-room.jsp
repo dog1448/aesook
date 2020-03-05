@@ -374,6 +374,7 @@
 													<i class="icon icon-calendar2"></i> 
 													<input type="text" name="bookingCheckIn" id="date-in" class="form-control date"
 														placeholder="Check-in date">
+
 												</div>
 											</div>
 										</div>

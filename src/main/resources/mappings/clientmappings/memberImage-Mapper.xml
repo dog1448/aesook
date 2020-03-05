@@ -35,4 +35,25 @@
 		 FROM DUAL
 		</foreach> ) A
 	</insert>
+	
+	<update id="updateStatusMemberHotelsImage" parameterType="memberHotelsImage">
+		UPDATE hotels_image set hotels_image_status = #{hotelsImageStatus} where hotels_code = #{hotelsCode}
+		<if test='hotelsImageStatus.equals("M")'>
+			AND hotels_image_No = #{hotelsImageNo}
+		</if>
+	</update>
+	
+	<select id="getHotelsImage" parameterType="memberHotelsImage" resultType="memberHotelsImage">
+		SELECT * FROM hotels_image WHERE hotels_image_No = #{hotelsImageNo}
+	</select>
+	
+	<select id="getHotelsImageList" parameterType="member"  resultType="memberHotelsImage">
+		SELECT * FROM hotels_image b, 
+		(SELECT hotels_Code from hotels where member_id = #{memberId}) a
+		WHERE b.hotels_code = a.hotels_code
+	</select>
+	
+	<select id="getHotelsImageList2" parameterType="memberHotels"  resultType="memberHotelsImage">
+		SELECT * FROM hotels_image b WHERE hotels_code = #{hotelsCode}
+	</select>
 </mapper>

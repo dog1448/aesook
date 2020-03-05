@@ -24,6 +24,7 @@
 		    <typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO" alias="memberFacility"/>
 	    	<typeAlias type="com.spring.aesook.client.booking.vo.MemberBookingVO" alias="memberBooking"/>
 		    <typeAlias type="com.spring.aesook.client.image.vo.MemberBrnImageVO" alias="memberBrnImage"/>
+		    <typeAlias type="com.spring.aesook.client.image.vo.MemberHotelsImageVO" alias="memberHotelsImage"/>
         <typeAlias type="com.spring.aesook.client.alarm.vo.MemberAlarmVO" alias="memberAlarm"/>     
 	</typeAliases>
 	

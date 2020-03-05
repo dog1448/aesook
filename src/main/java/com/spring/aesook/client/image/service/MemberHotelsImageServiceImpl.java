@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +46,10 @@ public class MemberHotelsImageServiceImpl implements MemberHotelsImageService {
 		}
 		memberImageDAO.insertMemberHotelsImage(hotelsImageList);
 		
+	}
+	
+	public List<MemberHotelsImageVO> getHotelsImageList(MemberVO user) {
+		return memberImageDAO.getHotelsImageList(user);
 	}
 	
 }

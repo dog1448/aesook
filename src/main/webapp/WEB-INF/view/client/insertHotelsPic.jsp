@@ -125,8 +125,8 @@ $(document).ready(function(){
                   <div class="col-three-forth animate-box">
                   <h2>사진 등록</h2>
                   <hr>      
-                  		<form action="insertPic.do" method="post" enctype="multipart/form-data" id="fileForm">
-                 		 <div class="container">
+                  		<form action="insertHotelsPic.do" method="post" enctype="multipart/form-data" id="fileForm">
+                 		<div class="container">
 						<div class="row it">
 							<div class="col-sm col-sm-10" id="one">
 							<p>
@@ -154,8 +154,10 @@ $(document).ready(function(){
 							</div><!--row-->
 							</div><!--uploader-->
 							<div class="text-center">
+							<input type="hidden" value="${hotelsCode}" name="hotelsCode">
 							<a class="btn btn-default btn-outline btn-n"><i class="fa fa-plus"></i> Add new</a>&nbsp;&nbsp;
-							<button type="button" onclick="checkz()" class="btn btn-info btn-outline ">등록하기</button>
+							<button type="button" onclick="checkz()" class="btn btn-info btn-outline ">등록하기</button>&nbsp;&nbsp;
+							<button type="button" onclick="javascript:location.href='hotelsPic.do';" class="btn btn-info btn-outline ">뒤로가기</button>
 								</div>
 							</div><!--one-->
 							</div><!-- row -->

@@ -96,7 +96,7 @@ function openZipAddress(){
                   <div class="col-three-forth animate-box">
                   	<nav class="navbar navbar-default">					  				    
 					    <ul class="nav navbar-nav">
-					   	  <li><a href="#">약관 동의</a></li>
+					   	  <li><a href="history.go(-1)">약관 동의</a></li>
 					      <li class="active"><a href="#">숙소 등록</a></li>
 					      <li><a href="#">객실 등록</a></li>					    
 					    </ul>					  
