@@ -27,7 +27,7 @@
                                             <i class="fa fa-users fa-4x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">26</div>
+                                            <div class="huge">${userCnt}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                             <img src="resources/admin/images/hotel.png">
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">12</div>
+                                            <div class="huge">${hotelCnt}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                             <img src="resources/admin/images/motel.png">
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">124</div>
+                                            <div class="huge">${motelCnt}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                             <img src="resources/admin/images/guesthouse.png">
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">13</div>
+                                            <div class="huge">${guestCnt}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                             <img src="resources/admin/images/pan.png">
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">13</div>
+                                            <div class="huge">${pensionCnt}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
                                             <img src="resources/admin/images/rizo.png">
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">13</div>
+                                            <div class="huge">${resortCnt}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                         <div class="col-lg-8">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> 월별 예약 건수
                                     <div class="pull-right">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default btn-xs dropdown-toggle"
@@ -190,7 +190,7 @@
                             <!-- /.panel -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> 월별 금액
                                     <div class="pull-right">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default btn-xs dropdown-toggle"
