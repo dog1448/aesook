@@ -20,6 +20,12 @@ function checkz() {
 
 }
 </script>
+<style type="text/css">
+option  {
+	background : #595959;
+	width : auto;
+}
+</style>
 </head>
 <body>
 
@@ -65,7 +71,7 @@ function checkz() {
 												<div class="col-lg-4">
 													<select id="searchCodition" name="searchCondition" class="form-control">
 														<c:forEach items="${conditionMap}" var="option">
-																<option value="${option.value}">${option.key}</option>
+															<option value="${option.value}">${option.key}</option>
 														</c:forEach>
 													</select>
 												</div>

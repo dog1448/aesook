@@ -2,76 +2,76 @@ package com.spring.aesook.client.image.vo;
 
 public class MemberHotelsImageVO {
 
-	private int HotelsImageNo;
-	private int HotelsCode;
-	private String HotelsImageName;
-	private String HotelsImageOrigin;
-	private String HotelsImagePath;
-	private String HotelsImageExtension;
-	private String HotelsImageStatus;
+	private int hotelsImageNo;
+	private int hotelsCode;
+	private String hotelsImageName;
+	private String hotelsImageOrigin;
+	private String hotelsImagePath;
+	private String hotelsImageExtension;
+	private String hotelsImageStatus;
 
 	public int getHotelsImageNo() {
-		return HotelsImageNo;
+		return hotelsImageNo;
 	}
 
 	public void setHotelsImageNo(int hotelsImageNo) {
-		HotelsImageNo = hotelsImageNo;
+		this.hotelsImageNo = hotelsImageNo;
 	}
 
 	public int getHotelsCode() {
-		return HotelsCode;
+		return hotelsCode;
 	}
 
 	public void setHotelsCode(int hotelsCode) {
-		HotelsCode = hotelsCode;
+		this.hotelsCode = hotelsCode;
 	}
 
 	public String getHotelsImageName() {
-		return HotelsImageName;
+		return hotelsImageName;
 	}
 
 	public void setHotelsImageName(String hotelsImageName) {
-		HotelsImageName = hotelsImageName;
+		this.hotelsImageName = hotelsImageName;
 	}
 
 	public String getHotelsImageOrigin() {
-		return HotelsImageOrigin;
+		return hotelsImageOrigin;
 	}
 
 	public void setHotelsImageOrigin(String hotelsImageOrigin) {
-		HotelsImageOrigin = hotelsImageOrigin;
+		this.hotelsImageOrigin = hotelsImageOrigin;
 	}
 
 	public String getHotelsImagePath() {
-		return HotelsImagePath;
+		return hotelsImagePath;
 	}
 
 	public void setHotelsImagePath(String hotelsImagePath) {
-		HotelsImagePath = hotelsImagePath;
+		this.hotelsImagePath = hotelsImagePath;
 	}
 
 	public String getHotelsImageExtension() {
-		return HotelsImageExtension;
+		return hotelsImageExtension;
 	}
 
 	public void setHotelsImageExtension(String hotelsImageExtension) {
-		HotelsImageExtension = hotelsImageExtension;
+		this.hotelsImageExtension = hotelsImageExtension;
 	}
 
 	public String getHotelsImageStatus() {
-		return HotelsImageStatus;
+		return hotelsImageStatus;
 	}
 
 	public void setHotelsImageStatus(String hotelsImageStatus) {
-		HotelsImageStatus = hotelsImageStatus;
+		this.hotelsImageStatus = hotelsImageStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberHotelsImageVO [HotelsImageNo=" + HotelsImageNo + ", HotelsCode=" + HotelsCode
-				+ ", HotelsImageName=" + HotelsImageName + ", HotelsImageOrigin=" + HotelsImageOrigin
-				+ ", HotelsImagePath=" + HotelsImagePath + ", HotelsImageExtension=" + HotelsImageExtension
-				+ ", HotelsImageStatus=" + HotelsImageStatus + "]";
+		return "MemberHotelsImageVO [hotelsImageNo=" + hotelsImageNo + ", hotelsCode=" + hotelsCode
+				+ ", hotelsImageName=" + hotelsImageName + ", hotelsImageOrigin=" + hotelsImageOrigin
+				+ ", hotelsImagePath=" + hotelsImagePath + ", hotelsImageExtension=" + hotelsImageExtension
+				+ ", hotelsImageStatus=" + hotelsImageStatus + "]";
 	}
 
 }

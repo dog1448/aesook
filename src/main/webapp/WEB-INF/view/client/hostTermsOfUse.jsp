@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <%@ include file="head.jspf"%>
-
+<c:if test="${noHotel eq 'noHotel'}">
+<script type="text/javascript">
+alert("등록된 숙소가 없습니다.");
+</script>
+</c:if>
 </head>
 <body>
 
