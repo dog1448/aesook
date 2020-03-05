@@ -154,9 +154,10 @@ $(document).ready(function(){
 							</div><!--row-->
 							</div><!--uploader-->
 							<div class="text-center">
+							<input type="hidden" value="${hotelsCode}" name="hotelsCode">
 							<a class="btn btn-default btn-outline btn-n"><i class="fa fa-plus"></i> Add new</a>&nbsp;&nbsp;
 							<button type="button" onclick="checkz()" class="btn btn-info btn-outline ">등록하기</button>&nbsp;&nbsp;
-							<button type="button" onclick="javascript:history.go(-1);" class="btn btn-info btn-outline ">뒤로가기</button>
+							<button type="button" onclick="javascript:location.href='hotelsPic.do';" class="btn btn-info btn-outline ">뒤로가기</button>
 								</div>
 							</div><!--one-->
 							</div><!-- row -->

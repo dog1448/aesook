@@ -61,8 +61,14 @@ public class MemberImageController {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login");
     	List<MemberHotelsVO> hotels =  memberHotelsService.getMyHotels(user);
     	if (!hotels.isEmpty()) {
+    		model.addAttribute("hotels", hotels.get(0));
     		List<MemberHotelsImageVO> imageList = memberHotelsImageService.getHotelsImageList(user);
-    		model.addAttribute("hotels", imageList.get(0));
+    		for (MemberHotelsImageVO mainImage : imageList) {
+    			if (mainImage.getHotelsImageStatus().equals("M")) {
+    				model.addAttribute("mainImage", mainImage);
+    				break;
+    			}
+    		}
     		model.addAttribute("imageList", imageList);
     		return "/hotelsPic";
     	}
@@ -77,30 +83,25 @@ public class MemberImageController {
     }
     
     
-    
-    
-    
-    
-    
-    
+
     
  // ------------------------------ 호텔이미지 등록 -------------------------------------
 	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.GET)
-	public String moveInsertPic() {
+	public String moveInsertPic(@RequestParam("hotelsCode") int hotelsCode, Model model) {
+		model.addAttribute("hotelsCode", hotelsCode);
 		return "/insertHotelsPic";
 	}
 	
 	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.POST)
-	public String insertPic(MultipartHttpServletRequest files, HttpSession session, Model model) {
+	public String insertPic(MultipartHttpServletRequest files, HttpSession session, Model model, MemberHotelsVO hotels) {
 		MemberVO user = (MemberVO) session.getAttribute("login");
 		if (user != null) {
-			memberHotelsImageService.insertHotelsImage(files, user, 1004);
+			memberHotelsImageService.insertHotelsImage(files, user, hotels.getHotelsCode());
 			if (user.getMemberStatus().equals("H")) {
 			} else {	
 				model.addAttribute("");
 			}			
-		}
-		
+		}	
 		return "redirect:hotelsPic.do";
 	}
 	

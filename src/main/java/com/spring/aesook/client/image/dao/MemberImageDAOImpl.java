@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.image.vo.MemberBrnImageVO;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 import com.spring.aesook.client.member.vo.MemberVO;
@@ -37,5 +38,10 @@ public class MemberImageDAOImpl implements MemberImageDAO {
 	public List<MemberHotelsImageVO> getHotelsImageList(MemberVO vo) {
 		return sqlSessionTemplate.selectList(namespace + ".getHotelsImageList", vo);	
 	}
+	
+	public List<MemberHotelsImageVO> getHotelsImageList(MemberHotelsVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".getHotelsImageList2", vo);	
+	}
+	
 }
  

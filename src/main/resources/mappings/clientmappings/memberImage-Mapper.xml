@@ -52,4 +52,8 @@
 		(SELECT hotels_Code from hotels where member_id = #{memberId}) a
 		WHERE b.hotels_code = a.hotels_code
 	</select>
+	
+	<select id="getHotelsImageList2" parameterType="memberHotels"  resultType="memberHotelsImage">
+		SELECT * FROM hotels_image b WHERE hotels_code = #{hotelsCode}
+	</select>
 </mapper>
