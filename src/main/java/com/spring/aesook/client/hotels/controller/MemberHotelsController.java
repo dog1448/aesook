@@ -117,15 +117,36 @@ public class MemberHotelsController {
 	
 	//Move Terms Of Use
 	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
-	public String MovehostTermsOfUse() {		
+	public String MovehostTermsOfUse(HttpSession session) {		
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		List<MemberHotelsVO> list = memberHotelsService.getMyHotels(user);
 		
-		return "/hostTermsOfUse";
+		if(list.isEmpty()) {			
+			return "/hostTermsOfUse";
+		}else {			
+			return "redirect:registeredAccommodation.do";			
+		}
+		
 	}
 	
 	//Check Terms Of Use
 	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.POST)
 	public String hostTermsOfUse() {
 		return "/insertHotels";
+	}
+	
+	//Check Host
+	@RequestMapping(value = "/hostChk.do", method = RequestMethod.GET)
+	@ResponseBody
+	public int checkHost(MemberVO vo) {
+		List<MemberHotelsVO> list = memberHotelsService.getMyHotels(vo);
+		int result=0;
+		if(list.isEmpty()) {
+			result=1;
+			return result;
+		}else {			
+			return result;			
+		}
 	}
 	
 	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)

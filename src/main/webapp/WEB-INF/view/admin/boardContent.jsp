@@ -2,6 +2,50 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
+<%!
+
+
+
+String getClientIP(HttpServletRequest request) {
+
+
+
+  String ip = request.getHeader("X-FORWARDED-FOR"); 
+
+     
+
+  if (ip == null || ip.length() == 0) {
+
+    ip= request.getHeader("Proxy-Client-IP");
+
+  }
+
+
+
+  if (ip == null || ip.length() == 0) {
+
+    ip= request.getHeader("WL-Proxy-Client-IP");  
+
+  }
+
+
+
+  if (ip == null || ip.length() == 0) {
+
+    ip= request.getRemoteAddr() ;
+
+  }
+
+     
+
+  return ip;
+
+}
+
+
+
+%>
 <html>
 <head>
 <%@ include file="head.jspf" %>
@@ -46,8 +90,8 @@
                                                         <option>N</option>
                                                     </select>
                                                 </div>
-                                                <input type="hidden" name="boardIp" value="127.0.0.1"> 
-                                             
+                                                <input type="hidden" name="boardIp" value="<%=getClientIP(request)%>"> 
+                                             	<label><%=getClientIP(request)%></label>
 
                                                 <div class="col-lg-12"> 
                                                     <button type="submit" class="btn btn-default float-left">작성</button>

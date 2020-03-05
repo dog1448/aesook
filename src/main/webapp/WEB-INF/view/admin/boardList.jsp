@@ -46,7 +46,7 @@
                                            <c:forEach var="boardList" items="${boardList}">
                                                 <tr class="odd gradeX">
                                                    
-                                                    <td>${boardList.boardSeq}</td>
+                                                    <td>${boardList.rnum}</td>
                                                     <td>${boardList.boardWriter}</td>
                                                     <td><a href="boardModify.admin?boardSeq=${boardList.boardSeq}">${boardList.boardTitle }</a></td>
                                                     <td class="text-center">${boardList.boardReadcount }</td>
