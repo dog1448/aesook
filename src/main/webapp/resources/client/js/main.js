@@ -284,8 +284,8 @@
 		  'autoclose': true,
 		  'startDate': new Date()
 		});
-	};
-
+	};	
+	
 	
 	$(function(){
 		mobileMenuOutsideClick();
@@ -298,7 +298,7 @@
 		loaderPage();
 		owlCrouselFeatureSlide();
 		parallax();
-		datePicker();
+		datePicker();  
 	});
 
 
