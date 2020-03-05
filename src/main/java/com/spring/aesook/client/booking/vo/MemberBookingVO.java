@@ -12,8 +12,8 @@ public class MemberBookingVO {
 	private String roomName;
 	private String roomSort;
 	private String memberId;
-	private String bookingCheckIn;
-	private String bookingCheckOut;
+	private Date bookingCheckIn;
+	private Date bookingCheckOut;
 	private String bookingName;
 	private String bookingPhone;
 	private int bookingCnt;
@@ -58,16 +58,16 @@ public class MemberBookingVO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public String getBookingCheckIn() {
+	public Date getBookingCheckIn() {
 		return bookingCheckIn;
 	}
-	public void setBookingCheckIn(String bookingCheckIn) {
+	public void setBookingCheckIn(Date bookingCheckIn) {
 		this.bookingCheckIn = bookingCheckIn;
 	}
-	public String getBookingCheckOut() {
+	public Date getBookingCheckOut() {
 		return bookingCheckOut;
 	}
-	public void setBookingCheckOut(String bookingCheckOut) {
+	public void setBookingCheckOut(Date bookingCheckOut) {
 		this.bookingCheckOut = bookingCheckOut;
 	}
 	public String getBookingName() {
