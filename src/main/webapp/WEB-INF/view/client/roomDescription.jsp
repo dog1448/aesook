@@ -142,7 +142,7 @@
 									<label for="email">예약자 전화번호</label>
 									<input type="text" id="email" class="form-control" placeholder="-를 붙여 입력하세요.">
 								</div>                               
-                                <button type="submit"><a href="payment.do">예약하기</a></button>
+                                <button type="submit">예약하기</button>
                             </form>
                         </div>
                     </div>
