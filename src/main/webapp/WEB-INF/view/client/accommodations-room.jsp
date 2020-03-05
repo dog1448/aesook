@@ -372,8 +372,7 @@
 												<label>체크인</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" id="date-in" class="form-control date"
-														placeholder="Check-in date">
+													<input type="text" id="date-in" class="form-control date" placeholder="Check-in date">
 												</div>
 											</div>
 										</div>
@@ -382,8 +381,7 @@
 												<label>체크아웃</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" id="date-out" class="form-control date"
-														placeholder="Check-out date">
+													<input type="text" id="date-out" class="form-control date" placeholder="Check-out date">
 												</div>
 											</div>
 										</div>
