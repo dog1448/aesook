@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.client.image.vo.MemberBrnImageVO;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 
 @Repository("memberImageDAO")
 public class MemberImageDAOImpl implements MemberImageDAO {
@@ -23,6 +24,18 @@ public class MemberImageDAOImpl implements MemberImageDAO {
 	
 	public void insertMemberHotelsImage(List<MemberHotelsImageVO> vo) {
 		sqlSessionTemplate.insert(namespace + ".insertMemberHotelsImage", vo);
+	}
+	
+	public void updateStatusMemberHotelsImage(MemberHotelsImageVO vo) {
+		sqlSessionTemplate.update(namespace +".updateStatusMemberHotelsImage", vo);
+	}
+	
+	public MemberHotelsImageVO getHotelsImage(MemberHotelsImageVO vo) {
+		return sqlSessionTemplate.selectOne(namespace + ".getHotelsImage", vo);
+	}
+	
+	public List<MemberHotelsImageVO> getHotelsImageList(MemberVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".getHotelsImageList", vo);	
 	}
 }
  
