@@ -17,5 +17,7 @@ public interface MemberBookingCheckService {
 	void cancelBooking(int bookingCode);
 	
 	MemberReviewVO getReview(int bookingCode);
+	
+	List<String> getPossibleBooking(MemberBookingVO vo);
 
 }

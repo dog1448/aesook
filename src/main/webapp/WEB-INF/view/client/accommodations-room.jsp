@@ -188,7 +188,7 @@
 															</div>
 															<div class="col-md-6 col-sm-6">
 																<div class="desc">
-																	<h2>${list.roomSort}</h2>
+																	<h2 class=".roomSort">${list.roomSort}</h2>
 																	<p class="price">
 																		<span>${list.roomStandardPrice} ￦</span> <small>&nbsp;평일</small>
 																	<p class="price">
@@ -372,7 +372,9 @@
 												<label>체크인</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" id="date-in" class="form-control date" placeholder="Check-in date">
+													<input type="text" name="bookingCheckIn" id="date-in" class="form-control date"
+														placeholder="Check-in date">
+
 												</div>
 											</div>
 										</div>
@@ -381,7 +383,8 @@
 												<label>체크아웃</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" id="date-out" class="form-control date" placeholder="Check-out date">
+													<input type="text" name="bookingCheckOut" id="date-out" class="form-control date"
+														placeholder="Check-out date">
 												</div>
 											</div>
 										</div>
