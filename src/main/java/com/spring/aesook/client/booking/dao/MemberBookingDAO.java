@@ -14,4 +14,6 @@ public interface MemberBookingDAO {
 	
 	void cancelBooking(int bookingCode);
 	
+	List<String> getPossibleBooking(MemberBookingVO vo);
+	
 }

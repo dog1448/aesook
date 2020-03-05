@@ -36,5 +36,17 @@
 		set booking_status ='C', booking_cancel_date = sysdate
 		where booking_code = #{bookingCode} 
 	</update>
-
+	
+	<select id="getPossibleBooking" resultType="String">
+		<![CDATA[
+		SELECT distinct r.room_sort FROM room r 
+		WHERE NOT EXISTS (SELECT * FROM (select room_name from booking
+		where to_date(#{bookingCheckIn}) < booking_check_out
+		and to_date(#{bookingCheckOut}) > booking_check_in
+		and hotels_code = #{hotelsCode}
+		and booking_status != 'C') t 
+		WHERE r.room_name = t.room_name)
+		and hotels_code = #{hotelsCode}
+		]]>
+	</select>
 </mapper>

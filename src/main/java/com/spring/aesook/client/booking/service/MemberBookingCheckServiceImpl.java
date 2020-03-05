@@ -48,6 +48,11 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	public MemberReviewVO getReview(int bookingCode) {
 		return memberReivewDAO.getReview(bookingCode);
 	}
+
+	@Override
+	public List<String> getPossibleBooking(MemberBookingVO vo) {
+		return memberBookingDAO.getPossibleBooking(vo);
+	}
 	
 	
 }
