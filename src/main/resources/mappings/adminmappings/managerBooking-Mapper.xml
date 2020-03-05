@@ -9,13 +9,9 @@
 	</select>
 	
 	<select id="getBookingInfo" resultType="managerBooking">
-		select booking_code, hotels_code, room_name, room_sort, member_id,
-		booking_check_in, booking_check_out,
-		booking_name, booking_phone, booking_cnt, 
-        booking_date, booking_cancel_date,
-		booking_total_price, booking_status
-    		from booking
-    		where booking_code = #{bookingCode}
+		select *
+    	from booking
+    	where booking_code = #{bookingCode}
 	</select>
 	
 	<update id="setBookingInfo" parameterType="managerBooking">
@@ -27,6 +23,7 @@
 				booking_name = #{bookingName},
 				booking_phone = #{bookingPhone},
 				booking_cnt = #{bookingCnt},
+				booking_cancel_date = #{bookingCancelDate, jdbcType=DATE},
 				booking_total_price = #{bookingTotalPrice},
 				booking_status = #{bookingStatus}
 			where booking_code = #{bookingCode}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +78,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Cancel_Date</label>
-                                                    <input class="form-control" type="date" value="${bookingInfo.bookingCancelDate}" name="bookingCancelDate" id="bookingCancelDate" disabled>
+                                                    <input class="form-control datePicker" type="text" value="${bookingInfo.bookingCancelDate}" name="bookingCancelDate" id="bookingCancelDate">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Booking_Total_Price</label>
@@ -94,7 +95,7 @@
                                                 </fieldset>
 
                                                 <div class="col-lg-12"> 
-                                                    <button type="submit" class="btn btn-default float-left">Modify</button>
+                                                    <button type="button" onclick="modify()" class="btn btn-default float-left" id="modibt">Modify</button>
                                                     <button type="button" class="btn btn-default" onclick="javascript:history.go(-1)">Cancel</button>
                                                     <button type="button" class="btn btn-warning float-left" id="disbt">disable</button>
                                                 </div>
@@ -117,21 +118,25 @@
             <!-- /#page-wrapper -->
 </div>
 <%@ include file="javascript.jspf" %>
-<!-- DataPicker -->
 	<script>
-            $(document).ready(function() {
-                
-                var isDisabled = $("#field").attr("disabled");
-            
-                $('#statusSelectBox').val('${bookingInfo.bookingStatus}').prop('selected', true);
-                
-                
+		      var isDisabled = false;
+			$(document).ready(function() {
+                $('#statusSelectBox').val('${bookingInfo.bookingStatus}').prop('selected', true); 
             });
 
-
-            $('#disbt').click(function(isDisabled) {
+            $('#disbt').click(function() {
+            		isDisabled = true;
                     $("#field").attr("disabled", false); //활성화
-
+            });        
+			
+            function modify() {
+				if (isDisabled == false) {
+					  alert("disable을 선행하세요");
+					  return;
+				}
+					 $('#modifyBookingInfo').submit();         	
+			}
+            
             $(function() {	
                 
             	 $('#statusSelectBox')
@@ -159,14 +164,11 @@
                     weekStart : 0 ,//달력 시작 요일 선택하는 것 기본값은 0인 일요일 
                     language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
                     
-                });//datepicker end
+                	});//datepicker end
                 
-               
-                
-            });//ready end
-
-
-            });
+           	 });//ready end
+			
+           	
         </script>
 </body>
 </html>
