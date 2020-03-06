@@ -53,10 +53,16 @@
 								<c:forEach var="list" items="${viewAll}">
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="hotel-entry">
+										<c:if test="${list.hotelsImageStatus eq 'M' }">
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
-												style="background-image: url(resources/client/images/hotel-1.jpg);">																						
+												style="background-image: url(${list.hotelsImagePath}${list.hotelsImageName});">																						
 											</a>
-											
+										</c:if>
+										<c:if test="${list.hotelsImageStatus ne 'M' }">
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
+												style="background-image: url(resources/client/images/noImage.png); height: 500px">																						
+											</a>
+										</c:if>							
 											<div class="desc">
 												<p class="star">
 													<span>

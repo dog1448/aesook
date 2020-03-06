@@ -168,7 +168,6 @@
 					<div class="col-md-9">
 						<div class="row">
 							<div class="col-md-12">
-
 								<div class="wrap-division">
 									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
 										<h2>${vo.hotelsName}</h2>
@@ -177,8 +176,7 @@
 									<h3>방목록</h3>
 									<div class="row">
 										<c:forEach var="list" items="${list}">
-											<a
-												href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomName}">
+											<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomName}">
 												<div class="col-md-12 animate-box">
 													<div class="room-wrap">
 														<div class="row">
