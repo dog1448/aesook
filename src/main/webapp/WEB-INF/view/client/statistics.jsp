@@ -22,7 +22,8 @@ canvas {
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
-
+<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 
 		<div id="colorlib-about">
 			<div class="container">
