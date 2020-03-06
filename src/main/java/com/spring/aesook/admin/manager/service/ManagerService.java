@@ -8,7 +8,7 @@ public interface ManagerService {
 	 void updateManager(ManagerVO vo);
 	 ManagerVO getManager(ManagerVO vo);
 
-	 //-------------------------------------------------------------------------
+	 //Statistics(TOP)-------------------------------------------------------------------------
 	 int totalUserCount();
 	int totalHotelCount();
 	int totalMotelCount();
@@ -16,4 +16,7 @@ public interface ManagerService {
 	int totalPensionCount();
 	int totalResortCount();
 
+	//Statistics(MIDDLE)-------------------------------------------------------------------------
+	int marchReservationCount();
+	int aprilReservationCount();
 }

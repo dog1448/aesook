@@ -148,13 +148,18 @@ public class ManagerController {
 	@RequestMapping(value="/index.admin", method=RequestMethod.GET)
 	public String moveIndex(Model model) {
 		
-		// Index화면에 들어갈 DB 자료
+		// Index화면에 들어갈 DB 자료(Statistics TOP)
 		model.addAttribute("guestCnt",managerService.totalHouseCount());
 		model.addAttribute("hotelCnt",managerService.totalHotelCount());
 		model.addAttribute("motelCnt",managerService.totalMotelCount());
 		model.addAttribute("pensionCnt",managerService.totalPensionCount());
 		model.addAttribute("resortCnt",managerService.totalResortCount());
 		model.addAttribute("userCnt",managerService.totalUserCount());
+
+		//Statistics MIDDLE
+		model.addAttribute("marchCnt",managerService.marchReservationCount());
+		model.addAttribute("aprilCnt",managerService.aprilReservationCount());
+
 		return "/index";
 	}
 	
