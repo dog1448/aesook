@@ -10,12 +10,16 @@ public interface ManagerDAO {
 	ManagerVO getManager(ManagerVO vo);
 	int idCheck(ManagerVO vo);
 
-	// #Statistics------------------------------------------
+	// #Statistics(TOP)------------------------------------------
 	int totalUserCount();
 	int totalHotelCount();
 	int totalMotelCount();
 	int totalHouseCount();
 	int totalPensionCount();
 	int totalResortCount();
+
+	// #Statistics(MIDDLE)------------------------------------------
+	int marchReservationCount();
+	int aprilReservationCount();
 
 }

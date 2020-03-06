@@ -38,7 +38,9 @@ public class ManagerServiceImpl implements ManagerService {
 	public ManagerVO getManager(ManagerVO vo) {
 		return managerDAO.getManager(vo);
 	}
-//-----------------------------------------------------------------------------------------------------------------
+
+
+    //Statistics(TOP)-----------------------------------------------------------------------------------------------------------------
 	@Override
 	public int totalUserCount() {
 		return managerDAO.totalUserCount();
@@ -70,4 +72,17 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 
+
+
+	//Statistics(MIDDLE)--------------------------------------------------------------------------------------------------------
+
+	@Override
+	public int marchReservationCount() {
+		return managerDAO.marchReservationCount();
+	}
+
+	@Override
+	public int aprilReservationCount() {
+		return managerDAO.aprilReservationCount();
+	}
 }

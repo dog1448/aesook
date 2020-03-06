@@ -36,7 +36,9 @@ public class ManagerDAOImpl implements ManagerDAO {
 		int result = sqlSessionTemplate.selectOne(namespace + ".idCheck", vo);
 		return result;
 	}
-//---------------------------------------------------------------------------------------------------------
+
+
+	//Statistics(TOP)---------------------------------------------------------------------------------------------------------
 
 	@Override
 	public int totalUserCount() {
@@ -66,6 +68,18 @@ public class ManagerDAOImpl implements ManagerDAO {
 	@Override
 	public int totalResortCount() {
 		return sqlSessionTemplate.selectOne(namespace+".totalResortCount");
+	}
+
+
+	//Statistics(MIDDLE)---------------------------------------------------------------------------------------------------------
+	@Override
+	public int marchReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".marchReservationCount");
+	}
+
+	@Override
+	public int aprilReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".aprilReservationCount");
 	}
 
 

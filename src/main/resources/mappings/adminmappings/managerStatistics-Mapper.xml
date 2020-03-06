@@ -26,6 +26,14 @@
     <select id="totalResortCount" resultType="int">
         select count(*) from HOTELS where HOTELS_TYPE='리조트'
     </select>
-    
-    
+
+    <select id="marchReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20200301') and to_date('20200331')
+    </select>
+
+    <select id="aprilReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20200401') and to_date('20200430')
+    </select>
 </mapper>
