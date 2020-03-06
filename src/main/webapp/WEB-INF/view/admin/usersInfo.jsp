@@ -28,11 +28,13 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <form role="form" action="#">
-                                                
+                                            
+                                                <!-- 
                                                 <div class="form-group">
                                                     <label>Member_No</label>
                                                     <input class="form-control" disabled>
                                                 </div>
+                                                 -->
                                                 <div class="form-group">
                                                     <label>ID</label>
                                                     <input class="form-control" disabled>
