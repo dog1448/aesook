@@ -30,7 +30,7 @@
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>NO.</th>
+                                                    <!--<th>NO.</th>-->
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
@@ -40,7 +40,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="odd gradeX">
-                                                    <td>Trident</td>
+                                                    <!--<td>Trident</td>-->
                                                     <td>Internet Explorer 4.0</td>
                                                     <td>Win 95+</td>
                                                     <td class="center">4</td>
