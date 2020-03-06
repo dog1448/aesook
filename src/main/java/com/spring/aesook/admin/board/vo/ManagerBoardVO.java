@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ManagerBoardVO {
 
-	private int BoardSeq;
+	private Integer BoardSeq;
+	private Integer BoardCnt;
+	private Integer rnum;
 	private String BoardWriter;
 	private String BoardTitle;
 	private String BoardContent;
@@ -17,19 +19,42 @@ public class ManagerBoardVO {
 	private String BoardIp;
 	private Date BoardDate;
 	private String BoardType;
+	public void setBoardReadcount(Integer boardReadcount) {
+		BoardReadcount = boardReadcount;
+	}
+	public void setBoardSeq(Integer boardSeq) {
+		BoardSeq = boardSeq;
+	}
+	public Integer getBoardCnt() {
+		return BoardCnt;
+	}
+	
+	public void setBoardCnt(Integer boardCnt) {
+		BoardCnt = boardCnt;
+	}
+	
+	public Integer getRnum() {
+		return rnum;
+	}
+	
+	public void setRnum(Integer rnum) {
+		this.rnum = rnum;
+	}
 
 	public int getBoardSeq() {
 		return BoardSeq;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "ManagerBoardVO [BoardSeq=" + BoardSeq + ", BoardWriter=" + BoardWriter + ", BoardTitle=" + BoardTitle
-				+ ", BoardContent=" + BoardContent + ", BoardGroup=" + BoardGroup + ", BoardStep=" + BoardStep
-				+ ", BoardDepth=" + BoardDepth + ", BoardReadcount=" + BoardReadcount + ", BoardIp=" + BoardIp
-				+ ", BoardDate=" + BoardDate + ", BoardType=" + BoardType + "]";
+		return "ManagerBoardVO [BoardSeq=" + BoardSeq + ", BoardCnt=" + BoardCnt + ", rnum=" + rnum + ", BoardWriter="
+				+ BoardWriter + ", BoardTitle=" + BoardTitle + ", BoardContent=" + BoardContent + ", BoardGroup="
+				+ BoardGroup + ", BoardStep=" + BoardStep + ", BoardDepth=" + BoardDepth + ", BoardReadcount="
+				+ BoardReadcount + ", BoardIp=" + BoardIp + ", BoardDate=" + BoardDate + ", BoardType=" + BoardType
+				+ "]";
 	}
-
 	public void setBoardSeq(int boardSeq) {
 		BoardSeq = boardSeq;
 	}
@@ -93,7 +118,7 @@ public class ManagerBoardVO {
 	public String getBoardIp() {
 		return BoardIp;
 	}
-	
+
 	public void setBoardIp(String boardIp) {
 		BoardIp = boardIp;
 	}

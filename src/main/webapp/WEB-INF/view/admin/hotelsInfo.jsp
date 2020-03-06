@@ -79,7 +79,7 @@
                                                 </fieldset>
 
                                                 <div class="col-lg-12"> 
-                                                    <button type="submit" class="btn btn-default float-left", id="modibt">Modify</button>
+                                                    <button type="submit" class="btn btn-default float-left" id="modibt">Modify</button>
                                                     <button type="button" class="btn btn-default float-left">Delete</button>
                                                     <button type="button" class="btn btn-default float-left" onclick="location='hotelsTable.admin'">Cancel</button>
                                                     <button type="button" class="btn btn-warning float-left" id="disbt">disable</button>
@@ -120,7 +120,7 @@
             
            function modibtClick(){
             	if(cnt==0){
-            		alert("Disable을 해주세요.");
+            		alert("수정을 해주세요.");
             		return false;
             	}else if(cnt>0){
             		return true;

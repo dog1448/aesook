@@ -6,7 +6,7 @@
 
 <!-- 방 전체 리스트 가져오기 -->
 <select id="selectRoom" resultType="memberRoom">
-	select * from room
+	select distinct hotels_code,room_sort, room_standard_cnt, room_max_cnt, room_standard_price, room_holiday_price, room_add_price, room_room_info from room 
 	where HOTELS_CODE = #{hotelsCode} ORDER BY room_standard_price asc
 </select>
 
@@ -23,18 +23,22 @@
 </select>
 
 <!-- 숙소등록 -->
-<insert id="insertRoom" parameterType="memberRoom">
-	insert into room values(
-	#{hotelsCode},
-	#{roomName},
-	#{roomSort},
-	#{roomStandardCnt},
-	#{roomMaxCnt},
-	#{roomRoomCnt},
-	#{roomStandardPrice},
-	#{roomHolidayPrice},
-	#{roomAddPrice},
-	#{roomRoomInfo})
+<insert id="insertRoom" parameterType="java.util.HashMap">
+
+	INSERT ALL 
+	<foreach collection="roomList" item="item" index="index" separator=" ">
+		into room values(
+		#{item.hotelsCode},
+		#{item.roomName},
+		#{item.roomSort},
+		#{item.roomStandardCnt},
+		#{item.roomMaxCnt},
+		#{item.roomStandardPrice},
+		#{item.roomHolidayPrice},
+		#{item.roomAddPrice},
+		#{item.roomRoomInfo})
+	</foreach>
+	 SELECT * FROM DUAL	
 </insert>
 
 <select id="roomNameCheck" resultType="int" parameterType="memberRoom">

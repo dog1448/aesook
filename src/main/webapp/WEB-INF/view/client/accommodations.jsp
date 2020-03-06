@@ -71,8 +71,8 @@
 												<h3>
 													<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}&hotelsName=${list.hotelsName}">${list.hotelsName}</a>
 												</h3>
-												<span class="place">${list.hotelsAddress1} ${list.hotelsAddress2 }</span>
-												<p>${list.hotelsInfo}</p>
+												<span class="place">${list.hotelsAddress1} ${list.hotelsAddress2}</span>
+												<p>${list.hotelsPath}</p>
 											</div>
 										</div>
 									</div>

@@ -135,10 +135,11 @@
             formObj.attr("action","MoveQNAReply.do");
             formObj.attr("method","get");
             formObj.submit();
-        })
+        });
 
         $(".delBtn").on("click",function() {
-            formObj.attr("action","BoardRemove.do");
+            formObj.attr("action","deleteQNA.do");
+            formObj.attr("method","get");
             formObj.submit();
         });
 
@@ -147,6 +148,8 @@
         });
 
     });
+
+
 </script>
 
 

@@ -10,4 +10,5 @@ public interface MemberHotelsListService {
 	public List<MemberHotelsVO> selectHotelsListById(String memberId);
 	public List<MemberHotelsVO> selectAccommodationTop10();
 	public List<MemberHotelsVO> selectAccommodationTop10ByType(String type);
+	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo);
 }

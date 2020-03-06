@@ -12,4 +12,6 @@ public interface ManagerBoardService {
 	public void insertBoard(ManagerBoardVO vo);
 	public void updateBoard(ManagerBoardVO vo);
 	public void deleteBoard(ManagerBoardVO vo);
+	public void insertBoardReply(ManagerBoardVO vo);
+	public void increaseCnt(ManagerBoardVO vo);
 }

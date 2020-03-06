@@ -32,4 +32,12 @@ public class MemberHotelsListController {
 		
 		return "/accommodations";
 	}
+	
+	//검색된 호텔 리스트
+	@RequestMapping(value = "/searchedHotelsList.do", method = RequestMethod.POST)
+	public String getSearchedHotelsList(MemberHotelsVO vo, Model model) {
+		List<MemberHotelsVO> searchedHotelsList = memberHotelsListService.getSearchedHotelsList(vo);
+		model.addAttribute("searchedList", searchedHotelsList);
+		return "/searchedAccommodations";
+	}
 }

@@ -41,4 +41,18 @@
 		]]>
   	</select>
   
+  	<!-- 통합 검색 결과로 호텔 리스트 가져오기 -->
+  	<select id="getSearchedHotelsList" resultType="memberHotels">
+  		select * from hotels
+  		where 1=1
+  		<if test = "searchCondition=='ADDRESS'">
+  			and hotels_address1 Like '%'||#{searchKeyword}||'%'
+  		</if>
+  		<if test = "searchCondition=='NAME'">
+  			and hotels_name Like '%'||#{searchKeyword}||'%'
+  		</if>
+  		<if test = "searchCondition=='PATH'">
+  			and hotels_path Like '%'||#{searchKeyword}||'%'
+  		</if>
+  	</select>
  </mapper>

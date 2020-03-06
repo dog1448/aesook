@@ -10,5 +10,6 @@ public interface ManagerBoardDAO {
 	void insertBoard(ManagerBoardVO vo);
 	void updateBoard(ManagerBoardVO vo);
 	void deleteBoard(ManagerBoardVO vo);
-	
+	void insertBoardReply(ManagerBoardVO vo);
+	void increaseCnt(ManagerBoardVO vo);
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<input type="hidden" id="memberId" value="${login.memberId}">
 	<div class="col-one-forth aside-stretch animate-box">
 		<div class="row">
 			<div class="col-md-12 about">
 				<h2>숙소관리</h2>
-				<ul>
-					<li><a href="insertHotels.do">숙소 등록</a></li>					
-					<li><a href="insertedRoom.jsp">등록 숙소 확인 및 수정</a></li>
+				<ul>				
+					<li id="register"><a href="hostTermsOfUse.do" >숙소 등록</a></li>				
+         		    <li><a href="hotelsImagePic.do">사진 등록</a></li>	
+					<li><a href="registeredAccommodation.do">등록 숙소 확인 및 수정</a></li>
 					<li><a href="statistics.do">통계</a></li>
 					<li><a href="messageBoard.do">1대 1문의</a></li>
 					<li><a href="home.do">메인 홈</a></li>
@@ -22,4 +25,25 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		url : "hostChk.do",
+		type : "get",
+		dataType : "json",
+		data : {
+			"memberId" : $("#memberId").val()
+		},
+		success : function(data) {
+			if (data == 1) {
+				
+			} else if (data == 0) {				 
+				$("#register").remove();			
+
+			} 
+		}
+	})
+});
+
+</script>
 </html>

@@ -12,4 +12,5 @@ public interface MemberHotelsListDAO {
 	public List<MemberHotelsVO> selectHotelsListById(MemberVO vo);
 	public List<MemberHotelsVO> selectAccommodationTop10();
 	public List<MemberHotelsVO> selectAccommodationTop10ByType(MemberHotelsVO vo);
+	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo);
 }

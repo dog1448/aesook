@@ -76,10 +76,12 @@ where rnum>=#{rowStart} and rnum<=#{rowEnd}
 
 	</update>
 
-    <delete id="deleteMemberBoard" parameterType="memberBoard">
-		delete from BOARD
-		where BOARD_WRITER =#{boardWriter}
-	</delete>
+    <update id="deleteMemberBoard" parameterType="memberBoard">
+		update BOARD
+		set BOARD_TITLE = #{boardTitle}
+			,BOARD_CONTENT = #{boardContent}
+			where BOARD_SEQ =#{boardSeq}
+	</update>
 
 
     <select id="getBoardCount" parameterType="memberBoard" resultType="int">

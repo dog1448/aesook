@@ -4,7 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<settings>
-		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>		
+		<setting name="cacheEnabled" value="false"/>		
+		<setting name="jdbcTypeForNull" value="NULL"/>		
 	</settings>
 	<typeAliases>
 	    	<typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
@@ -23,7 +25,9 @@
 		    <typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO" alias="memberFacility"/>
 	    	<typeAlias type="com.spring.aesook.client.booking.vo.MemberBookingVO" alias="memberBooking"/>
 		    <typeAlias type="com.spring.aesook.client.image.vo.MemberBrnImageVO" alias="memberBrnImage"/>
-        <typeAlias type="com.spring.aesook.client.alarm.vo.MemberAlarmVO" alias="memberAlarm"/>   
+		    <typeAlias type="com.spring.aesook.client.image.vo.MemberHotelsImageVO" alias="memberHotelsImage"/>
+        <typeAlias type="com.spring.aesook.client.alarm.vo.MemberAlarmVO" alias="memberAlarm"/>     
+
 	</typeAliases>
 	
 
@@ -45,5 +49,6 @@
         <mapper resource="mappings/clientmappings/memberBooking-Mapper.xml"/>    
 	      <mapper resource="mappings/clientmappings/memberImage-Mapper.xml"/>
         <mapper resource="mappings/clientmappings/memberAlarm-Mapper.xml"/>
+        <mapper resource="mappings/adminmappings/managerStatistics-Mapper.xml"/>
 	</mappers>
 </configuration>

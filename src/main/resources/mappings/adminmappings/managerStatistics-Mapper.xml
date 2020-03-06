@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin.manager.dao.ManagerDAO">
+    <select id="totalUserCount" resultType="int">
+        select count(*) from MEMBER
+    </select>
+
+    <select id="totalHotelCount" resultType="int">
+        select count(*) from HOTELS where HOTELS_TYPE='호텔'
+    </select>
+
+    <select id="totalMotelCount" resultType="int">
+        select count(*) from HOTELS where HOTELS_TYPE='모텔'
+    </select>
+
+    <select id="totalHouseCount" resultType="int">
+        select count(*) from HOTELS where HOTELS_TYPE='게스트하우스'
+    </select>
+
+    <select id="totalPensionCount" resultType="int">
+        select count(*) from HOTELS where HOTELS_TYPE='펜션'
+    </select>
+
+    <select id="totalResortCount" resultType="int">
+        select count(*) from HOTELS where HOTELS_TYPE='리조트'
+    </select>
+    
+    
+</mapper>

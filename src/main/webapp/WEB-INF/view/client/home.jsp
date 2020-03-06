@@ -5,6 +5,27 @@
 <html>
 <head>
 <%@ include file="head.jspf"%>
+<script type="text/javascript">
+
+function checkz() {
+	
+	//검색어 입력 확인
+ if($("#searchKeyword").val() == ""){
+   alert("검색어를 입력해주세요");
+   $("#searchKeyword").focus();
+   return;
+ }
+      
+	$('#searchHotels').submit();
+
+}
+</script>
+<style type="text/css">
+option  {
+	background : #595959;
+	width : auto;
+}
+</style>
 </head>
 <body>
 
@@ -16,7 +37,7 @@
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-					<li style="background-image: url(resources/client/images/hotel-5.jpg);">
+					<li style="background-image: url(resources/client/images/santorini.jpg);">
 						<div class="overlay"></div>
 						<div class="container-fluids">
 							<div class="row">
@@ -41,20 +62,29 @@
 					<div class="tab-content">
 						<div id="flight" class="tab-pane fade in active">
 							<!-- 검색 값 -->
-							<form method="post" class="colorlib-form" action="">
+							<form method="post" class="colorlib-form" action="searchedHotelsList.do" id="searchHotels">
 								<div class="row">
 									<div class="col-lg-6 col-lg-offset-2">
+										<label>&nbsp;&nbsp;&nbsp;&nbsp;통합검색</label>
 										<div class="form-group">
-											<label for="date">통합검색</label>
 											<div class="form-field">
-												<input type="text" id="location" class="form-control"
-													placeholder="Search Location">
+												<div class="col-lg-4">
+													<i class="icon icon-arrow-down3"></i> 
+													<select id="searchCodition" name="searchCondition" class="form-control">
+														<c:forEach items="${conditionMap}" var="option">
+															<option value="${option.value}">${option.key}</option>
+														</c:forEach>
+													</select>
+												</div>
+												<div class="col-lg-8">
+													<input type="text" name="searchKeyword" class="form-control" id="searchKeyword"
+														placeholder="검색어를 입력해주세요.">
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
-										<input type="submit" name="submit" id="submit" value="검색하기"
-											class="btn btn-primary btn-block">
+									<div class="col-lg-2">
+										<button type="button" onclick="checkz()" class="btn btn-outline btn-info btn-block">검색하기</button>
 									</div>
 								</div>
 							</form>
@@ -69,14 +99,14 @@
 		<div id="colorlib-services">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-md-4 animate-box text-center">
+					<div class="col-md-2 col-md-offset-1 animate-box text-center">
 						<div class="services">
 							<span class="icon"> <a href="hotelMove.do"><img
 									src="resources/client/images/hotel.png" /></a></span>
 							<h3>호텔</h3>
 						</div>
 					</div>
-					<div class="col-md-4 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
 							<span class="icon"> <a href="hotelMove.do?type=모텔"><img
 									src="resources/client/images/motel.png" /></a>
@@ -84,7 +114,7 @@
 							<h3>모텔</h3>
 						</div>
 					</div>
-					<div class="col-md-4 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
 							<span class="icon"> <a href="hotelMove.do?type=펜션"><img
 									src="resources/client/images/pension.png" /></a>
@@ -92,7 +122,7 @@
 							<h3>펜션</h3>
 						</div>
 					</div>
-					<div class="col-md-6 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
 							<span class="icon"> <a href="hotelMove.do?type=게스트하우스"><img
 									src="resources/client/images/guestHouse.png" /></a>
@@ -100,7 +130,7 @@
 							<h3>게스트 하우스</h3>
 						</div>
 					</div>
-					<div class="col-md-6 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
 							<span class="icon"> <a href="hotelMove.do?type=리조트"><img
 									src="resources/client/images/resort.png" /></a>

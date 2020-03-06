@@ -1,5 +1,6 @@
 package com.spring.aesook.client.hotels.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -37,8 +38,8 @@ public class MemberRoomDAOImpl implements MemberRoomDAO {
 
 	//Insert Room
 	@Override
-	public void insertRoom(MemberRoomVO vo) {
-		sqlSessionTemplate.insert(namespace + ".insertRoom", vo);
+	public void insertRoom(HashMap<Object, Object> map) {
+		sqlSessionTemplate.insert(namespace + ".insertRoom", map);
 	}
 	
 	//Room Name Check

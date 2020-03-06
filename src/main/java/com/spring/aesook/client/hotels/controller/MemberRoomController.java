@@ -27,8 +27,7 @@ public class MemberRoomController {
 	private MemberRoomService memberRoomService;
 	@Autowired
 	private MemberHotelsFacilityService memberHotelsFacilityService;
-	@Autowired
-	private MemberHotelsListService memberHotelsListService;
+
 	@Autowired
 	private MemberHotelsService memberHotelsService;
 	
@@ -57,7 +56,7 @@ public class MemberRoomController {
 		MemberHotelsVO memberHotelsVO = memberRoomService.getHotel(hotelsCode);
 		
 		model.addAttribute("memberhotelsVO", memberHotelsVO);
-		model.addAttribute("memberSortVO", memberRoomVO);
+		model.addAttribute("memberRoomVO", memberRoomVO);
 		
 		return "/roomDescription";
 	}
