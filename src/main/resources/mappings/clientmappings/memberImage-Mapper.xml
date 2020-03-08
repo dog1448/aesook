@@ -43,17 +43,52 @@
 		</if>
 	</update>
 	
+	<update id="updateRoomStatusMemberHotelsImage" parameterType="memberHotelsImage">
+		UPDATE hotels_image set room_sort_status = #{roomSortStatus} 
+		where hotels_code = #{hotelsCode} AND room_sort = #{roomSort} 
+		<if test='roomSortStatus.equals("R")'>
+		AND hotels_image_No = #{hotelsImageNo}
+		</if>
+	</update>
+	
 	<select id="getHotelsImage" parameterType="memberHotelsImage" resultType="memberHotelsImage">
-		SELECT * FROM hotels_image WHERE hotels_image_No = #{hotelsImageNo}
+		SELECT * FROM hotels_image 
+		<choose>
+			<when test='roomSortStatus.equals("T")'>
+			WHERE room_sort = #{roomSort} AND room_sort_status='R' AND hotels_code = #{hotelsCode}
+			</when>
+			<otherwise>
+			WHERE hotels_image_No = #{hotelsImageNo}	
+			</otherwise>
+		</choose>
 	</select>
+
 	
 	<select id="getHotelsImageList" parameterType="member"  resultType="memberHotelsImage">
 		SELECT * FROM hotels_image b, 
-		(SELECT hotels_Code from hotels where member_id = #{memberId}) a
+		(SELECT hotels_Code from hotels where member_id = #{memberId}) a 
 		WHERE b.hotels_code = a.hotels_code
+		order by b.room_sort asc
 	</select>
 	
 	<select id="getHotelsImageList2" parameterType="memberHotels"  resultType="memberHotelsImage">
-		SELECT * FROM hotels_image b WHERE hotels_code = #{hotelsCode}
+		SELECT * FROM hotels_image WHERE hotels_code = #{hotelsCode}
 	</select>
+	
+	<update id="updateRoomSort" parameterType="java.util.List" >
+		<foreach collection="list" item="item" open="DECLARE BEGIN" close="; END;" separator=";">
+			UPDATE hotels_image set 
+			room_sort = #{item.roomSort, jdbcType=VARCHAR}, 
+			room_sort_status = #{item.roomSortStatus} 
+			where
+			hotels_image_no = #{item.hotelsImageNo}
+		</foreach>
+	</update>
+	
+	<delete id="deleteHotelsImage" parameterType="java.util.List">
+		DELETE hotels_image WHERE 
+		<foreach collection="list" item="item" open="" close="" separator="OR">
+		hotels_image_no = #{item}
+		</foreach>
+	</delete>
 </mapper>

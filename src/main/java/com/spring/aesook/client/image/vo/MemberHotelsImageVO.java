@@ -9,7 +9,9 @@ public class MemberHotelsImageVO {
 	private String hotelsImagePath;
 	private String hotelsImageExtension;
 	private String hotelsImageStatus;
-
+	private String roomSort;
+	private String roomSortStatus;
+		
 	public int getHotelsImageNo() {
 		return hotelsImageNo;
 	}
@@ -65,13 +67,32 @@ public class MemberHotelsImageVO {
 	public void setHotelsImageStatus(String hotelsImageStatus) {
 		this.hotelsImageStatus = hotelsImageStatus;
 	}
+	
+	public String getRoomSort() {
+		return roomSort;
+	}
+
+	public void setRoomSort(String roomSort) {
+		this.roomSort = roomSort;
+	}
+
+	public String getRoomSortStatus() {
+		return roomSortStatus;
+	}
+
+	public void setRoomSortStatus(String roomSortStatus) {
+		this.roomSortStatus = roomSortStatus;
+	}
 
 	@Override
 	public String toString() {
 		return "MemberHotelsImageVO [hotelsImageNo=" + hotelsImageNo + ", hotelsCode=" + hotelsCode
 				+ ", hotelsImageName=" + hotelsImageName + ", hotelsImageOrigin=" + hotelsImageOrigin
 				+ ", hotelsImagePath=" + hotelsImagePath + ", hotelsImageExtension=" + hotelsImageExtension
-				+ ", hotelsImageStatus=" + hotelsImageStatus + "]";
+				+ ", hotelsImageStatus=" + hotelsImageStatus + ", roomSort=" + roomSort + ", roomSortStatus="
+				+ roomSortStatus + "]";
 	}
+
+
 
 }

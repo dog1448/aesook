@@ -11,6 +11,9 @@ public interface MemberImageDAO {
 	public void insertMemberImageBrn(MemberBrnImageVO vo);
 	public void insertMemberHotelsImage(List<MemberHotelsImageVO> vo);
 	public void updateStatusMemberHotelsImage(MemberHotelsImageVO vo);
+	public void updateRoomStatusMemberHotelsImage(MemberHotelsImageVO vo);
 	public MemberHotelsImageVO getHotelsImage(MemberHotelsImageVO vo);
 	public List<MemberHotelsImageVO> getHotelsImageList(MemberVO vo);
+	public void updateRoomSort(List<MemberHotelsImageVO> vo);
+	public void deleteHotelsImage(List<Integer> vo);
 }

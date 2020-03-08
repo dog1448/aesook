@@ -45,8 +45,12 @@ public class MemberRoomDAOImpl implements MemberRoomDAO {
 	//Room Name Check
 	@Override
 	public int roomNameCheck(MemberRoomVO vo) {
-		
 		return sqlSessionTemplate.selectOne(namespace + ".roomNameCheck", vo);
+	}
+	
+	// getRoomSortTypeList
+	public List<String> getRoomSortTypeList(MemberHotelsVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".getRoomSortTypeList", vo);
 	}
 
 }
