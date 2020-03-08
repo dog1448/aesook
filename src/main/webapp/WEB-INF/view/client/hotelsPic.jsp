@@ -54,8 +54,8 @@ function modifyRoomMainPic() {
 	var checkValue = $('input[name=hotelsImageNo]:checked').val();
 	var roomSort = $('input[name=hotelsImageNo]:checked').closest('.block-check').find('input[name=room]').val();
 	var hCode = $('#hCode').val();
-	var addCrown = '<img src="resources/client/images/test.gif" width="70%" height="15px">';
-	var removeCrown = '<canvas width="70%" height="15px"></canvas>';
+	var addCrown = '<img src="resources/client/images/crown2.gif" width="70%" height="20px">';
+	var removeCrown = '<canvas width="70%" height="20px"></canvas>';
 	
 	if(checkCnt >= 2) {
 		alert("방대표 사진은 하나만 선택 가능합니다.");
@@ -195,10 +195,10 @@ function deleteImage() {
 									<div class="col-md-2 findCrown">
 									<div class="crown" id="crown${image.hotelsImageNo}">
 									<c:if test="${image.roomSortStatus eq 'R'}">
-										<img src="resources/client/images/test.gif" width="100%" height="15px">
+										<img src="resources/client/images/crown2.gif" width="70%" height="20px">
 									</c:if>
 									<c:if test="${image.roomSortStatus ne 'R'}">
-										<canvas width="70%" height="15px"></canvas>
+										<canvas width="70%" height="20px"></canvas>
 									</c:if>
 									</div>
 									  <div class="gallery-card">
