@@ -82,5 +82,53 @@ public class ManagerDAOImpl implements ManagerDAO {
 		return sqlSessionTemplate.selectOne(namespace+".aprilReservationCount");
 	}
 
+	@Override
+	public int mayReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".mayReservationCount");
+
+	}
+
+	@Override
+	public int juneReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".juneReservationCount");
+
+	}
+
+	@Override
+	public int julyReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".julyReservationCount");
+
+	}
+
+	@Override
+	public int augustReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".augustReservationCount");
+
+	}
+
+	@Override
+	public int septemberReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".septemberReservationCount");
+
+	}
+
+	@Override
+	public int octoberReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".octoberReservationCount");
+
+	}
+
+	@Override
+	public int novemberReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".novemberReservationCount");
+
+	}
+
+	@Override
+	public int decemberReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".decemberReservationCount");
+
+	}
+
 
 }

@@ -85,4 +85,44 @@ public class ManagerServiceImpl implements ManagerService {
 	public int aprilReservationCount() {
 		return managerDAO.aprilReservationCount();
 	}
+
+	@Override
+	public int mayReservationCount() {
+		return managerDAO.mayReservationCount();
+	}
+
+	@Override
+	public int juneReservationCount() {
+		return managerDAO.juneReservationCount();
+	}
+
+	@Override
+	public int julyReservationCount() {
+		return managerDAO.julyReservationCount();
+	}
+
+	@Override
+	public int augustReservationCount() {
+		return managerDAO.augustReservationCount();
+	}
+
+	@Override
+	public int septemberReservationCount() {
+		return managerDAO.septemberReservationCount();
+	}
+
+	@Override
+	public int octoberReservationCount() {
+		return managerDAO.octoberReservationCount();
+	}
+
+	@Override
+	public int novemberReservationCount() {
+		return managerDAO.novemberReservationCount();
+	}
+
+	@Override
+	public int decemberReservationCount() {
+		return managerDAO.decemberReservationCount();
+	}
 }

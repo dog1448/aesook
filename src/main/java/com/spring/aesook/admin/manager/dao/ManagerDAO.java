@@ -21,5 +21,13 @@ public interface ManagerDAO {
 	// #Statistics(MIDDLE)------------------------------------------
 	int marchReservationCount();
 	int aprilReservationCount();
+	int mayReservationCount();
+	int juneReservationCount();
+	int julyReservationCount();
+	int augustReservationCount();
+	int septemberReservationCount();
+	int octoberReservationCount();
+	int novemberReservationCount();
+	int decemberReservationCount();
 
 }

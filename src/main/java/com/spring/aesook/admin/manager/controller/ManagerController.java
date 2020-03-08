@@ -159,6 +159,14 @@ public class ManagerController {
 		//Statistics MIDDLE
 		model.addAttribute("marchCnt",managerService.marchReservationCount());
 		model.addAttribute("aprilCnt",managerService.aprilReservationCount());
+		model.addAttribute("mayCnt",managerService.mayReservationCount());
+		model.addAttribute("juneCnt",managerService.juneReservationCount());
+		model.addAttribute("julyCnt",managerService.julyReservationCount());
+		model.addAttribute("augustCnt",managerService.augustReservationCount());
+		model.addAttribute("septemberCnt",managerService.septemberReservationCount());
+		model.addAttribute("octoberCnt",managerService.octoberReservationCount());
+		model.addAttribute("novemberCnt",managerService.novemberReservationCount());
+		model.addAttribute("decemberCnt",managerService.decemberReservationCount());
 
 		return "/index";
 	}
