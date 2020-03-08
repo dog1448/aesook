@@ -18,11 +18,8 @@ canvas {
 </head>
 
 <body>
-
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
-<%@ include file="main_header.jspf" %>
+		<%@ include file="main_header.jspf" %>
 	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 
 		<div id="colorlib-about">
@@ -115,8 +112,6 @@ canvas {
 
 </body>
 <script>
-	var MONTHS = [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월',
-			'11월', '12월' ];
 	var color = Chart.helpers.color;
 	var barChartData = {
 		labels : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월',
