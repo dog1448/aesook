@@ -15,7 +15,7 @@
 				<h2>숙소관리</h2>
 				<ul>				
 					<li id="register"><a href="hostTermsOfUse.do" >숙소 등록</a></li>				
-         		    <li><a href="hotelsImagePic.do">사진 등록</a></li>	
+         		    <li><a href="hotelsPic.do">호텔사진관리</a></li>	
 					<li><a href="registeredAccommodation.do">등록 숙소 확인 및 수정</a></li>
 					<li><a href="statistics.do">통계</a></li>
 					<li><a href="messageBoard.do">1대 1문의</a></li>
