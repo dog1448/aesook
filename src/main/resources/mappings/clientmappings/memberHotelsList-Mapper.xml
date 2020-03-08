@@ -14,11 +14,14 @@
    	
   	<!-- 지역으로 숙소 리스트 가져오기 -->
   	<select id="selectHotelsList" resultType="memberHotels">
-  		SELECT * FROM hotels WHERE HOTELS_TYPE = #{type} AND HOTELS_ADDRESS1 LIKE '%'||#{sido}||'%' AND   
+  		SELECT h.*, i.hotels_image_name, i.hotels_image_path, i.hotels_image_status    
+  		FROM hotels h,(select * from hotels_image where hotels_image_status='M') i    
+  		WHERE h.hotels_code = i.hotels_code(+) AND h.HOTELS_TYPE = #{type}  
+  		AND h.HOTELS_ADDRESS1 LIKE '%'||#{sido}||'%' AND  
   		<foreach collection="regionList" item="item" separator="or" open="(" close=")" index="index">
-  			HOTELS_ADDRESS1 LIKE '%'||#{item}||'%'
-  		</foreach>
-  		 ORDER BY HOTELS_CODE DESC
+  			h.HOTELS_ADDRESS1 LIKE '%'||#{item}||'%'
+  		</foreach>  		   
+  		 ORDER BY h.HOTELS_CODE DESC
   	</select>
   	
   	<!-- ID로 숙소 리스트 가져오기 -->

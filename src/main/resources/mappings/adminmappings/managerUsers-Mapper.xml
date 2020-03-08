@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="admin.users.dao.ManagerUsersDAO">
+	
+	<!-- UserInfo Modify 수행시 -->
+	<update id="modifyManagerUsers" parameterType="managerUsers">
+		UPDATE MEMBER 
+		SET MEMBER_STATUS = #{status}
+		WHERE MEMBER_ID = #{id}
+	</update>
+	
+	<!-- UserInfo Delete 수행시 -->
+	<delete id="deleteManagerUsers" parameterType="managerUsers">
+		DELETE FROM MEMBER WHERE MEMBER_ID = #{id}
+	</delete>
+	
+	<!-- UserInfo Disable 수행시 -->
+	<update id="disableManagerUsers" parameterType="managerUsers">
+		UPDATE MEMBER 
+		SET MEMBER_STATUS = "R"
+		WHERE MEMBER_ID = #{id}
+	</update>
+	
+	<select id="getManagerUsers" resultType="managerUsers" parameterType="managerUsers">
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{id}
+	</select>
+	
+	<select id="getManagerUsersList" resultType="managerUsers" parameterType="managerUsers">
+		SELECT * FROM MEMBER
+	</select>
+	
+</mapper>

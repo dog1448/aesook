@@ -38,6 +38,51 @@ public class ManagerServiceImpl implements ManagerService {
 	public ManagerVO getManager(ManagerVO vo) {
 		return managerDAO.getManager(vo);
 	}
-	
-	
+
+
+    //Statistics(TOP)-----------------------------------------------------------------------------------------------------------------
+	@Override
+	public int totalUserCount() {
+		return managerDAO.totalUserCount();
+	}
+
+	@Override
+	public int totalHotelCount() {
+		return managerDAO.totalHotelCount();
+	}
+
+	@Override
+	public int totalMotelCount() {
+		return managerDAO.totalMotelCount();
+	}
+
+	@Override
+	public int totalHouseCount() {
+		return managerDAO.totalHouseCount();
+	}
+
+	@Override
+	public int totalPensionCount() {
+		return managerDAO.totalPensionCount();
+	}
+
+	@Override
+	public int totalResortCount() {
+		return managerDAO.totalResortCount();
+	}
+
+
+
+
+	//Statistics(MIDDLE)--------------------------------------------------------------------------------------------------------
+
+	@Override
+	public int marchReservationCount() {
+		return managerDAO.marchReservationCount();
+	}
+
+	@Override
+	public int aprilReservationCount() {
+		return managerDAO.aprilReservationCount();
+	}
 }

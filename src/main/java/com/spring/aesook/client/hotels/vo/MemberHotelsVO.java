@@ -17,6 +17,9 @@ public class MemberHotelsVO {
 	private String hotelsIntroduce;		
 	private String searchCondition;
 	private String searchKeyword;
+	private String hotelsImageName;
+	private String hotelsImagePath;
+	private String hotelsImageStatus;
 	
 	public String getMemberId() {
 		return memberId;
@@ -96,13 +99,34 @@ public class MemberHotelsVO {
 	}
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
+	}	
+	public String getHotelsImageName() {
+		return hotelsImageName;
+	}
+	public void setHotelsImageName(String hotelsImageName) {
+		this.hotelsImageName = hotelsImageName;
+	}
+	public String getHotelsImagePath() {
+		return hotelsImagePath;
+	}
+	public void setHotelsImagePath(String hotelsImagePath) {
+		this.hotelsImagePath = hotelsImagePath;
+	}	
+	public String getHotelsImageStatus() {
+		return hotelsImageStatus;
+	}
+	public void setHotelsImageStatus(String hotelsImageStatus) {
+		this.hotelsImageStatus = hotelsImageStatus;
 	}
 	@Override
 	public String toString() {
 		return "MemberHotelsVO [hotelsCode=" + hotelsCode + ", hotelsName=" + hotelsName + ", hotelsType=" + hotelsType
-				+ memberId + ", hotelsPhone=" + hotelsPhone + ", hotelsZipcode=" + hotelsZipcode
+				+ ", memberId=" + memberId + ", hotelsPhone=" + hotelsPhone + ", hotelsZipcode=" + hotelsZipcode
 				+ ", hotelsAddress1=" + hotelsAddress1 + ", hotelsAddress2=" + hotelsAddress2 + ", hotelsPath="
-				+ hotelsPath + ", hotelsInfo=" + hotelsInfo + ", hotelsIntroduce=" + hotelsIntroduce + "]";
+				+ hotelsPath + ", hotelsInfo=" + hotelsInfo + ", hotelsIntroduce=" + hotelsIntroduce
+				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", hotelsImageName="
+				+ hotelsImageName + ", hotelsImagePath=" + hotelsImagePath + ", hotelsImageStatus=" + hotelsImageStatus
+				+ "]";
 	}
 	
 }

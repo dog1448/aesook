@@ -22,7 +22,8 @@ canvas {
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
-
+<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 
 		<div id="colorlib-about">
 			<div class="container">
@@ -31,7 +32,7 @@ canvas {
 						<!-- 사이드바 -->
 						<%@ include file="managementSidebar.jspf"%>
 						<div class="col-three-forth animate-box">
-							<h2>통계</h2>							
+							<h2>통계</h2>
 							<nav class="navbar navbar-default navbar-static-top">
 								<div id="navbar" class="navbar-collapse collapse">
 									<ul class="nav navbar-nav">
@@ -42,29 +43,21 @@ canvas {
 								</div>
 							</nav>
 							<div>&nbsp;</div>
-							<div class="text-right">
-								<tr>
-									<td>
-										<select name="YEAR" id="YEAR" title="년도" class="select w80"></select>
-										<select name="MONTH" id="MONTH" title="월" class="select w80"></select>
-									</td>
-								</tr>
+							<div class="form-field">
+								<i class="icon icon-calendar2"></i> <input type="text"
+									id="yearpicker" class="form-control yearpicker"
+									placeholder="필요한 년도를 검색하세요.">
 							</div>
 							<div class="row">
 								<div class="col-md">
 									<div id="container" style="width: 100%;">
 										<canvas id="canvas"></canvas>
 									</div>
-
 								</div>
 								<div>&nbsp;</div>
 								<div>&nbsp;</div>
 								<div class="col-md text-center">
 									<button id="randomizeData">Randomize Data</button>
-									<button id="addDataset">Add Dataset</button>
-									<button id="removeDataset">Remove Dataset</button>
-									<button id="addData">Add Data</button>
-									<button id="removeData">Remove Data</button>
 								</div>
 								<div>&nbsp;</div>
 								<div>&nbsp;</div>
@@ -174,34 +167,14 @@ canvas {
 				});
 				window.myBar.update();
 			});
+	
+	 $('.yearpicker').datepicker({
 
+         minViewMode: 'years',
 
-	//selectBox
-	$(document).ready(function() {
-		setDateBox();
-	});
+         format: 'yyyy'
 
-	// select box 연도 , 월 표시
-	function setDateBox() {		
-		var dt = new Date();
-		var year = "";
-		var com_year = dt.getFullYear();
-		// 발행 뿌려주기
-		$("#YEAR").append("<option value=''>" + com_year + " 년" +"</option>");
-		// 올해 기준으로 -1년부터 +5년을 보여준다.
-		for (var y = (com_year - 1); y <= (com_year + 5); y++) {
-			$("#YEAR").append(
-					"<option value='"+ y +"'>" + y + " 년" + "</option>");
-		}
-		// 월 뿌려주기(1월부터 12월)
-		var month = dt.getMonth() + 1;
-		$("#MONTH").append("<option value=''>" + month + " 월" + "</option>");
-		for (var i = 1; i <= 12; i++) {
-			$("#MONTH").append(
-					"<option value='"+ i +"'>" + i + " 월" + "</option>");
-		}
-
-	}
+       });
 </script>
 
 </html>

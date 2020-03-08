@@ -9,7 +9,8 @@
 </head>
 
 <body>
-
+<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -21,7 +22,7 @@
 						<!-- 숙소관리 사이드바 -->
 						<%@ include file="managementSidebar.jspf"%>
 						<div class="col-three-forth animate-box">
-							<h2>예약 조회</h2>
+							<h2>나의 숙소</h2>
 							<div>&nbsp;</div>
 							<div class="row">
 								<c:forEach var="list" items="${hotels}">

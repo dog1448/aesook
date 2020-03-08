@@ -9,4 +9,17 @@ public interface ManagerDAO {
 	void updatePassManager(ManagerVO vo);
 	ManagerVO getManager(ManagerVO vo);
 	int idCheck(ManagerVO vo);
+
+	// #Statistics(TOP)------------------------------------------
+	int totalUserCount();
+	int totalHotelCount();
+	int totalMotelCount();
+	int totalHouseCount();
+	int totalPensionCount();
+	int totalResortCount();
+
+	// #Statistics(MIDDLE)------------------------------------------
+	int marchReservationCount();
+	int aprilReservationCount();
+
 }

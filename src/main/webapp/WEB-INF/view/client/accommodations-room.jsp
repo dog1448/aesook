@@ -168,7 +168,6 @@
 					<div class="col-md-9">
 						<div class="row">
 							<div class="col-md-12">
-
 								<div class="wrap-division">
 									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
 										<h2>${vo.hotelsName}</h2>
@@ -177,8 +176,7 @@
 									<h3>방목록</h3>
 									<div class="row">
 										<c:forEach var="list" items="${list}">
-											<a
-												href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomName}">
+											<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomName}">
 												<div class="col-md-12 animate-box">
 													<div class="room-wrap">
 														<div class="row">
@@ -188,7 +186,7 @@
 															</div>
 															<div class="col-md-6 col-sm-6">
 																<div class="desc">
-																	<h2>${list.roomSort}</h2>
+																	<h2 class=".roomSort">${list.roomSort}</h2>
 																	<p class="price">
 																		<span>${list.roomStandardPrice} ￦</span> <small>&nbsp;평일</small>
 																	<p class="price">
@@ -372,8 +370,9 @@
 												<label>체크인</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" id="date-in" class="form-control date"
+													<input type="text" name="bookingCheckIn" id="date-in" class="form-control date"
 														placeholder="Check-in date">
+
 												</div>
 											</div>
 										</div>
@@ -382,7 +381,7 @@
 												<label>체크아웃</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" id="date-out" class="form-control date"
+													<input type="text" name="bookingCheckOut" id="date-out" class="form-control date"
 														placeholder="Check-out date">
 												</div>
 											</div>
