@@ -295,7 +295,7 @@
                 label: '월별 예약 건수',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [0, 0, ${marchCnt}, ${aprilCnt}, 20, 30, 45]
+                data: [0, 0, ${marchCnt}, ${aprilCnt}, ${mayCnt},${juneCnt},${julyCnt},${augustCnt},${septemberCnt},${octoberCnt},${novemberCnt},${decemberCnt}]
             }]
         },
 
@@ -377,12 +377,14 @@
         data: {
 
             datasets: [{
-                borderAlign:'inner',
-                borderColor: '#0000',
+                borderColor: '#ffff',
                 weight:100,
                 data: [5, 10, 25],
-                hoverBackgroundColor: ['Red','Yellow','Blue'],
-                backgroundColor:['Red','Yellow','Blue']
+
+                backgroundColor:[
+                    'rgba(255, 99, 132, 1)'
+                    ,'rgba(255, 206, 86, 1)'
+                    ,'rgba(54, 162, 235, 1)']
             }],
             labels: ['Red','Yellow','Blue']
         },
