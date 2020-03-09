@@ -1,6 +1,9 @@
 package com.spring.aesook.admin.manager.service;
 
+import com.spring.aesook.admin.manager.vo.ManagerStatisticsVO;
 import com.spring.aesook.admin.manager.vo.ManagerVO;
+
+import java.util.List;
 
 public interface ManagerService {
 	
@@ -27,4 +30,8 @@ public interface ManagerService {
 	int octoberReservationCount();
 	int novemberReservationCount();
 	int decemberReservationCount();
+
+
+	//Statistics(BOTTOM)----------------------------------------------------------------------------------
+	List<ManagerStatisticsVO> totalPrice();
 }

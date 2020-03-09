@@ -1,7 +1,9 @@
 package com.spring.aesook.admin.manager.service;
 
+import java.util.List;
 import java.util.UUID;
 
+import com.spring.aesook.admin.manager.vo.ManagerStatisticsVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -124,5 +126,10 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int decemberReservationCount() {
 		return managerDAO.decemberReservationCount();
+	}
+
+	@Override
+	public List<ManagerStatisticsVO> totalPrice() {
+		return managerDAO.totalPrice();
 	}
 }

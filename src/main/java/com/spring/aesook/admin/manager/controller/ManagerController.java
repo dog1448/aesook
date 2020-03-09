@@ -168,6 +168,9 @@ public class ManagerController {
 		model.addAttribute("novemberCnt",managerService.novemberReservationCount());
 		model.addAttribute("decemberCnt",managerService.decemberReservationCount());
 
+
+		//Statistics BOTTOM
+		model.addAttribute("totalPrice",managerService.totalPrice());
 		return "/index";
 	}
 	

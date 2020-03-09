@@ -79,4 +79,18 @@
     select count(*) from BOOKING
     where BOOKING_CHECK_IN between to_date('20201201') and to_date('20201231')
     </select>
+
+    <select id="totalPrice" resultMap="managerStatistics">
+       select sum(BOOKING_TOTAL_PRICE) total_price,
+       to_char(BOOKING_CHECK_IN,'fmMM') checkIn_date
+        from BOOKING
+        where BOOKING_CHECK_IN between to_date('20200101000000','YYYYMMDDHH24MISS')
+        and to_date('20210101000000','YYYYMMDDHH24MISS')
+        group by to_char(BOOKING_CHECK_IN,'fmMM')
+    </select>
+
+    <resultMap id="managerStatistics" type="managerStatistics">
+        <id column="checkin_date" property="checkInDate"/>
+        <result column="total_price" property="totalPrice"/>
+    </resultMap>
 </mapper>
