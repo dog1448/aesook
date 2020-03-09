@@ -9,5 +9,5 @@ public interface ManagerUsersDAO {
 	void deleteManagerUsers(ManagerUsersVO vo);
 	void disableManagerUsers(ManagerUsersVO vo);
 	ManagerUsersVO getManagerUsers(ManagerUsersVO vo);
-	List<ManagerUsersVO> getManagerUsersList(ManagerUsersVO vo);
+	List<ManagerUsersVO> getManagerUsersList();
 }

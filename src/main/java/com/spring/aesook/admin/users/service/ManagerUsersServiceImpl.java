@@ -30,14 +30,15 @@ public class ManagerUsersServiceImpl implements ManagerUsersService {
 	}
 
 	@Override
-	public ManagerUsersVO getManagerUsers(ManagerUsersVO vo) {
-		
+	public ManagerUsersVO getManagerUsers(String memberId) {
+		ManagerUsersVO vo = new ManagerUsersVO();
+		vo.setMemberId(memberId);
 		return managerUsersDAO.getManagerUsers(vo);
 	}
 
 	@Override
-	public List<ManagerUsersVO> getManagerUsersList(ManagerUsersVO vo) {
-		return managerUsersDAO.getManagerUsersList(vo);
+	public List<ManagerUsersVO> getManagerUsersList() {
+		return managerUsersDAO.getManagerUsersList();
 	}
 
 }

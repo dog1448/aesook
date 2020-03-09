@@ -37,8 +37,8 @@ public class ManagerUsersDAOImpl implements ManagerUsersDAO {
 	}
 
 	@Override
-	public List<ManagerUsersVO> getManagerUsersList(ManagerUsersVO vo) {
-		return sqlSessionTemplate.selectList(namespace+".getManagerUsersList", vo);
+	public List<ManagerUsersVO> getManagerUsersList() {
+		return sqlSessionTemplate.selectList(namespace+".getManagerUsersList");
 	}
 
 }
