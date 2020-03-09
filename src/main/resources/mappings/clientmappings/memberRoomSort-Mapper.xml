@@ -6,7 +6,7 @@
 
 <!-- 방 전체 리스트 가져오기 -->
 <select id="selectRoom" resultType="memberRoom">
-	select distinct hotels_code,room_sort, room_standard_cnt, room_max_cnt, room_standard_price, room_holiday_price, room_add_price, room_room_info from room 
+	select distinct hotels_code,room_sort, room_standard_cnt, room_max_cnt, room_standard_price, room_holiday_price, room_add_price, room_info from room 
 	where HOTELS_CODE = #{hotelsCode} ORDER BY room_standard_price asc
 </select>
 
@@ -18,8 +18,11 @@
 
 <!-- 방 하나의 정보 가져오기  조건 2개-->
 <select id="selectRoomDescription" resultType="memberRoom" parameterType="memberRoom">
-	select * from room 
-	where hotels_code = #{hotelsCode} and room_name = #{roomName}
+	select distinct room_sort, hotels_code, room_add_price, 
+	room_holiday_price, room_max_cnt, room_info, 
+	room_standard_cnt, room_standard_price
+	from room
+	where hotels_code = #{hotelsCode} and room_sort = #{roomSort}
 </select>
 
 <!-- 숙소등록 -->
@@ -36,7 +39,7 @@
 		#{item.roomStandardPrice},
 		#{item.roomHolidayPrice},
 		#{item.roomAddPrice},
-		#{item.roomRoomInfo})
+		#{item.roomInfo})
 	</foreach>
 	 SELECT * FROM DUAL	
 </insert>
@@ -50,4 +53,5 @@
 	where hotels_code = #{hotelsCode} 
 	order by room_sort asc
 </select>
+  
 </mapper>
