@@ -12,5 +12,4 @@ public interface MemberRoomDAO {
 	MemberHotelsVO getHotel(int hotelsCode);
 	MemberRoomVO getRoom(MemberRoomVO vo);
 	void insertRoom(HashMap<Object, Object> map);
-	int roomNameCheck(MemberRoomVO vo);
 }

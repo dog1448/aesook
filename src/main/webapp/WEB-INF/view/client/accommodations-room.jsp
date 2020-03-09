@@ -128,6 +128,49 @@
 	}
 }
 </style>
+<script type="text/javascript">
+
+function searchRoom(){
+	$('.impossible').remove();
+	var checkOut = $('#dateOut').val();
+	var checkIn = $('#dateIn').val();
+	var hotelsCode = $('#hotelsCode').val();
+	var impossible;
+
+	$.ajax({
+	    url: "getPossibleBooking.do",
+	    type: "GET",
+	    data: {
+	  		"bookingCheckOut" : checkOut,
+	  		"bookingCheckIn" : checkIn,
+	  		"hotelsCode" : hotelsCode
+	    },
+	    dataType: "json"
+	})
+	.done(function(json) {
+	            console.log(json);
+	       		var possibleList = json;
+	       		$("input[name='roomSort']").each(function(index, item) {
+	       			var roomValue = $(item).val();
+	       			var cnt = 0;
+	       			for (var i = 0; i < possibleList.length; i++){
+	       				if (roomValue == possibleList[i]){
+	       					cnt++;
+	       					break;
+	       				}
+	       			}
+	       			if(cnt == 0) {
+	       				var ida = '#imsi' + index;
+	       				$(ida).append('<div class="impossible"><h5><font color="red"><예약마감></font></h5></div>');
+	       			}
+	       			
+	       		});
+				
+	 });
+        
+}
+
+</script>
 </head>
 
 <body>
@@ -176,10 +219,10 @@
 									<!-- 방목록> -->
 									<h3>방목록</h3>
 									<div class="row">
-										<c:forEach var="list" items="${list}">
-											<a
-												href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomName}">
+										<c:forEach var="list" items="${list}" varStatus="vs">
+											<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomSort}">
 												<div class="col-md-12 animate-box">
+												<input type="hidden" value="${list.hotelsCode}" id="hotelsCode">
 													<div class="room-wrap">
 														<div class="row">
 															<div class="col-md-6 col-sm-6">
@@ -188,11 +231,12 @@
 															</div>
 															<div class="col-md-6 col-sm-6">
 																<div class="desc">
-																	<h2 class=".roomSort">${list.roomSort}</h2>
+																	<h2 id="imsi${vs.index}">${list.roomSort}</h2>
+																	<input type="hidden" value="${list.roomSort}" name="roomSort">
+																	<p class="price" id="standardPrice">
+																		<span>${list.roomStandardPrice} ￦ <small>&nbsp;평일</small></span></p>
 																	<p class="price">
-																		<span>${list.roomStandardPrice} ￦</span> <small>&nbsp;평일</small>
-																	<p class="price">
-																		<span><font color="red">${list.roomHolidayPrice} ￦</font></span>
+																		<span><font color="#FFC300">${list.roomHolidayPrice} ￦</font></span>
 																		<small>&nbsp;공휴일</small></p>
 																	<p>기준 : ${list.roomStandardCnt} 명
 																	&nbsp;/&nbsp;&nbsp;최대 : ${list.roomMaxCnt} 명</p>
@@ -372,8 +416,8 @@
 												<label>체크인</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" name="bookingCheckIn" id="date-in" class="form-control date"
-														placeholder="Check-in date">
+													<input type="date" name="bookingCheckIn" id="dateIn" class="form-control date"
+														value="${bookingCheckIn}" placeholder="Check-in date">
 
 												</div>
 											</div>
@@ -383,8 +427,8 @@
 												<label>체크아웃</label>
 												<div class="form-field">
 													<i class="icon icon-calendar2"></i> 
-													<input type="text" name="bookingCheckOut" id="date-out" class="form-control date"
-														placeholder="Check-out date">
+													<input type="date" name="bookingCheckOut" id="dateOut" class="form-control date"
+														value="${bookingCheckOut}" placeholder="Check-out date">
 												</div>
 											</div>
 										</div>
@@ -393,12 +437,12 @@
 												<label for="guests">인원</label>
 												<div class="form-field">
 													<i class="icon icon-pencil"></i> 
-													<input type="text" id="cnt" class="form-control">
+													<input type="text" id="cnt" class="form-control" placeholder="숫자만 입력하세요." >
 												</div>
 											</div>
 										</div>
 										<div class="col-md-12">
-											<input type="submit" name="submit" id="submit" value="검색"
+											<input type="button" id="dateSearch" value="검색" onclick="searchRoom()"
 												class="btn btn-info btn-block">
 										</div>
 									</div>

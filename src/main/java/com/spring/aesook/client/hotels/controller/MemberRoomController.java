@@ -1,23 +1,28 @@
 package com.spring.aesook.client.hotels.controller;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
-import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
-import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Controller
@@ -31,6 +36,12 @@ public class MemberRoomController {
 	@Autowired
 	private MemberHotelsService memberHotelsService;
 	
+    @InitBinder
+    protected void initBinder(WebDataBinder binder){
+        DateFormat  dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
+    }
+    
 	//Show Accommodations
 	@RequestMapping(value = "/accommodationsRoom.do", method = RequestMethod.GET)
 	public String roomList(@RequestParam(value = "hotelsCode") int hotelsCode, Model model) {
@@ -51,21 +62,17 @@ public class MemberRoomController {
 	//Show Room Description 
 	@RequestMapping(value = "/roomDescription.do", method = RequestMethod.GET)
 	public String getRoomDescription(@RequestParam("hotelsCode") int hotelsCode,
-			@RequestParam("roomName") String roomName, Model model) {
-		MemberRoomVO memberRoomVO = memberRoomService.getRoomDescription(hotelsCode, roomName);
+			@RequestParam("roomName") String roomSort, 
+			HttpSession session, Model model) {
+		Date bookingCheckIn = (Date)session.getAttribute("bookingCheckIn");
+		Date bookingCheckOut = (Date)session.getAttribute("bookingCheckOut");
+		session.setAttribute("bookingCheckIn", bookingCheckIn);
+		session.setAttribute("bookingCheckOut", bookingCheckOut);
+		MemberRoomVO memberRoomVO = memberRoomService.getRoomDescription(hotelsCode, roomSort);
 		MemberHotelsVO memberHotelsVO = memberRoomService.getHotel(hotelsCode);
-		
 		model.addAttribute("memberhotelsVO", memberHotelsVO);
 		model.addAttribute("memberRoomVO", memberRoomVO);
 		
 		return "/roomDescription";
 	}
-	
-	//Room Name check
-	@RequestMapping(value = "/roomNameChk.do", method = RequestMethod.POST)
-    @ResponseBody
-    public int checkId(MemberRoomVO vo){
-    	int result = memberRoomService.roomNameCheck(vo);
-    	return result;
-    } 
 }

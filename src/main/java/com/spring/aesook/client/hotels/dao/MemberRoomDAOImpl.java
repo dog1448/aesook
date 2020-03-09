@@ -41,12 +41,5 @@ public class MemberRoomDAOImpl implements MemberRoomDAO {
 	public void insertRoom(HashMap<Object, Object> map) {
 		sqlSessionTemplate.insert(namespace + ".insertRoom", map);
 	}
-	
-	//Room Name Check
-	@Override
-	public int roomNameCheck(MemberRoomVO vo) {
-		
-		return sqlSessionTemplate.selectOne(namespace + ".roomNameCheck", vo);
-	}
 
 }
