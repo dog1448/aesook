@@ -1,6 +1,9 @@
 package com.spring.aesook.admin.manager.dao;
 
+import com.spring.aesook.admin.manager.vo.ManagerStatisticsVO;
 import com.spring.aesook.admin.manager.vo.ManagerVO;
+
+import java.util.List;
 
 public interface ManagerDAO {
 	
@@ -30,4 +33,6 @@ public interface ManagerDAO {
 	int novemberReservationCount();
 	int decemberReservationCount();
 
+	// #Statistics(BOTTOM)--------------------------------------------
+	List<ManagerStatisticsVO> totalPrice();
 }
