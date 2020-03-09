@@ -19,6 +19,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.aesook.admin.image.vo.ManagerAdminImageVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.image.vo.MemberBrnImageVO;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
@@ -121,6 +122,15 @@ public class FileServiceImpl implements FileService {
 			vo.setHotelsImageOrigin(file.getOriginName());
 			vo.setHotelsImagePath(file.getSavePath());
 			vo.setHotelsImageExtension(file.getExtension());
+			return vo;
+		}
+		
+		public ManagerAdminImageVO getManagerAdminImageFile(FileVO file) {
+			ManagerAdminImageVO vo = new ManagerAdminImageVO();
+			vo.setAdminImageName(file.getFileName());
+			vo.setAdminImageOrigin(file.getOriginName());
+			vo.setAdminImagePath(file.getSavePath());
+			vo.setAdminImageExtension(file.getExtension());
 			return vo;
 		}
 		

@@ -22,7 +22,7 @@ import com.spring.aesook.common.file.FileVO;
 public class MemberHotelsImageServiceImpl implements MemberHotelsImageService {	
 	
 	@Autowired
-	private FileService fileSerivce;
+	private FileService fileService;
 	@Autowired
 	private MemberImageDAO memberImageDAO;
 	
@@ -32,20 +32,20 @@ public class MemberHotelsImageServiceImpl implements MemberHotelsImageService {
 		List<MemberHotelsImageVO> hotelsImageList = new ArrayList<MemberHotelsImageVO>();
 		
 		try {
-			List<FileVO> fileList = fileSerivce.uploadFiles(user.getMemberId(), files);
+			List<FileVO> fileList = fileService.uploadFiles(user.getMemberId(), files);
 			for (FileVO file : fileList) {
-				MemberHotelsImageVO image = fileSerivce.getMemberHotelsImageFile(file);
+				MemberHotelsImageVO image = fileService.getMemberHotelsImageFile(file);
 				image.setHotelsCode(hotelsCode);
 				hotelsImageList.add(image);
 			}
 		} catch (IOException e) {
 			for (MemberHotelsImageVO removeImage : hotelsImageList) {
-				fileSerivce.removeFile(user.getMemberId(), removeImage.getHotelsImageName());
+				fileService.removeFile(user.getMemberId(), removeImage.getHotelsImageName());
 			}
 			e.printStackTrace();
 		} catch (Exception e) {
 			for (MemberHotelsImageVO removeImage : hotelsImageList) {
-				fileSerivce.removeFile(user.getMemberId(), removeImage.getHotelsImageName());
+				fileService.removeFile(user.getMemberId(), removeImage.getHotelsImageName());
 			}
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class MemberHotelsImageServiceImpl implements MemberHotelsImageService {
 		
 		try {
 			for (String fileName : hotelsImageNameList) {
-				fileSerivce.removeFile(user.getMemberId(), fileName);
+				fileService.removeFile(user.getMemberId(), fileName);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

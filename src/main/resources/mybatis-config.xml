@@ -15,6 +15,7 @@
         <typeAlias type="com.spring.aesook.admin.board.vo.ManagerBoardVO" alias="managerBoard"/>  
       	<typeAlias type="com.spring.aesook.admin.alarm.vo.ManagerAlarmVO" alias="managerAlarm"/>
         <typeAlias type="com.spring.aesook.admin.image.vo.ManagerBrnImageVO" alias="managerBrnImage"/>
+        <typeAlias type="com.spring.aesook.admin.image.vo.ManagerAdminImageVO" alias="managerAdminImage"/>
         <typeAlias type="com.spring.aesook.admin.users.vo.ManagerUsersVO" alias="managerUsers"/>
     		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
         <typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>  
