@@ -160,7 +160,7 @@ public class ManagerServiceImpl implements ManagerService {
 	public int allReservationCount() {
 		return managerDAO.allReservationCount();
 
-
+	}
 	@Override
 	public List<ManagerStatisticsVO> totalPrice() {
 		return managerDAO.totalPrice();
