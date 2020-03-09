@@ -26,8 +26,8 @@ public class ManagerServiceImpl implements ManagerService {
 		vo.setAdminPass(uuid);
 		MailVO mail = new MailVO();
 		mail.setMailTo(vo.getAdminEmail());
-		mail.setMailSubject(vo.getAdminName()+"°ü¸®ÀÚ´Ô °¡ÀÔÀ» ÃàÇÏÇÕ´Ï´Ù.");
-		mail.setMailContent("¾ÆÀÌµğ : "+vo.getAdminId()+"\nºñ¹Ğ¹øÈ£ : " + uuid + "ÀÔ´Ï´Ù.\n");
+		mail.setMailSubject(vo.getAdminName()+"ê´€ë¦¬ìë‹˜ ê°€ì…ì„ ì¶•í•˜í•©ë‹ˆë‹¤.");
+		mail.setMailContent("ì•„ì´ë”” : "+vo.getAdminId()+"\në¹„ë°€ë²ˆí˜¸ : " + uuid + "ì…ë‹ˆë‹¤.\n");
 		mailSender.sendMail(mail);
 		
 		managerDAO.insertManager(vo);
@@ -128,8 +128,42 @@ public class ManagerServiceImpl implements ManagerService {
 		return managerDAO.decemberReservationCount();
 	}
 
+	
+	//Statistic(pie)
+
+	@Override
+	public int hotelReservationCount() {
+		return managerDAO.hotelReservationCount();
+	}
+
+	@Override
+	public int motelReservationCount() {
+		return managerDAO.motelReservationCount();
+	}
+
+	@Override
+	public int guesthouseReservationCount() {
+		return managerDAO.guesthouseReservationCount();
+	}
+
+	@Override
+	public int resortReservationCount() {
+		return managerDAO.resortReservationCount();
+	}
+
+	@Override
+	public int pensionReservationCount() {
+		return managerDAO.pensionReservationCount();
+	}
+
+	@Override
+	public int allReservationCount() {
+		return managerDAO.allReservationCount();
+
+
 	@Override
 	public List<ManagerStatisticsVO> totalPrice() {
 		return managerDAO.totalPrice();
+
 	}
 }

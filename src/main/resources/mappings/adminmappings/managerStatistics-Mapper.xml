@@ -80,6 +80,38 @@
     where BOOKING_CHECK_IN between to_date('20201201') and to_date('20201231')
     </select>
 
+    
+    <select id="hotelReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='호텔' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="pensionReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='펜션' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="motelReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='모텔' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="guesthouseReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='게스트하우스' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="resortReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='리조트' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="allReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_code=b.hotels_code
+    </select>
+
+
     <select id="totalPrice" resultMap="managerStatistics">
        select sum(BOOKING_TOTAL_PRICE) total_price,
        to_char(BOOKING_CHECK_IN,'fmMM') checkIn_date
@@ -93,4 +125,5 @@
         <id column="checkin_date" property="checkInDate"/>
         <result column="total_price" property="totalPrice"/>
     </resultMap>
+
 </mapper>

@@ -32,6 +32,15 @@ public interface ManagerDAO {
 	int octoberReservationCount();
 	int novemberReservationCount();
 	int decemberReservationCount();
+	
+	// Statistic(pie Chart)
+	int hotelReservationCount();
+	int motelReservationCount();
+	int guesthouseReservationCount();
+	int resortReservationCount();
+	int pensionReservationCount();
+	int allReservationCount();
+	
 
 	// #Statistics(BOTTOM)--------------------------------------------
 	List<ManagerStatisticsVO> totalPrice();

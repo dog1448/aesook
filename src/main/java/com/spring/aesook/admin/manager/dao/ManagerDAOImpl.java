@@ -132,6 +132,38 @@ public class ManagerDAOImpl implements ManagerDAO {
 		return sqlSessionTemplate.selectOne(namespace+".decemberReservationCount");
 
 	}
+	
+	
+	//Statistic(pie)
+	@Override
+	public int hotelReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".hotelReservationCount");
+	}
+
+	@Override
+	public int motelReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".motelReservationCount");
+	}
+
+	@Override
+	public int guesthouseReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".guesthouseReservationCount");
+	}
+
+	@Override
+	public int resortReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".resortReservationCount");
+	}
+
+	@Override
+	public int pensionReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".pensionReservationCount");
+	}
+
+	@Override
+	public int allReservationCount() {
+		return sqlSessionTemplate.selectOne(namespace+".allReservationCount");
+	}
 
 	@Override
 	public List<ManagerStatisticsVO> totalPrice() {
