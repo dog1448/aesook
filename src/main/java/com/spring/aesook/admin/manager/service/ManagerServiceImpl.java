@@ -125,4 +125,36 @@ public class ManagerServiceImpl implements ManagerService {
 	public int decemberReservationCount() {
 		return managerDAO.decemberReservationCount();
 	}
+	
+	//Statistic(pie)
+
+	@Override
+	public int hotelReservationCount() {
+		return managerDAO.hotelReservationCount();
+	}
+
+	@Override
+	public int motelReservationCount() {
+		return managerDAO.motelReservationCount();
+	}
+
+	@Override
+	public int guesthouseReservationCount() {
+		return managerDAO.guesthouseReservationCount();
+	}
+
+	@Override
+	public int resortReservationCount() {
+		return managerDAO.resortReservationCount();
+	}
+
+	@Override
+	public int pensionReservationCount() {
+		return managerDAO.pensionReservationCount();
+	}
+
+	@Override
+	public int allReservationCount() {
+		return managerDAO.allReservationCount();
+	}
 }

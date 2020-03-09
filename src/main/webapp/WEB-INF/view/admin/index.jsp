@@ -367,6 +367,13 @@
 </script>
 
 <script type="text/javascript">
+	var allReservationCnt = ${allReservationCnt};
+	var motelReservationRate =Math.round(${motelReservationCnt}/allReservationCnt*100);
+	var hotelReservationRate =Math.round(${hotelReservationCnt}/allReservationCnt*100);
+	var guesthouseReservationRate =Math.round(${guesthouseReservationCnt}/allReservationCnt*100);
+	var pensionReservationRate =Math.round(${pensionReservationCnt}/allReservationCnt*100);
+	var resortReservationRate =Math.round(${resortReservationCnt}/allReservationCnt*100);
+	
     var ctx = document.getElementById('pieChart').getContext('2d');
 
     var chart = new Chart(ctx, {
@@ -379,14 +386,17 @@
             datasets: [{
                 borderColor: '#ffff',
                 weight:100,
-                data: [5, 10, 25],
+                data: [motelReservationRate,hotelReservationRate,guesthouseReservationRate,pensionReservationRate,resortReservationRate],
 
                 backgroundColor:[
                     'rgba(255, 99, 132, 1)'
                     ,'rgba(255, 206, 86, 1)'
-                    ,'rgba(54, 162, 235, 1)']
+                    ,'rgba(54, 162, 235, 1)'
+                    ,'green'
+                    ,'purple'
+                    ]
             }],
-            labels: ['Red','Yellow','Blue']
+            labels: ['모텔%','호텔%','게·하%','펜션%','리조트·콘도%']
         },
 
         // Configuration options go here

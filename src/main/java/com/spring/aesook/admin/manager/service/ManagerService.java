@@ -27,4 +27,12 @@ public interface ManagerService {
 	int octoberReservationCount();
 	int novemberReservationCount();
 	int decemberReservationCount();
+	
+	//Statistics(pie)
+	int hotelReservationCount();
+	int motelReservationCount();
+	int guesthouseReservationCount();
+	int resortReservationCount();
+	int pensionReservationCount();
+	int allReservationCount();
 }

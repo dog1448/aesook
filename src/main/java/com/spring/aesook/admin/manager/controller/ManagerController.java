@@ -168,6 +168,13 @@ public class ManagerController {
 		model.addAttribute("novemberCnt",managerService.novemberReservationCount());
 		model.addAttribute("decemberCnt",managerService.decemberReservationCount());
 
+		//Statistic Pie
+		model.addAttribute("hotelReservationCnt",managerService.hotelReservationCount());
+		model.addAttribute("motelReservationCnt",managerService.motelReservationCount());
+		model.addAttribute("resortReservationCnt",managerService.resortReservationCount());
+		model.addAttribute("pensionReservationCnt",managerService.pensionReservationCount());
+		model.addAttribute("guesthouseReservationCnt",managerService.guesthouseReservationCount());
+		model.addAttribute("allReservationCnt",managerService.allReservationCount());
 		return "/index";
 	}
 	
