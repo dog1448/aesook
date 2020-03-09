@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-<%@include file="head.jspf" %>
-<link rel="stylesheet" href="resources/client/css/image.css">
+<%@ include file="head.jspf" %>
+<link rel="stylesheet" href="resources/admin/css/image.css">
+<%@ include file="javascript.jspf" %>
 <script type="text/javascript">
 var fileTypes = ['jpg', 'jpeg', 'png'];  //acceptable file types
 function readURL(input) {
@@ -104,28 +106,18 @@ $(document).ready(function(){
 });
 </script>
 </head>
-
 <body>
-
-
-   <div class="colorlib-loader">  </div>
-
-   <div id="page">
-    <%@ include file="main_header.jspf" %>
-      <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
-
-
-      <div id="colorlib-about">
-         <div class="container">
-            <div class="row">
-               <div class="about-flex">
-                  <!-- 사이드바 -->
-                 <%@ include file="managementSidebar.jspf" %>
-                     
-                  <div class="col-three-forth animate-box">
-                  <h2>사진 등록</h2>
-                  <hr>      
-                  		<form action="insertHotelsPic.do" method="post" enctype="multipart/form-data" id="fileForm">
+<div id="wrapper">
+<%@ include file="nav.jspf" %>
+<div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h1 class="page-header">Insert Image</h1>
+                        </div>
+                        <!-- /.col-lg-7 -->
+                        <div class="col-lg-7">
+                   	<form action="insertPic.admin" method="post" enctype="multipart/form-data" id="fileForm">
                  		<div class="container">
 						<div class="row it">
 							<div class="col-sm col-sm-10" id="one">
@@ -134,7 +126,7 @@ $(document).ready(function(){
 							</p><br>
 							<div class="row">
 							  <div class="col-sm-offset-4 col-sm-4 form-group">
-							    <h3 class="text-center">My Hotels Image</h3>
+							    <h3 class="text-center">Admin Image</h3>
 							  </div><!--form-group-->
 							</div><!--row-->
 							<div id="uploader">
@@ -154,32 +146,22 @@ $(document).ready(function(){
 							</div><!--row-->
 							</div><!--uploader-->
 							<div class="text-center">
-							<input type="hidden" value="${hotelsCode}" name="hotelsCode">
 							<a class="btn btn-default btn-outline btn-n"><i class="fa fa-plus"></i> Add new</a>&nbsp;&nbsp;
 							<button type="button" onclick="checkz()" class="btn btn-info btn-outline ">등록하기</button>&nbsp;&nbsp;
-							<button type="button" onclick="javascript:location.href='hotelsPic.do';" class="btn btn-info btn-outline ">뒤로가기</button>
+							<button type="button" onclick="javascript:location.href='mainPic.admin'" class="btn btn-info btn-outline ">뒤로가기</button>
 								</div>
-							<div>&nbsp;</div>
+								<div>&nbsp;</div> <div>&nbsp;</div>
 							</div><!--one-->
 							</div><!-- row -->
 							</div><!-- container -->
-							</form>
-				
-				
-				  </div>            
-                  </div>
-               </div>
+						</form>
+                   		 <div>&nbsp;</div> <div>&nbsp;</div> <div>&nbsp;</div> <div>&nbsp;</div> <div>&nbsp;</div>
+                    </div>
+                </div>
+                <!-- /.row -->
             </div>
-         </div>
-      </div>
-		
-      <%@ include file="footer.jspf" %>
-   </div>
-
-   <div class="gototop js-top">
-      <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
-   </div>   
-
+            <!-- container-fluid -->
+        </div>
+</div>
 </body>
-
 </html>
