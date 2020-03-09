@@ -32,7 +32,7 @@ public class ManagerController {
 	private ManagerRegisterService managerRegisterService;
 	
 	
-	//  --------------------------- È¸¿ø°¡ÀÔ ------------------------------------
+	//  --------------------------- íšŒì›ê°€ì… ------------------------------------
 	@RequestMapping(value = "/register.admin", method = RequestMethod.GET)
 	public String moveRegister() {
 		return "/register";
@@ -61,7 +61,7 @@ public class ManagerController {
 	}
 	
 	
-	//  --------------------------- ·Î±×ÀÎ ------------------------------------
+	//  --------------------------- ë¡œê·¸ì¸ ------------------------------------
 	@RequestMapping(value = "/login.admin", method = RequestMethod.GET)
 	public String moveLogin(ManagerVO vo) {
 		return "/login";
@@ -84,11 +84,11 @@ public class ManagerController {
 			}
 		}
 
-		return "/index"; // ³ªÁß¿¡ interceptor·Î Áö¿ï ºÎºĞ( login.adminÀº ÀÎÅÍ¼ÁÅÍ°¡ Ã³¸® )
+		return "/index"; // ë‚˜ì¤‘ì— interceptorë¡œ ì§€ìš¸ ë¶€ë¶„( login.adminì€ ì¸í„°ì…‰í„°ê°€ ì²˜ë¦¬ )
 	}
 	
 	
-	//  --------------------------- ºñ¹Ğ¹øÈ£ Ã£±â ------------------------------------
+	//  --------------------------- ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ------------------------------------
 	@RequestMapping(value="/findPassword.admin", method=RequestMethod.GET)
 	public String moveFindPassword(Model model) {
 		model.addAttribute("findEmail", false);
@@ -120,7 +120,7 @@ public class ManagerController {
 		return "/findPassword";
 	}
 	
-	// --------------------------- ·Î±×¾Æ¿ô ------------------------------------
+	// --------------------------- ë¡œê·¸ì•„ì›ƒ ------------------------------------
 	@RequestMapping(value="/logout.admin")
 	public String logout(HttpSession httpSession) {
 		httpSession.invalidate();
@@ -128,7 +128,7 @@ public class ManagerController {
 	}
 	
 	
-	// --------------------------- ÇÁ·ÎÆÄÀÏ -------------------------------------
+	// --------------------------- í”„ë¡œíŒŒì¼ -------------------------------------
 	@RequestMapping(value="/profile.admin", method=RequestMethod.GET)
 	public String moveProfile(HttpSession httpSession, Model model) {
 		ManagerVO user = (ManagerVO) httpSession.getAttribute("login");
@@ -148,7 +148,7 @@ public class ManagerController {
 	@RequestMapping(value="/index.admin", method=RequestMethod.GET)
 	public String moveIndex(Model model) {
 		
-		// IndexÈ­¸é¿¡ µé¾î°¥ DB ÀÚ·á(Statistics TOP)
+		// Indexí™”ë©´ì— ë“¤ì–´ê°ˆ DB ìë£Œ(Statistics TOP)
 		model.addAttribute("guestCnt",managerService.totalHouseCount());
 		model.addAttribute("hotelCnt",managerService.totalHotelCount());
 		model.addAttribute("motelCnt",managerService.totalMotelCount());
@@ -168,6 +168,7 @@ public class ManagerController {
 		model.addAttribute("novemberCnt",managerService.novemberReservationCount());
 		model.addAttribute("decemberCnt",managerService.decemberReservationCount());
 
+
 		//Statistic Pie
 		model.addAttribute("hotelReservationCnt",managerService.hotelReservationCount());
 		model.addAttribute("motelReservationCnt",managerService.motelReservationCount());
@@ -175,6 +176,11 @@ public class ManagerController {
 		model.addAttribute("pensionReservationCnt",managerService.pensionReservationCount());
 		model.addAttribute("guesthouseReservationCnt",managerService.guesthouseReservationCount());
 		model.addAttribute("allReservationCnt",managerService.allReservationCount());
+
+
+		//Statistics BOTTOM
+		model.addAttribute("totalPrice",managerService.totalPrice());
+
 		return "/index";
 	}
 	

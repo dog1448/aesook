@@ -28,29 +28,22 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <form role="form" action="#">
-                                            
-                                                <!-- 
-                                                <div class="form-group">
-                                                    <label>Member_No</label>
-                                                    <input class="form-control" disabled>
-                                                </div>
-                                                 -->
                                                 <div class="form-group">
                                                     <label>ID</label>
-                                                    <input class="form-control" disabled>
+                                                    <input class="form-control" value="${usersInfo.memberId}" disabled>
                                                 </div>
                                                 <fieldset id="field" disabled>
                                                 <div class="form-group">
                                                     <label>Name</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" value="${usersInfo.memberName}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" value="${usersInfo.memberEmail}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Phone</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" value="${usersInfo.memberPhone}">
                                                 </div>
                                                 </fieldset>
                                                 <div class="form-group">
@@ -64,8 +57,8 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-default btn-outline">Modify</button>&nbsp;&nbsp;
                                                 <button type="button" class="btn btn-default btn-outline">Delete</button>&nbsp;&nbsp;
-                                                <button type="button" class="btn btn-default btn-outline">Cancel</button>&nbsp;&nbsp;
-                                                <button type="button" class="btn btn-warning btn-outline" id="disbt">Disable</button>
+                                                <button type="button" class="btn btn-default btn-outline" onclick="location='usersTable.admin'">Cancel</button>&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-warning btn-outline">Disable</button>
                                             </form>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -86,6 +79,7 @@
 </div>
 <%@ include file="javascript.jspf" %>
 <script>
+			
             $(document).ready(function() {
                 var isDisabled = $("#field").attr("disabled");
             });

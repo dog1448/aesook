@@ -42,6 +42,11 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 	public List<String> getPossibleBooking(MemberBookingVO vo) {
 		return sqlSessionTemplate.selectList(namespace + ".getPossibleBooking", vo);
 	}
+
+	@Override
+	public int getRoomPossible(MemberBookingVO vo) {
+		return sqlSessionTemplate.selectOne(namespace + ".getRoomPossible", vo);
+	}
 	
 
 }

@@ -1,10 +1,13 @@
 package com.spring.aesook.admin.manager.dao;
 
+import com.spring.aesook.admin.manager.vo.ManagerStatisticsVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.admin.manager.vo.ManagerVO;
+
+import java.util.List;
 
 @Repository("managerDAO")
 public class ManagerDAOImpl implements ManagerDAO {
@@ -160,6 +163,11 @@ public class ManagerDAOImpl implements ManagerDAO {
 	@Override
 	public int allReservationCount() {
 		return sqlSessionTemplate.selectOne(namespace+".allReservationCount");
+	}
+
+	@Override
+	public List<ManagerStatisticsVO> totalPrice() {
+		return sqlSessionTemplate.selectList(namespace+".totalPrice");
 	}
 
 

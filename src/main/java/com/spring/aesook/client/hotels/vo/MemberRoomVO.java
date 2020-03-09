@@ -9,7 +9,7 @@ public class MemberRoomVO {
 	private int roomStandardPrice;
 	private int roomHolidayPrice;
 	private int roomAddPrice;
-	private String roomRoomInfo;
+	private String roomInfo;
 	
 	public int getHotelsCode() {
 		return hotelsCode;
@@ -59,11 +59,11 @@ public class MemberRoomVO {
 	public void setRoomAddPrice(int roomAddPrice) {
 		this.roomAddPrice = roomAddPrice;
 	}
-	public String getRoomRoomInfo() {
-		return roomRoomInfo;
+	public String getRoomInfo() {
+		return roomInfo;
 	}
-	public void setRoomRoomInfo(String roomRoomInfo) {
-		this.roomRoomInfo = roomRoomInfo;
+	public void setRoomRoomInfo(String roomInfo) {
+		this.roomInfo = roomInfo;
 	}
 	
 	

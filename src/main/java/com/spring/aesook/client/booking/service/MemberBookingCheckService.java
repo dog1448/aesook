@@ -20,4 +20,5 @@ public interface MemberBookingCheckService {
 	
 	List<String> getPossibleBooking(MemberBookingVO vo);
 
+	int getRoomPossible(MemberBookingVO vo);
 }
