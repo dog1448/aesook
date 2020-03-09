@@ -49,4 +49,18 @@
 		and hotels_code = #{hotelsCode}
 		]]>
 	</select>
+	
+	<select id="getRoomPossible" resultType="int">
+		<![CDATA[
+		SELECT count(r.room_name) FROM room r 
+		WHERE NOT EXISTS (SELECT * FROM (select room_name from booking
+		where to_date(#{bookingCheckIn}) < booking_check_out
+		and to_date(#{bookingCheckOut}) > booking_check_in
+		and hotels_code = #{hotelsCode}
+		and booking_status != 'C') t 
+		WHERE r.room_name = t.room_name)
+		and hotels_code = #{hotelsCode}
+		and room_sort = #{roomSort}
+		]]>
+	</select>
 </mapper>

@@ -15,12 +15,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
+import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.image.service.MemberHotelsImageService;
 import com.spring.aesook.client.image.service.MemberUpdateHotelsMainImageService;
+import com.spring.aesook.client.image.service.MemberUpdateHotelsRoomMainImageService;
+import com.spring.aesook.client.image.service.MemberUpdateHotelsRoomSortImageService;
 import com.spring.aesook.client.image.service.MemberUpdateImageBrnService;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 import com.spring.aesook.client.member.vo.MemberVO;
+
+import oracle.net.aso.h;
 
 @Controller
 public class MemberImageController {
@@ -33,6 +38,12 @@ public class MemberImageController {
 	private MemberHotelsService memberHotelsService;
 	@Autowired
 	private MemberUpdateHotelsMainImageService memberUpdateHotelsMainImageService;
+	@Autowired
+	private MemberRoomService memberRoomService;
+	@Autowired 
+	private MemberUpdateHotelsRoomSortImageService memberUpdateHotelsRoomSortImageService;
+	@Autowired
+	private MemberUpdateHotelsRoomMainImageService memberUpdateHotelsRoomMainImageService;
 	
     // --------------------------- 사업자 등록 -------------------------------------
     @RequestMapping(value = "/brn.do", method = RequestMethod.GET)
@@ -61,7 +72,9 @@ public class MemberImageController {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login");
     	List<MemberHotelsVO> hotels =  memberHotelsService.getMyHotels(user);
     	if (!hotels.isEmpty()) {
+    		List<String> roomTypeList = memberRoomService.getRoomSortTypeList(hotels.get(0).getHotelsCode());
     		model.addAttribute("hotels", hotels.get(0));
+    		model.addAttribute("roomTypeList", roomTypeList);
     		List<MemberHotelsImageVO> imageList = memberHotelsImageService.getHotelsImageList(user);
     		for (MemberHotelsImageVO mainImage : imageList) {
     			if (mainImage.getHotelsImageStatus().equals("M")) {
@@ -82,8 +95,27 @@ public class MemberImageController {
     	return memberUpdateHotelsMainImageService.updateHotelsMainImage(vo);
     }
     
+    @RequestMapping(value="/hotelsRoomSort.do", method=RequestMethod.POST)
+    public String updateRoomSort(@RequestParam("hotelsImageNo") List<Integer> imageNoList, MemberHotelsImageVO vo) {
+    	memberUpdateHotelsRoomSortImageService.updateRoomSort(imageNoList, vo);
+    	return "redirect:hotelsPic.do";
+    }
     
-
+    @RequestMapping(value="/hotelsRoomMainPic.do", method=RequestMethod.GET)
+    @ResponseBody
+    public MemberHotelsImageVO updateHotelsRoomMainImage(MemberHotelsImageVO vo) {
+    	return memberUpdateHotelsRoomMainImageService.updateHotelsRoomMainImage(vo);
+    }
+    
+    
+    @RequestMapping(value="/hotelsPicDelete.do", method=RequestMethod.POST)
+    public String deleteHotelsImage(@RequestParam("hotelsImageNo") List<Integer> hotelsImageNoList,
+    		@RequestParam("hotelsImageName") List<String> hotelsImageNameList, HttpSession httpSession) {
+    		MemberVO user = (MemberVO) httpSession.getAttribute("login");
+    	memberHotelsImageService.deleteHotelsImage(hotelsImageNoList, hotelsImageNameList, user);
+    	return "redirect:hotelsPic.do";
+    }
+    
     
  // ------------------------------ 호텔이미지 등록 -------------------------------------
 	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.GET)

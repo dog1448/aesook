@@ -25,9 +25,12 @@ public class MemberHotelsListController {
 			@RequestParam(value = "region") String region, 
 			Model model) {
 		
-		int total = memberHotelsListService.countHotelsList(type, sido, region);		
+		//int total = memberHotelsListService.countHotelsList(type, sido, region);		
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectHotelsList(type, sido, region);
+		for(MemberHotelsVO vo : list) {
+			System.out.println(vo.toString());
+		}
 		model.addAttribute("viewAll", list);			
 		
 		return "/accommodations";

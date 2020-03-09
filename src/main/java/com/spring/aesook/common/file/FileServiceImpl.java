@@ -73,46 +73,38 @@ public class FileServiceImpl implements FileService {
 		
  		
 		private void makeDir(String realPath){
+			File imagePath = new File(context.getRealPath("/resources/images/"));
 			if(new File(realPath).exists()){
 				return;
 			}
 			File dirPath = new File(realPath);
+			if (!imagePath.exists()) {
+				imagePath.mkdir();
+			}
 			if(!dirPath.exists()){
 				dirPath.mkdir();
 			}
 		}
 		
-		// 다시 손볼것
-	     public void remove(String filePath, String voName) {
+	     public void removeFile(String memberId, String fileName) {
 		      
-		      // dirIndex에 -1이 들어오면 업로드를 처음 요청하는 상황이므로  바로 return: 메서드 종료
-		      
-		      if(filePath == null){
-		         return;
-		      }
-		      
-		      int dirIndex = filePath.indexOf(voName);
-		      if (dirIndex == -1 ) {
-		         System.out.println("업로드 첫 요청");
-		         return;
-		      }
-		      
-		      String fixedPath = context.getRealPath("/") + filePath.substring(dirIndex);
-		      System.out.println("fixedPath : " + fixedPath);
-		      
-		      
-		      File toRemoveFile = new File(fixedPath);
-		      if(toRemoveFile.exists()) {
-		         if(toRemoveFile.delete()) {
-		            System.out.println("삭제 완료");
-		         }
-		      }
-		      else {
-		         System.out.println("경로에 파일이 없습니다.");
-		      }
-		      
-		      
+	    	  String folderPath = "/resources/images/"+ memberId +"/";
+	    	  File folder = new File(context.getRealPath(folderPath));
+	    	  
+	    	  if(folder.isDirectory()) {
+	    		  File file = new File(folder, fileName);
+	    		  if (file.exists()) {
+	    			  file.delete();
+	    			  System.out.println("삭제완료");
+	    		  } else {
+	    			  return;
+	    		  }
+	    	  } else {
+	    		  return;
+	    	  }
+		            
 	    }
+	    
 		
 		public MemberBrnImageVO getMemberBrnImageFile(FileVO file) {
 			MemberBrnImageVO vo = new MemberBrnImageVO();

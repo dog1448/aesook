@@ -30,7 +30,6 @@
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>NO.</th>
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
@@ -38,17 +37,19 @@
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
+                                            
+                                            <c:forEach items="${usersList}" var="usersList">
                                             <tbody>
                                                 <tr class="odd gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">G</td>
+                                                    <td><a href="usersInfo.admin?memberId=${usersList.memberId}">${usersList.memberId}</a></td>
+                                                    <td>${usersList.memberPass}</td>
+                                                    <td class="center">${usersList.memberName}</td>
+                                                    <td class="center">${usersList.memberEmail}</td>
+                                                    <td class="center">${usersList.memberStatus}</td>
                                                 </tr>
-                                                
                                             </tbody>
+                                            </c:forEach>
+                                            
                                         </table>
                                     </div>
                                 </div>

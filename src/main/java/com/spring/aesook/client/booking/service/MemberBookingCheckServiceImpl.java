@@ -53,6 +53,10 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	public List<String> getPossibleBooking(MemberBookingVO vo) {
 		return memberBookingDAO.getPossibleBooking(vo);
 	}
-	
+
+	@Override
+	public int getRoomPossible(MemberBookingVO vo) {
+		return memberBookingDAO.getRoomPossible(vo);
+	}
 	
 }

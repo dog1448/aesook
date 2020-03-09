@@ -12,7 +12,8 @@ alert("등록된 숙소가 없습니다.");
 </c:if>
 </head>
 <body>
-
+<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 	<div id="colorlib-about">
 		<div class="container">
 			<div class="row">

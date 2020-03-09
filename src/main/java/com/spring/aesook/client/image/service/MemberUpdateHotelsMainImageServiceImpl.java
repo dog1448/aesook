@@ -23,6 +23,7 @@ public class MemberUpdateHotelsMainImageServiceImpl implements MemberUpdateHotel
 		memberImageDAO.updateStatusMemberHotelsImage(vo);
 		
 		// selectOne
+		vo.setRoomSortStatus("U"); // null 포인트 방지
 		return memberImageDAO.getHotelsImage(vo);
 	}
 	

@@ -31,11 +31,11 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 
 	// Get Room Description
 	@Override
-	public MemberRoomVO getRoomDescription(int hotelsCode, String roomName) {
+	public MemberRoomVO getRoomDescription(int hotelsCode, String roomSort) {
 		
 		MemberRoomVO vo = new MemberRoomVO();
 		vo.setHotelsCode(hotelsCode);
-		vo.setRoomName(roomName);
+		vo.setRoomSort(roomSort);
 		
 		return memberRoomDAO.getRoom(vo);
 	}
@@ -48,10 +48,18 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 		memberRoomDAO.insertRoom(map);
 	}
 
+
 	//Room Name Check
 	@Override
 	public int roomNameCheck(MemberRoomVO vo) {		
 		return memberRoomDAO.roomNameCheck(vo);
+	}
+	
+	
+	public List<String> getRoomSortTypeList(int hotelsCode) {
+		MemberHotelsVO vo = new MemberHotelsVO();
+		vo.setHotelsCode(hotelsCode);
+		return memberRoomDAO.getRoomSortTypeList(vo);
 	}
 
 
