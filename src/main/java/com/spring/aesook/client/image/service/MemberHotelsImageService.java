@@ -10,5 +10,6 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public interface MemberHotelsImageService {
 	
 	public void insertHotelsImage(MultipartHttpServletRequest files, MemberVO user, int hotelsCode);
+	public void deleteHotelsImage(List<Integer> hotelsImageNoList, List<String> hotelsImageNameList, MemberVO user);
 	public List<MemberHotelsImageVO> getHotelsImageList(MemberVO user);
 }

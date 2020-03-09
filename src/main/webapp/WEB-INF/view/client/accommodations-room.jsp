@@ -211,7 +211,6 @@ function searchRoom(){
 					<div class="col-md-9">
 						<div class="row">
 							<div class="col-md-12">
-
 								<div class="wrap-division">
 									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
 										<h2>${vo.hotelsName}</h2>
@@ -221,6 +220,7 @@ function searchRoom(){
 									<div class="row">
 										<c:forEach var="list" items="${list}" varStatus="vs">
 											<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomSort}">
+
 												<div class="col-md-12 animate-box">
 												<input type="hidden" value="${list.hotelsCode}" id="hotelsCode">
 													<div class="room-wrap">

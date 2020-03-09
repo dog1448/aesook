@@ -16,4 +16,5 @@ public interface FileService {
 	public String getFilePath(FileVO file);
 	public MemberBrnImageVO getMemberBrnImageFile(FileVO file);
 	public MemberHotelsImageVO getMemberHotelsImageFile(FileVO file);
+	public void removeFile(String memberId, String fileName);
 }

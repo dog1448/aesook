@@ -49,4 +49,18 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 	}
 
 
+	//Room Name Check
+	@Override
+	public int roomNameCheck(MemberRoomVO vo) {		
+		return memberRoomDAO.roomNameCheck(vo);
+	}
+	
+	
+	public List<String> getRoomSortTypeList(int hotelsCode) {
+		MemberHotelsVO vo = new MemberHotelsVO();
+		vo.setHotelsCode(hotelsCode);
+		return memberRoomDAO.getRoomSortTypeList(vo);
+	}
+
+
 }

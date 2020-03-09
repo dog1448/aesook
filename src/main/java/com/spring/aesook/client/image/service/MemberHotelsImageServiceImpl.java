@@ -34,18 +34,35 @@ public class MemberHotelsImageServiceImpl implements MemberHotelsImageService {
 		try {
 			List<FileVO> fileList = fileSerivce.uploadFiles(user.getMemberId(), files);
 			for (FileVO file : fileList) {
-				System.out.println(file);
 				MemberHotelsImageVO image = fileSerivce.getMemberHotelsImageFile(file);
 				image.setHotelsCode(hotelsCode);
 				hotelsImageList.add(image);
 			}
 		} catch (IOException e) {
+			for (MemberHotelsImageVO removeImage : hotelsImageList) {
+				fileSerivce.removeFile(user.getMemberId(), removeImage.getHotelsImageName());
+			}
 			e.printStackTrace();
 		} catch (Exception e) {
+			for (MemberHotelsImageVO removeImage : hotelsImageList) {
+				fileSerivce.removeFile(user.getMemberId(), removeImage.getHotelsImageName());
+			}
 			e.printStackTrace();
 		}
 		memberImageDAO.insertMemberHotelsImage(hotelsImageList);
 		
+	}
+	
+	public void deleteHotelsImage(List<Integer> hotelsImageNoList, List<String> hotelsImageNameList, MemberVO user) {
+		
+		try {
+			for (String fileName : hotelsImageNameList) {
+				fileSerivce.removeFile(user.getMemberId(), fileName);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		memberImageDAO.deleteHotelsImage(hotelsImageNoList);
 	}
 	
 	public List<MemberHotelsImageVO> getHotelsImageList(MemberVO user) {

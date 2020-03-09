@@ -18,11 +18,9 @@ canvas {
 </head>
 
 <body>
-
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
-
+		<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 
 		<div id="colorlib-about">
 			<div class="container">
@@ -45,7 +43,7 @@ canvas {
 							<div class="form-field">
 								<i class="icon icon-calendar2"></i> <input type="text"
 									id="yearpicker" class="form-control yearpicker"
-									placeholder="Check-in date">
+									placeholder="필요한 년도를 검색하세요.">
 							</div>
 							<div class="row">
 								<div class="col-md">
@@ -114,8 +112,6 @@ canvas {
 
 </body>
 <script>
-	var MONTHS = [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월',
-			'11월', '12월' ];
 	var color = Chart.helpers.color;
 	var barChartData = {
 		labels : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월',

@@ -31,6 +31,10 @@ public class MemberImageDAOImpl implements MemberImageDAO {
 		sqlSessionTemplate.update(namespace +".updateStatusMemberHotelsImage", vo);
 	}
 	
+	public void updateRoomStatusMemberHotelsImage(MemberHotelsImageVO vo) {
+		sqlSessionTemplate.update(namespace + ".updateRoomStatusMemberHotelsImage", vo);
+	}
+	
 	public MemberHotelsImageVO getHotelsImage(MemberHotelsImageVO vo) {
 		return sqlSessionTemplate.selectOne(namespace + ".getHotelsImage", vo);
 	}
@@ -41,6 +45,14 @@ public class MemberImageDAOImpl implements MemberImageDAO {
 	
 	public List<MemberHotelsImageVO> getHotelsImageList(MemberHotelsVO vo) {
 		return sqlSessionTemplate.selectList(namespace + ".getHotelsImageList2", vo);	
+	}
+	
+	public void updateRoomSort(List<MemberHotelsImageVO> vo) {
+		sqlSessionTemplate.update(namespace + ".updateRoomSort", vo);
+	}
+	
+	public void deleteHotelsImage(List<Integer> vo) {
+		sqlSessionTemplate.delete(namespace +".deleteHotelsImage", vo);
 	}
 	
 }

@@ -1,6 +1,5 @@
 package com.spring.aesook.client.hotels.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,4 +11,6 @@ public interface MemberRoomDAO {
 	MemberHotelsVO getHotel(int hotelsCode);
 	MemberRoomVO getRoom(MemberRoomVO vo);
 	void insertRoom(HashMap<Object, Object> map);
+	int roomNameCheck(MemberRoomVO vo);
+	public List<String> getRoomSortTypeList(MemberHotelsVO vo);
 }

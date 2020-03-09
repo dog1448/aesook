@@ -44,4 +44,14 @@
 	 SELECT * FROM DUAL	
 </insert>
 
+<select id="roomNameCheck" resultType="int" parameterType="memberRoom">
+    select count(*) from room where room_Name = #{roomName} And hotels_code = #{hotelsCode}
+</select>
+
+<select id="getRoomSortTypeList" resultType="String" parameterType="memberHotels">
+	SELECT distinct room_sort from room 
+	where hotels_code = #{hotelsCode} 
+	order by room_sort asc
+</select>
+  
 </mapper>
