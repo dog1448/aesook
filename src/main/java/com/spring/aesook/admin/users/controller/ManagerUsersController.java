@@ -29,9 +29,14 @@ public class ManagerUsersController {
 	@RequestMapping(value = "/usersInfo.admin", method = RequestMethod.GET)
 	public String usersInfoPreset(@RequestParam("memberId") String memberId, Model model) {
 		ManagerUsersVO usersInfo = managerUsersService.getManagerUsers(memberId);
-		//System.out.println(usersInfo.toString());
 		model.addAttribute("usersInfo", usersInfo);
 		return "/usersInfo";
+	}
+	
+	@RequestMapping(value = "/updateUsersInfo.admin", method =RequestMethod.POST)
+	public String updateUsersInfo(ManagerUsersVO vo) {
+		managerUsersService.updateManagerUsers(vo);
+		return "redirect:usersTable.admin";
 	}
 	
 }

@@ -42,9 +42,9 @@
                                             <tbody>
                                                 <tr class="odd gradeX">
                                                     <td><a href="usersInfo.admin?memberId=${usersList.memberId}">${usersList.memberId}</a></td>
-                                                    <td>${usersList.memberPass}</td>
                                                     <td class="center">${usersList.memberName}</td>
                                                     <td class="center">${usersList.memberEmail}</td>
+                                                    <td class="center">${usersList.memberPhone}</td>
                                                     <td class="center">${usersList.memberStatus}</td>
                                                 </tr>
                                             </tbody>
