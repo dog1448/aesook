@@ -87,6 +87,11 @@
 		SELECT to_date(#{bookingCheckOut}) - to_date(#{bookingCheckIn}) FROM DUAL
 	</select>
 	
+
+	<select id="getBookingSeq" resultType="int">
+		SELECT booking_seq.nextval FROM DUAL
+	</select>
+
 	<insert id="insertBooking">
 		insert into booking (BOOKING_CODE, HOTELS_CODE, ROOM_NAME, ROOM_SORT, 
 		MEMBER_ID, BOOKING_CHECK_IN, BOOKING_CHECK_OUT, BOOKING_NAME, BOOKING_PHONE, 
@@ -96,5 +101,6 @@
 		#{bookingCheckIn}, #{bookingCheckOut}, #{bookingName}, 
 		#{bookingPhone}, #{bookingCnt}, sysdate, #{bookingTotalPrice}, 'B')
 	</insert>
+
 
 </mapper>

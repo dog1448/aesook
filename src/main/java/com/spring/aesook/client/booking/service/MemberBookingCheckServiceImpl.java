@@ -73,4 +73,16 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 		memberBookingDAO.insertBooking(vo);
 	}
 
+	
+	/*
+	 int ��ü = memberBookingDAO.getAllDay(vo)
+	 int ���� = memberBookingDAO.getWeekDay(vo)
+	 int �ָ� = ��ü-����
+	 roomVO.getStandardPrice * ����
+	 roomVO.getHolidayPrice * �ָ�
+	 int �Ѱ���� = 
+	 */
+=======
+
+
 }

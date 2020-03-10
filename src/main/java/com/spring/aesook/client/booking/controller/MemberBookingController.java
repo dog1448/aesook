@@ -90,7 +90,7 @@ public class MemberBookingController {
 		return memberBookingCheckService.getPossibleBooking(vo);
 	}
 	
-	//Æ¯Á¤ È£ÅÚ, Æ¯Á¤ ¹æÀÌ Æ¯Á¤ ³¯Â¥¿¡ ¿¹¾à °¡´ÉÇÑÁö Á¶È¸
+	//íŠ¹ì • í˜¸í…”, íŠ¹ì • ë°©ì´ íŠ¹ì • ë‚ ì§œì— ì˜ˆì•½ ê°€ëŠ¥í•œì§€ ì¡°íšŒ
 	@RequestMapping(value="/getRoomPossible.do", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getRoomPossible(MemberBookingVO vo) {
@@ -110,7 +110,7 @@ public class MemberBookingController {
 		return "/payment";
 	}
 	
-	//°áÁ¦ÇÏ±â
+	//ê²°ì œí•˜ê¸°
 	@RequestMapping(value="/insertBooking.do", method = RequestMethod.POST)
 	public String insertBooking(MemberBookingVO vo) {
 		memberBookingCheckService.insertBooking(vo);
