@@ -23,12 +23,12 @@ public class ManagerUsersDAOImpl implements ManagerUsersDAO {
 
 	@Override
 	public void deleteManagerUsers(ManagerUsersVO vo) {
-		sqlSessionTemplate.delete(namespace+".deleteManagerUsers", vo);
+		sqlSessionTemplate.update(namespace+".deleteManagerUsers", vo);
 	}
 
 	@Override
-	public void disableManagerUsers(ManagerUsersVO vo) {
-		sqlSessionTemplate.update(namespace+".disableManagerUsers", vo);
+	public void updateManagerUsers(ManagerUsersVO vo) {
+		sqlSessionTemplate.update(namespace+".updateManagerUsers", vo);
 	}
 
 	@Override
