@@ -7,7 +7,7 @@ import com.spring.aesook.admin.users.vo.ManagerUsersVO;
 public interface ManagerUsersDAO {
 	void modifyManagerUsers(ManagerUsersVO vo);
 	void deleteManagerUsers(ManagerUsersVO vo);
-	void disableManagerUsers(ManagerUsersVO vo);
+	void updateManagerUsers(ManagerUsersVO vo);
 	ManagerUsersVO getManagerUsers(ManagerUsersVO vo);
 	List<ManagerUsersVO> getManagerUsersList();
 }

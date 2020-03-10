@@ -56,8 +56,14 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 	public int getAllDay(MemberBookingVO vo) {
 		return sqlSessionTemplate.selectOne(namespace + ".getAllDay", vo);
 	}
+
 	
 	public int getBookingSeq() {
 		return sqlSessionTemplate.selectOne(namespace + ".getBookingSeq");
+  }
+
+	@Override
+	public void insertBooking(MemberBookingVO vo) {
+		sqlSessionTemplate.insert(namespace + ".insertBooking", vo);
 	}
 }

@@ -5,7 +5,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +15,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.aesook.client.booking.service.MemberBookingCheckService;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
-import com.spring.aesook.client.hotels.service.MemberHotelsService;
-import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
-import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
@@ -40,7 +35,7 @@ public class MemberBookingController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
     }
 	
-	//»∏ø¯∫∞ øπæ‡ ≥ªø™ ¡∂»∏
+	//Show your bookingList
 	@RequestMapping(value="/bookingList.do", method = RequestMethod.GET)
 	public String getBookingList(HttpSession session, Model model) {
 		MemberVO user = (MemberVO)session.getAttribute("login");
@@ -52,7 +47,7 @@ public class MemberBookingController {
 		return "/bookingList";
 	}
 	
-	//»∏ø¯∫∞ √Îº“µ» øπæ‡ ≥ªø™ ¡∂»∏
+	//Show your CancelBookingList
 	@RequestMapping(value="/canceledBookingList.do", method = RequestMethod.GET)
 	public String getCanceledBookingList(HttpSession session, Model model) {
 		MemberVO user = (MemberVO)session.getAttribute("login");
@@ -64,7 +59,7 @@ public class MemberBookingController {
 		return "/canceledBookingList";
 	}
 	
-	//¿⁄ºº«— øπæ‡ ¡§∫∏ ¡∂»∏
+	//Show your Detail BookingInfo
 	@RequestMapping(value="/bookingInfo.do", method = RequestMethod.GET)
 	public String getBookingInfo(MemberBookingVO bookingVO, HttpSession session, Model model) {
 		MemberVO userVO = (MemberVO)session.getAttribute("login");
@@ -79,14 +74,14 @@ public class MemberBookingController {
 		return "/bookingInfo";
 	}
 	
-	//øπæ‡ √Îº“«œ±‚
+	//Cancel the Booking
 	@RequestMapping(value="/cancelBooking.do", method = RequestMethod.POST)
 	public String cancelBooking(MemberBookingVO vo) {
 		memberBookingCheckService.cancelBooking(vo.getBookingCode());
 		return "redirect:canceledBookingList.do";
 	}
 	
-	//≥Ø¬•∫∞ ∞°¥…«— πÊ ¡∂»∏
+	//Search Possible Room by selected Date
 	@RequestMapping(value="/getPossibleBooking.do", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getPossibleBooking(MemberBookingVO vo, HttpSession session) {
@@ -95,13 +90,31 @@ public class MemberBookingController {
 		return memberBookingCheckService.getPossibleBooking(vo);
 	}
 	
-	//∆Ø¡§ »£≈⁄, ∆Ø¡§ πÊ¿Ã ∆Ø¡§ ≥Ø¬•ø° øπæ‡ ∞°¥…«—¡ˆ ¡∂»∏
+	//ÌäπÏ†ï Ìò∏ÌÖî, ÌäπÏ†ï Î∞©Ïù¥ ÌäπÏ†ï ÎÇ†ÏßúÏóê ÏòàÏïΩ Í∞ÄÎä•ÌïúÏßÄ Ï°∞Ìöå
 	@RequestMapping(value="/getRoomPossible.do", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getRoomPossible(MemberBookingVO vo) {
 		return memberBookingCheckService.getRoomPossible(vo);
 	}
 	
-
+	//Move to Payment Page
+	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
+	public String movePayment(HttpSession session, MemberBookingVO bookingVO, MemberRoomVO roomVO, Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		bookingVO.setMemberId(user.getMemberId());
+		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(bookingVO);
+		int totalPrice = memberBookingCheckService.getTotalPrice(bookingVO, roomVO);
+		model.addAttribute("possibleRoom", possibleRoom);
+		model.addAttribute("booking", bookingVO);
+		model.addAttribute("totalPrice", totalPrice);	
+		return "/payment";
+	}
+	
+	//Í≤∞Ï†úÌïòÍ∏∞
+	@RequestMapping(value="/insertBooking.do", method = RequestMethod.POST)
+	public String insertBooking(MemberBookingVO vo) {
+		memberBookingCheckService.insertBooking(vo);
+		return "redirect:bookingList.do";
+	}
 		
 }

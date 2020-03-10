@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.aesook.client.booking.dao.MemberBookingDAO;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
+import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.client.review.dao.MemberReviewDAO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
@@ -60,21 +61,28 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	}
 
 	@Override
-	public int getWeekDay(MemberBookingVO vo) {
-		return memberBookingDAO.getWeekDay(vo);
-	}
-
-	@Override
-	public int getAllDay(MemberBookingVO vo) {
-		return memberBookingDAO.getAllDay(vo);
+	public int getTotalPrice(MemberBookingVO bookingVO, MemberRoomVO roomVO) {
+		int allDay = memberBookingDAO.getAllDay(bookingVO);
+		int weekDay = memberBookingDAO.getWeekDay(bookingVO);
+		int weekendDay = allDay - weekDay;
+		int totalPrice = roomVO.getRoomStandardPrice()*weekDay + roomVO.getRoomHolidayPrice()*weekendDay;
+		return totalPrice;
 	}
 	
+	public void insertBooking(MemberBookingVO vo) {
+		memberBookingDAO.insertBooking(vo);
+	}
+
+	
 	/*
-	 int ÀüÃ¼ = memberBookingDAO.getAllDay(vo)
-	 int ÆòÀÏ = memberBookingDAO.getWeekDay(vo)
-	 int ÁÖ¸» = ÀüÃ¼-ÆòÀÏ
-	 roomVO.getStandardPrice * ÆòÀÏ
-	 roomVO.getHolidayPrice * ÁÖ¸»
-	 int ÃÑ°áÁ¦¾× = 
+	 int ï¿½ï¿½Ã¼ = memberBookingDAO.getAllDay(vo)
+	 int ï¿½ï¿½ï¿½ï¿½ = memberBookingDAO.getWeekDay(vo)
+	 int ï¿½Ö¸ï¿½ = ï¿½ï¿½Ã¼-ï¿½ï¿½ï¿½ï¿½
+	 roomVO.getStandardPrice * ï¿½ï¿½ï¿½ï¿½
+	 roomVO.getHolidayPrice * ï¿½Ö¸ï¿½
+	 int ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½ = 
 	 */
+=======
+
+
 }

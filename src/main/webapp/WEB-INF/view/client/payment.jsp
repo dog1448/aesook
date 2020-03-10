@@ -61,7 +61,7 @@
 					<input type="hidden" name="bookingName" value="${booking.bookingName}">
 					<input type="hidden" name="bookingPhone" value="${booking.bookingPhone}">
 					<input type="hidden" name="bookingCnt" value="${booking.bookingCnt}">
-					<input type="hidden" name="bookingTotalPrice" value="${booking.bookingTotalPrice}">
+					<input type="hidden" name="bookingTotalPrice" value="${totalPrice}">
 						<div class="col-md-10 col-md-offset-1 blue animate-box">
 							<div>&nbsp;</div>
 							<h3 class="text-center">Check Your Reservation</h3>
@@ -115,7 +115,7 @@
 							<hr>
 							<div class="col-sm-6">
 								<label>총 결제금액</label>
-								<h2>120,000 ￦</h2>
+								<h2>${totalPrice} ￦</h2>
 							</div>
 							<div>&nbsp;</div>
 							<div>&nbsp;</div>
@@ -142,13 +142,16 @@
 								&nbsp;<input type="checkbox" id="checkall"><strong>전체동의</strong><br>
 								<input type="checkbox" name="agree">(필수) 만 14세 이상입니다.<br>
 								<input type="checkbox" name="agree">(필수) 취소 규정 동의 <br>
-								<input type="checkbox" name="agree">(필수) 숙소 이용규칙 동의 <span
-									class="label label-primary"><small>보기</small></span><br> <input
-									type="checkbox" name="agree">(필수) 개인정보 수집 및 이용 동의 <span
-									class="label label-primary"><small>보기</small></span><br> <input
-									type="checkbox" name="agree">(필수) 개인정보 제3자 제공동의 <span
-									class="label label-primary"><small>보기</small></span><br> <input
-									type="checkbox" name="agree">(필수) 기준인원 초과 시 현장결제 하겠습니다<br>
+								<input type="checkbox" name="agree">(필수) 숙소 이용규칙 동의 
+									<a data-toggle="modal" href="#hotelsRuleModal">
+										<span class="label label-primary"><small>보기</small></span></a><br>
+								<input type="checkbox" name="agree">(필수) 개인정보 수집 및 이용 동의 
+									<a data-toggle="modal" href="#infoSubmitModal">	
+										<span class="label label-primary"><small>보기</small></span></a><br> 
+								<input type="checkbox" name="agree">(필수) 개인정보 제3자 제공동의 
+									<a data-toggle="modal" href="#infoUtilizeModal">	
+										<span class="label label-primary"><small>보기</small></span></a><br> 
+								<input type="checkbox" name="agree">(필수) 기준인원 초과 시 현장결제 하겠습니다<br>
 							</div>
 							<div>&nbsp;</div>
 							<div>&nbsp;</div>
@@ -166,6 +169,72 @@
 			</div>
 		</div>
 	</div>
+	<!-- hotelsRuleModal -->
+<div class="modal fade" id="hotelsRuleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalScrollableTitle">숙소 이용 규칙</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+       		"숙소 이용 규칙"이 들어갈 곳
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+	<!-- infoSubmitModal -->
+<div class="modal fade" id="infoSubmitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalScrollableTitle">개인정보수집 이용약관</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+       		"개인정보수집 이용약관"이 들어갈 곳
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+	<!-- hotelsRuleModal Modal -->
+<div class="modal fade" id="infoUtilizeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalScrollableTitle">개인정보 제 3자 제공 약관</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+       		"개인정보 제 3자 제공 약관"이 들어갈 곳
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
 	<%@include file="footer.jspf"%>
 
 	<div class="gototop js-top">

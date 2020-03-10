@@ -21,5 +21,9 @@ public interface MemberBookingDAO {
 	
 	int getAllDay(MemberBookingVO vo);
 	
+
 	int getBookingSeq();
+
+	void insertBooking(MemberBookingVO vo);
+
 }

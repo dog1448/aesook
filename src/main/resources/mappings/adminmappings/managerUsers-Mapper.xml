@@ -11,17 +11,18 @@
 	</update>
 	
 	<!-- UserInfo Delete 수행시 -->
-	<delete id="deleteManagerUsers" parameterType="managerUsers">
+	<update id="deleteManagerUsers" parameterType="managerUsers">
 		UPDATE MEMBER 
 		SET MEMBER_STATUS = "D"
 		WHERE MEMBER_ID = #{memberId}
-	</delete>
+	</update>
 	
 	<!-- UserInfo Disable 수행시 -->
-	<!-- 수정하기 -->
-	<update id="disableManagerUsers" parameterType="managerUsers">
+	<update id="updateManagerUsers" parameterType="managerUsers">
 		UPDATE MEMBER 
-		SET MEMBER_STATUS = "D"
+		SET MEMBER_PASS = #{memberPass}, MEMBER_NAME = #{memberName}, 
+			MEMBER_EMAIL = #{memberEmail}, MEMBER_STATUS = #{memberStatus}, 
+			MEMBER_PHONE = #{memberPhone}
 		WHERE MEMBER_ID = #{memberId}
 	</update>
 	

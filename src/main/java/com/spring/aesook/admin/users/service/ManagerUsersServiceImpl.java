@@ -25,8 +25,8 @@ public class ManagerUsersServiceImpl implements ManagerUsersService {
 	}
 
 	@Override
-	public void disableManagerUsers(ManagerUsersVO vo) {
-		managerUsersDAO.disableManagerUsers(vo);
+	public void updateManagerUsers(ManagerUsersVO vo) {
+		managerUsersDAO.updateManagerUsers(vo);
 	}
 
 	@Override
