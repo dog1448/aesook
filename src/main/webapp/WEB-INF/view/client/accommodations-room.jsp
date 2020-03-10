@@ -137,6 +137,11 @@ function searchRoom(){
 	var hotelsCode = $('#hotelsCode').val();
 	var impossible;
 
+	if(new Date(checkOut) <= new Date(checkIn)){
+		alert("체크아웃 날짜가 체크인 날짜와 같거나 더 앞섭니다.");
+		return;
+	}
+	
 	$.ajax({
 	    url: "getPossibleBooking.do",
 	    type: "GET",

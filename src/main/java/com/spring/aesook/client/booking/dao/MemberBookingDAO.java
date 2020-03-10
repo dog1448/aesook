@@ -20,4 +20,6 @@ public interface MemberBookingDAO {
 	int getWeekDay(MemberBookingVO vo);
 	
 	int getAllDay(MemberBookingVO vo);
+	
+	void insertBooking(MemberBookingVO vo);
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.aesook.client.booking.dao.MemberBookingDAO;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
+import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.client.review.dao.MemberReviewDAO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
@@ -60,20 +61,16 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	}
 
 	@Override
-	public int getWeekDay(MemberBookingVO vo) {
-		return memberBookingDAO.getWeekDay(vo);
+	public int getTotalPrice(MemberBookingVO bookingVO, MemberRoomVO roomVO) {
+		int allDay = memberBookingDAO.getAllDay(bookingVO);
+		int weekDay = memberBookingDAO.getWeekDay(bookingVO);
+		int weekendDay = allDay - weekDay;
+		int totalPrice = roomVO.getRoomStandardPrice()*weekDay + roomVO.getRoomHolidayPrice()*weekendDay;
+		return totalPrice;
+	}
+	
+	public void insertBooking(MemberBookingVO vo) {
+		memberBookingDAO.insertBooking(vo);
 	}
 
-	@Override
-	public int getAllDay(MemberBookingVO vo) {
-		return memberBookingDAO.getAllDay(vo);
-	}
-	/*
-	 int 전체 = memberBookingDAO.getAllDay(vo)
-	 int 평일 = memberBookingDAO.getWeekDay(vo)
-	 int 주말 = 전체-평일
-	 roomVO.getStandardPrice * 평일
-	 roomVO.getHolidayPrice * 주말
-	 int 총결제액 = 
-	 */
 }
