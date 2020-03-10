@@ -3,6 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="admin.manager.dao.ManagerDAO">
+
+    <!--TotalCount-->
     <select id="totalUserCount" resultType="int">
         select count(*) from MEMBER
     </select>
@@ -27,6 +29,7 @@
         select count(*) from HOTELS where HOTELS_TYPE='리조트'
     </select>
 
+    <!--ReservationCount-->
     <select id="marchReservationCount" resultType="int">
     select count(*) from BOOKING
     where BOOKING_CHECK_IN between to_date('20200301') and to_date('20200331')
@@ -36,4 +39,91 @@
     select count(*) from BOOKING
     where BOOKING_CHECK_IN between to_date('20200401') and to_date('20200430')
     </select>
+
+    <select id="mayReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20200501') and to_date('20200531')
+    </select>
+
+    <select id="juneReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20200601') and to_date('20200630')
+    </select>
+
+    <select id="julyReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20200701') and to_date('20200731')
+    </select>
+
+    <select id="augustReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20200801') and to_date('20200831')
+    </select>
+
+    <select id="septemberReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20200901') and to_date('20200930')
+    </select>
+
+    <select id="octoberReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20201001') and to_date('20201031')
+    </select>
+
+    <select id="novemberReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20201101') and to_date('20201130')
+    </select>
+
+    <select id="decemberReservationCount" resultType="int">
+    select count(*) from BOOKING
+    where BOOKING_CHECK_IN between to_date('20201201') and to_date('20201231')
+    </select>
+
+    
+    <select id="hotelReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='호텔' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="pensionReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='펜션' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="motelReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='모텔' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="guesthouseReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='게스트하우스' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="resortReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_type='리조트' and h.hotels_code=b.hotels_code
+    </select>
+    
+    <select id="allReservationCount" resultType="int">
+    select count(*) from booking b, hotels h where
+h.hotels_code=b.hotels_code
+    </select>
+
+
+    <select id="totalPrice" resultMap="managerStatistics">
+       select sum(BOOKING_TOTAL_PRICE) total_price,
+       to_char(BOOKING_CHECK_IN,'fmMM') checkIn_date
+        from BOOKING
+        where BOOKING_CHECK_IN between to_date('20200101000000','YYYYMMDDHH24MISS')
+        and to_date('20210101000000','YYYYMMDDHH24MISS')
+        group by to_char(BOOKING_CHECK_IN,'fmMM')
+    </select>
+
+    <resultMap id="managerStatistics" type="managerStatistics">
+        <id column="checkin_date" property="checkInDate"/>
+        <result column="total_price" property="totalPrice"/>
+    </resultMap>
+
 </mapper>

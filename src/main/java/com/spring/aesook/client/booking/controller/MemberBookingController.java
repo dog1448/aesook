@@ -1,15 +1,23 @@
 package com.spring.aesook.client.booking.controller;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.aesook.client.booking.service.MemberBookingCheckService;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
@@ -25,6 +33,12 @@ public class MemberBookingController {
 	
 	@Autowired
 	MemberBookingCheckService memberBookingCheckService;
+	
+    @InitBinder
+    protected void initBinder(WebDataBinder binder){
+        DateFormat  dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
+    }
 	
 	//회원별 예약 내역 조회
 	@RequestMapping(value="/bookingList.do", method = RequestMethod.GET)
@@ -72,17 +86,31 @@ public class MemberBookingController {
 		return "redirect:canceledBookingList.do";
 	}
 	
-	@RequestMapping(value="/payment.do", method = RequestMethod.GET)
-	public String movePayment() {
-		return "/payment";
+	//날짜별 가능한 방 조회
+	@RequestMapping(value="/getPossibleBooking.do", method = RequestMethod.GET)
+	@ResponseBody
+	public List<String> getPossibleBooking(MemberBookingVO vo, HttpSession session) {
+		session.setAttribute("bookingCheckIn", vo.getBookingCheckIn());
+		session.setAttribute("bookingCheckOut", vo.getBookingCheckOut());
+		return memberBookingCheckService.getPossibleBooking(vo);
 	}
 	
-	//날짜별 가능한 방 조회
-	@RequestMapping(value="/getPossibleBooking.do", method = RequestMethod.POST)
-	public String getPossibleBooking(MemberBookingVO vo, Model model) {
-		List<String> possibleList = memberBookingCheckService.getPossibleBooking(vo);
-		model.addAttribute("possibleList", possibleList);
-		return "/accommodations-room";
+	//특정 호텔, 특정 방이 특정 날짜에 예약 가능한지 조회
+	@RequestMapping(value="/getRoomPossible.do", method = RequestMethod.GET)
+	@ResponseBody
+	public List<String> getRoomPossible(MemberBookingVO vo) {
+		return memberBookingCheckService.getRoomPossible(vo);
+	}
+	
+	//결제 페이지로 이동
+	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
+	public String movePayment(HttpSession session, MemberBookingVO vo, Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		vo.setMemberId(user.getMemberId());
+		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(vo);
+		model.addAttribute("possibleRoom", possibleRoom);
+		model.addAttribute("booking", vo);
+		return "/payment";
 	}
 		
 }

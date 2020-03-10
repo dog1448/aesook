@@ -295,7 +295,7 @@
                 label: '월별 예약 건수',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [0, 0, ${marchCnt}, ${aprilCnt}, 20, 30, 45]
+                data: [0, 0, ${marchCnt}, ${aprilCnt}, ${mayCnt},${juneCnt},${julyCnt},${augustCnt},${septemberCnt},${octoberCnt},${novemberCnt},${decemberCnt}]
             }]
         },
 
@@ -357,7 +357,7 @@
                 label: '월별 금액',
 
                 borderColor: '#7CFF55',
-                data: [5, 10, 25, 35, 20, 30, 45,30,30,30,30,45]
+                data: [0, 0, ${totalPrice.get(0).totalPrice}, ${totalPrice.get(1).totalPrice}, 20, 30, 45,30,30,30,30,45]
             }]
         },
 
@@ -367,6 +367,13 @@
 </script>
 
 <script type="text/javascript">
+	var allReservationCnt = ${allReservationCnt};
+	var motelReservationRate =Math.round(${motelReservationCnt}/allReservationCnt*100);
+	var hotelReservationRate =Math.round(${hotelReservationCnt}/allReservationCnt*100);
+	var guesthouseReservationRate =Math.round(${guesthouseReservationCnt}/allReservationCnt*100);
+	var pensionReservationRate =Math.round(${pensionReservationCnt}/allReservationCnt*100);
+	var resortReservationRate =Math.round(${resortReservationCnt}/allReservationCnt*100);
+	
     var ctx = document.getElementById('pieChart').getContext('2d');
 
     var chart = new Chart(ctx, {
@@ -377,14 +384,19 @@
         data: {
 
             datasets: [{
-                borderAlign:'inner',
-                borderColor: '#0000',
+                borderColor: '#ffff',
                 weight:100,
-                data: [5, 10, 25],
-                hoverBackgroundColor: ['Red','Yellow','Blue'],
-                backgroundColor:['Red','Yellow','Blue']
+                data: [motelReservationRate,hotelReservationRate,guesthouseReservationRate,pensionReservationRate,resortReservationRate],
+
+                backgroundColor:[
+                    'rgba(255, 99, 132, 1)'
+                    ,'rgba(255, 206, 86, 1)'
+                    ,'rgba(54, 162, 235, 1)'
+                    ,'green'
+                    ,'purple'
+                    ]
             }],
-            labels: ['Red','Yellow','Blue']
+            labels: ['모텔%','호텔%','게·하%','펜션%','리조트·콘도%']
         },
 
         // Configuration options go here

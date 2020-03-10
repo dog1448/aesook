@@ -53,6 +53,27 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	public List<String> getPossibleBooking(MemberBookingVO vo) {
 		return memberBookingDAO.getPossibleBooking(vo);
 	}
-	
-	
+
+	@Override
+	public List<String> getRoomPossible(MemberBookingVO vo) {
+		return memberBookingDAO.getRoomPossible(vo);
+	}
+
+	@Override
+	public int getWeekDay(MemberBookingVO vo) {
+		return memberBookingDAO.getWeekDay(vo);
+	}
+
+	@Override
+	public int getAllDay(MemberBookingVO vo) {
+		return memberBookingDAO.getAllDay(vo);
+	}
+	/*
+	 int 전체 = memberBookingDAO.getAllDay(vo)
+	 int 평일 = memberBookingDAO.getWeekDay(vo)
+	 int 주말 = 전체-평일
+	 roomVO.getStandardPrice * 평일
+	 roomVO.getHolidayPrice * 주말
+	 int 총결제액 = 
+	 */
 }

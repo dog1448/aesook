@@ -1,44 +1,47 @@
 package com.spring.aesook.admin.users.vo;
 
 public class ManagerUsersVO {
-	private String id;
-	private String name;
-	private String email;
-	private String phone;
-	private String status;
+	private String memberId;
+	private String memberPass;
+	private String memberName;
+	private String memberEmail;
+	private String memberStatus;
+	private String memberPhone;
 	
-	@Override
-	public String toString() {
-		return "ManagerUsersVO [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", status=" + status + "]";
+	public String getMemberId() {
+		return memberId;
 	}
-	public String getId() {
-		return id;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public String getMemberPass() {
+		return memberPass;
 	}
-	public String getName() {
-		return name;
+	public void setMemberPass(String memberPass) {
+		this.memberPass = memberPass;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public String getMemberName() {
+		return memberName;
 	}
-	public String getEmail() {
-		return email;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
-	public String getPhone() {
-		return phone;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public String getMemberStatus() {
+		return memberStatus;
 	}
-	public String getStatus() {
-		return status;
+	public void setMemberStatus(String memberStatus) {
+		this.memberStatus = memberStatus;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
 }

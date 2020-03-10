@@ -20,4 +20,10 @@ public interface MemberBookingCheckService {
 	
 	List<String> getPossibleBooking(MemberBookingVO vo);
 
+	List<String> getRoomPossible(MemberBookingVO vo);
+	
+	int getWeekDay(MemberBookingVO vo);
+	
+	int getAllDay(MemberBookingVO vo);	
+	
 }

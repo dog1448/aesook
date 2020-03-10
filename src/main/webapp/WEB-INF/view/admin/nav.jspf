@@ -74,10 +74,10 @@
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> Modify<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="mainPic.admin">Main Page</a>
+                                        <a href="mainPic.admin">Admin Images</a>
                                     </li>
                                     <li>
-                                        <a href="eventPic.admin">Event Page</a>
+                                        <a href="insertPic.admin">Insert Images</a>
                                     </li>
                                 </ul>
                             </li>
