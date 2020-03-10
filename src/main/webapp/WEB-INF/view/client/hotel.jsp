@@ -442,7 +442,7 @@
 									</tr>
 									<tr>
 										<td>
-											<li><a href="hotelsList.do?sido=충남&region=보령/대천/부여/공주/금산">보령/대천/부여/공주/금산</a></li>
+											<li><a href="hotelsList.do?sido=충남&region=보령/부여/공주/금산">보령/부여/공주/금산</a></li>
 										</td>
 										<td>
 											<li><a href="hotelsList.do?sido=충남&region=청주/음성/진천">청주/음성/진천</a></li>

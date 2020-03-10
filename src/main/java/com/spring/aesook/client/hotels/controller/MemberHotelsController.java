@@ -158,11 +158,6 @@ public class MemberHotelsController {
 			model.addAttribute("hotels", hotelsList);
 		}
 		return "/registeredAccommodation";
-	}
+	}	
 	
-	@RequestMapping(value = "/statistics.do", method = RequestMethod.GET)
-	public String moveStatistics() {
-		
-		return "/statistics";
-	}
 }
