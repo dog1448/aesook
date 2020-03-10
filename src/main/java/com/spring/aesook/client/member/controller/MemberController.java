@@ -121,6 +121,9 @@ public class MemberController {
 			model.addAttribute("check", "noId");
 			return "/login";
 		} else {
+			if(user.getMemberPass() == null) {
+				return "/login";
+			}
 			if (user.getMemberPass().equals(vo.getMemberPass())) {
 				if(user.getMemberStatus().equals("R")) {
 					

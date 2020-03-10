@@ -5,19 +5,42 @@
 <mapper namespace="client.statistics.dao.MemberStatisticsDAO">
 
 <select id="getMonthlyTotalPrice" resultMap="monthlyTotalPriceList" parameterType="java.util.HashMap">
-	<![CDATA[
+	
 	select sum(booking_total_price*0.9) booking_total_price, to_char(booking_date, 'fmMM') 
 	booking_date from booking  
 	where hotels_code = (select hotels_code from hotels where member_id = #{memberId}) 
 	and booking_status != 'C' 
 	and booking_date between to_date(#{startYear}, 'YYYYMMDD') 
 	and to_date(#{endYear}, 'YYYYMMDD') group by to_char(booking_date, 'fmMM') order by booking_date
-	]]>
+	
 </select>
 
 <resultMap type="java.util.HashMap" id="monthlyTotalPriceList">
 	<id column="booking_date" property="booking_date"/>
 	<result column="booking_total_price" property="booking_total_price"/>
+</resultMap>
+
+<select id="getRoomSort">
+	select distinct room_sort from room 
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})
+</select>
+
+
+<select id="getRoomRatio" resultMap="roomRatio" parameterType="java.util.HashMap">
+	
+	select round(((select count(room_sort) from booking  
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})  
+	and booking_status = 'B' and room_sort = #{roomSort})/
+	(select count(room_sort) from booking  
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})  
+	and booking_status = 'B'))*100,0) room_ratio,  
+	(select distinct room_sort from booking where room_sort = #{roomSort}) room_sort from dual
+	
+</select>
+
+<resultMap type="java.util.HashMap" id="roomRatio">
+	<result column="room_ratio" property="room_ratio"/>
+	<result column="room_sort" property="room_sort"/>
 </resultMap>
 
 </mapper>
