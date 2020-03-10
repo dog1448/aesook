@@ -68,6 +68,7 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 	public int getAllDay(MemberBookingVO vo) {
 		return memberBookingDAO.getAllDay(vo);
 	}
+	
 	/*
 	 int 전체 = memberBookingDAO.getAllDay(vo)
 	 int 평일 = memberBookingDAO.getWeekDay(vo)

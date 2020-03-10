@@ -86,5 +86,9 @@
 	<select id="getAllDay" resultType="int">
 		SELECT to_date(#{bookingCheckOut}) - to_date(#{bookingCheckIn}) FROM DUAL
 	</select>
+	
+	<select id="getBookingSeq" resultType="int">
+		SELECT booking_seq.nextval FROM DUAL
+	</select>
 
 </mapper>

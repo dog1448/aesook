@@ -102,15 +102,6 @@ public class MemberBookingController {
 		return memberBookingCheckService.getRoomPossible(vo);
 	}
 	
-	//결제 페이지로 이동
-	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
-	public String movePayment(HttpSession session, MemberBookingVO vo, Model model) {
-		MemberVO user = (MemberVO)session.getAttribute("login");
-		vo.setMemberId(user.getMemberId());
-		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(vo);
-		model.addAttribute("possibleRoom", possibleRoom);
-		model.addAttribute("booking", vo);
-		return "/payment";
-	}
+
 		
 }
