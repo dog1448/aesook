@@ -11,9 +11,8 @@ function checkz() {
 	var value = $('#maxCnt').val();
 	var checkOut = $('#date-out').val();
 	var checkIn = $('#date-in').val();
-	var hotelsCode = $('#hotelsCode').val();
-	var roomSort = $('#roomSort').val();
-	var checkCnt = $('input[name=agree]:checked').length;
+	var hotelsCode = $('#hotelsCodeId').val();
+	var roomSort = $('#roomSortId').val();
 
 	//체크인 날짜 공백 확인
     if($("#date-in").val() == ""){
@@ -57,11 +56,6 @@ function checkz() {
      return;
     }
     
-	if (checkCnt < 6) {
-		alert("약관에 동의해주세요");
-		return;
-	}
-	
 	$.ajax({
 	    url: "getRoomPossible.do",
 	    type: "GET",
@@ -74,7 +68,8 @@ function checkz() {
 	    dataType: "json"
 	})
 	.done(function(json) {
-	       		if(json==0){
+				alert(json);
+	       		if(json.length==0){
 	       			alert("해당 날짜에 예약이 불가능한 방입니다.");
 	       			return;
 	       		}
@@ -150,6 +145,7 @@ function checkz() {
                             <div>
                                 <h4>${memberhotelsVO.hotelsName}</h4>
                             </div>
+                            <hr>
                         </div>
                     </div>
                 </div>
@@ -168,9 +164,6 @@ function checkz() {
                             <div class="rd-text">                                
                                 <h2>${memberRoomVO.roomStandardPrice} ￦<span>&nbsp;&nbsp;&nbsp;평일</span></h2>
                                 <h2>${memberRoomVO.roomHolidayPrice} ￦<span>&nbsp;&nbsp;&nbsp;공휴일</span></h2>
-                                <input type="hidden" id = "maxCnt" value="${memberRoomVO.roomMaxCnt}">
-                                <input type="hidden" id = "hotelsCode" value="${memberRoomVO.hotelsCode}">
-                                <input type="hidden" id = "roomSort" value="${memberRoomVO.roomSort}">
                                 <table>
                                     <tbody>                                   		
                                         <tr>
@@ -192,6 +185,9 @@ function checkz() {
                                 <p class="f-para">
 									${memberRoomVO.roomInfo}
                                 </p>
+                                <div>&nbsp;</div>
+                                <hr>
+                                <div>&nbsp;</div>
                                	<h2>예약공지</h2>
                                 <p class="f-para">
 									ㆍ당일예약 특성 상 환불 및 취소가 불가합니다.<br>
@@ -212,6 +208,11 @@ function checkz() {
                     <div class="col-lg-4">
                         <div class="room-booking">
                         <form role="form" method="post" action="movePayment.do" id="reserve">
+                        <input type="hidden" id = "hotelsCodeId" name="hotelsCode" value="${memberRoomVO.hotelsCode}">
+                        <input type="hidden" id = "hotelsNameId" name="hotelsName" value="${memberhotelsVO.hotelsName}">
+                        <input type="hidden" id = "roomSortId" name="roomSort" value="${memberRoomVO.roomSort}">
+                        <input type="hidden" id = "maxCnt" name="roomMaxCnt" value="${memberRoomVO.roomMaxCnt}">
+                        
                             <h3>Your Reservation</h3>
                                 <div class="check-date">
                                     <label for="date-in">체크인:</label>
@@ -225,30 +226,19 @@ function checkz() {
                                 </div>
                                 <div class="select-option">
                                     <label for="guest">인원</label>
-                                    <input type="number" class="form-control" id="cnt" name="bookingCnt" placeholder="숫자만 입력하세요" >
+                                    <input type="number" class="form-control" id="cnt" name="bookingCnt" name="bookingCnt" placeholder="숫자만 입력하세요" >
                                     <i class="icon-pencil"></i>
                                 </div>
                                 <div>
 									<label for="email">예약자 이름</label>
-									<input type="text" id="name" class="form-control" placeholder="이름을 입력하세요">
+									<input type="text" id="name" name="bookingName" class="form-control" placeholder="이름을 입력하세요">
 								</div>
 								<div>&nbsp;</div>
 								<div>
 									<label for="email">예약자 전화번호</label>
-									<input type="text" id="phone" class="form-control" placeholder="-를 붙여 입력하세요.">
+									<input type="text" id="phone" name="bookingPhone" class="form-control" placeholder="-를 붙여 입력하세요.">
 								</div>       
 								<div>&nbsp;</div>                        
-								<div>	
-									<input type="checkbox" name="agree">(필수) 만 14세 이상입니다.<br>
-									<input type="checkbox" name="agree">(필수) 취소 규정 동의 <br>
-									<input type="checkbox" name="agree">(필수) 숙소 이용규칙 동의
-									<span class="label label-primary"><small>보기</small></span><br>
-									<input type="checkbox" name="agree">(필수) 개인정보 수집 및 이용 동의 
-									<span class="label label-primary"><small>보기</small></span><br>
-									<input type="checkbox" name="agree">(필수) 개인정보 제3자 제공동의 
-									<span class="label label-primary"><small>보기</small></span><br>
-									<input type="checkbox" name="agree">(필수) 기준인원 초과 시 현장결제 하겠습니다<br>
-								</div>
                                 <button type="button" onclick="checkz()">예약하기</button>
                             </form>
                         </div>
