@@ -9,7 +9,7 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>		
 	</settings>
 	<typeAliases>
-	    	<typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
+	    <typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
         <typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerBookingVO" alias="managerBooking"/>     
         <typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerHotelsVO" alias="managerHotels"/>
         <typeAlias type="com.spring.aesook.admin.board.vo.ManagerBoardVO" alias="managerBoard"/>  
@@ -17,7 +17,7 @@
         <typeAlias type="com.spring.aesook.admin.image.vo.ManagerBrnImageVO" alias="managerBrnImage"/>
         <typeAlias type="com.spring.aesook.admin.image.vo.ManagerAdminImageVO" alias="managerAdminImage"/>
         <typeAlias type="com.spring.aesook.admin.users.vo.ManagerUsersVO" alias="managerUsers"/>
-    		<typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
+    	  <typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
         <typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>  
         <typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsVO" alias="memberHotels"/>         
         <typeAlias type="com.spring.aesook.client.hotels.vo.MemberRoomVO" alias="memberRoom"/>
@@ -29,6 +29,7 @@
 		    <typeAlias type="com.spring.aesook.client.image.vo.MemberHotelsImageVO" alias="memberHotelsImage"/>
         <typeAlias type="com.spring.aesook.client.alarm.vo.MemberAlarmVO" alias="memberAlarm"/>     
         <typeAlias type="com.spring.aesook.admin.manager.vo.ManagerStatisticsVO" alias="managerStatistics"/>
+
 	</typeAliases>
 	
 
@@ -48,8 +49,9 @@
         <mapper resource="mappings/clientmappings/memberRoomSort-Mapper.xml"/>         
         <mapper resource="mappings/clientmappings/memberHotelsFacility-Mapper.xml"/>     
         <mapper resource="mappings/clientmappings/memberBooking-Mapper.xml"/>    
-	      <mapper resource="mappings/clientmappings/memberImage-Mapper.xml"/>
+	    <mapper resource="mappings/clientmappings/memberImage-Mapper.xml"/>
         <mapper resource="mappings/clientmappings/memberAlarm-Mapper.xml"/>
         <mapper resource="mappings/adminmappings/managerStatistics-Mapper.xml"/>
+        <mapper resource="mappings/clientmappings/memberStatistics-Mapper.xml"/>
 	</mappers>
 </configuration>
