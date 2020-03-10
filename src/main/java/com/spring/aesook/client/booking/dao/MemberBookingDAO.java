@@ -15,5 +15,9 @@ public interface MemberBookingDAO {
 	
 	List<String> getPossibleBooking(MemberBookingVO vo);
 	
-	int getRoomPossible(MemberBookingVO vo);
+	List<String> getRoomPossible(MemberBookingVO vo);
+	
+	int getWeekDay(MemberBookingVO vo);
+	
+	int getAllDay(MemberBookingVO vo);
 }

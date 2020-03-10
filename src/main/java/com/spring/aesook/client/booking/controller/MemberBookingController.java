@@ -98,13 +98,18 @@ public class MemberBookingController {
 	//특정 호텔, 특정 방이 특정 날짜에 예약 가능한지 조회
 	@RequestMapping(value="/getRoomPossible.do", method = RequestMethod.GET)
 	@ResponseBody
-	public int getRoomPossible(MemberBookingVO vo) {
-		int result = memberBookingCheckService.getRoomPossible(vo);
-		return result;
+	public List<String> getRoomPossible(MemberBookingVO vo) {
+		return memberBookingCheckService.getRoomPossible(vo);
 	}
 	
+	//결제 페이지로 이동
 	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
-	public String movePayment() {
+	public String movePayment(HttpSession session, MemberBookingVO vo, Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		vo.setMemberId(user.getMemberId());
+		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(vo);
+		model.addAttribute("possibleRoom", possibleRoom);
+		model.addAttribute("booking", vo);
 		return "/payment";
 	}
 		

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
-import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Repository("memberBookingDAO")
 public class MemberBookingDAOImpl implements MemberBookingDAO {
@@ -44,8 +43,18 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 	}
 
 	@Override
-	public int getRoomPossible(MemberBookingVO vo) {
-		return sqlSessionTemplate.selectOne(namespace + ".getRoomPossible", vo);
+	public List<String> getRoomPossible(MemberBookingVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".getRoomPossible", vo);
+	}
+
+	@Override
+	public int getWeekDay(MemberBookingVO vo) {
+		return sqlSessionTemplate.selectOne(namespace + ".getWeekDay", vo);
+	}
+
+	@Override
+	public int getAllDay(MemberBookingVO vo) {
+		return sqlSessionTemplate.selectOne(namespace + ".getAllDay", vo);
 	}
 	
 
