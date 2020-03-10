@@ -27,6 +27,13 @@ function checkz() {
       $("date-out").focus();
       return;
     }
+	
+	//체크인, 체크아웃 날짜 설정 확인
+    if(new Date(checkOut) <= new Date(checkIn)){
+		alert("체크아웃 날짜가 체크인 날짜와 같거나 더 앞섭니다.");
+		return;
+	}
+	
  	//인원 공백확인
     if ($("#cnt").val() == "") {
      alert("인원수를 입력해주세요");
@@ -211,6 +218,8 @@ function checkz() {
                         <input type="hidden" id = "hotelsCodeId" name="hotelsCode" value="${memberRoomVO.hotelsCode}">
                         <input type="hidden" id = "hotelsNameId" name="hotelsName" value="${memberhotelsVO.hotelsName}">
                         <input type="hidden" id = "roomSortId" name="roomSort" value="${memberRoomVO.roomSort}">
+                        <input type="hidden" id = "roomStandardPrice" name="roomStandardPrice" value="${memberRoomVO.roomStandardPrice}">
+                        <input type="hidden" id = "roomHolidayPrice" name="roomHolidayPrice" value="${memberRoomVO.roomHolidayPrice}">
                         <input type="hidden" id = "maxCnt" name="roomMaxCnt" value="${memberRoomVO.roomMaxCnt}">
                         
                             <h3>Your Reservation</h3>
