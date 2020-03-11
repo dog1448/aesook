@@ -48,7 +48,16 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 	public List<MemberHotelsVO> selectHotelsList(String type, String sido, String region) {		
 		
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
-		map = divide(type, sido, region);		
+		map = divide(type, sido, region);
+		map.put("sortCondition", "default");
+		return memberHotelsListDAO.selectHotelsList(map);
+	}
+	
+	@Override
+	public List<MemberHotelsVO> selectHotelsList(String type, String sido, String region, String sortCondition) {		
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		map = divide(type, sido, region);
+		map.put("sortCondition", sortCondition);
 		return memberHotelsListDAO.selectHotelsList(map);
 	}
 

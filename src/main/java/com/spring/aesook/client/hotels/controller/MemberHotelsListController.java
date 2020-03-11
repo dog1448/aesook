@@ -20,7 +20,7 @@ public class MemberHotelsListController {
 	
 	// 숙소 리스트 게시 컨트롤러
 	@RequestMapping(value = "/hotelsList.do", method = RequestMethod.GET)
-	public String hotelsList(@RequestParam(value = "type", defaultValue = "ȣ��", required = false) String type, 
+	public String moveHotelsList(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type, 
 			@RequestParam(value = "sido") String sido, 
 			@RequestParam(value = "region") String region, 
 			Model model) {
@@ -29,7 +29,25 @@ public class MemberHotelsListController {
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectHotelsList(type, sido, region);
 		model.addAttribute("viewAll", list);			
+		model.addAttribute("type", type);			
+		model.addAttribute("sido", sido);			
+		model.addAttribute("region", region);			
 		
+		return "/accommodations";
+	}
+	
+	@RequestMapping(value = "/hotelsList.do", method = RequestMethod.POST)
+	public String sortHotelsList(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type, 
+			@RequestParam(value = "sido") String sido, 
+			@RequestParam(value = "region") String region, 
+			Model model, MemberHotelsVO vo) {
+		//int total = memberHotelsListService.countHotelsList(type, sido, region);		
+		List<MemberHotelsVO> list = memberHotelsListService.selectHotelsList(type, sido, region, vo.getSortCondition());
+		model.addAttribute("viewAll", list);			
+		model.addAttribute("type", type);			
+		model.addAttribute("sido", sido);			
+		model.addAttribute("region", region);			
+		System.out.println(list.toString());
 		return "/accommodations";
 	}
 	
@@ -38,6 +56,7 @@ public class MemberHotelsListController {
 	public String getSearchedHotelsList(MemberHotelsVO vo, Model model) {
 		List<MemberHotelsVO> searchedHotelsList = memberHotelsListService.getSearchedHotelsList(vo);
 		model.addAttribute("searchedList", searchedHotelsList);
+		System.out.println(searchedHotelsList.toString());
 		return "/searchedAccommodations";
 	}
 }

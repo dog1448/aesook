@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class KakaoPayApprovalVO {
 
-	private String aid; // 가맹점 코드. 결제 단위를 정의. 10자리
-	private String tid; // 결제 한 건에 대한 고유번호. 20자리
-	private String cid; // 정기결제에 사용되는 고유번호. 20자리
-	private String sid; // 결제, 취소, 정기결제 API 호출에 대한 고유번호. 20자리
-	private String partner_order_id; // 필수값 : 결제건에 대한 가맹점의 주문번호. TID와 연결시켜두고 대사작업을 할 때 사용. MAX 100자로 hash값 사용 가능
-	private String partner_user_id; // 필수값 : 가맹점에서 사용자를 구분할 수 있는 id. MAX 100자로 hash값 사용 가능
-	private String payment_method_type; // 필수값 : 사용자의 결제수단 선택 완료 후 결제 대기화면에서 approval_url로 redirect할 때 request param으로 붙여서 전달해줌
-	private KakaoAmountVO amount; // 
+	private String aid; 
+	private String tid; 
+	private String cid; 
+	private String sid; 
+	private String partner_order_id; 
+	private String partner_user_id; 
+	private String payment_method_type; 
+	private KakaoAmountVO amount; 
 	private KakaoCardVO card_info;
 	private String item_name;
 	private String item_code;

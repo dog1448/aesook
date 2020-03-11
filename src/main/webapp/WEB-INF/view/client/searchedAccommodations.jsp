@@ -46,33 +46,42 @@
 		<div class="colorlib-wrap">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-12 col-md-offset-1">
 						<div class="row">
 							<div class="wrap-division">
 							
 								<c:forEach var="list" items="${searchedList}">
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="hotel-entry">
-											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
-												style="background-image: url(resources/client/images/hotel-1.jpg);">																						
+									 
+										<c:if test="${list.hotelsImageStatus eq 'M' }">										
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: 350px;">																					
+											</a>											
+										</c:if>
+										<c:if test="${list.hotelsImageStatus ne 'M' }">
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="resources/client/images/noImage.png" style="height: 280px; width: 350px;">																	
 											</a>
-											
+										</c:if>							
 											<div class="desc">
 												<p class="star">
 													<span>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
+														<c:if test="${list.scoreAvg == 0}">
+															<i class="icon-star-empty"></i>
+														</c:if>
+														<c:forEach var="i" begin="1" end="${list.scoreAvg}"
+															step="1">
+															<i class="icon-star-full"></i>
+														</c:forEach>
 													</span>
-													545 Reviews
+													${list.scoreCnt} Reviews
 												</p>
 												<h3>
 													<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}&hotelsName=${list.hotelsName}">${list.hotelsName}</a>
 												</h3>
-												<span class="place">${list.hotelsAddress1} ${list.hotelsAddress2 }</span>
-												<p>${list.hotelsInfo}</p>
+												<span class="place">${list.hotelsAddress1} ${list.hotelsAddress2}</span>
+												<p>${list.hotelsPath}</p>
 											</div>
 										</div>
 									</div>
