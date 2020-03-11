@@ -67,13 +67,15 @@
 											<div class="desc">
 												<p class="star">
 													<span>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
-														<i class="icon-star-full"></i>
+														<c:if test="${list.scoreAvg == 0}">
+															<i class="icon-star-empty"></i>
+														</c:if>
+														<c:forEach var="i" begin="1" end="${list.scoreAvg}"
+															step="1">
+															<i class="icon-star-full"></i>
+														</c:forEach>
 													</span>
-													545 Reviews
+													${list.scoreCnt} Reviews
 												</p>
 												<h3>
 													<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}&hotelsName=${list.hotelsName}">${list.hotelsName}</a>

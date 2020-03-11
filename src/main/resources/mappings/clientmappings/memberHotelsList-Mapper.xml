@@ -14,13 +14,18 @@
    	
   	<!-- 지역으로 숙소 리스트 가져오기 -->
   	<select id="selectHotelsList" resultType="memberHotels">
-  		SELECT h.*, i.hotels_image_name, i.hotels_image_path, i.hotels_image_status    
-  		FROM hotels h,(select * from hotels_image where hotels_image_status='M') i    
+  		SELECT h.*, i.hotels_image_name, i.hotels_image_path, i.hotels_image_status, round(avg(r.review_score),0) scoreAvg, count(r.review_score) scoreCnt
+  		FROM hotels h,(select * from hotels_image where hotels_image_status='M') i ,review r     
   		WHERE h.hotels_code = i.hotels_code(+) AND h.HOTELS_TYPE = #{type}  
   		AND h.HOTELS_ADDRESS1 LIKE '%'||#{sido}||'%' AND  
   		<foreach collection="regionList" item="item" separator="or" open="(" close=")" index="index">
   			h.HOTELS_ADDRESS1 LIKE '%'||#{item}||'%'
-  		</foreach>  		   
+  		</foreach>  	
+  		AND H.HOTELS_CODE = R.HOTELS_CODE(+)
+  		 GROUP BY h.hotels_code, h.hotels_name, h.hotels_type, h.member_id, 
+         h.hotels_phone, h.hotels_zipcode, h.hotels_address1, h.hotels_address2,
+         h.hotels_path, h.hotels_info, h.hotels_introduce,
+         i.hotels_image_name, i.hotels_image_path, i.hotels_image_status	   
   		 ORDER BY h.HOTELS_CODE DESC
   	</select>
   	
