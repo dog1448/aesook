@@ -117,7 +117,7 @@ public class MemberImageController {
     }
     
     
- // ------------------------------ ȣ���̹��� ��� -------------------------------------
+ // ------------------------------ 호텔사진 등록-------------------------------------
 	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.GET)
 	public String moveInsertPic(@RequestParam("hotelsCode") int hotelsCode, Model model) {
 		model.addAttribute("hotelsCode", hotelsCode);

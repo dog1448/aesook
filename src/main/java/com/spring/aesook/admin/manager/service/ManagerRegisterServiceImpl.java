@@ -14,7 +14,6 @@ public class ManagerRegisterServiceImpl implements ManagerRegisterService {
 	
 	@Override
 	public int idCheck(ManagerVO vo) {
-		System.out.println("service");
 		int result = managerDAO.idCheck(vo);
 		return result;
 	}
