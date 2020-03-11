@@ -20,16 +20,6 @@ public class ManagerUsersServiceImpl implements ManagerUsersService {
 	}
 
 	@Override
-	public void deleteManagerUsers(ManagerUsersVO vo) {
-		managerUsersDAO.deleteManagerUsers(vo);
-	}
-
-	@Override
-	public void updateManagerUsers(ManagerUsersVO vo) {
-		managerUsersDAO.updateManagerUsers(vo);
-	}
-
-	@Override
 	public ManagerUsersVO getManagerUsers(String memberId) {
 		ManagerUsersVO vo = new ManagerUsersVO();
 		vo.setMemberId(memberId);
