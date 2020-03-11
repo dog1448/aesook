@@ -68,7 +68,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return memberHotelsListDAO.selectHotelsListById(vo);
 	}
 
-	// 전체 숙소 top 4
+	// 전체 숙소 top 10
 	@Override
 	public List<MemberHotelsVO> selectAccommodationTop10() {		
 		return memberHotelsListDAO.selectAccommodationTop10();
