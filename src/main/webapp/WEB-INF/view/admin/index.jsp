@@ -357,7 +357,7 @@
                 label: '월별 금액',
 
                 borderColor: '#7CFF55',
-                data: [0, 0, ${totalPrice.get(0).totalPrice}, ${totalPrice.get(1).totalPrice}, 20, 30, 45,30,30,30,30,45]
+                data: [0, 0, ${totalPrice.get(0).totalPrice}, 0, 20, 30, 45,30,30,30,30,45]
             }]
         },
 
