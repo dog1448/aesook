@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.aesook.client.booking.service.MemberBookingCheckService;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
-import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
@@ -90,31 +89,12 @@ public class MemberBookingController {
 		return memberBookingCheckService.getPossibleBooking(vo);
 	}
 	
-	//특정 호텔, 특정 방이 특정 날짜에 예약 가능한지 조회
+	//�듅�젙 �샇�뀛, �듅�젙 諛⑹씠 �듅�젙 �궇吏쒖뿉 �삁�빟 媛��뒫�븳吏� 議고쉶
 	@RequestMapping(value="/getRoomPossible.do", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getRoomPossible(MemberBookingVO vo) {
 		return memberBookingCheckService.getRoomPossible(vo);
 	}
 	
-	//Move to Payment Page
-	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
-	public String movePayment(HttpSession session, MemberBookingVO bookingVO, MemberRoomVO roomVO, Model model) {
-		MemberVO user = (MemberVO)session.getAttribute("login");
-		bookingVO.setMemberId(user.getMemberId());
-		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(bookingVO);
-		int totalPrice = memberBookingCheckService.getTotalPrice(bookingVO, roomVO);
-		model.addAttribute("possibleRoom", possibleRoom);
-		model.addAttribute("booking", bookingVO);
-		model.addAttribute("totalPrice", totalPrice);	
-		return "/payment";
-	}
-	
-	//결제하기
-	@RequestMapping(value="/insertBooking.do", method = RequestMethod.POST)
-	public String insertBooking(MemberBookingVO vo) {
-		memberBookingCheckService.insertBooking(vo);
-		return "redirect:bookingList.do";
-	}
 		
 }

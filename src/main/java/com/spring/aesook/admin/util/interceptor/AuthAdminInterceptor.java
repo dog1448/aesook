@@ -18,7 +18,7 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
 		noLogin = false;
 		
 		if(httpSession.getAttribute("login") == null) {
-			// log Âï±â
+			// log.info
 			noLogin = true;
 			httpSession.setMaxInactiveInterval(60*60);
 			request.setAttribute("noLogin", noLogin);

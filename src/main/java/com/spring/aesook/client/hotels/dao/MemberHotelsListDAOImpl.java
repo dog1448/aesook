@@ -32,7 +32,7 @@ public class MemberHotelsListDAOImpl implements MemberHotelsListDAO {
 	public List<MemberHotelsVO> selectHotelsListById(MemberVO vo) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectHotelsListById", vo);
 	}
-	//ÀüÃ¼ ¼÷¼Ò top 10
+	//ì „ì²´ ìˆ™ì†Œ top 10
 	@Override
 	public List<MemberHotelsVO> selectAccommodationTop10() {		
 		return sqlSessionTemplate.selectList(namespace + ".selectAccommodationTop10");
@@ -42,7 +42,7 @@ public class MemberHotelsListDAOImpl implements MemberHotelsListDAO {
 	public List<MemberHotelsVO> selectAccommodationTop10ByType(MemberHotelsVO vo) {		
 		return sqlSessionTemplate.selectList(namespace + ".selectAccommodationTop10ByType", vo);
 	}
-	//°Ë»öÇÑ È£ÅÚ ¸®½ºÆ®
+	//ê²€ìƒ‰ëœ í˜¸í…” ë¦¬ìŠ¤íŠ¸
 	@Override
 	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo) {
 		return sqlSessionTemplate.selectList(namespace + ".getSearchedHotelsList", vo);

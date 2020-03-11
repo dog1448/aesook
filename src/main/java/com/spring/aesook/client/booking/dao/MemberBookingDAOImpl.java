@@ -60,7 +60,7 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 	
 	public int getBookingSeq() {
 		return sqlSessionTemplate.selectOne(namespace + ".getBookingSeq");
-  }
+    }
 
 	@Override
 	public void insertBooking(MemberBookingVO vo) {

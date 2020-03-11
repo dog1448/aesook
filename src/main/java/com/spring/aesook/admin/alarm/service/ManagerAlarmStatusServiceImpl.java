@@ -25,8 +25,8 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		
 		// alarm insert
 		vo.setAlarmRecieveId(vo.getAlarmSendId());
-		vo.setAlarmTitle(vo.getAlarmSendId()+"´ÔÀÇ »ç¾÷ÀÚµî·ÏÁõÀÌ µî·ÏµÇ¾ú½À´Ï´Ù.");
-		vo.setAlarmContents("»ç¾÷ÀÚ µî·ÏÁõÀÌ ¼º°øÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù.\n ÀÌÁ¦ºÎÅÍ È£ÅÚµî·Ï ¹× °áÁ¦ ¼­ºñ½º¸¦ ÀÌ¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+		vo.setAlarmTitle(vo.getAlarmSendId()+"ë‹˜ì˜ ì‚¬ì—…ìë“±ë¡ì¦ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		vo.setAlarmContents("ì‚¬ì—…ì ë“±ë¡ì¦ì´ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.\n ì´ì œë¶€í„° í˜¸í…”ë“±ë¡ ë° ê²°ì œ ì„œë¹„ìŠ¤ë¥¼ ì´ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 		vo.setAlarmSendId("Admin");
 		managerAlarmDAO.insertManagerAlarm(vo);
 		
@@ -34,7 +34,6 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		ManagerBrnImageVO image = new ManagerBrnImageVO();
 		image.setBrnImageName(vo.getBrnImageName());
 		image.setBrnImageStatus("S");
-		System.out.println(image);
 		managerImageDAO.updateManagerImageBrn(image);
 	}
 	
@@ -45,8 +44,8 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		
 		// alarm insert
 		vo.setAlarmRecieveId(vo.getAlarmSendId());
-		vo.setAlarmTitle(vo.getAlarmSendId()+"´ÔÀÇ »ç¾÷ÀÚµî·ÏÁõÀÌ °ÅÀıµÇ¾ú½À´Ï´Ù.");
-		vo.setAlarmContents("»ç¾÷ÀÚ µî·ÏÁõÀÌ °ÅÀıµÇ¾ú½À´Ï´Ù.\n µî·ÏÁõÀ» ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
+		vo.setAlarmTitle(vo.getAlarmSendId()+"ë‹˜ì˜ ì‚¬ì—…ì ë“±ë¡ì´ ê±°ì ˆë˜ì—ˆìŠµë‹ˆë‹¤.");
+		vo.setAlarmContents("ì‚¬ì—…ì ë“±ë¡ì´ ê±°ì ˆë˜ì—ˆìŠµë‹ˆë‹¤.\n ë“±ë¡ì¦ì„ ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”.");
 		vo.setAlarmSendId("Admin");
 		managerAlarmDAO.insertManagerAlarm(vo);
 		
@@ -54,7 +53,6 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		ManagerBrnImageVO image = new ManagerBrnImageVO();
 		image.setBrnImageName(vo.getBrnImageName());
 		image.setBrnImageStatus("F");
-		System.out.println(image);
 		managerImageDAO.updateManagerImageBrn(image);
 	}
 	

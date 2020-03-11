@@ -29,7 +29,7 @@ public class MemberUpdateImageBrnServiceImpl implements MemberUpdateImageBrnServ
 	@Transactional(rollbackFor = Exception.class)
 	public void updateImageBrn(MultipartFile file , MemberVO user) {
 			
-			// 1. ÆÄÀÏµî·Ï
+			// 1.íŒŒì¼ë“±ë¡
 			FileVO fileVO = null;
 			MemberBrnImageVO vo = null;
 			try {
@@ -41,15 +41,15 @@ public class MemberUpdateImageBrnServiceImpl implements MemberUpdateImageBrnServ
 			vo.setMemberId(user.getMemberId());
 			memberImageDAO.insertMemberImageBrn(vo);
 			
-			// 2. Alarm µî·Ï
+			// 2. Alarm ë“±ë¡
 			MemberAlarmVO alarm = new MemberAlarmVO();
 			alarm.setAlarmSendId(user.getMemberId());
 			alarm.setAlarmRecieveId("Admin");
-			alarm.setAlarmTitle(user.getMemberId() + "´ÔÀÌ »ç¾÷ÀÚµî·ÏÀ» ½ÅÃ»ÇÏ¿´½À´Ï´Ù.");
-			alarm.setAlarmContents("»ç¾÷ÀÚ µî·Ï »çÁøÀÔ´Ï´Ù.");			
+			alarm.setAlarmTitle(user.getMemberId() + "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			alarm.setAlarmContents("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");			
 			memberAlarmDAO.insertMemberAlarm(alarm);
 	
-			// 3. Member »óÅÂ -> 'W'µî·Ï
+			// 3. Member ìƒíƒœ -> 'W'ë“±ë¡
 			user.setMemberStatus("W");
 			memberDAO.updateStatusMember(user);
 

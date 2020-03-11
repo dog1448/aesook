@@ -22,7 +22,7 @@ public class MemberFindIdServiceImpl implements MemberFindIdService {
 		if(user != null) {
 			MailVO mail = new MailVO();
 			mail.setMailTo(user.getMemberEmail());
-			mail.setMailSubject(user.getMemberName()+"´ÔÀÇ IDÃ£±â ÀÔ´Ï´Ù.");
+			mail.setMailSubject(user.getMemberName()+"ë‹˜ì˜ IDì°¾ê¸° ì…ë‹ˆë‹¤.");
 			mail.setMailContent("ID : "+createComplexId(user.getMemberId()) );
 			mailSender.sendMail(mail);
 		}
@@ -31,7 +31,7 @@ public class MemberFindIdServiceImpl implements MemberFindIdService {
 	}
 	
 	
-	// ----------Id ¾ÏÈ£È­ -----------
+	// ----------Id ì•”í˜¸í™” -----------
 	private String createComplexId(String id) {
 		
 		StringBuffer sb = new StringBuffer();

@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 
 public class FileMediaType {
 	
-	// 확장자 타입 설정
 	private static Map<String, MediaType> mediaMap;
 	
 	static{

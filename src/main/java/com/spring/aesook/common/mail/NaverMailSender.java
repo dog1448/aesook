@@ -47,7 +47,6 @@ public class NaverMailSender implements MailSender {
 	
 	
 	
-	// Àü¼Û
 	public void sendMail(MailVO mail) {
 		setConfig();
 		MimeMessage msg = sendingHead();

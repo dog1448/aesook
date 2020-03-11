@@ -13,15 +13,12 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public class ClientLoginInterceptor extends HandlerInterceptorAdapter {
 
 	private static final String LOGIN = "login";
-	// log ¸É¹öº¯¼ö ÇÏ³ª ÁöÁ¤
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// loginÀü session Á¦°Å
 		HttpSession httpSession = request.getSession();
 		if(httpSession.getAttribute(LOGIN) != null) {
-			// logÂïÀ» °÷
 			httpSession.removeAttribute(LOGIN);
 		}
 		
@@ -38,7 +35,7 @@ public class ClientLoginInterceptor extends HandlerInterceptorAdapter {
 		
 		if(vo != null) {
 			httpSession.setAttribute(LOGIN, vo);
-			httpSession.setMaxInactiveInterval(3*60*60); // session ¸¸·á½Ã°£ : 3H
+			httpSession.setMaxInactiveInterval(3*60*60); // session ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ : 3H
 			response.sendRedirect("home.do");
 		}
 	}

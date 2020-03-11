@@ -14,15 +14,15 @@ public class MemberUpdateHotelsRoomMainImageServiceImpl implements MemberUpdateH
 	
 	public MemberHotelsImageVO updateHotelsRoomMainImage(MemberHotelsImageVO vo) {
 		
-		// ±âÁ¸ 'R' select
+		// ê¸°ì¡´ 'R' select
 		vo.setRoomSortStatus("T");
 		MemberHotelsImageVO image = memberImageDAO.getHotelsImage(vo);
 		
-		// ¸ğµç roomSort 'U'
+		// ëª¨ë“  roomSort 'U'
 		vo.setRoomSortStatus("U");
 		memberImageDAO.updateRoomStatusMemberHotelsImage(vo);
 		
-		// »õ·Î¿î 'R' µî·Ï
+		// ìƒˆë¡œìš´ 'R' ë“±ë¡
 		vo.setRoomSortStatus("R");
 		memberImageDAO.updateRoomStatusMemberHotelsImage(vo);
 		

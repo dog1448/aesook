@@ -15,11 +15,11 @@ public class KakaoUtil {
 		return header;
 	}
 	
-	public static String getToday() {
+	public static int getToday(int seq) {
 		java.util.Date now = new java.util.Date();
-	    SimpleDateFormat vans = new SimpleDateFormat("yyyyMMdd");
-	    String wdate = vans.format(now);
-		return wdate;
+	    SimpleDateFormat vans = new SimpleDateFormat("yyMMdd");
+	    String wdate = vans.format(now) + seq;
+		return Integer.parseInt(wdate);
 	}
 	
 	

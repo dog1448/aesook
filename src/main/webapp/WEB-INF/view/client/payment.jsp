@@ -29,7 +29,6 @@
 			alert("약관에 동의해주세요");
 			return;
 		}
-		
 		$('#insertBooking').submit();
 	}
 </script>
@@ -51,8 +50,9 @@
 		<div id="colorlib-contact">
 			<div class="container">
 				<div class="row">
-					<form role="form" method="post" action="insertBooking.do" id="insertBooking">
+					<form role="form" method="post" action="kakaoPay.do" id="insertBooking">
 					<input type="hidden" name="hotelsCode" value="${booking.hotelsCode}">
+					<input type="hidden" name="hotelsName" value="${booking.hotelsName}">
 					<input type="hidden" name="roomName" value="${possibleRoom[0]}">
 					<input type="hidden" name="roomSort" value="${booking.roomSort}">
 					<input type="hidden" name="memberId" value="${booking.memberId}">

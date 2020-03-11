@@ -35,7 +35,7 @@ public class ManagerDataListController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
     }
 	
-	//  --------------------------- ¿¹¾à Å×ÀÌºí ------------------------------------
+	//  --------------------------- ì˜ˆì•½ í…Œì´ë¸” ------------------------------------
 	@RequestMapping(value = "/bookingTable.admin", method = RequestMethod.GET)
 	public String getBookingTable(Model model) {
 		model.addAttribute("bookingList", managerBookingService.getBookingList());
@@ -55,7 +55,7 @@ public class ManagerDataListController {
 		return "/bookingTable";
 	}
 	
-	//----------------------------- È£ÅÚ Å×ÀÌºí ------------------------------------
+	//----------------------------- í˜¸í…” í…Œì´ë¸” ------------------------------------
 	
 	@RequestMapping(value = "/hotelsTable.admin", method = RequestMethod.GET)
 	public String moveHotelsTable(Model model) {

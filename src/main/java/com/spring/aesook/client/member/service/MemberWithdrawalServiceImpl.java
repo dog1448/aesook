@@ -9,7 +9,7 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public class MemberWithdrawalServiceImpl implements MemberWithdrawalService {
 
 	@Autowired
-	MemberDAO memberDAO;
+	private MemberDAO memberDAO;
 	
 	@Override
 	public void updateWithdrawal(String memberId) {

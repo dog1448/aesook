@@ -101,10 +101,7 @@ public class MemberController {
 
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin(Model model, HttpSession session) {
-    	/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
 		model.addAttribute("url", naverAuthUrl);
     	
     	return "/login";
@@ -112,7 +109,7 @@ public class MemberController {
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
 
-    public String checkLogin(MemberVO vo, Model model,HttpSession session) {//session은 지울 예정
+    public String checkLogin(MemberVO vo, Model model,HttpSession session) {
 
     	MemberVO user = memberService.getMember(vo);
     	String id = vo.getMemberId();
@@ -236,20 +233,15 @@ public class MemberController {
     	
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
-		// 1. 로그인 사용자 정보를 읽어온다.
-		apiResult = naverLoginBO.getUserProfile(oauthToken); // String형식의 json데이터
+		apiResult = naverLoginBO.getUserProfile(oauthToken); 
 		/**
-		 * apiResult json 구조 {"resultcode":"00", "message":"success",
+		 * apiResult json 占쏙옙占쏙옙 {"resultcode":"00", "message":"success",
 		 * "response":{"id":"33666449","nickname":"shinn****","age":"20-29","gender":"M","email":"sh@naver.com","name":"\uc2e0\ubc94\ud638"}}
 		 **/
-		// 2. String형식인 apiResult를 json형태로 바꿈
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(apiResult);
 		JSONObject jsonObj = (JSONObject) obj;
-		// 3. 데이터 파싱
-		// Top레벨 단계 _response 파싱
 		JSONObject response_obj = (JSONObject) jsonObj.get("response");
-		// response의 name, memberId, email값 파싱
 		String name = (String) response_obj.get("name");
 		String memberId = (String) response_obj.get("id");
 		String email = (String) response_obj.get("email");
