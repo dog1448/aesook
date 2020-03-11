@@ -1,5 +1,6 @@
 package com.spring.aesook.client.statistics.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -39,5 +40,18 @@ public class MemberStatisticsController {
 	public String moveRoomStatistics() {
 		
 		return "/statisticsRoom";
+	}
+	
+	@RequestMapping(value = "/getRoomRatio.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<HashMap<Object, Object>> getRoomRatio(
+			@RequestParam("memberId") String memberId){
+		List<String> roomName = memberStatisticsService.getRoomName(memberId);		
+		
+		List<HashMap<Object, Object>> list = memberStatisticsService.getRoomRatio(roomName, memberId);
+		
+		
+			
+		return list;
 	}
 }

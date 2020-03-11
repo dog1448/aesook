@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.aesook.client.booking.vo.MemberBookingVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.client.statistics.dao.MemberStatisticsDAO;
 
 @Service("memberStatisticsService")
@@ -51,6 +53,46 @@ public class MemberStatisticsServiceImpl implements MemberStatisticsService {
 		
 		System.out.println(monthList.size());
 		return tmpList;
+	}
+
+	@Override
+	public List<String> getRoomName(String memberId) {
+		MemberVO vo = new MemberVO();
+		vo.setMemberId(memberId);
+		return memberStatisticsDAO.getRoomName(vo);
+	}
+
+	@Override
+	public List<HashMap<Object, Object>> getRoomRatio(List<String> list, String memberId) {
+		List<HashMap<Object, Object>> roomSortList = new ArrayList<HashMap<Object,Object>>();
+		List<HashMap<Object, Object>> tmpList = new ArrayList<HashMap<Object,Object>>();
+		
+		for(String roomSort : list) {
+			MemberBookingVO vo = new MemberBookingVO();
+			vo.setMemberId(memberId);
+			vo.setRoomSort(roomSort);
+			roomSortList.add(memberStatisticsDAO.getRoomRatio(vo));
+		}
+		
+		for(int i = 0; i<list.size(); i++) {
+			HashMap<Object, Object> tmpMap = new HashMap<Object, Object>();
+			tmpMap.put("room_sort", list.get(i));
+			tmpMap.put("room_ratio", 0);
+			tmpList.add(i,tmpMap);
+		}
+		
+		for(int i=0; i < roomSortList.size(); i++) {
+			for(int j=0; j<tmpList.size(); j++) {
+				if(roomSortList.get(i).get("room_sort").equals(
+						tmpList.get(j).get("room_sort"))) {
+					tmpList.remove(j);
+					tmpList.add(j,roomSortList.get(i));
+					break;
+				}
+			}
+		}
+		
+		return roomSortList;
 	}
 
 }
