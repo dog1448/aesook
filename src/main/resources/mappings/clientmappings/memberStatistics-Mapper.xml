@@ -20,13 +20,13 @@
 	<result column="booking_total_price" property="booking_total_price"/>
 </resultMap>
 
-<select id="getRoomSort">
+<select id="getRoomSort" resultType="String">
 	select distinct room_sort from room 
 	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})
 </select>
 
 
-<select id="getRoomRatio" resultMap="roomRatio" parameterType="java.util.HashMap">
+<select id="getRoomRatio" resultMap="roomRatio" parameterType="memberBooking">
 	
 	select round(((select count(room_sort) from booking  
 	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})  
