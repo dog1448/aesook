@@ -37,19 +37,17 @@
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
-                                            
-                                            <c:forEach items="${usersList}" var="usersList">
                                             <tbody>
+                                            <c:forEach items="${usersList}" var="usersList">
                                                 <tr class="odd gradeX">
-                                                    <td><a href="usersInfo.admin?memberId=${usersList.memberId}">${usersList.memberId}</a></td>
-                                                    <td class="center">${usersList.memberName}</td>
+                                                	<td><a href="usersInfo.admin?memberId=${usersList.memberId}">${usersList.memberId}</a></td>
+                                                    <td>${usersList.memberName}</td>
                                                     <td class="center">${usersList.memberEmail}</td>
                                                     <td class="center">${usersList.memberPhone}</td>
                                                     <td class="center">${usersList.memberStatus}</td>
                                                 </tr>
-                                            </tbody>
                                             </c:forEach>
-                                            
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -76,12 +74,11 @@
                         responsive: true,
                         scrollY: "100%",
                         columnDefs: [
-                        { targets: 0, width: "10%" }, // NO
-                        { targets: 1, width: "15%" }, // ID
-                        { targets: 2, width: "15%" }, // Name
-                        { targets: 3, width: "25%" }, // Email
-                        { targets: 4, width: "20%" }, //Phone
-                        { targets: 5, width: "5%" }, // Status
+                        { targets: 0, width: "15%" }, // ID
+                        { targets: 1, width: "15%" }, // Name
+                        { targets: 2, width: "25%" }, // Email
+                        { targets: 3, width: "20%" }, // Phone
+                        { targets: 4, width: "5%" }, //Status
                         ]
                 });
 

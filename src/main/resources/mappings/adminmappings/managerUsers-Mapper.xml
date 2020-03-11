@@ -3,13 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="admin.users.dao.ManagerUsersDAO">
 	
-	<!-- UserInfo Modify 수행시 -->
-	<update id="modifyManagerUsers" parameterType="managerUsers">
-		UPDATE MEMBER 
-		SET MEMBER_STATUS = #{memberStatus}
-		WHERE MEMBER_ID = #{memberId}
-	</update>
-	
+	<!-- 임시용 -->
 	<!-- UserInfo Delete 수행시 -->
 	<update id="deleteManagerUsers" parameterType="managerUsers">
 		UPDATE MEMBER 
@@ -17,11 +11,19 @@
 		WHERE MEMBER_ID = #{memberId}
 	</update>
 	
-	<!-- UserInfo Disable 수행시 -->
+	<!-- UserInfo Modify 수행시 -->
+	<update id="modifyManagerUsers" parameterType="managerUsers">
+		UPDATE MEMBER 
+		SET MEMBER_STATUS = #{memberStatus}
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+	
+	<!-- UserInfo Update 수행시 -->
 	<update id="updateManagerUsers" parameterType="managerUsers">
 		UPDATE MEMBER 
-		SET MEMBER_PASS = #{memberPass}, MEMBER_NAME = #{memberName}, 
-			MEMBER_EMAIL = #{memberEmail}, MEMBER_STATUS = #{memberStatus}, 
+		SET MEMBER_NAME = #{memberName},
+			MEMBER_EMAIL = #{memberEmail}, 
+			MEMBER_STATUS = #{memberStatus},
 			MEMBER_PHONE = #{memberPhone}
 		WHERE MEMBER_ID = #{memberId}
 	</update>
