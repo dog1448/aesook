@@ -23,6 +23,7 @@ import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
+import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Controller
@@ -51,11 +52,15 @@ public class MemberRoomController {
 		MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
 		List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
 		String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
+		List<MemberHotelsImageVO> picList = memberRoomService.getAllPic(hotelsCode);
+		
+		
 		model.addAttribute("list",list);		
 		model.addAttribute("vo", hotelsVO);
 		model.addAttribute("facilityVO", facilityVO);
 		model.addAttribute("review", reviewVO);
 		model.addAttribute("scoreAvg", scoreAvg);
+		model.addAttribute("picList", picList);
 		return "/accommodations-room";
 	}		
 	
@@ -70,8 +75,11 @@ public class MemberRoomController {
 		session.setAttribute("bookingCheckOut", bookingCheckOut);
 		MemberRoomVO memberRoomVO = memberRoomService.getRoomDescription(hotelsCode, roomSort);
 		MemberHotelsVO memberHotelsVO = memberRoomService.getHotel(hotelsCode);
+		List<MemberHotelsImageVO> roomPicList = memberRoomService.getAllRoomPic(hotelsCode, roomSort);
+		
 		model.addAttribute("memberhotelsVO", memberHotelsVO);
 		model.addAttribute("memberRoomVO", memberRoomVO);
+		model.addAttribute("roomPicList", roomPicList);
 		
 		return "/roomDescription";
 	}

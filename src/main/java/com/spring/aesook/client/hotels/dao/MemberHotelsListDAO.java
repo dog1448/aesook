@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
+import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 public interface MemberHotelsListDAO {

@@ -132,56 +132,58 @@
 	background-color: white;
 	border: none !important;
 }
-
-
 </style>
 <script type="text/javascript">
+	function searchRoom() {
+		$('.impossible').remove();
+		var checkOut = $('#dateOut').val();
+		var checkIn = $('#dateIn').val();
+		var hotelsCode = $('#hotelsCode').val();
+		var impossible;
 
-function searchRoom(){
-	$('.impossible').remove();
-	var checkOut = $('#dateOut').val();
-	var checkIn = $('#dateIn').val();
-	var hotelsCode = $('#hotelsCode').val();
-	var impossible;
+		if (new Date(checkOut) <= new Date(checkIn)) {
+			alert("체크아웃 날짜가 체크인 날짜와 같거나 더 앞섭니다.");
+			return;
+		}
 
-	if(new Date(checkOut) <= new Date(checkIn)){
-		alert("체크아웃 날짜가 체크인 날짜와 같거나 더 앞섭니다.");
-		return;
+		$
+				.ajax({
+					url : "getPossibleBooking.do",
+					type : "GET",
+					data : {
+						"bookingCheckOut" : checkOut,
+						"bookingCheckIn" : checkIn,
+						"hotelsCode" : hotelsCode
+					},
+					dataType : "json"
+				})
+				.done(
+						function(json) {
+							console.log(json);
+							var possibleList = json;
+							$("input[name='roomSort']")
+									.each(
+											function(index, item) {
+												var roomValue = $(item).val();
+												var cnt = 0;
+												for (var i = 0; i < possibleList.length; i++) {
+													if (roomValue == possibleList[i]) {
+														cnt++;
+														break;
+													}
+												}
+												if (cnt == 0) {
+													var ida = '#imsi' + index;
+													$(ida)
+															.append(
+																	'<div class="impossible"><h5><font color="red"><예약마감></font></h5></div>');
+												}
+
+											});
+
+						});
+
 	}
-	
-	$.ajax({
-	    url: "getPossibleBooking.do",
-	    type: "GET",
-	    data: {
-	  		"bookingCheckOut" : checkOut,
-	  		"bookingCheckIn" : checkIn,
-	  		"hotelsCode" : hotelsCode
-	    },
-	    dataType: "json"
-	})
-	.done(function(json) {
-	            console.log(json);
-	       		var possibleList = json;
-	       		$("input[name='roomSort']").each(function(index, item) {
-	       			var roomValue = $(item).val();
-	       			var cnt = 0;
-	       			for (var i = 0; i < possibleList.length; i++){
-	       				if (roomValue == possibleList[i]){
-	       					cnt++;
-	       					break;
-	       				}
-	       			}
-	       			if(cnt == 0) {
-	       				var ida = '#imsi' + index;
-	       				$(ida).append('<div class="impossible"><h5><font color="red"><예약마감></font></h5></div>');
-	       			}
-	       			
-	       		});
-				
-	 });
-        
-}
-
 </script>
 </head>
 
@@ -196,22 +198,35 @@ function searchRoom(){
 				<div class="row">
 					<div id="myCarousel" class="carousel slide">
 						<div class="carousel-inner">
-							<div class="item active">
-								<img src="resources/client/images/room-1.jpg"
-									class="img-responsive" style="width: 1200px; height: 500px;">
+							<c:if test="${not empty picList}">
+								<c:forEach var="picList" items="${picList}">
+									<c:if test="${picList.hotelsImageStatus eq 'M' }">
+										<div class="item active">
+											<img
+												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
+												class="img-responsive" style="width: 1200px; height: 500px;">
 
-							</div>
-							<div class="item">
-								<img src="resources/client/images/room-2.jpg"
-									class="img-responsive" style="width: 1200px; height: 500px;">
+										</div>
+									</c:if>
+									<c:if test="${picList.hotelsImageStatus ne 'M' }">
+										<div class="item">
+											<img
+												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
+												class="img-responsive" style="width: 1200px; height: 500px;">
 
-							</div>
-							<div class="item">
-								<img src="resources/client/images/room-3.jpg"
-									class="img-responsive" style="width: 1200px; height: 500px;">
+										</div>
+									</c:if>
+								</c:forEach>
+							</c:if>
+							<c:if test="${empty picList}">
+								<div class="item active">
+									<img src="resources/client/images/noImage.png"
+										class="img-responsive" style="width: 1200px; height: 500px;">
 
-							</div>
+								</div>
+							</c:if>
 						</div>
+
 						<!-- Controls -->
 						<a class="left carousel-control" href="#myCarousel"
 							data-slide="prev"> <span class="icon-prev"></span>
@@ -232,26 +247,35 @@ function searchRoom(){
 									<div class="row">
 										<c:forEach var="list" items="${list}" varStatus="vs">
 											<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomSort}">
-
 												<div class="col-md-12 animate-box">
-												<input type="hidden" value="${list.hotelsCode}" id="hotelsCode">
+													<input type="hidden" value="${list.hotelsCode}"
+														id="hotelsCode">
 													<div class="room-wrap">
 														<div class="row">
 															<div class="col-md-6 col-sm-6">
-																<div class="room-img"
-																	style="background-image: url(resources/client/images/room-1.jpg);"></div>
+															<c:if test="${list.hotelsImagePath ne null }">																
+																<img src="${list.hotelsImagePath}${list.hotelsImageName}" 
+																style="height: 280px; width: 350px;">
+															</c:if>
+															<c:if test="${list.hotelsImagePath eq null }">																
+																<img src="resources/client/images/noImage.png" 
+																style="height: 280px; width: 350px;">
+															</c:if>		
 															</div>
 															<div class="col-md-6 col-sm-6">
 																<div class="desc">
 																	<h2 id="imsi${vs.index}">${list.roomSort}</h2>
-																	<input type="hidden" value="${list.roomSort}" name="roomSort">
+																	<input type="hidden" value="${list.roomSort}"
+																		name="roomSort">
 																	<p class="price" id="standardPrice">
-																		<span>${list.roomStandardPrice} ￦ <small>&nbsp;평일</small></span></p>
+																		<span>${list.roomStandardPrice} ￦ <small>&nbsp;평일</small></span>
+																	</p>
 																	<p class="price">
-																		<span><font color="#FFC300">${list.roomHolidayPrice} ￦</font></span>
-																		<small>&nbsp;공휴일</small></p>
+																		<span><font color="#FFC300">${list.roomHolidayPrice}
+																				￦</font></span> <small>&nbsp;공휴일</small>
+																	</p>
 																	<p>기준 : ${list.roomStandardCnt} 명
-																	&nbsp;/&nbsp;&nbsp;최대 : ${list.roomMaxCnt} 명</p>
+																		&nbsp;/&nbsp;&nbsp;최대 : ${list.roomMaxCnt} 명</p>
 																	<p>인원당 추가요금 : ${list.roomAddPrice} ￦</p>
 																</div>
 															</div>
@@ -427,9 +451,10 @@ function searchRoom(){
 											<div class="form-group">
 												<label>체크인</label>
 												<div class="form-field">
-													<i class="icon icon-calendar2"></i> 
-													<input type="date" name="bookingCheckIn" id="dateIn" class="form-control date"
-														value="${bookingCheckIn}" placeholder="Check-in date">
+													<i class="icon icon-calendar2"></i> <input type="date"
+														name="bookingCheckIn" id="dateIn"
+														class="form-control date" value="${bookingCheckIn}"
+														placeholder="Check-in date">
 
 												</div>
 											</div>
@@ -438,9 +463,10 @@ function searchRoom(){
 											<div class="form-group">
 												<label>체크아웃</label>
 												<div class="form-field">
-													<i class="icon icon-calendar2"></i> 
-													<input type="date" name="bookingCheckOut" id="dateOut" class="form-control date"
-														value="${bookingCheckOut}" placeholder="Check-out date">
+													<i class="icon icon-calendar2"></i> <input type="date"
+														name="bookingCheckOut" id="dateOut"
+														class="form-control date" value="${bookingCheckOut}"
+														placeholder="Check-out date">
 												</div>
 											</div>
 										</div>
@@ -448,14 +474,14 @@ function searchRoom(){
 											<div class="form-group">
 												<label for="guests">인원</label>
 												<div class="form-field">
-													<i class="icon icon-pencil"></i> 
-													<input type="text" id="cnt" class="form-control" placeholder="숫자만 입력하세요." >
+													<i class="icon icon-pencil"></i> <input type="text"
+														id="cnt" class="form-control" placeholder="숫자만 입력하세요.">
 												</div>
 											</div>
 										</div>
 										<div class="col-md-12">
-											<input type="button" id="dateSearch" value="검색" onclick="searchRoom()"
-												class="btn btn-info btn-block">
+											<input type="button" id="dateSearch" value="검색"
+												onclick="searchRoom()" class="btn btn-info btn-block">
 										</div>
 									</div>
 								</form>

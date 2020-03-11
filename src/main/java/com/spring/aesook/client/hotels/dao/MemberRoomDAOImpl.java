@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
+import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 
 @Repository
 public class MemberRoomDAOImpl implements MemberRoomDAO {
@@ -50,6 +51,23 @@ public class MemberRoomDAOImpl implements MemberRoomDAO {
 	// getRoomSortTypeList
 	public List<String> getRoomSortTypeList(MemberHotelsVO vo) {
 		return sqlSessionTemplate.selectList(namespace + ".getRoomSortTypeList", vo);
+	}
+
+	@Override
+	public List<MemberHotelsImageVO> getAllPic(MemberHotelsVO vo) {
+		
+		return sqlSessionTemplate.selectList(namespace + ".getAllPic", vo);
+	}
+
+	//객실 대표 사진
+	@Override
+	public List<MemberHotelsImageVO> getRoomPic(int hotelsCode) {
+		return sqlSessionTemplate.selectList(namespace + ".getRoomPic", hotelsCode);
+	}
+
+	@Override
+	public List<MemberHotelsImageVO> getAllRoomPic(MemberHotelsImageVO vo) {		
+		return sqlSessionTemplate.selectList(namespace + ".getAllRoomPic", vo);
 	}
 
 }
