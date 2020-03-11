@@ -89,7 +89,7 @@ public class MemberBookingController {
 		return memberBookingCheckService.getPossibleBooking(vo);
 	}
 	
-	//�듅�젙 �샇�뀛, �듅�젙 諛⑹씠 �듅�젙 �궇吏쒖뿉 �삁�빟 媛��뒫�븳吏� 議고쉶
+	//클라이언트가 선택한 날짜에 특정 roomSort의 어떤 roomName들이 예약 가능한지 리스트 뽑기
 	@RequestMapping(value="/getRoomPossible.do", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getRoomPossible(MemberBookingVO vo) {

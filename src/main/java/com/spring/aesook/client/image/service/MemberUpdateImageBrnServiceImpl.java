@@ -45,8 +45,8 @@ public class MemberUpdateImageBrnServiceImpl implements MemberUpdateImageBrnServ
 			MemberAlarmVO alarm = new MemberAlarmVO();
 			alarm.setAlarmSendId(user.getMemberId());
 			alarm.setAlarmRecieveId("Admin");
-			alarm.setAlarmTitle(user.getMemberId() + "���� ����ڵ���� ��û�Ͽ����ϴ�.");
-			alarm.setAlarmContents("����� ��� �����Դϴ�.");			
+			alarm.setAlarmTitle(user.getMemberId() + "님의 사업자 등록입니다.");
+			alarm.setAlarmContents("확인해 주세요");			
 			memberAlarmDAO.insertMemberAlarm(alarm);
 	
 			// 3. Member 상태 -> 'W'등록

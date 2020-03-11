@@ -13,15 +13,15 @@ import com.spring.aesook.admin.manager.vo.ManagerVO;
 public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 
 	private static final String LOGIN = "login";
-	// log ¸É¹öº¯¼ö ÇÏ³ª ÁöÁ¤
+	// log ë§´ë²„ë³€ìˆ˜ í•˜ë‚˜ ì§€ì •
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// loginÀü session Á¦°Å
+		// loginì „ session ì œê±°
 		HttpSession httpSession = request.getSession();
 		if(httpSession.getAttribute(LOGIN) != null) {
-			// logÂïÀ» °÷
+			// log.info
 			httpSession.removeAttribute(LOGIN);
 		}
 		
@@ -38,7 +38,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 		
 		if(vo != null) {
 			httpSession.setAttribute(LOGIN, vo);
-			httpSession.setMaxInactiveInterval(60*60); // session ¸¸·á½Ã°£ : 1H
+			httpSession.setMaxInactiveInterval(60*60); // session ë§Œë£Œì‹œê°„ : 1H
 			response.sendRedirect("index.admin");
 		}
 	}

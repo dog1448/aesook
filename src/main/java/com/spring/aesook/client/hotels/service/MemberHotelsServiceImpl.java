@@ -32,13 +32,13 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 		return memberHotelsDAO.getMyHotels(vo);
 	}
 	
-	//ÈÄ±â ¸®½ºÆ®
+	// í›„ê¸° ë¦¬ìŠ¤íŠ¸
 	@Override
 	public List<MemberReviewVO> getReviewList(int hotelsCode) {
 		return memberReviewDAO.getReviewList(hotelsCode);
 	}
 	
-	//ÈÄ±â ÆòÁ¡
+	// í›„ê¸° í‰ì 
 	@Override
 	public String getScoreAvg(int hotelsCode) {
 		return memberReviewDAO.getScoreAvg(hotelsCode);
