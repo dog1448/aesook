@@ -12,10 +12,10 @@
 </insert>
 
 <select id="selectHotels" resultType="memberHotels">
-	<![CDATA[
-	select * from hotels
+	select h.*,  i.hotels_image_name, i.hotels_image_path, i.hotels_image_status 
+	from hotels h, (select * from hotels_image where hotels_image_status='M') i
 	where member_id = #{memberId}
-	]]>
+	and h.hotels_code = i.hotels_code(+)
 </select>
 
 <select id="selectHotelsCode" resultType="int">
