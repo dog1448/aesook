@@ -51,7 +51,7 @@ public class MemberStatisticsController {
 		List<HashMap<Object, Object>> list = memberStatisticsService.getRoomRatio(roomName, memberId);
 		
 		
-			
+		
 		return list;
 	}
 }

@@ -132,12 +132,18 @@ function checkz() {
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <div class="testimonial-slider owl-carousel">
-                            <div class="ts-item">
-                                <img src="resources/client/images/room-1.jpg" alt="">
-                            </div>
-                            <div class="ts-item">
-                                <img src="resources/client/images/room-2.jpg" alt="">
-                            </div>
+                        <c:if test="${not empty roomPicList}">
+                        	<c:forEach var="roomPicList" items="${roomPicList}">                        		
+		                        <div class="ts-item">
+		                            <img src="${roomPicList.hotelsImagePath}${roomPicList.hotelsImageName}" style="width: 1200px; height: 400px;">
+		                        </div>	                           
+                           </c:forEach> 
+                         </c:if>
+                         <c:if test="${empty roomPicList}">                        	                      		
+		                       <div class="ts-item">
+		                           <img src="resources/client/images/noImage.png" style="width: 1200px; height: 400px;">
+		                       </div>
+                         </c:if>  
                         </div>
                     </div>
                 </div>

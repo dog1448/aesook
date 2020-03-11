@@ -84,7 +84,7 @@
 </div>
 <%@ include file="javascript.jspf" %>
 	<script>
-		      var isDisabled = false;
+		    var isDisabled = false;
 			$(document).ready(function() {
                 $('#statusSelectBox').val('${usersInfo.memberStatus}').prop('selected', true); 
             });

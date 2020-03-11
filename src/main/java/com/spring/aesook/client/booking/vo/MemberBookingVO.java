@@ -21,6 +21,24 @@ public class MemberBookingVO {
 	private Date bookingCancelDate;
 	private int bookingTotalPrice;
 	private String bookingStatus;
+	private String hotelsImageName;
+	private String hotelsImagePath;
+
+	public String getHotelsImageName() {
+		return hotelsImageName;
+	}
+
+	public void setHotelsImageName(String hotelsImageName) {
+		this.hotelsImageName = hotelsImageName;
+	}
+
+	public String getHotelsImagePath() {
+		return hotelsImagePath;
+	}
+
+	public void setHotelsImagePath(String hotelsImagePath) {
+		this.hotelsImagePath = hotelsImagePath;
+	}
 
 	private String tid;
 	private String pg_token;
@@ -168,9 +186,10 @@ public class MemberBookingVO {
 				+ ", bookingCheckIn=" + bookingCheckIn + ", bookingCheckOut=" + bookingCheckOut + ", bookingName="
 				+ bookingName + ", bookingPhone=" + bookingPhone + ", bookingCnt=" + bookingCnt + ", bookingDate="
 				+ bookingDate + ", bookingCancelDate=" + bookingCancelDate + ", bookingTotalPrice=" + bookingTotalPrice
-				+ ", bookingStatus=" + bookingStatus + ", tid=" + tid + ", pg_token=" + pg_token + "]";
+				+ ", bookingStatus=" + bookingStatus + ", hotelsImageName=" + hotelsImageName + ", hotelsImagePath="
+				+ hotelsImagePath + ", tid=" + tid + ", pg_token=" + pg_token + "]";
 	}
 
-
+	
 
 }

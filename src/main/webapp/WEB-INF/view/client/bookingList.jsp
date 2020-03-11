@@ -38,7 +38,14 @@
 											<input type="hidden" name="bookingCode" value="${booking.bookingCode}">
 											<a href="bookingInfo.do?bookingCode=${booking.bookingCode}">								
 											<div class="col-md-6 col-sm-6">
-												<div class="room-img"style="background-image: url(resources/client/images/room-1.jpg);"></div>
+												<c:if test="${booking.hotelsImageName ne null}">
+													<img src="${booking.hotelsImagePath}${booking.hotelsImageName}" 
+																	style="height: 280px; width: 350px;">
+												</c:if>
+												<c:if test="${booking.hotelsImageName eq null}">
+													<img src="resources/client/images/noImage.png" 
+																	style="height: 280px; width: 350px;">
+												</c:if>				
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">

@@ -158,6 +158,17 @@ public class MemberHotelsController {
 			model.addAttribute("hotels", hotelsList);
 		}
 		return "/registeredAccommodation";
-	}	
+	}
+
+	@RequestMapping(value = "/modifyHotel.do", method = RequestMethod.GET)
+	public String modifyHotel(HttpSession session, Model model){
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		if(user != null) {
+			model.addAttribute("user", user);
+			List<MemberHotelsVO> hotelsList = memberHotelsService.getMyHotels(user);
+			model.addAttribute("hotels", hotelsList);
+		}
+		return "/modifyHotels";
+	}
 	
 }

@@ -7,10 +7,12 @@
 	<select id="getBookingList" parameterType="memberBooking"
 		resultType="memberBooking">
 		select h.hotels_name, b.booking_code, b.booking_date,
-		b.booking_check_in, b.booking_check_out, b.booking_total_price
+		b.booking_check_in, b.booking_check_out, b.booking_total_price, 
+		i.hotels_image_name, i.hotels_image_path
 		from
-		hotels h, booking b
+		hotels h, booking b, (select * from hotels_image where hotels_image_status='M') i
 		where b.member_id = #{memberId}
+		and h.hotels_code = i.hotels_code(+) 
 		and b.hotels_code = h.hotels_code
 		and (b.booking_status = 'B'
 		or b.booking_status = 'R')
@@ -21,9 +23,11 @@
 		select h.hotels_name,
 		b.booking_code, b.room_sort,
 		b.booking_date, b.booking_cancel_date,
-		b.booking_check_in, b.booking_check_out, b.booking_total_price
-		from hotels h, booking b
-		where b.member_id = #{memberId}
+		b.booking_check_in, b.booking_check_out, b.booking_total_price, 
+		i.hotels_image_name, i.hotels_image_path
+		from hotels h, booking b, (select * from hotels_image where hotels_image_status='M') i
+		where b.member_id = #{memberId} 
+		and h.hotels_code = i.hotels_code(+)
 		and b.hotels_code = h.hotels_code
 		and b.booking_status = 'C'
 	</select>

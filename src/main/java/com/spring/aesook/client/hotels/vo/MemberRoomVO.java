@@ -10,7 +10,31 @@ public class MemberRoomVO {
 	private int roomHolidayPrice;
 	private int roomAddPrice;
 	private String roomInfo;
+	private String hotelsImageName;
+	private String hotelsImagePath;
+	private String roomSortStatus;
 	
+	public String getHotelsImageName() {
+		return hotelsImageName;
+	}
+	public void setHotelsImageName(String hotelsImageName) {
+		this.hotelsImageName = hotelsImageName;
+	}
+	public String getHotelsImagePath() {
+		return hotelsImagePath;
+	}
+	public void setHotelsImagePath(String hotelsImagePath) {
+		this.hotelsImagePath = hotelsImagePath;
+	}
+	public String getRoomSortStatus() {
+		return roomSortStatus;
+	}
+	public void setRoomSortStatus(String roomSortStatus) {
+		this.roomSortStatus = roomSortStatus;
+	}
+	public void setRoomInfo(String roomInfo) {
+		this.roomInfo = roomInfo;
+	}
 	public int getHotelsCode() {
 		return hotelsCode;
 	}
