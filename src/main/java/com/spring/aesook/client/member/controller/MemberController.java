@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.spring.aesook.admin.image.service.ManagerImageService;
+import com.spring.aesook.admin.image.vo.ManagerAdminImageVO;
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.member.service.MemberFindIdService;
@@ -54,6 +56,8 @@ public class MemberController {
     private MemberWithdrawalService memberWithdrawalService;
     @Autowired
     private MemberKakaoLoginService memberKakaoLoginService;
+    @Autowired
+	private ManagerImageService managerImageService;
 
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
@@ -101,7 +105,10 @@ public class MemberController {
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String moveLogin(Model model, HttpSession session) {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		ManagerAdminImageVO adminImageVO = managerImageService.getLoginImage();
+		
 		model.addAttribute("url", naverAuthUrl);
+		model.addAttribute("adminImageVO", adminImageVO);
     	
     	return "/login";
     }
@@ -145,6 +152,9 @@ public class MemberController {
     @RequestMapping("/home.do")
     public String moveHome(Model model) {
     	List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10();
+    	ManagerAdminImageVO adminImageVO = managerImageService.getHomeImage();
+    	
+    	model.addAttribute("adminImageVO", adminImageVO);
 		model.addAttribute("top10", list);
     	return "/home";
     }
