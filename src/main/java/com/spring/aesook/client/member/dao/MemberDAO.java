@@ -1,5 +1,6 @@
 package com.spring.aesook.client.member.dao;
 
+import com.spring.aesook.admin.image.vo.ManagerAdminImageVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 public interface MemberDAO {

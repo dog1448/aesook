@@ -11,5 +11,6 @@ public interface ManagerImageService {
 	public void insertManagerImage(MultipartHttpServletRequest files);
 	public void deleteManagerImage(ManagerAdminImageVO vo);
 	public List<ManagerAdminImageVO> getAdminImageList();
-	
+	public ManagerAdminImageVO getLoginImage();
+	public ManagerAdminImageVO getHomeImage();
 }

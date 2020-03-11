@@ -43,7 +43,7 @@
 														<c:if test="${list.hotelsImageStatus ne 'M' }">
 															<div class="item">
 																<img
-																	src="${list.hotelsImagePath}${list.hotelsImageName}"
+																	src="resources/client/images/noImage.png"
 																	class="img-responsive" style="height: 280px; width: 350px;">
 					
 															</div>

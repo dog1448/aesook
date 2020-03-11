@@ -46,6 +46,20 @@ public class ManagerImageServiceImpl implements ManagerImageService {
 	public List<ManagerAdminImageVO> getAdminImageList() {
 		return managerImageDAO.getAdminImageList();
 	}
+
+	@Override
+	public ManagerAdminImageVO getLoginImage() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("LI");
+		return managerImageDAO.getAdminImage(vo);
+	}
+
+	@Override
+	public ManagerAdminImageVO getHomeImage() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("M");
+		return managerImageDAO.getAdminImage(vo);
+	}
 	
 	
 	

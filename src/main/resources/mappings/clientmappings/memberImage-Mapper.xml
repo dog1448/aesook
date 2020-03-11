@@ -90,5 +90,5 @@
 		<foreach collection="list" item="item" open="" close="" separator="OR">
 		hotels_image_no = #{item}
 		</foreach>
-	</delete>
+	</delete>	
 </mapper>

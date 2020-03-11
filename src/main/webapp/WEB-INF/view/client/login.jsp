@@ -103,8 +103,14 @@
 
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more"
-				style="background-image: url('resources/client/images/bg-02.jpg');"></div>
+			<div class="login100-more">
+				<c:if test="${not empty adminImageVO}">
+				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 800px;">
+				</c:if>
+				<c:if test="${empty adminImageVO}">
+				<img src="resources/client/images/noImage.png" style="width: 100%; height: 800px;">
+				</c:if>
+			</div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				<form class="login100-form validate-form" action="login.do"
