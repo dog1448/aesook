@@ -2,8 +2,8 @@ package com.spring.aesook.admin.manager.vo;
 
 public class ManagerStatisticsVO {
 
-    int checkInDate;
-    int totalPrice;
+    private int checkInDate;
+    private int totalPrice;
 
     public int getCheckInDate() {
         return checkInDate;

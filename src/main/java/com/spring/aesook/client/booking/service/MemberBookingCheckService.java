@@ -25,6 +25,8 @@ public interface MemberBookingCheckService {
 	
 	int getTotalPrice(MemberBookingVO bookingVO, MemberRoomVO roomVO);
 	
+	int getBookingSeq();
+
 	void insertBooking(MemberBookingVO vo);
 	
 }

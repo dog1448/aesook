@@ -45,7 +45,7 @@ public class MemberImageController {
 	@Autowired
 	private MemberUpdateHotelsRoomMainImageService memberUpdateHotelsRoomMainImageService;
 	
-    // --------------------------- »ç¾÷ÀÚ µî·Ï -------------------------------------
+    // --------------------------- ì‚¬ì—…ì ë“±ë¡ì¦ -------------------------------------
     @RequestMapping(value = "/brn.do", method = RequestMethod.GET)
     public String moveBrn(HttpSession httpSession, Model model) {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login"); 
@@ -66,7 +66,7 @@ public class MemberImageController {
     }
     
     
-    // --------------------------- È£ÅÚÀÌ¹ÌÁö º¸±â -------------------------------------
+    // --------------------------- í˜¸í…”ì´ë¯¸ì§€ ë³´ê¸° -------------------------------------
     @RequestMapping(value = "/hotelsPic.do", method = RequestMethod.GET)
     public String moveHotelsImage(HttpSession httpSession, Model model) {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login");
@@ -117,7 +117,7 @@ public class MemberImageController {
     }
     
     
- // ------------------------------ È£ÅÚÀÌ¹ÌÁö µî·Ï -------------------------------------
+ // ------------------------------ È£ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ -------------------------------------
 	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.GET)
 	public String moveInsertPic(@RequestParam("hotelsCode") int hotelsCode, Model model) {
 		model.addAttribute("hotelsCode", hotelsCode);

@@ -16,15 +16,15 @@ public class MemberRegisterServiceImpl implements MemberRegisterService {
 	@Override
 	public void sendEmailConfirm(MemberVO vo) {		
 		
-		MailVO mail = new MailVO("text/html");
-		mail.setMailTo(vo.getMemberEmail());
-		mail.setMailSubject(vo.getMemberName()+"´ÔÀÇ È¸¿ø°¡ÀÔ ÀÎÁõ ¸ŞÀÏÀÔ´Ï´Ù.");
-		mail.setMailContent("<h1>[ÀÌ¸ŞÀÏ ÀÎÁõ]</h1> \n"
-				+ "<p>¾Æ·¡ ¸µÅ©¸¦ Å¬¸¯ÇÏ½Ã¸é ÀÌ¸ŞÀÏ ÀÎÁõÀÌ ¿Ï·áµË´Ï´Ù.</p>\n"
-				+ "<a href='http://localhost:8080/aesook/registerConfirm.do'"
-				+ " target='_blenk'>ÀÌ¸ŞÀÏ ÀÎÁõ È®ÀÎ</a>");
-		mailSender.sendMail(mail);
-		System.out.println("¸ŞÀÏÀü¼Û");
+		   MailVO mail = new MailVO("text/html");
+		      mail.setMailTo(vo.getMemberEmail());
+		      mail.setMailSubject(vo.getMemberName()+"ë‹˜ì˜ íšŒì›ê°€ì… ì¸ì¦ ë©”ì¼ì…ë‹ˆë‹¤.");
+		      mail.setMailContent("<h1>[ì´ë©”ì¼ ì¸ì¦]</h1> \n"
+		            + "<p>ì•„ë˜ ë§í¬ë¥¼ í´ë¦­í•˜ì‹œë©´ ì´ë©”ì¼ ì¸ì¦ì´ ì™„ë£Œë©ë‹ˆë‹¤.</p>\n"
+		            + "<a href='http://localhost:8080/aesook/registerConfirm.do'"
+		            + " target='_blenk'>ì´ë©”ì¼ ì¸ì¦ í™•ì¸</a>");
+		      mailSender.sendMail(mail);
+		      System.out.println("ë©”ì¼ì „ì†¡");
 	}
 
 }

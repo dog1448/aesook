@@ -24,8 +24,8 @@ public class MemberFindPassServiceImpl implements MemberFindPassService {
 		vo.setMemberPass(uuid);
 		MailVO mail = new MailVO();
 		mail.setMailTo(vo.getMemberEmail());
-		mail.setMailSubject(vo.getMemberName()+"´ÔÀÇ ºñ¹Ğ¹øÈ£ Ã£±â ¸ŞÀÏÀÔ´Ï´Ù.");
-		mail.setMailContent("ÀÓ½Ãºñ¹Ğ¹øÈ£´Â " + uuid + "ÀÔ´Ï´Ù.");
+		mail.setMailSubject(vo.getMemberName()+"ë‹˜ì˜ ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ë©”ì¼ì…ë‹ˆë‹¤.");
+		mail.setMailContent("ì„ì‹œë¹„ë°€ë²ˆí˜¸ëŠ” " + uuid + "ì…ë‹ˆë‹¤.");
 		mailSender.sendMail(mail);
 		
 		memberDAO.updatePassMember(vo);

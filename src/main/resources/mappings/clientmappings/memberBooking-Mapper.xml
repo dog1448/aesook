@@ -96,7 +96,7 @@
 		insert into booking (BOOKING_CODE, HOTELS_CODE, ROOM_NAME, ROOM_SORT, 
 		MEMBER_ID, BOOKING_CHECK_IN, BOOKING_CHECK_OUT, BOOKING_NAME, BOOKING_PHONE, 
 		BOOKING_CNT, BOOKING_DATE, BOOKING_TOTAL_PRICE, BOOKING_STATUS)
-		values(booking_seq.nextval, 
+		values(#{bookingCode}, 
 		#{hotelsCode}, #{roomName}, #{roomSort}, #{memberId},  
 		#{bookingCheckIn}, #{bookingCheckOut}, #{bookingName}, 
 		#{bookingPhone}, #{bookingCnt}, sysdate, #{bookingTotalPrice}, 'B')

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.aesook.client.booking.service.MemberBookingCheckService;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
+import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.common.kakao.service.KakaoService;
+import com.spring.aesook.common.kakao.service.KakaoUtil;
 import com.spring.aesook.common.kakao.vo.KakaoPayApprovalVO;
 import com.spring.aesook.common.kakao.vo.KakaoPayReadyVO;
 
@@ -22,42 +24,67 @@ import com.spring.aesook.common.kakao.vo.KakaoPayReadyVO;
 public class MemberBookingPaymentController {
 
 	@Autowired
-	MemberBookingCheckService memberBookingCheckService;
+	private MemberBookingCheckService memberBookingCheckService;
 	@Autowired
-	KakaoService kakaoService;
+	private KakaoService kakaoService;
 	
-	//∞·¡¶ ∆‰¿Ã¡ˆ∑Œ ¿Ãµø
+	//Move to Payment Page
 	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
-	public String movePayment(HttpSession session, MemberBookingVO vo, Model model) {
+	public String movePayment(HttpSession session, MemberBookingVO bookingVO, MemberRoomVO roomVO, Model model) {
 		MemberVO user = (MemberVO)session.getAttribute("login");
-		vo.setMemberId(user.getMemberId());
-		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(vo);
+		bookingVO.setMemberId(user.getMemberId());
+		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(bookingVO);
+		int totalPrice = memberBookingCheckService.getTotalPrice(bookingVO, roomVO);
+		
 		model.addAttribute("possibleRoom", possibleRoom);
-		model.addAttribute("booking", vo);
+		model.addAttribute("booking", bookingVO);
+		model.addAttribute("totalPrice", totalPrice);	
 		return "/payment";
 	}
 	
 	@RequestMapping(value="/kakaoPay.do", method=RequestMethod.POST)
 	public String moveKakaoPay(MemberBookingVO vo, HttpSession httpSession) {
-		vo.setMemberId("fish");
-		vo.setHotelsName("æﬂ≥Ó¿⁄");
-		vo.setRoomSort("≤…πÊ");
-		vo.setBookingTotalPrice(50000);
+		
+		// getbookingSeq
+		vo.setBookingCode(KakaoUtil.getToday(memberBookingCheckService.getBookingSeq()));
+		
+		// ready Kakao
 		KakaoPayReadyVO ready = kakaoService.kakaoPayReady(vo);
 		vo.setTid(ready.getTid());
-		System.out.println(ready);
-		httpSession.setAttribute("kakao", vo);
+		System.out.println(vo);
+		httpSession.setAttribute("booking", vo);
+		httpSession.setAttribute("ready", ready);
 		return "redirect:"+ ready.getNext_redirect_pc_url();
 	}
 	
 	@RequestMapping(value="/kakaoPaySuccess.do", method=RequestMethod.GET)
-	public String kakako(HttpSession session, @RequestParam("pg_token")String pg_token) {
-		MemberBookingVO vo = (MemberBookingVO) session.getAttribute("kakao");
+	public String successKakao(HttpSession httpSession, @RequestParam("pg_token")String pg_token, Model model) {
+		
+		// get Data
+		MemberBookingVO vo = (MemberBookingVO) httpSession.getAttribute("booking");
 		vo.setPg_token(pg_token);
-		System.out.println(vo);
-		KakaoPayApprovalVO s = kakaoService.kakaoPayInfo(vo);
-		System.out.println(s);
-		return "/payment";
+		KakaoPayApprovalVO responseKakao = kakaoService.kakaoPayInfo(vo);
+		
+		// insert Booking
+		memberBookingCheckService.insertBooking(vo);
+		model.addAttribute("message","ÏòàÏïΩÏù¥ ÏÑ±Í≥µÏ†ÅÏúºÎ°ú ÏôÑÎ£åÎêòÏóàÏäµÎãàÎã§.");
+		
+		// remove session values
+		httpSession.removeAttribute("booking");
+		httpSession.removeAttribute("ready");
+		return "/successBooking";
+	}
+	
+	@RequestMapping(value= {"/kakaoPayCancel.do", "kakaoPaySuccessFail.do"}, method = RequestMethod.GET)
+	public String failKakao(HttpSession httpSession, Model model) {
+		
+		// model Setting
+		model.addAttribute("message","ÏòàÏïΩÏù¥ Ï∑®ÏÜåÎêòÏóàÏäµÎãàÎã§.");
+		
+		// remove session values
+		httpSession.removeAttribute("booking");
+		httpSession.removeAttribute("ready");
+		return "/successBooking";
 	}
 	
 }

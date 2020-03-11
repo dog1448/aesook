@@ -19,7 +19,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 	@Autowired
 	MemberHotelsListDAO memberHotelsListDAO;
 	
-	//¼÷¼ÒÁ¾·ù, ½Ãµµ, Áö¿ªÀ» ¼¼ÆÃ(Áö¿ª °°Àº °æ¿ì´Â '/'º°·Î Àß¶ó¼­)
+	//ìˆ™ì†Œì¢…ë¥˜, ì‹œë„, ì§€ì—­ì„ ì„¸íŒ…(ì§€ì—­ ê°™ì€ ê²½ìš°ëŠ” '/' ë³„ë¡œ ì˜ë¼ì„œ)
 	public HashMap<Object, Object> divide (String type, String sido, String region){
 		String[] array = region.split("/");
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
@@ -35,7 +35,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return map;
 	}	
 
-	//Á¶°Ç¿¡ ¸Â´Â ¼÷¼Ò ÀüÃ¼ °³¼ö ±¸ÇÏ±â
+	// ì¡°ê±´ì— ë§ëŠ” ìˆ™ì†Œ ì „ì²´ ê°¯ìˆ˜ êµ¬í•˜ê¸°
 	@Override
 	public int countHotelsList(String type, String sido, String region) {
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
@@ -43,7 +43,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return memberHotelsListDAO.countHotelsList(map);
 	}
 
-	//¼÷¼Ò ¸®½ºÆ® ºÒ·¯¿À±â
+	// ìˆ™ì†Œ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°
 	@Override
 	public List<MemberHotelsVO> selectHotelsList(String type, String sido, String region) {		
 		
@@ -59,7 +59,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return memberHotelsListDAO.selectHotelsListById(vo);
 	}
 
-	//ÀüÃ¼ ¼÷¼Ò top 4
+	// ì „ì²´ ìˆ™ì†Œ top 4
 	@Override
 	public List<MemberHotelsVO> selectAccommodationTop10() {		
 		return memberHotelsListDAO.selectAccommodationTop10();
@@ -72,7 +72,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return memberHotelsListDAO.selectAccommodationTop10ByType(vo);
 	}
 	
-	//°Ë»öÇÑ È£ÅÚ ¸®½ºÆ®
+	// ê²€ìƒ‰ëœ í˜¸í…” ë¦¬ìŠ¤íŠ¸
 	@Override
 	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo) {
 		return memberHotelsListDAO.getSearchedHotelsList(vo);

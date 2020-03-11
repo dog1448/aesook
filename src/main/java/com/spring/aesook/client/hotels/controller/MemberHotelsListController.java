@@ -18,9 +18,9 @@ public class MemberHotelsListController {
 	@Autowired
 	MemberHotelsListService memberHotelsListService;
 	
-	//¼÷¼Ò ¸®½ºÆ® °Ô½Ã ÄÁÆ®·Ñ·¯
+	// ìˆ™ì†Œ ë¦¬ìŠ¤íŠ¸ ê²Œì‹œ ì»¨íŠ¸ë¡¤ëŸ¬
 	@RequestMapping(value = "/hotelsList.do", method = RequestMethod.GET)
-	public String hotelsList(@RequestParam(value = "type", defaultValue = "È£ÅÚ", required = false) String type, 
+	public String hotelsList(@RequestParam(value = "type", defaultValue = "È£ï¿½ï¿½", required = false) String type, 
 			@RequestParam(value = "sido") String sido, 
 			@RequestParam(value = "region") String region, 
 			Model model) {
@@ -33,7 +33,7 @@ public class MemberHotelsListController {
 		return "/accommodations";
 	}
 	
-	//°Ë»öµÈ È£ÅÚ ¸®½ºÆ®
+	// ê²€ìƒ‰ëœ í˜¸í…” ë¦¬ìŠ¤íŠ¸
 	@RequestMapping(value = "/searchedHotelsList.do", method = RequestMethod.POST)
 	public String getSearchedHotelsList(MemberHotelsVO vo, Model model) {
 		List<MemberHotelsVO> searchedHotelsList = memberHotelsListService.getSearchedHotelsList(vo);

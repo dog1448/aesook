@@ -25,10 +25,10 @@ public class KakaoServiceImpl implements KakaoService {
 		
 		// Request kakaoServer Body
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-		params.add("cid", "TC0ONETIME");//사업장 고유번호
-		params.add("partner_order_id", "1111");//주문번호 uuid 사용
+		params.add("cid", "TC0ONETIME");
+		params.add("partner_order_id", Integer.toString(booking.getBookingCode()));
 		params.add("partner_user_id", booking.getMemberId());
-		params.add("item_name","NAME : "+booking.getHotelsName() + "\nTYPE : " + booking.getRoomSort());
+		params.add("item_name", booking.getHotelsName() + " " + booking.getRoomSort());
 		params.add("quantity", "1");
 		params.add("total_amount", Integer.toString(booking.getBookingTotalPrice()));
 		params.add("tax_free_amount", "0");
@@ -53,7 +53,7 @@ public class KakaoServiceImpl implements KakaoService {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("cid", "TC0ONETIME");
 		params.add("tid", booking.getTid());
-		params.add("partner_order_id", "1111");
+		params.add("partner_order_id", Integer.toString(booking.getBookingCode()));
 		params.add("partner_user_id", booking.getMemberId());
 		params.add("pg_token", booking.getPg_token());
 		params.add("total_amount", Integer.toString(booking.getBookingTotalPrice()));
