@@ -25,8 +25,21 @@
   		 GROUP BY h.hotels_code, h.hotels_name, h.hotels_type, h.member_id, 
          h.hotels_phone, h.hotels_zipcode, h.hotels_address1, h.hotels_address2,
          h.hotels_path, h.hotels_info, h.hotels_introduce,
-         i.hotels_image_name, i.hotels_image_path, i.hotels_image_status	   
-  		 ORDER BY h.HOTELS_CODE DESC
+         i.hotels_image_name, i.hotels_image_path, i.hotels_image_status
+		<choose>
+			<when test='sortCondition.equals("scoreAvg")'>
+			order by scoreAvg asc nulls last
+			</when>
+			<when test='sortCondition.equals("scoreCnt")'>
+			order by scoreCnt desc
+			</when>
+			<when test='sortCondition.equals("hotelsCode")'>
+			ORDER BY h.HOTELS_CODE DESC
+			</when>
+			<otherwise>
+			ORDER BY h.HOTELS_CODE DESC
+			</otherwise>
+		</choose>
   	</select>
   	
   	<!-- ID로 숙소 리스트 가져오기 -->
@@ -37,22 +50,43 @@
   	<!-- 인기 숙소 리스트 10개 가져오기 -->
   	<select id="selectAccommodationTop10" resultType="memberHotels">
   		<![CDATA[
-  		select h.* from hotels h, ranking r where h.hotels_code = r.hotels_code and rownum <= 10
+  		select h.*, i.hotels_image_path, i.hotels_image_status, round(avg(v.review_score),0) scoreAvg, count(v.review_score) scoreCnt
+         from hotels h, ranking r, review v, (select * from hotels_image where hotels_image_status='M') i 
+         where h.hotels_code = r.hotels_code
+         and h.hotels_code = i.hotels_code(+)
+         and h.hotels_code = v.hotels_code(+)
+         and rownum <= 10 
+          group by h.hotels_code, h.hotels_name, h.hotels_type, h.member_id, 
+        h.hotels_phone, h.hotels_zipcode, h.hotels_address1, h.hotels_address2,
+        h.hotels_path, h.hotels_info, h.hotels_introduce,
+        i.hotels_image_name, i.hotels_image_path, i.hotels_image_status
 		]]>
   	</select>
   	
   	<!-- 인기 숙소(타입별) 리스트 10개 가져오기 -->
   	<select id="selectAccommodationTop10ByType" resultType="memberHotels" parameterType="memberHotels">
   		<![CDATA[
-  		select h.* from hotels h, ranking r where h.hotels_code = r.hotels_code and rownum <= 10 
-  		and r.hotels_type = #{hotelsType}
+  		select h.*, i.hotels_image_path, i.hotels_image_status, round(avg(v.review_score),0) scoreAvg, count(v.review_score) scoreCnt
+         from hotels h, ranking r, review v, (select * from hotels_image where hotels_image_status='M') i
+         where h.hotels_code = r.hotels_code
+         and h.hotels_code = i.hotels_code(+)
+         and h.hotels_code = v.hotels_code(+)
+         and rownum <= 10 
+  		 and r.hotels_type = #{hotelsType}
+         group by h.hotels_code, h.hotels_name, h.hotels_type, h.member_id, 
+        h.hotels_phone, h.hotels_zipcode, h.hotels_address1, h.hotels_address2,
+        h.hotels_path, h.hotels_info, h.hotels_introduce,
+        i.hotels_image_name, i.hotels_image_path, i.hotels_image_status
 		]]>
   	</select>
   
   	<!-- 통합 검색 결과로 호텔 리스트 가져오기 -->
   	<select id="getSearchedHotelsList" resultType="memberHotels">
-  		select * from hotels
+  		select h.*, i.hotels_image_path, i.hotels_image_status, round(avg(v.review_score),0) scoreAvg, count(v.review_score) scoreCnt
+  		from hotels h, review v, (select * from hotels_image where hotels_image_status='M') i 
   		where 1=1
+  			and h.hotels_code = i.hotels_code(+)
+            and h.hotels_code = v.hotels_code(+)
   		<if test = "searchCondition=='ADDRESS'">
   			and hotels_address1 Like '%'||#{searchKeyword}||'%'
   		</if>
@@ -62,5 +96,9 @@
   		<if test = "searchCondition=='PATH'">
   			and hotels_path Like '%'||#{searchKeyword}||'%'
   		</if>
+  		group by h.hotels_code, h.hotels_name, h.hotels_type, h.member_id, 
+        h.hotels_phone, h.hotels_zipcode, h.hotels_address1, h.hotels_address2,
+        h.hotels_path, h.hotels_info, h.hotels_introduce,
+        i.hotels_image_name, i.hotels_image_path, i.hotels_image_status
   	</select>
  </mapper>

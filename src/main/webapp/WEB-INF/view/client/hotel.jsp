@@ -25,7 +25,7 @@
 			<div class="row">
 				<div class="col">
 					<div>
-						<h1 align="center">호텔</h1>
+						<h1 align="center">HOTEL</h1>
 						<h3>지역선택</h3>
 					</div>
 					<hr style="border: 0; height: 1px; background: black;">
@@ -477,22 +477,39 @@
 						<div class="owl-carousel">
 						<!-- 각 item이 하나의 숙소 링크 부분 -->
 						<c:forEach var="list" items="${top10}">
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">																					
-									</a>
-									<div class="desc">
-									<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>										
-										<h3>
-											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}">${list.hotelsName}</a>
-										</h3>
-										<span class="place">${list.hotelsAddress1}</span>
-										<p>${list.hotelsInfo}</p>
+								<div class="item">
+									<div class="hotel-entry">
+										<c:if test="${list.hotelsImageStatus eq 'M' }">										
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: 350px;">																					
+											</a>											
+										</c:if>
+										<c:if test="${list.hotelsImageStatus ne 'M' }">
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="resources/client/images/noImage.png" style="height: 280px; width: 350px;">																	
+											</a>
+										</c:if>	
+										<div class="desc">
+											<p class="star">
+												<span>
+													<c:if test="${list.scoreAvg == 0}">
+														<i class="icon-star-empty"></i>
+													</c:if>
+													<c:forEach var="i" begin="1" end="${list.scoreAvg}" step="1">
+														<i class="icon-star-full"></i>
+													</c:forEach>
+												</span>
+												${list.scoreCnt} Reviews
+											</p>									
+											<h3>
+												<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}">${list.hotelsName}</a>
+											</h3>
+											<span class="place">${list.hotelsAddress1}</span>
+											<p>${list.hotelsPath}</p>
+										</div>
 									</div>
 								</div>
-							</div>
-						</c:forEach>	
+							</c:forEach>						
 						</div>
 					</div>
 				</div>

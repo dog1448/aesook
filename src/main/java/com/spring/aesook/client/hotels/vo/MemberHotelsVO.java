@@ -20,6 +20,7 @@ public class MemberHotelsVO {
 	private String hotelsImageName;
 	private String hotelsImagePath;
 	private String hotelsImageStatus;
+	private String sortCondition;
 	private int scoreAvg;
 	private int scoreCnt;
 	
@@ -132,6 +133,12 @@ public class MemberHotelsVO {
 	public void setScoreCnt(int scoreCnt) {
 		this.scoreCnt = scoreCnt;
 	}
+	public String getSortCondition() {
+		return sortCondition;
+	}
+	public void setSortCondition(String sortCondition) {
+		this.sortCondition = sortCondition;
+	}
 	@Override
 	public String toString() {
 		return "MemberHotelsVO [hotelsCode=" + hotelsCode + ", hotelsName=" + hotelsName + ", hotelsType=" + hotelsType
@@ -140,6 +147,6 @@ public class MemberHotelsVO {
 				+ hotelsPath + ", hotelsInfo=" + hotelsInfo + ", hotelsIntroduce=" + hotelsIntroduce
 				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", hotelsImageName="
 				+ hotelsImageName + ", hotelsImagePath=" + hotelsImagePath + ", hotelsImageStatus=" + hotelsImageStatus
-				+ ", scoreAvg=" + scoreAvg + ", scoreCnt=" + scoreCnt + "]";
+				+ ", sortCondition=" + sortCondition + ", scoreAvg=" + scoreAvg + ", scoreCnt=" + scoreCnt + "]";
 	}
 }
