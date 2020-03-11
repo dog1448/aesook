@@ -6,8 +6,24 @@
 
 <!-- 방 전체 리스트 가져오기 -->
 <select id="selectRoom" resultType="memberRoom">
-	select distinct hotels_code,room_sort, room_standard_cnt, room_max_cnt, room_standard_price, room_holiday_price, room_add_price, room_info from room 
+	select distinct hotels_code,room_sort, room_standard_cnt, room_max_cnt, room_standard_price, 
+	room_holiday_price, room_add_price, room_info from room 
 	where HOTELS_CODE = #{hotelsCode} ORDER BY room_standard_price asc
+</select>
+
+<!-- 숙소 전체 사진  -->
+<select id="getAllPic" resultType="memberHotelsImage" parameterType="memberHotels">
+	select * from hotels_image where hotels_code = #{hotelsCode}
+</select>
+
+<!-- 객실 전체 사진 -->
+<select id="getAllRoomPic" resultType="memberHotelsImage" parameterType="memberHotelsImage">
+	select * from hotels_image where hotels_code = #{hotelsCode} and room_sort = #{roomSort}
+</select>
+
+<!-- 객실 대표 사진 -->
+<select id="getRoomPic" resultType="memberHotelsImage" parameterType="int">
+	select * from hotels_image where hotels_code = #{hotelsCode} and room_sort_status = 'R'
 </select>
 
 <!-- 숙소 정보 가져오기 (호텔 정보 필요해서) -->

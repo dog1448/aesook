@@ -20,7 +20,7 @@ public class MemberHotelsListController {
 	
 	// 숙소 리스트 게시 컨트롤러
 	@RequestMapping(value = "/hotelsList.do", method = RequestMethod.GET)
-	public String hotelsList(@RequestParam(value = "type", defaultValue = "ȣ��", required = false) String type, 
+	public String hotelsList(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type, 
 			@RequestParam(value = "sido") String sido, 
 			@RequestParam(value = "region") String region, 
 			Model model) {
