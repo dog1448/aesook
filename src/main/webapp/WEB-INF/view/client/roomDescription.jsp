@@ -85,10 +85,13 @@ function checkz() {
 	
 	  
 }
-
-
-
 </script>
+<style type="text/css">
+.white {
+	background-color: white;
+	border: none !important;
+}
+</style>
     <meta charset="UTF-8">
     <meta name="description" content="Sona Template">
     <meta name="keywords" content="Sona, unica, creative, html">
@@ -189,26 +192,24 @@ function checkz() {
                                 </table>                              
                                
                                	<h2>객실설명</h2>
-                                <p class="f-para">
-									${memberRoomVO.roomInfo}
-                                </p>
+                                <pre class="white">${memberRoomVO.roomInfo}</pre>
                                 <div>&nbsp;</div>
                                 <hr>
                                 <div>&nbsp;</div>
                                	<h2>예약공지</h2>
-                                <p class="f-para">
-									ㆍ당일예약 특성 상 환불 및 취소가 불가합니다.<br>
-									ㆍ객실요금은 기준인원 입실 기준이며, 파티룸 등 특수객실의 경우, 직접 입실 인원 확인이 필요합니다.<br>
-									ㆍ미성년자의 입실 가능여부는 직접 제휴점에 확인 후 예약 진행하시기 바랍니다.<br>
-									ㆍ미성년자 혼숙예약으로 인해 발생하는 입실 거부에 대해서는 취소/환불이 불가합니다.<br>
-									ㆍ제휴점 사정에 의한 취소 발생 시 100% 환불 처리됩니다.<br>
-									ㆍ제휴점 사정으로 객실 정보가 수시로 변경될 수 있습니다. 이로 인한 불이익은 당사가 책임지지 않습니다.<br>
-                                </p>
+                                <pre class="white">
+ㆍ당일예약 특성 상 환불 및 취소가 불가합니다.
+ㆍ객실요금은 기준인원 입실 기준이며, 파티룸 등 특수객실의 경우, 직접 입실 인원 확인이 필요합니다.
+ㆍ미성년자의 입실 가능여부는 직접 제휴점에 확인 후 예약 진행하시기 바랍니다.
+ㆍ미성년자 혼숙예약으로 인해 발생하는 입실 거부에 대해서는 취소/환불이 불가합니다.
+ㆍ제휴점 사정에 의한 취소 발생 시 100% 환불 처리됩니다.
+ㆍ제휴점 사정으로 객실 정보가 수시로 변경될 수 있습니다. 이로 인한 불이익은 당사가 책임지지 않습니다.
+                                </pre>
                                 <h2>취소규정</h2>
-                                <p class="f-para">
-                                	ㆍ입실 1일 전 24시 전까지 : 수수료 없음<br>
-									ㆍ당일 취소 및 No-Show, 입실시간 경과/실제 입실 후: 환불불가<br>
-								</p>
+                                <pre class="white">
+ㆍ입실 1일 전 24시 전까지 : 수수료 없음
+ㆍ당일 취소 및 No-Show, 입실시간 경과/실제 입실 후: 환불불가
+								</pre>
                             </div>                           
                         </div>
                     </div>

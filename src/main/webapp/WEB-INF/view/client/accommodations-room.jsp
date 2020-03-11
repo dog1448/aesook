@@ -127,6 +127,13 @@
 		line-height: 1.4;
 	}
 }
+
+.white {
+	background-color: white;
+	border: none !important;
+}
+
+
 </style>
 <script type="text/javascript">
 
@@ -258,7 +265,7 @@ function searchRoom(){
 										<h3>숙소 소개</h3>
 										<div class="container">
 											<div class="row">
-												<p>${vo.hotelsIntroduce }</p>
+												<pre class="white">${vo.hotelsIntroduce }</pre>
 											</div>
 										</div>
 
@@ -333,7 +340,7 @@ function searchRoom(){
 										<h3>이용안내</h3>
 										<div class="container">
 											<div class="row">
-												<p>${vo.hotelsInfo}</p>
+												<pre class="white">${vo.hotelsInfo}</pre>
 											</div>
 										</div>
 

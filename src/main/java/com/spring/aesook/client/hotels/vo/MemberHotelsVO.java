@@ -20,6 +20,8 @@ public class MemberHotelsVO {
 	private String hotelsImageName;
 	private String hotelsImagePath;
 	private String hotelsImageStatus;
+	private int scoreAvg;
+	private int scoreCnt;
 	
 	public String getMemberId() {
 		return memberId;
@@ -118,6 +120,18 @@ public class MemberHotelsVO {
 	public void setHotelsImageStatus(String hotelsImageStatus) {
 		this.hotelsImageStatus = hotelsImageStatus;
 	}
+	public int getScoreAvg() {
+		return scoreAvg;
+	}
+	public void setScoreAvg(int scoreAvg) {
+		this.scoreAvg = scoreAvg;
+	}
+	public int getScoreCnt() {
+		return scoreCnt;
+	}
+	public void setScoreCnt(int scoreCnt) {
+		this.scoreCnt = scoreCnt;
+	}
 	@Override
 	public String toString() {
 		return "MemberHotelsVO [hotelsCode=" + hotelsCode + ", hotelsName=" + hotelsName + ", hotelsType=" + hotelsType
@@ -126,7 +140,6 @@ public class MemberHotelsVO {
 				+ hotelsPath + ", hotelsInfo=" + hotelsInfo + ", hotelsIntroduce=" + hotelsIntroduce
 				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", hotelsImageName="
 				+ hotelsImageName + ", hotelsImagePath=" + hotelsImagePath + ", hotelsImageStatus=" + hotelsImageStatus
-				+ "]";
+				+ ", scoreAvg=" + scoreAvg + ", scoreCnt=" + scoreCnt + "]";
 	}
-	
 }
