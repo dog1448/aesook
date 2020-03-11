@@ -32,7 +32,22 @@
 											<div class="room-wrap">
 												<div class="row">
 													<div class="col-md-6 col-sm-6">
-														<div class="room-img" style="background-image: url(resources/client/images/room-1.jpg);"></div>
+														<c:if test="${list.hotelsImageStatus eq 'M' }">
+															<div class="item active">
+																<img
+																	src="${list.hotelsImagePath}${list.hotelsImageName}"
+																	class="img-responsive" style="height: 280px; width: 350px;">
+					
+															</div>
+														</c:if>
+														<c:if test="${list.hotelsImageStatus ne 'M' }">
+															<div class="item">
+																<img
+																	src="${list.hotelsImagePath}${list.hotelsImageName}"
+																	class="img-responsive" style="height: 280px; width: 350px;">
+					
+															</div>
+														</c:if>
 													</div>
 													<div class="col-md-6 col-sm-6">
 														<div class="desc">
