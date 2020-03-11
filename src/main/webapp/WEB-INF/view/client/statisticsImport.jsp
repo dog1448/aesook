@@ -36,7 +36,7 @@ canvas {
 							<nav class="navbar navbar-default navbar-static-top">
 								<div id="navbar" class="navbar-collapse collapse">
 									<ul class="nav navbar-nav">
-										<li class="active"><a href="statistics.do">수입</a></li>
+										<li class="active"><a href="statistics.do">월별 수입</a></li>
 										<li><a href="statisticsRoom.do">객실별 예약률</a></li>										
 									</ul>
 								</div>
@@ -174,7 +174,7 @@ canvas {
 				},
 				title : {
 					display : true,
-					text : '월간 수입'
+					text : '월간 수입 (단위 : 원)'
 				}
 				
 			}

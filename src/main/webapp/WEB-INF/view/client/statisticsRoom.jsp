@@ -37,7 +37,7 @@ canvas {
 							<nav class="navbar navbar-default navbar-static-top">
 								<div id="navbar" class="navbar-collapse collapse">
 									<ul class="nav navbar-nav">
-										<li><a href="statistics.do">수입</a></li>
+										<li><a href="statistics.do">월별 수입</a></li>
 										<li class="active"><a href="statisticsRoom.do">객실별	예약률</a></li>
 									</ul>
 								</div>
@@ -47,7 +47,8 @@ canvas {
 							<div>&nbsp;</div>
 							<div id="canvas-holder" style="width: 100%">
 								<canvas id="chart-area"></canvas>
-							</div>													
+							</div>							
+																				
 						</div>
 					</div>
 				</div>
@@ -85,7 +86,7 @@ canvas {
 			},
 			title : {
 				display : true,
-				text : '객실별 예약률'
+				text : '객실별 예약률 (단위 : %)'
 			},
 			animation : {
 				animateScale : true,
