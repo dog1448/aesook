@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE HTML>
 <html>
 
@@ -26,7 +27,7 @@
 							<div>&nbsp;</div>
 							<div class="row">
 								<c:forEach var="list" items="${hotels}">
-									<a href="#">
+									<a href="${path}/modifyHotel.do?${list.hotelsCode}">
 										<div class="col-md-12">
 											<div class="room-wrap">
 												<div class="row">
