@@ -6,25 +6,13 @@
 	<!-- UserInfo Modify 수행시 -->
 	<update id="modifyManagerUsers" parameterType="managerUsers">
 		UPDATE MEMBER 
-		SET MEMBER_STATUS = #{memberStatus}
+		SET 
+		MEMBER_NAME = #{memberName},  
+		MEMBER_EMAIL = #{memberEmail},  
+		MEMBER_PHONE = #{memberPhone},  
+		MEMBER_STATUS = #{memberStatus}  		
 		WHERE MEMBER_ID = #{memberId}
-	</update>
-	
-	<!-- UserInfo Delete 수행시 -->
-	<update id="deleteManagerUsers" parameterType="managerUsers">
-		UPDATE MEMBER 
-		SET MEMBER_STATUS = "D"
-		WHERE MEMBER_ID = #{memberId}
-	</update>
-	
-	<!-- UserInfo Disable 수행시 -->
-	<update id="updateManagerUsers" parameterType="managerUsers">
-		UPDATE MEMBER 
-		SET MEMBER_PASS = #{memberPass}, MEMBER_NAME = #{memberName}, 
-			MEMBER_EMAIL = #{memberEmail}, MEMBER_STATUS = #{memberStatus}, 
-			MEMBER_PHONE = #{memberPhone}
-		WHERE MEMBER_ID = #{memberId}
-	</update>
+	</update>	
 	
 	<select id="getManagerUsers" resultType="managerUsers" parameterType="managerUsers">
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
