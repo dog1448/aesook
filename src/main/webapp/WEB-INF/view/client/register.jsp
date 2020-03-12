@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,14 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('resources/client/images/img_bg_5.jpg');"></div>
+			<div class="login100-more">
+				<c:if test="${not empty adminImageVO}">
+				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 1120px;">
+				</c:if>
+				<c:if test="${empty adminImageVO}">
+				<img src="resources/client/images/noImage.png" style="width: 100%; height: 1120px;">
+				</c:if>
+			</div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				
