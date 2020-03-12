@@ -157,12 +157,12 @@ option  {
 									<div class="hotel-entry">
 										<c:if test="${list.hotelsImageStatus eq 'M' }">										
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: 100%;">																					
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: auto;">																					
 											</a>											
 										</c:if>
 										<c:if test="${list.hotelsImageStatus ne 'M' }">
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="resources/client/images/noImage.png" style="height: 280px; width: 100%;">																	
+												<img src="resources/client/images/noImage.png" style="height: 280px; width: auto;">																	
 											</a>
 										</c:if>	
 										<div class="desc">
@@ -209,40 +209,40 @@ option  {
 				<a href="#" class="tour-entry animate-box">
 					<div class="tour-img">						
 						<c:if test="${not empty event1ImageVO}">
-						<img alt="" src="${event1ImageVO.adminImagePath}${event1ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						<img alt="" src="${event1ImageVO.adminImagePath}${event1ImageVO.adminImageName}" style="width: auto; height: 300px">
 						</c:if>
 						<c:if test="${empty event1ImageVO}">
-						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
 						</c:if>						
 					</div> 					
 				</a> 
 				<a href="#" class="tour-entry animate-box">
 					<div class="tour-img">
 						<c:if test="${not empty event2ImageVO}">
-						<img alt="" src="${event2ImageVO.adminImagePath}${event2ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						<img alt="" src="${event2ImageVO.adminImagePath}${event2ImageVO.adminImageName}" style="width: auto; height: 300px">
 						</c:if>
 						<c:if test="${empty event2ImageVO}">
-						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
 						</c:if>	
 					</div> 						
 				</a> 
 				<a href="#" class="tour-entry animate-box">
 					<div class="tour-img">
 						<c:if test="${not empty event3ImageVO}">
-						<img alt="" src="${event3ImageVO.adminImagePath}${event3ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						<img alt="" src="${event3ImageVO.adminImagePath}${event3ImageVO.adminImageName}" style="width: auto; height: 300px">
 						</c:if>
 						<c:if test="${empty event3ImageVO}">
-						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
 						</c:if>	
 					</div> 					
 				</a> 
 				<a href="#" class="tour-entry animate-box">
 					<div class="tour-img">
 						<c:if test="${not empty event4ImageVO}">
-						<img alt="" src="${event4ImageVO.adminImagePath}${event4ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						<img alt="" src="${event4ImageVO.adminImagePath}${event4ImageVO.adminImageName}" style="width: auto; height: 300px">
 						</c:if>
 						<c:if test="${empty event4ImageVO}">
-						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
 						</c:if>	
 					</div>
 				</a>

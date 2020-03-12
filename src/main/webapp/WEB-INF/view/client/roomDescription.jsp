@@ -8,12 +8,16 @@
 
 function checkz() {
 	
+	//전화번호 유효성 검사
+	var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
+	
 	var value = $('#maxCnt').val();
 	var checkOut = $('#date-out').val();
 	var checkIn = $('#date-in').val();
 	var hotelsCode = $('#hotelsCodeId').val();
 	var roomSort = $('#roomSortId').val();
-
+	var phone = document.getElementById("phone");
+	
 	//체크인 날짜 공백 확인
     if($("#date-in").val() == ""){
       alert("체크인 날짜를 입력해주세요");
@@ -55,6 +59,7 @@ function checkz() {
      $("#name").focus();
      return;
    }
+ 	
  	//예약자 전화번호 공백확인
     if ($("#phone").val() == "") {
      alert("예약자 전화번호를 입력해주세요");
@@ -62,6 +67,10 @@ function checkz() {
      $("#phone").focus();
      return;
     }
+ 	
+    if (!check(regex, phone, "번호를 형식에 맞게 제대로 입력하세요.")) {
+		return;
+	}	
     
 	$.ajax({
 	    url: "getRoomPossible.do",
@@ -83,6 +92,16 @@ function checkz() {
 	});
 	
 	  
+}
+
+function check(re, what, message) {
+	if (re.test(what.value)) {
+		return true;
+	}
+	alert(message);
+	what.value = "";
+	what.focus();
+	// return false;
 }
 </script>
 <style type="text/css">
@@ -134,13 +153,13 @@ function checkz() {
                         <c:if test="${not empty roomPicList}">
                         	<c:forEach var="roomPicList" items="${roomPicList}">                        		
 		                        <div class="ts-item">
-		                            <img src="${roomPicList.hotelsImagePath}${roomPicList.hotelsImageName}" style="width: 1200px; height: 400px;">
+		                            <img src="${roomPicList.hotelsImagePath}${roomPicList.hotelsImageName}" style="width: auto; height: 400px;">
 		                        </div>	                           
                            </c:forEach> 
                          </c:if>
                          <c:if test="${empty roomPicList}">                        	                      		
 		                       <div class="ts-item">
-		                           <img src="resources/client/images/noImage.png" style="width: 1200px; height: 400px;">
+		                           <img src="resources/client/images/noImage.png" style="width: auto; height: 400px;">
 		                       </div>
                          </c:if>  
                         </div>
