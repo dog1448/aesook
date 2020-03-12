@@ -84,6 +84,9 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 	// 검색된 호텔 리스트
 	@Override
 	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo) {
+		if(vo.getSortCondition()==null) {
+			vo.setSortCondition("default");
+		}
 		return memberHotelsListDAO.getSearchedHotelsList(vo);
 	}
 	

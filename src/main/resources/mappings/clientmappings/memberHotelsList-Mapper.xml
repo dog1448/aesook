@@ -99,9 +99,38 @@
   		<if test = "searchCondition=='PATH'">
   			and hotels_path Like '%'||#{searchKeyword}||'%'
   		</if>
+		<if test = "hotelsType=='motel'">
+  			and hotels_type = '모텔'
+  		</if>
+		<if test = "hotelsType=='guesthouse'">
+  			and hotels_type = '게스트하우스'
+  		</if>
+		<if test = "hotelsType=='hotel'">
+  			and hotels_type = '호텔'
+  		</if>
+		<if test = "hotelsType=='pension'">
+  			and hotels_type = '펜션'
+  		</if>
+		<if test = "hotelsType=='resort'">
+  			and hotels_type = '리조트'
+  		</if>
   		group by h.hotels_code, h.hotels_name, h.hotels_type, h.member_id, 
         h.hotels_phone, h.hotels_zipcode, h.hotels_address1, h.hotels_address2,
         h.hotels_path, h.hotels_info, h.hotels_introduce,
         i.hotels_image_name, i.hotels_image_path, i.hotels_image_status
+        <choose>
+			<when test='sortCondition.equals("scoreAvg")'>
+			order by scoreAvg desc nulls last
+			</when>
+			<when test='sortCondition.equals("scoreCnt")'>
+			order by scoreCnt desc
+			</when>
+			<when test='sortCondition.equals("hotelsCode")'>
+			ORDER BY h.HOTELS_CODE DESC
+			</when>
+			<otherwise>
+			ORDER BY h.HOTELS_CODE DESC
+			</otherwise>
+		</choose>
   	</select>
  </mapper>

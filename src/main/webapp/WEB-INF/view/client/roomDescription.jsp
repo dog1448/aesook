@@ -75,7 +75,6 @@ function checkz() {
 	    dataType: "json"
 	})
 	.done(function(json) {
-				alert(json);
 	       		if(json.length==0){
 	       			alert("해당 날짜에 예약이 불가능한 방입니다.");
 	       			return;
