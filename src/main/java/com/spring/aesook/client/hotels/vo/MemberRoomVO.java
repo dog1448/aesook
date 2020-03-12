@@ -1,6 +1,6 @@
 package com.spring.aesook.client.hotels.vo;
 
-public class MemberRoomVO {
+public class 	MemberRoomVO {
 	private int hotelsCode;
 	private String roomName;
 	private String roomSort;
