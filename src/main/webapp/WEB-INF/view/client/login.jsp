@@ -5,36 +5,12 @@
 <html>
 <head>
 
-<c:if test="${check eq 'noNameEmail'}">
-	<script type="text/javascript">
-		alert("이름 또는 이메일이 일치하지 않습니다.");
-	</script>
-</c:if>
-<c:if test="${check eq 'findId'}">
-	<script type="text/javascript">
-		alert("ID가 이메일로 발송되었습니다.");
-	</script>
-</c:if>
 <c:if test="${noLogin eq true}">
 	<script type="text/javascript">
 		alert("로그인이 필요한 서비스입니다.");
 	</script>
 </c:if>
-<c:if test="${check eq 'noId'}">
-	<script type="text/javascript">
-		alert("해당되는 아이디가 없습니다.");
-	</script>
-</c:if>
-<c:if test="${check eq 'noPass'}">
-	<script type="text/javascript">
-		alert("비밀번호가 틀립니다.");
-	</script>
-</c:if>
-<c:if test="${check eq 'findPass'}">
-	<script type="text/javascript">
-		alert("비밀번호가 메일로 발송되었습니다.");
-	</script>
-</c:if>
+
 <script>
 	function checkz() {
 
@@ -189,7 +165,7 @@
 				}
 			});
 		};
-		//]]>
+		//]]>	
 	</script>
 
 </body>

@@ -1,5 +1,6 @@
 package com.spring.aesook.admin.image.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -13,4 +14,8 @@ public interface ManagerImageService {
 	public List<ManagerAdminImageVO> getAdminImageList();
 	public ManagerAdminImageVO getLoginImage();
 	public ManagerAdminImageVO getHomeImage();
+	public ManagerAdminImageVO getEvent1Image();
+	public ManagerAdminImageVO getEvent2Image();
+	public ManagerAdminImageVO getEvent3Image();
+	public ManagerAdminImageVO getEvent4Image();
 }

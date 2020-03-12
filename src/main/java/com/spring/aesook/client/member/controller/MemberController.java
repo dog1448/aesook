@@ -61,6 +61,10 @@ public class MemberController {
 
     @RequestMapping(value = "/register.do", method = RequestMethod.GET)
     public String moveRegister(Model model){
+    	
+    	ManagerAdminImageVO adminImageVO = managerImageService.getLoginImage();
+    	model.addAttribute("adminImageVO", adminImageVO);
+    	
         return "/register";
     }
 
@@ -71,7 +75,7 @@ public class MemberController {
     	
     	
     		if(result == 1) {
-        		return "/register";
+        		return "redirect:register.do";
         	} else if(result == 0) {
         		
         		 memberService.insertMember(vo);
@@ -114,18 +118,18 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-
     public String checkLogin(MemberVO vo, Model model,HttpSession session) {
 
     	MemberVO user = memberService.getMember(vo);
     	String id = vo.getMemberId();
     	String pw = vo.getMemberPass();
     	if(user == null) {
-			model.addAttribute("check", "noId");
-			return "/login";
+			model.addAttribute("message", "해당되는 아이디가 없습니다.");
+			return "/messageLogin";
 		} else {
 			if(user.getMemberPass() == null) {
-				return "/login";
+				model.addAttribute("message", "비밀번호가 틀립니다.");
+				return "/messageLogin";
 			}
 			if (user.getMemberPass().equals(vo.getMemberPass())) {
 				if(user.getMemberStatus().equals("R")) {
@@ -134,8 +138,8 @@ public class MemberController {
 				}
 				model.addAttribute("login",user);
 			} else {
-				model.addAttribute("check", "noPass");
-				return "/login";
+				model.addAttribute("message", "비밀번호가 틀립니다.");
+				return "/messageLogin";
 			}
 		}
 
@@ -152,10 +156,19 @@ public class MemberController {
     @RequestMapping("/home.do")
     public String moveHome(Model model) {
     	List<MemberHotelsVO> list = memberHotelsListService.selectAccommodationTop10();
-    	ManagerAdminImageVO adminImageVO = managerImageService.getHomeImage();
+    	ManagerAdminImageVO adminImageVO = managerImageService.getHomeImage();    	
+    	ManagerAdminImageVO event1ImageVO = managerImageService.getEvent1Image();
+    	ManagerAdminImageVO event2ImageVO = managerImageService.getEvent2Image();
+    	ManagerAdminImageVO event3ImageVO = managerImageService.getEvent3Image();
+    	ManagerAdminImageVO event4ImageVO = managerImageService.getEvent4Image();
     	
-    	model.addAttribute("adminImageVO", adminImageVO);
+    	model.addAttribute("adminImageVO", adminImageVO);    	
+    	model.addAttribute("event1ImageVO", event1ImageVO);    	
+    	model.addAttribute("event2ImageVO", event2ImageVO);    	
+    	model.addAttribute("event3ImageVO", event3ImageVO);    	
+    	model.addAttribute("event4ImageVO", event4ImageVO);    	
 		model.addAttribute("top10", list);
+	
     	return "/home";
     }
     
@@ -177,12 +190,12 @@ public class MemberController {
     public String findId(MemberVO vo, Model model) {
     	MemberVO user = memberFindIdService.findId(vo);
     	if(user == null) {
-    		model.addAttribute("check","noId");
+    		model.addAttribute("message","해당되는 아이디가 없습니다.");
     	} else {
-    		model.addAttribute("check","findId");
+    		model.addAttribute("message","ID가 이메일로 발송되었습니다.");
     	}
     	
-    	return "/login";
+    	return "/messageLogin";
     }
     
 
@@ -195,18 +208,18 @@ public class MemberController {
     public String findPass(MemberVO vo, Model model) {
     	MemberVO user = memberService.getMember(vo);
     	if(user == null) {
-    		model.addAttribute("check","noId");
+    		model.addAttribute("message","해당되는 아이디가 없습니다.");
     	} else {
     		if(vo.getMemberEmail().equals(user.getMemberEmail()) && vo.getMemberName().equals(user.getMemberName())) {
-    			model.addAttribute("check","findPass");
+    			model.addAttribute("message","비밀번호가 메일로 발송되었습니다.");
     			memberFindPassService.findPass(user);
     		} else {
-    			model.addAttribute("check","noNameEmail");
+    			model.addAttribute("message","이름 또는 이메일이 일치하지 않습니다.");
     		}
     		
     	}
     	
-    	return "/login";
+    	return "/messageLogin";
     }
     
     //Kakao Login
@@ -226,13 +239,13 @@ public class MemberController {
     	
     	if(result == 1) {
     		session.setAttribute("login", vo);
-    		return "/home";
+    		return "redirect:home.do";
     	} else if(result == 0) {    		
     		 memberService.insertMember(vo);
     		 session.setAttribute("login", vo);
     	} 
     	
-    	return "/home";
+    	return "redirect:home.do";
     }
     
     //Naver Login
@@ -242,11 +255,8 @@ public class MemberController {
     	
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
-		apiResult = naverLoginBO.getUserProfile(oauthToken); 
-		/**
-		 * apiResult json ���� {"resultcode":"00", "message":"success",
-		 * "response":{"id":"33666449","nickname":"shinn****","age":"20-29","gender":"M","email":"sh@naver.com","name":"\uc2e0\ubc94\ud638"}}
-		 **/
+		apiResult = naverLoginBO.getUserProfile(oauthToken);
+		
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(apiResult);
 		JSONObject jsonObj = (JSONObject) obj;
@@ -265,13 +275,13 @@ public class MemberController {
     	
     	if(result == 1) {
     		session.setAttribute("login", vo);
-    		return "/home";
+    		return "redirect:home.do";
     	} else if(result == 0) {    		
     		 memberService.insertMember(vo);
     		 session.setAttribute("login", vo);
     	}
     	
-    	return "/home";
+    	return "redirect:home.do";
     }
 
     @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
@@ -307,7 +317,7 @@ public class MemberController {
     	System.out.println(sessionId);
     	memberWithdrawalService.updateWithdrawal(sessionId);
     	session.invalidate();
-    	return "/home";
+    	return "redirect:home.do";
     }
     
     @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.GET)
@@ -319,6 +329,6 @@ public class MemberController {
     @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
     public String logout(HttpSession session) {
     	session.invalidate();
-    	return "/home";
+    	return "redirect:home.do";
     }
 }

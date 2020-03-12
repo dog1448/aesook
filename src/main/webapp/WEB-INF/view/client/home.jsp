@@ -204,61 +204,48 @@ option  {
 					</div>
 				</div>
 			</div>
+			
 			<div class="tour-wrap">
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-1.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Athens, Greece</h2> <span class="city">Athens, Greece</span> <span
-						class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-2.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Thailand</h2> <span class="city">Athens,
-							Greece</span> <span class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-3.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Philippines</h2> <span class="city">Lipa,
-							Philippines</span> <span class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-4.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Greece</h2> <span class="city">Athens,
-							Greece</span> <span class="price">$450</span>
-				</span>
+					<div class="tour-img">						
+						<c:if test="${not empty event1ImageVO}">
+						<img alt="" src="${event1ImageVO.adminImagePath}${event1ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event1ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>						
+					</div> 					
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event2ImageVO}">
+						<img alt="" src="${event2ImageVO.adminImagePath}${event2ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event2ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>	
+					</div> 						
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event3ImageVO}">
+						<img alt="" src="${event3ImageVO.adminImagePath}${event3ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event3ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>	
+					</div> 					
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event4ImageVO}">
+						<img alt="" src="${event4ImageVO.adminImagePath}${event4ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event4ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>	
+					</div>
 				</a>
-
 			</div>
 		</div>
 		<%@ include file="footer.jspf"%>
