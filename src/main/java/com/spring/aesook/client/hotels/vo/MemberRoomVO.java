@@ -13,6 +13,7 @@ public class 	MemberRoomVO {
 	private String hotelsImageName;
 	private String hotelsImagePath;
 	private String roomSortStatus;
+	private String currentRoom;
 	
 	public String getHotelsImageName() {
 		return hotelsImageName;
@@ -89,6 +90,31 @@ public class 	MemberRoomVO {
 	public void setRoomRoomInfo(String roomInfo) {
 		this.roomInfo = roomInfo;
 	}
-	
-	
+
+	public String getCurrentRoom() {
+		return currentRoom;
+	}
+
+	public void setCurrentRoom(String currentRoom) {
+		this.currentRoom = currentRoom;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberRoomVO{" +
+				"hotelsCode=" + hotelsCode +
+				", roomName='" + roomName + '\'' +
+				", roomSort='" + roomSort + '\'' +
+				", roomStandardCnt=" + roomStandardCnt +
+				", roomMaxCnt=" + roomMaxCnt +
+				", roomStandardPrice=" + roomStandardPrice +
+				", roomHolidayPrice=" + roomHolidayPrice +
+				", roomAddPrice=" + roomAddPrice +
+				", roomInfo='" + roomInfo + '\'' +
+				", hotelsImageName='" + hotelsImageName + '\'' +
+				", hotelsImagePath='" + hotelsImagePath + '\'' +
+				", roomSortStatus='" + roomSortStatus + '\'' +
+				", currentRoom='" + currentRoom + '\'' +
+				'}';
+	}
 }

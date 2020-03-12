@@ -171,6 +171,7 @@ public class MemberHotelsController {
 			List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
 			String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
 			model.addAttribute("list",list);
+			model.addAttribute("listSize",list.size());
 			model.addAttribute("vo", hotelsVO);
 			model.addAttribute("facilityVO", facilityVO);
 
@@ -179,8 +180,13 @@ public class MemberHotelsController {
 	}
 
 	@RequestMapping(value = "/modifyHotel.do",method = RequestMethod.POST)
-	public String ModifyHotel(){
-		return null;
+	public String ModifyHotel(MemberHotelsVO memberHotelsVO , MemberRoomVO memberRoomVO){
+		System.out.println(memberHotelsVO);
+
+		System.out.println(memberRoomVO);
+		memberHotelsService.modifyHotels(memberHotelsVO);
+		memberHotelsService.modifyRooms(memberRoomVO);
+		return "redirect:/registeredAccommodation.do";
 	}
 	
 }

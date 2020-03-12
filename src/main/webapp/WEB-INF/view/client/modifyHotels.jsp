@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -231,9 +234,9 @@
                                 <h3>방목록</h3>
                                 <div class="row">
                                     <c:forEach var="list" items="${list}" varStatus="vs">
-                                        <form role="form" id="modForm" method="post" action="/modifyHotel.do">
+                                        <form role="form" id="modForm" method="post" action="${path}/modifyHotel.do">
                                             <div class="col-md-12 animate-box">
-                                                <input type="hidden" value="${list.hotelsCode}" id="hotelsCode">
+                                                <input type="hidden" value="${list.hotelsCode}" id="hotelsCode" name="hotelsCode">
                                                 <div class="room-wrap">
                                                     <div class="row">
                                                         <div class="col-md-6 col-sm-6">
@@ -242,8 +245,7 @@
                                                         </div>
                                                         <div class="col-md-6 col-sm-6">
                                                             <div class="desc">
-                                                                <h2 id="imsi${vs.index}">${list.roomSort}</h2>
-
+                                                                <h2 id="imsi">${list.roomSort}</h2>
                                                                 <input type="hidden" value="${list.roomSort}" name="roomSort">
                                                                 <p class="price" id="standardPrice">
                                                                     <span><input type="text" name="roomStandardPrice" value="${list.roomStandardPrice}"> ￦ <small>&nbsp;평일</small></span></p>
@@ -253,20 +255,19 @@
                                                                 <p>기준 : <input type="text" name="roomStandardCnt" VALUE="${list.roomStandardCnt}"> 명
                                                                     &nbsp;/&nbsp;&nbsp;최대 : <input type="text" name="roomMaxCnt" value="${list.roomMaxCnt}"> 명</p>
                                                                 <p>인원당 추가요금 : <input type="text" name="roomAddPrice" value="${list.roomAddPrice}"> ￦</p>
-
+                                                                <input type="hidden" name="roomStandardPrice" value="${list.roomStandardPrice}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                     </c:forEach>
 
                                     <!-- 숙소 소개 -->
                                     <h3>숙소 소개</h3>
                                     <div class="container">
                                         <div class="row">
-                                            <pre class="white"><textarea type="text" name="hotelsIntroduce" style="width: 500px; height: 300px">${vo.hotelsIntroduce}"</textarea></pre>
+                                            <pre class="white"><textarea type="text" name="hotelsIntroduce" style="width: 500px; height: 300px">${vo.hotelsIntroduce}</textarea></pre>
                                         </div>
                                     </div>
 
@@ -362,16 +363,14 @@
                                     <h3>찾아 오시는 길</h3>
                                     <div class="container">
                                         <div class="row">
-                                            <p><input type="text" name="hotelsPath" value="${vo.hotelsPath}"></p>
+                                            <p><input type="text" name="hotelsPath" value=${vo.hotelsPath}></p>
                                         </div>
                                     </div>
+                                            <div style="margin-left: 500px">
+                                            <button type="submit" class="btn btn-success modBtn">수정하기</button>
+                                                </div>
                                         </form>
                                     <div>&nbsp;</div>
-
-
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -385,7 +384,18 @@
 
     <div>&nbsp;</div>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var formObj = $("form[role='form']");
+            console.log(formObj);
 
+            $(".modBtn").on("click", function () {
+                formObj.submit();
+            });
+
+        });
+
+    </script>
     <%@include file="footer.jspf"%>
 
     <script type="text/javascript"

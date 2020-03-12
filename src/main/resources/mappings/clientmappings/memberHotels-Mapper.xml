@@ -25,7 +25,19 @@
 	<update id="modifyHotels">
 		update HOTELS
 		set HOTELS_INFO = #{hotelsInfo},
-		#{hotelsIntroduce},
-		#{hotels}
+		HOTELS_INTRODUCE = #{hotelsIntroduce},
+		HOTELS_PATH = #{hotelsPath}
+		WHERE HOTELS_CODE = #{hotelsCode}
+	</update>
+
+	<update id="modifyRoom">
+		update ROOM
+		set ROOM_STANDARD_PRICE = #{roomStandardPrice},
+		ROOM_HOLIDAY_PRICE = #{roomHolidayPrice},
+		ROOM_STANDARD_CNT = #{roomStandardCnt},
+		ROOM_MAX_CNT = #{roomMaxCnt},
+		ROOM_ADD_PRICE = #{roomAddPrice}
+		WHERE HOTELS_CODE = #{hotelsCode}
+		AND ROOM_SORT = #{roomSort}
 	</update>
 </mapper>
