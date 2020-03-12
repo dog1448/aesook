@@ -1,9 +1,9 @@
 package com.spring.aesook.admin.manager.service;
 
-import com.spring.aesook.admin.manager.vo.ManagerStatisticsVO;
-import com.spring.aesook.admin.manager.vo.ManagerVO;
-
+import java.util.HashMap;
 import java.util.List;
+
+import com.spring.aesook.admin.manager.vo.ManagerVO;
 
 public interface ManagerService {
 	
@@ -20,17 +20,7 @@ public interface ManagerService {
 	int totalResortCount();
 
 	//Statistics(MIDDLE)-------------------------------------------------------------------------
-	int marchReservationCount();
-	int aprilReservationCount();
-	int mayReservationCount();
-	int juneReservationCount();
-	int julyReservationCount();
-	int augustReservationCount();
-	int septemberReservationCount();
-	int octoberReservationCount();
-	int novemberReservationCount();
-	int decemberReservationCount();
-
+	List<HashMap<Object, Object>> getTotalBooking(String startYear);
 	
 	//Statistics(pie)
 	int hotelReservationCount();
@@ -43,6 +33,6 @@ public interface ManagerService {
 
 
 	//Statistics(BOTTOM)----------------------------------------------------------------------------------
-	List<ManagerStatisticsVO> totalPrice();
+	List<HashMap<Object, Object>> getTotalList(String startYear);
 
 }

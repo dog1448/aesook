@@ -40,11 +40,11 @@
 											<div class="col-md-6 col-sm-6">
 												<c:if test="${booking.hotelsImageName ne null}">
 													<img src="${booking.hotelsImagePath}${booking.hotelsImageName}" 
-																	style="height: 280px; width: 350px;">
+																	style="height: 280px; width: 100%;">
 												</c:if>
 												<c:if test="${booking.hotelsImageName eq null}">
 													<img src="resources/client/images/noImage.png" 
-																	style="height: 280px; width: 350px;">
+																	style="height: 280px; width: 100%;">
 												</c:if>				
 											</div>
 											<div class="col-md-6 col-sm-6">

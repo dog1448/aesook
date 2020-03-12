@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.aesook.admin.manager.vo.ManagerVO;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Repository("managerDAO")
@@ -76,61 +77,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 
 	//Statistics(MIDDLE)---------------------------------------------------------------------------------------------------------
 	@Override
-	public int marchReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".marchReservationCount");
-	}
-
-	@Override
-	public int aprilReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".aprilReservationCount");
-	}
-
-	@Override
-	public int mayReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".mayReservationCount");
-
-	}
-
-	@Override
-	public int juneReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".juneReservationCount");
-
-	}
-
-	@Override
-	public int julyReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".julyReservationCount");
-
-	}
-
-	@Override
-	public int augustReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".augustReservationCount");
-
-	}
-
-	@Override
-	public int septemberReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".septemberReservationCount");
-
-	}
-
-	@Override
-	public int octoberReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".octoberReservationCount");
-
-	}
-
-	@Override
-	public int novemberReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".novemberReservationCount");
-
-	}
-
-	@Override
-	public int decemberReservationCount() {
-		return sqlSessionTemplate.selectOne(namespace+".decemberReservationCount");
-
+	public List<HashMap<Object, Object>> getTotalBooking(HashMap<Object, Object> map) {
+		return sqlSessionTemplate.selectList(namespace + ".totalReservation", map);
 	}
 	
 	
@@ -166,9 +114,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 	}
 
 	@Override
-	public List<ManagerStatisticsVO> totalPrice() {
-		return sqlSessionTemplate.selectList(namespace+".totalPrice");
+	public List<HashMap<Object, Object>> getTotalPrice(HashMap<Object, Object> map) {		
+		return sqlSessionTemplate.selectList(namespace + ".totalPrice", map);
 	}
-
 
 }

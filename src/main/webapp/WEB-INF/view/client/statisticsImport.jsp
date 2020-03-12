@@ -47,7 +47,7 @@ canvas {
 							<div class="form-field">
 								<label for="date">연도 검색:</label>
 								<i class="icon icon-calendar2"></i> 
-								<input type="text" id="year" class="form-control yearpicker" placeholder="연도 선택">
+								<input type="text" id="year" class="form-control yearpicker" style="text-align: center;">
 							</div>
 							<div>&nbsp;</div>
 							<div class="col-md text-right">
