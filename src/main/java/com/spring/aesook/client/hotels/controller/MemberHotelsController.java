@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
+import com.spring.aesook.client.hotels.service.MemberInsertHotelsService;
 import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
@@ -26,11 +27,16 @@ import com.spring.aesook.client.member.vo.MemberVO;
 @Controller
 public class MemberHotelsController {
 	
-	@Autowired
-	private MemberHotelsService memberHotelsService;
+	private static final String HOTEL = "Hotel";
+	private static final String FACILITY = "Facility";
+	private static final String ROOMSORT = "RoomType";
 	
 	@Autowired
+	private MemberHotelsService memberHotelsService;
+	@Autowired
 	private MemberHotelsListService memberHotelsListService;
+	@Autowired
+	private MemberInsertHotelsService memberInsertHotelsService;
 	
 	@Autowired
 	private MemberRoomService memberRoomService;
@@ -38,6 +44,9 @@ public class MemberHotelsController {
 	@Autowired
 	private MemberHotelsFacilityService memberHotelsFacilityService;
 	
+	
+	
+	// ------------------------------------------------ hotelsMove -----------------------------------------------
 	@RequestMapping(value = "/hotelMove.do", method = RequestMethod.GET)
 	public String moveHotel(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type
 			, Model model) {
@@ -53,25 +62,76 @@ public class MemberHotelsController {
 		} else if(type.equals("리조트")) {
 			return "/resort";
 		}
-		
 		return "/hotel";
 	}
 	
-	//Move InsertHotels
-	@RequestMapping(value = "/insertHotels.do", method = RequestMethod.POST)
-	public String moveInsertHotels(Model model){
+	
+	// ------------------------------------------------ insert My hotels -----------------------------------------------
+	//1.Move Terms Of Use
+	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
+	public String MovehostTermsOfUse(HttpSession session) {		
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		List<MemberHotelsVO> list = memberHotelsService.getMyHotels(user);
 		
+		if(list.isEmpty()) {			
+			return "/hostTermsOfUse";
+		}else {			
+			return "redirect:registeredAccommodation.do";			
+		}
+		
+	}
+	
+	//2. Move InsertHotels
+	@RequestMapping(value = "/insertTerm.do", method = RequestMethod.POST)
+	public String insertTerm(Model model){
 		return "/insertHotels";
 	}
 	
-	//Insert Accommodation
-	@RequestMapping(value="/insertHotelsAll.do", method = RequestMethod.POST)
-	public String inserHotelsAll(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO, Model model) {
-		model.addAttribute("memberHotelsVO", memberHotelsVO);
-		model.addAttribute("memberFacilityVO", memberFacilityVO);
+	//3. Move InsertRoomSort
+	@RequestMapping(value="/inserHotels.do", method = RequestMethod.POST)
+	public String inserHotels(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO,
+			HttpSession httpSession) {
+		
+		if(httpSession.getAttribute(HOTEL) != null || httpSession.getAttribute(FACILITY) != null) {
+			httpSession.removeAttribute(HOTEL);
+			httpSession.removeAttribute(FACILITY);
+		}
+		
+		httpSession.setAttribute(HOTEL, memberHotelsVO);
+		httpSession.setAttribute(FACILITY, memberFacilityVO);
 		return "/insertRoomSort";
 	}
 	
+	//4. Move InsertRoom
+	@RequestMapping(value="/insertRoomSort.do" , method=RequestMethod.POST)
+	public String insertRoomSort(MemberRoomVO roomList, HttpSession httpSession, Model model) {
+		 if(httpSession.getAttribute(ROOMSORT) != null) {
+			 httpSession.removeAttribute(ROOMSORT);
+		 }
+		 
+		 if(roomList != null) {
+			 httpSession.setAttribute(ROOMSORT, roomList.getRoomList()); // roomSort = List<memberRoomVO>
+		 }
+		return "/insertRoom";
+	}
+	
+	//5. Move Finish
+	@RequestMapping(value="/insertRoom.do.", method=RequestMethod.POST)
+	public String inserFinish(MemberRoomVO roomList, HttpSession httpSession) {
+		
+		// Data Setting 
+		int hotelsCode = memberHotelsService.getHotelsCode();
+		MemberVO user = (MemberVO) httpSession.getAttribute("login");
+		MemberHotelsVO hotels = (MemberHotelsVO) httpSession.getAttribute(HOTEL);
+		MemberHotelsFacilityVO facility = (MemberHotelsFacilityVO) httpSession.getAttribute(FACILITY);
+		memberInsertHotelsService.insertHotelsFacility(hotels, facility, user, hotelsCode);
+		
+		List<MemberRoomVO> RoomNameList = roomList.getRoomList();
+		
+		return "";
+	}
+	
+	/*
 	//Insert Room
 	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)	
 	public String InsertRoomSort(
@@ -103,7 +163,6 @@ public class MemberHotelsController {
 			vo.setRoomStandardPrice(roomStandardPrice[i]);
 			vo.setRoomHolidayPrice(roomHolidayPrice[i]);
 			vo.setRoomAddPrice(roomAddPrice[i]);
-			vo.setRoomRoomInfo(roomRoomInfo[i]);
 			roomList.add(vo);
 		}	
 		
@@ -115,25 +174,7 @@ public class MemberHotelsController {
 		return "redirect:registeredAccommodation.do";
 	}
 	
-	//Move Terms Of Use
-	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
-	public String MovehostTermsOfUse(HttpSession session) {		
-		MemberVO user = (MemberVO)session.getAttribute("login");
-		List<MemberHotelsVO> list = memberHotelsService.getMyHotels(user);
-		
-		if(list.isEmpty()) {			
-			return "/hostTermsOfUse";
-		}else {			
-			return "redirect:registeredAccommodation.do";			
-		}
-		
-	}
-	
-	//Check Terms Of Use
-	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.POST)
-	public String hostTermsOfUse() {
-		return "/insertHotels";
-	}
+	*/
 	
 	//Check Host
 	@RequestMapping(value = "/hostChk.do", method = RequestMethod.GET)
@@ -148,7 +189,7 @@ public class MemberHotelsController {
 			return result;			
 		}
 	}
-	
+
 	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)
 	public String getMyHotels(HttpSession session, Model model){
 		MemberVO user = (MemberVO)session.getAttribute("login");

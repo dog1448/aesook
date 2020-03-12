@@ -63,7 +63,6 @@ public class MemberAlarmController {
 	
 	@RequestMapping(value="/alarmWrite.do", method=RequestMethod.POST)
 	public String sendAlarm(MemberAlarmVO vo) {
-		System.out.println(vo);
 		memberAlarmService.insertManagerAlarm(vo);
 		return "/messageBoard";
 	}

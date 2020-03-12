@@ -13,4 +13,5 @@ public interface MemberRoomService {
 	void insertRoom(ArrayList<MemberRoomVO> roomList);
 	int roomNameCheck(MemberRoomVO vo);
 	public List<String> getRoomSortTypeList(int hotelsCode);
+	public List<String> getRoomSortTypeList(List<MemberRoomVO> roomList);
 }

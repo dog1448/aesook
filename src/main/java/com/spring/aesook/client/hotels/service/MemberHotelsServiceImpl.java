@@ -19,13 +19,6 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 	@Autowired
 	private MemberReviewDAO memberReviewDAO;
 	
-	@Override
-	public void insertHotels(MemberHotelsVO vo, int hotelsCode, String memberId) {
-		vo.setMemberId(memberId);
-		vo.setHotelsCode(hotelsCode);
-		memberHotelsDAO.insertHotels(vo);
-	}
-	
 	//Host's hotels
 	@Override
 	public List<MemberHotelsVO> getMyHotels(MemberVO vo) {

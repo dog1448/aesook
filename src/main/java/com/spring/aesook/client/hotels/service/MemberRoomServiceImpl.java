@@ -40,12 +40,18 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 		return memberRoomDAO.getRoom(vo);
 	}
 
-	//Insert Room
+	//Insert Room -----------------------------------> 여기에요 수정
 	@Override
 	public void insertRoom(ArrayList<MemberRoomVO> roomList) {
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		map.put("roomList", roomList);
 		memberRoomDAO.insertRoom(map);
+	}
+	
+	public void insertRoom(List<MemberRoomVO> roomSortList, List<MemberRoomVO> roomNameList, int hotelsCode) {
+		
+		List<MemberRoomVO> roomFinalList = new ArrayList<MemberRoomVO>();
+		
 	}
 
 
@@ -62,5 +68,11 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 		return memberRoomDAO.getRoomSortTypeList(vo);
 	}
 
-
+	public List<String> getRoomSortTypeList(List<MemberRoomVO> roomList) {
+		List<String> list = new ArrayList<String>();
+		for (MemberRoomVO room : roomList) {
+			list.add(room.getRoomSort());
+		}
+		return list;
+	}
 }

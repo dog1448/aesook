@@ -95,11 +95,11 @@
 	<insert id="insertBooking">
 		insert into booking (BOOKING_CODE, HOTELS_CODE, ROOM_NAME, ROOM_SORT, 
 		MEMBER_ID, BOOKING_CHECK_IN, BOOKING_CHECK_OUT, BOOKING_NAME, BOOKING_PHONE, 
-		BOOKING_CNT, BOOKING_DATE, BOOKING_TOTAL_PRICE, BOOKING_STATUS)
+		BOOKING_CNT, BOOKING_DATE, BOOKING_TOTAL_PRICE, BOOKING_STATUS, TID)
 		values(#{bookingCode}, 
 		#{hotelsCode}, #{roomName}, #{roomSort}, #{memberId},  
 		#{bookingCheckIn}, #{bookingCheckOut}, #{bookingName}, 
-		#{bookingPhone}, #{bookingCnt}, sysdate, #{bookingTotalPrice}, 'B')
+		#{bookingPhone}, #{bookingCnt}, sysdate, #{bookingTotalPrice}, 'B', #{tid})
 	</insert>
 
 

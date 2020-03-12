@@ -17,7 +17,6 @@ public class MemberHotelsFacilityDAOImpl implements MemberHotelsFacilityDAO {
 	
 	@Override
 	public MemberHotelsFacilityVO getFacility(MemberHotelsVO vo) {
-		
 		return sqlSessionTemplate.selectOne(namespace + ".selectFacility", vo);
 	}
 

@@ -10,6 +10,7 @@
 alert("등록된 숙소가 없습니다.");
 </script>
 </c:if>
+<link href="resources/client/css/step.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="main_header.jspf" %>
@@ -20,19 +21,24 @@ alert("등록된 숙소가 없습니다.");
 				<div class="about-flex">
 					<%@ include file="managementSidebar.jspf"%>
 
-					<div class="col-three-forth animate-box">
-						<nav class="navbar navbar-default">
-							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">약관 동의</a></li>
-								<li><a href="#">숙소 등록</a></li>
-								<li><a href="#">객실 등록</a></li>
-							</ul>
-						</nav>
+					<div class="col-three-forth animate-box ">
+					<div>
+	                  	<h2><strong>TERMS OF USE</strong></h2>
+	                    <hr> 
+                  	</div>
+						<div class="container my-5">
+						    <ul id="progressbar" class="text-center">
+						        <li class="active" id="step1"><div class="d-none d-md-block">STEP 1</div></li>
+						        <li class="" id="step2"><div class="d-none d-md-block">STEP 2</div></li>
+						        <li class="" id="step3"><div class="d-none d-md-block">STEP 3</div></li>
+						        <li class="" id="step4"><div class="d-none d-md-block">STEP 4</div></li>
+						    </ul>
+						</div>
 						<hr>
 						<div>&nbsp;</div>
 						<h2>호스트 이용약관</h2>
 						<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>					
-						<div style="overflow:scroll;width:700px; height:600px;">
+						<div class="" style="overflow:scroll;width:700px; height:600px;">
 						<p>
 							제 1장 총칙<br>
 							제 1조 [목적]<br> 이 약관은 애숙이(이하 "회사"라 함)와 제휴점(이하 "회원"이라 함)간에
@@ -288,7 +294,7 @@ alert("등록된 숙소가 없습니다.");
 						</p>
 						</div>
 						<div>&nbsp;</div>
-						<form action="insertHotels.do" method="post">						
+						<form action="insertTerm.do" method="post">						
 							<div class="text-right">
 								<label><input type="checkbox" name="agree" id="agree"> 이용약관에 동의합니다.</label>
 							</div>

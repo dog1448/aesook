@@ -70,7 +70,7 @@
           </div>
           <!--#cancelModal: modalPush-->
 <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<form role="form" id="cancelBooking" method="post" action="cancelBooking.do">
+<form role="form" id="cancelBooking" method="post" action="kakaoPayCancel.do">
 <input type="hidden" name="bookingCode" value="${bookingInfo.bookingCode}">
   <div class="modal-dialog modal-notify modal-info" role="document">
     <!--Content-->
