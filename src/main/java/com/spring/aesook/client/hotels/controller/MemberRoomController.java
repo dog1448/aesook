@@ -80,7 +80,6 @@ public class MemberRoomController {
 		session.setAttribute("bookingCheckOut", bookingCheckOut);
 		MemberRoomVO memberRoomVO = memberRoomService.getRoomDescription(hotelsCode, roomSort);
 		MemberHotelsVO memberHotelsVO = memberRoomService.getHotel(hotelsCode);
-		System.out.println(memberHotelsVO.getHotelsType());
 		ManagerTermsVO managerTermsVO = managerTermsService.getTerms(memberHotelsVO.getHotelsType());
 		List<MemberHotelsImageVO> roomPicList = memberRoomService.getAllRoomPic(hotelsCode, roomSort);
 		

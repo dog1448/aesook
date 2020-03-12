@@ -51,7 +51,6 @@ public class MemberBookingPaymentController {
 		// ready Kakao
 		KakaoPayReadyVO ready = kakaoService.kakaoPayReady(vo);
 		vo.setTid(ready.getTid());
-		System.out.println(vo);
 		httpSession.setAttribute("booking", vo);
 		httpSession.setAttribute("ready", ready);
 		return "redirect:"+ ready.getNext_redirect_pc_url();
