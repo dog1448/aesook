@@ -20,7 +20,7 @@ public class MemberHotelsListController {
 	
 	// 숙소 리스트 게시 컨트롤러
 	@RequestMapping(value = "/hotelsList.do", method = RequestMethod.GET)
-	public String hotelsList(@RequestParam(value = "type", defaultValue = "ȣ��", required = false) String type, 
+	public String moveHotelsList(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type, 
 			@RequestParam(value = "sido") String sido, 
 			@RequestParam(value = "region") String region, 
 			Model model) {
@@ -29,14 +29,47 @@ public class MemberHotelsListController {
 		
 		List<MemberHotelsVO> list = memberHotelsListService.selectHotelsList(type, sido, region);
 		model.addAttribute("viewAll", list);			
+		model.addAttribute("type", type);			
+		model.addAttribute("sido", sido);			
+		model.addAttribute("region", region);			
 		
+		return "/accommodations";
+	}
+	
+	//정렬된 숙소 리스트
+	@RequestMapping(value = "/hotelsSortedList.do", method = RequestMethod.GET)
+	public String moveHotelsList(@RequestParam(value = "type", defaultValue = "호텔", required = false) String type, 
+			@RequestParam(value = "sido") String sido, 
+			@RequestParam(value = "region") String region, 
+			Model model, MemberHotelsVO vo) {
+		List<MemberHotelsVO> list = memberHotelsListService.selectHotelsList(type, sido, region, vo.getSortCondition());
+		model.addAttribute("viewAll", list);			
+		model.addAttribute("type", type);			
+		model.addAttribute("sido", sido);			
+		model.addAttribute("region", region);			
 		return "/accommodations";
 	}
 	
 	// 검색된 호텔 리스트
 	@RequestMapping(value = "/searchedHotelsList.do", method = RequestMethod.POST)
 	public String getSearchedHotelsList(MemberHotelsVO vo, Model model) {
+		String searchKeyword = vo.getSearchKeyword();
+		String searchCondition = vo.getSearchCondition();
 		List<MemberHotelsVO> searchedHotelsList = memberHotelsListService.getSearchedHotelsList(vo);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("searchCondition", searchCondition);
+		model.addAttribute("searchedList", searchedHotelsList);
+		return "/searchedAccommodations";
+	}
+	
+	//검색된 호텔 리스트를 정렬 및 재검색
+	@RequestMapping(value = "/getSearchedHotelsListOption.do", method = RequestMethod.GET)
+	public String getSearchedHotelsListOption(MemberHotelsVO vo, Model model) {
+		String searchKeyword = vo.getSearchKeyword();
+		String searchCondition = vo.getSearchCondition();
+		List<MemberHotelsVO> searchedHotelsList = memberHotelsListService.getSearchedHotelsList(vo);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("searchCondition", searchCondition);
 		model.addAttribute("searchedList", searchedHotelsList);
 		return "/searchedAccommodations";
 	}

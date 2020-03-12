@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -199,6 +200,34 @@ public class MemberHotelsController {
 			model.addAttribute("hotels", hotelsList);
 		}
 		return "/registeredAccommodation";
-	}	
+	}
+
+	@RequestMapping(value = "/modifyHotel.do", method = RequestMethod.GET)
+	public String moveModifyHotel(@RequestParam(value = "hotelsCode")int hotelsCode, HttpSession session, Model model){
+		MemberVO user = (MemberVO)session.getAttribute("login");
+		if(user != null) {
+			List<MemberRoomVO> list = memberRoomService.getRoomList(hotelsCode);
+			MemberHotelsVO hotelsVO = memberRoomService.getHotel(hotelsCode);
+			MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
+			List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
+			String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
+			model.addAttribute("list",list);
+			model.addAttribute("listSize",list.size());
+			model.addAttribute("vo", hotelsVO);
+			model.addAttribute("facilityVO", facilityVO);
+
+		}
+		return "/modifyHotels";
+	}
+
+	@RequestMapping(value = "/modifyHotel.do",method = RequestMethod.POST)
+	public String ModifyHotel(MemberHotelsVO memberHotelsVO , MemberRoomVO memberRoomVO){
+		System.out.println(memberHotelsVO);
+
+		System.out.println(memberRoomVO);
+		memberHotelsService.modifyHotels(memberHotelsVO);
+		memberHotelsService.modifyRooms(memberRoomVO);
+		return "redirect:/registeredAccommodation.do";
+	}
 	
 }

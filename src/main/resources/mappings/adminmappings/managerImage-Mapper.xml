@@ -49,5 +49,5 @@
 	<select id="getAdminImageList" resultType="managerAdminImage">
 		SELECT * FROM admin_image order by admin_Image_Status
 	</select>
-
+	
 </mapper>

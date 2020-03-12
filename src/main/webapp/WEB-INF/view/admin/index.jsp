@@ -161,25 +161,14 @@
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i> 월별 예약 건수
                             <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle"
-                                            data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            	<button class="btn btn-success" id="search1" style="height: 20px; margin-left: 10%; font-size:10px;">조회</button>
                             </div>
+                           	<div class="pull-right">                            	
+                              	<input type="text" id="year1" class="form-control yearpicker1" style="height: 20px; width: 90%; margin-left: 10%; text-align: center;">                              
+                            </div>
+                            <div class="pull-right">
+                            	<label for="date">연도 검색</label>
+                            </div>  
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -192,27 +181,16 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> 월별 금액
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 월별 매출
                             <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle"
-                                            data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            	<button class="btn btn-success" id="search2" style="height: 20px; margin-left: 10%; font-size:10px;">조회</button>
                             </div>
+                            <div class="pull-right">                            	
+                              	<input type="text" id="year2" class="form-control yearpicker2" style="height: 20px; width: 90%; margin-left: 10%; text-align: center;">                              
+                            </div>
+                            <div class="pull-right">
+                            	<label for="date">연도 검색</label>
+                            </div>                            
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -252,7 +230,7 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Pie Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 숙소별 예약률
                         </div>
                         <div class="panel-body">
                             <div>
@@ -283,25 +261,125 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script type="text/javascript">
-    var ctx = document.getElementById('lineChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+	$('.yearpicker1').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker1').datepicker('setDate', 'today');
+	var chartLabels1 = [];
+	var chartData1 = [];
+	var config1 = {
+	        // The type of chart we want to create
+	        type: 'line',
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
-            datasets: [{
-                label: '월별 예약 건수',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 0, ${marchCnt}, ${aprilCnt}, ${mayCnt},${juneCnt},${julyCnt},${augustCnt},${septemberCnt},${octoberCnt},${novemberCnt},${decemberCnt}]
-            }]
-        },
+	        // The data for our dataset
+	        data: {
+	            labels: chartLabels1,
+	            datasets: [{
+	                label: '예약수',
+	                backgroundColor: 'rgb(255, 204, 204)',
+	                borderColor: 'rgb(255, 99, 132)',
+	                data: chartData1
+	            }]
+	        },
+	        options: {}
+	    }
+	function createChart1() {
+		 var ctx1 = document.getElementById('lineChart').getContext('2d');
+		 window.myChart1 = new Chart(ctx1, config1);
+	}
+	$(document).ready(function() {
+		$.ajax({
+			url : "getMonthlyTotalBooking.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year1").val()				
+			},
+			success : function(data) {
+				// ArrayList loop
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {									
+							chartLabels1.push(map[key]);
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						if (key == 'booking_count') {
+							chartData1.push(map[key]);
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
 
-        // Configuration options go here
-        options: {}
-    });
+					}
+
+				}
+
+			}
+		})
+
+		createChart1();		
+	});
+	
+	$(document).on("click","#search1",function() {
+		chartLabels1.length = 0;
+		chartData1.length = 0;
+		if ($("#year1").val() == "") {
+			alert("연도를 선택해주세요.")
+			return;
+		}
+
+		$.ajax({
+			url : "getMonthlyTotalBooking.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year1").val()				
+			},
+			success : function(data) {
+				// ArrayList loop	
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {
+							chartLabels1.push(map[key])
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						
+						if (key == 'booking_count') {
+							chartData1.push(map[key])
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
+
+					}
+
+				}
+
+			}
+		})
+		var dataset = config1.data.datasets;
+		for(var i=0; i<dataset.length; i++){
+			console.log(dataset);
+			//데이터 갯수 만큼 반복
+			var data = dataset[i].data;
+			for(var j=0 ; j < data.length ; j++){
+				data[j] = chartData1[j];
+			}
+		}
+		window.myChart1.update();
+		
+	});
+   
 </script>
 
 <script>
@@ -345,25 +423,125 @@
 </script>
 
 <script type="text/javascript">
-    var ctx = document.getElementById('dollarChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+	$('.yearpicker2').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker2').datepicker('setDate', 'today');
+	var chartLabels = [];
+	var chartData = [];
+	var config = {
+	        // The type of chart we want to create
+	        type: 'line',
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
-            datasets: [{
-                label: '월별 금액',
+	        // The data for our dataset
+	        data: {
+	            labels: chartLabels,
+	            datasets: [{
+	                label: '수입',
 
-                borderColor: '#7CFF55',
-                data: [0, 0, ${totalPrice.get(0).totalPrice}, ${totalPrice.get(1).totalPrice}, 20, 30, 45,30,30,30,30,45]
-            }]
-        },
+	                borderColor: '#7CFF55',
+	                data: chartData
+	            }]
+	        },
+	        options: {}
+	    };
+	function createChart() {
+		 var ctx = document.getElementById('dollarChart').getContext('2d');
+		 window.myChart = new Chart(ctx, config);
+	}
+	$(document).ready(function() {
+		$.ajax({
+			url : "getMonthlyTotalPrice.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year2").val()				
+			},
+			success : function(data) {
+				// ArrayList loop
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {									
+							chartLabels.push(map[key]);
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						if (key == 'booking_total_price') {
+							chartData.push(map[key]);
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
 
-        // Configuration options go here
-        options: {}
-    });
+					}
+
+				}
+
+			}
+		})
+
+		createChart();		
+	});
+	
+	$(document).on("click","#search2",function() {
+		chartLabels.length = 0;
+		chartData.length = 0;
+		if ($("#year2").val() == "") {
+			alert("연도를 선택해주세요.")
+			return;
+		}
+
+		$.ajax({
+			url : "getMonthlyTotalPrice.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year2").val()				
+			},
+			success : function(data) {
+				// ArrayList loop	
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {
+							chartLabels.push(map[key])
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						
+						if (key == 'booking_total_price') {
+							chartData.push(map[key])
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
+
+					}
+
+				}
+
+			}
+		})
+		var dataset = config.data.datasets;
+		for(var i=0; i<dataset.length; i++){
+			console.log(dataset);
+			//데이터 갯수 만큼 반복
+			var data = dataset[i].data;
+			for(var j=0 ; j < data.length ; j++){
+				data[j] = chartData[j];
+			}
+		}
+		window.myChart.update();
+		
+	});
+   
 </script>
 
 <script type="text/javascript">
@@ -396,7 +574,7 @@
                     ,'purple'
                     ]
             }],
-            labels: ['모텔%','호텔%','게·하%','펜션%','리조트·콘도%']
+            labels: ['모텔%','호텔%','게스트하우스%','펜션%','리조트%']
         },
 
         // Configuration options go here

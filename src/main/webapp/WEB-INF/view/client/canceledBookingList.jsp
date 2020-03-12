@@ -36,7 +36,14 @@
 									<c:forEach var="canceledbooking" items="${canceledBookingList}">	
 										<div class="row">							
 											<div class="col-md-6 col-sm-6">
-												<div class="room-img"style="background-image: url(resources/client/images/room-1.jpg);"></div>
+												<c:if test="${canceledbooking.hotelsImageName ne null}">
+													<img src="${canceledbooking.hotelsImagePath}${canceledbooking.hotelsImageName}" 
+																	style="height: 280px; width: 100%;">
+												</c:if>
+												<c:if test="${canceledbooking.hotelsImageName eq null}">
+													<img src="resources/client/images/noImage.png" 
+																	style="height: 280px; width: 100%;">
+												</c:if>	
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">

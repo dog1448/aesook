@@ -2,6 +2,7 @@ package com.spring.aesook.client.hotels.service;
 
 import java.util.List;
 
+import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,16 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 	public int getHotelsCode() {		
 		return memberHotelsDAO.getHotelsCode();
 	}
-	
+
+	@Override
+	public void modifyHotels(MemberHotelsVO memberHotelsVO) {
+		memberHotelsDAO.modifyHotels(memberHotelsVO);
+	}
+
+	@Override
+	public void modifyRooms(MemberRoomVO memberRoomVO) {
+		memberHotelsDAO.modifyRooms(memberRoomVO);
+
+	}
+
 }

@@ -12,13 +12,32 @@
 </insert>
 
 <select id="selectHotels" resultType="memberHotels">
-	<![CDATA[
-	select * from hotels
+	select h.*,  i.hotels_image_name, i.hotels_image_path, i.hotels_image_status 
+	from hotels h, (select * from hotels_image where hotels_image_status='M') i
 	where member_id = #{memberId}
-	]]>
+	and h.hotels_code = i.hotels_code(+)
 </select>
 
 <select id="selectHotelsCode" resultType="int">
 	select hotels_seq.nextval from dual
 </select>
+
+	<update id="modifyHotels">
+		update HOTELS
+		set HOTELS_INFO = #{hotelsInfo},
+		HOTELS_INTRODUCE = #{hotelsIntroduce},
+		HOTELS_PATH = #{hotelsPath}
+		WHERE HOTELS_CODE = #{hotelsCode}
+	</update>
+
+	<update id="modifyRoom">
+		update ROOM
+		set ROOM_STANDARD_PRICE = #{roomStandardPrice},
+		ROOM_HOLIDAY_PRICE = #{roomHolidayPrice},
+		ROOM_STANDARD_CNT = #{roomStandardCnt},
+		ROOM_MAX_CNT = #{roomMaxCnt},
+		ROOM_ADD_PRICE = #{roomAddPrice}
+		WHERE HOTELS_CODE = #{hotelsCode}
+		AND ROOM_SORT = #{roomSort}
+	</update>
 </mapper>

@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.aesook.admin.terms.service.ManagerTermsService;
+import com.spring.aesook.admin.terms.vo.ManagerTermsVO;
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.hotels.service.MemberRoomService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
+import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Controller
@@ -35,6 +38,9 @@ public class MemberRoomController {
 
 	@Autowired
 	private MemberHotelsService memberHotelsService;
+	
+	@Autowired
+	ManagerTermsService managerTermsService;
 	
     @InitBinder
     protected void initBinder(WebDataBinder binder){
@@ -51,11 +57,15 @@ public class MemberRoomController {
 		MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
 		List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
 		String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
+		List<MemberHotelsImageVO> picList = memberRoomService.getAllPic(hotelsCode);
+		
+		
 		model.addAttribute("list",list);		
 		model.addAttribute("vo", hotelsVO);
 		model.addAttribute("facilityVO", facilityVO);
 		model.addAttribute("review", reviewVO);
 		model.addAttribute("scoreAvg", scoreAvg);
+		model.addAttribute("picList", picList);
 		return "/accommodations-room";
 	}		
 	
@@ -70,9 +80,14 @@ public class MemberRoomController {
 		session.setAttribute("bookingCheckOut", bookingCheckOut);
 		MemberRoomVO memberRoomVO = memberRoomService.getRoomDescription(hotelsCode, roomSort);
 		MemberHotelsVO memberHotelsVO = memberRoomService.getHotel(hotelsCode);
+		System.out.println(memberHotelsVO.getHotelsType());
+		ManagerTermsVO managerTermsVO = managerTermsService.getTerms(memberHotelsVO.getHotelsType());
+		List<MemberHotelsImageVO> roomPicList = memberRoomService.getAllRoomPic(hotelsCode, roomSort);
+		
 		model.addAttribute("memberhotelsVO", memberHotelsVO);
 		model.addAttribute("memberRoomVO", memberRoomVO);
-		
+		model.addAttribute("roomPicList", roomPicList);
+		model.addAttribute("memberTerms", managerTermsVO);
 		return "/roomDescription";
 	}
 }

@@ -48,7 +48,16 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 	public List<MemberHotelsVO> selectHotelsList(String type, String sido, String region) {		
 		
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
-		map = divide(type, sido, region);		
+		map = divide(type, sido, region);
+		map.put("sortCondition", "default");
+		return memberHotelsListDAO.selectHotelsList(map);
+	}
+	
+	@Override
+	public List<MemberHotelsVO> selectHotelsList(String type, String sido, String region, String sortCondition) {		
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		map = divide(type, sido, region);
+		map.put("sortCondition", sortCondition);
 		return memberHotelsListDAO.selectHotelsList(map);
 	}
 
@@ -59,7 +68,7 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 		return memberHotelsListDAO.selectHotelsListById(vo);
 	}
 
-	// 전체 숙소 top 4
+	// 전체 숙소 top 10
 	@Override
 	public List<MemberHotelsVO> selectAccommodationTop10() {		
 		return memberHotelsListDAO.selectAccommodationTop10();
@@ -75,6 +84,9 @@ public class MemberHotelsListServiceImpl implements MemberHotelsListService {
 	// 검색된 호텔 리스트
 	@Override
 	public List<MemberHotelsVO> getSearchedHotelsList(MemberHotelsVO vo) {
+		if(vo.getSortCondition()==null) {
+			vo.setSortCondition("default");
+		}
 		return memberHotelsListDAO.getSearchedHotelsList(vo);
 	}
 	

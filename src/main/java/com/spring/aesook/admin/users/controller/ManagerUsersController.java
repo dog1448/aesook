@@ -33,9 +33,9 @@ public class ManagerUsersController {
 		return "/usersInfo";
 	}
 	
-	@RequestMapping(value = "/updateUsersInfo.admin", method =RequestMethod.POST)
+	@RequestMapping(value = "/updateUsersInfo.admin", method = RequestMethod.POST)
 	public String updateUsersInfo(ManagerUsersVO vo) {
-		managerUsersService.updateManagerUsers(vo);
+		managerUsersService.modifyManagerUsers(vo);
 		return "redirect:usersTable.admin";
 	}
 	

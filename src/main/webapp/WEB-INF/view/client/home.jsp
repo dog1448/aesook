@@ -37,19 +37,13 @@ option  {
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-					<li style="background-image: url(resources/client/images/santorini.jpg);">
-						<div class="overlay"></div>
-						<div class="container-fluids">
-							<div class="row">
-								<div
-									class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-									<div class="slider-text-inner text-center">
-									<h2>집 같은 편안함</h2>
-									<h1>애숙이</h1>										
-									</div>
-								</div>
-							</div>
-						</div>
+					<li>
+						<c:if test="${not empty adminImageVO}">
+						<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 800px;">
+						</c:if>
+						<c:if test="${empty adminImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 800px;">
+						</c:if>						
 					</li>
 				</ul>
 			</div>
@@ -159,23 +153,39 @@ option  {
 						
 							<!-- 각 item이 하나의 숙소 링크 부분 -->
 							<c:forEach var="list" items="${top10}">
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">																				
-									</a>
-									<div class="desc">
-									<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>										
-										<h3>
-											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}">${list.hotelsName}</a>
-										</h3>
-										<span class="place">${list.hotelsAddress1}</span>
-										<p>${list.hotelsInfo}</p>
+								<div class="item">
+									<div class="hotel-entry">
+										<c:if test="${list.hotelsImageStatus eq 'M' }">										
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: 100%;">																					
+											</a>											
+										</c:if>
+										<c:if test="${list.hotelsImageStatus ne 'M' }">
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="resources/client/images/noImage.png" style="height: 280px; width: 100%;">																	
+											</a>
+										</c:if>	
+										<div class="desc">
+											<p class="star">
+												<span>
+													<c:if test="${list.scoreAvg == 0}">
+														<i class="icon-star-empty"></i>
+													</c:if>
+													<c:forEach var="i" begin="1" end="${list.scoreAvg}" step="1">
+														<i class="icon-star-full"></i>
+													</c:forEach>
+												</span>
+												${list.scoreCnt} Reviews
+											</p>									
+											<h3>
+												<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}">${list.hotelsName}</a>
+											</h3>
+											<span class="place">${list.hotelsAddress1}</span>
+											<p>${list.hotelsPath}</p>
+										</div>
 									</div>
 								</div>
-							</div>
-							</c:forEach>	
+							</c:forEach>					
 													
 						</div>
 					</div>
@@ -194,61 +204,48 @@ option  {
 					</div>
 				</div>
 			</div>
+			
 			<div class="tour-wrap">
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-1.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Athens, Greece</h2> <span class="city">Athens, Greece</span> <span
-						class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-2.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Thailand</h2> <span class="city">Athens,
-							Greece</span> <span class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-3.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Philippines</h2> <span class="city">Lipa,
-							Philippines</span> <span class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-4.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Greece</h2> <span class="city">Athens,
-							Greece</span> <span class="price">$450</span>
-				</span>
+					<div class="tour-img">						
+						<c:if test="${not empty event1ImageVO}">
+						<img alt="" src="${event1ImageVO.adminImagePath}${event1ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event1ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>						
+					</div> 					
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event2ImageVO}">
+						<img alt="" src="${event2ImageVO.adminImagePath}${event2ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event2ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>	
+					</div> 						
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event3ImageVO}">
+						<img alt="" src="${event3ImageVO.adminImagePath}${event3ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event3ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>	
+					</div> 					
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event4ImageVO}">
+						<img alt="" src="${event4ImageVO.adminImagePath}${event4ImageVO.adminImageName}" style="width: 100%; height: 300px">
+						</c:if>
+						<c:if test="${empty event4ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 300px">
+						</c:if>	
+					</div>
 				</a>
-
 			</div>
 		</div>
 		<%@ include file="footer.jspf"%>

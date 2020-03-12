@@ -1,6 +1,7 @@
 package com.spring.aesook.admin.image.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,47 @@ public class ManagerImageServiceImpl implements ManagerImageService {
 	public List<ManagerAdminImageVO> getAdminImageList() {
 		return managerImageDAO.getAdminImageList();
 	}
-	
-	
-	
+
+	@Override
+	public ManagerAdminImageVO getLoginImage() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("LI");
+		return managerImageDAO.getAdminImage(vo);
+	}
+
+	@Override
+	public ManagerAdminImageVO getHomeImage() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("M");
+		return managerImageDAO.getAdminImage(vo);
+	}
+
+	@Override
+	public ManagerAdminImageVO getEvent1Image() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("E1");
+		return managerImageDAO.getAdminImage(vo);
+	}
+
+	@Override
+	public ManagerAdminImageVO getEvent2Image() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("E2");
+		return managerImageDAO.getAdminImage(vo);
+	}
+
+	@Override
+	public ManagerAdminImageVO getEvent3Image() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("E3");
+		return managerImageDAO.getAdminImage(vo);
+	}
+
+	@Override
+	public ManagerAdminImageVO getEvent4Image() {
+		ManagerAdminImageVO vo = new ManagerAdminImageVO();
+		vo.setAdminImageStatus("E4");
+		return managerImageDAO.getAdminImage(vo);
+	}
+
 }

@@ -36,7 +36,7 @@ canvas {
 							<nav class="navbar navbar-default navbar-static-top">
 								<div id="navbar" class="navbar-collapse collapse">
 									<ul class="nav navbar-nav">
-										<li class="active"><a href="statistics.do">수입</a></li>
+										<li class="active"><a href="statistics.do">월별 수입</a></li>
 										<li><a href="statisticsRoom.do">객실별 예약률</a></li>										
 									</ul>
 								</div>
@@ -47,7 +47,7 @@ canvas {
 							<div class="form-field">
 								<label for="date">연도 검색:</label>
 								<i class="icon icon-calendar2"></i> 
-								<input type="text" id="year" class="form-control yearpicker" placeholder="연도 선택">
+								<input type="text" id="year" class="form-control yearpicker" style="text-align: center;">
 							</div>
 							<div>&nbsp;</div>
 							<div class="col-md text-right">
@@ -174,7 +174,7 @@ canvas {
 				},
 				title : {
 					display : true,
-					text : '월간 수입'
+					text : '월간 수입 (단위 : 원)'
 				}
 				
 			}

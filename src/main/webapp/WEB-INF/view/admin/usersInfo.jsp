@@ -52,9 +52,10 @@
                                                     <label>Status</label>
                                                     <select class="form-control" id="statusSelectBox" name = "memberStatus">
                                                         <option value="G">G</option>
-                                                        <option value="M">M</option>
+                                                        <option value="M">H</option>
                                                         <option value="B">B</option>
                                                         <option value="D">D</option>
+                                                        <option value="D">R</option>
                                                     </select>
                                                 </div>
                                                 </fieldset>
@@ -84,7 +85,7 @@
 </div>
 <%@ include file="javascript.jspf" %>
 	<script>
-		      var isDisabled = false;
+		    var isDisabled = false;
 			$(document).ready(function() {
                 $('#statusSelectBox').val('${usersInfo.memberStatus}').prop('selected', true); 
             });

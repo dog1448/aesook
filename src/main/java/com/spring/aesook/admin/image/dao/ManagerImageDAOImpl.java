@@ -40,4 +40,5 @@ public class ManagerImageDAOImpl implements ManagerImageDAO {
 	public List<ManagerAdminImageVO> getAdminImageList() {
 		return sqlSessionTemplate.selectList(namespace + ".getAdminImageList");
 	}
+
 }

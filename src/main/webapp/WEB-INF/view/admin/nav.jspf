@@ -79,6 +79,9 @@
                                     <li>
                                         <a href="insertPic.admin">Insert Images</a>
                                     </li>
+                                    <li>
+                                    	<a href="termsBoard.admin">Terms Board</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>

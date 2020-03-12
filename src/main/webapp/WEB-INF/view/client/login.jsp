@@ -5,36 +5,12 @@
 <html>
 <head>
 
-<c:if test="${check eq 'noNameEmail'}">
-	<script type="text/javascript">
-		alert("이름 또는 이메일이 일치하지 않습니다.");
-	</script>
-</c:if>
-<c:if test="${check eq 'findId'}">
-	<script type="text/javascript">
-		alert("ID가 이메일로 발송되었습니다.");
-	</script>
-</c:if>
 <c:if test="${noLogin eq true}">
 	<script type="text/javascript">
 		alert("로그인이 필요한 서비스입니다.");
 	</script>
 </c:if>
-<c:if test="${check eq 'noId'}">
-	<script type="text/javascript">
-		alert("해당되는 아이디가 없습니다.");
-	</script>
-</c:if>
-<c:if test="${check eq 'noPass'}">
-	<script type="text/javascript">
-		alert("비밀번호가 틀립니다.");
-	</script>
-</c:if>
-<c:if test="${check eq 'findPass'}">
-	<script type="text/javascript">
-		alert("비밀번호가 메일로 발송되었습니다.");
-	</script>
-</c:if>
+
 <script>
 	function checkz() {
 
@@ -103,8 +79,14 @@
 
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more"
-				style="background-image: url('resources/client/images/bg-02.jpg');"></div>
+			<div class="login100-more">
+				<c:if test="${not empty adminImageVO}">
+				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 800px;">
+				</c:if>
+				<c:if test="${empty adminImageVO}">
+				<img src="resources/client/images/noImage.png" style="width: 100%; height: 800px;">
+				</c:if>
+			</div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				<form class="login100-form validate-form" action="login.do"
@@ -183,7 +165,7 @@
 				}
 			});
 		};
-		//]]>
+		//]]>	
 	</script>
 
 </body>
