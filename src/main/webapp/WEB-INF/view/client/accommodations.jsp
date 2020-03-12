@@ -70,8 +70,18 @@
 					</div>
 					<div class="col-md-12 col-md-offset-1">
 						<div class="row">
+							<c:if test="${empty viewAll}">
+								<div class="col-md-10 animate-box text-center">
+									<div>&nbsp;</div>
+									<div>&nbsp;</div>
+									<span class="icon"><img src="resources/client/images/no_file.jpg" width="100" height="100" /></span>
+									<div>&nbsp;</div>
+									<h3>
+										<font color="#0075b4">조회되는 목록이 없습니다.</font>
+									</h3>
+								</div>
+							</c:if>
 							<div class="wrap-division">
-							
 								<c:forEach var="list" items="${viewAll}">
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="hotel-entry">
@@ -122,7 +132,7 @@
 <div class="modal fade" id="modalSort" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form role="form" method="post" action="hotelsList.do">
+    <form role="form" method="GET" action="hotelsSortedList.do">
      <input type="hidden" name="type" value="${type}">
      <input type="hidden" name="sido" value="${sido}">
      <input type="hidden" name="region" value="${region}">
@@ -142,8 +152,8 @@
       </div>
       <!--Footer-->
       <div class="modal-footer">
-        <button onsubmit="" class="btn btn-info btn-outline">정렬하기</button>
-        <button type="submit" class="btn btn-default btn-outline" data-dismiss="modal">닫기</button>
+        <button type="submit" class="btn btn-info btn-outline">정렬하기</button>
+        <button class="btn btn-default btn-outline" data-dismiss="modal">닫기</button>
       </div>
     </div>
     </form>
