@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -161,14 +162,25 @@ public class MemberHotelsController {
 	}
 
 	@RequestMapping(value = "/modifyHotel.do", method = RequestMethod.GET)
-	public String modifyHotel(HttpSession session, Model model){
+	public String moveModifyHotel(@RequestParam(value = "hotelsCode")int hotelsCode, HttpSession session, Model model){
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		if(user != null) {
-			model.addAttribute("user", user);
-			List<MemberHotelsVO> hotelsList = memberHotelsService.getMyHotels(user);
-			model.addAttribute("hotels", hotelsList);
+			List<MemberRoomVO> list = memberRoomService.getRoomList(hotelsCode);
+			MemberHotelsVO hotelsVO = memberRoomService.getHotel(hotelsCode);
+			MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
+			List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
+			String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
+			model.addAttribute("list",list);
+			model.addAttribute("vo", hotelsVO);
+			model.addAttribute("facilityVO", facilityVO);
+
 		}
 		return "/modifyHotels";
+	}
+
+	@RequestMapping(value = "/modifyHotel.do",method = RequestMethod.POST)
+	public String ModifyHotel(){
+		return null;
 	}
 	
 }

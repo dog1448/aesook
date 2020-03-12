@@ -27,7 +27,7 @@
 							<div>&nbsp;</div>
 							<div class="row">
 								<c:forEach var="list" items="${hotels}">
-									<a href="${path}/modifyHotel.do?${list.hotelsCode}">
+									<a href="${path}/modifyHotel.do?hotelsCode=${list.hotelsCode}">
 										<div class="col-md-12">
 											<div class="room-wrap">
 												<div class="row">
