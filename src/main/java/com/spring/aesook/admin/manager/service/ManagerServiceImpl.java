@@ -1,5 +1,7 @@
 package com.spring.aesook.admin.manager.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -77,57 +79,42 @@ public class ManagerServiceImpl implements ManagerService {
 
 
 	//Statistics(MIDDLE)--------------------------------------------------------------------------------------------------------
-
 	@Override
-	public int marchReservationCount() {
-		return managerDAO.marchReservationCount();
+	public List<HashMap<Object, Object>> getTotalBooking(String startYear) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		String endYear = Integer.toString((Integer.parseInt(startYear) + 1));
+		startYear = startYear + "0101";		
+		map.put("startYear", startYear);		
+		endYear = endYear + "0101";
+		map.put("endYear", endYear);
+		
+		List<HashMap<Object, Object>> tmpList = new ArrayList<HashMap<Object,Object>>();
+				
+		
+		for(int i = 1; i<=12; i++) {
+			HashMap<Object, Object> tmpMap = new HashMap<Object, Object>();
+			tmpMap.put("booking_date", String.valueOf(i));
+			tmpMap.put("booking_count", 0);
+			tmpList.add(i-1,tmpMap);
+		}
+		
+		
+		List<HashMap<Object, Object>> monthList = managerDAO.getTotalBooking(map);
+		
+		for(int i=0; i < monthList.size(); i++) {
+			for(int j=0; j<tmpList.size(); j++) {
+				if(monthList.get(i).get("booking_date").equals(
+						tmpList.get(j).get("booking_date"))) {
+					tmpList.remove(j);
+					tmpList.add(j,monthList.get(i));
+					break;
+				}
+			}
+		}
+		
+		return tmpList;
 	}
-
-	@Override
-	public int aprilReservationCount() {
-		return managerDAO.aprilReservationCount();
-	}
-
-	@Override
-	public int mayReservationCount() {
-		return managerDAO.mayReservationCount();
-	}
-
-	@Override
-	public int juneReservationCount() {
-		return managerDAO.juneReservationCount();
-	}
-
-	@Override
-	public int julyReservationCount() {
-		return managerDAO.julyReservationCount();
-	}
-
-	@Override
-	public int augustReservationCount() {
-		return managerDAO.augustReservationCount();
-	}
-
-	@Override
-	public int septemberReservationCount() {
-		return managerDAO.septemberReservationCount();
-	}
-
-	@Override
-	public int octoberReservationCount() {
-		return managerDAO.octoberReservationCount();
-	}
-
-	@Override
-	public int novemberReservationCount() {
-		return managerDAO.novemberReservationCount();
-	}
-
-	@Override
-	public int decemberReservationCount() {
-		return managerDAO.decemberReservationCount();
-	}
-
+	
 	
 	//Statistic(pie)
 
@@ -161,9 +148,41 @@ public class ManagerServiceImpl implements ManagerService {
 		return managerDAO.allReservationCount();
 
 	}
-	@Override
-	public List<ManagerStatisticsVO> totalPrice() {
-		return managerDAO.totalPrice();
 
+	@Override
+	public List<HashMap<Object, Object>> getTotalList(String startYear) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		String endYear = Integer.toString((Integer.parseInt(startYear) + 1));
+		startYear = startYear + "0101";		
+		map.put("startYear", startYear);		
+		endYear = endYear + "0101";
+		map.put("endYear", endYear);
+		
+		List<HashMap<Object, Object>> tmpList = new ArrayList<HashMap<Object,Object>>();
+				
+		
+		for(int i = 1; i<=12; i++) {
+			HashMap<Object, Object> tmpMap = new HashMap<Object, Object>();
+			tmpMap.put("booking_date", String.valueOf(i));
+			tmpMap.put("booking_total_price", 0);
+			tmpList.add(i-1,tmpMap);
+		}
+		
+		
+		List<HashMap<Object, Object>> monthList = managerDAO.getTotalPrice(map);
+		
+		for(int i=0; i < monthList.size(); i++) {
+			for(int j=0; j<tmpList.size(); j++) {
+				if(monthList.get(i).get("booking_date").equals(
+						tmpList.get(j).get("booking_date"))) {
+					tmpList.remove(j);
+					tmpList.add(j,monthList.get(i));
+					break;
+				}
+			}
+		}
+		
+		return tmpList;
 	}
+
 }

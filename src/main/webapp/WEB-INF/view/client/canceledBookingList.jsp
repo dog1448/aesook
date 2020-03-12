@@ -38,11 +38,11 @@
 											<div class="col-md-6 col-sm-6">
 												<c:if test="${canceledbooking.hotelsImageName ne null}">
 													<img src="${canceledbooking.hotelsImagePath}${canceledbooking.hotelsImageName}" 
-																	style="height: 280px; width: 350px;">
+																	style="height: 280px; width: 100%;">
 												</c:if>
 												<c:if test="${canceledbooking.hotelsImageName eq null}">
 													<img src="resources/client/images/noImage.png" 
-																	style="height: 280px; width: 350px;">
+																	style="height: 280px; width: 100%;">
 												</c:if>	
 											</div>
 											<div class="col-md-6 col-sm-6">

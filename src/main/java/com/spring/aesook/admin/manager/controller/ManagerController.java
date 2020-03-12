@@ -1,6 +1,8 @@
 package com.spring.aesook.admin.manager.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -154,20 +156,7 @@ public class ManagerController {
 		model.addAttribute("motelCnt",managerService.totalMotelCount());
 		model.addAttribute("pensionCnt",managerService.totalPensionCount());
 		model.addAttribute("resortCnt",managerService.totalResortCount());
-		model.addAttribute("userCnt",managerService.totalUserCount());
-
-		//Statistics MIDDLE
-		model.addAttribute("marchCnt",managerService.marchReservationCount());
-		model.addAttribute("aprilCnt",managerService.aprilReservationCount());
-		model.addAttribute("mayCnt",managerService.mayReservationCount());
-		model.addAttribute("juneCnt",managerService.juneReservationCount());
-		model.addAttribute("julyCnt",managerService.julyReservationCount());
-		model.addAttribute("augustCnt",managerService.augustReservationCount());
-		model.addAttribute("septemberCnt",managerService.septemberReservationCount());
-		model.addAttribute("octoberCnt",managerService.octoberReservationCount());
-		model.addAttribute("novemberCnt",managerService.novemberReservationCount());
-		model.addAttribute("decemberCnt",managerService.decemberReservationCount());
-
+		model.addAttribute("userCnt",managerService.totalUserCount());		
 
 		//Statistic Pie
 		model.addAttribute("hotelReservationCnt",managerService.hotelReservationCount());
@@ -177,12 +166,29 @@ public class ManagerController {
 		model.addAttribute("guesthouseReservationCnt",managerService.guesthouseReservationCount());
 		model.addAttribute("allReservationCnt",managerService.allReservationCount());
 
-
-		//Statistics BOTTOM
-		model.addAttribute("totalPrice",managerService.totalPrice());
-
 		return "/index";
 	}
+	
+	//월별 수입
+	@RequestMapping(value = "/getMonthlyTotalPrice.admin", method = RequestMethod.POST)
+	@ResponseBody
+	public List<HashMap<Object, Object>> getMonthlyTotalPrice(@RequestParam("year") String year){
+		
+		List<HashMap<Object, Object>> list = managerService.getTotalList(year);
+				
+		return list;
+	}
+	
+	//월별 예약수
+	@RequestMapping(value = "/getMonthlyTotalBooking.admin", method = RequestMethod.POST)
+	@ResponseBody
+	public List<HashMap<Object, Object>> getMonthlyTotalBooking(@RequestParam("year") String year){
+		
+		List<HashMap<Object, Object>> list = managerService.getTotalBooking(year);
+				
+		return list;
+	}
+	
 	
 	
 	// --------------------------- Alarm -------------------------------------
