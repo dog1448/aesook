@@ -13,6 +13,10 @@ hr {
 	 width : 70%;
 	 border-top : 2px solid #eeeeee;
 }
+
+.crown {
+	width: auto;
+}
 </style>
 <script type="text/javascript">
 // mainPic modify

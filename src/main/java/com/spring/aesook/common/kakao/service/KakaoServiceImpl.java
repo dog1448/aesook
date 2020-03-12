@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
 import com.spring.aesook.common.kakao.vo.KakaoPayApprovalVO;
+import com.spring.aesook.common.kakao.vo.KakaoPayCancelVO;
 import com.spring.aesook.common.kakao.vo.KakaoPayReadyVO;
 
 @Service("kakaoService")
@@ -64,6 +65,27 @@ public class KakaoServiceImpl implements KakaoService {
 			KakaoPayApprovalVO kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
 			// log.info
 			return kakaoPayApprovalVO;
+			
+		} catch (RestClientException | URISyntaxException e) {
+			e.printStackTrace(); 
+		}
+		return null;
+	}
+	
+	public KakaoPayCancelVO kakaoPayCancel(MemberBookingVO booking) {
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		params.add("cid", "TC0ONETIME");
+		params.add("tid", booking.getTid());
+		params.add("cancel_amount", Integer.toString(booking.getBookingTotalPrice()));
+		params.add("cancel_tax_free_amount", "0");
+		// params.add("cancel_available_amount","");
+		
+		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String,String>>(params, KakaoUtil.getHeader());
+		try {
+			KakaoPayCancelVO kakaoPayCancelVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/cancel"), body, KakaoPayCancelVO.class);
+			// log.info
+			return kakaoPayCancelVO;
 			
 		} catch (RestClientException | URISyntaxException e) {
 			e.printStackTrace(); 

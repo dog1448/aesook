@@ -18,6 +18,7 @@ import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.common.kakao.service.KakaoService;
 import com.spring.aesook.common.kakao.service.KakaoUtil;
 import com.spring.aesook.common.kakao.vo.KakaoPayApprovalVO;
+import com.spring.aesook.common.kakao.vo.KakaoPayCancelVO;
 import com.spring.aesook.common.kakao.vo.KakaoPayReadyVO;
 
 @Controller
@@ -83,6 +84,21 @@ public class MemberBookingPaymentController {
 		// remove session values
 		httpSession.removeAttribute("booking");
 		httpSession.removeAttribute("ready");
+		return "/successBooking";
+	}
+	
+	@RequestMapping(value="/kakaoPayCancel.do", method = RequestMethod.POST)
+	public String cancelKakao(@RequestParam("bookingCode") int bookingCode, Model model) {
+		MemberBookingVO booking = memberBookingCheckService.getBookingInfo(bookingCode);
+		if (booking != null) {
+			KakaoPayCancelVO kakaoCancel = kakaoService.kakaoPayCancel(booking);
+			if (kakaoCancel.getStatus().equals("CANCEL_PAYMENT")) {
+				// 취소 완료 되었을 때
+				model.addAttribute("message", "성공적으로 취소되었습니다.");
+			} else {
+				model.addAttribute("message", "취소에 실패하였습니다. 다시 시도해 주세요");
+			}
+		}
 		return "/successBooking";
 	}
 	

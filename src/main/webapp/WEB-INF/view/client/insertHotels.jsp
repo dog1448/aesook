@@ -7,11 +7,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 function checkz() {
-	   //호텔타입 입력 확인
-    if($(':radio[name="hotelsType"]:checked').length < 1){
-      alert("숙소의 타입을 입력해주세요");
-      return;
-    }
+	
 	   //호텔이름 입력 확인
     if($("#hotelsName").val() == ""){
       alert("숙소의 이름을 입력해주세요");
@@ -77,11 +73,17 @@ function openZipAddress(){
     	}).open();    	
     }	
 </script>
+<link href="resources/client/css/step.css" rel="stylesheet">
+<style type="text/css">
+textarea {
+	width: 100%;
+}
+</style>
 </head>
 
 <body>
-
-
+<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
    <div class="colorlib-loader">  </div>
 
    <div id="page">   
@@ -94,21 +96,26 @@ function openZipAddress(){
                  <%@ include file="managementSidebar.jspf" %>
                        
                   <div class="col-three-forth animate-box">
-                  	<nav class="navbar navbar-default">					  				    
-					    <ul class="nav navbar-nav">
-					   	  <li><a href="#">약관 동의</a></li>
-					      <li class="active"><a href="#">숙소 등록</a></li>
-					      <li><a href="#">객실 등록</a></li>					    
-					    </ul>					  
-					</nav>                 
+                  <div>
+                  	<h2><strong>REGISTER HOTEL</strong></h2>
+                  </div>
+                    <hr> 
+                  	<div class="container my-5">
+						    <ul id="progressbar" class="text-center">
+						        <li class="active" id="step1"><div class="d-none d-md-block">STEP 1</div></li>
+						        <li class="active" id="step2"><div class="d-none d-md-block">STEP 2</div></li>
+						        <li class="" id="step3"><div class="d-none d-md-block">STEP 3</div></li>
+						        <li class="" id="step4"><div class="d-none d-md-block">STEP 4</div></li>
+						    </ul>
+						</div>             
                      <hr>      
-                     <form role="form" method="post" action="insertHotelsAll.do" id="insertHotelsAll">
+                     <form role="form" method="post" action="inserHotels.do" id="insertHotelsAll">
                         <h3>숙소 종류</h3>
                         <div class="row form-group">
                            <div class="col-md-12">
                               &nbsp;&nbsp;&nbsp;&nbsp;
 
-                              <label><input type="radio" id="hotelsType" name="hotelsType" value="호텔">호텔</label>
+                              <label><input type="radio" id="hotelsType" name="hotelsType" checked="checked" value="호텔">호텔</label>
                                  &nbsp;&nbsp;&nbsp;&nbsp;
                                  <label><input type="radio" id="hotelsType" name="hotelsType" value="모텔">모텔</label>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -138,7 +145,6 @@ function openZipAddress(){
                               <div class="col-lg-6">
                                  <div class="input-group">
                                     <input type="text" id="hotelsZipcode" name="hotelsZipcode" class="form-control" placeholder="우편번호" readonly="readonly">
-                                    
                                     <span class="input-group-btn">
                                        <button class="btn btn-default" onclick="openZipAddress()" type="button">검색</button>
                                     </span>
@@ -172,10 +178,9 @@ function openZipAddress(){
                            <label><input type="checkbox" value="Y" name="facilityAmenity">&nbsp;&nbsp;어메니티</label>&nbsp;&nbsp;
                         </div>
                         <hr>
-                        <div>
+                        <div class="text-right">
                          <button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>
                            <button type="button" onclick="checkz()" class="btn btn-info">다음</button>
-                          
                         </div>
                      </form>
                   </div>

@@ -5,10 +5,36 @@
 <html>
 <head>
 <%@include file="head.jspf"%>
-
+<link href="resources/client/css/step.css" rel="stylesheet">
+<link rel="stylesheet" href="resources/client/css/image.css">
+<style type="text/css">
+td, th {
+	align-items: center;
+	align-content: center;
+}
+</style>
 </head>
+<script type="text/javascript">
+$(document).ready(function(){
+    var i=1;
+   $("#add_row").click(function(){
+    $('#addr'+i).html("<tr><td><input name='roomList["+i+"].roomSort' type='text' placeholder='TYPE' class='form-control input-md'/> </td><td><input  name='roomList["+i+"].roomStandardCnt' type='text' placeholder='기준인원' class='form-control input-md'></td><td><input name='roomList["+i+"].roomMaxCnt' type='text' placeholder='최대인원' class='form-control input-md'></td><td><input  name='roomList["+i+"].roomStandardPrice' type='text' placeholder='평일요금'  class='form-control input-md'></td><td><input name='roomList["+i+"].roomHolidayPrice' type='text' placeholder='공휴일요금' class='form-control input-md'/></td><td><input name='roomList["+i+"].roomAddPrice' type='text' placeholder='추가요금' class='form-control input-md' /></td></tr><tr><td colspan='6'><input name='roomList["+i+"].roomInfo'placeholder='상세설명' type='text' class='form-control input-md' /></td></tr>");
 
+    $('#tab_logic').append('<tbody id="addr'+(i+1)+'"></tr>');
+    i++; 
+});
+   $("#delete_row").click(function(){
+       if(i>1){
+		 $("#addr"+(i-1)).html('');
+		 i--;
+		 }
+	 });
+
+});
+</script>
 <body>
+<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
 	<div class="colorlib-loader"></div>
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation"></nav>
@@ -20,106 +46,75 @@
 						<!-- 사이드바 -->
 						<%@ include file="managementSidebar.jspf"%>
 						<div class="col-three-forth animate-box">
-							<nav class="navbar navbar-default">
-								<ul class="nav navbar-nav">
-									<li><a href="#">약관 동의</a></li>
-									<li><a href="#">숙소 등록</a></li>
-									<li class="active"><a href="#">객실 등록</a></li>
-								</ul>
-							</nav>
+						<div>
+		                  	<h2><strong>WRITE THE ROOM TYPE</strong></h2>
+		                    <hr> 
+                  		</div>
+						<div class="container my-5">
+						    <ul id="progressbar" class="text-center">
+						        <li class="active" id="step1"><div class="d-none d-md-block">STEP 1</div></li>
+						        <li class="active" id="step2"><div class="d-none d-md-block">STEP 2</div></li>
+						        <li class="active" id="step3"><div class="d-none d-md-block">STEP 3</div></li>
+						        <li class="" id="step4"><div class="d-none d-md-block">STEP 4</div></li>
+						    </ul>
+						</div>
 							<hr>
-							<form method="post" action="insertRoomSort.do">
-
-								<!-- 객체 자체로 넘겨받는데 못받음 그래서 이렇게 한거임... -->
-								<input type="hidden" name="hotelsName"
-									value="${memberHotelsVO.hotelsName}"> <input
-									type="hidden" name="hotelsType"
-									value="${memberHotelsVO.hotelsType}"> <input
-									type="hidden" name="memberId"
-									value="${memberHotelsVO.memberId}"> <input
-									type="hidden" name="hotelsPhone"
-									value="${memberHotelsVO.hotelsPhone}"> <input
-									type="hidden" name="hotelsZipcode"
-									value="${memberHotelsVO.hotelsZipcode}"> <input
-									type="hidden" name="hotelsAddress1"
-									value="${memberHotelsVO.hotelsAddress1}"> <input
-									type="hidden" name="hotelsAddress2"
-									value="${memberHotelsVO.hotelsAddress2}"> <input
-									type="hidden" name="hotelsPath"
-									value="${memberHotelsVO.hotelsPath}"> <input
-									type="hidden" name="hotelsInfo"
-									value="${memberHotelsVO.hotelsInfo}"> <input
-									type="hidden" name="hotelsIntroduce"
-									value="${memberHotelsVO.hotelsIntroduce}"> <input
-									type="hidden" name="facilityParking"
-									value="${memberFacilityVO.facilityParking}"> <input
-									type="hidden" name="facilityPool"
-									value="${memberFacilityVO.facilityPool}"> <input
-									type="hidden" name="facilityBreakfast"
-									value="${memberFacilityVO.facilityBreakfast}"> <input
-									type="hidden" name="facilityFitness"
-									value="${memberFacilityVO.facilityFitness}"> <input
-									type="hidden" name="facilityWifi"
-									value="${memberFacilityVO.facilityWifi}"> <input
-									type="hidden" name="facilityParty"
-									value="${memberFacilityVO.facilityParty}"> <input
-									type="hidden" name="facilityPc"
-									value="${memberFacilityVO.facilityPc}"> <input
-									type="hidden" name="facilityAmenity"
-									value="${memberFacilityVO.facilityAmenity}">
-
-								<button type="button" class="btn btn-success" onclick="add();">객실추가</button>
-								<div>&nbsp;</div>
-								<div id="hey">
-									<div class="form-group">
-										<div class="col-sm-6">
-											<label>방 이름</label> <input type="text" class="form-control"
-												placeholder="Ex>101호, 새싹방" name="roomName" id="roomName">
-										</div>
-										<div class="col-sm-6">
-											<label>방 종류</label> <input type="text" class="form-control"
-												placeholder="Ex>디럭스룸, 스위트룸" name="roomSort" id="roomSort">
-										</div>
-										<div class="col-sm-6">
-											<label>기준 인원</label> <input type="text" class="form-control"
-												placeholder="인원 수 입력" name="roomStandardCnt"
-												id="roomStandardCnt">
-										</div>
-										<div class="col-sm-6">
-											<label>최대 인원</label> <input type="text" class="form-control"
-												placeholder="인원 수 입력" name="roomMaxCnt" id="roomMaxCnt">
-										</div>
-										<div class="col-sm-6">
-											<label>평일 요금</label> <input type="text" class="form-control"
-												placeholder="요금 입력" name="roomStandardPrice"
-												id="roomStandardPrice">
-										</div>
-										<div class="col-sm-6">
-											<label>공휴일 요금</label> <input type="text" class="form-control"
-												placeholder="요금 입력" name="roomHolidayPrice"
-												id="roomHolidayPrice">
-										</div>
-										<div class="col-sm-6">
-											<label>인원 추가당 요금</label> <input type="text"
-												class="form-control" placeholder="요금 입력" name="roomAddPrice"
-												id="roomAddPrice">
-										</div>
-										<div class="col-sm-6">
-											<label>방 상세설명</label> <input type="text" class="form-control"
-												placeholder="설명 입력" name="roomRoomInfo" id="roomRoomInfo">
-										</div>
-									</div>
-									<div>&nbsp;</div>
-									<div>&nbsp;</div>
-								</div>
-								<div>&nbsp;</div>
-								<hr>
-								<div>
-									<button type="button" class="btn btn-warning"
-										onclick="history.go(-1)">이전</button>
-									<button type="submit" id="submit" class="btn btn-info">등록</button>
-
-								</div>
+							<form method="post" action="insertRoomSort.do" id="">
+								  <div class="panel-body">
+								    <div class="row">
+								    	<div class="col-md-12 column">
+											<table class="table table-bordered table-hover" id="tab_logic" border="1">
+												<thead>
+													<tr>
+														<th>방 종류</th>
+														<th>기준인원</th>
+														<th>최대인원</th>
+								                		<th>평일요금</th>
+														<th>공휴일요금</th>
+								                        <th>인원 추가 요금</th>
+													</tr>
+												</thead>
+												<tbody id='addr0'>
+													<tr>
+														<td>
+														<input type="text" name='roomList[0].roomSort'  placeholder='TYPE' class="form-control"/>
+														</td>
+														<td>
+														<input type="text" name='roomList[0].roomStandardCnt' placeholder='기준인원'  class="form-control"/>
+														</td>
+								                        <td>
+								    					<input type="text" name='roomList[0].roomMaxCnt' placeholder='최대인원'  class="form-control"/>
+														</td>
+														<td>
+														<input type="text" name='roomList[0].roomStandardPrice' placeholder='평일요금' class="form-control"/>
+														</td>
+								                        <td>
+								                        <input type='text' name='roomList[0].roomHolidayPrice' placeholder='공휴일요금' class="form-control" />    
+								                        </td>
+								                        <td>
+								                        <input type='text' name='roomList[0].roomAddPrice' placeholder='추가 요금' class="form-control" />    
+								                        </td>
+								                     <tr>
+									                    <td colspan="6">
+									                    <input type='text' name='roomList[0].roomInfo' placeholder='상세설명' class="form-control" />    
+									                    </td>
+								                     <tr>
+													</tr>
+												</tbody>
+												<tbody id='addr1'>
+												
+												</tbody>
+											</table>
+								                <a id="add_row" class="btn btn-info btn-outline"> 추가</a>
+								                <a id="delete_row" class="btn btn-danger btn-outline pull-right"></span> 삭제</a>
+												</div>
+												</div>
+									 	</div>
+											<hr>
+					                        <div class="text-right">
+					                         <button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>
+					                           <button type="submit" class="btn btn-info">다음</button>
+					                        </div>
 							</form>
 
 						</div>
@@ -136,16 +131,7 @@
 	</div>
 	<script type="text/javascript">
 		
-		var room = '<div class="form-group"><div class="col-sm-6"><label>방 이름</label><input type="text" class="form-control" placeholder="Ex>101호, 새싹방" name="roomName" id="roomName"></div><div class="col-sm-6"><label>방 종류</label><input type="text" class="form-control" placeholder="Ex>디럭스룸, 스위트룸" name="roomSort" id="roomSort"></div><div class="col-sm-6"><label>기준 인원</label><input type="text" class="form-control" placeholder="인원 수 입력" name="roomStandardCnt" id="roomStandardCnt"></div><div class="col-sm-6"><label>최대 인원</label><input type="text" class="form-control" placeholder="인원 수 입력" name="roomMaxCnt" id="roomMaxCnt"></div><div class="col-sm-6"><label>평일 요금</label><input type="text" class="form-control" placeholder="요금 입력" name="roomStandardPrice" id="roomStandardPrice"></div><div class="col-sm-6"><label>공휴일 요금</label><input type="text" class="form-control" placeholder="요금 입력" name="roomHolidayPrice" id="roomHolidayPrice"></div><div class="col-sm-6"><label>인원 추가당 요금</label><input type="text" class="form-control" placeholder="요금 입력" name="roomAddPrice" id="roomAddPrice"></div><div class="col-sm-6"><label>방 상세설명</label><input type="text" class="form-control" placeholder="설명 입력" name="roomRoomInfo" id="roomRoomInfo"></div><div>&nbsp;</div><div class="col-sm-6"><button type="button" class="btn btn-secondary">객실삭제</button></div><div>&nbsp;</div><div>&nbsp;</div></div></div>'
 		
-		function add() {
-			$("#hey").append(room);
-		}
-		$(document).on("click", ".btn-secondary", function() {
-
-			$(this).closest(".form-group").remove();
-
-		});
 
 		$(document).on("click", "#submit", function() {
 			var flag = true;

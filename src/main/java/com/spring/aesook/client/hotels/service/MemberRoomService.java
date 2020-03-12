@@ -13,6 +13,7 @@ public interface MemberRoomService {
 	MemberRoomVO getRoomDescription(int hotelsCode, String roomSort);
 	void insertRoom(ArrayList<MemberRoomVO> roomList);
 	int roomNameCheck(MemberRoomVO vo);
+	public List<String> getRoomSortTypeList(List<MemberRoomVO> roomList);
 	List<String> getRoomSortTypeList(int hotelsCode);
 	List<MemberHotelsImageVO> getAllPic(int hotelsCode);
 	List<MemberHotelsImageVO> getAllRoomPic(int hotelsCode, String roomSort);

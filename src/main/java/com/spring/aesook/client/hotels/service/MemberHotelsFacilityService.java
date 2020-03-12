@@ -5,5 +5,4 @@ import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 
 public interface MemberHotelsFacilityService {
 	MemberHotelsFacilityVO getFacility(int hotelsCode);
-	void insertFacility(MemberHotelsFacilityVO vo, int hotelsCode);
 }
