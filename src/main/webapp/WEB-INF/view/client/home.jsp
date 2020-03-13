@@ -157,7 +157,7 @@ option  {
 									<div class="hotel-entry">
 										<c:if test="${list.hotelsImageStatus eq 'M' }">										
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: auto; width: auto;">																					
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 100%; width: auto;">																					
 											</a>											
 										</c:if>
 										<c:if test="${list.hotelsImageStatus ne 'M' }">
