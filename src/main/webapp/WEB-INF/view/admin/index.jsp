@@ -261,34 +261,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script type="text/javascript">
-	$('.yearpicker1').datepicker({
-		minViewMode : 'years',
-		format : 'yyyy',
-		'autoclose': true
-	});
-	$('.yearpicker1').datepicker('setDate', 'today');
-	var chartLabels1 = [];
-	var chartData1 = [];
-	var config1 = {
-	        // The type of chart we want to create
-	        type: 'line',
-
-	        // The data for our dataset
-	        data: {
-	            labels: chartLabels1,
-	            datasets: [{
-	                label: '예약수 (단위 : 개)',
-	                backgroundColor: 'rgb(255, 204, 204)',
-	                borderColor: 'rgb(255, 99, 132)',
-	                data: chartData1
-	            }]
-	        },
-	        options: {}
-	    }
-	function createChart1() {
-		 var ctx1 = document.getElementById('lineChart').getContext('2d');
-		 window.myChart1 = new Chart(ctx1, config1);
-	}
 	$(document).ready(function() {
 		$.ajax({
 			url : "getMonthlyTotalBooking.admin",
@@ -315,16 +287,58 @@
 							console.log("col : " + key + " value : "
 									+ map[key]);
 						}
-
+	
 					}
-
+	
 				}
-
+	
 			}
 		})
-
+		max1 = Math.max.apply(null, chartData1);
+		max1 = max1 + 20;
+		console.log(max1);
+		config1 = {
+		        // The type of chart we want to create
+		        type: 'line',
+	
+		        // The data for our dataset
+		        data: {
+		            labels: chartLabels1,
+		            datasets: [{
+		                label: '예약수 (단위 : 개)',
+		                backgroundColor: 'rgb(255, 204, 204)',
+		                borderColor: 'rgb(255, 99, 132)',
+		                data: chartData1
+		            }]
+		        },
+		        options: {	        	
+					scales: {
+						yAxes: [{
+							ticks: {
+								suggestedMax : max1,						
+								fontSize : 15
+							}
+						}]
+					}
+		        }
+		    }
 		createChart1();		
 	});
+	$('.yearpicker1').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker1').datepicker('setDate', 'today');
+	var chartLabels1 = [];
+	var chartData1 = [];
+	var max1;
+	var config1;
+	function createChart1() {
+		 var ctx1 = document.getElementById('lineChart').getContext('2d');
+		 window.myChart1 = new Chart(ctx1, config1);
+	}
+	
 	
 	$(document).on("click","#search1",function() {
 		chartLabels1.length = 0;
@@ -407,7 +421,8 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                        	max : 100,							
+							fontSize : 15
                         }
                     }]
                 }
@@ -475,35 +490,7 @@
 </script>
 
 <script type="text/javascript">
-	$('.yearpicker2').datepicker({
-		minViewMode : 'years',
-		format : 'yyyy',
-		'autoclose': true
-	});
-	$('.yearpicker2').datepicker('setDate', 'today');
-	var chartLabels = [];
-	var chartData = [];
-	var config = {
-	        // The type of chart we want to create
-	        type: 'line',
-
-	        // The data for our dataset
-	        data: {
-	            labels: chartLabels,
-	            datasets: [{
-	                label: '수입 (단위 : 원)',
-
-	                borderColor: '#7CFF55',
-	                data: chartData
-	            }]
-	        },
-	        options: {}
-	    };
-	function createChart() {
-		 var ctx = document.getElementById('dollarChart').getContext('2d');
-		 window.myChart = new Chart(ctx, config);
-	}
-	$(document).ready(function() {
+	$(document).ready(function() {		
 		$.ajax({
 			url : "getMonthlyTotalPrice.admin",
 			type : "post",
@@ -529,16 +516,67 @@
 							console.log("col : " + key + " value : "
 									+ map[key]);
 						}
-
+	
 					}
-
+	
 				}
-
+	
 			}
 		})
-
+		
+		max = Math.max.apply(null, chartData);
+		max = max + 500000;
+		console.log(max);
+		config = {
+		        // The type of chart we want to create
+		        type: 'line',
+	
+		        // The data for our dataset
+		        data: {
+		            labels: chartLabels,
+		            datasets: [{
+		                label: '수입 (단위 : 원)',
+	
+		                borderColor: '#7CFF55',
+		                data: chartData
+		            }]
+		        },
+		        options: {
+		        	scales: {
+						yAxes: [{
+							ticks: {							
+								suggestedMax : max,					
+								fontSize : 15,
+								userCallback : function(value, index, values) {
+									value = value.toString();
+									value = value.split(/(?=(?:...)*$)/);
+									value = value.join(',');
+									return value;
+								}
+							}
+						}]
+					}
+		        }
+		    };
 		createChart();		
 	});
+
+	$('.yearpicker2').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker2').datepicker('setDate', 'today');
+	var max;
+	var chartLabels = [];
+	var chartData = [];	
+	
+	var config;
+	
+	function createChart() {
+		 var ctx = document.getElementById('dollarChart').getContext('2d');
+		 window.myChart = new Chart(ctx, config);
+	}
 	
 	$(document).on("click","#search2",function() {
 		chartLabels.length = 0;
@@ -547,7 +585,6 @@
 			alert("연도를 선택해주세요.")
 			return;
 		}
-
 		$.ajax({
 			url : "getMonthlyTotalPrice.admin",
 			type : "post",
