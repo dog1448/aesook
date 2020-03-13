@@ -73,13 +73,6 @@ public class MemberBookingController {
 		return "/bookingInfo";
 	}
 	
-	//Cancel the Booking
-	@RequestMapping(value="/cancelBooking.do", method = RequestMethod.POST)
-	public String cancelBooking(MemberBookingVO vo) {
-		memberBookingCheckService.cancelBooking(vo.getBookingCode());
-		return "redirect:canceledBookingList.do";
-	}
-	
 	//Search Possible Room by selected Date
 	@RequestMapping(value="/getPossibleBooking.do", method = RequestMethod.GET)
 	@ResponseBody

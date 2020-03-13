@@ -25,4 +25,9 @@ public class MemberHotelsFacilityDAOImpl implements MemberHotelsFacilityDAO {
 		sqlSessionTemplate.insert(namespace + ".insertFacility", vo);
 	}
 
+	@Override
+	public void updateFacility(MemberHotelsFacilityVO vo) {
+		sqlSessionTemplate.update(namespace + ".updateFacility", vo);
+	}
+
 }

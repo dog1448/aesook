@@ -9,31 +9,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.aesook.admin.terms.service.ManagerTermsService;
-import com.spring.aesook.admin.terms.vo.ManagerTermsVO;
+import com.spring.aesook.admin.terms.service.ManagerRuleService;
+import com.spring.aesook.admin.terms.vo.ManagerRuleVO;
 
 @Controller
-public class ManagerTermsController {
+public class ManagerRuleController {
 	
 	@Autowired
-	ManagerTermsService managerTermService;
+	ManagerRuleService managerTermService;
 
 	@RequestMapping(value = "termsContent.admin", method = RequestMethod.GET)
 	public String moveTermsContent(@RequestParam String hotelsType, Model model) {
-		ManagerTermsVO vo = managerTermService.getTerms(hotelsType);
+		ManagerRuleVO vo = managerTermService.getTerms(hotelsType);
 		model.addAttribute("terms", vo);
 		return "/termsContent";
 	}
 
 	@RequestMapping(value = "termsBoard.admin", method = RequestMethod.GET)
 	public String moveTermsBoard(Model model) {
-		List<ManagerTermsVO> termsList = managerTermService.getListTerms();
+		List<ManagerRuleVO> termsList = managerTermService.getListTerms();
 		model.addAttribute("termsList", termsList);
 		return "/termsBoard";
 	}
 	
 	@RequestMapping(value = "updateTerms.admin", method = RequestMethod.POST)
-	public String updateTerms(ManagerTermsVO vo) {
+	public String updateTerms(ManagerRuleVO vo) {
 		System.out.println(vo);
 		managerTermService.updateTerms(vo);
 		return "redirect:termsBoard.admin";

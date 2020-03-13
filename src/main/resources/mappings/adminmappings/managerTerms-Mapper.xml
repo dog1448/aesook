@@ -4,7 +4,7 @@
   
   
   
-  <mapper namespace="admin.terms.dao.ManagerTermsDAO">
+  <mapper namespace="admin.terms.dao.ManagerRuleDAO">
   
   <select id="termsGetList" resultType="managerTerms" parameterType="managerTerms">
   SELECT * from rule

@@ -34,8 +34,8 @@ public class MemberHotelsDAOImpl implements MemberHotelsDAO{
 	}
 
 	@Override
-	public void modifyHotels(MemberHotelsVO memberHotelsVO) {
-		sqlSessionTemplate.update(namespace+".modifyHotels",memberHotelsVO);
+	public void updateHotels(MemberHotelsVO memberHotelsVO) {
+		sqlSessionTemplate.update(namespace+".updateHotels", memberHotelsVO);
 	}
 
 	@Override

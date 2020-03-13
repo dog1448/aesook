@@ -17,4 +17,17 @@
 		#{facilityParty}, #{facilityPc},
 		#{facilityAmenity})
 </insert>
+
+<update id="updateFacility">
+	update FACILITY
+	set FACILITY_PARKING = #{facilityParking}, 
+	FACILITY_POOL = #{facilityPool}, 
+	FACILITY_BREAKFAST = #{facilityBreakfast}, 
+	FACILITY_FITNESS = #{facilityFitness}, 
+	FACILITY_WIFI = #{facilityWifi}, 
+	FACILITY_PARTY = #{facilityParty}, 
+	FACILITY_PC = #{facilityPc}, 
+	FACILITY_AMENITY = #{facilityAmenity} 
+	WHERE HOTELS_CODE = #{hotelsCode}
+</update>
 </mapper>

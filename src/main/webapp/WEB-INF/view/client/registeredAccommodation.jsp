@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE HTML>
 <html>
 
@@ -27,7 +26,7 @@
 							<div>&nbsp;</div>
 							<div class="row">
 								<c:forEach var="list" items="${hotels}">
-									<a href="${path}/modifyHotel.do?hotelsCode=${list.hotelsCode}">
+									<a href="moveModifyHotel.do?hotelsCode=${list.hotelsCode}">
 										<div class="col-md-12">
 											<div class="room-wrap">
 												<div class="row">
@@ -36,7 +35,7 @@
 															<div class="item active">
 																<img
 																	src="${list.hotelsImagePath}${list.hotelsImageName}"
-																	class="img-responsive" style="height: 280px; width: 350px;">
+																	class="img-responsive" style="height: 280px; width: auto;">
 					
 															</div>
 														</c:if>
@@ -44,7 +43,7 @@
 															<div class="item">
 																<img
 																	src="resources/client/images/noImage.png"
-																	class="img-responsive" style="height: 280px; width: 350px;">
+																	class="img-responsive" style="height: 280px; width: auto;">
 					
 															</div>
 														</c:if>
@@ -53,8 +52,8 @@
 														<div class="desc">
 															<h2>숙소명 : ${list.hotelsName}</h2>
 															<br></br> <input type="hidden" name="memberId" value="${user.memberId}">
-															<p>숙소종류 : ${list.hotelsName}</p>
-															<p>숙소위치 : ${list.hotelsAddress1}&nbsp;${list.hotelsAddress2}</p>
+															<p>숙소종류 : ${list.hotelsType}</p>
+															<p>숙소위치 : ${list.hotelsAddress1}&nbsp;${list.hotelsAddress2}&nbsp;(우:${list.hotelsZipcode})</p>
 															<p>전화번호 : ${list.hotelsPhone}</p>
 														</div>
 													</div>
