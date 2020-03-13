@@ -31,15 +31,15 @@
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th id="typeVal">Type</th>
+                                                    <th id="typeVal">Rule</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                   
                                             
-                                           <c:forEach var="termsList" items="${termsList}">
+                                           <c:forEach var="ruleList" items="${ruleList}">
                                                 <tr class="odd gradeX">
-                                                    <td><a href="termsContent.admin?hotelsType=${termsList.hotelsType}">${termsList.hotelsType}</a></td>
+                                                    <td><a href="ruleContent.admin?hotelsType=${ruleList.hotelsType}">${ruleList.hotelsType}</a></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>

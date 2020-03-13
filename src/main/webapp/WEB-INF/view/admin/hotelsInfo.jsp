@@ -46,7 +46,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Member_Id</label>
-                                                    <input name="memberNo" class="form-control" value="${hotel.memberNo }" disabled>
+                                                    <input name="memberNo" class="form-control" value="${hotel.memberId }" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Hotels_Phone</label>

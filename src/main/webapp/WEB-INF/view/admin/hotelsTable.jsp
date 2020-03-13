@@ -45,7 +45,7 @@
                                                     <td>${hotel.hotelsCode }</td>
                                                     <td><a href="hotelsInfo.admin?hotelsCode=${hotel.hotelsCode }">${hotel.hotelsName }</a></td>
                                                     <td>${hotel.hotelsType }</td>
-                                                    <td class="center">${hotel.memberNo }</td>
+                                                    <td class="center">${hotel.memberId }</td>
                                                     <td class="center">${hotel.hotelsPhone }</td>
                                                 </tr>
                                                </c:forEach>
