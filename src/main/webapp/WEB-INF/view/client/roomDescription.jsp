@@ -108,6 +108,10 @@ function check(re, what, message) {
 .white {
 	background-color: white;
 	border: none !important;
+	
+}
+pre {
+	white-space: pre-wrap;
 }
 </style>
     <meta charset="UTF-8">
@@ -222,11 +226,11 @@ function check(re, what, message) {
                                 <div>&nbsp;</div>
                                	<h2>예약공지</h2>
                                 <pre class="white">
-${memberTerms.bookingRule }
+${memberRule.bookingRule }
                                 </pre>
                                 <h2>취소규정</h2>
                                 <pre class="white">
-${memberTerms.cancelRule }
+${memberRule.cancelRule }
 								</pre>
                             </div>                           
                         </div>

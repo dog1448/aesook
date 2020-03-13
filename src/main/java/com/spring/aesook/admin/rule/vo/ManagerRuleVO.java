@@ -1,4 +1,4 @@
-package com.spring.aesook.admin.terms.vo;
+package com.spring.aesook.admin.rule.vo;
 
 import org.springframework.stereotype.Component;
 
