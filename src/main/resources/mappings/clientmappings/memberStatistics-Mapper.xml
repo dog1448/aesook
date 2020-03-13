@@ -28,12 +28,14 @@
 
 <select id="getRoomRatio" resultMap="roomRatio" parameterType="memberBooking">
 	
-	select round(((select count(room_sort) from booking  
+	select round((NVL((select count(room_sort) from booking  
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})   
+	and booking_status != 'C' and room_sort = #{roomSort})/    
+	DECODE((select count(room_sort) from booking  
 	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})  
-	and booking_status != 'C' and room_sort = #{roomSort})/
-	(select count(room_sort) from booking  
+	and booking_status != 'C'),0,null,(select count(room_sort) from booking  
 	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})  
-	and booking_status != 'C'))*100,0) room_ratio,  
+	and booking_status != 'C')),0))*100,0) room_ratio,  
 	(select distinct room_sort from room where room_sort = #{roomSort}) room_sort from dual
 	
 </select>

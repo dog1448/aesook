@@ -160,8 +160,96 @@ canvas {
 
 
 <script>
+$(document).ready(
+		function() {
+			$.ajax({
+				url : "getMonthlyTotalPrice.do",
+				type : "post",
+				dataType : "json",
+				async : false,
+				data : {
+					"year" : $("#year").val(),
+					"memberId" : $("#memberId").val()
+				},
+				success : function(data) {
+					// ArrayList loop
+					for (var i = 0; i < data.length; i++) {
+						// HashMap
+						var map = data[i];
+						// HashMap loop
+						for ( var key in map) {
+							if (key == 'booking_date') {
+								chartLabels.push(map[key]);
+								console.log("컬럼 : " + key + " value : "
+										+ map[key]);
+							}
+							if (key == 'booking_total_price') {
+								chartData.push(map[key]);
+								console.log("col : " + key + " value : "
+										+ map[key]);
+							}
+
+						}
+
+					}
+
+				}
+			})
+			max = Math.max.apply(null, chartData);
+			max = max + 500000;
+			console.log(max);
+			config = {
+					type : 'bar',
+					data : {
+						labels : chartLabels,
+						datasets : [ {
+							label : '수입',
+							backgroundColor : color(window.chartColors.blue).alpha(0.5)
+									.rgbString(),
+							borderColor : window.chartColors.blue,
+							borderWidth : 1,
+							data : chartData
+						} ]
+					},
+					options : {
+						scales: {
+							yAxes: [{
+								ticks: {							
+									suggestedMax : max,					
+									fontSize : 15,
+									userCallback : function(value, index, values) {
+										value = value.toString();
+										value = value.split(/(?=(?:...)*$)/);
+										value = value.join(',');
+										return value;
+									}
+								}								   
+							}]
+						},
+						legend : {
+							position : 'top',
+						},
+						title : {
+							display : true,
+							text : '월간 수입 (단위 : 원)'
+						}
+
+					}
+				};
+			createChart();
+			$('.panel-title').text($("#year").val() + '년도 월별 수입');
+			for (var i = 0; i < 12; i++) {
+				$('.date' + i).text(chartLabels[i]);
+				$('.price' + i).text(numberWithCommas(chartData[i]) + ' 원');
+			}
+		});
+
 	var chartLabels = [];
 	var chartData = [];
+	var max;
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 	var color = Chart.helpers.color;
 	$('.yearpicker').datepicker({
 		minViewMode : 'years',
@@ -171,31 +259,7 @@ canvas {
 
 	$('.yearpicker').datepicker('setDate', 'today');
 
-	var config = {
-		type : 'bar',
-		data : {
-			labels : chartLabels,
-			datasets : [ {
-				label : '수입',
-				backgroundColor : color(window.chartColors.blue).alpha(0.5)
-						.rgbString(),
-				borderColor : window.chartColors.blue,
-				borderWidth : 1,
-				data : chartData
-			} ]
-		},
-		options : {
-			responsive : true,
-			legend : {
-				position : 'top',
-			},
-			title : {
-				display : true,
-				text : '월간 수입 (단위 : 원)'
-			}
-
-		}
-	};
+	var config;
 
 	function createChart() {
 		var ctx = document.getElementById('canvas').getContext('2d');
@@ -203,50 +267,7 @@ canvas {
 
 	};
 
-	$(document).ready(
-			function() {
-				$.ajax({
-					url : "getMonthlyTotalPrice.do",
-					type : "post",
-					dataType : "json",
-					async : false,
-					data : {
-						"year" : $("#year").val(),
-						"memberId" : $("#memberId").val()
-					},
-					success : function(data) {
-						// ArrayList loop
-						for (var i = 0; i < data.length; i++) {
-							// HashMap
-							var map = data[i];
-							// HashMap loop
-							for ( var key in map) {
-								if (key == 'booking_date') {
-									chartLabels.push(map[key]);
-									console.log("컬럼 : " + key + " value : "
-											+ map[key]);
-								}
-								if (key == 'booking_total_price') {
-									chartData.push(map[key]);
-									console.log("col : " + key + " value : "
-											+ map[key]);
-								}
-
-							}
-
-						}
-
-					}
-				})
-
-				createChart();
-				$('.panel-title').text($("#year").val() + '년도 월별 수입');
-				for (var i = 0; i < 12; i++) {
-					$('.date' + i).text(chartLabels[i]);
-					$('.price' + i).text(chartData[i]);
-				}
-			});
-
+	
 	$(document).on(
 			"click",
 			"#search",
@@ -305,7 +326,7 @@ canvas {
 				$('.panel-title').text($("#year").val() + '년도 월별 수입');
 				for (var i = 0; i < 12; i++) {
 					$('.date' + i).text(chartLabels[i]);
-					$('.price' + i).text(chartData[i]);
+					$('.price' + i).text(numberWithCommas(chartData[i]) + ' 원');
 				}
 			});
 </script>
