@@ -6,10 +6,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.aesook.admin.terms.vo.ManagerTermsVO;
+import com.spring.aesook.admin.terms.vo.ManagerRuleVO;
 
 @Repository("managerTermsDAO")
-public class ManagerTermsDAOImpl implements ManagerTermsDAO {
+public class ManagerRuleDAOImpl implements ManagerRuleDAO {
 	
 	private final static String namespace = "admin.terms.dao.ManagerTermsDAO";
 	
@@ -17,22 +17,22 @@ public class ManagerTermsDAOImpl implements ManagerTermsDAO {
 	SqlSessionTemplate sqlsSessionTemplate;
 
 	@Override
-	public void insertTerms(ManagerTermsVO vo) {
+	public void insertTerms(ManagerRuleVO vo) {
 		
 	}
 
 	@Override
-	public void updateTerms(ManagerTermsVO vo) {
+	public void updateTerms(ManagerRuleVO vo) {
 		sqlsSessionTemplate.update(namespace+".updateTerms", vo);
 	}
 
 	@Override
-	public List<ManagerTermsVO> getListTerms() {
+	public List<ManagerRuleVO> getListTerms() {
 		return sqlsSessionTemplate.selectList(namespace+".termsGetList");
 	}
 
 	@Override
-	public ManagerTermsVO getTerms(String hotelsType) {
+	public ManagerRuleVO getTerms(String hotelsType) {
 		return sqlsSessionTemplate.selectOne(namespace+".getTerms", hotelsType);
 	}
 
