@@ -215,7 +215,7 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> CPU Using
+                            <i class="fa fa-bell fa-fw"></i> Server Monitering
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -223,7 +223,7 @@
                                 <canvas id="myChart" width="400" height="400"></canvas>
                             </div>
                             <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                            <button class="btn btn-default btn-block" id="refresh">새로고침</button>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -277,7 +277,7 @@
 	        data: {
 	            labels: chartLabels1,
 	            datasets: [{
-	                label: '예약수',
+	                label: '예약수 (단위 : 개)',
 	                backgroundColor: 'rgb(255, 204, 204)',
 	                borderColor: 'rgb(255, 99, 132)',
 	                data: chartData1
@@ -383,43 +383,95 @@
 </script>
 
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: 'CPU Using',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+	var chart2 = new Array();
+    var config2 = {    		
+            type: 'bar',
+            data: {
+                labels: ['CPU', 'Memory'],
+                datasets: [
+                {  
+                	label: ['(단위 : %)'],                	
+                    data: chart2,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
+        };
+    
+    function createChart2() {
+    	 var ctx = document.getElementById('myChart').getContext('2d');
+    	 window.myChart2 = new Chart(ctx, config2);    	    
+	}
+    $(document).ready(function() {
+		$.ajax({
+			url : "monitering.admin",
+			type : "post",
+			dataType : "json",
+			async : false,			
+			success : function(data) {
+				for ( var key in data) {
+					if (key == 'cpu') {									
+						chart2[0] = data[key];
+						console.log("컬럼 : " + key + " value : "
+								+ data[key]);
+					}
+				
+					if (key == 'Memory') {
+						chart2[1] = data[key];
+						console.log("col : " + key + " value : "
+								+ data[key]);
+					}
+
+				}
+			}
+		})
+
+		createChart2();		
+	});
+   
+    $(document).on("click","#refresh",function() {
+    	$.ajax({
+			url : "monitering.admin",
+			type : "post",
+			dataType : "json",
+			async : false,			
+			success : function(data) {
+				for ( var key in data) {
+					if (key == 'cpu') {									
+						chart2[0] = data[key];
+						console.log("컬럼 : " + key + " value : "
+								+ data[key]);
+					}
+				
+					if (key == 'Memory') {
+						chart2[1] = data[key];
+						console.log("col : " + key + " value : "
+								+ data[key]);
+					}
+
+				}
+			}
+		})
+		
+		window.myChart2.update();
+		
+	});
 </script>
 
 <script type="text/javascript">
@@ -439,7 +491,7 @@
 	        data: {
 	            labels: chartLabels,
 	            datasets: [{
-	                label: '수입',
+	                label: '수입 (단위 : 원)',
 
 	                borderColor: '#7CFF55',
 	                data: chartData
