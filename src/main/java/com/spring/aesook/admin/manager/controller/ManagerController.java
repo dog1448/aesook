@@ -1,6 +1,7 @@
 package com.spring.aesook.admin.manager.controller;
 
-import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import com.sun.management.OperatingSystemMXBean;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,14 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.aesook.admin.manager.service.ManagerLoginService;
 import com.spring.aesook.admin.manager.service.ManagerRegisterService;
 import com.spring.aesook.admin.manager.service.ManagerService;
 import com.spring.aesook.admin.manager.vo.ManagerVO;
-import com.spring.aesook.common.file.FileService;
-import com.spring.aesook.common.file.FileVO;
 
 @Controller
 public class ManagerController {
@@ -205,9 +203,25 @@ public class ManagerController {
 	@RequestMapping(value="/pic.admin" , method=RequestMethod.POST)
 	public String uploadMainPic(MultipartFile file) {
 		return "/index";
+	}	
+
+	@RequestMapping(value = "/monitering.admin", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<Object, Object> monitering(){
+		OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
+		
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		
+	    String cpu = String.format("%.2f", osBean.getSystemCpuLoad() * 100);
+	    double totalMemory = (double)osBean.getTotalPhysicalMemorySize()/1024/1024/1024;
+	    double freeMemory = (double)osBean.getFreePhysicalMemorySize()/1024/1024/1024;
+	    double memoryPercent = (totalMemory-freeMemory)/totalMemory;
+	    String currentMemory = String.format("%.2f", memoryPercent*100);
+	    				 
+	    map.put("cpu", cpu);	    
+	    map.put("Memory", currentMemory);
+        
+        return map;
 	}
-	
-
-
 }
 
