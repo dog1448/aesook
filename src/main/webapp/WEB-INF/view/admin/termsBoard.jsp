@@ -12,18 +12,18 @@
 <%@ include file="nav.jspf" %>
  <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">Board List</h1>
+                    <div class="row"><div>&nbsp;</div>
+                        <div class="col-lg-4">
+                            <h1 class="page-header">Rule List</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Board Table
+                                    Rule Table
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -31,9 +31,7 @@
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                  	
                                                     <th id="typeVal">Type</th>
-                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -41,10 +39,7 @@
                                             
                                            <c:forEach var="termsList" items="${termsList}">
                                                 <tr class="odd gradeX">
-                                                   
-                                                   
                                                     <td><a href="termsContent.admin?hotelsType=${termsList.hotelsType}">${termsList.hotelsType}</a></td>
-                                                  
                                                 </tr>
                                             </c:forEach>
                                             </tbody>

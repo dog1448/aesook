@@ -94,6 +94,7 @@ public class MemberBookingPaymentController {
 			KakaoPayCancelVO kakaoCancel = kakaoService.kakaoPayCancel(booking);
 			if (kakaoCancel.getStatus().equals("CANCEL_PAYMENT")) {
 				// 취소 완료 되었을 때
+				memberBookingCheckService.cancelBooking(bookingCode);
 				model.addAttribute("message", "성공적으로 취소되었습니다.");
 			} else {
 				model.addAttribute("message", "취소에 실패하였습니다. 다시 시도해 주세요");

@@ -12,15 +12,15 @@
 <%@ include file="nav.jspf" %>
 <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class="row"><div>&nbsp;</div>
+                        <div class="col-lg-10">
                             <h1 class="page-header">Data List</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-10">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Booking Table

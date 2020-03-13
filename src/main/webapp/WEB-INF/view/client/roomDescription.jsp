@@ -68,7 +68,7 @@ function checkz() {
      return;
     }
  	
-    if (!check(regex, phone, "번호를 형식에 맞게 제대로 입력하세요.")) {
+    if (!check(regex, phone, "번호를 형식에 맞게 제대로 입력해주세요.")) {
 		return;
 	}	
     

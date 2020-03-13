@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.aesook.admin.terms.service.ManagerTermsService;
-import com.spring.aesook.admin.terms.vo.ManagerTermsVO;
+import com.spring.aesook.admin.terms.service.ManagerRuleService;
+import com.spring.aesook.admin.terms.vo.ManagerRuleVO;
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.hotels.service.MemberRoomService;
@@ -40,7 +40,7 @@ public class MemberRoomController {
 	private MemberHotelsService memberHotelsService;
 	
 	@Autowired
-	ManagerTermsService managerTermsService;
+	ManagerRuleService managerTermsService;
 	
     @InitBinder
     protected void initBinder(WebDataBinder binder){
@@ -80,7 +80,7 @@ public class MemberRoomController {
 		session.setAttribute("bookingCheckOut", bookingCheckOut);
 		MemberRoomVO memberRoomVO = memberRoomService.getRoomDescription(hotelsCode, roomSort);
 		MemberHotelsVO memberHotelsVO = memberRoomService.getHotel(hotelsCode);
-		ManagerTermsVO managerTermsVO = managerTermsService.getTerms(memberHotelsVO.getHotelsType());
+		ManagerRuleVO managerTermsVO = managerTermsService.getTerms(memberHotelsVO.getHotelsType());
 		List<MemberHotelsImageVO> roomPicList = memberRoomService.getAllRoomPic(hotelsCode, roomSort);
 		
 		model.addAttribute("memberhotelsVO", memberHotelsVO);

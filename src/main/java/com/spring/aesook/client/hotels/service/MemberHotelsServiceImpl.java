@@ -44,8 +44,8 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 	}
 
 	@Override
-	public void modifyHotels(MemberHotelsVO memberHotelsVO) {
-		memberHotelsDAO.modifyHotels(memberHotelsVO);
+	public void updateHotels(MemberHotelsVO memberHotelsVO) {
+		memberHotelsDAO.updateHotels(memberHotelsVO);
 	}
 
 	@Override

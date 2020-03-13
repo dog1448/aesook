@@ -10,7 +10,7 @@ public interface MemberHotelsDAO {
 	void insertHotels(MemberHotelsVO vo);
 	List<MemberHotelsVO> getMyHotels(MemberVO vo);
 	int getHotelsCode();
-	void modifyHotels(MemberHotelsVO memberHotelsVO);
+	void updateHotels(MemberHotelsVO memberHotelsVO);
 	void modifyRooms(MemberRoomVO memberRoomVO);
 
 }

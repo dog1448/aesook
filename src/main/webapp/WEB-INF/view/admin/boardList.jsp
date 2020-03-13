@@ -13,14 +13,15 @@
  <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
+                    <div>&nbsp;</div>
+                        <div class="col-lg-10">
                             <h1 class="page-header">Board List</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-10">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Board Table
