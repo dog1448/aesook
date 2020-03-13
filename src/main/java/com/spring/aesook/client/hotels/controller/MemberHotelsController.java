@@ -23,6 +23,7 @@ import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.member.vo.MemberVO;
+import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Controller
 public class MemberHotelsController {
@@ -37,10 +38,8 @@ public class MemberHotelsController {
 	private MemberHotelsListService memberHotelsListService;
 	@Autowired
 	private MemberInsertHotelsService memberInsertHotelsService;
-	
 	@Autowired
 	private MemberRoomService memberRoomService;
-	
 	@Autowired
 	private MemberHotelsFacilityService memberHotelsFacilityService;
 	
@@ -116,7 +115,7 @@ public class MemberHotelsController {
 	}
 	
 	//5. Move Finish
-	@RequestMapping(value="/insertRoom.do.", method=RequestMethod.POST)
+	@RequestMapping(value="/insertRoom.do", method=RequestMethod.POST)
 	public String inserFinish(MemberRoomVO roomList, HttpSession httpSession) {
 		
 		// Data Setting 
@@ -125,15 +124,19 @@ public class MemberHotelsController {
 		MemberHotelsVO hotels = (MemberHotelsVO) httpSession.getAttribute(HOTEL);
 		MemberHotelsFacilityVO facility = (MemberHotelsFacilityVO) httpSession.getAttribute(FACILITY);
 		List<MemberRoomVO> roomSortList = (List<MemberRoomVO>) httpSession.getAttribute(ROOMSORT);
+		for (MemberRoomVO ri : roomSortList) {
+			System.out.println(ri);
+		}
+		System.out.println("====================================");
 		List<MemberRoomVO> roomNameList = roomList.getRoomList();
 		
 		// Hotel / Facility insert
 		memberInsertHotelsService.insertHotelsFacility(hotels, facility, user, hotelsCode);
 		
 		// Room insert
+		memberRoomService.insertRoom(roomSortList, roomNameList, hotelsCode);;
 		
-		
-		return "";
+		return "redirect:registeredAccommodation.do";
 	}
 	
 	/*
@@ -204,6 +207,32 @@ public class MemberHotelsController {
 			model.addAttribute("hotels", hotelsList);
 		}
 		return "/registeredAccommodation";
-	}	
+	}
+	
+	
+	// ------------------------------------------------ insert My hotels -----------------------------------------------
+    @RequestMapping(value = "/modifyHotel.do", method = RequestMethod.GET)
+    public String moveModifyHotel(@RequestParam(value = "hotelsCode")int hotelsCode, HttpSession session, Model model){
+        MemberVO user = (MemberVO)session.getAttribute("login");
+        if(user != null) {
+            List<MemberRoomVO> list = memberRoomService.getRoomList(hotelsCode);
+            MemberHotelsVO hotelsVO = memberRoomService.getHotel(hotelsCode);
+            MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
+            List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
+            String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
+            model.addAttribute("list",list);
+            model.addAttribute("vo", hotelsVO);
+            model.addAttribute("facilityVO", facilityVO);
+
+        }
+        return "/modifyHotels";
+    }
+	
+    @RequestMapping(value = "/modifyHotel.do",method = RequestMethod.POST)
+    public String ModifyHotel(MemberHotelsVO memberHotelsVO , MemberRoomVO memberRoomVO){
+        memberHotelsService.modifyHotels(memberHotelsVO);
+        memberHotelsService.modifyRooms(memberRoomVO);
+        return "redirect:/registeredAccommodation.do";
+    }
 	
 }
