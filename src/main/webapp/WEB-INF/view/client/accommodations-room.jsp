@@ -24,6 +24,7 @@
 /* Carousel base class */
 .carousel {
 	margin-bottom: 60px;
+	width: 70%;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -196,7 +197,7 @@
 		<div class="colorlib-wrap">
 			<div class="container">
 				<div class="row">
-					<div id="myCarousel" class="carousel slide">
+					<div id="myCarousel" class="carousel slide col-md-offset-2">
 						<div class="carousel-inner">
 							<c:if test="${not empty picList}">
 								<c:forEach var="picList" items="${picList}">
@@ -204,7 +205,7 @@
 										<div class="item active">
 											<img
 												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
-												class="img-responsive" style="width: auto; height: 500px;">
+												class="img-responsive" style="width: 100%; height: 500px;">
 
 										</div>
 									</c:if>
@@ -212,7 +213,7 @@
 										<div class="item">
 											<img
 												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
-												class="img-responsive" style="width: auto; height: 500px;">
+												class="img-responsive" style="width: 100%; height: 500px;">
 
 										</div>
 									</c:if>
@@ -221,7 +222,7 @@
 							<c:if test="${empty picList}">
 								<div class="item active">
 									<img src="resources/client/images/noImage.png"
-										class="img-responsive" style="width: auto; height: 500px;">
+										class="img-responsive" style="width: 100%; height: 500px;">
 
 								</div>
 							</c:if>
@@ -255,11 +256,11 @@
 															<div class="col-md-6 col-sm-6">
 															<c:if test="${list.hotelsImagePath ne null }">																
 																<img src="${list.hotelsImagePath}${list.hotelsImageName}" 
-																style="height: 280px; width: auto;">
+																style="height: 280px; width: 100%;">
 															</c:if>
 															<c:if test="${list.hotelsImagePath eq null }">																
 																<img src="resources/client/images/noImage.png" 
-																style="height: 280px; width: auto;">
+																style="height: 280px; width: 100%;">
 															</c:if>		
 															</div>
 															<div class="col-md-6 col-sm-6">

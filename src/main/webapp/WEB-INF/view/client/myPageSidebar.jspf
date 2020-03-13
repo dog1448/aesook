@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-li {
+.about > ul  > li {
 	font-size: 1.7rem;
 }
 .nav-pills > li > a:hover {

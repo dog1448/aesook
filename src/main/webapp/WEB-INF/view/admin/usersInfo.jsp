@@ -52,10 +52,10 @@
                                                     <label>Status</label>
                                                     <select class="form-control" id="statusSelectBox" name = "memberStatus">
                                                         <option value="G">G</option>
-                                                        <option value="M">H</option>
+                                                        <option value="H">H</option>
                                                         <option value="B">B</option>
                                                         <option value="D">D</option>
-                                                        <option value="D">R</option>
+                                                        <option value="R">R</option>
                                                     </select>
                                                 </div>
                                                 </fieldset>

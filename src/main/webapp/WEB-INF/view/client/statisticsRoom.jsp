@@ -34,14 +34,20 @@ canvas {
 						<%@ include file="managementSidebar.jspf"%>
 						<div class="col-three-forth animate-box">
 							<h2>통계</h2>
-							<nav class="navbar navbar-default navbar-static-top">
-								<div id="navbar" class="navbar-collapse collapse">
-									<ul class="nav navbar-nav">
-										<li><a href="statistics.do">월별 수입</a></li>
-										<li class="active"><a href="statisticsRoom.do">객실별	예약률</a></li>
-									</ul>
+							<div class="container">
+								<div class="row">
+							        <div class="col-xs-12" style="width: 60%;">
+							            <ul class="nav nav-pills nav-justified thumbnail">
+							                <li><a href="statistics.do">
+							                    <h4 class="list-group-item-heading">월별 수입</h4>							                   
+							                </a></li>
+							                <li class="active"><a href="statisticsRoom.do">
+							                    <h4 class="list-group-item-heading">객실별 예약률</h4>							                    
+							                </a></li>							                
+							            </ul>
+							        </div>
 								</div>
-							</nav>
+							</div>
 							<input class="input100" type="hidden" name="memberId"
 								id="memberId" value="${login.memberId}">
 							<div>&nbsp;</div>
