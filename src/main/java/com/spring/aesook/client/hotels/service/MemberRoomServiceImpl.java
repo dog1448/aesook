@@ -11,6 +11,7 @@ import com.spring.aesook.client.hotels.dao.MemberRoomDAO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 
 @Service("memberRoomService")
 public class MemberRoomServiceImpl implements MemberRoomService {
@@ -54,18 +55,32 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 		return memberRoomDAO.getRoom(vo);
 	}
 
-	//Insert Room -----------------------------------> 여기에요 수정
-	@Override
-	public void insertRoom(ArrayList<MemberRoomVO> roomList) {
-		HashMap<Object, Object> map = new HashMap<Object, Object>();
-		map.put("roomList", roomList);
-		memberRoomDAO.insertRoom(map);
-	}
 	
+	// insert Room
 	public void insertRoom(List<MemberRoomVO> roomSortList, List<MemberRoomVO> roomNameList, int hotelsCode) {
 		
 		List<MemberRoomVO> roomFinalList = new ArrayList<MemberRoomVO>();
+		for (MemberRoomVO roomName : roomNameList) {
+			for (MemberRoomVO roomSort : roomSortList) {
+				if (roomName.getRoomSort().equals(roomSort.getRoomSort())) {
+					MemberRoomVO room = new  MemberRoomVO();
+					room.setHotelsCode(hotelsCode);
+					room.setRoomName(roomName.getRoomName());
+					room.setRoomSort(roomSort.getRoomSort());
+					room.setRoomStandardCnt(roomSort.getRoomStandardCnt());
+					room.setRoomMaxCnt(roomSort.getRoomMaxCnt());
+					room.setRoomStandardPrice(roomSort.getRoomStandardPrice());
+					room.setRoomHolidayPrice(roomSort.getRoomHolidayPrice());
+					room.setRoomAddPrice(roomSort.getRoomAddPrice());
+					room.setRoomInfo(roomSort.getRoomInfo());
+					roomFinalList.add(room);
+				}
+			}
+		} // for end
 		
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		map.put("roomList", roomFinalList);
+		memberRoomDAO.insertRoom(map);
 	}
 
 

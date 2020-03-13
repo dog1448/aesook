@@ -12,7 +12,9 @@ public class MemberRoomVO {
 	private int roomHolidayPrice;
 	private int roomAddPrice;
 	private String roomInfo;
+	
 	private List<MemberRoomVO> roomList;
+	
 	private String hotelsImageName;
 	private String hotelsImagePath;
 	private String roomSortStatus;
