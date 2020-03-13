@@ -217,6 +217,7 @@ $(document).ready(
 								ticks: {							
 									suggestedMax : max,					
 									fontSize : 15,
+									beginAtZero: true,
 									userCallback : function(value, index, values) {
 										value = value.toString();
 										value = value.split(/(?=(?:...)*$)/);
@@ -227,7 +228,7 @@ $(document).ready(
 							}]
 						},
 						legend : {
-							position : 'top',
+							position : 'top'
 						},
 						title : {
 							display : true,
@@ -242,6 +243,7 @@ $(document).ready(
 				$('.date' + i).text(chartLabels[i]);
 				$('.price' + i).text(numberWithCommas(chartData[i]) + ' 원');
 			}
+			
 		});
 
 	var chartLabels = [];
