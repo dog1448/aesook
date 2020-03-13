@@ -312,12 +312,21 @@
 		                data: chartData1
 		            }]
 		        },
-		        options: {	        	
+		        options: {
+		        	legend : {
+						position : 'top',
+						display : false
+					},
+					title : {
+						display : true,
+						text : '예약수 (단위 : 개)'
+					},
 					scales: {
 						yAxes: [{
 							ticks: {
 								suggestedMax : max1,						
-								fontSize : 15
+								fontSize : 15,
+								beginAtZero: true
 							}
 						}]
 					}
@@ -419,11 +428,20 @@
                 }]
             },
             options: {
-                scales: {
+            	legend : {
+					position : 'top',
+					display : false
+				},
+				title : {
+					display : true,
+					text : '서버 사용량 (단위 : %)'
+				},
+                scales: {                	
                     yAxes: [{
                         ticks: {
-                        	max : 100,							
-							fontSize : 15
+                        	suggestedMax : 100,							
+							fontSize : 15,
+							beginAtZero: true
                         }
                     }]
                 }
@@ -543,11 +561,20 @@
 		            }]
 		        },
 		        options: {
+		        	legend : {
+						position : 'top',
+						display : false
+					},
+					title : {
+						display : true,
+						text : '월간 수입 (단위 : 원)'
+					},
 		        	scales: {
 						yAxes: [{
 							ticks: {							
 								suggestedMax : max,					
 								fontSize : 15,
+								beginAtZero: true,
 								userCallback : function(value, index, values) {
 									value = value.toString();
 									value = value.split(/(?=(?:...)*$)/);
