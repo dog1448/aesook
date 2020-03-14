@@ -9,18 +9,15 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class AuthClientInterceptor extends HandlerInterceptorAdapter {
 	
-	boolean noLogin;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession httpSession = request.getSession();
-		noLogin = false;
 		
 		if(httpSession.getAttribute("login") == null) {
-			// log ���
-			noLogin = true;
-			request.setAttribute("noLogin", noLogin);
+			// log 
+			request.setAttribute("message", "로그인이 필요한 서비스입니다.");
 			RequestDispatcher rd = request.getRequestDispatcher("/login.do");
 			rd.forward(request, response);
 			return false;

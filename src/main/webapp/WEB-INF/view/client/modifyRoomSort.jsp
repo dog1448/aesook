@@ -66,6 +66,17 @@ $(document).on('click', 'button[name=delete]', function() {
 	test.submit();
 });
 
+var roomSortList = new Array();
+var roomNameList = new Array();
+$(document).ready(function(){
+	<c:forEach var="sort" items="${roomSortList}">
+		roomSortList.push("${sort.roomSort}");
+	</c:forEach>
+	<c:forEach var="sort" items="${roomNameList}">
+		roomNameList.push("${sort.roomName}");
+	</c:forEach>
+});
+
 function insertModifySort() {
 	
 	if($('#tdRoomName').val() == "") {
@@ -107,6 +118,20 @@ function insertModifySort() {
 		alert("상세설명을 입력해주세요.");
 		return;
 	} 
+	
+	for (var i = 0; i < roomNameList.length; i++) {
+		if ($('#tdRoomName').val() == roomNameList[i]){
+			alert("같은 이름의 방이 있습니다.");
+			return
+		}
+	}
+	
+	for (var i = 0; i < roomSortList.length; i++) {
+		if ($('#tdRoomSort').val() == roomSortList[i]){
+			alert("같은 종류의 방이 있습니다.");
+			return
+		}
+	}
 	
 	$('#insertRoomSortForm').submit();
 }

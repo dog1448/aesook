@@ -104,7 +104,9 @@ public class MemberRoomController {
 				MemberRoomVO room = new MemberRoomVO();
 				room.setHotelsCode(hotels.getHotelsCode());
 				List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(room);
+				List<MemberRoomVO> roomNameList = memberRoomService.getRoomList(room);
 				model.addAttribute("roomSortList", roomSortList);
+				model.addAttribute("roomNameList", roomNameList);
 				model.addAttribute("hotelsCode", hotels.getHotelsCode());
 			}
 		} else {
@@ -153,12 +155,14 @@ public class MemberRoomController {
 		return "/modifyRoom";
 	}
 	
+	@RequestMapping(value="/deleteRoom.do", method=RequestMethod.POST)
 	public String deleteRoom(MemberRoomVO vo) {
 		memberRoomService.deleteRoom(vo);
 		return "redirect:modifyRoom.do";
 	}
 	
 	public String insertRoom(MemberRoomVO vo) {
+		memberRoomSortService.insertRoomSort(vo);
 		return "";
 	}
 	

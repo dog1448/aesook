@@ -34,7 +34,12 @@ public class ManagerController {
 	
 	//  --------------------------- 회원가입 ------------------------------------
 	@RequestMapping(value = "/register.admin", method = RequestMethod.GET)
-	public String moveRegister() {
+	public String moveRegister(HttpSession httpSession, Model model) {
+		ManagerVO master = (ManagerVO) httpSession.getAttribute("login");
+		if (!master.getAdminGrade().equals("M")) {
+			model.addAttribute("message", "권한이 없습니다.");
+			return "/index";
+		}
 		return "/register";
 	}
 	
@@ -68,7 +73,7 @@ public class ManagerController {
 	}
 	
 	@RequestMapping(value="/login.admin", method = RequestMethod.POST)
-	public String checkLogin(ManagerVO vo, Model model) {
+	public String checkLogin(ManagerVO vo, Model model, HttpSession httpSession) {
 		ManagerVO user = managerService.getManager(vo);
 		
 		
@@ -77,14 +82,16 @@ public class ManagerController {
 			return "/login";
 		} else {
 			if (user.getAdminPass().equals(vo.getAdminPass())) {
-				model.addAttribute("login",user);
+				if (httpSession.getAttribute("login") != null) {
+					httpSession.removeAttribute("login");
+				}
+				httpSession.setAttribute("login",user);
 			} else {
 				model.addAttribute("check", "noPass");
 				return "/login";
 			}
 		}
-
-		return "/index"; // 나중에 interceptor로 지울 부분( login.admin은 인터셉터가 처리 )
+		return "redirect:index.admin"; 
 	}
 	
 	

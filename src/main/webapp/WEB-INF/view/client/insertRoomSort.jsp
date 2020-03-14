@@ -34,9 +34,11 @@ $(document).ready(function(){
 
 function checkz() {
 		var flag = true;
+		var roomSortList = new Array();
 		
 		$('.roomSort').each(function (index, item) {
 			var test = $(item).val();
+			roomSortList.push(test);
 			if(test == ""){
 				flag = false;
 				alert("방 타입을 입력하세요.");					
@@ -46,6 +48,16 @@ function checkz() {
 		if(!flag){
 			return flag;
 		}
+		
+		for (var i = 0; i < roomSortList.length; i++) {
+			for (var j = i+1; j < roomSortList.length; j++) {
+				if (roomSortList[i] == roomSortList[j]){
+					alert("같은 이름의 방타입이 있습니다.");
+					return;
+				}
+			}
+		}
+		
 		
 		$('.roomStandardCnt').each(function (index, item) {
 			var test = $(item).val();
