@@ -43,9 +43,11 @@ $(document).ready(function(){
 function checkz() {
 	
 	var flag = true;
+	var roomNameList = new Array();
 	
 	$('.roomName').each(function (index, item) {
 		var test = $(item).val();
+		roomNameList.push(test);
 		if(test == ""){
 			flag = false;
 			alert("방 이름을 입력하세요.");					
@@ -54,6 +56,15 @@ function checkz() {
 	});
 	if(!flag){
 		return flag;
+	}
+	
+	for (var i = 0; i < roomNameList.length; i++) {
+		for (var j = i+1; j < roomNameList.length; j++) {
+			if (roomNameList[i] == roomNameList[j]){
+				alert("같은 이름의 방이 있습니다.");
+				return;
+			}
+		}
 	}
 	
 	$('#roomForm').submit();

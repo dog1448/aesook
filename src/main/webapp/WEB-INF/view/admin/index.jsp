@@ -2,6 +2,12 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:if test="${message ne null}">
+	<script type="text/javascript">
+		var message = "${message}";
+		alert(message);
+	</script>
+</c:if>
 <html>
 <head>
     <%@ include file="head.jspf" %>

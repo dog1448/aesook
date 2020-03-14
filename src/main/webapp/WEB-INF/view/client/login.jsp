@@ -5,9 +5,10 @@
 <html>
 <head>
 
-<c:if test="${noLogin eq true}">
+<c:if test="${message ne null}">
 	<script type="text/javascript">
-		alert("로그인이 필요한 서비스입니다.");
+		var message = "${message}";
+		alert(message);
 	</script>
 </c:if>
 
