@@ -125,17 +125,13 @@ public class MemberHotelsController {
 		MemberHotelsVO hotels = (MemberHotelsVO) httpSession.getAttribute(HOTEL);
 		MemberHotelsFacilityVO facility = (MemberHotelsFacilityVO) httpSession.getAttribute(FACILITY);
 		List<MemberRoomVO> roomSortList = (List<MemberRoomVO>) httpSession.getAttribute(ROOMSORT);
-		for (MemberRoomVO ri : roomSortList) {
-			System.out.println(ri);
-		}
-		System.out.println("====================================");
 		List<MemberRoomVO> roomNameList = roomList.getRoomList();
 		
 		// Insert Hotel / Facility
 		memberInsertHotelsService.insertHotelsFacility(hotels, facility, user, hotelsCode);
 		
 		// Insert Room
-		memberRoomService.insertRoom(roomSortList, roomNameList, hotelsCode);;
+		memberRoomService.insertRoom(roomSortList, roomNameList, hotelsCode);
 		
 		// Remove session 
 		httpSession.removeAttribute(HOTEL);

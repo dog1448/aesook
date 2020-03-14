@@ -177,7 +177,7 @@ public class MemberController {
     return conditionMap;
     }
 
-    @RequestMapping(value="/findId", method = RequestMethod.GET)
+    @RequestMapping(value="/findId.do", method = RequestMethod.GET)
     public String moveFindId() {
     	return "/findId";
     }
@@ -311,7 +311,6 @@ public class MemberController {
     public String withdrawMember(MemberVO vo, Model model,HttpSession session) {
     	MemberVO member = (MemberVO)session.getAttribute("user");
     	String sessionId = member.getMemberId();
-    	System.out.println(sessionId);
     	memberWithdrawalService.updateWithdrawal(sessionId);
     	session.invalidate();
     	return "redirect:home.do";

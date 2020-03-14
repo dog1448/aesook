@@ -23,6 +23,10 @@ public class MemberImageDAOImpl implements MemberImageDAO {
 		sqlSessionTemplate.insert(namespace+".insertMemberBrnImage", vo);
 	}
 	
+	public MemberBrnImageVO getMemberBrnImage(MemberVO vo) {
+		return sqlSessionTemplate.selectOne(namespace + ".getBrnImage", vo);
+	}
+	
 	public void insertMemberHotelsImage(List<MemberHotelsImageVO> vo) {
 		sqlSessionTemplate.insert(namespace + ".insertMemberHotelsImage", vo);
 	}

@@ -4,6 +4,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <html>
+<c:if test="${message ne null}">
+	<script type="text/javascript">
+	var message = "${message}";
+	alert(message);
+	</script>
+</c:if>
 	<head>
 	<%@ include file="head.jspf" %>
 	</head>

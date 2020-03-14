@@ -7,11 +7,6 @@
 <head>
 
  <%@include file="head.jspf" %>
-<c:if test="${check eq 'upBrn'}">
-	<script type="text/javascript">
-		alert("등록이 되었습니다.");
-	</script>
-</c:if>
  <script>
 	function checkz() {
 	    var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);

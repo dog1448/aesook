@@ -12,7 +12,14 @@
 		MEMBER_PHONE = #{memberPhone},  
 		MEMBER_STATUS = #{memberStatus}  		
 		WHERE MEMBER_ID = #{memberId}
-	</update>	
+	</update>
+	
+	<update id="updateMemberStatus" parameterType="managerUsers">
+		UPDATE member set
+		member_status = #{memberStatus}
+		WHERE
+		member_id = #{memberId}
+	</update>
 	
 	<select id="getManagerUsers" resultType="managerUsers" parameterType="managerUsers">
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}

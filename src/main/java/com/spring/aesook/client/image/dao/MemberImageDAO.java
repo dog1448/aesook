@@ -9,6 +9,7 @@ import com.spring.aesook.client.member.vo.MemberVO;
 public interface MemberImageDAO {
 
 	public void insertMemberImageBrn(MemberBrnImageVO vo);
+	public MemberBrnImageVO getMemberBrnImage(MemberVO vo);
 	public void insertMemberHotelsImage(List<MemberHotelsImageVO> vo);
 	public void updateStatusMemberHotelsImage(MemberHotelsImageVO vo);
 	public void updateRoomStatusMemberHotelsImage(MemberHotelsImageVO vo);
