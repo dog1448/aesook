@@ -49,6 +49,7 @@ public class MemberRoomDAOImpl implements MemberRoomDAO {
 	public List<MemberRoomVO> getRoomSortList(MemberRoomVO vo) {
 		return sqlSessionTemplate.selectList(namespace + ".selectRoomDescription", vo);
 	}	
+	
 
 	//Insert Room
 	@Override
