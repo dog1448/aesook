@@ -11,6 +11,14 @@
 	where HOTELS_CODE = #{hotelsCode} ORDER BY room_standard_price asc
 </select>
 
+<select id="getRoomList" resultType="memberRoom" parameterType="memberRoom">
+	SELECT * from room where hotels_code = #{hotelsCode} order by room_sort
+</select>
+
+<delete id="deleteRoom" parameterType="memberRoom">
+	DELETE room WHERE hotels_code = #{hotelsCode} AND room_name = #{roomName}
+</delete>
+
 <!-- 숙소 전체 사진  -->
 <select id="getAllPic" resultType="memberHotelsImage" parameterType="memberHotels">
 	select * from hotels_image where hotels_code = #{hotelsCode}
@@ -38,7 +46,10 @@
 	room_holiday_price, room_max_cnt, room_info, 
 	room_standard_cnt, room_standard_price
 	from room
-	where hotels_code = #{hotelsCode} and room_sort = #{roomSort}
+	where hotels_code = #{hotelsCode}
+	<if test="roomSort != null">
+	and room_sort = #{roomSort}
+	</if>
 </select>
 
 <!-- 숙소등록 -->
@@ -69,5 +80,31 @@
 	where hotels_code = #{hotelsCode} 
 	order by room_sort asc
 </select>
+
+<!-- insertRoomSort -->
+<insert id="insertRoomSort" parameterType="memberRoom">
+	INSERT INTO room VALUES 
+	(#{hotelsCode}, #{roomName}, #{roomSort},
+	#{roomStandardCnt}, #{roomMaxCnt}, #{roomStandardPrice},
+	#{roomHolidayPrice}, #{roomAddPrice}, #{roomInfo})
+</insert>
+
+<update id="updateRoomSort" parameterType="memberRoom">
+	UPDATE room SET 
+	room_Standard_Cnt = #{roomStandardCnt},
+	room_Max_Cnt = #{roomMaxCnt},
+	room_Standard_Price = #{roomStandardPrice},
+	room_Holiday_Price = #{roomHolidayPrice},
+	room_Add_Price = #{roomAddPrice},
+	room_Info = #{roomInfo}
+	WHERE
+	room_Sort = #{roomSort} AND hotels_Code = #{hotelsCode}
+</update>
+
+<delete id="deleteRoomSort" parameterType="memberRoom">
+	DELETE room 
+	WHERE 
+	room_Sort = #{roomSort} AND hotels_Code = #{hotelsCode}
+</delete>
   
 </mapper>
