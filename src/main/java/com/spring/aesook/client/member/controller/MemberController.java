@@ -137,13 +137,14 @@ public class MemberController {
 					httpSession.removeAttribute("login");
 				}
 				httpSession.setAttribute("login", user);
+				Object destination = httpSession.getAttribute("destination");
+				return "redirect:" + (destination != null ? (String) destination : "home.do");
 			} else {
 				model.addAttribute("message", "비밀번호가 틀립니다.");
 				return "/messageLogin";
 			}
 		}
 
-    	return "redirect:home.do"; // 
 
 
     }
@@ -238,7 +239,8 @@ public class MemberController {
     			session.removeAttribute("login");
     		}
     		session.setAttribute("login", vo);
-    		return "redirect:home.do";
+    		Object destination = session.getAttribute("destination");
+			return "redirect:" + (destination != null ? (String) destination : "home.do");
     	} else if(result == 0) {    		
     		 
     		 if(session.getAttribute("login") != null) {
@@ -246,6 +248,8 @@ public class MemberController {
      		}
     		 memberService.insertMember(vo);
     		 session.setAttribute("login", vo);
+    		 Object destination = session.getAttribute("destination");
+			 return "redirect:" + (destination != null ? (String) destination : "home.do");
     	} 
     	
     	return "redirect:home.do";
@@ -278,10 +282,13 @@ public class MemberController {
     	
     	if(result == 1) {
     		session.setAttribute("login", vo);
-    		return "redirect:home.do";
+    		Object destination = session.getAttribute("destination");
+			return "redirect:" + (destination != null ? (String) destination : "home.do");
     	} else if(result == 0) {    		
     		memberService.insertMember(vo);
     		session.setAttribute("login", vo);
+    		Object destination = session.getAttribute("destination");
+			return "redirect:" + (destination != null ? (String) destination : "home.do");
     	}
     	
     	return "redirect:home.do";
