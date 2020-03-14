@@ -10,12 +10,6 @@
 alert("등록된 숙소가 없습니다.");
 </script>
 </c:if>
-<c:if test="${message ne null}">
-<script type="text/javascript">
-var message = "${message}";
-alert(message);
-</script>
-</c:if>
 <link href="resources/client/css/step.css" rel="stylesheet">
 </head>
 <body>

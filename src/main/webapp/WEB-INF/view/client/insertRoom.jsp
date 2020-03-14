@@ -20,13 +20,14 @@ $(document).ready(function(){
 	<c:forEach var="sort" items="${sessionScope.RoomType}">
 		roomSortList.push("${sort.roomSort}");
 	</c:forEach>
+	console.log(roomSortList);
 	for (var i = 0; i < roomSortList.length; i++) {
 		optionList += "<option>"+roomSortList[i]+"</option>"
 	}	
 	
     var i=1;
    $("#add_row").click(function(){
-    $('#addr'+i).html("<td><input name='roomList["+i+"].roomName' type='text' placeholder='RoomName' class='form-control input-md roomName'/></td><td><select name='roomList["+i+"].roomSort' class='form-control'>"+optionList+"</select>");
+    $('#addr'+i).html("<td><input name='roomList["+i+"].roomName' type='text' placeholder='RoomName' class='form-control input-md'/></td><td><select name='roomList["+i+"].roomSort' class='form-control'>"+optionList+"</select>");
 
     $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
     i++; 
@@ -39,25 +40,6 @@ $(document).ready(function(){
 	 });
 
 });
-
-function checkz() {
-	
-	var flag = true;
-	
-	$('.roomName').each(function (index, item) {
-		var test = $(item).val();
-		if(test == ""){
-			flag = false;
-			alert("방 이름을 입력하세요.");					
-			return;
-		}	
-	});
-	if(!flag){
-		return flag;
-	}
-	
-	$('#roomForm').submit();
-}
 </script>
 <body>
 <%@ include file="main_header.jspf" %>
@@ -86,7 +68,7 @@ function checkz() {
 						    </ul>
 						</div>
 							<hr>
-							<form method="post" action="insertRoom.do" id ="roomForm">
+							<form method="post" action="insertRoom.do">
 								  <div class="panel-body">
 								    <div class="row">
 								    	<div class="col-md-12 column">
@@ -100,7 +82,7 @@ function checkz() {
 												<tbody>
 													<tr id='addr0'>
 														<td>
-														<input type="text" name='roomList[0].roomName'  placeholder='RoomName' class="form-control roomName"/>
+														<input type="text" name='roomList[0].roomName'  placeholder='RoomName' class="form-control"/>
 														</td>
 														<td>
 														<select name='roomList[0].roomSort' class="form-control">
@@ -120,7 +102,7 @@ function checkz() {
 											<hr>
 					                        <div class="text-right">
 					                         <button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>
-					                         <button type="button" onclick="checkz()" class="btn btn-info">등록하기</button>
+					                         <button type="submit" class="btn btn-info">등록하기</button>
 					                       </div>
 					              </div>
 							</form>
