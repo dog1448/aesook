@@ -133,7 +133,7 @@
 				<!-- 카카오 로그인 -->
 				<div class="input100" style="text-align: center">
 					<a id="custom-login-btn"
-						href="https://kauth.kakao.com/oauth/authorize?client_id=7a50784ea29bd06070b903a4562bf1b1&redirect_uri=http://localhost:8080/aesook/kakaoLogin.do&response_type=code">
+						href="https://kauth.kakao.com/oauth/authorize?client_id=7a50784ea29bd06070b903a4562bf1b1&redirect_uri=http://localhost:8080/aesook/loginKakao.do&response_type=code">
 						<img width="300"  height="50" src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"/>
 					</a>
 				</div>

@@ -35,7 +35,7 @@ public class MemberKakaoLoginService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=7a50784ea29bd06070b903a4562bf1b1");
-            sb.append("&redirect_uri=http://localhost:8080/aesook/kakaoLogin.do");
+            sb.append("&redirect_uri=http://localhost:8080/aesook/loginKakao.do");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
