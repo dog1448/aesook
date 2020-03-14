@@ -223,7 +223,7 @@ public class MemberController {
     }
     
     //Kakao Login
-    @RequestMapping(value = "/kakaoLogin.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginKakao.do", method = RequestMethod.GET)
     public String kakaoLogin(@RequestParam("code") String code, Model model,
     		HttpSession session) {
     	String access_Token = memberKakaoLoginService.getAccessToken(code);
@@ -238,9 +238,16 @@ public class MemberController {
     	int result = memberService.checkLoginId(vo);
     	
     	if(result == 1) {
+    		if(session.getAttribute("login") != null) {
+    			session.removeAttribute("login");
+    		}
     		session.setAttribute("login", vo);
     		return "redirect:home.do";
     	} else if(result == 0) {    		
+    		 
+    		 if(session.getAttribute("login") != null) {
+     			session.removeAttribute("login");
+     		}
     		 memberService.insertMember(vo);
     		 session.setAttribute("login", vo);
     	} 
@@ -249,7 +256,7 @@ public class MemberController {
     }
     
     //Naver Login
-    @RequestMapping(value = "/naverLogin.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginNaver.do", method = RequestMethod.GET)
     public String naverLogin(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) 
     		throws IOException, ParseException {
     	
@@ -277,18 +284,12 @@ public class MemberController {
     		session.setAttribute("login", vo);
     		return "redirect:home.do";
     	} else if(result == 0) {    		
-    		 memberService.insertMember(vo);
-    		 session.setAttribute("login", vo);
+    		memberService.insertMember(vo);
+    		session.setAttribute("login", vo);
     	}
     	
     	return "redirect:home.do";
     }
-
-    @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
-    public String moveInsertRoom() {
-    	return "/insertRoom";
-    }
-    
     
     //----------------------------------modifyInfo--------------------------------------------
 

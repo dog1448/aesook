@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-                                
+
 <!DOCTYPE HTML>
 <html>
 
@@ -246,24 +246,36 @@
 										<h2>${vo.hotelsName}</h2>
 									</div>
 									<!-- 방목록> -->
+									<c:if test="${sessionScope.login ne null}">									
+									<div class="text-right">
+										<a data-toggle="modal" href="#modalSort">
+											<button class="btn btn-info btn-outline">
+												호스트에게 문의하기</i>
+											</button>
+										</a>
+									</div>
+									</c:if>
+									<div>&nbsp;</div><div>&nbsp;</div>
 									<h3>방목록</h3>
 									<div class="row">
 										<c:forEach var="list" items="${list}" varStatus="vs">
-											<a href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomSort}">
+											<a
+												href="roomDescription.do?hotelsCode=${list.hotelsCode}&roomName=${list.roomSort}">
 												<div class="col-md-12 animate-box">
 													<input type="hidden" value="${list.hotelsCode}"
 														id="hotelsCode">
 													<div class="room-wrap">
 														<div class="row">
 															<div class="col-md-6 col-sm-6">
-															<c:if test="${list.hotelsImagePath ne null }">																
-																<img src="${list.hotelsImagePath}${list.hotelsImageName}" 
-																style="height: 280px; width: 100%;">
-															</c:if>
-															<c:if test="${list.hotelsImagePath eq null }">																
-																<img src="resources/client/images/noImage.png" 
-																style="height: 280px; width: 100%;">
-															</c:if>		
+																<c:if test="${list.hotelsImagePath ne null }">
+																	<img
+																		src="${list.hotelsImagePath}${list.hotelsImageName}"
+																		style="height: 280px; width: 100%;">
+																</c:if>
+																<c:if test="${list.hotelsImagePath eq null }">
+																	<img src="resources/client/images/noImage.png"
+																		style="height: 280px; width: 100%;">
+																</c:if>
 															</div>
 															<div class="col-md-6 col-sm-6">
 																<div class="desc">
@@ -271,17 +283,22 @@
 																	<input type="hidden" value="${list.roomSort}"
 																		name="roomSort">
 																	<p class="price" id="standardPrice">
-																	<fmt:formatNumber type="number" var="roomStandardPrice" maxFractionDigits="3" value="${list.roomStandardPrice}" />
+																		<fmt:formatNumber type="number"
+																			var="roomStandardPrice" maxFractionDigits="3"
+																			value="${list.roomStandardPrice}" />
 																		<span>${roomStandardPrice} ￦ <small>&nbsp;평일</small></span>
 																	</p>
 																	<p class="price">
-																	<fmt:formatNumber type="number" var="roomHolidayPrice" maxFractionDigits="3" value="${list.roomHolidayPrice}" />
+																		<fmt:formatNumber type="number" var="roomHolidayPrice"
+																			maxFractionDigits="3"
+																			value="${list.roomHolidayPrice}" />
 																		<span><font color="#FFC300">${roomHolidayPrice}
 																				￦</font></span> <small>&nbsp;공휴일</small>
 																	</p>
 																	<p>기준 : ${list.roomStandardCnt} 명
 																		&nbsp;/&nbsp;&nbsp;최대 : ${list.roomMaxCnt} 명</p>
-																<fmt:formatNumber type="number" var="roomAddPrice" maxFractionDigits="3" value="${list.roomAddPrice}" />
+																	<fmt:formatNumber type="number" var="roomAddPrice"
+																		maxFractionDigits="3" value="${list.roomAddPrice}" />
 																	<p>인원당 추가요금 : ${roomAddPrice} ￦</p>
 																</div>
 															</div>
@@ -496,9 +513,38 @@
 			</div>
 		</div>
 
+		<!-- Modal Message -->
+		<div class="modal fade" id="modalSort" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		  aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <form role="form" method="post" action="#">
+		     <input type="hidden" name="memberId" value="${login.memberId}">
+					    
+		    <div class="modal-content">
+		      <!--Header-->
+		      <div class="modal-header">
+		        <h4 class="modal-title" id="myModalLabel">문의하기</h4>
+		      </div>
+		      <!--Body-->
+		      <div class="modal-body">
+		      	<label>제목 : </label>
+		      	<input type="text" style="width: 100%;">
+		      	<hr>
+		      	<label>내용 : </label>		      
+		      	<textarea style="width: 100%; height: 280px; resize: none;"></textarea>
+		      </div>
+		      <!--Footer-->
+		      <div class="modal-footer">
+		        <button type="submit" class="btn btn-info btn-outline">보내기</button>
+		        <button class="btn btn-default btn-outline" data-dismiss="modal">닫기</button>
+		      </div>
+		    </div>
+		    </form>
+		  </div>
+		</div>
+		<!-- Modal Message -->
 
 		<div>&nbsp;</div>
-
 
 		<%@include file="footer.jspf"%>
 
@@ -547,10 +593,9 @@
 									map.setCenter(coords);
 								}
 							});
-			
-			
+
 			function numberWithCommas(x) {
-			    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}
 		</script>
 	</div>
