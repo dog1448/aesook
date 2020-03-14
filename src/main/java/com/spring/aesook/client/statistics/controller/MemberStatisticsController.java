@@ -44,12 +44,8 @@ public class MemberStatisticsController {
 	@ResponseBody
 	public List<HashMap<Object, Object>> getRoomRatio(
 			@RequestParam("memberId") String memberId){
-		List<String> roomName = memberStatisticsService.getRoomName(memberId);		
-		
+		List<String> roomName = memberStatisticsService.getRoomName(memberId);				
 		List<HashMap<Object, Object>> list = memberStatisticsService.getRoomRatio(roomName, memberId);
-		
-		
-		
 		return list;
 	}
 }
