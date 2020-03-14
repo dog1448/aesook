@@ -115,6 +115,7 @@
 							<hr>
 							<div class="col-sm-6">
 								<label>총 결제금액</label>
+								<fmt:formatNumber type="number" var="totalPrice" maxFractionDigits="3" value="${totalPrice}" />
 								<h2>${totalPrice} ￦</h2>
 							</div>
 							<div>&nbsp;</div>
