@@ -10,4 +10,3 @@ public interface ManagerTermsDAO {
 	List<ManagerTermsVO> getListTerms();
 	ManagerTermsVO getTerms(String hotelsType);
 }
- 

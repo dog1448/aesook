@@ -37,15 +37,7 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 		
 		return roomList;
 	}
-	
-	public List<MemberRoomVO> getRoomList(MemberRoomVO vo) {
-		return memberRoomDAO.getRoomList(vo);
-	}
-	
-	public void deleteRoom(MemberRoomVO vo) {
-		memberRoomDAO.deleteRoom(vo);
-	}
-	
+
 	// Get Accommodation
 	@Override
 	public MemberHotelsVO getHotel(int hotelsCode) {
@@ -61,10 +53,6 @@ public class MemberRoomServiceImpl implements MemberRoomService {
 		vo.setRoomSort(roomSort);
 		
 		return memberRoomDAO.getRoom(vo);
-	}
-	
-	public List<MemberRoomVO> getRoomSortList(MemberRoomVO vo) {
-		return memberRoomDAO.getRoomSortList(vo);
 	}
 
 	
