@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+                                
 <!DOCTYPE HTML>
 <html>
 
@@ -269,15 +271,18 @@
 																	<input type="hidden" value="${list.roomSort}"
 																		name="roomSort">
 																	<p class="price" id="standardPrice">
-																		<span>${list.roomStandardPrice} ￦ <small>&nbsp;평일</small></span>
+																	<fmt:formatNumber type="number" var="roomStandardPrice" maxFractionDigits="3" value="${list.roomStandardPrice}" />
+																		<span>${roomStandardPrice} ￦ <small>&nbsp;평일</small></span>
 																	</p>
 																	<p class="price">
-																		<span><font color="#FFC300">${list.roomHolidayPrice}
+																	<fmt:formatNumber type="number" var="roomHolidayPrice" maxFractionDigits="3" value="${list.roomHolidayPrice}" />
+																		<span><font color="#FFC300">${roomHolidayPrice}
 																				￦</font></span> <small>&nbsp;공휴일</small>
 																	</p>
 																	<p>기준 : ${list.roomStandardCnt} 명
 																		&nbsp;/&nbsp;&nbsp;최대 : ${list.roomMaxCnt} 명</p>
-																	<p>인원당 추가요금 : ${list.roomAddPrice} ￦</p>
+																<fmt:formatNumber type="number" var="roomAddPrice" maxFractionDigits="3" value="${list.roomAddPrice}" />
+																	<p>인원당 추가요금 : ${roomAddPrice} ￦</p>
 																</div>
 															</div>
 														</div>
@@ -542,6 +547,11 @@
 									map.setCenter(coords);
 								}
 							});
+			
+			
+			function numberWithCommas(x) {
+			    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
 		</script>
 	</div>
 

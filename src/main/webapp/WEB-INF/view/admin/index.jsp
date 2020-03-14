@@ -320,7 +320,7 @@
 					title : {
 						display : true,
 						text : '예약수 (단위 : 개)'
-					},
+					},					
 					scales: {
 						yAxes: [{
 							ticks: {
@@ -569,6 +569,18 @@
 						display : true,
 						text : '월간 수입 (단위 : 원)'
 					},
+					tooltips: {
+				          callbacks: {
+				                label: function(tooltipItem, data) {
+				                    var value = data.datasets[0].data[tooltipItem.index];
+				                    if(parseInt(value) >= 1000){
+				                               return '￦' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				                            } else {
+				                               return '￦' + value;
+				                            }
+				                }
+				          } // end callbacks:
+				    },
 		        	scales: {
 						yAxes: [{
 							ticks: {							
