@@ -13,9 +13,9 @@
 
 		<div id="page-wrapper">
 			<div class="container-fluid">
-				<div class="row">
+				<div class="row"><div>&nbsp;</div>
 					<div class="col-lg-12">
-						<h1 class="page-header">약관 정책</h1>
+						<h1 class="page-header">Rule</h1>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
@@ -23,26 +23,24 @@
 				<div class="row">
 					<div class="col-lg-7">
 						<div class="panel panel-default">
-							<div class="panel-heading">Basic Form Elements</div>
+							<div class="panel-heading">Modify the Rule</div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-7">
 										<form role="form" method="post">
-											<input type="hidden" name="hotelsType" value="${terms.hotelsType }">
+											<input type="hidden" name="hotelsType" value="${rule.hotelsType }">
 												
 											<fieldset id="field" disabled>
 												
 												
 												<div class="form-group">
-													<label>예약 공지</label>
-													<textarea class="form-control" rows="15" id="test1" name="bookingRule">${terms.bookingRule }</textarea>
+													<label>${rule.hotelsType }의 예약 공지</label>
+													<textarea class="form-control" rows="15" id="test1" name="bookingRule">${rule.bookingRule }</textarea>
 												</div>
 												<div class="form-group">
-													<label>취소 규정</label>
-													<textarea class="form-control" rows="15" id="test2" name="cancelRule">${terms.cancelRule }</textarea>
+													<label>${rule.hotelsType }의 취소 규정</label>
+													<textarea class="form-control" rows="15" id="test2" name="cancelRule">${rule.cancelRule }</textarea>
 												</div>
-												
-												<label>${terms.hotelsType }</label>
 
 											</fieldset>
 
@@ -107,7 +105,7 @@
                 		alert("Disable을 해주세요.");
                 		return false;
                 	}else if(cnt>0){
-                    formObj.attr("action","updateTerms.admin");
+                    formObj.attr("action","updateRule.admin");
                     formObj.attr("method","post");
                     formObj.submit();
                 	}
@@ -115,7 +113,7 @@
 
 
                 $(".canclebt").on("click",function () {
-                    self.location = "/aesook/termsBoard.admin"
+                    self.location = "/aesook/ruleBoard.admin"
                 });
                 
                 

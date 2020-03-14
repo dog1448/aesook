@@ -22,12 +22,17 @@
 	select hotels_seq.nextval from dual
 </select>
 
-	<update id="modifyHotels">
-		update HOTELS
-		set HOTELS_INFO = #{hotelsInfo},
-		HOTELS_INTRODUCE = #{hotelsIntroduce},
-		HOTELS_PATH = #{hotelsPath}
-		WHERE HOTELS_CODE = #{hotelsCode}
-	</update>
+<update id="updateHotels">
+	update HOTELS
+	set HOTELS_NAME = #{hotelsName},
+	HOTELS_PHONE = #{hotelsPhone},
+	HOTELS_ZIPCODE = #{hotelsZipcode},
+	HOTELS_ADDRESS1 = #{hotelsAddress1},
+	HOTELS_ADDRESS2 = #{hotelsAddress2},
+	HOTELS_PATH = #{hotelsPath},
+	HOTELS_INFO = #{hotelsInfo},
+	HOTELS_INTRODUCE = #{hotelsIntroduce}
+	WHERE MEMBER_ID = #{memberId}
+</update>
 
 </mapper>

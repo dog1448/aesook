@@ -99,7 +99,7 @@ function check_only(chk){
 <%@ include file="nav.jspf" %>
  <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row"><div>&nbsp;</div>
                     	<!-- Preview Image -->
                         <div class="col-lg-8">
                             <h1 class="page-header">Preview Image</h1>

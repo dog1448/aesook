@@ -12,6 +12,7 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
+            	<div>&nbsp;</div>
                 <div class="col-lg-12">
                     <h1 class="page-header">HOME</h1>
                 </div>
@@ -20,7 +21,7 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -41,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -64,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -86,7 +87,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -108,7 +109,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -130,7 +131,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -215,7 +216,7 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> CPU Using
+                            <i class="fa fa-bell fa-fw"></i> Server Monitering
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -223,7 +224,7 @@
                                 <canvas id="myChart" width="400" height="400"></canvas>
                             </div>
                             <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                            <button class="btn btn-default btn-block" id="refresh">새로고침</button>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -261,34 +262,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script type="text/javascript">
-	$('.yearpicker1').datepicker({
-		minViewMode : 'years',
-		format : 'yyyy',
-		'autoclose': true
-	});
-	$('.yearpicker1').datepicker('setDate', 'today');
-	var chartLabels1 = [];
-	var chartData1 = [];
-	var config1 = {
-	        // The type of chart we want to create
-	        type: 'line',
-
-	        // The data for our dataset
-	        data: {
-	            labels: chartLabels1,
-	            datasets: [{
-	                label: '예약수',
-	                backgroundColor: 'rgb(255, 204, 204)',
-	                borderColor: 'rgb(255, 99, 132)',
-	                data: chartData1
-	            }]
-	        },
-	        options: {}
-	    }
-	function createChart1() {
-		 var ctx1 = document.getElementById('lineChart').getContext('2d');
-		 window.myChart1 = new Chart(ctx1, config1);
-	}
 	$(document).ready(function() {
 		$.ajax({
 			url : "getMonthlyTotalBooking.admin",
@@ -315,16 +288,67 @@
 							console.log("col : " + key + " value : "
 									+ map[key]);
 						}
-
+	
 					}
-
+	
 				}
-
+	
 			}
 		})
-
+		max1 = Math.max.apply(null, chartData1);
+		max1 = max1 + 20;
+		console.log(max1);
+		config1 = {
+		        // The type of chart we want to create
+		        type: 'line',
+	
+		        // The data for our dataset
+		        data: {
+		            labels: chartLabels1,
+		            datasets: [{
+		                label: '예약수 (단위 : 개)',
+		                backgroundColor: 'rgb(255, 204, 204)',
+		                borderColor: 'rgb(255, 99, 132)',
+		                data: chartData1
+		            }]
+		        },
+		        options: {
+		        	legend : {
+						position : 'top',
+						display : false
+					},
+					title : {
+						display : true,
+						text : '예약수 (단위 : 개)'
+					},					
+					scales: {
+						yAxes: [{
+							ticks: {
+								suggestedMax : max1,						
+								fontSize : 15,
+								beginAtZero: true
+							}
+						}]
+					}
+		        }
+		    }
 		createChart1();		
 	});
+	$('.yearpicker1').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker1').datepicker('setDate', 'today');
+	var chartLabels1 = [];
+	var chartData1 = [];
+	var max1;
+	var config1;
+	function createChart1() {
+		 var ctx1 = document.getElementById('lineChart').getContext('2d');
+		 window.myChart1 = new Chart(ctx1, config1);
+	}
+	
 	
 	$(document).on("click","#search1",function() {
 		chartLabels1.length = 0;
@@ -383,75 +407,109 @@
 </script>
 
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: 'CPU Using',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+	var chart2 = new Array();
+    var config2 = {    		
+            type: 'bar',
+            data: {
+                labels: ['CPU', 'Memory'],
+                datasets: [
+                {  
+                	label: ['(단위 : %)'],                	
+                    data: chart2,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+            	legend : {
+					position : 'top',
+					display : false
+				},
+				title : {
+					display : true,
+					text : '서버 사용량 (단위 : %)'
+				},
+                scales: {                	
+                    yAxes: [{
+                        ticks: {
+                        	suggestedMax : 100,							
+							fontSize : 15,
+							beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
+        };
+    
+    function createChart2() {
+    	 var ctx = document.getElementById('myChart').getContext('2d');
+    	 window.myChart2 = new Chart(ctx, config2);    	    
+	}
+    $(document).ready(function() {
+		$.ajax({
+			url : "monitering.admin",
+			type : "post",
+			dataType : "json",
+			async : false,			
+			success : function(data) {
+				for ( var key in data) {
+					if (key == 'cpu') {									
+						chart2[0] = data[key];
+						console.log("컬럼 : " + key + " value : "
+								+ data[key]);
+					}
+				
+					if (key == 'Memory') {
+						chart2[1] = data[key];
+						console.log("col : " + key + " value : "
+								+ data[key]);
+					}
+
+				}
+			}
+		})
+
+		createChart2();		
+	});
+   
+    $(document).on("click","#refresh",function() {
+    	$.ajax({
+			url : "monitering.admin",
+			type : "post",
+			dataType : "json",
+			async : false,			
+			success : function(data) {
+				for ( var key in data) {
+					if (key == 'cpu') {									
+						chart2[0] = data[key];
+						console.log("컬럼 : " + key + " value : "
+								+ data[key]);
+					}
+				
+					if (key == 'Memory') {
+						chart2[1] = data[key];
+						console.log("col : " + key + " value : "
+								+ data[key]);
+					}
+
+				}
+			}
+		})
+		
+		window.myChart2.update();
+		
+	});
 </script>
 
 <script type="text/javascript">
-	$('.yearpicker2').datepicker({
-		minViewMode : 'years',
-		format : 'yyyy',
-		'autoclose': true
-	});
-	$('.yearpicker2').datepicker('setDate', 'today');
-	var chartLabels = [];
-	var chartData = [];
-	var config = {
-	        // The type of chart we want to create
-	        type: 'line',
-
-	        // The data for our dataset
-	        data: {
-	            labels: chartLabels,
-	            datasets: [{
-	                label: '수입',
-
-	                borderColor: '#7CFF55',
-	                data: chartData
-	            }]
-	        },
-	        options: {}
-	    };
-	function createChart() {
-		 var ctx = document.getElementById('dollarChart').getContext('2d');
-		 window.myChart = new Chart(ctx, config);
-	}
-	$(document).ready(function() {
+	$(document).ready(function() {		
 		$.ajax({
 			url : "getMonthlyTotalPrice.admin",
 			type : "post",
@@ -477,16 +535,88 @@
 							console.log("col : " + key + " value : "
 									+ map[key]);
 						}
-
+	
 					}
-
+	
 				}
-
+	
 			}
 		})
-
+		
+		max = Math.max.apply(null, chartData);
+		max = max + 500000;
+		console.log(max);
+		config = {
+		        // The type of chart we want to create
+		        type: 'line',
+	
+		        // The data for our dataset
+		        data: {
+		            labels: chartLabels,
+		            datasets: [{
+		                label: '수입 (단위 : 원)',
+	
+		                borderColor: '#7CFF55',
+		                data: chartData
+		            }]
+		        },
+		        options: {
+		        	legend : {
+						position : 'top',
+						display : false
+					},
+					title : {
+						display : true,
+						text : '월간 수입 (단위 : 원)'
+					},
+					tooltips: {
+				          callbacks: {
+				                label: function(tooltipItem, data) {
+				                    var value = data.datasets[0].data[tooltipItem.index];
+				                    if(parseInt(value) >= 1000){
+				                               return '￦' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				                            } else {
+				                               return '￦' + value;
+				                            }
+				                }
+				          } // end callbacks:
+				    },
+		        	scales: {
+						yAxes: [{
+							ticks: {							
+								suggestedMax : max,					
+								fontSize : 15,
+								beginAtZero: true,
+								userCallback : function(value, index, values) {
+									value = value.toString();
+									value = value.split(/(?=(?:...)*$)/);
+									value = value.join(',');
+									return value;
+								}
+							}
+						}]
+					}
+		        }
+		    };
 		createChart();		
 	});
+
+	$('.yearpicker2').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker2').datepicker('setDate', 'today');
+	var max;
+	var chartLabels = [];
+	var chartData = [];	
+	
+	var config;
+	
+	function createChart() {
+		 var ctx = document.getElementById('dollarChart').getContext('2d');
+		 window.myChart = new Chart(ctx, config);
+	}
 	
 	$(document).on("click","#search2",function() {
 		chartLabels.length = 0;
@@ -495,7 +625,6 @@
 			alert("연도를 선택해주세요.")
 			return;
 		}
-
 		$.ajax({
 			url : "getMonthlyTotalPrice.admin",
 			type : "post",

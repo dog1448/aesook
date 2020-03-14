@@ -172,28 +172,24 @@ public class MemberHotelsController {
 	}
 	
 	
-	// ------------------------------------------------ insert My hotels -----------------------------------------------
-    @RequestMapping(value = "/modifyHotel.do", method = RequestMethod.GET)
+	// ------------------------------------------------ Modify My hotels -----------------------------------------------
+    @RequestMapping(value = "/moveModifyHotel.do", method = RequestMethod.GET)
     public String moveModifyHotel(@RequestParam(value = "hotelsCode")int hotelsCode, HttpSession session, Model model){
         MemberVO user = (MemberVO)session.getAttribute("login");
         if(user != null) {
-            List<MemberRoomVO> list = memberRoomService.getRoomList(hotelsCode);
             MemberHotelsVO hotelsVO = memberRoomService.getHotel(hotelsCode);
             MemberHotelsFacilityVO facilityVO = memberHotelsFacilityService.getFacility(hotelsCode);
-            List<MemberReviewVO> reviewVO = memberHotelsService.getReviewList(hotelsCode);
-            String scoreAvg = memberHotelsService.getScoreAvg(hotelsCode);
-            model.addAttribute("list",list);
-            model.addAttribute("vo", hotelsVO);
+            model.addAttribute("hotelsVO", hotelsVO);
             model.addAttribute("facilityVO", facilityVO);
-
+            
         }
         return "/modifyHotels";
     }
 	
-    @RequestMapping(value = "/modifyHotel.do",method = RequestMethod.POST)
-    public String ModifyHotel(MemberHotelsVO memberHotelsVO , MemberRoomVO memberRoomVO){
-        memberHotelsService.modifyHotels(memberHotelsVO);
-        memberHotelsService.modifyRooms(memberRoomVO);
+    @RequestMapping(value = "/updateHotels.do",method = RequestMethod.POST)
+    public String ModifyHotel(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO){
+    	memberHotelsService.updateHotels(memberHotelsVO);
+        memberHotelsFacilityService.updateFacility(memberFacilityVO);
         return "redirect:/registeredAccommodation.do";
     }
 	

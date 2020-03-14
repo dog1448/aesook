@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+                                
 <!DOCTYPE HTML>
 <html>
 
@@ -24,6 +26,7 @@
 /* Carousel base class */
 .carousel {
 	margin-bottom: 60px;
+	width: 70%;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -196,7 +199,7 @@
 		<div class="colorlib-wrap">
 			<div class="container">
 				<div class="row">
-					<div id="myCarousel" class="carousel slide">
+					<div id="myCarousel" class="carousel slide col-md-offset-2">
 						<div class="carousel-inner">
 							<c:if test="${not empty picList}">
 								<c:forEach var="picList" items="${picList}">
@@ -204,7 +207,7 @@
 										<div class="item active">
 											<img
 												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
-												class="img-responsive" style="width: auto; height: 500px;">
+												class="img-responsive" style="width: 100%; height: 500px;">
 
 										</div>
 									</c:if>
@@ -212,7 +215,7 @@
 										<div class="item">
 											<img
 												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
-												class="img-responsive" style="width: auto; height: 500px;">
+												class="img-responsive" style="width: 100%; height: 500px;">
 
 										</div>
 									</c:if>
@@ -221,7 +224,7 @@
 							<c:if test="${empty picList}">
 								<div class="item active">
 									<img src="resources/client/images/noImage.png"
-										class="img-responsive" style="width: auto; height: 500px;">
+										class="img-responsive" style="width: 100%; height: 500px;">
 
 								</div>
 							</c:if>
@@ -255,11 +258,11 @@
 															<div class="col-md-6 col-sm-6">
 															<c:if test="${list.hotelsImagePath ne null }">																
 																<img src="${list.hotelsImagePath}${list.hotelsImageName}" 
-																style="height: 280px; width: auto;">
+																style="height: 280px; width: 100%;">
 															</c:if>
 															<c:if test="${list.hotelsImagePath eq null }">																
 																<img src="resources/client/images/noImage.png" 
-																style="height: 280px; width: auto;">
+																style="height: 280px; width: 100%;">
 															</c:if>		
 															</div>
 															<div class="col-md-6 col-sm-6">
@@ -268,15 +271,18 @@
 																	<input type="hidden" value="${list.roomSort}"
 																		name="roomSort">
 																	<p class="price" id="standardPrice">
-																		<span>${list.roomStandardPrice} ￦ <small>&nbsp;평일</small></span>
+																	<fmt:formatNumber type="number" var="roomStandardPrice" maxFractionDigits="3" value="${list.roomStandardPrice}" />
+																		<span>${roomStandardPrice} ￦ <small>&nbsp;평일</small></span>
 																	</p>
 																	<p class="price">
-																		<span><font color="#FFC300">${list.roomHolidayPrice}
+																	<fmt:formatNumber type="number" var="roomHolidayPrice" maxFractionDigits="3" value="${list.roomHolidayPrice}" />
+																		<span><font color="#FFC300">${roomHolidayPrice}
 																				￦</font></span> <small>&nbsp;공휴일</small>
 																	</p>
 																	<p>기준 : ${list.roomStandardCnt} 명
 																		&nbsp;/&nbsp;&nbsp;최대 : ${list.roomMaxCnt} 명</p>
-																	<p>인원당 추가요금 : ${list.roomAddPrice} ￦</p>
+																<fmt:formatNumber type="number" var="roomAddPrice" maxFractionDigits="3" value="${list.roomAddPrice}" />
+																	<p>인원당 추가요금 : ${roomAddPrice} ￦</p>
 																</div>
 															</div>
 														</div>
@@ -429,8 +435,6 @@
 													${review.reviewContents}
 													<hr>
 												</c:forEach>
-												<a href="#" class="btn btn-success btn-arrow-left">이전</a> <a
-													href="#" class="btn btn-success btn-arrow-left">다음</a>
 											</div>
 										</div>
 
@@ -543,6 +547,11 @@
 									map.setCenter(coords);
 								}
 							});
+			
+			
+			function numberWithCommas(x) {
+			    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
 		</script>
 	</div>
 

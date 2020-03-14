@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -47,8 +48,9 @@
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
+												<fmt:formatNumber type="number" var="bookingTotalPrice" maxFractionDigits="3" value="${canceledbooking.bookingTotalPrice}" />
 													<h2>숙소명 : ${canceledbooking.hotelsName}</h2>
-													<p class="price"><span>${canceledbooking.bookingTotalPrice}￦</span> <small>/ allNight</small></p>
+													<p class="price"><span>${bookingTotalPrice}￦</span> <small>/ allNight</small></p>
 													<p>방종류   : ${canceledbooking.roomSort}</p>
 													<p>체크인    : ${canceledbooking.bookingCheckIn} / 체크아웃 : ${canceledbooking.bookingCheckOut}</p>
 													<p>예약일자 : ${canceledbooking.bookingDate}</p>													

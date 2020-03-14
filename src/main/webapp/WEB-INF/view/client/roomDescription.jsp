@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -68,7 +69,7 @@ function checkz() {
      return;
     }
  	
-    if (!check(regex, phone, "번호를 형식에 맞게 제대로 입력하세요.")) {
+    if (!check(regex, phone, "번호를 형식에 맞게 제대로 입력해주세요.")) {
 		return;
 	}	
     
@@ -108,6 +109,10 @@ function check(re, what, message) {
 .white {
 	background-color: white;
 	border: none !important;
+	
+}
+pre {
+	white-space: pre-wrap;
 }
 </style>
     <meta charset="UTF-8">
@@ -195,9 +200,11 @@ function check(re, what, message) {
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="room-details-item">
-                            <div class="rd-text">                                
-                                <h2>${memberRoomVO.roomStandardPrice} ￦<span>&nbsp;&nbsp;&nbsp;평일</span></h2>
-                                <h2>${memberRoomVO.roomHolidayPrice} ￦<span>&nbsp;&nbsp;&nbsp;공휴일</span></h2>
+                            <div class="rd-text">
+                            <fmt:formatNumber type="number" var="roomStandardPrice" maxFractionDigits="3" value="${memberRoomVO.roomStandardPrice}" />
+                            <fmt:formatNumber type="number" var="roomHolidayPrice" maxFractionDigits="3" value="${memberRoomVO.roomHolidayPrice}" />                                
+                                <h2>${roomStandardPrice} ￦<span>&nbsp;&nbsp;&nbsp;평일</span></h2>
+                                <h2>${roomHolidayPrice} ￦<span>&nbsp;&nbsp;&nbsp;공휴일</span></h2>
                                 <table>
                                     <tbody>                                   		
                                         <tr>
@@ -209,8 +216,9 @@ function check(re, what, message) {
                                             <td>${memberRoomVO.roomMaxCnt} 명</td>
                                         </tr>
                                         <tr>
+                                        <fmt:formatNumber type="number" var="roomAddPrice" maxFractionDigits="3" value="${memberRoomVO.roomAddPrice}" />
                                             <td class="r-o">추가인원 요금 : </td>
-                                            <td>${memberRoomVO.roomAddPrice} ￦</td>
+                                            <td>${roomAddPrice} ￦</td>
                                         </tr>    
                                     </tbody>
                                 </table>                              
@@ -222,11 +230,11 @@ function check(re, what, message) {
                                 <div>&nbsp;</div>
                                	<h2>예약공지</h2>
                                 <pre class="white">
-${memberTerms.bookingRule }
+${memberRule.bookingRule }
                                 </pre>
                                 <h2>취소규정</h2>
                                 <pre class="white">
-${memberTerms.cancelRule }
+${memberRule.cancelRule }
 								</pre>
                             </div>                           
                         </div>

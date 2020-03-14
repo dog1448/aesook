@@ -111,7 +111,7 @@ $(document).ready(function(){
 <%@ include file="nav.jspf" %>
 <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row"><div>&nbsp;</div>
                         <div class="col-lg-8">
                             <h1 class="page-header">Insert Image</h1>
                         </div>

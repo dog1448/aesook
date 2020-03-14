@@ -1,9 +1,9 @@
-package com.spring.aesook.admin.terms.vo;
+package com.spring.aesook.admin.rule.vo;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class ManagerTermsVO {
+public class ManagerRuleVO {
 	private String bookingRule;
 	private String cancelRule;
 	@Override

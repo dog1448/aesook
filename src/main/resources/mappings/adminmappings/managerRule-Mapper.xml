@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="admin.rule.dao.ManagerRuleDAO">
   
-  
-  
-  <mapper namespace="admin.terms.dao.ManagerTermsDAO">
-  
-  <select id="termsGetList" resultType="managerTerms" parameterType="managerTerms">
+  <select id="getRuleList" resultType="managerRule" parameterType="managerRule">
   SELECT * from rule
   </select>
   
-   <select id="getTerms" resultType="managerTerms" parameterType="managerTerms">
+   <select id="getRule" resultType="managerRule" parameterType="managerRule">
   SELECT * from rule where hotels_Type=#{hotelsType}
   </select>
   
-  <update id="updateTerms" parameterType="managerTerms">
+  <update id="updateRule" parameterType="managerRule">
   UPDATE rule 
   SET BOOKING_RULE=#{bookingRule}, CANCEL_RULE=#{cancelRule}
   WHERE HOTELS_TYPE=#{hotelsType}
