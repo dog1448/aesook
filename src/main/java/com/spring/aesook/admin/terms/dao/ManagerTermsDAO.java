@@ -9,6 +9,5 @@ public interface ManagerTermsDAO {
 	void updateTerms(ManagerTermsVO vo);
 	List<ManagerTermsVO> getListTerms();
 	ManagerTermsVO getTerms(String hotelsType);
-	void Test();
 }
  
