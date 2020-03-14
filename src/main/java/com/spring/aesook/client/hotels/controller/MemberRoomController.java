@@ -136,7 +136,7 @@ public class MemberRoomController {
 	
 	
 	// ---------------------------------- modifyRoom --------------------------------------------
-	@RequestMapping(value="/modifyRoom", method = RequestMethod.GET)
+	@RequestMapping(value="/modifyRoom.do", method = RequestMethod.GET)
 	public String moveModifyRoom(HttpSession httpSession, Model model) {
 		MemberVO user = (MemberVO) httpSession.getAttribute("login");
 		if (user != null) {
@@ -145,7 +145,9 @@ public class MemberRoomController {
 				MemberRoomVO room = new MemberRoomVO();
 				room.setHotelsCode(hotels.getHotelsCode());
 				List<MemberRoomVO> roomList = memberRoomService.getRoomList(room);
+				List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(room);
 				model.addAttribute("roomList",roomList);
+				model.addAttribute("roomSortList",roomSortList);
 				model.addAttribute("hotelsCode", hotels.getHotelsCode());
 			}
 		} else {
@@ -155,15 +157,19 @@ public class MemberRoomController {
 		return "/modifyRoom";
 	}
 	
-	@RequestMapping(value="/deleteRoom.do", method=RequestMethod.POST)
+	@RequestMapping(value="/modifyDeleteRoom.do", method=RequestMethod.POST)
 	public String deleteRoom(MemberRoomVO vo) {
 		memberRoomService.deleteRoom(vo);
 		return "redirect:modifyRoom.do";
 	}
 	
-	public String insertRoom(MemberRoomVO vo) {
-		memberRoomSortService.insertRoomSort(vo);
-		return "";
+	@RequestMapping(value="modifyInsertRoom.do", method=RequestMethod.POST)
+	public String insertRoom(MemberRoomVO roomList) {
+		List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(roomList);
+		List<MemberRoomVO> roomNameList = roomList.getRoomList();
+		// Insert Room
+		memberRoomService.insertRoom(roomSortList, roomNameList, roomList.getHotelsCode());
+		return "redirect:modifyRoom.do";
 	}
 	
 }

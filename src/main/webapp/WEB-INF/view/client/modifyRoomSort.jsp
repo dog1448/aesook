@@ -155,6 +155,9 @@ function insertModifySort() {
 						<div>
 		                  	<h2><strong>MODIFY THE ROOM TYPE</strong></h2>
 		                    <hr> 
+		                    <div  class="text-right">
+					           <a href="modifyRoom.do" class="btn btn-info btn-outline text-right">방 등록</a>
+					         </div>
                   		</div>
 								  <div class="panel-body">
 								    <div class="row">

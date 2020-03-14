@@ -48,9 +48,10 @@
         margin: 0 5px;
         cursor: pointer;
     }
-    table.table th:last-child {
+    .last {
         width: 100px;
     }
+
     table.table td a {
 		cursor: pointer;
         display: inline-block;
@@ -76,7 +77,7 @@
         top: 3px;
     }    
     table.table .form-control {
-        height: 32px;
+        height: 50px;
         line-height: 32px;
         box-shadow: none;
         border-radius: 2px;
@@ -87,19 +88,19 @@
 	table.table td .add {
 		display: none;
 	}
-	
 
+	.trC {
+		height: 15px;
+	}
 </style>
 <script type="text/javascript">
 $(document).on('click', 'button[name=delete]', function() {
 	
 	var confirmVal = confirm('정말 삭제하시겠습니까?');
 	if(confirmVal == false) {
-		return;
+		return false;
 	}
 	
-	var test = $(this).parents('form');
-	test.submit();
 })
 </script>
 </head>
@@ -120,6 +121,9 @@ $(document).on('click', 'button[name=delete]', function() {
 						<div>
 		                  	<h2><strong>MODIFY THE ROOM</strong></h2>
 		                    <hr> 
+		                  	<div  class="text-right">
+					           <a href="modifyRoomSort.do" class="btn btn-info btn-outline text-right">방 타입 등록</a>
+					         </div>
                   			</div>
 							  <div class="panel-body">
 								   <div class="row">
@@ -129,26 +133,28 @@ $(document).on('click', 'button[name=delete]', function() {
 						                    <tr>
 						                        <th>방 이름</th>
 						                        <th>방 종류</th>
-						                        <th>변경/삭제</th>
+						                        <th class="last">변경/삭제</th>
 						                    </tr>
 						                </thead>
 						                <c:forEach var="room" items="${roomList}">
-						                <form method="post" action="deleteRoom.do">
-						                <tbody>
-						                    <tr>
-						                        <td>${room.roomName}
-						                        	<input type="hidden" name="roomName" value="${room.roomName}">
-						                        </td>
-						                        <td>${room.roomSort}
-						                        	<input type="hidden" name="roomSort" value="${room.roomSort}">
-						                        </td>
-						                        <td class="text-center">
-						                           <button type="button" name="delete" class="btn-danger"><i class="icon icon-trash"></i></button>
-						                        </td>
-						                    </tr>
-						                </tbody>
-						                <input type="hidden" name="hotelsCode" value="${hotelsCode}">
-						                </form>
+						                <div>
+							                <form method="post" action="modifyDeleteRoom.do">
+							                <tbody>
+							                    <tr>
+							                        <td>${room.roomName}
+							                        	<input type="hidden" name="roomName" value="${room.roomName}">
+							                        </td>
+							                        <td>${room.roomSort}
+							                        	<input type="hidden" name="roomSort" value="${room.roomSort}">
+							                        </td>
+							                        <td class="text-center">
+							                           <button name="delete" class="btn-danger"><i class="icon icon-trash"></i></button>
+							                        </td>
+							                    </tr>
+							                </tbody>
+							                <input type="hidden" name="hotelsCode" value="${hotelsCode}">
+							                </form>
+						                </div>
 						                </c:forEach>
 						            </table>
 										</div><!-- col-md-12 column -->
@@ -172,13 +178,14 @@ $(document).on('click', 'button[name=delete]', function() {
 <!-- modifyInsertRoomSort Modal -->
 <script type="text/javascript">
 $(document).ready(function(){
+	
 	var roomSortList = new Array();
-	var optionList = ""
-	<c:forEach var="sort" items="${sessionScope.RoomType}">
+	<c:forEach var="sort" items="${roomSortList}">
+		var optionList = ""
 		roomSortList.push("${sort.roomSort}");
 	</c:forEach>
 	for (var i = 0; i < roomSortList.length; i++) {
-		optionList += "<option>"+roomSortList[i]+"</option>"
+	optionList += "<option>"+roomSortList[i]+"</option>"
 	}	
 	
     var i=1;
@@ -196,22 +203,55 @@ $(document).ready(function(){
 	 });
 
 });
+
+function checkz() {
+	
+	var roomNameList = new Array();
+	var flag = true;
+	
+	$('.roomName').each(function (index, item) {
+		var test = $(item).val();
+		roomNameList.push(test);
+		if(test == ""){
+			flag = false;
+			alert("방 이름을 입력하세요.");					
+			return;
+		}	
+	});
+	if(!flag){
+		return flag;
+	}
+	
+	<c:forEach var="sort" items="${roomList}">
+		roomNameList.push("${sort.roomName}");
+	</c:forEach>
+	
+	for (var i = 0; i < roomNameList.length; i++) {
+		for (var j = i+1; j < roomNameList.length; j++) {
+			if (roomNameList[i] == roomNameList[j]){
+				alert("같은 이름의 방이 있습니다.");
+				return;
+			}
+		}
+	}
+	
+	$('#roomForm').submit();
+}
 </script>
 <!-- Modal Room Type -->
 <div class="modal fade" id="modifyInsertRoomSort" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
-		<form method="post" action="insertRoom.do" id ="roomForm">
+		<form method="post" action="modifyInsertRoom.do" id ="roomForm">
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">최소한의 1개의 방이 있어야 방 종류가 생성가능합니다.</h4>
+        <h4 class="modal-title" id="myModalLabel">같은 이름은 등록이 불가능합니다.</h4>
       </div>
       <!--Body-->
       <div class="modal-body">
 			  <div class="panel-body">
 			    <div class="row">
-			    	<div class="col-md-12 column">
 						<table class="table table-bordered table-hover" id="tab_logic" border="1">
 							<thead>
 								<tr>
@@ -219,14 +259,14 @@ $(document).ready(function(){
 									<th>방 종류</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr id='addr0'>
+							<tbody >
+								<tr id='addr0' class="trC">
 									<td>
 									<input type="text" name='roomList[0].roomName'  placeholder='RoomName' class="form-control roomName"/>
 									</td>
 									<td>
 									<select name='roomList[0].roomSort' class="form-control">
-									<c:forEach var="sort" items="${sessionScope.RoomType}">
+									<c:forEach var="sort" items="${roomSortList}">
 										<option>${sort.roomSort}</option>
 									</c:forEach>
 									</select>
@@ -238,13 +278,13 @@ $(document).ready(function(){
 			                <a id="add_row" class="btn btn-info btn-outline"> 추가</a>
 			                <a id="delete_row" class="btn btn-danger btn-outline pull-right"></span> 삭제</a>
 							</div>
-							</div>
               </div>
       </div>
 		<input type="hidden" value="${hotelsCode}" name="hotelsCode">
+		<input type="hidden" value="${roomSortList}" name="roomSortList">
       <!--Footer-->
       <div class="modal-footer">
-        <input type="button" onclick="insertModifySort()" class="btn btn-info btn-outline" value="등록하기">
+        <input type="button" onclick="checkz()" class="btn btn-info btn-outline" value="등록하기">
         <button type="button" class="btn btn-default btn-outline" data-dismiss="modal">닫기</button>
       </div>
     </div>

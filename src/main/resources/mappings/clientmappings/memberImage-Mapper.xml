@@ -10,6 +10,10 @@
 		#{brnImagePath}, #{brnImageExtension}, 'U')
 	</insert>
 	
+	<select id="getBrnImage" parameterType="member" resultType="memberBrnImage">
+		SELECT * FROM brn_image WHERE member_id = #{memberId} AND brn_image_status = 'S'
+	</select>
+	
 	<insert id="insertMemberHotelsImage" parameterType="java.util.List" useGeneratedKeys="true">
 		<selectKey keyProperty="hotels_Image_No" resultType="int" order="BEFORE">
 		 select hotels_image_seq.nextval FROM DUAL
