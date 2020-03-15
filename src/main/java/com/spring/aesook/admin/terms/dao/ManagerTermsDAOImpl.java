@@ -36,6 +36,11 @@ public class ManagerTermsDAOImpl implements ManagerTermsDAO {
 		sqlSessionTemplate.update(namespace + ".updateTerms", vo);
 	}
 
+	@Override
+	public List<ManagerTermsVO> getAllTerms() {
+		return sqlSessionTemplate.selectList(namespace + ".getAllTerms");
+	}
+
 
 	
 }

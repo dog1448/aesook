@@ -34,5 +34,10 @@ public class ManagerTermsServiceImpl implements ManagerTermsService {
 		managerTermsDAO.updateTerms(vo);
 	}
 
+	@Override
+	public List<ManagerTermsVO> getAllTerms() {
+		return managerTermsDAO.getAllTerms();
+	}
+
 	
 }

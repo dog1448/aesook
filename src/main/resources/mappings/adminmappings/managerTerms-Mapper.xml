@@ -7,7 +7,7 @@
   <select id="getTermsList" resultType="managerTerms">
   SELECT distinct terms_usage from terms
   </select>
-  
+ 
   <select id="getSortedTerms" resultType="managerTerms" parameterType="managerTerms">
   SELECT * from terms where terms_usage = #{termsUsage}
   order by terms_no
@@ -24,6 +24,11 @@
   SET TERMS_TITLE=#{termsTitle}, TERMS_CONTENT=#{termsContent}
   WHERE TERMS_NO = #{termsNo}
   </update>
+ 
+  <select id="getAllTerms" resultType="managerTerms">
+  SELECT * FROM TERMS
+  order by terms_no
+  </select> 
  
   </mapper>
   

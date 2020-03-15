@@ -37,6 +37,11 @@
 	background-color: #eaf7f9;
 	margin-bottom: 20px;
 }
+.white {
+	background-color: white;
+	border: none !important;
+	white-space: pre-wrap;
+}
 </style>
 </head>
 
@@ -150,7 +155,7 @@
 									<a data-toggle="modal" href="#infoSubmitModal">	
 										<span class="label label-primary"><small>보기</small></span></a><br> 
 								<input type="checkbox" name="agree">(필수) 개인정보 제3자 제공동의 
-									<a data-toggle="modal" href="#infoUtilizeModal">	
+									<a id = "infoUtilize" data-toggle="modal" href="#infoUtilizeModal">	
 										<span class="label label-primary"><small>보기</small></span></a><br> 
 								<input type="checkbox" name="agree">(필수) 기준인원 초과 시 현장결제 하겠습니다<br>
 							</div>
@@ -181,10 +186,15 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>
-       		"숙소 이용 규칙"이 들어갈 곳
-        </p>
-      </div>
+					<c:forEach var="termsList" items="${termsList}">
+						<c:if test="${termsList.termsUsage eq '숙소 이용규칙 동의약관'}">
+							<pre class="white">
+${termsList.termsTitle}<br>
+${termsList.termsContent}
+        </pre>
+						</c:if>
+					</c:forEach>
+				</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
@@ -203,9 +213,14 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>
-       		"개인정보수집 이용약관"이 들어갈 곳
-        </p>
+        <c:forEach var="termsList" items="${termsList}">
+						<c:if test="${termsList.termsUsage eq '개인정보 수집 이용약관'}">
+							<pre class="white">
+${termsList.termsTitle}<br>
+${termsList.termsContent}
+        </pre>
+						</c:if>
+					</c:forEach>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -225,9 +240,14 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>
-       		"개인정보 제 3자 제공 약관"이 들어갈 곳
-        </p>
+   <c:forEach var="termsList" items="${termsList}">
+						<c:if test="${termsList.termsUsage eq '개인정보 제3자 제공약관'}">
+							<pre class="white">
+${termsList.termsTitle}
+${termsList.termsContent}
+        </pre>
+						</c:if>
+					</c:forEach>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

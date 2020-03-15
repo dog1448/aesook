@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.aesook.admin.image.vo.ManagerAdminImageVO;
+import com.spring.aesook.admin.terms.service.ManagerTermsService;
+import com.spring.aesook.admin.terms.vo.ManagerTermsVO;
 import com.spring.aesook.client.booking.service.MemberBookingCheckService;
 import com.spring.aesook.client.booking.vo.MemberBookingVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
@@ -28,6 +31,8 @@ public class MemberBookingPaymentController {
 	private MemberBookingCheckService memberBookingCheckService;
 	@Autowired
 	private KakaoService kakaoService;
+	@Autowired
+	private ManagerTermsService managerTermsService;
 	
 	//Move to Payment Page
 	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
@@ -36,10 +41,11 @@ public class MemberBookingPaymentController {
 		bookingVO.setMemberId(user.getMemberId());
 		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(bookingVO);
 		int totalPrice = memberBookingCheckService.getTotalPrice(bookingVO, roomVO);
-		
+		List<ManagerTermsVO> termsList = managerTermsService.getAllTerms();
 		model.addAttribute("possibleRoom", possibleRoom);
 		model.addAttribute("booking", bookingVO);
 		model.addAttribute("totalPrice", totalPrice);	
+		model.addAttribute("termsList", termsList);
 		return "/payment";
 	}
 	

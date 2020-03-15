@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.spring.aesook.admin.terms.service.ManagerTermsService;
+import com.spring.aesook.admin.terms.vo.ManagerTermsVO;
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
@@ -43,7 +45,8 @@ public class MemberHotelsController {
 	private MemberRoomService memberRoomService;
 	@Autowired
 	private MemberHotelsFacilityService memberHotelsFacilityService;
-	
+	@Autowired
+	private ManagerTermsService managerTermsService;
 	
 	
 	// ------------------------------------------------ hotelsMove -----------------------------------------------
@@ -69,10 +72,11 @@ public class MemberHotelsController {
 	// ------------------------------------------------ insert My hotels -----------------------------------------------
 	//1.Move Terms Of Use
 	@RequestMapping(value = "/hostTermsOfUse.do", method = RequestMethod.GET)
-	public String MovehostTermsOfUse(HttpSession session) {		
+	public String MovehostTermsOfUse(HttpSession session, Model model) {		
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		List<MemberHotelsVO> list = memberHotelsService.getMyHotels(user);
-		
+		List<ManagerTermsVO> termsList = managerTermsService.getAllTerms();
+		model.addAttribute("termsList", termsList);
 		if(list.isEmpty()) {			
 			return "/hostTermsOfUse";
 		}else {			

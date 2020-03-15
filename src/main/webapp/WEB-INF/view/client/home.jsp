@@ -191,12 +191,12 @@ window.kakaoAsyncInit = function () {
 									<div class="hotel-entry">
 										<c:if test="${list.hotelsImageStatus eq 'M' }">										
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 100%; width: auto;">																					
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: auto;">																					
 											</a>											
 										</c:if>
 										<c:if test="${list.hotelsImageStatus ne 'M' }">
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="resources/client/images/noImage.png" style="height: auto; width: auto;">																	
+												<img src="resources/client/images/noImage.png" style="height: 280px; width: auto;">																	
 											</a>
 										</c:if>	
 										<div class="desc">
