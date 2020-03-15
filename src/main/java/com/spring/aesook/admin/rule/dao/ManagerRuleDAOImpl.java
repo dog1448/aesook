@@ -14,21 +14,21 @@ public class ManagerRuleDAOImpl implements ManagerRuleDAO {
 	private final static String namespace = "admin.rule.dao.ManagerRuleDAO";
 	
 	@Autowired
-	SqlSessionTemplate sqlsSessionTemplate;
+	SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
 	public void updateRule(ManagerRuleVO vo) {
-		sqlsSessionTemplate.update(namespace+".updateRule", vo);
+		sqlSessionTemplate.update(namespace+".updateRule", vo);
 	}
 
 	@Override
 	public List<ManagerRuleVO> getListRule() {
-		return sqlsSessionTemplate.selectList(namespace+".getRuleList");
+		return sqlSessionTemplate.selectList(namespace+".getRuleList");
 	}
 
 	@Override
 	public ManagerRuleVO getRule(String hotelsType) {
-		return sqlsSessionTemplate.selectOne(namespace+".getRule", hotelsType);
+		return sqlSessionTemplate.selectOne(namespace+".getRule", hotelsType);
 	}
 
 }

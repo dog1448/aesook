@@ -63,7 +63,7 @@ public class MemberHotelsListController {
 	}
 	
 	//검색된 호텔 리스트를 정렬 및 재검색
-	@RequestMapping(value = "/getSearchedHotelsListOption.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/searchedHotelsListOption.do", method = RequestMethod.GET)
 	public String getSearchedHotelsListOption(MemberHotelsVO vo, Model model) {
 		String searchKeyword = vo.getSearchKeyword();
 		String searchCondition = vo.getSearchCondition();

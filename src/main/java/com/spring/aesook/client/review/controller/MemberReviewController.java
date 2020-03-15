@@ -19,7 +19,7 @@ public class MemberReviewController {
 	@Autowired
 	private MemberReviewService memberReviewService;
 	
-	@RequestMapping(value = "/writeReview.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/reviewWrite.do", method = RequestMethod.GET)
 	public String moveWriteReview(MemberBookingVO vo, HttpSession session, Model model) {
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		if(user != null) {
@@ -30,7 +30,7 @@ public class MemberReviewController {
 		return "/writeReview";
 	}
 	
-	@RequestMapping(value = "/insertReview.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
 	public String insertReview(MemberReviewVO vo) {
 		memberReviewService.insertReview(vo);
 		memberReviewService.updateStatus(vo.getBookingCode());

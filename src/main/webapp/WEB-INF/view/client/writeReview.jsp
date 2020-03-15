@@ -26,7 +26,7 @@ function checkz() {
  	$('#starNo').val(star);
 	console.log(star);
  	
-	$('#insertReview').submit();
+	$('#reviewInsert').submit();
 	
 }
 </script>
@@ -49,7 +49,7 @@ function checkz() {
                   <div class="col-three-forth animate-box">
                         <h2>후기 쓰기</h2>
                        <!--리뷰 작성-->
-                       <form role="form" id="insertReview" method="post" action="insertReview.do">
+                       <form role="form" id="reviewInsert" method="post" action="reviewInsert.do">
 										<div id="colorlib-contact">
 											<div class="container">
 												<div class="row">

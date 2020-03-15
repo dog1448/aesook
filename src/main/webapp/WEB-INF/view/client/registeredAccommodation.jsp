@@ -26,7 +26,7 @@
 							<div>&nbsp;</div>
 							<div class="row">
 								<c:forEach var="list" items="${hotels}">
-									<a href="moveModifyHotel.do?hotelsCode=${list.hotelsCode}">
+									<a href="modifyHotelsMove.do?hotelsCode=${list.hotelsCode}">
 										<div class="col-md-12">
 											<div class="room-wrap">
 												<div class="row">

@@ -101,7 +101,7 @@ textarea {
                   </div>
                     <hr> 
                     <div>&nbsp;</div>
-                     <form role="form" method="post" action="updateHotels.do" id="modifyHotels">
+                     <form role="form" method="post" action="modifyHotels.do" id="modifyHotels">
                         
                         <h3>숙소 이름</h3>
                         <div class="col-md-12 form-group">

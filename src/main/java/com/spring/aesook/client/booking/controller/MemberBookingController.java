@@ -83,7 +83,7 @@ public class MemberBookingController {
 	}
 	
 	//클라이언트가 선택한 날짜에 특정 roomSort의 어떤 roomName들이 예약 가능한지 리스트 뽑기
-	@RequestMapping(value="/getRoomPossible.do", method = RequestMethod.GET)
+	@RequestMapping(value="/getPossibleRoom.do", method = RequestMethod.GET)
 	@ResponseBody
 	public List<String> getRoomPossible(MemberBookingVO vo) {
 		return memberBookingCheckService.getRoomPossible(vo);

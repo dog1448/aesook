@@ -35,7 +35,7 @@
 	   $("#searchKeyword").focus();
 	   return;
 	 }
-		$('#getSearchedHotelsListOption').submit();
+		$('#searchedHotelsListOption').submit();
 	}
 	
 	function sortType(input){
@@ -50,7 +50,7 @@
 <title>게시판 목록</title>
 </head>
 <body>
-<form method="get" id="getSearchedHotelsListOption" action="getSearchedHotelsListOption.do">
+<form method="get" id="searchedHotelsListOption" action="searchedHotelsListOption.do">
 									
 	<div class="colorlib-loader"></div>
 

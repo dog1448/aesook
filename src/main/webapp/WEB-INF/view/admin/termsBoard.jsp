@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row"><div>&nbsp;</div>
                         <div class="col-lg-4">
-                            <h1 class="page-header">Rule List</h1>
+                            <h1 class="page-header">Terms List</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -23,7 +23,7 @@
                         <div class="col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Rule Table
+                                    Terms Table
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -31,15 +31,16 @@
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th id="typeVal">Rule</th>
+                                                    <th>Terms Usage</th>
+                                                    <th>Terms Title</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                  
-                                            
-                                           <c:forEach var="ruleList" items="${ruleList}">
+                                           <c:forEach var="termsList" items="${termsList}">
                                                 <tr class="odd gradeX">
-                                                    <td><a href="ruleContent.admin?hotelsType=${ruleList.hotelsType}">${ruleList.hotelsType}</a></td>
+                                                	<td><c:out value="${termsList.termsUsage}"/></td>
+                                                    <td><a href="termsContent.admin?termsNo=${termsList.termsNo}">
+                                                    <c:out value="${termsList.termsTitle}"/></a></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
