@@ -248,7 +248,7 @@
 									<!-- 방목록> -->
 									<c:if test="${sessionScope.login ne null}">									
 									<div class="text-right">
-										<a data-toggle="modal" href="#modalSort">
+										<a data-toggle="modal" href="#modal">
 											<button class="btn btn-info btn-outline">
 												호스트에게 문의하기</i>
 											</button>
@@ -512,14 +512,15 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<!-- Modal Message -->
-		<div class="modal fade" id="modalSort" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		<c:set var="user" value="${sessionScope.login}"></c:set>
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 		  aria-hidden="true">
 		  <div class="modal-dialog" role="document">
-		    <form role="form" method="post" action="#">
-		     <input type="hidden" name="memberId" value="${login.memberId}">
-					    
+		    <form role="form" method="post" action="alarmInsert.do">
+		     <input type="hidden" name="alarmSendId" id="alarmSendId" value="${user.memberId}">					    
+		     <input type="hidden" name="hotelsCode" id="hotelsCode" value="${vo.hotelsCode}">					    
 		    <div class="modal-content">
 		      <!--Header-->
 		      <div class="modal-header">
@@ -528,14 +529,14 @@
 		      <!--Body-->
 		      <div class="modal-body">
 		      	<label>제목 : </label>
-		      	<input type="text" style="width: 100%;">
+		      	<input type="text" style="width: 100%;" name="alarmTitle" id="alarmTitle">
 		      	<hr>
 		      	<label>내용 : </label>		      
-		      	<textarea style="width: 100%; height: 280px; resize: none;"></textarea>
+		      	<textarea style="width: 100%; height: 280px; resize: none;" name="alarmContents" id="alarmContents"></textarea>
 		      </div>
 		      <!--Footer-->
 		      <div class="modal-footer">
-		        <button type="submit" class="btn btn-info btn-outline">보내기</button>
+		        <button type="button" class="btn btn-info btn-outline" onclick="sendMessage()">보내기</button>
 		        <button class="btn btn-default btn-outline" data-dismiss="modal">닫기</button>
 		      </div>
 		    </div>
@@ -551,6 +552,24 @@
 		<script type="text/javascript"
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=099fe2e10a4fe77fb4de8c5a1e4d91d5&libraries=services"></script>
 		<script>
+			function sendMessage() {
+				alert('성공적으로 메세지를 보냈습니다.');
+				
+				$.ajax({
+					url : "alarmInsert.do",
+					type : "post",
+					dataType : "json",
+					async : false,
+					data : {
+						"hotelsCode" : $("#hotelsCode").val(),
+						"alarmSendId" : $("#alarmSendId").val(),
+						"alarmTitle" : $("#alarmTitle").val(),
+						"alarmContents" : $("#alarmContents").val()
+					}
+				});
+				$('#modal').modal("hide");
+			}
+			
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			mapOption = {
 				center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표

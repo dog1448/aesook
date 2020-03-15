@@ -14,4 +14,5 @@ public interface MemberHotelsService {
 	int getHotelsCode();
 	void updateHotels(MemberHotelsVO memberHotelsVO);
 	void modifyRooms(MemberRoomVO memberRoomVO);
+	String getHostId(int hotelsCode);
 }

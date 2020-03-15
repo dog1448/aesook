@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.aesook.client.alarm.service.MemberAlarmService;
 import com.spring.aesook.client.alarm.vo.MemberAlarmVO;
+import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.member.vo.MemberVO;
 
 @Controller
@@ -20,6 +21,8 @@ public class MemberAlarmController {
 	
 	@Autowired
 	private MemberAlarmService memberAlarmService;
+	@Autowired
+	private MemberHotelsService memberHotelsService;
 	
 	@RequestMapping(value="/alarm.do", method=RequestMethod.GET)
 	public String moveAlarm(@RequestParam(value="status", defaultValue = "N") String status,
@@ -65,5 +68,15 @@ public class MemberAlarmController {
 	public String sendAlarm(MemberAlarmVO vo) {
 		memberAlarmService.insertManagerAlarm(vo);
 		return "/messageBoard";
+	}
+	
+	@RequestMapping(value = "/alarmInsert.do", method = RequestMethod.POST)
+	public void insertMemberAlarm(MemberAlarmVO vo, @RequestParam("hotelsCode") int hotelsCode) {
+		
+		String hostId = memberHotelsService.getHostId(hotelsCode);
+		vo.setAlarmRecieveId(hostId);
+		
+		memberAlarmService.insertManagerAlarm(vo);	
+		
 	}
 }

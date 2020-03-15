@@ -82,10 +82,10 @@
 		<div class="container-login100">
 			<div class="login100-more">
 				<c:if test="${not empty adminImageVO}">
-				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 800px;">
+				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 935px;">
 				</c:if>
 				<c:if test="${empty adminImageVO}">
-				<img src="resources/client/images/noImage.png" style="width: 100%; height: 800px;">
+				<img src="resources/client/images/noImage.png" style="width: 100%; height: 935px;">
 				</c:if>
 			</div>
 

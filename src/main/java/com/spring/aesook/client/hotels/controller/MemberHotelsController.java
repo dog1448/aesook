@@ -192,5 +192,4 @@ public class MemberHotelsController {
         memberHotelsFacilityService.updateFacility(memberFacilityVO);
         return "redirect:/registeredAccommodation.do";
     }
-	
 }

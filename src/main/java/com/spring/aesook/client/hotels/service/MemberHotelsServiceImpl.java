@@ -54,4 +54,12 @@ public class MemberHotelsServiceImpl implements MemberHotelsService {
 
 	}
 
+	@Override
+	public String getHostId(int hotelsCode) {
+		MemberHotelsVO vo = new MemberHotelsVO();
+		vo.setHotelsCode(hotelsCode);
+		
+		return memberHotelsDAO.getHostId(vo);
+	}
+
 }
