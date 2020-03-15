@@ -16,6 +16,7 @@
 		and b.hotels_code = h.hotels_code
 		and (b.booking_status = 'B'
 		or b.booking_status = 'R')
+		order by booking_date desc
 	</select>
 
 	<select id="getCanceledBookingList"
@@ -30,6 +31,7 @@
 		and h.hotels_code = i.hotels_code(+)
 		and b.hotels_code = h.hotels_code
 		and b.booking_status = 'C'
+		order by booking_date desc
 	</select>
 
 	<select id="getBookingInfo" resultType="memberBooking">

@@ -9,4 +9,5 @@ public interface ManagerTermsService {
 	List<ManagerTermsVO> getSortedTerms(ManagerTermsVO vo);
 	ManagerTermsVO getTerms(ManagerTermsVO vo);
 	void updateTerms(ManagerTermsVO vo);
+	List<ManagerTermsVO> getAllTerms();
 }

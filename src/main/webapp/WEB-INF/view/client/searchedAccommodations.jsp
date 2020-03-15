@@ -42,7 +42,7 @@
 		var searchCondition = $('#searchConditionId option:selected').val();
 		var searchKeyword = $('#searchKeywordId').val();
 		var sortCondition = $('#sortConditionId option:selected').val();
-		location.href = "getSearchedHotelsListOption.do?searchCondition="+searchCondition+"&searchKeyword="+searchKeyword+"&sortCondition="+sortCondition+"&hotelsType="+input;
+		location.href = "searchedHotelsListOption.do?searchCondition="+searchCondition+"&searchKeyword="+searchKeyword+"&sortCondition="+sortCondition+"&hotelsType="+input;
 		
 	}
 </script>
@@ -125,17 +125,18 @@
 									<div class="col-md-6 col-sm-6 animate-box">
 							<div>&nbsp;</div><div>&nbsp;</div>
 										<div class="hotel-entry">
-									 
+									 	<div class = "row">
 										<c:if test="${list.hotelsImageStatus eq 'M' }">										
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: auto; width: 350px;">																					
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: auto;">																					
 											</a>											
 										</c:if>
 										<c:if test="${list.hotelsImageStatus ne 'M' }">
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="resources/client/images/noImage.png" style="height: auto; width: 350px;">																	
+												<img src="resources/client/images/noImage.png" style="height: 280px; width: auto;">																	
 											</a>
 										</c:if>							
+									 	</div>
 											<div class="desc">
 												<p class="star">
 													<span>

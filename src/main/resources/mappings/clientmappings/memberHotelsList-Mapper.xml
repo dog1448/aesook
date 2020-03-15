@@ -28,7 +28,7 @@
          i.hotels_image_name, i.hotels_image_path, i.hotels_image_status
 		<choose>
 			<when test='sortCondition.equals("scoreAvg")'>
-			order by scoreAvg asc nulls last
+			order by scoreAvg desc nulls last
 			</when>
 			<when test='sortCondition.equals("scoreCnt")'>
 			order by scoreCnt desc
