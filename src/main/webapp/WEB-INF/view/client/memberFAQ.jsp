@@ -103,7 +103,7 @@
                 <c:forEach items="${boards}" var="boards">
                     <tr>
                         <td class="qna"><c:out value="${boards.rnum}"/></td>
-                        <td class="qna"><a href="${path}/FAQBoardRead.do?boardNo=${boards.rnum}">
+                        <td class="qna"><a href="${path}/boardFAQRead.do?boardNo=${boards.rnum}">
                             <c:out value="${boards.boardTitle}"/></a></td>
                         <td class="qna"><c:out value="${boards.boardWriter}"/></td>
                         <td class="qna"><fmt:formatDate value="${boards.boardDate}"/></td>
@@ -113,15 +113,15 @@
             </table>
 
             <c:if test="${pageMaker.prev}">
-                <a href="${path}/memberFAQ.do${pageMaker.makeQuery(pageMaker.startPage -1)}" class="btn btn-success btn-arrow-left">이전</a>
+                <a href="${path}/boardFAQ.do${pageMaker.makeQuery(pageMaker.startPage -1)}" class="btn btn-success btn-arrow-left">이전</a>
             </c:if>
 
             <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="point">
-                <li class="list-group-item" style="list-style: none; float: left; padding: 6px"><a href="${path}/memberFAQ.do${pageMaker.makeQuery(point)}">${point}</a> </li>
+                <li class="list-group-item" style="list-style: none; float: left; padding: 6px"><a href="${path}/boardFAQ.do${pageMaker.makeQuery(point)}">${point}</a> </li>
             </c:forEach>
 
             <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-                <a href="${path}/memberFAQ.do${pageMaker.makeQuery(pageMaker.endPage +1)}" class="btn btn-success btn-arrow-left">다음</a>
+                <a href="${path}/boardFAQ.do${pageMaker.makeQuery(pageMaker.endPage +1)}" class="btn btn-success btn-arrow-left">다음</a>
             </c:if>
 
 
@@ -208,8 +208,8 @@
 </script>
 
 
-}
-</script>
+
+
 
 <!-- 애니매이션 담당 JQUERY -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

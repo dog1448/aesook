@@ -86,7 +86,7 @@
             <caption> 글쓰기  </caption>
             </thead>
             <tbody>
-                <input type="hidden" name="boardWriter" id="boardWriter" value="${id}">
+                <input type="hidden" name="boardWriter" id="boardWriter" value="${login.memberId}">
                 <tr>
                     <th>제목: </th>
                     <td><h3>${board.boardTitle}</h3></td>
@@ -126,25 +126,25 @@
         console.log(formObj);
 
         $(".modBtn").on("click",function() {
-            formObj.attr("action","BoardModify.do");
+            formObj.attr("action","boardQNAModify.do");
             formObj.attr("method","get");
             formObj.submit();
         });
 
         $(".replyBtn").on("click",function () {
-            formObj.attr("action","MoveQNAReply.do");
+            formObj.attr("action","boardQNAReply.do");
             formObj.attr("method","get");
             formObj.submit();
         });
 
         $(".delBtn").on("click",function() {
-            formObj.attr("action","deleteQNA.do");
+            formObj.attr("action","boardQNADelete.do");
             formObj.attr("method","get");
             formObj.submit();
         });
 
         $(".listBtn").on("click",function () {
-            self.location = "/aesook/MemberBoard.do"
+            self.location = "/aesook/boardQNA.do"
         });
 
     });

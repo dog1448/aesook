@@ -82,10 +82,10 @@
     <div class="container">
         <table class="table table-bordered">
             <thead>
-            <caption> 글쓰기  </caption>
+            <caption> FAQ  </caption>
             </thead>
             <tbody>
-                <input type="hidden" name="boardWriter" id="boardWriter" value="${id}">
+                <input type="hidden" name="boardWriter" id="boardWriter" value="${login.memberId}">
                 <tr>
                     <th>제목: </th>
                     <td><h3>${board.boardTitle}</h3></td>
@@ -120,31 +120,21 @@
     <div>&nbsp;</div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!--
+
 <script type="text/javascript">
     $(document).ready(function () {
 
         var formObj = $("form[role='form']");
         console.log(formObj);
 
-        $(".modBtn").on("click",function() {
-            formObj.attr("action","BoardModify.do");
-            formObj.attr("method","get");
-            formObj.submit();
-        });
-
-        $(".delBtn").on("click",function() {
-            formObj.attr("action","BoardRemove.do");
-            formObj.submit();
-        });
 
         $(".listBtn").on("click",function () {
-            self.location = "/aesook/MemberBoard.do"
+            self.location = "/aesook/boardFAQ.do"
         });
 
     });
 </script>
--->
+
 
 
     <%@include file="footer.jspf" %>

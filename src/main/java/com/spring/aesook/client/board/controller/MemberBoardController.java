@@ -20,7 +20,7 @@ public class MemberBoardController {
     @Autowired
     MemberBoardService memberBoardService;
 
-    @RequestMapping(value = "/MemberBoard.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardQNA.do", method = RequestMethod.GET)
 
     public String moveBoard(Model model, Criteria cri) throws Exception {
         // QNA
@@ -40,66 +40,66 @@ public class MemberBoardController {
         return "/memberQNABoard";
     }
 
-    @RequestMapping(value = "/write.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardQNAWrite.do", method = RequestMethod.GET)
     public String moveWrite(Model model) throws Exception {
         int seq = memberBoardService.getQNABoardSeq();
         model.addAttribute("seq", seq);
         return "/memberQNAWrite";
     }
 
-    @RequestMapping(value = "/MoveList.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/boardQNAList.do", method = RequestMethod.POST)
     public String writeArticle(MemberBoardVO memberBoardVO, Model model) {
         memberBoardService.insertMemberBoard(memberBoardVO);
-        return "redirect:/MemberBoard.do";
+        return "redirect:/boardQNA.do";
     }
 
 
-    @RequestMapping(value = "/BoardRead.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardQNARead.do", method = RequestMethod.GET)
     public String read(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
         model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
         return "/memberQNARead";
     }
 
-    @RequestMapping(value = "/BoardModify.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardQNAModify.do", method = RequestMethod.GET)
     public String modifyGET(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
         model.addAttribute("board", memberBoardService.readMemberBoard(boardNo));
         return "/modifyMemberQNABoard";
     }
 
-    @RequestMapping(value = "/BoardModify.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/boardQNAModify.do", method = RequestMethod.POST)
     public String modify(MemberBoardVO memberBoardVO, RedirectAttributes redirectAttributes) throws Exception {
         memberBoardService.updateMemberBoard(memberBoardVO);
         redirectAttributes.addFlashAttribute("msg", "modSucess");
-        return "redirect:/MemberBoard.do";
+        return "redirect:/boardQNA.do";
     }
 
-    @RequestMapping(value = "/deleteQNA.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/boardQNADelete.do",method = RequestMethod.GET)
     public String moveQNADelete(@RequestParam("boardNo") Integer boardNo,Model model){
         model.addAttribute("board",memberBoardService.readMemberBoard(boardNo));
         return "/MemberQNABoardDelete";
     }
 
-    @RequestMapping(value = "/deleteQNA.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/boardQNADelete.do",method = RequestMethod.POST)
     public String deleteQNA(MemberBoardVO memberBoardVO){
         System.out.println(memberBoardVO.toString());
         memberBoardService.deleteMemberBoard(memberBoardVO);
-        return "redirect:/MemberBoard.do";
+        return "redirect:/boardQNA.do";
     }
 
 
-    @RequestMapping(value = "/MoveQNAReply.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/boardQNAReply.do",method = RequestMethod.GET)
     public String moveQNAReply(@RequestParam("boardNo") Integer boardNo, Model model){
         model.addAttribute("reply", memberBoardService.readMemberBoard(boardNo));
         return "/memberQNAReplyWrite";
     }
 
-    @RequestMapping(value = "/QNAReply.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/boardQNAReply.do",method = RequestMethod.POST)
     public String QNAReplyWrite(Model model,MemberBoardVO memberBoardVO) {
         memberBoardService.insertMemberBoard(memberBoardVO);
         return "redirect:/MemberBoard.do";
     }
     //-------------------------FAQ
-    @RequestMapping(value = "/memberFAQ.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardFAQ.do", method = RequestMethod.GET)
     public String moveBoardFAQ(Model model, Criteria cri) throws Exception {
         //
         int faqCnt = memberBoardService.getFAQBoardCount();
@@ -118,14 +118,14 @@ public class MemberBoardController {
         return "/memberFAQ";
     }
 
-    @RequestMapping(value = "/FAQBoardRead.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardFAQRead.do", method = RequestMethod.GET)
     public String readFAQ(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
         model.addAttribute("board", memberBoardService.readMemberBoardFAQ(boardNo));
         return "/memberFAQBoardRead";
     }
 
     //-------------------------Notice
-    @RequestMapping(value = "/noticeBoard.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardNotice.do", method = RequestMethod.GET)
     public String moveNoticeBoard(Model model, Criteria cri) throws Exception {
         //
         int noticeCnt = memberBoardService.getNoticeBoardCount();
@@ -143,7 +143,7 @@ public class MemberBoardController {
         return "/notice_board";
     }
 
-    @RequestMapping(value = "/noticeBoardRead.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardNoticeRead.do", method = RequestMethod.GET)
     public String readNoticeboard(@RequestParam("boardNo") Integer boardNo, Model model) throws Exception {
         model.addAttribute("board", memberBoardService.readMemberBoardNotice(boardNo));
         return "/notice_boardRead";
