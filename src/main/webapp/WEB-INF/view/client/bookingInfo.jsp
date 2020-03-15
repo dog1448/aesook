@@ -58,7 +58,7 @@
 		                           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reviewModal">내가 쓴 후기</button>
 							</c:if>
                            <c:if test="${bookingInfo.bookingStatus eq 'B'}">
-									<button type="button" onclick = "location.href = 'writeReview.do?bookingCode=${bookingInfo.bookingCode}'" class="btn btn-info btn-lg">후기 쓰기</button>
+									<button type="button" onclick = "location.href = 'reviewWrite.do?bookingCode=${bookingInfo.bookingCode}'" class="btn btn-info btn-lg">후기 쓰기</button>
 							</c:if>
                            <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#cancelModal">예매취소</button>
                            <input type="hidden" name="memberId" value="${bookingInfo.memberId}">

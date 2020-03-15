@@ -74,7 +74,7 @@ function checkz() {
 	}	
     
 	$.ajax({
-	    url: "getRoomPossible.do",
+	    url: "getPossibleRoom.do",
 	    type: "GET",
 	    data: {
 	  		"bookingCheckOut" : checkOut,

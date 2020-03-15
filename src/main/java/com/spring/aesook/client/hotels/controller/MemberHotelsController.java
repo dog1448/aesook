@@ -155,8 +155,9 @@ public class MemberHotelsController {
 			return result;			
 		}
 	}
-
-	@RequestMapping(value = "/registeredAccommodation.do", method = RequestMethod.GET)
+	
+	
+	@RequestMapping(value = "/hostAccommodation.do", method = RequestMethod.GET)
 	public String getMyHotels(HttpSession session, Model model){
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		if(user != null) {
@@ -169,7 +170,7 @@ public class MemberHotelsController {
 	
 	
 	// ------------------------------------------------ Modify My hotels -----------------------------------------------
-    @RequestMapping(value = "/moveModifyHotel.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/modifyHotelsMove.do", method = RequestMethod.GET)
     public String moveModifyHotel(@RequestParam(value = "hotelsCode")int hotelsCode, HttpSession session, Model model){
         MemberVO user = (MemberVO)session.getAttribute("login");
         if(user != null) {
@@ -182,10 +183,10 @@ public class MemberHotelsController {
         return "/modifyHotels";
     }
 	
-    @RequestMapping(value = "/updateHotels.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/modifyHotels.do",method = RequestMethod.POST)
     public String ModifyHotel(MemberHotelsVO memberHotelsVO, MemberHotelsFacilityVO memberFacilityVO){
     	memberHotelsService.updateHotels(memberHotelsVO);
         memberHotelsFacilityService.updateFacility(memberFacilityVO);
-        return "redirect:/registeredAccommodation.do";
+        return "redirect:hostAccommodation.do";
     }
 }

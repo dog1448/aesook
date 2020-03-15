@@ -31,7 +31,6 @@ public class ManagerBoardController {
 	
 	@RequestMapping(value = "insertBoard.admin", method =RequestMethod.POST)
 	public String insertAdminBoard(ManagerBoardVO vo) {
-		System.out.println(vo);
 		managerBoardService.insertBoard(vo);
 		return"redirect:boardList.admin";
 	}
@@ -40,21 +39,18 @@ public class ManagerBoardController {
 	public String moveAdminBoardModify(@RequestParam Integer boardSeq, Model model) {
 		ManagerBoardVO vo = managerBoardService.getBoard(boardSeq);
 		managerBoardService.increaseCnt(vo);
-		System.out.println(vo);
 		model.addAttribute("board",vo);
 		return "/boardModify";
 	}
 	
 	@RequestMapping(value = "updateBoard.admin", method = RequestMethod.POST)
 	public String updateAdminBoard(ManagerBoardVO vo) {
-		System.out.println(vo);
 		managerBoardService.updateBoard(vo);
 		return "redirect:boardList.admin";
 	}
 
     @RequestMapping(value = "moveAdminReply.admin",method = RequestMethod.GET)
 	public String moveAdminBoardReply(@RequestParam("BoardSeq") Integer boardSeq, Model model) {
-    	System.out.println(boardSeq);
 		model.addAttribute("reply", managerBoardService.getBoard(boardSeq));
 		return "/boardReply";
 	}

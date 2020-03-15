@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="admin.terms.dao.ManagerTermsDAO">
+  
+  <select id="getTermsList" resultType="managerTerms">
+  SELECT distinct terms_usage from terms
+  </select>
+  
+  <select id="getSortedTerms" resultType="managerTerms" parameterType="managerTerms">
+  SELECT * from terms where terms_usage = #{termsUsage}
+  order by terms_no
+  </select>
+
+  <select id="getTerms" resultType="managerTerms" parameterType="managerTerms">
+  SELECT * from terms 
+  where terms_no = #{termsNo}
+  order by terms_no
+  </select>
+  
+  <update id="updateTerms" parameterType="managerTerms">
+  UPDATE terms 
+  SET TERMS_TITLE=#{termsTitle}, TERMS_CONTENT=#{termsContent}
+  WHERE TERMS_NO = #{termsNo}
+  </update>
+ 
+  </mapper>
+  
