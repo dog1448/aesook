@@ -25,12 +25,46 @@ option  {
 	background : #595959;
 	width : auto;
 }
+/* pc 화면 */
+@media (min-width: 768px) {
+    #kakao-talk-channel-chat-button {
+    position: fixed;
+    z-index: 999;
+    right: 10px; /* 화면 오른쪽으로부터의 거리 */
+    bottom: 70px; /* 화면 아래쪽으로부터의 거리 */
+    }
+}
+/* 모바일 화면 */
+@media (max-width:767px) {
+    #kakao-talk-channel-chat-button {
+    position: fixed;
+    z-index: 999;
+    right: 10px; /* 화면 오른쪽으로부터의 거리 */
+    bottom: 70px; /* 화면 아래쪽으로부터의 거리 */
+    }
+}
 </style>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+window.kakaoAsyncInit = function () {
+    Kakao.init('099fe2e10a4fe77fb4de8c5a1e4d91d5');
+    Kakao.Channel.createChatButton({
+      container: '#kakao-talk-channel-chat-button'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//developers.kakao.com/sdk/js/kakao.plusfriend.min.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'kakao-js-sdk'));
+</script>
 </head>
 <body>
-
+<div id="kakao-talk-channel-chat-button" data-channel-public-id="_qxhvXxb" data-title="question" data-size="small" data-color="yellow" data-shape="pc" data-support-multiple-densities="true"></div>
 	<div class="colorlib-loader"> </div>
-
 	<div id="page">
 		<%@ include file="main_header.jspf"%>
 		<!--index 화면 사진 부분-->
@@ -48,7 +82,7 @@ option  {
 				</ul>
 			</div>
 		</aside>
-
+		
 		<!-- 통합 검색 부분 -->
 		<div id="colorlib-reservation">
 			<div class="row">
@@ -88,7 +122,7 @@ option  {
 				</div>
 			</div>
 		</div>
-
+		
 		<!-- 호텔, 모텔, 펜션, 게스트하우스, 리조트/콘도 클릭 부분 (페이지 이동시 숙소종류 데이터 가지고 넘어가야 할듯?) -->
 		<div id="colorlib-services">
 			<div class="container">
@@ -157,7 +191,7 @@ option  {
 									<div class="hotel-entry">
 										<c:if test="${list.hotelsImageStatus eq 'M' }">										
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: auto; width: auto;">																					
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 100%; width: auto;">																					
 											</a>											
 										</c:if>
 										<c:if test="${list.hotelsImageStatus ne 'M' }">
@@ -255,5 +289,6 @@ option  {
 	</div>
 
 </body>
+
 </html>
 

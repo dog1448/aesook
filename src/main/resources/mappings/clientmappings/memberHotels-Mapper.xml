@@ -35,15 +35,8 @@
 	WHERE MEMBER_ID = #{memberId}
 </update>
 
-	<update id="modifyRoom">
-		update ROOM
-		set ROOM_STANDARD_PRICE = #{roomStandardPrice},
-		ROOM_HOLIDAY_PRICE = #{roomHolidayPrice},
-		ROOM_STANDARD_CNT = #{roomStandardCnt},
-		ROOM_MAX_CNT = #{roomMaxCnt},
-		ROOM_ADD_PRICE = #{roomAddPrice}
-		WHERE HOTELS_CODE = #{hotelsCode}
-		AND ROOM_SORT = #{roomSort}
-	</update>
-	
+<select id="getHostId" resultType="String" parameterType="memberHotels">
+	SELECT member_id from hotels WHERE hotels_code = #{hotelsCode}
+</select>
+
 </mapper>

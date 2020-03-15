@@ -20,12 +20,8 @@
 	<mvc:resources mapping="/resources/**" location="resources/" />
 	
 
-	<!-- Admin Interceptors 
+	<!-- Admin Interceptors -->
 	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/login.admin"/>
-			<bean class="com.spring.aesook.admin.util.interceptor.AdminLoginInterceptor"></bean>
-		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/*.admin"/>
 			<mvc:exclude-mapping path="/find*.admin"/>
@@ -34,7 +30,7 @@
 			<bean class="com.spring.aesook.admin.util.interceptor.AuthAdminInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
-	-->
+
 	
 	<!-- ViewResolvor -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -7,11 +7,6 @@
 <head>
 
  <%@include file="head.jspf" %>
-<c:if test="${check eq 'upBrn'}">
-	<script type="text/javascript">
-		alert("등록이 되었습니다.");
-	</script>
-</c:if>
  <script>
 	function checkz() {
 	    var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -105,7 +100,7 @@
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">					
-									<form action="modifyInfo.do" method="post" id="modifyForm">	
+									<form action="memberModifyInfo.do" method="post" id="modifyForm">	
 	                                    <div class="row form-group">
 	                                        <div class="col-md-12">
 	                                            <label for="subject">아이디 : </label>

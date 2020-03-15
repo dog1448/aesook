@@ -12,5 +12,5 @@ public interface MemberHotelsDAO {
 	int getHotelsCode();
 	void updateHotels(MemberHotelsVO memberHotelsVO);
 	void modifyRooms(MemberRoomVO memberRoomVO);
-
+	String getHostId(MemberHotelsVO vo);
 }

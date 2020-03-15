@@ -18,7 +18,7 @@ td, th {
 $(document).ready(function(){
     var i=1;
    $("#add_row").click(function(){
-    $('#addr'+i).html("<tr><td><input name='roomList["+i+"].roomSort' type='text' placeholder='TYPE' class='form-control input-md'/> </td><td><input  name='roomList["+i+"].roomStandardCnt' type='text' placeholder='기준인원' class='form-control input-md'></td><td><input name='roomList["+i+"].roomMaxCnt' type='text' placeholder='최대인원' class='form-control input-md'></td><td><input  name='roomList["+i+"].roomStandardPrice' type='text' placeholder='평일요금'  class='form-control input-md'></td><td><input name='roomList["+i+"].roomHolidayPrice' type='text' placeholder='공휴일요금' class='form-control input-md'/></td><td><input name='roomList["+i+"].roomAddPrice' type='text' placeholder='추가요금' class='form-control input-md' /></td></tr><tr><td colspan='6'><input name='roomList["+i+"].roomInfo'placeholder='상세설명' type='text' class='form-control input-md' /></td></tr>");
+    $('#addr'+i).html("<tr><td><input name='roomList["+i+"].roomSort' type='text' placeholder='TYPE' class='form-control input-md roomSort'/> </td><td><input  name='roomList["+i+"].roomStandardCnt' type='number' placeholder='기준인원' class='form-control input-md roomStandardCnt'></td><td><input name='roomList["+i+"].roomMaxCnt' type='number' placeholder='최대인원' class='form-control input-md roomMaxCnt'></td><td><input  name='roomList["+i+"].roomStandardPrice' type='number' placeholder='평일요금'  class='form-control input-md roomStandardPrice'></td><td><input name='roomList["+i+"].roomHolidayPrice' type='number' placeholder='공휴일요금' class='form-control input-md roomHolidayPrice'/></td><td><input name='roomList["+i+"].roomAddPrice' type='number' placeholder='추가요금' class='form-control input-md roomAddPrice' /></td></tr><tr><td colspan='6'><input name='roomList["+i+"].roomInfo' placeholder='상세설명' type='text' class='form-control input-md roomInfo' /></td></tr>");
 
     $('#tab_logic').append('<tbody id="addr'+(i+1)+'"></tr>');
     i++; 
@@ -31,6 +31,109 @@ $(document).ready(function(){
 	 });
 
 });
+
+function checkz() {
+		var flag = true;
+		var roomSortList = new Array();
+		
+		$('.roomSort').each(function (index, item) {
+			var test = $(item).val();
+			roomSortList.push(test);
+			if(test == ""){
+				flag = false;
+				alert("방 타입을 입력하세요.");					
+				return;
+			}	
+		});
+		if(!flag){
+			return flag;
+		}
+		
+		for (var i = 0; i < roomSortList.length; i++) {
+			for (var j = i+1; j < roomSortList.length; j++) {
+				if (roomSortList[i] == roomSortList[j]){
+					alert("같은 이름의 방타입이 있습니다.");
+					return;
+				}
+			}
+		}
+		
+		
+		$('.roomStandardCnt').each(function (index, item) {
+			var test = $(item).val();
+			if(test == ""){
+				flag = false;
+				alert("방 최소 인원을 입력하세요.");					
+				return;
+			}
+		});
+		if(!flag){
+			return flag;
+		}
+		
+		$('.roomMaxCnt').each(function (index, item) {
+			var test = $(item).val();
+			if(test == ""){
+				flag = false;
+				alert("방 최대 인원을 입력하세요.");					
+				return;
+			}
+		});
+		if(!flag){
+			return flag;
+		}
+		
+		$('.roomStandardPrice').each(function (index, item) {
+			var test = $(item).val();
+			if(test == ""){
+				flag = false;
+				alert("방 평일 금액을 입력하세요.");					
+				return;
+			}
+		});
+		if(!flag){
+			return flag;
+		}
+		
+		$('.roomHolidayPrice').each(function (index, item) {
+			var test = $(item).val();
+			if(test == ""){
+				flag = false;
+				alert("방 주말 금액을 입력하세요.");					
+				return;
+			}
+		});
+		if(!flag){
+			return flag;
+		}
+		
+		$('.roomAddPrice').each(function (index, item) {
+			var test = $(item).val();
+			if(test == ""){
+				flag = false;
+				alert("방 추가 금액을 입력하세요.");					
+				return;
+			}
+		});
+		if(!flag){
+			return flag;
+		}
+		
+		$('.roomInfo').each(function (index, item) {
+			var test = $(item).val();
+			if(test == ""){
+				flag = false;
+				alert("방 정보를 입력하세요.");					
+				return;
+			}
+		});			
+		if(!flag){
+			return flag;
+		}
+		
+		$('#roomSortForm').submit();
+	
+}
 </script>
 <body>
 <%@ include file="main_header.jspf" %>
@@ -59,7 +162,7 @@ $(document).ready(function(){
 						    </ul>
 						</div>
 							<hr>
-							<form method="post" action="insertRoomSort.do" id="">
+							<form method="post" action="insertRoomSort.do" id="roomSortForm">
 								  <div class="panel-body">
 								    <div class="row">
 								    	<div class="col-md-12 column">
@@ -77,26 +180,26 @@ $(document).ready(function(){
 												<tbody id='addr0'>
 													<tr>
 														<td>
-														<input type="text" name='roomList[0].roomSort'  placeholder='TYPE' class="form-control"/>
+														<input type="text" name='roomList[0].roomSort'  placeholder='TYPE' class="form-control roomSort"/>
 														</td>
 														<td>
-														<input type="text" name='roomList[0].roomStandardCnt' placeholder='기준인원'  class="form-control"/>
+														<input type="number" name='roomList[0].roomStandardCnt' placeholder='기준인원'  class="form-control roomStandardCnt"/>
 														</td>
 								                        <td>
-								    					<input type="text" name='roomList[0].roomMaxCnt' placeholder='최대인원'  class="form-control"/>
+								    					<input type="number" name='roomList[0].roomMaxCnt' placeholder='최대인원'  class="form-control roomMaxCnt"/>
 														</td>
 														<td>
-														<input type="text" name='roomList[0].roomStandardPrice' placeholder='평일요금' class="form-control"/>
+														<input type="number" name='roomList[0].roomStandardPrice' placeholder='평일요금' class="form-control roomStandardPrice"/>
 														</td>
 								                        <td>
-								                        <input type='text' name='roomList[0].roomHolidayPrice' placeholder='공휴일요금' class="form-control" />    
+								                        <input type='number' name='roomList[0].roomHolidayPrice' placeholder='공휴일요금' class="form-control roomHolidayPrice" />    
 								                        </td>
 								                        <td>
-								                        <input type='text' name='roomList[0].roomAddPrice' placeholder='추가 요금' class="form-control" />    
+								                        <input type='number' name='roomList[0].roomAddPrice' placeholder='추가 요금' class="form-control roomAddPrice" />    
 								                        </td>
 								                     <tr>
 									                    <td colspan="6">
-									                    <input type='text' name='roomList[0].roomInfo' placeholder='상세설명' class="form-control" />    
+									                    <input type='text' name='roomList[0].roomInfo' placeholder='상세설명' class="form-control roomInfo" />    
 									                    </td>
 								                     <tr>
 													</tr>
@@ -113,7 +216,7 @@ $(document).ready(function(){
 											<hr>
 					                        <div class="text-right">
 					                         <button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>
-					                           <button type="submit" class="btn btn-info">다음</button>
+					                           <button type="button" onclick="checkz()" class="btn btn-info">다음</button>
 					                        </div>
 							</form>
 
@@ -129,112 +232,6 @@ $(document).ready(function(){
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-	<script type="text/javascript">
-		
-		
-
-		$(document).on("click", "#submit", function() {
-			var flag = true;
-			$('input[name=roomName]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 이름을 입력하세요.");					
-					return;
-				}	
-			});
-			if(!flag){
-				return flag;
-			}
-			
-			$('input[name=roomSort]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 종류를 입력하세요.");					
-					return;
-				}
-			});
-			if(!flag){
-				return flag;
-			}
-			
-			$('input[name=roomStandardCnt]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 최소 인원을 입력하세요.");					
-					return;
-				}
-			});
-			if(!flag){
-				return flag;
-			}
-			
-			$('input[name=roomMaxCnt]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 최대 인원을 입력하세요.");					
-					return;
-				}
-			});
-			if(!flag){
-				return flag;
-			}
-			
-			$('input[name=roomStandardPrice]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 평일 금액을 입력하세요.");					
-					return;
-				}
-			});
-			if(!flag){
-				return flag;
-			}
-			
-			$('input[name=roomHolidayPrice]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 주말 금액을 입력하세요.");					
-					return;
-				}
-			});
-			if(!flag){
-				return flag;
-			}
-			
-			$('input[name=roomAddPrice]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 추가 금액을 입력하세요.");					
-					return;
-				}
-			});
-			if(!flag){
-				return flag;
-			}
-			
-			$('input[name=roomRoomInfo]').each(function () {
-				var test = $(this).val();
-				if(test == ""){
-					flag = false;
-					alert("방 정보를 입력하세요.");					
-					return;
-				}
-			});			
-			if(!flag){
-				return flag;
-			}
-			
-			alert("방이 성공적으로 등록되었습니다.");
-
-		});
-	</script>
 </body>
 
 </html>

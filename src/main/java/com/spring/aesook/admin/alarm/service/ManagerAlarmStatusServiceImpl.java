@@ -8,6 +8,8 @@ import com.spring.aesook.admin.alarm.dao.ManagerAlarmDAO;
 import com.spring.aesook.admin.alarm.vo.ManagerAlarmVO;
 import com.spring.aesook.admin.image.dao.ManagerImageDAO;
 import com.spring.aesook.admin.image.vo.ManagerBrnImageVO;
+import com.spring.aesook.admin.users.dao.ManagerUsersDAO;
+import com.spring.aesook.admin.users.vo.ManagerUsersVO;
 
 @Service("managerAlarmStatusService")
 public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService {
@@ -16,6 +18,8 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 	private ManagerAlarmDAO managerAlarmDAO;
 	@Autowired
 	private ManagerImageDAO managerImageDAO;
+	@Autowired
+	private ManagerUsersDAO managerUsersDAO;
 	
 	@Transactional(rollbackFor = Exception.class)
 	public void successAlarm(ManagerAlarmVO vo) {
@@ -35,6 +39,12 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		image.setBrnImageName(vo.getBrnImageName());
 		image.setBrnImageStatus("S");
 		managerImageDAO.updateManagerImageBrn(image);
+		
+		// update member
+		ManagerUsersVO user = new ManagerUsersVO();
+		user.setMemberId(vo.getAlarmSendId());
+		user.setMemberStatus("H");
+		managerUsersDAO.updateMemberStatus(user);
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
@@ -54,6 +64,12 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		image.setBrnImageName(vo.getBrnImageName());
 		image.setBrnImageStatus("F");
 		managerImageDAO.updateManagerImageBrn(image);
+		
+		// update member
+		ManagerUsersVO user = new ManagerUsersVO();
+		user.setMemberId(vo.getAlarmSendId());
+		user.setMemberStatus("G");
+		managerUsersDAO.updateMemberStatus(user);
 	}
 	
 }

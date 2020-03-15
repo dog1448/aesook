@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <html>
+<c:if test="${message ne null}">
+	<script type="text/javascript">
+	var message = "${message}";
+	alert(message);
+	</script>
+</c:if>
 	<head>
 	<%@ include file="head.jspf" %>
 	</head>
@@ -49,8 +56,9 @@
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="desc">
+												<fmt:formatNumber type="number" var="bookingTotalPrice" maxFractionDigits="3" value="${booking.bookingTotalPrice}" />
 													<h2>숙소명 : ${booking.hotelsName}</h2>
-													<p class="price"><span>${booking.bookingTotalPrice}￦</span> <small>/ allNight</small></p>
+													<p class="price"><span>${bookingTotalPrice}￦</span> <small>/ allNight</small></p>
 													<p>체크인    : ${booking.bookingCheckIn}</p>
 													<p>체크아웃 : ${booking.bookingCheckOut}</p>
 													<p>예약일자 : ${booking.bookingDate}</p>													

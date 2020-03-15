@@ -56,6 +56,7 @@
                                                         <option value="B">B</option>
                                                         <option value="D">D</option>
                                                         <option value="R">R</option>
+                                                        <option value="R">W</option>
                                                     </select>
                                                 </div>
                                                 </fieldset>

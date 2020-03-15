@@ -55,4 +55,8 @@ public class MemberUpdateImageBrnServiceImpl implements MemberUpdateImageBrnServ
 
 	}
 	
+	public MemberBrnImageVO getBrnImage(MemberVO vo) {
+		return memberImageDAO.getMemberBrnImage(vo);
+	}
+	
 }

@@ -22,10 +22,12 @@ import com.spring.aesook.admin.rule.vo.ManagerRuleVO;
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsService;
 import com.spring.aesook.client.hotels.service.MemberRoomService;
+import com.spring.aesook.client.hotels.service.MemberRoomSortService;
 import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 import com.spring.aesook.client.review.vo.MemberReviewVO;
 
 @Controller
@@ -35,12 +37,14 @@ public class MemberRoomController {
 	private MemberRoomService memberRoomService;
 	@Autowired
 	private MemberHotelsFacilityService memberHotelsFacilityService;
-
 	@Autowired
 	private MemberHotelsService memberHotelsService;
-	
 	@Autowired
-	ManagerRuleService managerRuleService;
+  private ManagerRuleService managerRuleService;
+	@Autowired
+	private MemberRoomSortService memberRoomSortService;
+
+
 	
     @InitBinder
     protected void initBinder(WebDataBinder binder){
@@ -89,4 +93,83 @@ public class MemberRoomController {
 		model.addAttribute("memberRule", managerRuleVO);
 		return "/roomDescription";
 	}
+	
+	// ---------------------------------- modifyRoomSort --------------------------------------------
+	@RequestMapping(value="/modifyRoomSort.do", method = RequestMethod.GET)
+	public String moveModifyRoomSort(HttpSession httpSession, Model model) {
+		MemberVO user = (MemberVO) httpSession.getAttribute("login");
+		if (user != null) {
+			MemberHotelsVO hotels = memberHotelsService.getMyHotels(user).get(0);
+			if (hotels != null) {
+				MemberRoomVO room = new MemberRoomVO();
+				room.setHotelsCode(hotels.getHotelsCode());
+				List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(room);
+				List<MemberRoomVO> roomNameList = memberRoomService.getRoomList(room);
+				model.addAttribute("roomSortList", roomSortList);
+				model.addAttribute("roomNameList", roomNameList);
+				model.addAttribute("hotelsCode", hotels.getHotelsCode());
+			}
+		} else {
+			model.addAttribute("message", "등록된 숙소가 없습니다.");
+			return "/hostTermsOfUse";
+		}
+		return "/modifyRoomSort";
+	}
+	
+	@RequestMapping(value="/modifyInsertRoomSort.do", method = RequestMethod.POST) 
+	public String insertRoomSort(MemberRoomVO vo) {
+		memberRoomSortService.insertRoomSort(vo);
+		return "redirect:modifyRoomSort.do";
+	}
+	
+	@RequestMapping(value="/modifyUpdateRoomSort.do", method = RequestMethod.POST)
+	public String modifyRoomSort(MemberRoomVO vo) {
+		memberRoomSortService.updateRoomSort(vo);
+		return "redirect:modifyRoomSort.do";
+	}
+	
+	@RequestMapping(value="/modifyDeleteRoomSort.do", method = RequestMethod.POST)
+	public String deleteRoomSort(MemberRoomVO vo) {
+		memberRoomSortService.deleteRoomSort(vo);
+		return "redirect:modifyRoomSort.do";
+	}
+	
+	
+	// ---------------------------------- modifyRoom --------------------------------------------
+	@RequestMapping(value="/modifyRoom.do", method = RequestMethod.GET)
+	public String moveModifyRoom(HttpSession httpSession, Model model) {
+		MemberVO user = (MemberVO) httpSession.getAttribute("login");
+		if (user != null) {
+			MemberHotelsVO hotels = memberHotelsService.getMyHotels(user).get(0);
+			if (hotels != null) {
+				MemberRoomVO room = new MemberRoomVO();
+				room.setHotelsCode(hotels.getHotelsCode());
+				List<MemberRoomVO> roomList = memberRoomService.getRoomList(room);
+				List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(room);
+				model.addAttribute("roomList",roomList);
+				model.addAttribute("roomSortList",roomSortList);
+				model.addAttribute("hotelsCode", hotels.getHotelsCode());
+			}
+		} else {
+			model.addAttribute("message", "등록된 숙소가 없습니다.");
+			return "/hostTermsOfUse";
+		}
+		return "/modifyRoom";
+	}
+	
+	@RequestMapping(value="/modifyDeleteRoom.do", method=RequestMethod.POST)
+	public String deleteRoom(MemberRoomVO vo) {
+		memberRoomService.deleteRoom(vo);
+		return "redirect:modifyRoom.do";
+	}
+	
+	@RequestMapping(value="modifyInsertRoom.do", method=RequestMethod.POST)
+	public String insertRoom(MemberRoomVO roomList) {
+		List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(roomList);
+		List<MemberRoomVO> roomNameList = roomList.getRoomList();
+		// Insert Room
+		memberRoomService.insertRoom(roomSortList, roomNameList, roomList.getHotelsCode());
+		return "redirect:modifyRoom.do";
+	}
+	
 }

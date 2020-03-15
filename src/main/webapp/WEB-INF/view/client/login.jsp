@@ -5,9 +5,10 @@
 <html>
 <head>
 
-<c:if test="${noLogin eq true}">
+<c:if test="${message ne null}">
 	<script type="text/javascript">
-		alert("로그인이 필요한 서비스입니다.");
+		var message = "${message}";
+		alert(message);
 	</script>
 </c:if>
 
@@ -81,10 +82,10 @@
 		<div class="container-login100">
 			<div class="login100-more">
 				<c:if test="${not empty adminImageVO}">
-				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 800px;">
+				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 935px;">
 				</c:if>
 				<c:if test="${empty adminImageVO}">
-				<img src="resources/client/images/noImage.png" style="width: 100%; height: 800px;">
+				<img src="resources/client/images/noImage.png" style="width: 100%; height: 935px;">
 				</c:if>
 			</div>
 
@@ -133,7 +134,7 @@
 				<!-- 카카오 로그인 -->
 				<div class="input100" style="text-align: center">
 					<a id="custom-login-btn"
-						href="https://kauth.kakao.com/oauth/authorize?client_id=7a50784ea29bd06070b903a4562bf1b1&redirect_uri=http://localhost:8080/aesook/kakaoLogin.do&response_type=code">
+						href="https://kauth.kakao.com/oauth/authorize?client_id=7a50784ea29bd06070b903a4562bf1b1&redirect_uri=http://localhost:8080/aesook/loginKakao.do&response_type=code">
 						<img width="300"  height="50" src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"/>
 					</a>
 				</div>

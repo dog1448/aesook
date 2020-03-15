@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.aesook.client.hotels.service.MemberHotelsFacilityService;
 import com.spring.aesook.client.hotels.service.MemberHotelsListService;
@@ -75,7 +76,7 @@ public class MemberHotelsController {
 		if(list.isEmpty()) {			
 			return "/hostTermsOfUse";
 		}else {			
-			return "redirect:registeredAccommodation.do";			
+			return "redirect:hostAccommodation.do";			
 		}
 		
 	}
@@ -124,65 +125,22 @@ public class MemberHotelsController {
 		MemberHotelsVO hotels = (MemberHotelsVO) httpSession.getAttribute(HOTEL);
 		MemberHotelsFacilityVO facility = (MemberHotelsFacilityVO) httpSession.getAttribute(FACILITY);
 		List<MemberRoomVO> roomSortList = (List<MemberRoomVO>) httpSession.getAttribute(ROOMSORT);
-		for (MemberRoomVO ri : roomSortList) {
-			System.out.println(ri);
-		}
-		System.out.println("====================================");
 		List<MemberRoomVO> roomNameList = roomList.getRoomList();
 		
-		// Hotel / Facility insert
+		// Insert Hotel / Facility
 		memberInsertHotelsService.insertHotelsFacility(hotels, facility, user, hotelsCode);
 		
-		// Room insert
-		memberRoomService.insertRoom(roomSortList, roomNameList, hotelsCode);;
+		// Insert Room
+		memberRoomService.insertRoom(roomSortList, roomNameList, hotelsCode);
 		
-		return "redirect:registeredAccommodation.do";
+		// Remove session 
+		httpSession.removeAttribute(HOTEL);
+		httpSession.removeAttribute(FACILITY);
+		httpSession.removeAttribute(ROOMSORT);
+		return "redirect:hostAccommodation.do";
 	}
 	
-	/*
-	//Insert Room
-	@RequestMapping(value = "/insertRoomSort.do", method = RequestMethod.POST)	
-	public String InsertRoomSort(
-			MemberHotelsVO memberHotelsVO,
-			MemberHotelsFacilityVO memberFacilityVO,			
-			@RequestParam("roomName") String[] roomName,			
-			@RequestParam("roomSort") String[] roomSort,			
-			@RequestParam("roomStandardCnt") int[] roomStandardCnt,			
-			@RequestParam("roomMaxCnt") int[] roomMaxCnt,
-			@RequestParam("roomStandardPrice") int[] roomStandardPrice,			
-			@RequestParam("roomHolidayPrice") int[] roomHolidayPrice,			
-			@RequestParam("roomAddPrice") int[] roomAddPrice,
-			@RequestParam("roomRoomInfo") String[] roomRoomInfo,
-			Model model, String memberId) {	
-		
-		ArrayList<MemberRoomVO> roomList = new ArrayList<MemberRoomVO>();
-		
-		//Get Dual hotels.sequence
-		int hotelsCode = memberHotelsService.getHotelsCode();
-		
-		
-		for(int i=0; i<roomName.length; i++) {
-			MemberRoomVO vo = new MemberRoomVO();
-			vo.setHotelsCode(hotelsCode);
-			vo.setRoomName(roomName[i]);
-			vo.setRoomSort(roomSort[i]);
-			vo.setRoomStandardCnt(roomStandardCnt[i]);
-			vo.setRoomMaxCnt(roomMaxCnt[i]);
-			vo.setRoomStandardPrice(roomStandardPrice[i]);
-			vo.setRoomHolidayPrice(roomHolidayPrice[i]);
-			vo.setRoomAddPrice(roomAddPrice[i]);
-			roomList.add(vo);
-		}	
-		
-		memberHotelsFacilityService.insertFacility(memberFacilityVO, hotelsCode);
-		memberHotelsService.insertHotels(memberHotelsVO, hotelsCode, memberId);
-		memberRoomService.insertRoom(roomList);
-		
-
-		return "redirect:registeredAccommodation.do";
-	}
 	
-	*/
 	
 	//Check Host
 	@RequestMapping(value = "/hostChk.do", method = RequestMethod.GET)
@@ -231,5 +189,4 @@ public class MemberHotelsController {
         memberHotelsFacilityService.updateFacility(memberFacilityVO);
         return "redirect:hostAccommodation.do";
     }
-	
 }

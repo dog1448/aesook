@@ -22,6 +22,7 @@ import com.spring.aesook.client.image.service.MemberUpdateHotelsMainImageService
 import com.spring.aesook.client.image.service.MemberUpdateHotelsRoomMainImageService;
 import com.spring.aesook.client.image.service.MemberUpdateHotelsRoomSortImageService;
 import com.spring.aesook.client.image.service.MemberUpdateImageBrnService;
+import com.spring.aesook.client.image.vo.MemberBrnImageVO;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
 import com.spring.aesook.client.member.vo.MemberVO;
 
@@ -49,6 +50,11 @@ public class MemberImageController {
     @RequestMapping(value = "/brn.do", method = RequestMethod.GET)
     public String moveBrn(HttpSession httpSession, Model model) {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login"); 
+    	MemberBrnImageVO image = memberUpdateImageBrnService.getBrnImage(user);
+    	if (image != null) {
+    		model.addAttribute("message","이미 등록되어 있는 사업자 입니다.");
+    		return "/bookingList";
+    	}
     	model.addAttribute("user", user);
     	return "/brn";
     }
@@ -58,8 +64,8 @@ public class MemberImageController {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login");
     	if(user != null) {
 			memberUpdateImageBrnService.updateImageBrn(file, user);
-    		model.addAttribute("check","upBrn");
-    		return "/modify_info";
+    		model.addAttribute("message","사업자 등록을 완료했습니다.");
+    		return "/bookingList";
     	}
     	model.addAttribute("check","noBrn");
     	return "/brn";
@@ -89,19 +95,19 @@ public class MemberImageController {
     	return "/hostTermsOfUse";
     }
     
-    @RequestMapping(value="/hotelsMainPic.do", method=RequestMethod.GET)
+    @RequestMapping(value="/hotelsPicMain.do", method=RequestMethod.GET)
     @ResponseBody
     public MemberHotelsImageVO updateHotelsMainImage(MemberHotelsImageVO vo) {
     	return memberUpdateHotelsMainImageService.updateHotelsMainImage(vo);
     }
     
-    @RequestMapping(value="/hotelsRoomSort.do", method=RequestMethod.POST)
+    @RequestMapping(value="/hotelsPicRoomSort.do", method=RequestMethod.POST)
     public String updateRoomSort(@RequestParam("hotelsImageNo") List<Integer> imageNoList, MemberHotelsImageVO vo) {
     	memberUpdateHotelsRoomSortImageService.updateRoomSort(imageNoList, vo);
     	return "redirect:hotelsPic.do";
     }
     
-    @RequestMapping(value="/hotelsRoomMainPic.do", method=RequestMethod.GET)
+    @RequestMapping(value="/hotelsPicRoomMain.do", method=RequestMethod.GET)
     @ResponseBody
     public MemberHotelsImageVO updateHotelsRoomMainImage(MemberHotelsImageVO vo) {
     	return memberUpdateHotelsRoomMainImageService.updateHotelsRoomMainImage(vo);
@@ -118,13 +124,13 @@ public class MemberImageController {
     
     
  // ------------------------------ 호텔사진 등록-------------------------------------
-	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.GET)
+	@RequestMapping(value="/hotelsPicInsert.do" , method = RequestMethod.GET)
 	public String moveInsertPic(@RequestParam("hotelsCode") int hotelsCode, Model model) {
 		model.addAttribute("hotelsCode", hotelsCode);
 		return "/insertHotelsPic";
 	}
 	
-	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.POST)
+	@RequestMapping(value="/hotelsPicInsert.do" , method = RequestMethod.POST)
 	public String insertPic(MultipartHttpServletRequest files, HttpSession session, Model model, MemberHotelsVO hotels) {
 		MemberVO user = (MemberVO) session.getAttribute("login");
 		if (user != null) {

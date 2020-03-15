@@ -6,6 +6,7 @@ import com.spring.aesook.admin.users.vo.ManagerUsersVO;
 
 public interface ManagerUsersDAO {
 	void modifyManagerUsers(ManagerUsersVO vo);	
+	public void updateMemberStatus(ManagerUsersVO vo);
 	ManagerUsersVO getManagerUsers(ManagerUsersVO vo);
 	List<ManagerUsersVO> getManagerUsersList();
 }

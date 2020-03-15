@@ -20,6 +20,10 @@ public class ManagerUsersDAOImpl implements ManagerUsersDAO {
 	public void modifyManagerUsers(ManagerUsersVO vo) {
 		sqlSessionTemplate.update(namespace+".modifyManagerUsers", vo);
 	}
+	
+	public void updateMemberStatus(ManagerUsersVO vo) {
+		sqlSessionTemplate.update(namespace + ".updateMemberStatus", vo);
+	}
 
 	@Override
 	public ManagerUsersVO getManagerUsers(ManagerUsersVO vo) {

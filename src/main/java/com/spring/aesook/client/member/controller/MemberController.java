@@ -118,11 +118,9 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-    public String checkLogin(MemberVO vo, Model model,HttpSession session) {
+    public String checkLogin(MemberVO vo, Model model,HttpSession httpSession) {
 
     	MemberVO user = memberService.getMember(vo);
-    	String id = vo.getMemberId();
-    	String pw = vo.getMemberPass();
     	if(user == null) {
 			model.addAttribute("message", "해당되는 아이디가 없습니다.");
 			return "/messageLogin";
@@ -133,21 +131,20 @@ public class MemberController {
 			}
 			if (user.getMemberPass().equals(vo.getMemberPass())) {
 				if(user.getMemberStatus().equals("R")) {
-					
 					return "/registerWait";
 				}
-				model.addAttribute("login",user);
+				if (httpSession.getAttribute("login") != null) {
+					httpSession.removeAttribute("login");
+				}
+				httpSession.setAttribute("login", user);
+				Object destination = httpSession.getAttribute("destination");
+				return "redirect:" + (destination != null ? (String) destination : "home.do");
 			} else {
 				model.addAttribute("message", "비밀번호가 틀립니다.");
 				return "/messageLogin";
 			}
 		}
 
-    	session.setAttribute("login", user);
-		session.setAttribute("id" ,id);
-		session.setAttribute("pw",pw);
-
-    	return "redirect:home.do"; // 
 
 
     }
@@ -181,12 +178,12 @@ public class MemberController {
     return conditionMap;
     }
 
-    @RequestMapping(value="/findId", method = RequestMethod.GET)
+    @RequestMapping(value="/findId.do", method = RequestMethod.GET)
     public String moveFindId() {
     	return "/findId";
     }
     
-    @RequestMapping(value="/findId", method = RequestMethod.POST)
+    @RequestMapping(value="/findId.do", method = RequestMethod.POST)
     public String findId(MemberVO vo, Model model) {
     	MemberVO user = memberFindIdService.findId(vo);
     	if(user == null) {
@@ -199,12 +196,12 @@ public class MemberController {
     }
     
 
-    @RequestMapping(value="/findPass", method = RequestMethod.GET)
+    @RequestMapping(value="/findPass.do", method = RequestMethod.GET)
     public String moveFindPass() {
     	return "/findPass";
     }
     
-    @RequestMapping(value="/findPass", method = RequestMethod.POST)
+    @RequestMapping(value="/findPass.do", method = RequestMethod.POST)
     public String findPass(MemberVO vo, Model model) {
     	MemberVO user = memberService.getMember(vo);
     	if(user == null) {
@@ -223,7 +220,7 @@ public class MemberController {
     }
     
     //Kakao Login
-    @RequestMapping(value = "/kakaoLogin.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginKakao.do", method = RequestMethod.GET)
     public String kakaoLogin(@RequestParam("code") String code, Model model,
     		HttpSession session) {
     	String access_Token = memberKakaoLoginService.getAccessToken(code);
@@ -238,18 +235,28 @@ public class MemberController {
     	int result = memberService.checkLoginId(vo);
     	
     	if(result == 1) {
+    		if(session.getAttribute("login") != null) {
+    			session.removeAttribute("login");
+    		}
     		session.setAttribute("login", vo);
-    		return "redirect:home.do";
+    		Object destination = session.getAttribute("destination");
+			return "redirect:" + (destination != null ? (String) destination : "home.do");
     	} else if(result == 0) {    		
+    		 
+    		 if(session.getAttribute("login") != null) {
+     			session.removeAttribute("login");
+     		}
     		 memberService.insertMember(vo);
     		 session.setAttribute("login", vo);
+    		 Object destination = session.getAttribute("destination");
+			 return "redirect:" + (destination != null ? (String) destination : "home.do");
     	} 
     	
     	return "redirect:home.do";
     }
     
     //Naver Login
-    @RequestMapping(value = "/naverLogin.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginNaver.do", method = RequestMethod.GET)
     public String naverLogin(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) 
     		throws IOException, ParseException {
     	
@@ -275,24 +282,21 @@ public class MemberController {
     	
     	if(result == 1) {
     		session.setAttribute("login", vo);
-    		return "redirect:home.do";
+    		Object destination = session.getAttribute("destination");
+			return "redirect:" + (destination != null ? (String) destination : "home.do");
     	} else if(result == 0) {    		
-    		 memberService.insertMember(vo);
-    		 session.setAttribute("login", vo);
+    		memberService.insertMember(vo);
+    		session.setAttribute("login", vo);
+    		Object destination = session.getAttribute("destination");
+			return "redirect:" + (destination != null ? (String) destination : "home.do");
     	}
     	
     	return "redirect:home.do";
     }
-
-    @RequestMapping(value = "/insertRoom.do", method = RequestMethod.GET)
-    public String moveInsertRoom() {
-    	return "/insertRoom";
-    }
-    
     
     //----------------------------------modifyInfo--------------------------------------------
 
-    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/memberModifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");
     	MemberVO user = memberService.getMember(login);
@@ -302,19 +306,18 @@ public class MemberController {
     	return "/modify_info";
     }
     
-    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/memberModifyInfo.do", method = RequestMethod.POST)
     public String modifyInfo(MemberVO vo, Model model) {
     	
     	memberService.updateInfoMember(vo);
     	
-    	return "redirect:modifyInfo.do";
+    	return "redirect:memberModifyInfo.do";
     }
     
     @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.POST)
     public String withdrawMember(MemberVO vo, Model model,HttpSession session) {
     	MemberVO member = (MemberVO)session.getAttribute("user");
     	String sessionId = member.getMemberId();
-    	System.out.println(sessionId);
     	memberWithdrawalService.updateWithdrawal(sessionId);
     	session.invalidate();
     	return "redirect:home.do";
