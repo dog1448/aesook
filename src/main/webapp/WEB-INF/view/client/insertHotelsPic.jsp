@@ -125,7 +125,7 @@ $(document).ready(function(){
                   <div class="col-three-forth animate-box">
                   <h2>사진 등록</h2>
                   <hr>      
-                  		<form action="insertHotelsPic.do" method="post" enctype="multipart/form-data" id="fileForm">
+                  		<form action="hotelsPicInsert.do" method="post" enctype="multipart/form-data" id="fileForm">
                  		<div class="container">
 						<div class="row it">
 							<div class="col-sm col-sm-10" id="one">

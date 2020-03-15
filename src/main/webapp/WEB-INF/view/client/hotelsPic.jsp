@@ -33,7 +33,7 @@ function mainPic() {
 	var checkValue = $('input[name=hotelsImageNo]:checked').val();
 	var hCode = $('#hCode').val();
 	$.ajax({
-        url: "hotelsMainPic.do",
+        url: "hotelsPicMain.do",
         type: "GET",
         data: {
       		"hotelsCode" : hCode,
@@ -76,7 +76,7 @@ function modifyRoomMainPic() {
 	
 	
 	$.ajax({
-        url: "hotelsRoomMainPic.do",
+        url: "hotelsPicRoomMain.do",
         type: "GET",
         data: {
       		"hotelsCode" : hCode,
@@ -183,7 +183,7 @@ function deleteImage() {
                  	<p class="text-left"><strong>My Images</strong></p>
                  	<div class="col-sm col-sm-10 one">
                  	
-                 	<form method="post" action="hotelsRoomSort.do" id="formCheck">
+                 	<form method="post" action="hotelsPicRoomSort.do" id="formCheck">
                  	    <!-- Modal content-->
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -237,7 +237,7 @@ function deleteImage() {
         						<button type="button" onclick="mainPic()" class="btn btn-warning btn-outline">숙소 대표사진 설정</button>&nbsp;
         						<button type="button" onclick="modifyRoomMainPic()" class="btn btn-warning btn-outline">방 대표사진 설정</button>&nbsp;
         						<button type="button" data-toggle="modal" data-target="#modalRoomType" class="btn btn-info btn-outline">방 사진 등록</button>&nbsp;
-        						<button type="button" onclick="javascript:location.href='insertHotelsPic.do?hotelsCode=${hotels.hotelsCode}'" class="btn btn-info btn-outline">사진 등록</button>&nbsp;
+        						<button type="button" onclick="javascript:location.href='hotelsPicInsert.do?hotelsCode=${hotels.hotelsCode}'" class="btn btn-info btn-outline">사진 등록</button>&nbsp;
         						<button type="button" onclick="deleteImage()" class="btn btn-info btn-outline">사진 삭제</button>
       						</div>
       					</div>

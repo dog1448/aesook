@@ -100,7 +100,7 @@
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">					
-									<form action="modifyInfo.do" method="post" id="modifyForm">	
+									<form action="memberModifyInfo.do" method="post" id="modifyForm">	
 	                                    <div class="row form-group">
 	                                        <div class="col-md-12">
 	                                            <label for="subject">아이디 : </label>

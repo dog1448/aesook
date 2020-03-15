@@ -22,7 +22,7 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li><a href="bookingList.do">예약조회</a></li>	
 					<li><a href="canceledBookingList.do">취소된 예약 조회</a></li>	
-					<li><a href="modifyInfo.do">개인정보관리</a></li>									
+					<li><a href="memberModifyInfo.do">개인정보관리</a></li>									
 					<li><a href="brn.do">사업자등록</a></li>
 					<li><a href="hostTermsOfUse.do">숙소 관리</a></li>
 					<li><a href="memberWithdrawal.do">회원탈퇴</a></li>
