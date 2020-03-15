@@ -296,7 +296,7 @@ public class MemberController {
     
     //----------------------------------modifyInfo--------------------------------------------
 
-    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/memberModifyInfo.do", method = RequestMethod.GET)
     public String moveModifyInfo(HttpSession session, Model model) {
     	MemberVO login = (MemberVO)session.getAttribute("login");
     	MemberVO user = memberService.getMember(login);
@@ -306,12 +306,12 @@ public class MemberController {
     	return "/modify_info";
     }
     
-    @RequestMapping(value = "/modifyInfo.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/memberModifyInfo.do", method = RequestMethod.POST)
     public String modifyInfo(MemberVO vo, Model model) {
     	
     	memberService.updateInfoMember(vo);
     	
-    	return "redirect:modifyInfo.do";
+    	return "redirect:memberModifyInfo.do";
     }
     
     @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.POST)

@@ -95,19 +95,19 @@ public class MemberImageController {
     	return "/hostTermsOfUse";
     }
     
-    @RequestMapping(value="/hotelsMainPic.do", method=RequestMethod.GET)
+    @RequestMapping(value="/hotelsPicMain.do", method=RequestMethod.GET)
     @ResponseBody
     public MemberHotelsImageVO updateHotelsMainImage(MemberHotelsImageVO vo) {
     	return memberUpdateHotelsMainImageService.updateHotelsMainImage(vo);
     }
     
-    @RequestMapping(value="/hotelsRoomSort.do", method=RequestMethod.POST)
+    @RequestMapping(value="/hotelsPicRoomSort.do", method=RequestMethod.POST)
     public String updateRoomSort(@RequestParam("hotelsImageNo") List<Integer> imageNoList, MemberHotelsImageVO vo) {
     	memberUpdateHotelsRoomSortImageService.updateRoomSort(imageNoList, vo);
     	return "redirect:hotelsPic.do";
     }
     
-    @RequestMapping(value="/hotelsRoomMainPic.do", method=RequestMethod.GET)
+    @RequestMapping(value="/hotelsPicRoomMain.do", method=RequestMethod.GET)
     @ResponseBody
     public MemberHotelsImageVO updateHotelsRoomMainImage(MemberHotelsImageVO vo) {
     	return memberUpdateHotelsRoomMainImageService.updateHotelsRoomMainImage(vo);
@@ -124,13 +124,13 @@ public class MemberImageController {
     
     
  // ------------------------------ 호텔사진 등록-------------------------------------
-	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.GET)
+	@RequestMapping(value="/hotelsPicInsert.do" , method = RequestMethod.GET)
 	public String moveInsertPic(@RequestParam("hotelsCode") int hotelsCode, Model model) {
 		model.addAttribute("hotelsCode", hotelsCode);
 		return "/insertHotelsPic";
 	}
 	
-	@RequestMapping(value="/insertHotelsPic.do" , method = RequestMethod.POST)
+	@RequestMapping(value="/hotelsPicInsert.do" , method = RequestMethod.POST)
 	public String insertPic(MultipartHttpServletRequest files, HttpSession session, Model model, MemberHotelsVO hotels) {
 		MemberVO user = (MemberVO) session.getAttribute("login");
 		if (user != null) {

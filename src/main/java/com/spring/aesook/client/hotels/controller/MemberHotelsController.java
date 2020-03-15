@@ -76,7 +76,7 @@ public class MemberHotelsController {
 		if(list.isEmpty()) {			
 			return "/hostTermsOfUse";
 		}else {			
-			return "redirect:registeredAccommodation.do";			
+			return "redirect:hostAccommodation.do";			
 		}
 		
 	}
@@ -137,7 +137,7 @@ public class MemberHotelsController {
 		httpSession.removeAttribute(HOTEL);
 		httpSession.removeAttribute(FACILITY);
 		httpSession.removeAttribute(ROOMSORT);
-		return "redirect:registeredAccommodation.do";
+		return "redirect:hostAccommodation.do";
 	}
 	
 	
