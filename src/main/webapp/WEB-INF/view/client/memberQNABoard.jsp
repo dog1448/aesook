@@ -103,7 +103,7 @@
                     <tr>
                         <td><c:out value="${boards.rnum}"/></td>
                         <c:set var="writer" value="${boards.boardWriter}"/>
-                        <c:set var="id" value="${id}"/>
+                        <c:set var="id" value="${login.memberId}"/>
                         <c:set var="del" value="${boards.boardTitle}"/>
                         <c:set var="deltitle" value="삭제된 게시글입니다."/>
                         <c:choose>
@@ -111,7 +111,7 @@
                                 <td class="qna"><c:out value="삭제된 게시글 입니다."/></td>
                             </c:when>
                             <c:when test="${writer eq id}">
-                                <td class="qna"><a href="${path}/BoardRead.do?boardNo=${boards.boardSeq}">
+                                <td class="qna"><a href="${path}/boardQNARead.do?boardNo=${boards.boardSeq}">
                                     <c:out value="${boards.boardTitle}"/></a></td>
                             </c:when>
                             <c:otherwise>
@@ -127,20 +127,20 @@
             </table>
 
             <c:if test="${pageMaker.prev}">
-                <a href="${path}/MemberBoard.do${pageMaker.makeQuery(pageMaker.startPage -1)}"
+                <a href="${path}/boardQNA.do${pageMaker.makeQuery(pageMaker.startPage -1)}"
                    class="btn btn-success btn-arrow-left">이전</a>
             </c:if>
 
             <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="point">
                 <li class="list-group-item" style="list-style: none; float: left; padding: 6px"><a
-                        href="${path}/MemberBoard.do${pageMaker.makeQuery(point)}">${point}</a></li>
+                        href="${path}/boardQNA.do${pageMaker.makeQuery(point)}">${point}</a></li>
             </c:forEach>
 
             <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-                <a href="${path}/MemberBoard.do${pageMaker.makeQuery(pageMaker.endPage +1)}"
+                <a href="${path}/boardQNA.do${pageMaker.makeQuery(pageMaker.endPage +1)}"
                    class="btn btn-success btn-arrow-left">다음</a>
             </c:if>
-            <a href="write.do" class="btn btn-info pull-right">글쓰기</a>
+            <a href="boardQNAWrite.do" class="btn btn-info pull-right">글쓰기</a>
 
 
         </div>
@@ -156,7 +156,7 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-    if ('${id}' === "") {
+    if ('${login.memberId}' === "") {
         $(document).ready(function () {
             $(".qna").text("비밀글입니다.")
         });

@@ -93,7 +93,7 @@
             <caption> 글쓰기</caption>
             </thead>
             <tbody>
-            <form role="form" id="writeForm" method="post" action="${path}/BoardModify.do">
+            <form role="form" id="writeForm" method="post" action="${path}/boardQNAModify.do">
                 <input type="hidden" name="boardSeq" id="boardSeq" value="${board.boardSeq}">
                 <div class="form-group">
                     <tr>
@@ -133,7 +133,7 @@
                         <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
                         <button type="submit" class="btn btn-success modBtn"><i class="fa fa-save"></i>수정하기</button>
                         <a class="btn btn-default" type="reset"> 초기화 </a>
-                        <a class="btn btn-default" onclick="javascript:location.href='/FAQ_Board.do'">글 목록으로...</a>
+                        <a class="btn btn-default" onclick="javascript:location.href='aesook/boardQNA.do'">글 목록으로...</a>
                     </td>
                 </tr>
             </form>

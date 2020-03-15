@@ -85,8 +85,8 @@
                     <caption> 글쓰기  </caption>
                 </thead>
                 <tbody>
-                    <form action="MoveList.do" method="post">
-                        <input type="hidden" name="boardWriter" id="boardWriter" value="${id}">
+                    <form action="boardQNAList.do" method="post">
+                        <input type="hidden" name="boardWriter" id="boardWriter" value="${login.memberId}">
                         <tr>
                             <th>제목: </th>
                             <td><input type="text" placeholder="제목을 입력하세요. " id="boardTitle" name="boardTitle" class="form-control" /></td>
@@ -125,7 +125,7 @@
                                 <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
                                 <input class="btn btn-default" type="submit" value="등록">
                                 <a class="btn btn-default" type="reset"> reset </a>
-                                <a class="btn btn-default" onclick="javascript:location.href='/FAQ_Board.do'">글 목록으로...</a>
+                                <a class="btn btn-default" onclick="javascript:location.href='aesook/boardQNA.do'">글 목록으로...</a>
                             </td>
                         </tr>
                     </form>
