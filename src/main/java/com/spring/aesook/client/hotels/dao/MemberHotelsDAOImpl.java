@@ -44,4 +44,9 @@ public class MemberHotelsDAOImpl implements MemberHotelsDAO{
 
 	}
 
+	@Override
+	public String getHostId(MemberHotelsVO vo) {		
+		return sqlSessionTemplate.selectOne(namespace + ".getHostId", vo);
+	}
+
 }
