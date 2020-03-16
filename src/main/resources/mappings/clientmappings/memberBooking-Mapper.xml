@@ -107,6 +107,13 @@
 		#{bookingCheckIn}, #{bookingCheckOut}, #{bookingName}, 
 		#{bookingPhone}, #{bookingCnt}, sysdate, #{bookingTotalPrice}, 'B', #{tid})
 	</insert>
-
+	
+	<select id="getMemberBookingList" parameterType="memberBooking" resultType="memberBooking">
+		SELECT * FROM booking WHERE hotels_code = #{hotelsCode}
+	</select>
+	
+	<select id="getMemberBooking" parameterType="memberBooking" resultType="memberBooking">
+		SELECT * FROM booking WHERE booking_code = #{bookingCode}
+	</select>
 
 </mapper>

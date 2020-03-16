@@ -84,7 +84,6 @@ public class MemberBoardDAOImpl implements MemberBoardDAO {
 
     }
 
-
     public MemberBoardVO searchMemberBoard(MemberBoardVO memberBoardVO) {
         return null;
     }

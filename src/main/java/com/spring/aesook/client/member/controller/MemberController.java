@@ -172,9 +172,9 @@ public class MemberController {
     @ModelAttribute("conditionMap")
     public Map<String, String> searchConditionMap() {
     Map<String, String> conditionMap = new HashMap<String, String>();
-    conditionMap.put("SUBWAY", "PATH");
     conditionMap.put("HOTEL NAME", "NAME");
     conditionMap.put("LOCATION", "ADDRESS");
+    conditionMap.put("SUBWAY", "PATH");
     return conditionMap;
     }
 

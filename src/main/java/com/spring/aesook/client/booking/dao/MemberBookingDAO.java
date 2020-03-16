@@ -25,5 +25,8 @@ public interface MemberBookingDAO {
 	int getBookingSeq();
 
 	void insertBooking(MemberBookingVO vo);
+	
+	public List<MemberBookingVO> getMemberBookingList(MemberBookingVO vo);
 
+	public MemberBookingVO getMemberBooking(MemberBookingVO vo);
 }

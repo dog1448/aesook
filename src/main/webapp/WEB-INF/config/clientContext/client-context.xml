@@ -45,6 +45,7 @@
 			<mvc:mapping path="/statistics*.do"/>
 			<mvc:mapping path="/getMonthlyTotalPrice.do"/>
 			<mvc:mapping path="/getRoomRatio.do"/>
+			<mvc:mapping path="/bookingHotelsList.do"/>
 			<bean class="com.spring.aesook.client.util.interceptor.AuthHotelMasterInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
