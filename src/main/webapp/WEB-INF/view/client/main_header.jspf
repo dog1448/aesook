@@ -11,7 +11,7 @@
 					<div class="row" id="sticky-header-align">
 						<div class="col-xs-2 align-items-center">
 							<div id="colorlib-logo">
-								<a href="home.do"> <img src="resources/client/images/aesook_black_2.png" height="70rem"></a>
+								<a href="home.do"> <img src="resources/client/images/aesook_black_2.png" height="70rem" style="width:auto;"></a>
 							</div>
 						</div>
 						<div class="col-xs-10 text-right menu-1 align-items-center">

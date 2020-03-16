@@ -301,6 +301,10 @@ public class MemberController {
     	MemberVO login = (MemberVO)session.getAttribute("login");
     	MemberVO user = memberService.getMember(login);
     	if(login != null) {
+    		if (user.getMemberPass() == null) {
+    			model.addAttribute("message", "접근할 수 없습니다.");
+    			return "/successHome";
+    		}
     		model.addAttribute("login",user);
     	}
     	return "/modify_info";

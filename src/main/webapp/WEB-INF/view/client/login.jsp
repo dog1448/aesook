@@ -28,9 +28,9 @@
 			$("#tbPass").focus();
 			return;
 		}
-
 		$('#loginForm').submit();
 	}
+	
 </script>
 <title>Login V13</title>
 <meta charset="utf-8" />
@@ -80,13 +80,15 @@
 
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more">
+			<div class="login100-more" id="loginImage" style="background-image: ">
+				<!-- 
 				<c:if test="${not empty adminImageVO}">
-				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 935px;">
+				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: auto;">
 				</c:if>
 				<c:if test="${empty adminImageVO}">
-				<img src="resources/client/images/noImage.png" style="width: 100%; height: 935px;">
+				<img id="loginImage" src="resources/client/images/noImage.png" style="width: 100%; height: auto;">
 				</c:if>
+				 -->
 			</div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
@@ -168,6 +170,16 @@
 		};
 		//]]>	
 	</script>
-
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var imagePath = "${adminImageVO.adminImagePath}"+"${adminImageVO.adminImageName}";
+		if (imagePath == "") {
+			imgeaPath = "resources/client/images/noImage.png";
+		} 
+		var str = "background-image: url('"+ imgeaPath +"')";
+		
+		$('#loginImage').attr("style", str);
+	});
+	</script>
 </body>
 </html>
