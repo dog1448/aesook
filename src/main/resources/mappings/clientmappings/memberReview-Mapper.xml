@@ -6,7 +6,7 @@
 	<insert id="insertReview" parameterType="memberReview">
 		INSERT INTO review  
 		values(
-		REVIEW_SEQ.nextval ,#{hotelsCode} ,#{memberId},
+		REVIEW_SEQ.nextval , #{memberId},
 		#{bookingCode} ,#{reviewContents} ,sysdate ,#{reviewScore}
 		)
 	</insert>
@@ -24,15 +24,17 @@
 	</select>
 
 	<select id="getReviewList" resultType="memberReview">
-		select *
-		from review
-		where hotels_code = #{hotelsCode}
+		SELECT R.* 
+		FROM REVIEW R, BOOKING B
+		WHERE R.BOOKING_CODE = B.BOOKING_CODE
+		AND B.HOTELS_CODE = #{hotelsCode}
 	</select>
 	
 	<select id="getScoreAvg" resultType="String">
-		select round(avg(review_score),1) avg
-		from review
-		where hotels_code = #{hotelsCode}
+		select round(avg(r.review_score),1) avg
+		from review r, booking b
+		WHERE R.BOOKING_CODE = B.BOOKING_CODE
+		AND B.HOTELS_CODE = #{hotelsCode}
 	</select>
 	
 </mapper>

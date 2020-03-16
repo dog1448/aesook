@@ -5,7 +5,6 @@ import java.sql.Date;
 public class MemberReviewVO {
 	
 	private int reviewSeq;
-	private int hotelsCode;
 	private String memberId;
 	private int bookingCode;
 	private String reviewContents;
@@ -17,12 +16,6 @@ public class MemberReviewVO {
 	}
 	public void setReviewSeq(int reviewSeq) {
 		this.reviewSeq = reviewSeq;
-	}
-	public int getHotelsCode() {
-		return hotelsCode;
-	}
-	public void setHotelsCode(int hotelsCode) {
-		this.hotelsCode = hotelsCode;
 	}
 	public String getMemberId() {
 		return memberId;
@@ -56,7 +49,7 @@ public class MemberReviewVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberReviewVO [reviewSeq=" + reviewSeq + ", hotelsCode=" + hotelsCode + ", memberId=" + memberId
+		return "MemberReviewVO [reviewSeq=" + reviewSeq + ", memberId=" + memberId
 				+ ", bookingCode=" + bookingCode + ", reviewContents=" + reviewContents + ", reviewDate=" + reviewDate
 				+ ", reviewScore=" + reviewScore + "]";
 	}	
