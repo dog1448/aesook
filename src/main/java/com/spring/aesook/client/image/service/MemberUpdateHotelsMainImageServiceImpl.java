@@ -2,6 +2,7 @@ package com.spring.aesook.client.image.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.aesook.client.image.dao.MemberImageDAO;
 import com.spring.aesook.client.image.vo.MemberHotelsImageVO;
@@ -12,6 +13,7 @@ public class MemberUpdateHotelsMainImageServiceImpl implements MemberUpdateHotel
 	@Autowired
 	private MemberImageDAO memberImageDAO;
 	
+	@Transactional(rollbackFor = Exception.class)
 	public MemberHotelsImageVO updateHotelsMainImage(MemberHotelsImageVO vo) {
 		
 		// update 'H'

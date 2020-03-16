@@ -108,11 +108,11 @@ public class MemberRoomController {
 				model.addAttribute("roomSortList", roomSortList);
 				model.addAttribute("roomNameList", roomNameList);
 				model.addAttribute("hotelsCode", hotels.getHotelsCode());
+			} else {
+				model.addAttribute("message", "등록된 숙소가 없습니다.");
+				return "/hostTermsOfUse";
 			}
-		} else {
-			model.addAttribute("message", "등록된 숙소가 없습니다.");
-			return "/hostTermsOfUse";
-		}
+		} 
 		return "/modifyRoomSort";
 	}
 	
@@ -149,11 +149,11 @@ public class MemberRoomController {
 				model.addAttribute("roomList",roomList);
 				model.addAttribute("roomSortList",roomSortList);
 				model.addAttribute("hotelsCode", hotels.getHotelsCode());
+			} else {
+				model.addAttribute("message", "등록된 숙소가 없습니다.");
+				return "/hostTermsOfUse";
 			}
-		} else {
-			model.addAttribute("message", "등록된 숙소가 없습니다.");
-			return "/hostTermsOfUse";
-		}
+		} 
 		return "/modifyRoom";
 	}
 	

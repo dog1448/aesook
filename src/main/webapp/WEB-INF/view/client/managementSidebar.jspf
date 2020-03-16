@@ -23,7 +23,7 @@
 				<h2>숙소관리</h2>
 				<ul class="nav nav-pills nav-stacked">				
 					<li id="register"><a href="hostTermsOfUse.do" >숙소 등록</a></li>				
-					<li><a href="registeredAccommodation.do?memberId=${login.memberId}">나의 숙소 수정</a></li>
+					<li><a href="hostAccommodation.do?memberId=${login.memberId}">나의 숙소 수정</a></li>
 					<li><a href="modifyRoom.do">나의 방 수정</a></li>
           			<li><a href="hotelsPic.do">호텔사진관리</a></li>	
 					<li><a href="statistics.do">통계</a></li>

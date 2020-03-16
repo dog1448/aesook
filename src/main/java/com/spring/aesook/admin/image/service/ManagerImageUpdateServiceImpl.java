@@ -2,6 +2,7 @@ package com.spring.aesook.admin.image.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.aesook.admin.image.dao.ManagerImageDAO;
 import com.spring.aesook.admin.image.vo.ManagerAdminImageVO;
@@ -12,6 +13,7 @@ public class ManagerImageUpdateServiceImpl implements ManagerImageUpdateService 
 	@Autowired
 	private ManagerImageDAO managerImageDAO;
 	
+	@Transactional(rollbackFor = Exception.class)
 	public ManagerAdminImageVO updateAdminImage(ManagerAdminImageVO vo) {
 		
 		// before select AdminImage

@@ -3,6 +3,7 @@ package com.spring.aesook.client.hotels.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -165,9 +166,15 @@ public class MemberHotelsController {
 	public String getMyHotels(HttpSession session, Model model){
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		if(user != null) {
-			model.addAttribute("user", user);
-			List<MemberHotelsVO> hotelsList = memberHotelsService.getMyHotels(user);
-			model.addAttribute("hotels", hotelsList);
+			MemberHotelsVO hotels = memberHotelsService.getMyHotels(user).get(0);
+			if (hotels != null) {
+				model.addAttribute("user", user);
+				List<MemberHotelsVO> hotelsList = memberHotelsService.getMyHotels(user);
+				model.addAttribute("hotels", hotelsList);
+			} else {
+				model.addAttribute("message", "등록된 숙소가 없습니다.");
+				return "/hostTermsOfUse";
+			}
 		}
 		return "/registeredAccommodation";
 	}

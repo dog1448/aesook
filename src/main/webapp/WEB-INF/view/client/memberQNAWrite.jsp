@@ -85,7 +85,7 @@
                     <caption> 글쓰기  </caption>
                 </thead>
                 <tbody>
-                    <form action="boardQNAList.do" method="post">
+                    <form action="boardQNAWrite.do" method="post">
                         <input type="hidden" name="boardWriter" id="boardWriter" value="${login.memberId}">
                         <tr>
                             <th>제목: </th>

@@ -34,13 +34,13 @@
 			<mvc:exclude-mapping path="/search*.do"/>
 			<mvc:exclude-mapping path="/accommodationsRoom.do"/>
 			<mvc:exclude-mapping path="/roomDescription.do"/>
+			<mvc:exclude-mapping path="/board*.do"/>
 			<bean class="com.spring.aesook.client.util.interceptor.AuthClientInterceptor"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/insert*.do"/>
 			<mvc:mapping path="/host*.do"/>
 			<mvc:mapping path="/modify*.do"/>
-			<mvc:mapping path="/brn*.do"/>
 			<mvc:mapping path="/hotelsPic*.do"/>
 			<mvc:mapping path="/statistics*.do"/>
 			<mvc:mapping path="/getMonthlyTotalPrice.do"/>

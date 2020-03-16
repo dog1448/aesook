@@ -26,7 +26,7 @@
 /* Carousel base class */
 .carousel {
 	margin-bottom: 60px;
-	width: 70%;
+	margin-top: 30px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -199,7 +199,7 @@
 		<div class="colorlib-wrap">
 			<div class="container">
 				<div class="row">
-					<div id="myCarousel" class="carousel slide col-md-offset-2">
+					<div id="myCarousel" class="carousel slide col-md-offset-0">
 						<div class="carousel-inner">
 							<c:if test="${not empty picList}">
 								<c:forEach var="picList" items="${picList}">

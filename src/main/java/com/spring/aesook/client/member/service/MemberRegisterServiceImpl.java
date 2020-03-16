@@ -16,12 +16,12 @@ public class MemberRegisterServiceImpl implements MemberRegisterService {
 	@Override
 	public void sendEmailConfirm(MemberVO vo) {		
 		
-		   MailVO mail = new MailVO("text/html");
+		   MailVO mail = new MailVO("text/html; charset=UTF-8;");
 		      mail.setMailTo(vo.getMemberEmail());
 		      mail.setMailSubject(vo.getMemberName()+"님의 회원가입 인증 메일입니다.");
 		      mail.setMailContent("<h1>[이메일 인증]</h1> \n"
 		            + "<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>\n"
-		            + "<a href='http://localhost:8080/aesook/registerConfirm.do'"
+		            + "<a href='http://ec2-54-180-125-121.ap-northeast-2.compute.amazonaws.com/registerConfirm.do'"
 		            + " target='_blenk'>이메일 인증 확인</a>");
 		      mailSender.sendMail(mail);
 		      System.out.println("메일전송");
