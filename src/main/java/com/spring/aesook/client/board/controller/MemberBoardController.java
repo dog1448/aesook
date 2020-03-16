@@ -47,7 +47,7 @@ public class MemberBoardController {
         return "/memberQNAWrite";
     }
 
-    @RequestMapping(value = "/boardQNAList.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/boardQNAWrite.do", method = RequestMethod.POST)
     public String writeArticle(MemberBoardVO memberBoardVO, Model model) {
         memberBoardService.insertMemberBoard(memberBoardVO);
         return "redirect:/boardQNA.do";

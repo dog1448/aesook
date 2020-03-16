@@ -35,7 +35,7 @@ public class MemberKakaoLoginService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=7a50784ea29bd06070b903a4562bf1b1");
-            sb.append("&redirect_uri=http://localhost:8080/loginKakao.do");
+            sb.append("&redirect_uri=http://ec2-54-180-125-121.ap-northeast-2.compute.amazonaws.com/loginKakao.do");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -52,7 +52,6 @@ public class MemberKakaoLoginService {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
             
             //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
             JsonParser parser = new JsonParser();
@@ -60,9 +59,6 @@ public class MemberKakaoLoginService {
             
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-            
-            System.out.println("access_token : " + access_Token);
-            System.out.println("refresh_token : " + refresh_Token);
             
             br.close();
             bw.close();

@@ -241,7 +241,7 @@ ${memberRule.cancelRule }
                     </div>
                     <div class="col-lg-4">
                         <div class="room-booking">
-                        <form role="form" method="post" action="movePayment.do" id="reserve">
+                        <form role="form" method="get" action="movePayment.do" id="reserve">
                         <input type="hidden" id = "hotelsCodeId" name="hotelsCode" value="${memberRoomVO.hotelsCode}">
                         <input type="hidden" id = "hotelsNameId" name="hotelsName" value="${memberhotelsVO.hotelsName}">
                         <input type="hidden" id = "roomSortId" name="roomSort" value="${memberRoomVO.roomSort}">

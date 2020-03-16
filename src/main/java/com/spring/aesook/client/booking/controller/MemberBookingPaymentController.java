@@ -35,8 +35,12 @@ public class MemberBookingPaymentController {
 	private ManagerTermsService managerTermsService;
 	
 	//Move to Payment Page
-	@RequestMapping(value="/movePayment.do", method = RequestMethod.POST)
+	@RequestMapping(value="/movePayment.do", method = RequestMethod.GET)
 	public String movePayment(HttpSession session, MemberBookingVO bookingVO, MemberRoomVO roomVO, Model model) {
+		if (bookingVO.getBookingName() == null || roomVO.getRoomSort() == null) {
+			model.addAttribute("message", "결재를 진행 할 수 없습니다.");
+			return "/successHome";
+		}
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		bookingVO.setMemberId(user.getMemberId());
 		List<String> possibleRoom = memberBookingCheckService.getRoomPossible(bookingVO);

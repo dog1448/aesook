@@ -33,9 +33,9 @@ public class KakaoServiceImpl implements KakaoService {
 		params.add("quantity", "1");
 		params.add("total_amount", Integer.toString(booking.getBookingTotalPrice()));
 		params.add("tax_free_amount", "0");
-		params.add("approval_url", "http://localhost:8080/aesook/kakaoPaySuccess.do");
-		params.add("cancel_url", "http://localhost:8080/aesook/kakaoPayCancel.do");
-		params.add("fail_url", "http://localhost:8080/aesook/kakaoPaySuccessFail.do");
+		params.add("approval_url", "http://ec2-54-180-125-121.ap-northeast-2.compute.amazonaws.com/kakaoPaySuccess.do");
+		params.add("cancel_url", "http://ec2-54-180-125-121.ap-northeast-2.compute.amazonaws.com/kakaoPayCancel.do");
+		params.add("fail_url", "http://ec2-54-180-125-121.ap-northeast-2.compute.amazonaws.com/kakaoPaySuccessFail.do");
 		
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String,String>>(params, KakaoUtil.getHeader());
 		try {
@@ -46,6 +46,7 @@ public class KakaoServiceImpl implements KakaoService {
 			e.printStackTrace();
 		}
 		kakaoPayReadyVO.setNext_redirect_pc_url("pay");
+		System.out.println(kakaoPayReadyVO.getNext_redirect_pc_url());
 		return kakaoPayReadyVO;
 	}
 	
