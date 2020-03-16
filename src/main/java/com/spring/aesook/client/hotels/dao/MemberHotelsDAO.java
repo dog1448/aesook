@@ -1,14 +1,16 @@
 package com.spring.aesook.client.hotels.dao;
 
-import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
+import java.util.List;
+
 import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
-import com.spring.aesook.client.hotels.vo.MemberRoomSortVO;
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
+import com.spring.aesook.client.member.vo.MemberVO;
 
 public interface MemberHotelsDAO {
-	int getHotelsCode();
 	void insertHotels(MemberHotelsVO vo);
-	void insertRoomSort(MemberRoomSortVO vo);
-	void insertRoom(MemberRoomVO vo);
-	void inserHotelsFacility(MemberHotelsFacilityVO vo);
+	List<MemberHotelsVO> getMyHotels(MemberVO vo);
+	int getHotelsCode();
+	void updateHotels(MemberHotelsVO memberHotelsVO);
+	void modifyRooms(MemberRoomVO memberRoomVO);
+	String getHostId(MemberHotelsVO vo);
 }

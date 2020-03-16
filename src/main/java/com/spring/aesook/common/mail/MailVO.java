@@ -13,7 +13,7 @@ public class MailVO {
 	private String contentType;
 	
 	public MailVO() {
-		contentType = "text/plain";
+		contentType = "text/plain;";
 	}
 	
 	public MailVO(String contentType) {

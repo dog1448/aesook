@@ -12,7 +12,7 @@
 
  <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row"><div>&nbsp;</div>
                         <div class="col-lg-12">
                             <h1 class="page-header">Hotel Info</h1>
                         </div>
@@ -46,7 +46,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Member_Id</label>
-                                                    <input name="memberNo" class="form-control" value="${hotel.memberNo }" disabled>
+                                                    <input name="memberNo" class="form-control" value="${hotel.memberId }" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Hotels_Phone</label>
@@ -79,7 +79,7 @@
                                                 </fieldset>
 
                                                 <div class="col-lg-12"> 
-                                                    <button type="submit" class="btn btn-default float-left", id="modibt">Modify</button>
+                                                    <button type="submit" class="btn btn-default float-left" id="modibt">Modify</button>
                                                     <button type="button" class="btn btn-default float-left">Delete</button>
                                                     <button type="button" class="btn btn-default float-left" onclick="location='hotelsTable.admin'">Cancel</button>
                                                     <button type="button" class="btn btn-warning float-left" id="disbt">disable</button>
@@ -120,7 +120,7 @@
             
            function modibtClick(){
             	if(cnt==0){
-            		alert("Disable을 해주세요.");
+            		alert("수정을 해주세요.");
             		return false;
             	}else if(cnt>0){
             		return true;

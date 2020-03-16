@@ -1,39 +1,88 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <%@ include file="head.jspf"%>
+<script type="text/javascript">
+
+function checkz() {
+	
+	//검색어 입력 확인
+ if($("#searchKeyword").val() == ""){
+   alert("검색어를 입력해주세요");
+   $("#searchKeyword").focus();
+   return;
+ }
+      
+	$('#searchHotels').submit();
+
+}
+</script>
+<style type="text/css">
+option  {
+	background : #595959;
+	width : auto;
+}
+/* pc 화면 */
+@media (min-width: 768px) {
+    #kakao-talk-channel-chat-button {
+    position: fixed;
+    z-index: 999;
+    right: 10px; /* 화면 오른쪽으로부터의 거리 */
+    bottom: 70px; /* 화면 아래쪽으로부터의 거리 */
+    }
+}
+/* 모바일 화면 */
+@media (max-width:767px) {
+    #kakao-talk-channel-chat-button {
+    position: fixed;
+    z-index: 999;
+    right: 10px; /* 화면 오른쪽으로부터의 거리 */
+    bottom: 70px; /* 화면 아래쪽으로부터의 거리 */
+    }
+}
+</style>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+window.kakaoAsyncInit = function () {
+    Kakao.init('099fe2e10a4fe77fb4de8c5a1e4d91d5');
+    Kakao.Channel.createChatButton({
+      container: '#kakao-talk-channel-chat-button'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//developers.kakao.com/sdk/js/kakao.plusfriend.min.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'kakao-js-sdk'));
+</script>
 </head>
 <body>
-
+<div id="kakao-talk-channel-chat-button" data-channel-public-id="_qxhvXxb" data-title="question" data-size="small" data-color="yellow" data-shape="pc" data-support-multiple-densities="true"></div>
 	<div class="colorlib-loader"> </div>
-
 	<div id="page">
 		<%@ include file="main_header.jspf"%>
 		<!--index 화면 사진 부분-->
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-					<li style="background-image: url(resources/client/images/img_bg_5.jpg);">
-						<div class="overlay"></div>
-						<div class="container-fluids">
-							<div class="row">
-								<div
-									class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-									<div class="slider-text-inner text-center">
-										<h2>집같이 편안한 숙소/뭔가 다른 느낌</h2>
-										<h1>애숙이</h1>
-									</div>
-								</div>
-							</div>
-						</div>
+					<li>
+						<c:if test="${not empty adminImageVO}">
+						<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 800px;">
+						</c:if>
+						<c:if test="${empty adminImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: 100%; height: 800px;">
+						</c:if>						
 					</li>
 				</ul>
 			</div>
 		</aside>
-
+		
 		<!-- 통합 검색 부분 -->
 		<div id="colorlib-reservation">
 			<div class="row">
@@ -41,20 +90,29 @@
 					<div class="tab-content">
 						<div id="flight" class="tab-pane fade in active">
 							<!-- 검색 값 -->
-							<form method="post" class="colorlib-form" action="">
+							<form method="post" class="colorlib-form" action="searchedHotelsList.do" id="searchHotels">
 								<div class="row">
-									<div class="col-lg-10">
+									<div class="col-lg-6 col-lg-offset-2">
+										<label>&nbsp;&nbsp;&nbsp;&nbsp;통합검색</label>
 										<div class="form-group">
-											<label for="date">통합검색</label>
 											<div class="form-field">
-												<input type="text" id="location" class="form-control"
-													placeholder="Search Location">
+												<div class="col-lg-4">
+													<i class="icon icon-arrow-down3"></i> 
+													<select id="searchCodition" name="searchCondition" class="form-control">
+														<c:forEach items="${conditionMap}" var="option">
+															<option value="${option.value}">${option.key}</option>
+														</c:forEach>
+													</select>
+												</div>
+												<div class="col-lg-8">
+													<input type="text" name="searchKeyword" class="form-control" id="searchKeyword"
+														placeholder="검색어를 입력해주세요.">
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
-										<input type="submit" name="submit" id="submit" value="검색하기"
-											class="btn btn-primary btn-block">
+									<div class="col-lg-2">
+										<button type="button" onclick="checkz()" class="btn btn-outline btn-info btn-block">검색하기</button>
 									</div>
 								</div>
 							</form>
@@ -64,45 +122,45 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<!-- 호텔, 모텔, 펜션, 게스트하우스, 리조트/콘도 클릭 부분 (페이지 이동시 숙소종류 데이터 가지고 넘어가야 할듯?) -->
 		<div id="colorlib-services">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-md-4 animate-box text-center">
+					<div class="col-md-2 col-md-offset-1 animate-box text-center">
 						<div class="services">
 							<span class="icon"> <a href="hotelMove.do"><img
 									src="resources/client/images/hotel.png" /></a></span>
 							<h3>호텔</h3>
 						</div>
 					</div>
-					<div class="col-md-4 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=m"><img
+							<span class="icon"> <a href="hotelMove.do?type=모텔"><img
 									src="resources/client/images/motel.png" /></a>
 							</span>
 							<h3>모텔</h3>
 						</div>
 					</div>
-					<div class="col-md-4 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=p"><img
+							<span class="icon"> <a href="hotelMove.do?type=펜션"><img
 									src="resources/client/images/pension.png" /></a>
 							</span>
 							<h3>펜션</h3>
 						</div>
 					</div>
-					<div class="col-md-6 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=g"><img
+							<span class="icon"> <a href="hotelMove.do?type=게스트하우스"><img
 									src="resources/client/images/guestHouse.png" /></a>
 							</span>
 							<h3>게스트 하우스</h3>
 						</div>
 					</div>
-					<div class="col-md-6 animate-box text-center">
+					<div class="col-md-2 animate-box text-center">
 						<div class="services">
-							<span class="icon"> <a href="hotelMove.do?type=r"><img
+							<span class="icon"> <a href="hotelMove.do?type=리조트"><img
 									src="resources/client/images/resort.png" /></a>
 							</span>
 							<h3>리조트</h3>
@@ -126,106 +184,43 @@
 				<div class="row">
 					<div class="col-md-12 animate-box">
 						<div class="owl-carousel">
+						
 							<!-- 각 item이 하나의 숙소 링크 부분 -->
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.do" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
-									</a>
-									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
-										<h3>
-											<a href="room-detail.do">숙소명</a>
-										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
+							<c:forEach var="list" items="${top10}">
+								<div class="item">
+									<div class="hotel-entry">
+										<c:if test="${list.hotelsImageStatus eq 'M' }">										
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: auto;">																					
+											</a>											
+										</c:if>
+										<c:if test="${list.hotelsImageStatus ne 'M' }">
+											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
+												<img src="resources/client/images/noImage.png" style="height: 280px; width: auto;">																	
+											</a>
+										</c:if>	
+										<div class="desc">
+											<p class="star">
+												<span>
+													<c:if test="${list.scoreAvg == 0}">
+														<i class="icon-star-empty"></i>
+													</c:if>
+													<c:forEach var="i" begin="1" end="${list.scoreAvg}" step="1">
+														<i class="icon-star-full"></i>
+													</c:forEach>
+												</span>
+												${list.scoreCnt} Reviews
+											</p>									
+											<h3>
+												<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}">${list.hotelsName}</a>
+											</h3>
+											<span class="place">${list.hotelsAddress1}</span>
+											<p>${list.hotelsPath}</p>
+										</div>
 									</div>
 								</div>
-							</div>
-							<!-- 각 item이 하나의 숙소 링크 부분 -->
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.do" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
-									</a>
-									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
-										<h3>
-											<a href="room-detail.do">숙소명</a>
-										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
-									</div>
-								</div>
-							</div>
-							<!-- 각 item이 하나의 숙소 링크 부분 -->
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.do" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
-									</a>
-									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
-										<h3>
-											<a href="room-detail.do">숙소명</a>
-										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
-									</div>
-								</div>
-							</div>
-							<!-- 각 item이 하나의 숙소 링크 부분 -->
-							<div class="item">
-								<div class="hotel-entry">
-									<!-- 여기에 JSTL로 DB 값들 받아 설정해야함 -->
-									<a href="hotels.jsp" class="hotel-img"
-										style="background-image: url(resources/client/images/hotel-1.jpg);">
-										<p class="price">
-											<span>기본 숙박비</span><small> /1박</small>
-										</p>
-									</a>
-									<div class="desc">
-										<p class="star">
-											<span><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i><i
-												class="icon-star-full"></i><i class="icon-star-full"></i></span>
-											545 Reviews
-										</p>
-										<h3>
-											<a href="room-detail.jsp">숙소명</a>
-										</h3>
-										<span class="place">기본주소</span>
-										<p>숙소소개</p>
-									</div>
-								</div>
-							</div>
+							</c:forEach>					
+													
 						</div>
 					</div>
 				</div>
@@ -243,69 +238,57 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="tour-wrap">
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-1.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Athens, Greece</h2> <span class="city">Athens, Greece</span> <span
-						class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-2.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Thailand</h2> <span class="city">Athens,
-							Greece</span> <span class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-3.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Philippines</h2> <span class="city">Lipa,
-							Philippines</span> <span class="price">$450</span>
-				</span>
-				</a> <a href="#" class="tour-entry animate-box">
-					<div class="tour-img"
-						style="background-image: url(resources/client/images/tour-4.jpg);"></div> <span
-					class="desc">
-						<p class="star">
-							<span><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i><i
-								class="icon-star-full"></i><i class="icon-star-full"></i></span> 545
-							Reviews
-						</p>
-						<h2>Family Tour in Greece</h2> <span class="city">Athens,
-							Greece</span> <span class="price">$450</span>
-				</span>
+					<div class="tour-img">						
+						<c:if test="${not empty event1ImageVO}">
+						<img alt="" src="${event1ImageVO.adminImagePath}${event1ImageVO.adminImageName}" style="width: auto; height: 300px">
+						</c:if>
+						<c:if test="${empty event1ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
+						</c:if>						
+					</div> 					
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event2ImageVO}">
+						<img alt="" src="${event2ImageVO.adminImagePath}${event2ImageVO.adminImageName}" style="width: auto; height: 300px">
+						</c:if>
+						<c:if test="${empty event2ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
+						</c:if>	
+					</div> 						
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event3ImageVO}">
+						<img alt="" src="${event3ImageVO.adminImagePath}${event3ImageVO.adminImageName}" style="width: auto; height: 300px">
+						</c:if>
+						<c:if test="${empty event3ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
+						</c:if>	
+					</div> 					
+				</a> 
+				<a href="#" class="tour-entry animate-box">
+					<div class="tour-img">
+						<c:if test="${not empty event4ImageVO}">
+						<img alt="" src="${event4ImageVO.adminImagePath}${event4ImageVO.adminImageName}" style="width: auto; height: 300px">
+						</c:if>
+						<c:if test="${empty event4ImageVO}">
+						<img src="resources/client/images/noImage.png" style="width: auto; height: 300px">
+						</c:if>	
+					</div>
 				</a>
-
 			</div>
-		</div>
-		<%@ include file="footer.jspf"%>
+		</div>		
 	</div>
+	<%@ include file="footer.jspf"%>
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
 
 </body>
+
 </html>
 

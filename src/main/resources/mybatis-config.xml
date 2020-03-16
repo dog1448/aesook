@@ -4,23 +4,59 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<settings>
-		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>		
+		<setting name="cacheEnabled" value="false"/>		
+		<setting name="jdbcTypeForNull" value="NULL"/>		
 	</settings>
 	<typeAliases>
-		    <typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
+	    <typeAlias type="com.spring.aesook.admin.manager.vo.ManagerVO" alias="manager"/>
         <typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerBookingVO" alias="managerBooking"/>     
         <typeAlias type="com.spring.aesook.admin.datalist.vo.ManagerHotelsVO" alias="managerHotels"/>
-		    <typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
+        <typeAlias type="com.spring.aesook.admin.board.vo.ManagerBoardVO" alias="managerBoard"/>  
+      	<typeAlias type="com.spring.aesook.admin.alarm.vo.ManagerAlarmVO" alias="managerAlarm"/>
+        <typeAlias type="com.spring.aesook.admin.image.vo.ManagerBrnImageVO" alias="managerBrnImage"/>
+        <typeAlias type="com.spring.aesook.admin.image.vo.ManagerAdminImageVO" alias="managerAdminImage"/>
+        <typeAlias type="com.spring.aesook.admin.users.vo.ManagerUsersVO" alias="managerUsers"/>
+        <typeAlias type="com.spring.aesook.admin.rule.vo.ManagerRuleVO" alias="managerRule"/>
+        <typeAlias type="com.spring.aesook.admin.terms.vo.ManagerTermsVO" alias="managerTerms"/>
+    	  <typeAlias type="com.spring.aesook.client.member.vo.MemberVO" alias="member"/>
         <typeAlias type="com.spring.aesook.client.board.vo.MemberBoardVO" alias="memberBoard"/>  
         <typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsVO" alias="memberHotels"/>         
-        <typeAlias type="com.spring.aesook.client.hotels.vo.MemberRoomSortVO" alias="memberRoomSort"/>      
+        <typeAlias type="com.spring.aesook.client.hotels.vo.MemberRoomVO" alias="memberRoom"/>
+	    	<typeAlias type="com.spring.aesook.common.pagination.Criteria" alias="pagination"/>
+		    <typeAlias type="com.spring.aesook.client.review.vo.MemberReviewVO" alias="memberReview"/>
+		    <typeAlias type="com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO" alias="memberFacility"/>
+	    	<typeAlias type="com.spring.aesook.client.booking.vo.MemberBookingVO" alias="memberBooking"/>
+		    <typeAlias type="com.spring.aesook.client.image.vo.MemberBrnImageVO" alias="memberBrnImage"/>
+		    <typeAlias type="com.spring.aesook.client.image.vo.MemberHotelsImageVO" alias="memberHotelsImage"/>
+        <typeAlias type="com.spring.aesook.client.alarm.vo.MemberAlarmVO" alias="memberAlarm"/>     
+        <typeAlias type="com.spring.aesook.admin.manager.vo.ManagerStatisticsVO" alias="managerStatistics"/>
+
 	</typeAliases>
 	
+
 	<mappers>
-	    	<mapper resource="mappings/adminmappings/manager-Mapper.xml" />
+	    <mapper resource="mappings/adminmappings/manager-Mapper.xml" />
       	<mapper resource="mappings/adminmappings/managerBooking-Mapper.xml" />
         <mapper resource="mappings/adminmappings/managerHotels-Mapper.xml"/>
+        <mapper resource="mappings/adminmappings/managerBoard-Mapper.xml"/>         
+        <mapper resource="mappings/adminmappings/managerAlarm-Mapper.xml"/>
+        <mapper resource="mappings/adminmappings/managerImage-Mapper.xml"/>    
+        <mapper resource="mappings/adminmappings/managerUsers-Mapper.xml"/>    
+        <mapper resource="mappings/adminmappings/managerTerms-Mapper.xml"/>
+        <mapper resource="mappings/adminmappings/managerRule-Mapper.xml"/>
         <mapper resource="mappings/clientmappings/member-Mapper.xml" />
-        <mapper resource="mappings/clientmappings/memberBoard-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberBoard-Mapper.xml"/>
+        <mapper resource="mappings/clientmappings/memberHotels-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberHotelsList-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberReview-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberRoomSort-Mapper.xml"/>         
+        <mapper resource="mappings/clientmappings/memberHotelsFacility-Mapper.xml"/>     
+        <mapper resource="mappings/clientmappings/memberBooking-Mapper.xml"/>    
+	    <mapper resource="mappings/clientmappings/memberImage-Mapper.xml"/>
+        <mapper resource="mappings/clientmappings/memberAlarm-Mapper.xml"/>
+        <mapper resource="mappings/adminmappings/managerStatistics-Mapper.xml"/>
+        <mapper resource="mappings/clientmappings/memberStatistics-Mapper.xml"/>
+
 	</mappers>
 </configuration>

@@ -44,5 +44,9 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSessionTemplate.update(namespace + ".updateInfoMember",vo);		
 		System.out.println(vo.getMemberPhone().toString());
 	}
- 
+	
+	@Override
+	public void updateWithdrawal(String memberId) {
+		sqlSessionTemplate.update(namespace+".updateWithdrawal",memberId);
+	}
 }

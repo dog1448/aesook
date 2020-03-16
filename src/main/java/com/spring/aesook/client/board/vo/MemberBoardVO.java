@@ -1,8 +1,12 @@
 package com.spring.aesook.client.board.vo;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 public class MemberBoardVO {
+	private Integer rnum;
+	private Integer boardCnt;
+	private Integer boardSeq;
 	private String boardWriter;
 	private String boardTitle;
 	private String boardContent;
@@ -13,7 +17,14 @@ public class MemberBoardVO {
 	private String boardIP;
 	private Date boardDate;
 	private String boardType;
-	
+
+	public Integer getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(Integer rnum) {
+		this.rnum = rnum;
+	}
 	public String getBoardWriter() {
 		return boardWriter;
 	}
@@ -74,5 +85,38 @@ public class MemberBoardVO {
 	public void setBoardType(String boardType) {
 		this.boardType = boardType;
 	}
-	
+	public Integer getBoardSeq() {
+		return boardSeq;
+	}
+
+	public Integer getBoardCnt() {
+		return boardCnt;
+	}
+
+	public void setBoardCnt(Integer boardCnt) {
+		this.boardCnt = boardCnt;
+	}
+
+	public void setBoardSeq(Integer boardSeq) {
+		this.boardSeq = boardSeq;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberBoardVO{" +
+				"rnum=" + rnum +
+				", boardCnt=" + boardCnt +
+				", boardSeq=" + boardSeq +
+				", boardWriter='" + boardWriter + '\'' +
+				", boardTitle='" + boardTitle + '\'' +
+				", boardContent='" + boardContent + '\'' +
+				", boardGroup=" + boardGroup +
+				", boardStep=" + boardStep +
+				", boardDepth=" + boardDepth +
+				", boardReadcount=" + boardReadcount +
+				", boardIP='" + boardIP + '\'' +
+				", boardDate=" + boardDate +
+				", boardType='" + boardType + '\'' +
+				'}';
+	}
 }

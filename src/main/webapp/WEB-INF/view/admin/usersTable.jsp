@@ -11,15 +11,15 @@
 <%@ include file="nav.jspf" %>
 <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class="row"><div>&nbsp;</div>
+                        <div class="col-lg-10">
                             <h1 class="page-header">Data List</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-10">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Users Table
@@ -29,8 +29,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
-                                                <tr>
-                                                    <th>NO.</th>
+                                                <tr>                                                  
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
@@ -38,17 +37,19 @@
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
+                                            
                                             <tbody>
+                                            <c:forEach var="usersList" items="${usersList}">
                                                 <tr class="odd gradeX">
-                                                    <td>Trident</td>
-                                                    <td>Internet Explorer 4.0</td>
-                                                    <td>Win 95+</td>
-                                                    <td class="center">4</td>
-                                                    <td class="center">X</td>
-                                                    <td class="center">G</td>
+                                                	<td><a href="usersInfo.admin?memberId=${usersList.memberId}">${usersList.memberId}</a></td>                                                	     
+                                                    <td>${usersList.memberName}</td>
+                                                    <td class="center">${usersList.memberEmail}</td>
+                                                    <td class="center">${usersList.memberPhone}</td>
+                                                    <td class="center">${usersList.memberStatus}</td>
                                                 </tr>
-                                                
+                                            </c:forEach>                                                    
                                             </tbody>
+                                            
                                         </table>
                                     </div>
                                 </div>
@@ -75,12 +76,11 @@
                         responsive: true,
                         scrollY: "100%",
                         columnDefs: [
-                        { targets: 0, width: "10%" }, // NO
-                        { targets: 1, width: "15%" }, // ID
-                        { targets: 2, width: "15%" }, // Name
-                        { targets: 3, width: "25%" }, // Email
-                        { targets: 4, width: "20%" }, //Phone
-                        { targets: 5, width: "5%" }, // Status
+                        { targets: 0, width: "15%" }, // ID 
+                        { targets: 1, width: "15%" }, // NAme
+                        { targets: 2, width: "15%" }, // Email
+                        { targets: 3, width: "25%" }, // Phone
+                        { targets: 4, width: "20%" }, // Status
                         ]
                 });
 

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="client.memberimage.dao.MemberImageDAO">
+
+	<insert id="insertMemberBrnImage" parameterType="memberBrnImage">
+		INSERT INTO brn_image
+		VALUES(BRN_IMAGE_SEQ.nextval, #{memberId}, #{brnImageName}, #{brnImageOrigin}, 
+		#{brnImagePath}, #{brnImageExtension}, 'U')
+	</insert>
+	
+	<select id="getBrnImage" parameterType="member" resultType="memberBrnImage">
+		SELECT * FROM brn_image WHERE member_id = #{memberId} AND brn_image_status = 'S'
+	</select>
+	
+	<insert id="insertMemberHotelsImage" parameterType="java.util.List" useGeneratedKeys="true">
+		<selectKey keyProperty="hotels_Image_No" resultType="int" order="BEFORE">
+		 select hotels_image_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO hotels_image  (
+		hotels_Image_No,
+		hotels_Code,
+		hotels_Image_Name,
+		hotels_Image_Origin,
+		hotels_Image_Path,
+		hotels_Image_Extension,
+		hotels_Image_Status
+		)
+		 SELECT hotels_image_seq.nextval, A.* FROM (
+		<foreach collection="list" item="item" separator="union all">
+		 SELECT
+		 #{item.hotelsCode} as hotels_Code, 
+		 #{item.hotelsImageName} as hotels_Image_Name, 
+		 #{item.hotelsImageOrigin} as hotels_Image_Origin,  
+		 #{item.hotelsImagePath} as hotels_Image_Path, 
+		 #{item.hotelsImageExtension} as hotels_Image_Extension, 
+		 'H' 
+		 FROM DUAL
+		</foreach> ) A
+	</insert>
+	
+	<update id="updateStatusMemberHotelsImage" parameterType="memberHotelsImage">
+		UPDATE hotels_image set hotels_image_status = #{hotelsImageStatus} where hotels_code = #{hotelsCode}
+		<if test='hotelsImageStatus.equals("M")'>
+			AND hotels_image_No = #{hotelsImageNo}
+		</if>
+	</update>
+	
+	<update id="updateRoomStatusMemberHotelsImage" parameterType="memberHotelsImage">
+		UPDATE hotels_image set room_sort_status = #{roomSortStatus} 
+		where hotels_code = #{hotelsCode} AND room_sort = #{roomSort} 
+		<if test='roomSortStatus.equals("R")'>
+		AND hotels_image_No = #{hotelsImageNo}
+		</if>
+	</update>
+	
+	<select id="getHotelsImage" parameterType="memberHotelsImage" resultType="memberHotelsImage">
+		SELECT * FROM hotels_image 
+		<choose>
+			<when test='roomSortStatus.equals("T")'>
+			WHERE room_sort = #{roomSort} AND room_sort_status='R' AND hotels_code = #{hotelsCode}
+			</when>
+			<otherwise>
+			WHERE hotels_image_No = #{hotelsImageNo}	
+			</otherwise>
+		</choose>
+	</select>
+
+	
+	<select id="getHotelsImageList" parameterType="member"  resultType="memberHotelsImage">
+		SELECT * FROM hotels_image b, 
+		(SELECT hotels_Code from hotels where member_id = #{memberId}) a 
+		WHERE b.hotels_code = a.hotels_code
+		order by b.room_sort asc
+	</select>
+	
+	<select id="getHotelsImageList2" parameterType="memberHotels"  resultType="memberHotelsImage">
+		SELECT * FROM hotels_image WHERE hotels_code = #{hotelsCode}
+	</select>
+	
+	<update id="updateRoomSort" parameterType="java.util.List" >
+		<foreach collection="list" item="item" open="DECLARE BEGIN" close="; END;" separator=";">
+			UPDATE hotels_image set 
+			room_sort = #{item.roomSort, jdbcType=VARCHAR}, 
+			room_sort_status = #{item.roomSortStatus} 
+			where
+			hotels_image_no = #{item.hotelsImageNo}
+		</foreach>
+	</update>
+	
+	<delete id="deleteHotelsImage" parameterType="java.util.List">
+		DELETE hotels_image WHERE 
+		<foreach collection="list" item="item" open="" close="" separator="OR">
+		hotels_image_no = #{item}
+		</foreach>
+	</delete>	
+</mapper>

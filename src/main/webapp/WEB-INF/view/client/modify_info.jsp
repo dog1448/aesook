@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 
 <head>
+
  <%@include file="head.jspf" %>
  <script>
 	function checkz() {
@@ -11,7 +13,7 @@
 	    var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/); //"아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다."
 	    var getName= RegExp(/^[가-힣]+$/);
 	    var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
-	    var getPhone = RegExp(/^\d{3}\d{3,4}\d{4}$/);		
+	    var getPhone = RegExp(/^\d{3}-\d{3,4}-\d{4}$/);		
 		   
 	    //이메일 공백 확인
 	    if($("#email").val() == ""){
@@ -92,27 +94,13 @@
             <div class="container">
                 <div class="row">
                     <div class="about-flex">
-                        <div class="col-one-forth aside-stretch animate-box">
-                            <div class="row">
-                                <div class="col-md-12 about">
-                                    <h2>MYPAGE</h2>
-                                    <ul>
-                                        <li><a href="booking.jsp">예약조회</a></li>
-                                        <li><a href="myReview.jsp">나의 후기</a></li>
-                                        <li><a href="modify_info.jsp">개인정보관리</a></li>
-                                        <li><a href="brn.jsp">사업자등록</a></li>
-                                        <li><a href="inserthotel.jsp">숙소 관리</a></li>
-                                        <li><a href="withdrawal.jsp">회원탈퇴</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <%@ include file="myPageSidebar.jspf" %>
                         <div class="col-three-forth animate-box">
                             <h2>개인정보관리</h2>
                             <div>&nbsp;</div>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 animate-box">					
-									<form action="modifyInfo.do" method="post" id="modifyForm">	
+									<form action="memberModifyInfo.do" method="post" id="modifyForm">	
 	                                    <div class="row form-group">
 	                                        <div class="col-md-12">
 	                                            <label for="subject">아이디 : </label>

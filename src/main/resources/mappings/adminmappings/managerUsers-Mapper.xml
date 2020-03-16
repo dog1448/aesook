@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="admin.users.dao.ManagerUsersDAO">
+	
+	<!-- UserInfo Modify 수행시 -->
+	<update id="modifyManagerUsers" parameterType="managerUsers">
+		UPDATE MEMBER 
+		SET 
+		MEMBER_NAME = #{memberName},  
+		MEMBER_EMAIL = #{memberEmail},  
+		MEMBER_PHONE = #{memberPhone},  
+		MEMBER_STATUS = #{memberStatus}  		
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+	
+	<update id="updateMemberStatus" parameterType="managerUsers">
+		UPDATE member set
+		member_status = #{memberStatus}
+		WHERE
+		member_id = #{memberId}
+	</update>
+	
+	<select id="getManagerUsers" resultType="managerUsers" parameterType="managerUsers">
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="getManagerUsersList" resultType="managerUsers" parameterType="managerUsers">
+		SELECT * FROM MEMBER
+	</select>
+	
+</mapper>

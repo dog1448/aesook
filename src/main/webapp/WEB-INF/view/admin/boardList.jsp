@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +13,18 @@
  <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
+                    <div>&nbsp;</div>
+                        <div class="col-lg-10">
                             <h1 class="page-header">Board List</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-10">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Hotels Table
+                                    Board Table
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -30,8 +32,8 @@
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>Board_No</th>
-                                                    <th>Member_Id</th>
+                                                  	<th>board_No</th>
+                                                    <th>Name</th>
                                                     <th>Board_Title</th>
                                                     <th>Readcount</th>
                                                     <th>Date</th>
@@ -41,46 +43,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            
+                                           <c:forEach var="boardList" items="${boardList}">
                                                 <tr class="odd gradeX">
-                                                    <td>1</td>
-                                                    <td>Lee Seng</td>
-                                                    <td><a>이동재</a></td>
-                                                    <td>4</td>
-                                                    <td class="text-center">1004-03-20</td>
-                                                    <td class="center">102.159.2.3</td>
-                                                    <td class="text-center">Q</td>
+                                                   
+                                                    <td>${boardList.rnum}</td>
+                                                    <td>${boardList.boardWriter}</td>
+                                                    <td><a href="boardModify.admin?boardSeq=${boardList.boardSeq}">${boardList.boardTitle }</a></td>
+                                                    <td class="text-center">${boardList.boardReadcount }</td>
+                                                    <td class="text-center"><fmt:formatDate value="${boardList.boardDate}" pattern="yy/MM/dd"/></td>
+                                                    <td class="center">${boardList.boardIp }</td>
+                                                    <td class="text-center">${boardList.boardType}</td>
                                                     <td>show me the</td>
                                                 </tr>
-                                                <tr class="odd gradeX">
-                                                    <td>1</td>
-                                                    <td>Lee Seng</td>
-                                                    <td><a>장하니</a></td>
-                                                    <td>4</td>
-                                                    <td class="text-center">1004-03-20</td>
-                                                    <td class="center">102.159.2.3</td>
-                                                    <td class="text-center">F</td>
-                                                    <td>show me the</td>
-                                                </tr>
-                                                <tr class="odd gradeX">
-                                                    <td>1</td>
-                                                    <td>Lee Seng</td>
-                                                    <td><a>전재민</a></td>
-                                                    <td>4</td>
-                                                    <td class="text-center">1004-03-20</td>
-                                                    <td class="center">102.159.2.3</td>
-                                                    <td class="text-center">F</td>
-                                                    <td>show me the</td>
-                                                </tr>
-                                                <tr class="odd gradeX">
-                                                    <td>1</td>
-                                                    <td>Lee Seng</td>
-                                                    <td><a>정찬호</a></td>
-                                                    <td>4</td>
-                                                    <td class="text-center">1004-03-20</td>
-                                                    <td class="center">102.159.2.3</td>
-                                                    <td class="text-center">F</td>
-                                                    <td>show me the</td>
-                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -105,6 +81,7 @@
             $(document).ready(function() {
                 var table = $('#dataTables-example').DataTable({
                         responsive: true,
+                        "ordering" : false,
                         scrollY: "100%",
                         columnDefs: [
                         { targets: 0, width:'5%' }, // Board_No

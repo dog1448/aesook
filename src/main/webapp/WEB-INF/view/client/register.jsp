@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,16 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('resources/client/images/img_bg_5.jpg');"></div>
+			<div class="login100-more" id="loginImage" style="background-image: ">
+			<!-- 
+				<c:if test="${not empty adminImageVO}">
+				<img alt="" src="${adminImageVO.adminImagePath}${adminImageVO.adminImageName}" style="width: 100%; height: 1120px;">
+				</c:if>
+				<c:if test="${empty adminImageVO}">
+				<img src="resources/client/images/noImage.png" style="width: 100%; height: 1120px;">
+				</c:if>
+			 -->
+			</div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				
@@ -85,7 +95,7 @@
 
 					<div class="wrap-input100 validate-input">
 						<span class="label-input100">휴대폰</span>
-						<input class="input100" type="text" name="memberPhone" id="memberPhone" placeholder="Phone number...">
+						<input class="input100" type="text" name="memberPhone" id="memberPhone" placeholder="-를 붙여서 번호를 입력해주세요.">
 						<span class="focus-input100"></span>
 					</div>
 					<input type="hidden" name="memberStatus" value="R">
@@ -132,7 +142,7 @@
 											var re = /^[a-zA-Z0-9]{6,12}$/ // 아이디와 패스워드 정규식	
 											var re2 = /^[가-힣]{2,4}$/;//이름 정규식
 											var re3 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;// 이메일이 적합한지 검사할 정규식								
-											var re4 = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})?[0-9]{3,4}?[0-9]{4}$/; // 휴대폰 정규식										
+											var re4 = /^\d{3}-\d{3,4}-\d{4}$/; // 휴대폰 정규식										
 											
 
 											var id = document.getElementById("memberId");
@@ -146,7 +156,7 @@
 
 											if (!check(re, id,"아이디는 6~12자의 영문 대소문자와 숫자로만 입력하세요.")) {
 												return false;
-											}
+											}									
 											
 											if(idcheck == "N"){
 												alert("중복확인 버튼을 눌러주세요.");
@@ -235,7 +245,7 @@
 				} else if (data == 0) {
 					if (!check(re, id, "아이디는 6~12자의 영문 대소문자와 숫자로만 입력하세요.")) {
 						
-					}else {
+					} else {
 						$("#id_check").attr("value","Y");
 						alert("사용가능한 아이디입니다.");
 					}
@@ -247,7 +257,17 @@
 	}
 
 	</script>
-	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var imagePath = "${adminImageVO.adminImagePath}"+"${adminImageVO.adminImageName}";
+		if (imagePath == "") {
+			imgeaPath = "resources/client/images/noImage.png";
+		} 
+		var str = "background-image: url('"+ imgeaPath +"')";
+		
+		$('#loginImage').attr("style", str);
+	});
+	</script>
 	
 </body>
 </html>

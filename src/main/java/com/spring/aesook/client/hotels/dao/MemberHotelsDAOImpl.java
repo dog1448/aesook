@@ -1,40 +1,52 @@
 package com.spring.aesook.client.hotels.dao;
 
-import com.spring.aesook.client.hotels.vo.MemberHotelsFacilityVO;
-import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
-import com.spring.aesook.client.hotels.vo.MemberRoomSortVO;
+import java.util.List;
+
 import com.spring.aesook.client.hotels.vo.MemberRoomVO;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.spring.aesook.client.hotels.vo.MemberHotelsVO;
+import com.spring.aesook.client.member.vo.MemberVO;
+
+@Repository("memberHotls")
 public class MemberHotelsDAOImpl implements MemberHotelsDAO{
-
-	@Override
-	public int getHotelsCode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+	private final static String namespace = "client.hotels.dao.MemberHotelsDAO";
+	
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
 	public void insertHotels(MemberHotelsVO vo) {
-		// TODO Auto-generated method stub
-		
+		sqlSessionTemplate.insert(namespace + ".insertHotels", vo);
 	}
 
 	@Override
-	public void insertRoomSort(MemberRoomSortVO vo) {
-		// TODO Auto-generated method stub
-		
+	public List<MemberHotelsVO> getMyHotels(MemberVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".selectHotels", vo);
 	}
 
 	@Override
-	public void insertRoom(MemberRoomVO vo) {
-		// TODO Auto-generated method stub
-		
+	public int getHotelsCode() {		
+		return sqlSessionTemplate.selectOne(namespace + ".selectHotelsCode");
 	}
 
 	@Override
-	public void inserHotelsFacility(MemberHotelsFacilityVO vo) {
-		// TODO Auto-generated method stub
-		
+	public void updateHotels(MemberHotelsVO memberHotelsVO) {
+		sqlSessionTemplate.update(namespace+".updateHotels", memberHotelsVO);
 	}
-	
+
+	@Override
+	public void modifyRooms(MemberRoomVO memberRoomVO) {
+		sqlSessionTemplate.update(namespace+".modifyRoom",memberRoomVO);
+
+	}
+
+	@Override
+	public String getHostId(MemberHotelsVO vo) {		
+		return sqlSessionTemplate.selectOne(namespace + ".getHostId", vo);
+	}
+
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin.image.dao.ManagerImageDAO">
+	
+	<update id="updateBrnImageStatus" parameterType="managerBrnImage">
+		update brn_image
+			set brn_image_status = #{brnImageStatus}
+			where brn_image_name = #{brnImageName}
+	</update>
+	
+	<insert id="insertAdminImage" parameterType="java.util.List" useGeneratedKeys="true">
+		<selectKey keyProperty="admin_Image_No" resultType="int" order="BEFORE">
+		 select admin_image_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO admin_image  (
+		admin_Image_No,
+		admin_Image_Name,
+		admin_Image_Origin,
+		admin_Image_Path,
+		admin_Image_Extension,
+		admin_Image_Status
+		)
+		 SELECT admin_image_seq.nextval, A.* FROM (
+		<foreach collection="list" item="item" separator="union all">
+		 SELECT
+		 #{item.adminImageName} as hotels_Image_Name, 
+		 #{item.adminImageOrigin} as hotels_Image_Origin,  
+		 #{item.adminImagePath} as hotels_Image_Path, 
+		 #{item.adminImageExtension} as hotels_Image_Extension, 
+		 'U' 
+		 FROM DUAL
+		</foreach> ) A
+	</insert>
+	
+	<update id="updateAdminImageStatus" parameterType="managerAdminImage">
+		UPDATE admin_image set admin_Image_Status = #{adminImageStatus} WHERE admin_Image_No = #{adminImageNo}
+	</update>
+	
+	<delete id="deleteAdminImage" parameterType="managerAdminImage">
+		DELETE admin_image WHERE admin_Image_No = #{adminImageNo}
+	</delete>
+	
+	<select id="getAdminImage" parameterType="managerAdminImage" resultType="managerAdminImage">
+		SELECT * FROM admin_image WHERE admin_Image_Status = #{adminImageStatus}
+	</select>
+	
+	<select id="getAdminImageList" resultType="managerAdminImage">
+		SELECT * FROM admin_image order by admin_Image_Status
+	</select>
+	
+</mapper>

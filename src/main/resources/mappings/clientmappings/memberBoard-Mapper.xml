@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.board.dao.MemberBoardDAO">
+
+	<insert id="insertBoard" parameterType="memberBoard">
+		INSERT INTO board (
+		BOARD_SEQ
+		,board_writer
+		,board_title
+		,board_content
+		,board_group
+		,board_step
+		,board_depth
+		,board_readcount
+		,board_ip
+		,board_date
+		,board_type
+		)
+		values(
+		BOARD_SEQ.nextval
+		,#{boardWriter}
+		,#{boardTitle}
+		,#{boardContent}
+		,#{boardGroup}
+		,#{boardStep}
+		,#{boardDepth}
+		,#{boardReadcount}
+		,#{boardIP}
+		,TO_CHAR(SYSDATE,'YYYY-MM-DD')
+		,#{boardType}
+		)
+	</insert>
+
+	<select id="getMemberBoard" resultType="memberBoard"
+		parameterType="pagination">
+<![CDATA[
+
+
+		select * from
+              (
+             select ROWNUM as rnum,
+                    data.*
+             from (
+                      select level,
+                             BOARD_SEQ,
+                             BOARD_TITLE,
+                             BOARD_TYPE,
+                             BOARD_GROUP,
+                             BOARD_STEP,
+                             BOARD_DEPTH,
+                             BOARD_CONTENT,
+                             BOARD_DATE,
+                             BOARD_WRITER,
+                             BOARD_IP
+                      from BOARD where BOARD_TYPE='Q'
+                      start with BOARD_STEP =0
+                      connect by prior BOARD_SEQ = BOARD_STEP
+                      order SIBLINGS BY BOARD_STEP desc
+                  )
+        data
+    )
+where rnum>=#{rowStart} and rnum<=#{rowEnd}
+        ]]>
+	</select>
+
+	<select id="getQNABoardSeq" parameterType="memberBoard"
+		resultType="int">
+		select BOARD_SEQ.nextval from DUAL
+	</select>
+
+	<update id="updateMemberBoard" parameterType="memberBoard">
+		update BOARD
+		set
+		BOARD_TITLE = #{boardTitle}
+		,BOARD_CONTENT = #{boardContent}
+		where BOARD_SEQ =#{boardSeq}
+
+	</update>
+
+	<update id="deleteMemberBoard" parameterType="memberBoard">
+		update BOARD
+		set
+		BOARD_TITLE = #{boardTitle}
+		,BOARD_CONTENT = #{boardContent}
+		where BOARD_SEQ =#{boardSeq}
+	</update>
+
+
+	<select id="getBoardCount" parameterType="memberBoard"
+		resultType="int">
+		SELECT count(*) from BOARD where BOARD_TYPE='Q'
+	</select>
+
+	<select id="getFAQBoardCount" parameterType="memberBoard"
+		resultType="int">
+		SELECT count(*) from BOARD where BOARD_TYPE='F'
+	</select>
+
+	<select id="getNoticeBoardCount" parameterType="memberBoard"
+		resultType="int">
+		SELECT count(*) from BOARD where BOARD_TYPE='N'
+	</select>
+
+	<select id="readMemberBoard" resultMap="MemberResultMap">
+		select
+		B.rnum,B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT,
+		B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
+		from
+		(select rownum as rnum, A.BOARD_SEQ,A.BOARD_WRITER, A.BOARD_TITLE,
+		A.BOARD_CONTENT,
+		A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
+		from (
+		select BOARD_SEQ,BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT,
+		BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
+		from board
+		order by ROWNUM,BOARD_GROUP desc ,BOARD_STEP asc ,BOARD_DEPTH desc ) A
+		where BOARD_TYPE='Q') B
+		where BOARD_SEQ =#{boardSeq}
+	</select>
+
+	<select id="readMemberBoardFAQ" resultMap="MemberResultMap">
+		select
+		B.rnum,B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT,
+		B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
+		from
+		(select rownum as rnum, A.BOARD_SEQ,A.BOARD_WRITER, A.BOARD_TITLE,
+		A.BOARD_CONTENT,
+		A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
+		from (
+		select BOARD_SEQ,BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT,
+		BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
+		from board
+		order by ROWNUM,BOARD_GROUP desc ,BOARD_STEP asc ,BOARD_DEPTH desc ) A
+		where BOARD_TYPE='F') B
+		where rnum =#{rnum}
+	</select>
+
+	<select id="readMemberBoardNotice" resultMap="MemberResultMap">
+		select
+		B.rnum,B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT,
+		B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
+		from
+		(select rownum as rnum, A.BOARD_SEQ,A.BOARD_WRITER, A.BOARD_TITLE,
+		A.BOARD_CONTENT,
+		A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
+		from (
+		select BOARD_SEQ,BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT,
+		BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
+		from board
+		order by BOARD_SEQ,BOARD_GROUP desc ,BOARD_STEP asc ,BOARD_DEPTH desc
+		) A
+		where BOARD_TYPE='N') B
+		where rnum =#{rnum}
+	</select>
+
+
+	<select id="getMemberBoardFAQ" resultType="memberBoard"
+		parameterType="pagination">
+		<![CDATA[
+
+
+                                select B.rnum,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
+                from
+                    (select rownum as rnum, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
+                     from (
+                              select  BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
+                              from board
+                              order by ROWNUM,BOARD_GROUP desc ,BOARD_STEP asc) A
+                     where rownum <=#{rowEnd} and BOARD_TYPE='F') B
+                where B.rnum >= #{rowStart} order by rownum
+
+
+        ]]>
+	</select>
+	<select id="getMemberNoticeBoard" resultType="memberBoard"
+		parameterType="pagination">
+		<![CDATA[
+
+
+
+
+
+                                select B.rnum, B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE
+                                from
+                                    (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE
+                                     from (
+                                              select BOARD_SEQ , BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE
+                                              from board
+                                              order by BOARD_SEQ desc) A
+                                     where rownum <=#{rowEnd} and BOARD_TYPE='N') B
+                                where B.rnum >= #{rowStart} order by rownum
+
+
+
+
+
+
+
+        ]]>
+	</select>
+
+	<resultMap id="MemberResultMap" type="memberBoard">
+		<id property="boardSeq" column="board_seq" />
+		<result property="boardTitle" column="board_title" />
+		<result property="boardContent" column="board_content" />
+		<result property="boardDate" column="board_date" />
+		<result property="boardReadcount" column="board_readcount" />
+	</resultMap>
+
+
+</mapper>

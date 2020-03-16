@@ -1,5 +1,15 @@
 package com.spring.aesook.admin.board.dao;
 
-public interface ManagerBoardDAO {
+import java.util.List;
 
+import com.spring.aesook.admin.board.vo.ManagerBoardVO;
+
+public interface ManagerBoardDAO {
+	List<ManagerBoardVO> getListBoard();
+	ManagerBoardVO getBoard(int boardSeq);
+	void insertBoard(ManagerBoardVO vo);
+	void updateBoard(ManagerBoardVO vo);
+	void deleteBoard(ManagerBoardVO vo);
+	void insertBoardReply(ManagerBoardVO vo);
+	void increaseCnt(ManagerBoardVO vo);
 }

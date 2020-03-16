@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.hotels.dao.MemberHotelsFacilityDAO">
+
+<select id="selectFacility" resultType="memberFacility" parameterType="memberHotels">
+	select * from facility
+	where HOTELS_CODE = #{hotelsCode} 
+</select>
+
+<insert id="insertFacility" parameterType="memberFacility">
+	insert into facility values(
+		#{hotelsCode}, #{facilityParking}, 
+		#{facilityPool}, #{facilityBreakfast},
+		#{facilityFitness}, #{facilityWifi},
+		#{facilityParty}, #{facilityPc},
+		#{facilityAmenity})
+</insert>
+
+<update id="updateFacility">
+	update FACILITY
+	set FACILITY_PARKING = #{facilityParking}, 
+	FACILITY_POOL = #{facilityPool}, 
+	FACILITY_BREAKFAST = #{facilityBreakfast}, 
+	FACILITY_FITNESS = #{facilityFitness}, 
+	FACILITY_WIFI = #{facilityWifi}, 
+	FACILITY_PARTY = #{facilityParty}, 
+	FACILITY_PC = #{facilityPc}, 
+	FACILITY_AMENITY = #{facilityAmenity} 
+	WHERE HOTELS_CODE = #{hotelsCode}
+</update>
+</mapper>

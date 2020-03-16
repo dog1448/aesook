@@ -4,16 +4,39 @@
 
 <mapper namespace="client.hotels.dao.MemberHotelsDAO">
 
-<select id="getHotelsCode">
-	SELECT HOTELS_SEQ.NEXTVAL FROM DUAL 
-</select>
-
-<insert id="insertHotels">
+<insert id="insertHotels" parameterType="memberHotels">
 	INSERT INTO hotels 
-	VALUES(#{hotelsCode} #{hotelsName}, #{hotelsType}, #{memberNo}, 
+	VALUES(#{hotelsCode}, #{hotelsName}, #{hotelsType}, #{memberId}, 
 	#{hotelsPhone}, #{hotelsZipcode}, #{hotelsAddress1}, #{hotelsAddress2},
-	#{hotelsPath}, #{hotelsInfo}, #{hotelsIntroduce},)
+	#{hotelsPath}, #{hotelsInfo}, #{hotelsIntroduce})
 </insert>
 
+<select id="selectHotels" resultType="memberHotels">
+	select h.*,  i.hotels_image_name, i.hotels_image_path, i.hotels_image_status 
+	from hotels h, (select * from hotels_image where hotels_image_status='M') i
+	where member_id = #{memberId}
+	and h.hotels_code = i.hotels_code(+)
+</select>
+
+<select id="selectHotelsCode" resultType="int">
+	select hotels_seq.nextval from dual
+</select>
+
+<update id="updateHotels">
+	update HOTELS
+	set HOTELS_NAME = #{hotelsName},
+	HOTELS_PHONE = #{hotelsPhone},
+	HOTELS_ZIPCODE = #{hotelsZipcode},
+	HOTELS_ADDRESS1 = #{hotelsAddress1},
+	HOTELS_ADDRESS2 = #{hotelsAddress2},
+	HOTELS_PATH = #{hotelsPath},
+	HOTELS_INFO = #{hotelsInfo},
+	HOTELS_INTRODUCE = #{hotelsIntroduce}
+	WHERE MEMBER_ID = #{memberId}
+</update>
+
+<select id="getHostId" resultType="String" parameterType="memberHotels">
+	SELECT member_id from hotels WHERE hotels_code = #{hotelsCode}
+</select>
 
 </mapper>

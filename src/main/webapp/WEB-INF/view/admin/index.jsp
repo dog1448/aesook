@@ -1,671 +1,721 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:if test="${message ne null}">
+	<script type="text/javascript">
+		var message = "${message}";
+		alert(message);
+	</script>
+</c:if>
 <html>
 <head>
-<%@ include file="head.jspf" %>
+    <%@ include file="head.jspf" %>
 </head>
 <body>
 <div id="wrapper">
-<%@ include file="nav.jspf" %>
- <div id="page-wrapper">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">HOME</h1>
-                        </div>
-                        <!-- /.col-lg-12 -->
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-users fa-4x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">26</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Total Users</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <!-- <i class="fa fa-tasks fa-4x"></i> -->
-                                            <img src="resources/admin/images/hotel.png">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Hotel</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <img src="resources/admin/images/motel.png">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">124</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Motel</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <img src="resources/admin/images/guesthouse.png">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">13</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Guest House</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <img src="resources/admin/images/pan.png">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">13</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Pension</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <img src="resources/admin/images/rizo.png">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">13</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Resort / Condo</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--일단 여기까지 했어-->
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-                                    <div class="pull-right">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default btn-xs dropdown-toggle"
-                                                    data-toggle="dropdown">
-                                                Actions
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                                <li><a href="#">Action</a>
-                                                </li>
-                                                <li><a href="#">Another action</a>
-                                                </li>
-                                                <li><a href="#">Something else here</a>
-                                                </li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Separated link</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <div id="morris-area-chart"></div>
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-                            <!-- /.panel -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
-                                    <div class="pull-right">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default btn-xs dropdown-toggle"
-                                                    data-toggle="dropdown">
-                                                Actions
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                                <li><a href="#">Action</a>
-                                                </li>
-                                                <li><a href="#">Another action</a>
-                                                </li>
-                                                <li><a href="#">Something else here</a>
-                                                </li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Separated link</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-hover table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Date</th>
-                                                        <th>Time</th>
-                                                        <th>Amount</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>3326</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>3:29 PM</td>
-                                                        <td>$321.33</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3325</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>3:20 PM</td>
-                                                        <td>$234.34</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3324</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>3:03 PM</td>
-                                                        <td>$724.17</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3323</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>3:00 PM</td>
-                                                        <td>$23.71</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3322</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:49 PM</td>
-                                                        <td>$8345.23</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3321</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:23 PM</td>
-                                                        <td>$245.12</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3320</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:15 PM</td>
-                                                        <td>$5663.54</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3319</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:13 PM</td>
-                                                        <td>$943.45</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- /.table-responsive -->
-                                        </div>
-                                        <!-- /.col-lg-4 (nested) -->
-                                        <div class="col-lg-8">
-                                            <div id="morris-bar-chart"></div>
-                                        </div>
-                                        <!-- /.col-lg-8 (nested) -->
-                                    </div>
-                                    <!-- /.row -->
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-                            <!-- /.panel -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge"><i class="fa fa-check"></i>
-                                            </div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-
-                                                    <p>
-                                                        <small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via
-                                                            Twitter
-                                                        </small>
-                                                    </p>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero
-                                                        laboriosam
-                                                        dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est
-                                                        cum
-                                                        veniam excepturi. Maiores praesentium, porro voluptas suscipit facere
-                                                        rem
-                                                        dicta, debitis.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="timeline-inverted">
-                                            <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
-                                            </div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem
-                                                        quibusdam, tenetur commodi provident cumque magni voluptatem libero,
-                                                        quis
-                                                        rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia
-                                                        repellendus.</p>
-
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium
-                                                        maiores
-                                                        odit qui est tempora eos, nostrum provident explicabo dignissimos
-                                                        debitis
-                                                        vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge danger"><i class="fa fa-bomb"></i>
-                                            </div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus
-                                                        numquam
-                                                        facilis enim eaque, tenetur nam id qui vel velit similique nihil iure
-                                                        molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="timeline-inverted">
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est
-                                                        quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias
-                                                        sapiente
-                                                        rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut
-                                                        debitis!</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-save"></i>
-                                            </div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus
-                                                        modi
-                                                        quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam
-                                                        debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque.</p>
-                                                    <hr>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                                                data-toggle="dropdown">
-                                                            <i class="fa fa-gear"></i> <span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li><a href="#">Action</a>
-                                                            </li>
-                                                            <li><a href="#">Another action</a>
-                                                            </li>
-                                                            <li><a href="#">Something else here</a>
-                                                            </li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Separated link</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio
-                                                        quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam.
-                                                        Officia
-                                                        quam qui adipisci quas consequuntur nostrum sequi. Consequuntur,
-                                                        commodi.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="timeline-inverted">
-                                            <div class="timeline-badge success"><i class="fa fa-graduation-cap"></i>
-                                            </div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt
-                                                        obcaecati,
-                                                        quaerat tempore officia voluptas debitis consectetur culpa amet,
-                                                        accusamus
-                                                        dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque
-                                                        eaque.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-                            <!-- /.panel -->
-                        </div>
-                        <!-- /.col-lg-8 -->
-                        <div class="col-lg-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-comment fa-fw"></i> New Comment
-                                                <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                                <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                                <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-tasks fa-fw"></i> New Task
-                                                <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                                <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-bolt fa-fw"></i> Server Crashed!
-                                                <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                                                <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                                                <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                                </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-money fa-fw"></i> Payment Received
-                                                <span class="pull-right text-muted small"><em>Yesterday</em>
-                                                </span>
-                                        </a>
-                                    </div>
-                                    <!-- /.list-group -->
-                                    <a href="#" class="btn btn-default btn-block">View All Alerts</a>
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-                            <!-- /.panel -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
-                                </div>
-                                <div class="panel-body">
-                                    <div id="morris-donut-chart"></div>
-                                    <a href="#" class="btn btn-default btn-block">View Details</a>
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-                            <!-- /.panel -->
-                            <div class="chat-panel panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-comments fa-fw"></i>
-                                    Chat
-                                    <div class="btn-group pull-right">
-                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <i class="fa fa-chevron-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu slidedown">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-refresh fa-fw"></i> Refresh
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-check-circle fa-fw"></i> Available
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-times fa-fw"></i> Busy
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-clock-o fa-fw"></i> Away
-                                                </a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <ul class="chat">
-                                        <li class="left clearfix">
-                                                <span class="chat-img pull-left">
-                                                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar"
-                                                         class="img-circle"/>
-                                                </span>
-
-                                            <div class="chat-body clearfix">
-                                                <div class="header">
-                                                    <strong class="primary-font">Jack Sparrow</strong>
-                                                    <small class="pull-right text-muted">
-                                                        <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                                                    </small>
-                                                </div>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
-                                                    ornare dolor, quis ullamcorper ligula sodales.
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="right clearfix">
-                                                <span class="chat-img pull-right">
-                                                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar"
-                                                         class="img-circle"/>
-                                                </span>
-
-                                            <div class="chat-body clearfix">
-                                                <div class="header">
-                                                    <small class=" text-muted">
-                                                        <i class="fa fa-clock-o fa-fw"></i> 13 mins ago
-                                                    </small>
-                                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                                </div>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
-                                                    ornare dolor, quis ullamcorper ligula sodales.
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="left clearfix">
-                                                <span class="chat-img pull-left">
-                                                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar"
-                                                         class="img-circle"/>
-                                                </span>
-
-                                            <div class="chat-body clearfix">
-                                                <div class="header">
-                                                    <strong class="primary-font">Jack Sparrow</strong>
-                                                    <small class="pull-right text-muted">
-                                                        <i class="fa fa-clock-o fa-fw"></i> 14 mins ago
-                                                    </small>
-                                                </div>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
-                                                    ornare dolor, quis ullamcorper ligula sodales.
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="right clearfix">
-                                                <span class="chat-img pull-right">
-                                                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar"
-                                                         class="img-circle"/>
-                                                </span>
-
-                                            <div class="chat-body clearfix">
-                                                <div class="header">
-                                                    <small class=" text-muted">
-                                                        <i class="fa fa-clock-o fa-fw"></i> 15 mins ago
-                                                    </small>
-                                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                                </div>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
-                                                    ornare dolor, quis ullamcorper ligula sodales.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- /.panel-body -->
-                                <div class="panel-footer">
-                                    <div class="input-group">
-                                        <input id="btn-input" type="text" class="form-control input-sm"
-                                               placeholder="Type your message here..."/>
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-warning btn-sm" id="btn-chat">
-                                                    Send
-                                                </button>
-                                            </span>
-                                    </div>
-                                </div>
-                                <!-- /.panel-footer -->
-                            </div>
-                            <!-- /.panel .chat-panel -->
-                        </div>
-                        <!-- /.col-lg-4 -->
-                    </div>
-                    <!-- /.row -->
+    <%@ include file="nav.jspf" %>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+            	<div>&nbsp;</div>
+                <div class="col-lg-12">
+                    <h1 class="page-header">HOME</h1>
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-users fa-4x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">${userCnt}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Total Users</span>
+                                <span class="pull-right"></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <!-- <i class="fa fa-tasks fa-4x"></i> -->
+                                    <img src="resources/admin/images/hotel.png">
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">${hotelCnt}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Hotel</span>
+                                <span class="pull-right"></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="resources/admin/images/motel.png">
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">${motelCnt}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Motel</span>
+                                <span class="pull-right"></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="resources/admin/images/guesthouse.png">
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">${guestCnt}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Guest House</span>
+                                <span class="pull-right"></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="resources/admin/images/pan.png">
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">${pensionCnt}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Pension</span>
+                                <span class="pull-right"></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="resources/admin/images/rizo.png">
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">${resortCnt}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Resort / Condo</span>
+                                <span class="pull-right"></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--일단 여기까지 했어-->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 월별 예약 건수
+                            <div class="pull-right">
+                            	<button class="btn btn-success" id="search1" style="height: 20px; margin-left: 10%; font-size:10px;">조회</button>
+                            </div>
+                           	<div class="pull-right">                            	
+                              	<input type="text" id="year1" class="form-control yearpicker1" style="height: 20px; width: 90%; margin-left: 10%; text-align: center;">                              
+                            </div>
+                            <div class="pull-right">
+                            	<label for="date">연도 검색</label>
+                            </div>  
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div>
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 월별 매출
+                            <div class="pull-right">
+                            	<button class="btn btn-success" id="search2" style="height: 20px; margin-left: 10%; font-size:10px;">조회</button>
+                            </div>
+                            <div class="pull-right">                            	
+                              	<input type="text" id="year2" class="form-control yearpicker2" style="height: 20px; width: 90%; margin-left: 10%; text-align: center;">                              
+                            </div>
+                            <div class="pull-right">
+                            	<label for="date">연도 검색</label>
+                            </div>                            
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+
+
+                                <!-- /.col-lg-4 (nested) -->
+
+                                    <div>
+                                        <canvas id="dollarChart"></canvas>
+                                    </div>
+
+                                <!-- /.col-lg-8 (nested) -->
+
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Server Monitering
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <canvas id="myChart" width="400" height="400"></canvas>
+                            </div>
+                            <!-- /.list-group -->
+                            <button class="btn btn-default btn-block" id="refresh">새로고침</button>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 숙소별 예약률
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <canvas id="pieChart"></canvas>
+                            </div>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+
+
+                        <!-- /.panel-footer -->
+                    </div>
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
 
 
 </div>
 <%@ include file="javascript.jspf" %>
-<!-- morris-->
-<script src="resources/admin/js/morris.min.js" type="text/javascript"></script>
-        
-<!-- morris-data-->
-<script src="resources/admin/js/morris-data.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+			url : "getMonthlyTotalBooking.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year1").val()				
+			},
+			success : function(data) {
+				// ArrayList loop
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {									
+							chartLabels1.push(map[key]);
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						if (key == 'booking_count') {
+							chartData1.push(map[key]);
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
+	
+					}
+	
+				}
+	
+			}
+		})
+		max1 = Math.max.apply(null, chartData1);
+		max1 = max1 + 20;
+		console.log(max1);
+		config1 = {
+		        // The type of chart we want to create
+		        type: 'line',
+	
+		        // The data for our dataset
+		        data: {
+		            labels: chartLabels1,
+		            datasets: [{
+		                label: '예약수 (단위 : 개)',
+		                backgroundColor: 'rgb(255, 204, 204)',
+		                borderColor: 'rgb(255, 99, 132)',
+		                data: chartData1
+		            }]
+		        },
+		        options: {
+		        	legend : {
+						position : 'top',
+						display : false
+					},
+					title : {
+						display : true,
+						text : '예약수 (단위 : 개)'
+					},					
+					scales: {
+						yAxes: [{
+							ticks: {
+								suggestedMax : max1,						
+								fontSize : 15,
+								beginAtZero: true
+							}
+						}]
+					}
+		        }
+		    }
+		createChart1();		
+	});
+	$('.yearpicker1').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker1').datepicker('setDate', 'today');
+	var chartLabels1 = [];
+	var chartData1 = [];
+	var max1;
+	var config1;
+	function createChart1() {
+		 var ctx1 = document.getElementById('lineChart').getContext('2d');
+		 window.myChart1 = new Chart(ctx1, config1);
+	}
+	
+	
+	$(document).on("click","#search1",function() {
+		chartLabels1.length = 0;
+		chartData1.length = 0;
+		if ($("#year1").val() == "") {
+			alert("연도를 선택해주세요.")
+			return;
+		}
+
+		$.ajax({
+			url : "getMonthlyTotalBooking.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year1").val()				
+			},
+			success : function(data) {
+				// ArrayList loop	
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {
+							chartLabels1.push(map[key])
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						
+						if (key == 'booking_count') {
+							chartData1.push(map[key])
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
+
+					}
+
+				}
+
+			}
+		})
+		var dataset = config1.data.datasets;
+		for(var i=0; i<dataset.length; i++){
+			console.log(dataset);
+			//데이터 갯수 만큼 반복
+			var data = dataset[i].data;
+			for(var j=0 ; j < data.length ; j++){
+				data[j] = chartData1[j];
+			}
+		}
+		window.myChart1.update();
+		
+	});
+   
+</script>
+
+<script>
+	var chart2 = new Array();
+    var config2 = {    		
+            type: 'bar',
+            data: {
+                labels: ['CPU', 'Memory'],
+                datasets: [
+                {  
+                	label: ['(단위 : %)'],                	
+                    data: chart2,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+            	legend : {
+					position : 'top',
+					display : false
+				},
+				title : {
+					display : true,
+					text : '서버 사용량 (단위 : %)'
+				},
+                scales: {                	
+                    yAxes: [{
+                        ticks: {
+                        	suggestedMax : 100,							
+							fontSize : 15,
+							beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        };
+    
+    function createChart2() {
+    	 var ctx = document.getElementById('myChart').getContext('2d');
+    	 window.myChart2 = new Chart(ctx, config2);    	    
+	}
+    $(document).ready(function() {
+		$.ajax({
+			url : "monitering.admin",
+			type : "post",
+			dataType : "json",
+			async : false,			
+			success : function(data) {
+				for ( var key in data) {
+					if (key == 'cpu') {									
+						chart2[0] = data[key];
+						console.log("컬럼 : " + key + " value : "
+								+ data[key]);
+					}
+				
+					if (key == 'Memory') {
+						chart2[1] = data[key];
+						console.log("col : " + key + " value : "
+								+ data[key]);
+					}
+
+				}
+			}
+		})
+
+		createChart2();		
+	});
+   
+    $(document).on("click","#refresh",function() {
+    	$.ajax({
+			url : "monitering.admin",
+			type : "post",
+			dataType : "json",
+			async : false,			
+			success : function(data) {
+				for ( var key in data) {
+					if (key == 'cpu') {									
+						chart2[0] = data[key];
+						console.log("컬럼 : " + key + " value : "
+								+ data[key]);
+					}
+				
+					if (key == 'Memory') {
+						chart2[1] = data[key];
+						console.log("col : " + key + " value : "
+								+ data[key]);
+					}
+
+				}
+			}
+		})
+		
+		window.myChart2.update();
+		
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {		
+		$.ajax({
+			url : "getMonthlyTotalPrice.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year2").val()				
+			},
+			success : function(data) {
+				// ArrayList loop
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {									
+							chartLabels.push(map[key]);
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						if (key == 'booking_total_price') {
+							chartData.push(map[key]);
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
+	
+					}
+	
+				}
+	
+			}
+		})
+		
+		max = Math.max.apply(null, chartData);
+		max = max + 500000;
+		console.log(max);
+		config = {
+		        // The type of chart we want to create
+		        type: 'line',
+	
+		        // The data for our dataset
+		        data: {
+		            labels: chartLabels,
+		            datasets: [{
+		                label: '수입 (단위 : 원)',
+	
+		                borderColor: '#7CFF55',
+		                data: chartData
+		            }]
+		        },
+		        options: {
+		        	legend : {
+						position : 'top',
+						display : false
+					},
+					title : {
+						display : true,
+						text : '월간 수입 (단위 : 원)'
+					},
+					tooltips: {
+				          callbacks: {
+				                label: function(tooltipItem, data) {
+				                    var value = data.datasets[0].data[tooltipItem.index];
+				                    if(parseInt(value) >= 1000){
+				                               return '￦' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				                            } else {
+				                               return '￦' + value;
+				                            }
+				                }
+				          } // end callbacks:
+				    },
+		        	scales: {
+						yAxes: [{
+							ticks: {							
+								suggestedMax : max,					
+								fontSize : 15,
+								beginAtZero: true,
+								userCallback : function(value, index, values) {
+									value = value.toString();
+									value = value.split(/(?=(?:...)*$)/);
+									value = value.join(',');
+									return value;
+								}
+							}
+						}]
+					}
+		        }
+		    };
+		createChart();		
+	});
+
+	$('.yearpicker2').datepicker({
+		minViewMode : 'years',
+		format : 'yyyy',
+		'autoclose': true
+	});
+	$('.yearpicker2').datepicker('setDate', 'today');
+	var max;
+	var chartLabels = [];
+	var chartData = [];	
+	
+	var config;
+	
+	function createChart() {
+		 var ctx = document.getElementById('dollarChart').getContext('2d');
+		 window.myChart = new Chart(ctx, config);
+	}
+	
+	$(document).on("click","#search2",function() {
+		chartLabels.length = 0;
+		chartData.length = 0;
+		if ($("#year2").val() == "") {
+			alert("연도를 선택해주세요.")
+			return;
+		}
+		$.ajax({
+			url : "getMonthlyTotalPrice.admin",
+			type : "post",
+			dataType : "json",
+			async : false,
+			data : {
+				"year" : $("#year2").val()				
+			},
+			success : function(data) {
+				// ArrayList loop	
+				for (var i = 0; i < data.length; i++) {
+					// HashMap
+					var map = data[i];
+					// HashMap loop
+					for ( var key in map) {
+						if (key == 'booking_date') {
+							chartLabels.push(map[key])
+							console.log("컬럼 : " + key + " value : "
+									+ map[key]);
+						}
+						
+						if (key == 'booking_total_price') {
+							chartData.push(map[key])
+							console.log("col : " + key + " value : "
+									+ map[key]);
+						}
+
+					}
+
+				}
+
+			}
+		})
+		var dataset = config.data.datasets;
+		for(var i=0; i<dataset.length; i++){
+			console.log(dataset);
+			//데이터 갯수 만큼 반복
+			var data = dataset[i].data;
+			for(var j=0 ; j < data.length ; j++){
+				data[j] = chartData[j];
+			}
+		}
+		window.myChart.update();
+		
+	});
+   
+</script>
+
+<script type="text/javascript">
+	var allReservationCnt = ${allReservationCnt};
+	var motelReservationRate =Math.round(${motelReservationCnt}/allReservationCnt*100);
+	var hotelReservationRate =Math.round(${hotelReservationCnt}/allReservationCnt*100);
+	var guesthouseReservationRate =Math.round(${guesthouseReservationCnt}/allReservationCnt*100);
+	var pensionReservationRate =Math.round(${pensionReservationCnt}/allReservationCnt*100);
+	var resortReservationRate =Math.round(${resortReservationCnt}/allReservationCnt*100);
+	
+    var ctx = document.getElementById('pieChart').getContext('2d');
+
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'pie',
+
+        // The data for our dataset
+        data: {
+
+            datasets: [{
+                borderColor: '#ffff',
+                weight:100,
+                data: [motelReservationRate,hotelReservationRate,guesthouseReservationRate,pensionReservationRate,resortReservationRate],
+
+                backgroundColor:[
+                    'rgba(255, 99, 132, 1)'
+                    ,'rgba(255, 206, 86, 1)'
+                    ,'rgba(54, 162, 235, 1)'
+                    ,'green'
+                    ,'purple'
+                    ]
+            }],
+            labels: ['모텔%','호텔%','게스트하우스%','펜션%','리조트%']
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+</script>
+
 </body>
 </html>

@@ -5,32 +5,50 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 		
 	<context:component-scan base-package="com.spring.aesook"></context:component-scan>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	
 	<!-- CSS / JS / Images -->
 	<mvc:resources mapping="/resources/**" location="resources/" />
 	
-	<!-- Client Interceptors
+	<!-- Client Interceptors -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/login.do"/>
-			<bean class="com.spring.aesook.client.util.interceptor.ClientLoginInterceptor"></bean>
-		</mvc:interceptor>
-		<mvc:interceptor>
 			<mvc:mapping path="/*.do"/>
-			<mvc:exclude-mapping path="/find*.admin"/>
-			<mvc:exclude-mapping path="/login.admin"/>
-			<mvc:exclude-mapping path="/logout.admin"/>
+			<mvc:exclude-mapping path="/register*.do"/>
+			<mvc:exclude-mapping path="/log*.do"/>
+			<mvc:exclude-mapping path="/home.do"/>
+			<mvc:exclude-mapping path="/find*.do"/>
+			<mvc:exclude-mapping path="/getPossible*.do"/>
+			<mvc:exclude-mapping path="/hotelMove.do"/>
+			<mvc:exclude-mapping path="/hotelsList.do"/>
+			<mvc:exclude-mapping path="/hotelsSortedList.do"/>
+			<mvc:exclude-mapping path="/search*.do"/>
+			<mvc:exclude-mapping path="/accommodationsRoom.do"/>
+			<mvc:exclude-mapping path="/roomDescription.do"/>
+			<mvc:exclude-mapping path="/board*.do"/>
 			<bean class="com.spring.aesook.client.util.interceptor.AuthClientInterceptor"></bean>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/insert*.do"/>
+			<mvc:mapping path="/host*.do"/>
+			<mvc:mapping path="/modify*.do"/>
+			<mvc:mapping path="/hotelsPic*.do"/>
+			<mvc:mapping path="/statistics*.do"/>
+			<mvc:mapping path="/getMonthlyTotalPrice.do"/>
+			<mvc:mapping path="/getRoomRatio.do"/>
+			<mvc:mapping path="/bookingHotelsList.do"/>
+			<bean class="com.spring.aesook.client.util.interceptor.AuthHotelMasterInterceptor"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
-	-->
 	
 	<!-- ViewResolvor  -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

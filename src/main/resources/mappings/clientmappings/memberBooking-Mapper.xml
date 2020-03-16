@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.booking.dao.MemberBookingDAO">
+
+	<select id="getBookingList" parameterType="memberBooking"
+		resultType="memberBooking">
+		select h.hotels_name, b.booking_code, b.booking_date,
+		b.booking_check_in, b.booking_check_out, b.booking_total_price, 
+		i.hotels_image_name, i.hotels_image_path
+		from
+		hotels h, booking b, (select * from hotels_image where hotels_image_status='M') i
+		where b.member_id = #{memberId}
+		and h.hotels_code = i.hotels_code(+) 
+		and b.hotels_code = h.hotels_code
+		and (b.booking_status = 'B'
+		or b.booking_status = 'R')
+		order by booking_date desc
+	</select>
+
+	<select id="getCanceledBookingList"
+		parameterType="memberBooking" resultType="memberBooking">
+		select h.hotels_name,
+		b.booking_code, b.room_sort,
+		b.booking_date, b.booking_cancel_date,
+		b.booking_check_in, b.booking_check_out, b.booking_total_price, 
+		i.hotels_image_name, i.hotels_image_path
+		from hotels h, booking b, (select * from hotels_image where hotels_image_status='M') i
+		where b.member_id = #{memberId} 
+		and h.hotels_code = i.hotels_code(+)
+		and b.hotels_code = h.hotels_code
+		and b.booking_status = 'C'
+		order by booking_date desc
+	</select>
+
+	<select id="getBookingInfo" resultType="memberBooking">
+		select
+		b.*, h.hotels_name
+		from booking b, hotels h
+		where b.booking_code = #{bookingCode}
+		and b.hotels_code = h.hotels_code
+	</select>
+
+	<update id="updateBookingCancel" parameterType="memberBooking">
+		update booking
+		set booking_status ='C', booking_cancel_date = sysdate
+		where
+		booking_code = #{bookingCode}
+	</update>
+
+	<select id="getPossibleBooking" resultType="String">
+		<![CDATA[
+		SELECT distinct r.room_sort FROM room r 
+		WHERE NOT EXISTS (SELECT * FROM (select room_name from booking
+		where to_date(#{bookingCheckIn}) < booking_check_out
+		and to_date(#{bookingCheckOut}) > booking_check_in
+		and hotels_code = #{hotelsCode}
+		and booking_status != 'C') t 
+		WHERE r.room_name = t.room_name)
+		and hotels_code = #{hotelsCode}
+		]]>
+	</select>
+
+	<select id="getRoomPossible" resultType="String">
+		<![CDATA[
+		SELECT r.room_name FROM room r 
+		WHERE NOT EXISTS (SELECT * FROM (select room_name from booking
+		where to_date(#{bookingCheckIn}) < booking_check_out
+		and to_date(#{bookingCheckOut}) > booking_check_in
+		and hotels_code = #{hotelsCode}
+		and booking_status != 'C') t 
+		WHERE r.room_name = t.room_name)
+		and hotels_code = #{hotelsCode}
+		and room_sort = #{roomSort}
+		]]>
+	</select>
+
+	<select id="getWeekDay" resultType="int">
+		<![CDATA[
+		SELECT count(A.DT)
+		FROM ( SELECT TO_CHAR (SDT + LEVEL - 1, 'YYYY-MM-DD') DT,
+		TO_CHAR (SDT + LEVEL - 1, 'D') D
+		FROM (SELECT to_date(#{bookingCheckIn}) SDT,
+		to_date(#{bookingCheckOut}) EDT
+		FROM DUAL)
+		CONNECT BY LEVEL <= EDT - SDT) A
+		WHERE A.D NOT IN ('6', '7')
+		]]>
+	</select>
+	
+	<select id="getAllDay" resultType="int">
+		SELECT to_date(#{bookingCheckOut}) - to_date(#{bookingCheckIn}) FROM DUAL
+	</select>
+	
+
+	<select id="getBookingSeq" resultType="int">
+		SELECT booking_seq.nextval FROM DUAL
+	</select>
+
+	<insert id="insertBooking">
+		insert into booking (BOOKING_CODE, HOTELS_CODE, ROOM_NAME, ROOM_SORT, 
+		MEMBER_ID, BOOKING_CHECK_IN, BOOKING_CHECK_OUT, BOOKING_NAME, BOOKING_PHONE, 
+		BOOKING_CNT, BOOKING_DATE, BOOKING_TOTAL_PRICE, BOOKING_STATUS, TID)
+		values(#{bookingCode}, 
+		#{hotelsCode}, #{roomName}, #{roomSort}, #{memberId},  
+		#{bookingCheckIn}, #{bookingCheckOut}, #{bookingName}, 
+		#{bookingPhone}, #{bookingCnt}, sysdate, #{bookingTotalPrice}, 'B', #{tid})
+	</insert>
+	
+	<select id="getMemberBookingList" parameterType="memberBooking" resultType="memberBooking">
+		SELECT * FROM booking WHERE hotels_code = #{hotelsCode}
+	</select>
+	
+	<select id="getMemberBooking" parameterType="memberBooking" resultType="memberBooking">
+		SELECT * FROM booking WHERE booking_code = #{bookingCode}
+	</select>
+
+</mapper>

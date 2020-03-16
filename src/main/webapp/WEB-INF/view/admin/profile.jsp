@@ -72,7 +72,7 @@
 
 <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row"><div>&nbsp;</div>
                         <div class="col-lg-5">
                             <h1 class="page-header">Modify Profile</h1>
                         </div>

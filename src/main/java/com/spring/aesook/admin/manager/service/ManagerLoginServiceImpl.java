@@ -25,8 +25,8 @@ public class ManagerLoginServiceImpl implements ManagerLoginService {
 		vo.setAdminPass(uuid);
 		MailVO mail = new MailVO();
 		mail.setMailTo(vo.getAdminEmail());
-		mail.setMailSubject(vo.getAdminId()+"´ÔÀÇ ºñ¹Ğ¹øÈ£ Ã£±â ¸ŞÀÏÀÔ´Ï´Ù.");
-		mail.setMailContent("ÀÓ½Ãºñ¹Ğ¹øÈ£´Â " + uuid + "ÀÔ´Ï´Ù.");
+		mail.setMailSubject(vo.getAdminId()+"ë‹˜ì˜ ì´ˆê¸° ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤.");
+		mail.setMailContent("ë¹„ë°€ë²ˆí˜¸ : " + uuid + " ì…ë‹ˆë‹¤.");
 		mailSender.sendMail(mail);
 		
 		managerDAO.updatePassManager(vo);

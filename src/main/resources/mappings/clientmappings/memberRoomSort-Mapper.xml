@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.hotels.dao.MemberRoomDAO">
+
+<!-- 방 전체 리스트 가져오기 -->
+<select id="selectRoom" resultType="memberRoom">
+	select distinct hotels_code,room_sort, room_standard_cnt, room_max_cnt, room_standard_price, 
+	room_holiday_price, room_add_price, room_info from room 
+	where HOTELS_CODE = #{hotelsCode} ORDER BY room_standard_price asc
+</select>
+
+<select id="getRoomList" resultType="memberRoom" parameterType="memberRoom">
+	SELECT * from room where hotels_code = #{hotelsCode} order by room_sort
+</select>
+
+<delete id="deleteRoom" parameterType="memberRoom">
+	DELETE room WHERE hotels_code = #{hotelsCode} AND room_name = #{roomName}
+</delete>
+
+<!-- 숙소 전체 사진  -->
+<select id="getAllPic" resultType="memberHotelsImage" parameterType="memberHotels">
+	select * from hotels_image where hotels_code = #{hotelsCode}
+</select>
+
+<!-- 객실 전체 사진 -->
+<select id="getAllRoomPic" resultType="memberHotelsImage" parameterType="memberHotelsImage">
+	select * from hotels_image where hotels_code = #{hotelsCode} and room_sort = #{roomSort}
+</select>
+
+<!-- 객실 대표 사진 -->
+<select id="getRoomPic" resultType="memberHotelsImage" parameterType="int">
+	select * from hotels_image where hotels_code = #{hotelsCode} and room_sort_status = 'R'
+</select>
+
+<!-- 숙소 정보 가져오기 (호텔 정보 필요해서) -->
+<select id="getHotel" resultType="memberHotels" parameterType="int">
+   select * from hotels 
+   where hotels_code = #{hotelsCode}
+</select>
+
+<!-- 방 하나의 정보 가져오기  조건 2개-->
+<select id="selectRoomDescription" resultType="memberRoom" parameterType="memberRoom">
+	select distinct room_sort, hotels_code, room_add_price, 
+	room_holiday_price, room_max_cnt, room_info, 
+	room_standard_cnt, room_standard_price
+	from room
+	where hotels_code = #{hotelsCode}
+	<if test="roomSort != null">
+	and room_sort = #{roomSort}
+	</if>
+</select>
+
+<!-- 숙소등록 -->
+<insert id="insertRoom" parameterType="java.util.HashMap">
+
+	INSERT ALL 
+	<foreach collection="roomList" item="item" index="index" separator=" ">
+		into room values(
+		#{item.hotelsCode},
+		#{item.roomName},
+		#{item.roomSort},
+		#{item.roomStandardCnt},
+		#{item.roomMaxCnt},
+		#{item.roomStandardPrice},
+		#{item.roomHolidayPrice},
+		#{item.roomAddPrice},
+		#{item.roomInfo})
+	</foreach>
+	 SELECT * FROM DUAL	
+</insert>
+
+<select id="roomNameCheck" resultType="int" parameterType="memberRoom">
+    select count(*) from room where room_Name = #{roomName} And hotels_code = #{hotelsCode}
+</select>
+
+<select id="getRoomSortTypeList" resultType="String" parameterType="memberHotels">
+	SELECT distinct room_sort from room 
+	where hotels_code = #{hotelsCode} 
+	order by room_sort asc
+</select>
+
+<!-- insertRoomSort -->
+<insert id="insertRoomSort" parameterType="memberRoom">
+	INSERT INTO room VALUES 
+	(#{hotelsCode}, #{roomName}, #{roomSort},
+	#{roomStandardCnt}, #{roomMaxCnt}, #{roomStandardPrice},
+	#{roomHolidayPrice}, #{roomAddPrice}, #{roomInfo})
+</insert>
+
+<update id="updateRoomSort" parameterType="memberRoom">
+	UPDATE room SET 
+	room_Standard_Cnt = #{roomStandardCnt},
+	room_Max_Cnt = #{roomMaxCnt},
+	room_Standard_Price = #{roomStandardPrice},
+	room_Holiday_Price = #{roomHolidayPrice},
+	room_Add_Price = #{roomAddPrice},
+	room_Info = #{roomInfo}
+	WHERE
+	room_Sort = #{roomSort} AND hotels_Code = #{hotelsCode}
+</update>
+
+<delete id="deleteRoomSort" parameterType="memberRoom">
+	DELETE room 
+	WHERE 
+	room_Sort = #{roomSort} AND hotels_Code = #{hotelsCode}
+</delete>
+  
+</mapper>

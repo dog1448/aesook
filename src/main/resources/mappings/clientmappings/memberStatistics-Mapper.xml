@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.statistics.dao.MemberStatisticsDAO">
+
+<select id="getMonthlyTotalPrice" resultMap="monthlyTotalPriceList" parameterType="java.util.HashMap">
+	
+	select sum(booking_total_price*0.9) booking_total_price, to_char(booking_check_in, 'fmMM') 
+	booking_date from booking  
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId}) 
+	and booking_status != 'C' 
+	and booking_check_in between to_date(#{startYear}, 'YYYYMMDD') 
+	and to_date(#{endYear}, 'YYYYMMDD') group by to_char(booking_check_in, 'fmMM')
+	
+</select>
+
+<resultMap type="java.util.HashMap" id="monthlyTotalPriceList">
+	<id column="booking_date" property="booking_date"/>
+	<result column="booking_total_price" property="booking_total_price"/>
+</resultMap>
+
+<select id="getRoomSort" resultType="String">
+	select distinct room_sort from room 
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})
+</select>
+
+
+<select id="getRoomRatio" resultMap="roomRatio" parameterType="memberBooking">
+	
+	select round((NVL((select count(room_sort) from booking  
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})   
+	and booking_status != 'C' and room_sort = #{roomSort})/    
+	DECODE((select count(room_sort) from booking  
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})  
+	and booking_status != 'C'),0,null,(select count(room_sort) from booking  
+	where hotels_code = (select hotels_code from hotels where member_id = #{memberId})  
+	and booking_status != 'C')),0))*100,0) room_ratio,  
+	(select distinct room_sort from room where room_sort = #{roomSort}) room_sort from dual
+	
+</select>
+
+<resultMap type="java.util.HashMap" id="roomRatio">
+	<result column="room_ratio" property="room_ratio"/>
+	<result column="room_sort" property="room_sort"/>
+</resultMap>
+
+</mapper>

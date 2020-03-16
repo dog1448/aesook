@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.about > ul > li {
+	font-size: 1.7rem;
+}
+.nav-pills > li > a:hover {
+  background-color: #4169E1;
+}
+</style>
+</head>
+<body>
+<input type="hidden" id="memberId" value="${login.memberId}">
+	<div class="col-one-forth aside-stretch animate-box">
+		<div class="row">
+			<div class="col-md-12 about">
+				<h2>숙소관리</h2>
+				<ul class="nav nav-pills nav-stacked">				
+					<li id="register"><a href="hostTermsOfUse.do" >숙소 등록</a></li>				
+					<li><a href="hostAccommodation.do?memberId=${login.memberId}">나의 숙소 수정</a></li>
+					<li><a href="modifyRoom.do">나의 방 수정</a></li>
+          			<li><a href="hotelsPic.do">호텔사진관리</a></li>	
+					<li><a href="bookingHotelsList.do">예약내역</a></li>
+					<li><a href="statistics.do">통계</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		url : "hostChk.do",
+		type : "get",
+		dataType : "json",
+		data : {
+			"memberId" : $("#memberId").val()
+		},
+		success : function(data) {
+			if (data == 1) {
+				
+			} else if (data == 0) {				 
+				$("#register").remove();			
+
+			} 
+		}
+	})
+});
+
+</script>
+</html>

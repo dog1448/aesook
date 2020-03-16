@@ -6,7 +6,39 @@
 <%@include file="head.jspf" %>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	function openZipAddress(){
+function checkz() {
+	
+	   //호텔이름 입력 확인
+    if($("#hotelsName").val() == ""){
+      alert("숙소의 이름을 입력해주세요");
+      $("#hotelsName").focus();
+      return;
+    }
+	   //호텔 우편번호 입력 확인
+    if($("#hotelsZipcode").val() == ""){
+      alert("우편번호를 입력해주세요");
+      $("#hotelsZipcode").focus();
+      return;
+    }
+	   //호텔주소 입력 확인
+    if($("#hotelsAddress1").val() == ""){
+      alert("주소를 입력해주세요");
+      $("#hotelsAddress1").focus();
+      return;
+    }
+	   //호텔 전화번호 입력 확인
+    if($("#hotelsPhone").val() == ""){
+      alert("사업장 전화번호를 입력해주세요");
+      $("#hotelsPhone").focus();
+      return;
+    }
+         
+	$('#insertHotelsAll').submit();
+  
+}
+
+
+function openZipAddress(){
     new daum.Postcode({
         oncomplete: function(data) {
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
@@ -35,170 +67,120 @@
             console.log(fullRoadAddr);
             
             document.getElementById('hotelsZipcode').value = data.zonecode; //5자리 새우편번호 사용
-            document.getElementById('hotelsAddress1').value = fullRoadAddr;
+            document.getElementById('hotelsAddress1').value = fullRoadAddr;        
+            
         	}
-    	}).open();
-    }
+    	}).open();    	
+    }	
 </script>
+<link href="resources/client/css/step.css" rel="stylesheet">
+<style type="text/css">
+textarea {
+	width: 100%;
+}
+</style>
 </head>
 
 <body>
-
-
+<%@ include file="main_header.jspf" %>
+	  <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
    <div class="colorlib-loader">  </div>
 
-   <div id="page">
-      <nav class="colorlib-nav" role="navigation">
-
-      </nav>
+   <div id="page">   
 
       <div id="colorlib-about">
-         <div class="container">
+         <div class="container">          
             <div class="row">
                <div class="about-flex">
-                  <div class="col-one-forth aside-stretch animate-box">
-                     <div class="row">
-                        <div class="col-md-12 about">
-                           <h2>숙소관리</h2>
-
-                           <ul>
-                              <li><a href="inserthotel.jsp">숙소 등록 및 수정</a></li>
-                              <li><a href="insertedRoom.jsp">등록 숙소</a></li>
-                              <li><a href="statistics.jsp">통계</a></li>
-                              <li><a href="chat.jsp">1대 1문의</a></li>
-                              <li><a href="home.do">메인 홈</a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
+                  <!-- 사이드바 -->
+                 <%@ include file="managementSidebar.jspf" %>
+                       
                   <div class="col-three-forth animate-box">
-                     <form action="#">
-                        <h2>숙소 종류</h2>
+                  <div>
+                  	<h2><strong>REGISTER HOTEL</strong></h2>
+                  </div>
+                    <hr> 
+                  	<div class="container my-5">
+						    <ul id="progressbar" class="text-center">
+						        <li class="active" id="step1"><div class="d-none d-md-block">STEP 1</div></li>
+						        <li class="active" id="step2"><div class="d-none d-md-block">STEP 2</div></li>
+						        <li class="" id="step3"><div class="d-none d-md-block">STEP 3</div></li>
+						        <li class="" id="step4"><div class="d-none d-md-block">STEP 4</div></li>
+						    </ul>
+						</div>             
+                     <hr>      
+                     <form role="form" method="post" action="inserHotels.do" id="insertHotelsAll">
+                        <h3>숙소 종류</h3>
                         <div class="row form-group">
                            <div class="col-md-12">
                               &nbsp;&nbsp;&nbsp;&nbsp;
 
-                              <label><input type="radio" name="hotelsType" value="hotel">호텔</label>
+                              <label><input type="radio" id="hotelsType" name="hotelsType" checked="checked" value="호텔">호텔</label>
                                  &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <label><input type="radio" name="hotelsType" value="motel">모텔</label>
+                                 <label><input type="radio" id="hotelsType" name="hotelsType" value="모텔">모텔</label>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="radio" name="hotelsType" value="pension">팬션</label>
+                                    <label><input type="radio" id="hotelsType" name="hotelsType" value="펜션">팬션</label>
                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                       <label><input type="radio" name="hotelsType" value="guesthouse">게스트하우스</label>
+                                       <label><input type="radio" id="hotelsType" name="hotelsType" value="게스트하우스">게스트하우스</label>
                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                          <label><input type="radio" name="hotelsType" value="resort">리조트/콘도</label>
-
+                                          <label><input type="radio" id="hotelsType" name="hotelsType" value="리조트">리조트</label>
                            </div>
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
 
-                        <h2>숙소 이름</h2>
+                        <h3>숙소 이름</h3>
                         <div class="col-md-12 form-group">
 
-                           <input type="text" name="hotelsName" id="hotelsName" class="form-control" placeholder="숙소명 입력하세요">
-
+                           <input type="text" name="hotelsName" id="hotelsName" class="form-control" placeholder="숙소명 (지명 기입 가능  ex.홍대 기역모텔)">
+                           <input type="hidden" name="memberId" value="${login.memberId}">
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
 
 
-                        <h2>숙소 위치</h2>
-                        <div class="col-md-12 form-group">
-                           <iframe id="map-detail-frame" width="652" height="217" frameborder="0"
-                              scrolling="no" title="rooms-location"
-                              src="https://goo.gl/maps/araV1CpH7VR57Svb9"></iframe>
-                           <div>&nbsp;&nbsp;</div>
+                        <h3>숙소 위치</h3>
+						<div class="col-md-12 form-group">
+                          
                            <label>주소 입력</label>
                            <div class="row">
                               <div class="col-lg-6">
                                  <div class="input-group">
                                     <input type="text" id="hotelsZipcode" name="hotelsZipcode" class="form-control" placeholder="우편번호" readonly="readonly">
-                                    
                                     <span class="input-group-btn">
                                        <button class="btn btn-default" onclick="openZipAddress()" type="button">검색</button>
                                     </span>
                                  </div>
-                              </div>
+                              </div>                              
                            </div>
                            <input type="text" id="hotelsAddress1" name="hotelsAddress1" class="form-control" placeholder="주소를 입력하세요" readonly="readonly">
                            <input type="text" id="hotelsAddress2" name="hotelsAddress2" class="form-control" placeholder="상세주소를 입력하세요"><br></br>
                            <label>위치</label>
                            <input type="text" id="hotelsPath" name="hotelsPath" class="form-control" placeholder="오시는길(ex 종로 3가역으로부터 3분 거리)"><br></br>
                            <label>연락처</label>
-                           <input type="text" id="hotelsPhone" name="hotelsPhone" class="form-control" placeholder="사업장 전화번호">
+                           <input type="text" id="hotelsPhone" name="hotelsPhone" class="form-control" placeholder="사업장 혹은 사업주 전화번호">
 
                         </div>
                         <div>&nbsp;</div><div>&nbsp;</div>
-
-
-                        <h2>객실</h2>
-                        <div class="dropdown">
-                           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                             	 객실 추가 및 제외
-                              <span class="caret"></span>
-                           </button>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                              <li><a href="#">객실 추가</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="#">객실 제거</a></li>                              
-                           </ul>
-                        </div>
-
-                        <div class="form-group">
-                           <div class="col-sm-6">
-                              <label>방 이름</label>
-                              <input type="text" class="form-control" placeholder="방 이름 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>기준 인원</label>
-                              <input type="text" class="form-control" placeholder="인원 수 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>최대 인원</label>
-                              <input type="text" class="form-control" placeholder="인원 수 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>방 개수</label>
-                              <input type="text" class="form-control" placeholder="인원 수 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>평일 요금</label>
-                              <input type="text" class="form-control" placeholder="요금 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>공휴일 요금</label>
-                              <input type="text" class="form-control" placeholder="요금 입력">
-                           </div>
-                           <div class="col-sm-6">
-                              <label>인원 추가당 요금</label>
-                              <input type="text" class="form-control" placeholder="특징 입력">
-                           </div>
-                        </div>
-                        <div>&nbsp;</div><div>&nbsp;</div>
-						<br></br><br></br>
-						<h2>이용안내</h2>
+						<h3>이용안내</h3>
                         	<textarea name="hotelsInfo" id="hotelsInfo" rows="8" cols="50"></textarea>
                         <br></br>
-                        <h2>숙소소개</h2>
+                        <h3>숙소소개</h3>
                         	<textarea name="hotelsIntroduce" id="hotelsIntroduce" rows="8" cols="50"></textarea>
                         <br></br>
-                        <h2>편의시설/서비스</h2>
-                        	<div class="row">
-                          		<div class="col-md-12 form-group">
-                              		<label><input type="checkbox" name="facility" value="hotel">주차가능</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                 	<label><input type="checkbox" name="facility" value="motel">수영장가능</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="pension">조식</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="guesthouse">휘트니스</label>
-                                    <br></br>
-                                    <label><input type="checkbox" name="facility" value="hotel">PC</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                               		<label><input type="checkbox" name="facility" value="motel">파티룸</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="pension">와이파이</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><input type="checkbox" name="facility" value="pension">어메니티</label>
- 		                        </div>
-                        </div>
+                        <h3>편의시설/서비스</h3>
                         <div>
-                           <button type="button" class="btn btn-info btn-lg">등록</button>
-                           <button type="button" class="btn btn-warning btn-lg">수정</button>
+                           <label><input type="checkbox" value="Y" name="facilityParking">&nbsp;&nbsp;주차</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityPool">&nbsp;&nbsp;수영장</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityBreakfast">&nbsp;&nbsp;조식</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityFitness">&nbsp;&nbsp;헬스장</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityWifi">&nbsp;&nbsp;와이파이</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityParty">&nbsp;&nbsp;파티</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityPc">&nbsp;&nbsp;개인PC</label>&nbsp;&nbsp;
+                           <label><input type="checkbox" value="Y" name="facilityAmenity">&nbsp;&nbsp;어메니티</label>&nbsp;&nbsp;
+                        </div>
+                        <hr>
+                        <div class="text-right">
+                         <button type="button" class="btn btn-warning" onclick="history.go(-1)">이전</button>
+                           <button type="button" onclick="checkz()" class="btn btn-info">다음</button>
                         </div>
                      </form>
                   </div>
@@ -206,14 +188,13 @@
             </div>
          </div>
       </div>
-
-      <%@ include file="footer.jspf" %>
+		
+      <%@ include file="footer.jspf" %>  
    </div>
 
    <div class="gototop js-top">
       <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
    </div>   
-
+	
 </body>
-
 </html>

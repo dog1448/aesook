@@ -1,6 +1,9 @@
 package com.spring.aesook.admin.manager.controller;
 
-import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import com.sun.management.OperatingSystemMXBean;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,14 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.aesook.admin.manager.service.ManagerLoginService;
 import com.spring.aesook.admin.manager.service.ManagerRegisterService;
 import com.spring.aesook.admin.manager.service.ManagerService;
 import com.spring.aesook.admin.manager.vo.ManagerVO;
-import com.spring.aesook.common.file.FileService;
-import com.spring.aesook.common.file.FileVO;
 
 @Controller
 public class ManagerController {
@@ -32,9 +32,14 @@ public class ManagerController {
 	private ManagerRegisterService managerRegisterService;
 	
 	
-	//  --------------------------- È¸¿ø°¡ÀÔ ------------------------------------
+	//  --------------------------- íšŒì›ê°€ì… ------------------------------------
 	@RequestMapping(value = "/register.admin", method = RequestMethod.GET)
-	public String moveRegister() {
+	public String moveRegister(HttpSession httpSession, Model model) {
+		ManagerVO master = (ManagerVO) httpSession.getAttribute("admin");
+		if (!master.getAdminGrade().equals("M")) {
+			model.addAttribute("message", "ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.");
+			return "/index";
+		}
 		return "/register";
 	}
 	
@@ -61,14 +66,14 @@ public class ManagerController {
 	}
 	
 	
-	//  --------------------------- ·Î±×ÀÎ ------------------------------------
+	//  --------------------------- ë¡œê·¸ì¸ ------------------------------------
 	@RequestMapping(value = "/login.admin", method = RequestMethod.GET)
 	public String moveLogin(ManagerVO vo) {
 		return "/login";
 	}
 	
 	@RequestMapping(value="/login.admin", method = RequestMethod.POST)
-	public String checkLogin(ManagerVO vo, Model model) {
+	public String checkLogin(ManagerVO vo, Model model, HttpSession httpSession) {
 		ManagerVO user = managerService.getManager(vo);
 		
 		
@@ -77,18 +82,20 @@ public class ManagerController {
 			return "/login";
 		} else {
 			if (user.getAdminPass().equals(vo.getAdminPass())) {
-				model.addAttribute("login",user);
+				if (httpSession.getAttribute("admin") != null) {
+					httpSession.removeAttribute("admin");
+				}
+				httpSession.setAttribute("admin",user);
 			} else {
 				model.addAttribute("check", "noPass");
 				return "/login";
 			}
 		}
-
-		return "/index"; // ³ªÁß¿¡ interceptor·Î Áö¿ï ºÎºĞ( login.adminÀº ÀÎÅÍ¼ÁÅÍ°¡ Ã³¸® )
+		return "redirect:index.admin"; 
 	}
 	
 	
-	//  --------------------------- ºñ¹Ğ¹øÈ£ Ã£±â ------------------------------------
+	//  --------------------------- ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ------------------------------------
 	@RequestMapping(value="/findPassword.admin", method=RequestMethod.GET)
 	public String moveFindPassword(Model model) {
 		model.addAttribute("findEmail", false);
@@ -120,7 +127,7 @@ public class ManagerController {
 		return "/findPassword";
 	}
 	
-	// --------------------------- ·Î±×¾Æ¿ô ------------------------------------
+	// --------------------------- ë¡œê·¸ì•„ì›ƒ ------------------------------------
 	@RequestMapping(value="/logout.admin")
 	public String logout(HttpSession httpSession) {
 		httpSession.invalidate();
@@ -128,10 +135,10 @@ public class ManagerController {
 	}
 	
 	
-	// --------------------------- ÇÁ·ÎÆÄÀÏ -------------------------------------
+	// --------------------------- í”„ë¡œíŒŒì¼ -------------------------------------
 	@RequestMapping(value="/profile.admin", method=RequestMethod.GET)
 	public String moveProfile(HttpSession httpSession, Model model) {
-		ManagerVO user = (ManagerVO) httpSession.getAttribute("login");
+		ManagerVO user = (ManagerVO) httpSession.getAttribute("admin");
 		if(user != null) {
 			model.addAttribute("user",user);
 		}
@@ -146,11 +153,47 @@ public class ManagerController {
 	
 	// --------------------------- Home -------------------------------------
 	@RequestMapping(value="/index.admin", method=RequestMethod.GET)
-	public String moveIndex() {
+	public String moveIndex(Model model) {
 		
-		// IndexÈ­¸é¿¡ µé¾î°¥ DB ÀÚ·á
+		// Indexí™”ë©´ì— ë“¤ì–´ê°ˆ DB ìë£Œ(Statistics TOP)
+		model.addAttribute("guestCnt",managerService.totalHouseCount());
+		model.addAttribute("hotelCnt",managerService.totalHotelCount());
+		model.addAttribute("motelCnt",managerService.totalMotelCount());
+		model.addAttribute("pensionCnt",managerService.totalPensionCount());
+		model.addAttribute("resortCnt",managerService.totalResortCount());
+		model.addAttribute("userCnt",managerService.totalUserCount());		
+
+		//Statistic Pie
+		model.addAttribute("hotelReservationCnt",managerService.hotelReservationCount());
+		model.addAttribute("motelReservationCnt",managerService.motelReservationCount());
+		model.addAttribute("resortReservationCnt",managerService.resortReservationCount());
+		model.addAttribute("pensionReservationCnt",managerService.pensionReservationCount());
+		model.addAttribute("guesthouseReservationCnt",managerService.guesthouseReservationCount());
+		model.addAttribute("allReservationCnt",managerService.allReservationCount());
+
 		return "/index";
 	}
+	
+	//ì›”ë³„ ìˆ˜ì…
+	@RequestMapping(value = "/getMonthlyTotalPrice.admin", method = RequestMethod.POST)
+	@ResponseBody
+	public List<HashMap<Object, Object>> getMonthlyTotalPrice(@RequestParam("year") String year){
+		
+		List<HashMap<Object, Object>> list = managerService.getTotalList(year);
+				
+		return list;
+	}
+	
+	//ì›”ë³„ ì˜ˆì•½ìˆ˜
+	@RequestMapping(value = "/getMonthlyTotalBooking.admin", method = RequestMethod.POST)
+	@ResponseBody
+	public List<HashMap<Object, Object>> getMonthlyTotalBooking(@RequestParam("year") String year){
+		
+		List<HashMap<Object, Object>> list = managerService.getTotalBooking(year);
+				
+		return list;
+	}
+	
 	
 	
 	// --------------------------- Alarm -------------------------------------
@@ -167,8 +210,25 @@ public class ManagerController {
 	@RequestMapping(value="/pic.admin" , method=RequestMethod.POST)
 	public String uploadMainPic(MultipartFile file) {
 		return "/index";
+	}	
+
+	@RequestMapping(value = "/monitering.admin", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<Object, Object> monitering(){
+		OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
+		
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		
+	    String cpu = String.format("%.2f", osBean.getSystemCpuLoad() * 100);
+	    double totalMemory = (double)osBean.getTotalPhysicalMemorySize()/1024/1024/1024;
+	    double freeMemory = (double)osBean.getFreePhysicalMemorySize()/1024/1024/1024;
+	    double memoryPercent = (totalMemory-freeMemory)/totalMemory;
+	    String currentMemory = String.format("%.2f", memoryPercent*100);
+	    				 
+	    map.put("cpu", cpu);	    
+	    map.put("Memory", currentMemory);
+        
+        return map;
 	}
-	
-	
 }
 

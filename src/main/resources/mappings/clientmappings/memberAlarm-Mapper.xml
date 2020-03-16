@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client.memberalarm.dao.MemberAlarmDAO">
+	
+	<insert id="insertMemberAlarm" parameterType="memberAlarm">
+		INSERT INTO alarm VALUES(alarm_seq.nextval, #{alarmSendId}, #{alarmRecieveId}, 'N',
+		 #{alarmTitle}, #{alarmContents}, SYSDATE)
+	</insert>
+	
+	<update id="updateStatusMemberAlarm" parameterType="memberAlarm">
+		UPDATE alarm SET alarm_status = #{alarmStatus} WHERE alarm_no = #{alarmNo}
+	</update>
+	
+	<select id="getMemberAlarm" parameterType="memberAlarm" resultType="memberAlarm">
+		SELECT * FROM alarm WHERE alarm_no = #{alarmNo}
+	</select>
+	
+	<select id="getMemberAlarmList" parameterType="memberAlarm" resultType="memberAlarm">
+		SELECT * FROM alarm WHERE alarm_recieve_id = #{alarmRecieveId} AND alarm_Status = #{alarmStatus}
+	</select>
+	
+</mapper>

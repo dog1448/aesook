@@ -1,7 +1,7 @@
 ;(function () {
 	
 	'use strict';
-
+	
 	var isMobile = {
 		Android: function() {
 			return navigator.userAgent.match(/Android/i);
@@ -41,12 +41,6 @@
 		});
 
 	};
-
-	$('.starRev span').click(function(){
-		$(this).parent().children('span').removeClass('on');
-		$(this).addClass('on').prevAll('span').addClass('on');
-		return false;
-	  });
 
 	var offcanvasMenu = function() {
 
@@ -287,10 +281,11 @@
 		// jQuery('#time').timepicker();
 		jQuery('.date').datepicker({
 		  'format': 'yyyy-mm-dd',
-		  'autoclose': true
+		  'autoclose': true,
+		  'startDate': new Date()
 		});
-	};
-
+	};	
+	
 	
 	$(function(){
 		mobileMenuOutsideClick();
@@ -303,8 +298,7 @@
 		loaderPage();
 		owlCrouselFeatureSlide();
 		parallax();
-		datePicker();
+		datePicker();  
 	});
-
 
 }());
