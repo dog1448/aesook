@@ -26,8 +26,8 @@
 					<li><a href="hostAccommodation.do?memberId=${login.memberId}">나의 숙소 수정</a></li>
 					<li><a href="modifyRoom.do">나의 방 수정</a></li>
           			<li><a href="hotelsPic.do">호텔사진관리</a></li>	
+					<li><a href="bookingHotelsList.do">예약내역</a></li>
 					<li><a href="statistics.do">통계</a></li>
-					<li><a href="home.do">메인 홈</a></li>
 				</ul>
 			</div>
 		</div>

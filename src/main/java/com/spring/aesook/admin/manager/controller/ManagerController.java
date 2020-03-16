@@ -35,7 +35,7 @@ public class ManagerController {
 	//  --------------------------- 회원가입 ------------------------------------
 	@RequestMapping(value = "/register.admin", method = RequestMethod.GET)
 	public String moveRegister(HttpSession httpSession, Model model) {
-		ManagerVO master = (ManagerVO) httpSession.getAttribute("login");
+		ManagerVO master = (ManagerVO) httpSession.getAttribute("admin");
 		if (!master.getAdminGrade().equals("M")) {
 			model.addAttribute("message", "권한이 없습니다.");
 			return "/index";
@@ -82,10 +82,10 @@ public class ManagerController {
 			return "/login";
 		} else {
 			if (user.getAdminPass().equals(vo.getAdminPass())) {
-				if (httpSession.getAttribute("login") != null) {
-					httpSession.removeAttribute("login");
+				if (httpSession.getAttribute("admin") != null) {
+					httpSession.removeAttribute("admin");
 				}
-				httpSession.setAttribute("login",user);
+				httpSession.setAttribute("admin",user);
 			} else {
 				model.addAttribute("check", "noPass");
 				return "/login";
@@ -138,7 +138,7 @@ public class ManagerController {
 	// --------------------------- 프로파일 -------------------------------------
 	@RequestMapping(value="/profile.admin", method=RequestMethod.GET)
 	public String moveProfile(HttpSession httpSession, Model model) {
-		ManagerVO user = (ManagerVO) httpSession.getAttribute("login");
+		ManagerVO user = (ManagerVO) httpSession.getAttribute("admin");
 		if(user != null) {
 			model.addAttribute("user",user);
 		}

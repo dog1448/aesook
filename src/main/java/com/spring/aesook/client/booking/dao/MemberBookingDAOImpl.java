@@ -66,4 +66,12 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 	public void insertBooking(MemberBookingVO vo) {
 		sqlSessionTemplate.insert(namespace + ".insertBooking", vo);
 	}
+	
+	public List<MemberBookingVO> getMemberBookingList(MemberBookingVO vo) {
+		return sqlSessionTemplate.selectList(namespace + ".getMemberBookingList", vo);
+	}
+	
+	public MemberBookingVO getMemberBooking(MemberBookingVO vo) {
+		return sqlSessionTemplate.selectOne(namespace + ".getMemberBooking", vo);
+	}
 }

@@ -19,8 +19,6 @@ import com.spring.aesook.admin.alarm.vo.ManagerAlarmVO;
 @Controller
 public class ManagerAlarmController {
 	
-	private final static String realPath = "C:/mainProject/myMain/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/aesook";
-
 	@Autowired
 	private ManagerAlarmService managerAlarmService;
 	@Autowired
@@ -30,7 +28,6 @@ public class ManagerAlarmController {
 	public String moveAlarm(@RequestParam(value="status", defaultValue = "N") String status, ManagerAlarmVO vo, Model model) {
 		List<ManagerAlarmVO> alarmList = managerAlarmService.getManagerAlarmList(status, vo);
 		model.addAttribute("alarmList", alarmList);
-		model.addAttribute("realPath", realPath);
 		return "/alarm";
 	}
 	

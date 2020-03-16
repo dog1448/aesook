@@ -163,7 +163,7 @@ public class MemberRoomController {
 		return "redirect:modifyRoom.do";
 	}
 	
-	@RequestMapping(value="modifyInsertRoom.do", method=RequestMethod.POST)
+	@RequestMapping(value="/modifyInsertRoom.do", method=RequestMethod.POST)
 	public String insertRoom(MemberRoomVO roomList) {
 		List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(roomList);
 		List<MemberRoomVO> roomNameList = roomList.getRoomList();
