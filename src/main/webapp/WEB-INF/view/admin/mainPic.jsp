@@ -357,7 +357,7 @@ function check_only(chk){
       </div>
       <!--Footer-->
       <div class="modal-footer">
-        <button onclick="modifyPic()" class="btn btn-info btn-outline">변경하기</button>
+        <button type="button" onclick="modifyPic()" class="btn btn-info btn-outline">변경하기</button>
         <button type="button" class="btn btn-default btn-outline" data-dismiss="modal">닫기</button>
       </div>
     </div>

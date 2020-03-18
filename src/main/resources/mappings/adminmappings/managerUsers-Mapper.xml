@@ -15,9 +15,9 @@
 	</update>
 	
 	<update id="updateMemberStatus" parameterType="managerUsers">
-		UPDATE member set
-		member_status = #{memberStatus}
-		WHERE
+		UPDATE member set 
+		member_status = #{memberStatus} 
+		WHERE 
 		member_id = #{memberId}
 	</update>
 	

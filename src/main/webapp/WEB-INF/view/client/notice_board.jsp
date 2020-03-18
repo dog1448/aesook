@@ -46,7 +46,7 @@
 
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="resources/client/css/magnific-popup.css">
-
+	
     <!-- Flexslider  -->
     <link rel="stylesheet" href="resources/client/css/flexslider.css">
 
@@ -109,7 +109,7 @@
                         <td class="qna"><a href="${path}/boardNoticeRead.do?boardNo=${boards.rnum}">
                             <c:out value="${boards.boardTitle}"/></a></td>
                         <td class="qna"><c:out value="${boards.boardWriter}"/></td>
-                        <td class="qna"><fmt:formatDate value="${boards.boardDate}" /></td>
+                        <td class="qna"><fmt:formatDate value="${boards.boardDate}" pattern="dd/MM/yy"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>

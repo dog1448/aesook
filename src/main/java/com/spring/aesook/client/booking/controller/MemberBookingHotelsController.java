@@ -29,15 +29,15 @@ public class MemberBookingHotelsController {
     public String moveBookingHotelsList(HttpSession httpSession, Model model) {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login");
 		if (user != null) {
-			MemberHotelsVO hotels = memberHotelsService.getMyHotels(user).get(0);
-			if (hotels != null) {
+			List<MemberHotelsVO> hotels = memberHotelsService.getMyHotels(user);
+			if (!hotels.isEmpty()) {
 				MemberBookingVO booking = new MemberBookingVO();
-				booking.setHotelsCode(hotels.getHotelsCode());
+				booking.setHotelsCode(hotels.get(0).getHotelsCode());
 				List<MemberBookingVO> bookingHotelsList = memberBookingHotelsService.getMemberBookingList(booking);
 				model.addAttribute("bookingHotelsList", bookingHotelsList);
 			} else {
 				model.addAttribute("message", "등록된 숙소가 없습니다.");
-				return "/hostTermsOfUse";
+				return "/successHostTerm";
 			}
 		} 
     	return "/bookingHotelsList";

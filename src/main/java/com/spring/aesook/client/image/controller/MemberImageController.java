@@ -50,11 +50,17 @@ public class MemberImageController {
     @RequestMapping(value = "/brn.do", method = RequestMethod.GET)
     public String moveBrn(HttpSession httpSession, Model model) {
     	MemberVO user = (MemberVO) httpSession.getAttribute("login"); 
+    	if (user.getMemberStatus().equals("W") || user.getMemberStatus().equals("H")) {
+    		model.addAttribute("message","이미 등록되어 있는 사업자 입니다.");
+    		return "/bookingList";
+    			
+    	}
     	MemberBrnImageVO image = memberUpdateImageBrnService.getBrnImage(user);
     	if (image != null) {
     		model.addAttribute("message","이미 등록되어 있는 사업자 입니다.");
     		return "/bookingList";
     	}
+    	
     	model.addAttribute("user", user);
     	return "/brn";
     }
@@ -91,8 +97,8 @@ public class MemberImageController {
     		model.addAttribute("imageList", imageList);
     		return "/hotelsPic";
     	}
-    	model.addAttribute("noHotel", "noHotel");
-    	return "/hostTermsOfUse";
+    	model.addAttribute("message", "등록된 숙소가 없습니다.");
+    	return "/successHostTerm";
     }
     
     @RequestMapping(value="/hotelsPicMain.do", method=RequestMethod.GET)

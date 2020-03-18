@@ -71,7 +71,16 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-
+<style type="text/css">
+.white {
+	background-color: white;
+	border: none !important;
+	
+}
+pre {
+	white-space: pre-wrap;
+}
+</style>
 </head>
 
 <body>
@@ -97,7 +106,7 @@
                 </tr>
                 <tr>
                     <th>내용: </th>
-                    <td><div class="text-body" style="height: 700px">${board.boardContent}</div></td>
+                    <td><div class="text-body" style="height: 700px"><pre class="white">${board.boardContent}</pre></div></td>
                 </tr>
                 <div class ="box">
                     <form role="form" method="post">

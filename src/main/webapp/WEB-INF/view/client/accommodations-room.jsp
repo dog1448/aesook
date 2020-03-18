@@ -34,7 +34,7 @@
 }
 /* Declare heights because of positioning of img element */
 .carousel .item {
-	height: 500px;
+	height: 650px;
 	background-color: #555;
 }
 
@@ -135,6 +135,9 @@
 	background-color: white;
 	border: none !important;
 }
+pre {
+	white-space: pre-wrap;
+}
 </style>
 <script type="text/javascript">
 	function searchRoom() {
@@ -207,7 +210,7 @@
 										<div class="item active">
 											<img
 												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
-												class="img-responsive" style="width: 100%; height: 500px;">
+												class="img-responsive" style="width: 100%; height: 650px;">
 
 										</div>
 									</c:if>
@@ -215,7 +218,7 @@
 										<div class="item">
 											<img
 												src="${picList.hotelsImagePath}${picList.hotelsImageName}"
-												class="img-responsive" style="width: 100%; height: 500px;">
+												class="img-responsive" style="width: 100%; height: 650px;">
 
 										</div>
 									</c:if>
@@ -224,7 +227,7 @@
 							<c:if test="${empty picList}">
 								<div class="item active">
 									<img src="resources/client/images/noImage.png"
-										class="img-responsive" style="width: 100%; height: 500px;">
+										class="img-responsive" style="width: 100%; height: 650px;">
 
 								</div>
 							</c:if>

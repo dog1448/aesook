@@ -31,8 +31,8 @@
     	SELECT * FROM member WHERE member_name = #{memberName} AND member_email = #{memberEmail}
     </select>
     
-    <select id="getId" resultType="int" parameterType="member">
-        select count(*) from member where member_id = #{memberId}
+    <select id="getId" resultType="member" parameterType="member">
+        select * from member where member_id = #{memberId}
     </select>
     
 

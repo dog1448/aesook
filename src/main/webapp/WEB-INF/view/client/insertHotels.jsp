@@ -8,6 +8,9 @@
 <script>
 function checkz() {
 	
+	var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
+	var phone = document.getElementById("hotelsPhone");
+	
 	   //호텔이름 입력 확인
     if($("#hotelsName").val() == ""){
       alert("숙소의 이름을 입력해주세요");
@@ -26,12 +29,22 @@ function checkz() {
       $("#hotelsAddress1").focus();
       return;
     }
+	   
+    if($("#hotelsPath").val().length > 50){
+        alert("글자 수가 너무 많습니다.");
+        $("#hotelsPath").focus();
+        return;
+      }
 	   //호텔 전화번호 입력 확인
     if($("#hotelsPhone").val() == ""){
       alert("사업장 전화번호를 입력해주세요");
       $("#hotelsPhone").focus();
       return;
     }
+	
+    if (!check(regex, phone, "번호를 형식에 맞게 제대로 입력해주세요.")) {
+        return;
+     }
          
 	$('#insertHotelsAll').submit();
   
@@ -71,7 +84,18 @@ function openZipAddress(){
             
         	}
     	}).open();    	
-    }	
+    }
+
+function check(re, what, message) {
+	   if (re.test(what.value)) {
+	      return true;
+	   }
+	   alert(message);
+	   what.value = "";
+	   what.focus();
+	   // return false;
+	}
+	
 </script>
 <link href="resources/client/css/step.css" rel="stylesheet">
 <style type="text/css">

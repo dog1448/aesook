@@ -1,5 +1,7 @@
 package com.spring.aesook.client.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +18,19 @@ public class MemberFindIdServiceImpl implements MemberFindIdService {
 	@Autowired
 	private MailSender mailSender;
 	
-	public MemberVO findId(MemberVO vo) {
-		MemberVO user = memberDAO.getFindIdMember(vo);
+	public List<MemberVO> findId(MemberVO vo) {
+		List<MemberVO> user = memberDAO.getFindIdMember(vo);
 		
 		if(user != null) {
-			MailVO mail = new MailVO();
-			mail.setMailTo(user.getMemberEmail());
-			mail.setMailSubject(user.getMemberName()+"님의 ID찾기 입니다.");
-			mail.setMailContent("ID : "+createComplexId(user.getMemberId()) );
+			StringBuffer str = new StringBuffer();
+			MailVO mail = new MailVO("text/html");
+			mail.setMailTo(user.get(0).getMemberEmail());
+			mail.setMailSubject(user.get(0).getMemberName()+"님의 ID찾기 입니다.");
+			for (int i = 0; i < user.size(); i++) {
+				str.append("ID : " + createComplexId(user.get(i).getMemberId()));
+				str.append("\n");
+			}
+			mail.setMailContent(str);
 			mailSender.sendMail(mail);
 		}
 		
