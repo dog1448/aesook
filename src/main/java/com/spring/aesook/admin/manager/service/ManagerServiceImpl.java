@@ -26,7 +26,7 @@ public class ManagerServiceImpl implements ManagerService {
 	public void insertManager(ManagerVO vo) {
 		String uuid = UUID.randomUUID().toString().replace("-", "");
 		vo.setAdminPass(uuid);
-		MailVO mail = new MailVO();
+		MailVO mail = new MailVO("text/html");
 		mail.setMailTo(vo.getAdminEmail());
 		mail.setMailSubject(vo.getAdminName()+"관리자님 가입을 축하합니다.");
 		mail.setMailContent("아이디 : "+vo.getAdminId()+"\n비밀번호 : " + uuid + "입니다.\n");

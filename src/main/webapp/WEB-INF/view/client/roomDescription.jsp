@@ -6,7 +6,6 @@
 
 <head>
 <script type="text/javascript">
-
 function checkz() {
 	
 	//전화번호 유효성 검사
