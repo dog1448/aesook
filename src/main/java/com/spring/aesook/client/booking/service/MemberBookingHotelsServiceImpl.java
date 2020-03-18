@@ -22,4 +22,5 @@ public class MemberBookingHotelsServiceImpl implements MemberBookingHotelsServic
 		return memberBookingDAO.getMemberBooking(vo);
 	}
 	
+
 }

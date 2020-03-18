@@ -115,5 +115,20 @@
 	<select id="getMemberBooking" parameterType="memberBooking" resultType="memberBooking">
 		SELECT * FROM booking WHERE booking_code = #{bookingCode}
 	</select>
+	
+	<select id="getMemberBookingTest" parameterType="memberBooking" resultType="memberBooking">
+		<![CDATA[
+			select * from booking 
+			where to_date(#{bookingCheckIn}) < booking_check_out
+			and to_date(#{bookingCheckOut}) > booking_check_in
+			and hotels_code = #{hotelsCode}
+			and room_name = #{roomName}
+			and booking_status != 'C'
+			]]>
+	</select>
+	
+	<delete id="deleteMemberBooking" parameterType="memberBooking">
+		DELETE booking WHERE booking_code = #{bookingCode}
+	</delete>
 
 </mapper>

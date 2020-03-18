@@ -28,5 +28,5 @@
 				booking_status = #{bookingStatus}
 			where booking_code = #{bookingCode}
 	</update>
-
+	
 </mapper>

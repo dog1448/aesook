@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.aesook.admin.image.vo.ManagerAdminImageVO;
 import com.spring.aesook.admin.terms.service.ManagerTermsService;
@@ -54,10 +55,20 @@ public class MemberBookingPaymentController {
 	}
 	
 	@RequestMapping(value="/kakaoPay.do", method=RequestMethod.POST)
-	public String moveKakaoPay(MemberBookingVO vo, HttpSession httpSession) {
+	public String moveKakaoPay(MemberBookingVO vo, HttpSession httpSession, Model model) {
 		
+		// check booking
+		MemberBookingVO booking = memberBookingCheckService.getMemberBookingTest(vo);
+		if (booking != null) {
+			model.addAttribute("message", "이미 다른 고객이 결제중인 방입니다.");
+			return "/successHome";
+		}
+			
 		// getbookingSeq
 		vo.setBookingCode(KakaoUtil.getToday(memberBookingCheckService.getBookingSeq()));
+		
+		// insert booking
+		memberBookingCheckService.insertBooking(vo);
 		
 		// ready Kakao
 		KakaoPayReadyVO ready = kakaoService.kakaoPayReady(vo);
@@ -68,7 +79,8 @@ public class MemberBookingPaymentController {
 	}
 	
 	@RequestMapping(value="/kakaoPaySuccess.do", method=RequestMethod.GET)
-	public String successKakao(HttpSession httpSession, @RequestParam("pg_token")String pg_token, Model model) {
+	public String successKakao(HttpSession httpSession, @RequestParam("pg_token")String pg_token,
+			Model model, SessionStatus sessonStatus) {
 		
 		// get Data
 		MemberBookingVO vo = (MemberBookingVO) httpSession.getAttribute("booking");
@@ -82,7 +94,6 @@ public class MemberBookingPaymentController {
 		KakaoPayApprovalVO responseKakao = kakaoService.kakaoPayInfo(vo);
 		
 		// insert Booking
-		memberBookingCheckService.insertBooking(vo);
 		model.addAttribute("message","예약이 성공적으로 완료되었습니다.");
 		
 		// remove session values
@@ -94,8 +105,15 @@ public class MemberBookingPaymentController {
 	@RequestMapping(value= {"/kakaoPayCancel.do", "kakaoPaySuccessFail.do"}, method = RequestMethod.GET)
 	public String failKakao(HttpSession httpSession, Model model) {
 		
+		// get Data
+		MemberBookingVO vo = (MemberBookingVO) httpSession.getAttribute("booking");
+		
+		// delete 
+		memberBookingCheckService.deleteMemberBooking(vo);
+		
 		// model Setting
 		model.addAttribute("message","예약이 취소되었습니다.");
+		
 		
 		// remove session values
 		httpSession.removeAttribute("booking");
