@@ -93,7 +93,7 @@
             <caption> 게시글 삭제</caption>
             </thead>
             <tbody>
-            <form role="form" id="deleteForm" method="post" action="${path}/boardQNADelete.do">
+            <form role="form" id="deleteForm" method="post" action="boardQNADelete.do">
                 <input type="hidden" name="boardTitle" id="boardTitle" value="삭제된 게시글입니다.">
                 <input type="hidden" name="boardContent" id="boardContent" value="삭제된 게시글입니다.">
                 <input type="hidden" name="boardSeq" id="boardSeq" value="${board.boardSeq}">
@@ -130,8 +130,8 @@
                         <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
                         <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
                         <a class="btn btn-default" type="reset"> 초기화 </a>
-                        <a class="btn btn-default" onclick="javascript:location.href='${path}/boardQNA.do'">글
-                            목록으로...</a>
+                        <a class="btn btn-default" onclick="javascript:history.go(-1)">이전</a>
+
                     </td>
                 </tr>
             </form>
@@ -152,7 +152,7 @@
     $(document).ready(function () {
         var formObj = $("form[role='form']");
         var password = $('#password1');
-        var sessionPw = '${login.memberPw}';
+        var sessionPw = '${login.memberPass}';
 
         $(".delBtn").on("click", function () {
             if (password.val() === '') {

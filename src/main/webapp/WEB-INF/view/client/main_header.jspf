@@ -18,6 +18,7 @@
 							<ul>
 								<li class="active"><a href="boardNotice.do">Notice</a></li>
 								<li class="active"><a href="boardFAQ.do">FAQ</a></li>
+								<li class="active"><a href="boardQNA.do">QNA</a></li>
 								<li class="active"><a href="alarm.do">Message</a></li>
 								<c:if test="${sessionScope.login eq null}">
 									<li class="active"><a href="login.do">Login</a></li>
