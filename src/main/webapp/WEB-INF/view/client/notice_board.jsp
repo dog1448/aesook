@@ -109,7 +109,7 @@
                         <td class="qna"><a href="boardNoticeRead.do?boardNo=${boards.rnum}">
                             <c:out value="${boards.boardTitle}"/></a></td>
                         <td class="qna"><c:out value="${boards.boardWriter}"/></td>
-                        <td class="qna"><fmt:formatDate value="${boards.boardDate}" pattern="dd/MM/yy"/></td>
+                        <td class="qna"><fmt:formatDate value="${boards.boardDate}"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>
