@@ -21,16 +21,15 @@ public class MemberFindIdServiceImpl implements MemberFindIdService {
 	public List<MemberVO> findId(MemberVO vo) {
 		List<MemberVO> user = memberDAO.getFindIdMember(vo);
 		
-		if(user != null) {
+		if(!user.isEmpty()) {
 			StringBuffer str = new StringBuffer();
 			MailVO mail = new MailVO("text/html");
 			mail.setMailTo(user.get(0).getMemberEmail());
 			mail.setMailSubject(user.get(0).getMemberName()+"님의 ID찾기 입니다.");
 			for (int i = 0; i < user.size(); i++) {
-				str.append("ID : " + createComplexId(user.get(i).getMemberId()));
-				str.append("\n");
+				str.append("ID : " + createComplexId(user.get(i).getMemberId()) + "\n");
 			}
-			mail.setMailContent(str);
+			mail.setMailContent(str.toString());
 			mailSender.sendMail(mail);
 		}
 		
