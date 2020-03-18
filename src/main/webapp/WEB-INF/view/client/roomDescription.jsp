@@ -47,6 +47,13 @@ function checkz() {
      return;
    }
  	
+    if ($("#cnt").val() < 1) {
+        alert("인원수를 정확히 입력해주세요");
+        $("#cnt").val("");
+        $("#cnt").focus();
+        return;
+      }
+ 	
  	//인원수 확인
 	if($("#cnt").val() > value){
 		alert("기입한 인원수가 최대 수용 인원보다 많습니다.");
