@@ -72,6 +72,12 @@ public class MemberBookingPaymentController {
 		
 		// get Data
 		MemberBookingVO vo = (MemberBookingVO) httpSession.getAttribute("booking");
+		if (vo == null) {
+			model.addAttribute("message", "죄송합니다. 처음부터 다시 진행해주세요");
+			httpSession.removeAttribute("booking");
+			httpSession.removeAttribute("ready");
+			return "/successHome";
+		}
 		vo.setPg_token(pg_token);
 		KakaoPayApprovalVO responseKakao = kakaoService.kakaoPayInfo(vo);
 		
