@@ -191,9 +191,9 @@ public class MemberController {
     public String findId(MemberVO vo, Model model) {
     	List<MemberVO> user = memberFindIdService.findId(vo);
     	if(!user.isEmpty()) {
-    		model.addAttribute("message","해당되는 아이디가 없습니다.");
-    	} else {
     		model.addAttribute("message","ID가 이메일로 발송되었습니다.");
+    	} else {
+    		model.addAttribute("message","해당되는 아이디가 없습니다.");
     	}
     	
     	return "/messageLogin";
