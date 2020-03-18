@@ -140,8 +140,9 @@
                 <a href="boardQNA.do${pageMaker.makeQuery(pageMaker.endPage +1)}"
                    class="btn btn-success btn-arrow-left">다음</a>
             </c:if>
+            <c:if test="${login.memberId != null }">
             <a href="boardQNAWrite.do" class="btn btn-info pull-right">글쓰기</a>
-
+            </c:if>
 
         </div>
     </div>
