@@ -27,10 +27,16 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		// update alarm
 		managerAlarmDAO.updateManaerImageBrn(vo);
 		
+		// update member
+		ManagerUsersVO user = new ManagerUsersVO();
+		user.setMemberId(vo.getAlarmSendId());
+		user.setMemberStatus("H");
+		managerUsersDAO.updateMemberStatus(user);
+		
 		// alarm insert
 		vo.setAlarmRecieveId(vo.getAlarmSendId());
 		vo.setAlarmTitle(vo.getAlarmSendId()+"님의 사업자등록증이 등록되었습니다.");
-		vo.setAlarmContents("사업자 등록증이 성공적으로 등록되었습니다.\n 이제부터 호텔등록 및 결제 서비스를 이용할 수 있습니다.");
+		vo.setAlarmContents("사업자 등록증이 성공적으로 등록되었습니다.\n 이제부터 호텔등록 및 결제 서비스를 이용할 수 있습니다.\n 로그아웃 후 다시 로그인 해주세요~");
 		vo.setAlarmSendId("Admin");
 		managerAlarmDAO.insertManagerAlarm(vo);
 		
@@ -40,17 +46,18 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		image.setBrnImageStatus("S");
 		managerImageDAO.updateManagerImageBrn(image);
 		
-		// update member
-		ManagerUsersVO user = new ManagerUsersVO();
-		user.setMemberId(vo.getAlarmSendId());
-		user.setMemberStatus("H");
-		managerUsersDAO.updateMemberStatus(user);
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
 	public void failAlarm(ManagerAlarmVO vo) {
 		// update alarm
 		managerAlarmDAO.updateManaerImageBrn(vo);
+		
+		// update member
+		ManagerUsersVO user = new ManagerUsersVO();
+		user.setMemberId(vo.getAlarmSendId());
+		user.setMemberStatus("G");
+		managerUsersDAO.updateMemberStatus(user);
 		
 		// alarm insert
 		vo.setAlarmRecieveId(vo.getAlarmSendId());
@@ -65,11 +72,7 @@ public class ManagerAlarmStatusServiceImpl implements ManagerAlarmStatusService 
 		image.setBrnImageStatus("F");
 		managerImageDAO.updateManagerImageBrn(image);
 		
-		// update member
-		ManagerUsersVO user = new ManagerUsersVO();
-		user.setMemberId(vo.getAlarmSendId());
-		user.setMemberStatus("G");
-		managerUsersDAO.updateMemberStatus(user);
+
 	}
 	
 }

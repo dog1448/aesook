@@ -76,6 +76,7 @@
 		alert("개인정보가 성공적으로 변경되었습니다.")
 	  
 	}
+
 </script>
 </head>
 
@@ -171,7 +172,13 @@
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
     </div>
-
+<script type="text/javascript">
+$(document).ready(function () {
+	$('#currentPass').val("");
+	$('#password').val("");
+	$('#repassword').val("");
+	
+})
+</script>
 </body>
-
 </html>

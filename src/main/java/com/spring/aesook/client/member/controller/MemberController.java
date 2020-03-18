@@ -71,12 +71,12 @@ public class MemberController {
 
     @RequestMapping(value = "/register.do",  method = RequestMethod.POST)
     public String insertMember(MemberVO vo, Model model){  			
-    	int result = memberService.checkLoginId(vo);
+    	MemberVO result = memberService.checkLoginId(vo);
     	
     	
-    		if(result == 1) {
+    		if(result != null) {
         		return "redirect:register.do";
-        	} else if(result == 0) {
+        	} else if(result == null) {
         		
         		 memberService.insertMember(vo);
         		 memberRegisterService.sendEmailConfirm(vo);
@@ -97,8 +97,12 @@ public class MemberController {
     @RequestMapping(value = "/registerIdChk.do", method = RequestMethod.POST)
     @ResponseBody
     public int checkId(MemberVO vo){
-    	int result = memberService.checkLoginId(vo);
-    	return result;
+    	MemberVO result = memberService.checkLoginId(vo);
+    	if (result != null) {
+    		return 1;
+    	} else {
+    		return 0;
+    	}
     } 
         
 
@@ -185,8 +189,8 @@ public class MemberController {
     
     @RequestMapping(value="/findId.do", method = RequestMethod.POST)
     public String findId(MemberVO vo, Model model) {
-    	MemberVO user = memberFindIdService.findId(vo);
-    	if(user == null) {
+    	List<MemberVO> user = memberFindIdService.findId(vo);
+    	if(!user.isEmpty()) {
     		model.addAttribute("message","해당되는 아이디가 없습니다.");
     	} else {
     		model.addAttribute("message","ID가 이메일로 발송되었습니다.");
@@ -232,22 +236,22 @@ public class MemberController {
     	vo.setMemberId(userInfo.get("memberId"));
     	vo.setMemberStatus("G");
     	
-    	int result = memberService.checkLoginId(vo);
+    	MemberVO result = memberService.checkLoginId(vo);
     	
-    	if(result == 1) {
+    	if(result != null) {
     		if(session.getAttribute("login") != null) {
     			session.removeAttribute("login");
     		}
-    		session.setAttribute("login", vo);
+    		session.setAttribute("login", result);
     		Object destination = session.getAttribute("destination");
 			return "redirect:" + (destination != null ? (String) destination : "home.do");
-    	} else if(result == 0) {    		
+    	} else if(result == null) {    		
     		 
     		 if(session.getAttribute("login") != null) {
      			session.removeAttribute("login");
      		}
     		 memberService.insertMember(vo);
-    		 session.setAttribute("login", vo);
+    		 session.setAttribute("login", result);
     		 Object destination = session.getAttribute("destination");
 			 return "redirect:" + (destination != null ? (String) destination : "home.do");
     	} 
@@ -278,15 +282,15 @@ public class MemberController {
     	vo.setMemberId(memberId);
     	vo.setMemberStatus("G");
     	
-    	int result = memberService.checkLoginId(vo);
+    	MemberVO result = memberService.checkLoginId(vo);
     	
-    	if(result == 1) {
-    		session.setAttribute("login", vo);
+    	if(result != null) {
+    		session.setAttribute("login", result);
     		Object destination = session.getAttribute("destination");
 			return "redirect:" + (destination != null ? (String) destination : "home.do");
-    	} else if(result == 0) {    		
+    	} else if(result == null) {    		
     		memberService.insertMember(vo);
-    		session.setAttribute("login", vo);
+    		session.setAttribute("login", result);
     		Object destination = session.getAttribute("destination");
 			return "redirect:" + (destination != null ? (String) destination : "home.do");
     	}
@@ -320,7 +324,7 @@ public class MemberController {
     
     @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.POST)
     public String withdrawMember(MemberVO vo, Model model,HttpSession session) {
-    	MemberVO member = (MemberVO)session.getAttribute("user");
+    	MemberVO member = (MemberVO)session.getAttribute("login");
     	String sessionId = member.getMemberId();
     	memberWithdrawalService.updateWithdrawal(sessionId);
     	session.invalidate();
@@ -328,7 +332,12 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.GET)
-    public String moveWithdrawMember() {
+    public String moveWithdrawMember(HttpSession httpSession, Model model) {
+    	MemberVO member = (MemberVO) httpSession.getAttribute("login");
+    	if (member.getMemberPass() == null) {
+    		model.addAttribute("message", "접근할 수 없습니다.");
+    		return "/successHome";
+    	}
     	return "/memberWithdrawal";
     }
     

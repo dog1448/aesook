@@ -29,7 +29,9 @@
 					</c:if>						
 					<li><a href="brn.do">사업자등록</a></li>
 					<li><a href="hostTermsOfUse.do">숙소 관리</a></li>
-					<li><a href="memberWithdrawal.do">회원탈퇴</a></li>
+					<c:if test="${user.memberPass ne null}">
+						<li><a href="memberWithdrawal.do">회원탈퇴</a></li>
+					</c:if>		
 				</ul>
 			</div>
 		</div>

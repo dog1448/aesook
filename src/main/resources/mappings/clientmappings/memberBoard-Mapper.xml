@@ -28,7 +28,7 @@
 		,#{boardDepth}
 		,#{boardReadcount}
 		,#{boardIP}
-		,TO_CHAR(SYSDATE,'YYYY-MM-DD')
+		,SYSDATE
 		,#{boardType}
 		)
 	</insert>
@@ -174,32 +174,18 @@ where rnum>=#{rowStart} and rnum<=#{rowEnd}
 
         ]]>
 	</select>
-	<select id="getMemberNoticeBoard" resultType="memberBoard"
-		parameterType="pagination">
-		<![CDATA[
-
-
-
-
-
-                                select B.rnum, B.BOARD_SEQ,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE
-                                from
-                                    (select rownum as rnum,A.BOARD_SEQ, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE
-                                     from (
-                                              select BOARD_SEQ , BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE
-                                              from board
-                                              order by BOARD_SEQ desc) A
-                                     where rownum <=#{rowEnd} and BOARD_TYPE='N') B
-                                where B.rnum >= #{rowStart} order by rownum
-
-
-
-
-
-
-
+	<select id="getMemberNoticeBoard" resultType="memberBoard" parameterType="pagination">
+      <![CDATA[
+       select B.rnum,B.BOARD_WRITER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE,B.Board_TYPE,B.BOARD_GROUP,B.BOARD_STEP,B.BOARD_DEPTH
+       from
+       (select rownum as rnum, A.BOARD_WRITER, A.BOARD_TITLE, A.BOARD_CONTENT, A.BOARD_DATE,A.BOARD_TYPE,A.BOARD_GROUP,A.BOARD_STEP,A.BOARD_DEPTH
+       from (select  BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE,BOARD_TYPE,BOARD_GROUP,BOARD_STEP,BOARD_DEPTH
+       from board 
+       order by ROWNUM,BOARD_GROUP desc ,BOARD_STEP asc) A 
+       where rownum <=#{rowEnd} and BOARD_TYPE='N') B 
+       where B.rnum >= #{rowStart} order by rownum
         ]]>
-	</select>
+   </select>
 
 	<resultMap id="MemberResultMap" type="memberBoard">
 		<id property="boardSeq" column="board_seq" />

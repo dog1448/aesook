@@ -17,7 +17,6 @@
 						<div class="col-xs-10 text-right menu-1 align-items-center">
 							<ul>
 								<li class="active"><a href="boardNotice.do">Notice</a></li>
-								<li class="active"><a href="boardQNA.do">Q&A</a></li>
 								<li class="active"><a href="boardFAQ.do">FAQ</a></li>
 								<li class="active"><a href="alarm.do">Message</a></li>
 								<c:if test="${sessionScope.login eq null}">

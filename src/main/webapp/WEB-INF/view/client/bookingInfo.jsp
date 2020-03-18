@@ -49,21 +49,6 @@
 		} 
 		var today = year + "-" + month + "-" + day;
 		
-	 	// 공백확인
-	    if ($("#confirmPass").val() == "") {
-	     alert("비밀번호를 입력해주세요");
-	     $("#confirmPass").val("");
-	     $("#confirmPass").focus();
-	     return;
-	   }
-	    //비밀번호 확인
-	    if($("#confirmPass").val() != ($("#memberPass").val())){ 
-	    alert("비밀번호가 틀립니다.");
-	    $("#confirmPass").val("");
-	    $("#confirmPass").focus();
-	    return;
-	   }
-	    
 		// 체크인 날짜 이후에 예약취소를 하려는 경우		
 		if(new Date(checkIn) <= new Date(today)){
 			alert("체크인 날짜 당일이거나 이후기 때문에 취소가 불가능합니다.");
@@ -136,9 +121,6 @@
 
         <img src="resources/client/images/again.png" width="50" height="50"/><br></br>
         <p>정말 예약을 취소하시겠습니까?</p>
-		<input type="password" id="confirmPass" placeholder="비밀번호 확인"><br></br>
-		<input type="hidden" value="${user.memberPass}" id="memberPass">
-
       </div>
 
       <!--Footer-->

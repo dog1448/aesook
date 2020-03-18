@@ -23,8 +23,8 @@ public class MemberServiceImpl implements MemberService{
     }
     
 	@Override
-	public int checkLoginId(MemberVO vo) {	
-		int result = memberDAO.getId(vo);
+	public MemberVO checkLoginId(MemberVO vo) {	
+		MemberVO result = memberDAO.getId(vo);
 		return result;
 	}
 

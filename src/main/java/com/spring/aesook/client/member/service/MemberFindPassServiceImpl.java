@@ -22,7 +22,7 @@ public class MemberFindPassServiceImpl implements MemberFindPassService {
 		
 		String uuid = UUID.randomUUID().toString().replace("-", "");
 		vo.setMemberPass(uuid);
-		MailVO mail = new MailVO();
+		MailVO mail = new MailVO("text/html");
 		mail.setMailTo(vo.getMemberEmail());
 		mail.setMailSubject(vo.getMemberName()+"님의 비밀번호 찾기 메일입니다.");
 		mail.setMailContent("임시비밀번호는 " + uuid + "입니다.");

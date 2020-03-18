@@ -46,7 +46,6 @@
                                             
                                            <c:forEach var="boardList" items="${boardList}">
                                                 <tr class="odd gradeX">
-                                                   
                                                     <td>${boardList.rnum}</td>
                                                     <td>${boardList.boardWriter}</td>
                                                     <td><a href="boardModify.admin?boardSeq=${boardList.boardSeq}">${boardList.boardTitle }</a></td>
@@ -100,7 +99,7 @@
                  /* Board 정하기 */
                 $('#dataTables-example_filter').prepend('<select id="select2"></select>&nbsp;&nbsp;');
                 $('#dataTables-example_filter').prepend('Board-Type : <select id="select"></select>&nbsp;/&nbsp;');
-                $('#select').append('<option value="Q" selected="selected">QnA</option><option value="F">FAQ</option><option value="N">Notice</option>');
+                $('#select').append('<option value="F">FAQ</option><option value="N">Notice</option>');
                 var col = $('#select option:selected').val();
                 table.column('#typeVal').search(col).draw();
 

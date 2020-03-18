@@ -99,18 +99,18 @@ public class MemberRoomController {
 	public String moveModifyRoomSort(HttpSession httpSession, Model model) {
 		MemberVO user = (MemberVO) httpSession.getAttribute("login");
 		if (user != null) {
-			MemberHotelsVO hotels = memberHotelsService.getMyHotels(user).get(0);
-			if (hotels != null) {
+			List<MemberHotelsVO> hotels = memberHotelsService.getMyHotels(user);
+			if (!hotels.isEmpty()) {
 				MemberRoomVO room = new MemberRoomVO();
-				room.setHotelsCode(hotels.getHotelsCode());
+				room.setHotelsCode(hotels.get(0).getHotelsCode());
 				List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(room);
 				List<MemberRoomVO> roomNameList = memberRoomService.getRoomList(room);
 				model.addAttribute("roomSortList", roomSortList);
 				model.addAttribute("roomNameList", roomNameList);
-				model.addAttribute("hotelsCode", hotels.getHotelsCode());
+				model.addAttribute("hotelsCode", hotels.get(0).getHotelsCode());
 			} else {
 				model.addAttribute("message", "등록된 숙소가 없습니다.");
-				return "/hostTermsOfUse";
+				return "/successHostTerm";
 			}
 		} 
 		return "/modifyRoomSort";
@@ -140,18 +140,18 @@ public class MemberRoomController {
 	public String moveModifyRoom(HttpSession httpSession, Model model) {
 		MemberVO user = (MemberVO) httpSession.getAttribute("login");
 		if (user != null) {
-			MemberHotelsVO hotels = memberHotelsService.getMyHotels(user).get(0);
-			if (hotels != null) {
+			List<MemberHotelsVO> hotels = memberHotelsService.getMyHotels(user);
+			if (!hotels.isEmpty()) {
 				MemberRoomVO room = new MemberRoomVO();
-				room.setHotelsCode(hotels.getHotelsCode());
+				room.setHotelsCode(hotels.get(0).getHotelsCode());
 				List<MemberRoomVO> roomList = memberRoomService.getRoomList(room);
 				List<MemberRoomVO> roomSortList = memberRoomService.getRoomSortList(room);
 				model.addAttribute("roomList",roomList);
 				model.addAttribute("roomSortList",roomSortList);
-				model.addAttribute("hotelsCode", hotels.getHotelsCode());
+				model.addAttribute("hotelsCode", hotels.get(0).getHotelsCode());
 			} else {
 				model.addAttribute("message", "등록된 숙소가 없습니다.");
-				return "/hostTermsOfUse";
+				return "/successHostTerm";
 			}
 		} 
 		return "/modifyRoom";
