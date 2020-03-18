@@ -23,7 +23,7 @@ public class ManagerLoginServiceImpl implements ManagerLoginService {
 		
 		String uuid = UUID.randomUUID().toString().replace("-", "");
 		vo.setAdminPass(uuid);
-		MailVO mail = new MailVO();
+		MailVO mail = new MailVO("text/html");
 		mail.setMailTo(vo.getAdminEmail());
 		mail.setMailSubject(vo.getAdminId()+"님의 초기 비밀번호입니다.");
 		mail.setMailContent("비밀번호 : " + uuid + " 입니다.");

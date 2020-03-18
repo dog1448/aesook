@@ -121,9 +121,9 @@
             -->
 
                         <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
-                        <input class="btn btn-default" type="submit" value="등록">
-                        <a class="btn btn-default" type="reset"> reset </a>
-                        <a class="btn btn-default" onclick="javascript:location.href='aesook/boardQNA.do'">글 목록으로...</a>
+                        <input class="btn btn-default" id="submit" type="submit" value="등록">
+                        <a class="btn btn-default" type="reset"> 초기화 </a>
+                        <a class="btn btn-default" onclick="javascript:history.go(-1)">목록</a>
                     </td>
                 </tr>
             </form>
@@ -139,6 +139,7 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 </div>
+
 
 <!-- jQuery -->
 <script src="resources/client/js/jquery.min.js"></script>

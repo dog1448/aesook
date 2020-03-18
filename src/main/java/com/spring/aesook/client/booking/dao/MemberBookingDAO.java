@@ -29,4 +29,8 @@ public interface MemberBookingDAO {
 	public List<MemberBookingVO> getMemberBookingList(MemberBookingVO vo);
 
 	public MemberBookingVO getMemberBooking(MemberBookingVO vo);
+	
+	public MemberBookingVO getMemberBookingTest(MemberBookingVO vo);
+	
+	public void deleteMemberBooking(MemberBookingVO vo);
 }

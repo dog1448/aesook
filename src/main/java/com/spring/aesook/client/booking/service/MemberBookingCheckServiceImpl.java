@@ -77,8 +77,13 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 		memberBookingDAO.insertBooking(vo);
 	}
 
+	public MemberBookingVO getMemberBookingTest(MemberBookingVO vo) {
+		return memberBookingDAO.getMemberBookingTest(vo);
+	}
 	
-
+	public void deleteMemberBooking(MemberBookingVO vo) {
+		memberBookingDAO.deleteMemberBooking(vo);
+	}
 
 
 }

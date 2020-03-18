@@ -149,7 +149,7 @@
 											<li><a href="hotelsList.do?type=펜션&sido=인천&region=인천">인천 전체</a></li>
 										</td>
 										<td>
-											<li><a href="hotelsList.do?type=펜션&sido=인천&region=강화도">강화도</a></li>
+											<li><a href="hotelsList.do?type=펜션&sido=인천&region=강화">강화</a></li>
 										</td>
 									</tr>
 									<tr>

@@ -16,6 +16,7 @@ hr {
 
 .crown {
 	width: auto;
+	height: 20px;
 }
 </style>
 <script type="text/javascript">

@@ -4,6 +4,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<style type="text/css">
+.animate-box {
+	margin-bottom: 50px;
+}
+</style>
 <%@include file="head.jspf"%>
 
 <script type="text/javascript">
@@ -88,7 +93,7 @@
 									 
 										<c:if test="${list.hotelsImageStatus eq 'M' }">										
 											<a href="accommodationsRoom.do?hotelsCode=${list.hotelsCode}" class="hotel-img">
-												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: auto;">																					
+												<img src="${list.hotelsImagePath}${list.hotelsImageName}" style="height: 280px; width: 350px;">																					
 											</a>											
 										</c:if>
 										<c:if test="${list.hotelsImageStatus ne 'M' }">

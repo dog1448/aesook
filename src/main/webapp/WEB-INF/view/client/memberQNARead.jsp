@@ -1,7 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -72,6 +71,40 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
+    <style type="text/css">
+        .white {
+            background-color: white;
+            border: none !important;
+
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+        .well
+        {
+            padding: 35px;
+            padding-left: 30px;
+            box-shadow: 0 0 10px #666666;
+            margin: 4% auto 0;
+            width: 100%;
+            background-color: white;
+        }
+
+        body
+        {
+            background-color:  white;
+        }
+
+        .input-group-addon
+        {
+            color: grey;
+        }
+        textarea {
+            font-size: 15px;
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -81,43 +114,60 @@
     <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
     <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
     <div class="container">
-        <table class="table table-bordered">
-            <thead>
-            <caption> 글쓰기  </caption>
-            </thead>
-            <tbody>
-                <input type="hidden" name="boardWriter" id="boardWriter" value="${login.memberId}">
-                <tr>
-                    <th>제목: </th>
-                    <td><h3>${board.boardTitle}</h3></td>
-                </tr>
-                <tr>
-                    <th>작성자: </th>
-                    <td><h3>${board.boardWriter}</h3></td>
-                </tr>
-                <tr>
-                    <th>내용: </th>
-                    <td><div class="text-body" style="height: 700px">${board.boardContent}</div></td>
-                </tr>
-                <div class ="box">
-                    <form role="form" method="post">
-                        <input type="hidden" name="boardNo" value="${board.boardSeq}">
-                    </form>
-                    <button type="button" class="btn btn-default listBtn"><i class="fa fa-list"></i>목록</button>
-                    <div class ="pull-right">
-                        <button type="submit" class="btn btn-warning modBtn"><i class="fa fa-edit"></i>수정</button>
-                        <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
+        <form role="form" method="post">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="well-header">
+                    <h2 class="text-left text-success"><strong>QNA</strong></h2>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 col-sm-9 col-xs-9">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-tag"></i>
+                                </div>
+                                <input type="text" disabled="disabled" value="${board.boardTitle}" class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </div>
+                                <input type="text" value="${board.boardWriter}" class="form-control" disabled="disabled">
+                                <input type="hidden" name="boardNo" value="${board.boardSeq}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <textarea disabled="disabled" rows="40" style="width: 100%; hight:auto; resize: none">${board.boardContent}</textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </tbody>
-        </table>
+                <div class="row widget text-right">
+                    <button type="button" onclick="javascript:history.go(-1);" class="btn btn-warning btn-outline"> 목록보기 </button>
+                    <button type="submit" class="btn btn-warning modBtn"><i class="fa fa-edit"></i>수정</button>
+                    <button type="submit" class="btn btn-danger delBtn"><i class="fa fa-trash"></i>삭제</button>
+                </div>
+                <hr>
+            </div>
+        </div>
+        </form>
     </div>
-    <div>&nbsp;</div>
-    <div>&nbsp;</div>
-    <div>&nbsp;</div>
-    <div>&nbsp;</div>
+    <%@include file="footer.jspf" %>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -130,34 +180,19 @@
             formObj.submit();
         });
 
-        $(".replyBtn").on("click",function () {
-            formObj.attr("action","boardQNAReply.do");
-            formObj.attr("method","get");
-            formObj.submit();
-        });
-
         $(".delBtn").on("click",function() {
             formObj.attr("action","boardQNADelete.do");
             formObj.attr("method","get");
             formObj.submit();
         });
 
-        $(".listBtn").on("click",function () {
-            self.location = "/aesook/boardQNA.do"
-        });
-
     });
 
 
 </script>
-
-
-    <%@include file="footer.jspf" %>
-</div>
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 </div>
-
 <!-- jQuery -->
 <script src="resources/client/js/jquery.min.js"></script>
 <!-- jQuery Easing -->

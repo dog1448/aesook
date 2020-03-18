@@ -261,9 +261,9 @@
 	$(document).ready(function() {
 		var imagePath = "${adminImageVO.adminImagePath}"+"${adminImageVO.adminImageName}";
 		if (imagePath == "") {
-			imgeaPath = "resources/client/images/noImage.png";
+			imagePath = "resources/client/images/noImage.png";
 		} 
-		var str = "background-image: url('"+ imgeaPath +"')";
+		var str = "background-image: url('"+ imagePath +"')";
 		
 		$('#loginImage').attr("style", str);
 	});

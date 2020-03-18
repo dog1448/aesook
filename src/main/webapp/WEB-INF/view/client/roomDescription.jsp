@@ -6,7 +6,6 @@
 
 <head>
 <script type="text/javascript">
-
 function checkz() {
 	
 	//전화번호 유효성 검사
@@ -46,6 +45,13 @@ function checkz() {
      $("#cnt").focus();
      return;
    }
+ 	
+    if ($("#cnt").val() < 1) {
+        alert("인원수를 정확히 입력해주세요");
+        $("#cnt").val("");
+        $("#cnt").focus();
+        return;
+      }
  	
  	//인원수 확인
 	if($("#cnt").val() > value){

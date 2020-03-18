@@ -17,7 +17,7 @@ public class NaverMailSender implements MailSender {
 	private final int port = 465;
 	private final String host = "smtp.naver.com";
 	private final String user = "dog1448";
-	private final String pass = "dlehdwo1!";
+	private final String pass = "dlehdwo2@";
 	private final String tail = "@naver.com";
 	private Properties props = System.getProperties();
 	
@@ -53,8 +53,8 @@ public class NaverMailSender implements MailSender {
 		try {
 			msg.setFrom(new InternetAddress(user+tail));
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(mail.getMailTo()));
-			msg.setSubject(mail.getMailSubject());
-			msg.setContent((String)mail.getMailContent(), mail.getContentType()+"; charset=UTF-8");
+			msg.setSubject(mail.getMailSubject(), "UTF-8");
+			msg.setContent((String)mail.getMailContent(), mail.getContentType()+"; charset=UTF-8;");
 		} catch (AddressException e) {
 			e.printStackTrace();
 		} catch (MessagingException e) {

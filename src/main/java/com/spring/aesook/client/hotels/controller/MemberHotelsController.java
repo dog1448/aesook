@@ -166,14 +166,13 @@ public class MemberHotelsController {
 	public String getMyHotels(HttpSession session, Model model){
 		MemberVO user = (MemberVO)session.getAttribute("login");
 		if(user != null) {
-			MemberHotelsVO hotels = memberHotelsService.getMyHotels(user).get(0);
-			if (hotels != null) {
+			List<MemberHotelsVO> hotels = memberHotelsService.getMyHotels(user);
+			if (!hotels.isEmpty()) {
 				model.addAttribute("user", user);
-				List<MemberHotelsVO> hotelsList = memberHotelsService.getMyHotels(user);
-				model.addAttribute("hotels", hotelsList);
+				model.addAttribute("hotels", hotels);
 			} else {
 				model.addAttribute("message", "등록된 숙소가 없습니다.");
-				return "/hostTermsOfUse";
+				return "/successHostTerm";
 			}
 		}
 		return "/registeredAccommodation";

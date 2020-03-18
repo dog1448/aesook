@@ -29,4 +29,7 @@ public interface MemberBookingCheckService {
 
 	void insertBooking(MemberBookingVO vo);
 	
+	public MemberBookingVO getMemberBookingTest(MemberBookingVO vo);
+	
+	public void deleteMemberBooking(MemberBookingVO vo);
 }

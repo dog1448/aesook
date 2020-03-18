@@ -30,7 +30,7 @@
 	,#{BoardDepth}
 	,#{BoardReadcount}
 	,#{BoardIp}
-	,TO_DATE(sysdate,'yyyy.mm.dd')
+	,sysdate
 	,#{BoardType}
 	)
 	</insert>
@@ -101,7 +101,7 @@
 	,#{BoardDepth}
 	,#{BoardReadcount}
 	,#{BoardIp}
-	,TO_DATE(sysdate,'yyyy.mm.dd')
+	,sysdate
 	,#{BoardType}
 	)
   </insert>

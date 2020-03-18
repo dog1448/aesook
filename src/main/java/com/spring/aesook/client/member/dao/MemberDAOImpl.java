@@ -2,6 +2,9 @@ package com.spring.aesook.client.member.dao;
 
 
 import com.spring.aesook.client.member.vo.MemberVO;
+
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,11 +29,11 @@ public class MemberDAOImpl implements MemberDAO {
     	return sqlSessionTemplate.selectOne(namespace +".getMember" , vo);
     }
     
-    public MemberVO getFindIdMember(MemberVO vo) {
-    	return sqlSessionTemplate.selectOne(namespace +".getFindIdMember", vo);
+    public List<MemberVO> getFindIdMember(MemberVO vo) {
+    	return sqlSessionTemplate.selectList(namespace +".getFindIdMember", vo);
     }
     
-    public int getId(MemberVO vo){
+    public MemberVO getId(MemberVO vo){
         return sqlSessionTemplate.selectOne(namespace + ".getId", vo);
     }
 

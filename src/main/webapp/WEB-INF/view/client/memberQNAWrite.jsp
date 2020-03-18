@@ -85,7 +85,7 @@
                     <caption> 글쓰기  </caption>
                 </thead>
                 <tbody>
-                    <form action="boardQNAWrite.do" method="post">
+                    <form action="boardQNAWrite.do" method="post" role="form">
                         <input type="hidden" name="boardWriter" id="boardWriter" value="${login.memberId}">
                         <tr>
                             <th>제목: </th>
@@ -100,7 +100,7 @@
                         <input type="hidden" name="boardType" id="boardType" value="Q">
                         <input type="hidden" name="boardIP" id="boardIP" value="123.123">
 
-                        <input type="hidden" name="boardGroup" value="${seq+1}">
+                        <input type="hidden" name="boardGroup" value="${seq}">
                         <input type="hidden" name="boardStep" value="0">
                         <input type="hidden" name="boardDepth" value="0">
 
@@ -123,9 +123,9 @@
                     -->
 
                                 <!--<a class="btn btn-default" onclick="sendData()"> 등록 </a>-->
-                                <input class="btn btn-default" type="submit" value="등록">
-                                <a class="btn btn-default" type="reset"> reset </a>
-                                <a class="btn btn-default" onclick="javascript:location.href='aesook/boardQNA.do'">글 목록으로...</a>
+                                <input class="btn btn-default submitBtn" type="submit" value="등록">
+                                <a class="btn btn-default" type="reset"> 초기화</a>
+                                <a class="btn btn-default" onclick="javascript:history.go(-1)">목록</a>
                             </td>
                         </tr>
                     </form>
@@ -141,6 +141,29 @@
 	 <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var formObj = $("form[role='form']");
+            var boardTitle = $('#boardTitle');
+            var boardContent = $('#boardContent');
+
+            $(".submitBtn").on("click", function () {
+                if (boardContent.val() === ''|| boardTitle.val() === '') {
+                    alert("빈칸이 있습니다.");
+                    return false;
+                }else{
+                    formObj.submit();
+                    return true;
+                }
+
+
+
+            });
+        });
+
+    </script>
 	
     <!-- jQuery -->
     <script src="resources/client/js/jquery.min.js"></script>
