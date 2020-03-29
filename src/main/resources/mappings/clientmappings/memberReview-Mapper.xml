@@ -28,6 +28,7 @@
 		FROM REVIEW R, BOOKING B
 		WHERE R.BOOKING_CODE = B.BOOKING_CODE
 		AND B.HOTELS_CODE = #{hotelsCode}
+		ORDER BY R.REVIEW_DATE DESC
 	</select>
 	
 	<select id="getScoreAvg" resultType="String">

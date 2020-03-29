@@ -150,7 +150,7 @@
       <div class="modal-body">
       <select class="form-control" name="sortCondition">
             <option>정렬선택</option>
-            <option value="scoreAvg">평점이 높은 순으로 정렬</option>
+            <option value="scoreAvg">인기가 높은 순으로 정렬</option>
             <option value="scoreCnt">후기가 많은 순으로 정렬</option>
             <option value="hotelsCode">최신 숙박업체 순으로 정렬</option>
       </select>

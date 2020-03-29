@@ -85,5 +85,7 @@ public class MemberBookingCheckServiceImpl implements MemberBookingCheckService 
 		memberBookingDAO.deleteMemberBooking(vo);
 	}
 
-
+	public void updateMemberBookingTid(MemberBookingVO vo) {
+		memberBookingDAO.updateMemberBookingTid(vo);
+	}
 }

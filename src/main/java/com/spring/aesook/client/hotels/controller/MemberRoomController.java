@@ -40,7 +40,7 @@ public class MemberRoomController {
 	@Autowired
 	private MemberHotelsService memberHotelsService;
 	@Autowired
-  private ManagerRuleService managerRuleService;
+	private ManagerRuleService managerRuleService;
 	@Autowired
 	private MemberRoomSortService memberRoomSortService;
 

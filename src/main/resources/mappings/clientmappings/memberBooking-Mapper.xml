@@ -131,4 +131,8 @@
 		DELETE booking WHERE booking_code = #{bookingCode}
 	</delete>
 
+	<update id="updateMemberBookingTid" parameterType="memberBooking">
+		UPDATE booking SET tid = #{tid} WHERE booking_code = #{bookingCode}
+	</update>
+
 </mapper>

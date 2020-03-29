@@ -32,4 +32,6 @@ public interface MemberBookingCheckService {
 	public MemberBookingVO getMemberBookingTest(MemberBookingVO vo);
 	
 	public void deleteMemberBooking(MemberBookingVO vo);
+	
+	public void updateMemberBookingTid(MemberBookingVO vo);
 }

@@ -16,8 +16,8 @@ public class NaverMailSender implements MailSender {
 
 	private final int port = 465;
 	private final String host = "smtp.naver.com";
-	private final String user = "************";
-	private final String pass = "************";
+	private final String user = "jaehoon545";
+	private final String pass = "kgitbank1004";
 	private final String tail = "@naver.com";
 	private Properties props = System.getProperties();
 	

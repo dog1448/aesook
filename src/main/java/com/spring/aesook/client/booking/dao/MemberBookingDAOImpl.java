@@ -82,4 +82,8 @@ public class MemberBookingDAOImpl implements MemberBookingDAO {
 	public void deleteMemberBooking(MemberBookingVO vo) {
 		sqlSessionTemplate.delete(namespace + ".deleteMemberBooking", vo);
 	}
-}
+	
+	public void updateMemberBookingTid(MemberBookingVO vo) {
+		sqlSessionTemplate.update(namespace + ".updateMemberBookingTid", vo);
+	}
+} 

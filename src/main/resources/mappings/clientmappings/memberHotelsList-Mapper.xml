@@ -53,6 +53,7 @@
   	<!-- 인기 숙소 리스트 10개 가져오기 -->
   	<select id="selectAccommodationTop10" resultType="memberHotels">
   		<![CDATA[
+  		select * from (
   		select h.*, i.hotels_image_path, i.hotels_image_name, i.hotels_image_status, rhb.scoreAvg, rhb.scoreCnt
 		from hotels h, ranking r, (select * from hotels_image where hotels_image_status='M') i, 
 		(select round(avg(r.review_score),0) scoreAvg, count(r.review_score) scoreCnt, hb.hotels_code
@@ -64,13 +65,14 @@
 		where h.hotels_code = i.hotels_code(+)
 		and h.hotels_code = r.hotels_code
 		and h.hotels_code = rhb.hotels_code(+)
-		and rownum <= 10
+		) where rownum <= 10
 		]]>
   	</select>
   	
   	<!-- 인기 숙소(타입별) 리스트 10개 가져오기 -->
   	<select id="selectAccommodationTop10ByType" resultType="memberHotels" parameterType="memberHotels">
   		<![CDATA[
+  		select * from (
   		select h.*, i.hotels_image_path, i.hotels_image_name, i.hotels_image_status, rhb.scoreAvg, rhb.scoreCnt
 		from hotels h, ranking r, (select * from hotels_image where hotels_image_status='M') i, 
 		(select round(avg(r.review_score),0) scoreAvg, count(r.review_score) scoreCnt, hb.hotels_code
@@ -82,8 +84,8 @@
 		where h.hotels_code = i.hotels_code(+)
 		and h.hotels_code = r.hotels_code
 		and h.hotels_code = rhb.hotels_code(+)
-		and rownum <= 10
   		and r.hotels_type = #{hotelsType}
+  		) where rownum <= 10
 		]]>
   	</select>
   
